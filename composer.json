@@ -1,0 +1,5 @@
+{
+    "require": {
+        "yiisoft/yii": "dev-master#e9e4a0d5be901d8bd48e516a2d9afe33d6fd05a6"
+    }
+}
