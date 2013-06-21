@@ -1,6 +1,12 @@
 {
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/Jalle19/simple-json-rpc-client"
+		}
+	],
     "require": {
         "yiisoft/yii": "dev-master#e9e4a0d5be901d8bd48e516a2d9afe33d6fd05a6",
-        "zendframework/zend-http": "2.2.*"
+		"Jalle19/simple-json-rpc-client": "dev-master"
     }
 }

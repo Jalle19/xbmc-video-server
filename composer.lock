@@ -3,8 +3,37 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "3339fb26abb18c493dd58f9b1844777e",
+    "hash": "4d109449d2d67ab805bf172e6ab90203",
     "packages": [
+        {
+            "name": "Jalle19/simple-json-rpc-client",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Jalle19/simple-json-rpc-client.git",
+                "reference": "2b1008a39e666fd6bb244ee167c348ab47c0bcf5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Jalle19/simple-json-rpc-client/zipball/2b1008a39e666fd6bb244ee167c348ab47c0bcf5",
+                "reference": "2b1008a39e666fd6bb244ee167c348ab47c0bcf5",
+                "shasum": ""
+            },
+            "require": {
+                "zendframework/zend-http": "2.2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "SimpleJsonRpcClient\\": "src/"
+                }
+            },
+            "support": {
+                "source": "https://github.com/Jalle19/simple-json-rpc-client/tree/master",
+                "issues": "https://github.com/Jalle19/simple-json-rpc-client/issues"
+            },
+            "time": "2013-06-21 18:45:27"
+        },
         {
             "name": "yiisoft/yii",
             "version": "dev-master",
@@ -366,7 +395,8 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "yiisoft/yii": 20
+        "yiisoft/yii": 20,
+        "jalle19/simple-json-rpc-client": 20
     },
     "platform": [
 
