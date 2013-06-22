@@ -10,7 +10,7 @@ defined('YII_DEBUG') or define('YII_DEBUG',true);
 defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
 
 // include Composer's autoloader
-require_once(__DIR__.'../../vendor/autoload.php');
+require_once(__DIR__.'/../vendor/autoload.php');
 
 require_once($yii);
 Yii::createWebApplication($config)->run();
