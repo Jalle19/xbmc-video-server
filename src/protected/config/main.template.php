@@ -10,12 +10,18 @@ return array(
 	'name'=>'My Web Application',
 
 	// preloading 'log' component
-	'preload'=>array('log'),
+	'preload'=>array('log', 'less'),
+	
+	'aliases'=>array(
+		'bootstrap'=>realpath(__DIR__.'/../../../vendor/crisu83/yiistrap'),
+		'composer'=>realpath(__DIR__.'/../../../vendor'),
+	),
 
 	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'bootstrap.helpers.TbHtml',
 	),
 
 	'modules'=>array(
@@ -32,6 +38,22 @@ return array(
 
 	// application components
 	'components'=>array(
+		'bootstrap'=>array(
+			'class'=>'bootstrap.components.TbApi',
+		),
+		'less'=>array(
+			'class'=>'composer.jalle19.yii-less.components.LessServerCompiler',
+			'files'=>array(
+				'css/less/styles.less'=>'css/styles.css',
+			),
+			// LessServerCompiler-specific settings
+			'nodePath'=>'/usr/local/bin/node',
+			'compilerPath'=>'/usr/local/bin/lessc',
+			'strictImports'=>false,
+			'compression'=>false,
+			'optimizationLevel'=>2,
+			'forceCompile'=>false,
+		),
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
