@@ -81,12 +81,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Jalle19/simple-json-rpc-client.git",
-                "reference": "105fcb591c373d7c09ef0f66f4b7432f4d4687cd"
+                "reference": "a4c7c6bc6c5aba501f5f005e29bb4b28b66838d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Jalle19/simple-json-rpc-client/zipball/105fcb591c373d7c09ef0f66f4b7432f4d4687cd",
-                "reference": "105fcb591c373d7c09ef0f66f4b7432f4d4687cd",
+                "url": "https://api.github.com/repos/Jalle19/simple-json-rpc-client/zipball/a4c7c6bc6c5aba501f5f005e29bb4b28b66838d7",
+                "reference": "a4c7c6bc6c5aba501f5f005e29bb4b28b66838d7",
                 "shasum": ""
             },
             "require": {
@@ -102,7 +102,7 @@
                 "source": "https://github.com/Jalle19/simple-json-rpc-client/tree/master",
                 "issues": "https://github.com/Jalle19/simple-json-rpc-client/issues"
             },
-            "time": "2013-06-23 21:06:46"
+            "time": "2013-06-23 21:41:54"
         },
         {
             "name": "jalle19/yii-less",
