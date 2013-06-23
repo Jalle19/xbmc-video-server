@@ -34,3 +34,67 @@
 		}
 	}
 }
+
+.movie-details {
+	.movie-thumbnail {
+		display: block;
+		border: 1px dotted #CCC;
+		padding: 2px;
+	}
+
+	.movie-description {
+		.movie-title, .movie-metadata, .movie-plot {
+			border-bottom: 1px dotted #CCC;
+			margin-bottom: 20px;
+		}
+
+		.movie-title {
+			h2, p {
+				display: inline-block;
+			}
+
+			h2 {
+				margin-right: 10px;
+			}
+
+			p {
+				font-size: larger;
+			}
+
+			.tagline {
+				display: block;
+				margin-top: -10px;
+				font-style: italic;
+			}
+		}
+
+		.movie-metadata {
+			p {
+				float: left;
+				padding: 0 10px;
+				border-left: 1px solid #CCC;
+
+				&:first-child {
+					border: 0;
+					padding-left: 0;
+				}
+			}
+		}
+
+		.movie-plot {
+			p {
+				font-style: italic;
+			}
+		}
+
+		.actor-grid .thumbnail {
+			.image-container {
+				min-height: 182px;
+			}
+
+			.caption {
+				min-height: 60px;
+			}
+		}
+	}
+}

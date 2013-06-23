@@ -39,7 +39,8 @@ $baseUrl = Yii::app()->baseUrl;
 					array(
 						'class'=>'bootstrap.widgets.TbNav',
 						'items'=>array(
-							array('label'=>'Movies', 'url'=>array('movie/index')),
+							array('label'=>'Movies', 'url'=>array('movie/index'), 
+								'active'=>in_array(Yii::app()->controller->route, array('movie/index', 'movie/details'))),
 							array('label'=>'TV Shows', 'url'=>array('tvShow/index')),
 							array('label'=>'Settings', 'url'=>'#'),
 						),
