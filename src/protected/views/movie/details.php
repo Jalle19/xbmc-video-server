@@ -4,6 +4,7 @@
 /* @var $actorDataProvider LibraryDataProvider */
 /* @var $details stdClass */
 
+$this->pageTitle = $details->label;
 // TODO: Show stream details somehow
 
 ?>
@@ -54,8 +55,13 @@
 					(<?php echo $details->votes; ?> votes)
 				</p>
 				
-				<p>MPAA rating: <?php echo $details->mpaa; ?></p>
+				<?php
 				
+				// MPAA rating is not always available
+				if ($details->mpaa)
+					echo '<p>MPAA rating: '.$details->mpaa.'</p>';
+
+				?>
 			</div>
 			
 			<h3>Plot</h3>

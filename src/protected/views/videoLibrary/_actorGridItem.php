@@ -1,8 +1,11 @@
 <?php
 
 /* @var $this MovieController */
-$thumbnailUrl = $this->createUrl('videoLibrary/getThumbnail', 
-		array('thumbnailPath'=>$data->thumbnail));
+if (isset($data->thumbnail))
+	$thumbnailUrl = $this->createUrl('videoLibrary/getThumbnail', array(
+		'thumbnailPath'=>$data->thumbnail));
+else
+	$thumbnailUrl = Yii::app()->baseUrl.'/images/blank.png';
 
 $label = $data->name.' as <em>'.$data->role.'</em>';
 
