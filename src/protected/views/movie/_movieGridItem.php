@@ -2,7 +2,8 @@
 
 /* @var $this MovieController */
 $movieUrl = $this->createUrl('details', array('id'=>$data->movieid));
-$thumbnailUrl = $this->getMovieThumbnail($data->thumbnail);
+$thumbnailUrl = $this->createUrl('thumbnail/get', 
+		array('thumbnailPath'=>$data->thumbnail));
 
 ?>
 <li class="span2">
@@ -13,7 +14,9 @@ $thumbnailUrl = $this->getMovieThumbnail($data->thumbnail);
 		{
 			?>
 			<div class="image-container">
-				<img src="<?php echo $thumbnailUrl; ?>" alt="" />
+				<img src="<?php echo Yii::app()->baseUrl.'/images/blank.png'; ?>" 
+					 data-src="<?php echo $thumbnailUrl; ?>" alt="" 
+					 class="lazy" />
 			</div>
 			<?php
 		}

@@ -23,6 +23,10 @@ class MovieController extends Controller
 		usort($movies, function($a, $b) {
 			return strcmp($a->label, $b->label);
 		});
+		
+		// Register image lazy-loader
+		Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl
+				.'/js/lazy-load-images.js', CClientScript::POS_END);
 
 		$dataProvider = new CArrayDataProvider($movies, array(
 			'keyField'=>'movieid',
