@@ -86,8 +86,9 @@ class Controller extends CController
 	{
 		$xbmcParams = Yii::app()->params['xbmc'];
 
-		return 'http://'.$xbmcParams['hostname'].':'.$xbmcParams['port']
-				.'/'.$relativeUrl;
+		return 'http://'.$xbmcParams['username'].':'.$xbmcParams['password'].'@'
+				.$xbmcParams['hostname'].':'.$xbmcParams['port'].'/'
+				.$relativeUrl;
 	}
 
 }
