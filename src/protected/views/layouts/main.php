@@ -19,7 +19,11 @@ $baseUrl = Yii::app()->baseUrl;
 			
 			<div class="row">
 				<div class="span12">
-					<h1><?php echo Yii::app()->name; ?></h1>
+					<h1>
+						<a id="home-url" href="<?php echo Yii::app()->homeUrl; ?>">
+							<?php echo Yii::app()->name; ?>
+						</a>
+					</h1>
 					<p class="lead">
 						Free your library
 					</p>
