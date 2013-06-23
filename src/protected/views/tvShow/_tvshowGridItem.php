@@ -1,13 +1,13 @@
 <?php
 
-/* @var $this MovieController */
+/* @var $this TvShowController */
 
-$movieUrl = $this->createUrl('details', array('id'=>$data->movieid));
+$showUrl = $this->createUrl('details', array('id'=>$data->tvshowid));
 $thumbnailUrl = $this->createUrl('thumbnail/get', 
 		array('thumbnailPath'=>$data->thumbnail));
 
 $this->renderPartial('//videoLibrary/_gridItem', array(
 	'label'=>$data->label,
-	'itemUrl'=>$movieUrl,
+	'itemUrl'=>$showUrl,
 	'thumbnailUrl'=>$thumbnailUrl,
 ));

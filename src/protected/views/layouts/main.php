@@ -40,7 +40,7 @@ $baseUrl = Yii::app()->baseUrl;
 						'class'=>'bootstrap.widgets.TbNav',
 						'items'=>array(
 							array('label'=>'Movies', 'url'=>array('movie/index')),
-							array('label'=>'TV Shows', 'url'=>'#'),
+							array('label'=>'TV Shows', 'url'=>array('tvShow/index')),
 							array('label'=>'Settings', 'url'=>'#'),
 						),
 					),
