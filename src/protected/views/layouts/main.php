@@ -20,8 +20,8 @@ $baseUrl = Yii::app()->baseUrl;
 			
 			<div class="row">
 				<div class="span12">
-					<h1>
-						<a id="home-url" href="<?php echo Yii::app()->homeUrl; ?>">
+					<h1 id="home-url">
+						<a href="<?php echo Yii::app()->homeUrl; ?>">
 							<?php echo Yii::app()->name; ?>
 						</a>
 					</h1>
