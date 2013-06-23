@@ -38,7 +38,7 @@ $baseUrl = Yii::app()->baseUrl;
 					array(
 						'class'=>'bootstrap.widgets.TbNav',
 						'items'=>array(
-							array('label'=>'Movies', 'url'=>'#'),
+							array('label'=>'Movies', 'url'=>array('movie/index')),
 							array('label'=>'TV Shows', 'url'=>'#'),
 							array('label'=>'Settings', 'url'=>'#'),
 						),
@@ -46,7 +46,10 @@ $baseUrl = Yii::app()->baseUrl;
 				),
 			)); ?>
 			
-			<?php echo $content; ?>
+			<div class="content">
+				<?php echo $content; ?>
+			</div>
+			
 		</div>
 	</body>
 	
