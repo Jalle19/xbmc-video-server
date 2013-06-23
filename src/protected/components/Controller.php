@@ -66,7 +66,7 @@ class Controller extends CController
 	 */
 	public function setPageTitle($pageTitle)
 	{
-		$this->pageTitle = Yii::app()->name.' - '.$pageTitle;
+		$this->pageTitle = $pageTitle.' - '.Yii::app()->name;
 	}
 
 	/**
