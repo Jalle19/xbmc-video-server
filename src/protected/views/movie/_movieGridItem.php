@@ -3,7 +3,7 @@
 /* @var $this MovieController */
 
 $movieUrl = $this->createUrl('details', array('id'=>$data->movieid));
-$thumbnailUrl = $this->createUrl('thumbnail/get', 
+$thumbnailUrl = $this->createUrl('videoLibrary/getThumbnail', 
 		array('thumbnailPath'=>$data->thumbnail));
 
 $this->renderPartial('//videoLibrary/_gridItem', array(

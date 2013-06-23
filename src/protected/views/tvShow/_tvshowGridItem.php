@@ -3,7 +3,7 @@
 /* @var $this TvShowController */
 
 $showUrl = $this->createUrl('details', array('id'=>$data->tvshowid));
-$thumbnailUrl = $this->createUrl('thumbnail/get', 
+$thumbnailUrl = $this->createUrl('videoLibrary/getThumbnail', 
 		array('thumbnailPath'=>$data->thumbnail));
 
 $this->renderPartial('//videoLibrary/_gridItem', array(
