@@ -32,6 +32,11 @@ class Controller extends CController
 	protected $jsonRpcClient;
 
 	/**
+	 * @var string the page title. It is accessed through its setter and getter.
+	 */
+	private $_pageTitle;
+
+	/**
 	 * Initializes the controller
 	 */
 	public function init()
@@ -44,6 +49,24 @@ class Controller extends CController
 				.'/jsonrpc';
 
 		$this->jsonRpcClient = new SimpleJsonRpcClient\Client($endpoint, $xbmcParams['username'], $xbmcParams['password']);
+	}
+
+	/**
+	 * Getter for _pageTitle
+	 * @return string
+	 */
+	public function getPageTitle()
+	{
+		return !$this->_pageTitle ? Yii::app()->name : $this->_pageTitle;
+	}
+
+	/**
+	 * Setter for _pageTitle
+	 * @param string $pageTitle
+	 */
+	public function setPageTitle($pageTitle)
+	{
+		$this->pageTitle = Yii::app()->name.' - '.$pageTitle;
 	}
 
 	/**
