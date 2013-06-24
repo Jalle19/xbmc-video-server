@@ -31,18 +31,26 @@ $this->pageTitle = $details->label;
 		</div>
 		
 		<div class="span9 movie-description">
-			<div class="movie-title">
-				<h2>
-					<a href="http://www.imdb.com/title/<?php echo $details->imdbnumber; ?>">
-						<?php echo $details->label; ?>
-					</a>
-				</h2>
+			<div class="movie-top row-fluid">
+				<div class="movie-title span6">
+					<h2>
+						<a href="http://www.imdb.com/title/<?php echo $details->imdbnumber; ?>">
+							<?php echo $details->label; ?>
+						</a>
+					</h2>
+
+					<p>(<?php echo $details->year; ?>)</p>
+
+					<p class="tagline">
+						<?php echo $details->tagline; ?>
+					</p>
+
+				</div>
 				
-				<p>(<?php echo $details->year; ?>)</p>
-				
-				<p class="tagline">
-					<?php echo $details->tagline; ?>
-				</p>
+				<div class="span6">
+					<?php $this->widget('MediaFlags', array(
+							'streamDetails'=>$details->streamdetails)); ?>
+				</div>
 			</div>
 			
 			<div class="movie-info clearfix">
@@ -71,7 +79,7 @@ $this->pageTitle = $details->label;
 						// MPAA rating is not always available
 						if ($details->mpaa)
 							echo '<p>MPAA rating: '.$details->mpaa.'</p>';
-
+						
 						?>
 					</div>
 

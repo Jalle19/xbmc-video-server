@@ -50,9 +50,23 @@ h1#home-url {
 	}
 
 	.movie-description {
-		.movie-title, .movie-info, .movie-plot {
+		.movie-top, .movie-info, .movie-plot {
 			border-bottom: 1px dotted #CCC;
 			margin-bottom: 20px;
+		}
+
+		.movie-top {
+			position: relative;
+
+			.media-flags {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+			}
+
+			&, .media-flags {
+				padding-bottom: 20px;
+			}
 		}
 
 		.movie-title {
@@ -70,7 +84,7 @@ h1#home-url {
 
 			.tagline {
 				display: block;
-				margin-top: -10px;
+				margin: -10px 0 0 0;
 				font-style: italic;
 			}
 		}
@@ -129,3 +143,14 @@ h1#home-url {
 	color: #FFCC33;
 }
 
+.media-flags {
+	.flag-section {
+		display: inline-block;
+		margin-left: 10px;
+
+		img {
+			display: inline-block;
+			margin-right: 5px;
+		}
+	}
+}

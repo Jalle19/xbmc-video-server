@@ -22,6 +22,7 @@ return array(
 		'application.models.*',
 		'application.components.*',
 		'application.controllers.*',
+		'application.widgets.*',
 		'bootstrap.helpers.TbHtml',
 	),
 
