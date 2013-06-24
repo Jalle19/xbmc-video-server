@@ -16,17 +16,37 @@ $this->pageTitle = $details->label.' ('.$details->year.')';
 			)); ?>
 			
 			<div class="movie-links">
-				<h3>Download / Stream</h3>
+				<h3>Watch / Download</h3>
 				
 				<p>
-					Click the link to play in your browser (requires the VLC 
-					plugin or right-click and copy the link to play in your 
-					favorite media player.
+					Click the Watch button to start streaming the video (open 
+					the file in your favorite media player), or download the 
+					individual files for later viewing using the links below it.
 				</p>
 				
-				<?php $this->renderPartial('/videoLibrary/_downloadButtons', array(
-					'movieFiles'=>$movieFiles,
-				));?>
+				<?php echo TbHtml::linkButton('Watch', array(
+					'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
+					'size'=>TbHtml::BUTTON_SIZE_LARGE,
+					'url'=>array('getMoviePlaylist', 'movieId'=>$details->movieid),
+				)); ?>
+				
+				<div class="movie-links">
+					<?php
+
+					$numLinks = count($movieLinks);
+
+					foreach ($movieLinks as $k=> $link)
+					{
+						if ($numLinks == 1)
+							$label = 'Download';
+						else
+							$label = 'Download (part #'.(++$k).')';
+
+						echo CHtml::tag('p', array(), CHtml::link($label, $link));
+					}
+
+					?>
+				</div>
 			</div>
 		</div>
 		

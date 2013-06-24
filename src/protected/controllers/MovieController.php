@@ -83,15 +83,49 @@ class MovieController extends VideoLibraryController
 			'pagination'=>array('pageSize'=>6)
 		));
 
-		$movieFiles = $this->getMovieLinks($movieDetails);
+		$movieLinks = $this->getMovieLinks($movieDetails);
 
 		$this->render('details', array(
 			'details'=>$movieDetails,
 			'actorDataProvider'=>$actorDataProvider,
-			'movieFiles'=>$movieFiles,
+			'movieLinks'=>$movieLinks,
 		));
 	}
 	
+	/**
+	 * Serves a playlist containing the specified movie's files to the browser
+	 * @param int $movieId the movie ID
+	 */
+	public function actionGetMoviePlaylist($movieId)
+	{
+		$response = $this->performRequest('VideoLibrary.GetMovieDetails', array(
+			'movieid'=>(int)$movieId,
+			'properties'=>array(
+				'file',
+				'runtime',
+				'title',
+				'year')));
+
+		$movieDetails = $response->result->moviedetails;
+		$links = $this->getMovieLinks($movieDetails);
+		$name = $movieDetails->title.' ('.$movieDetails->year.')';
+
+		$playlist = new M3UPlaylist();
+
+		foreach ($links as $k=> $link)
+		{
+			$playlist->addItem(array(
+				'runtime'=>(int)$movieDetails->runtime,
+				'label'=>$name.' (#'.++$k.')',
+				'url'=>$link));
+		}
+
+		header('Content-Type: audio/x-mpegurl');
+		header('Content-Disposition: attachment; filename="'.$name.'"');
+
+		echo $playlist;
+	}
+
 	/**
 	 * Returns an array with the download links for a movie. It takes the a 
 	 * result from GetMovieDetails as parameter.
@@ -125,5 +159,5 @@ class MovieController extends VideoLibraryController
 
 		return $files;
 	}
-
+	
 }
