@@ -4,7 +4,7 @@
 /* @var $actorDataProvider LibraryDataProvider */
 /* @var $details stdClass */
 
-$this->pageTitle = $details->label;
+$this->pageTitle = $details->label.' ('.$details->year.')';
 // TODO: Show stream details somehow
 
 ?>
