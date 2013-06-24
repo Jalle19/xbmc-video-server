@@ -121,7 +121,7 @@ class MovieController extends VideoLibraryController
 		}
 
 		header('Content-Type: audio/x-mpegurl');
-		header('Content-Disposition: attachment; filename="'.$name.'"');
+		header('Content-Disposition: attachment; filename="'.$name.'.m3u"');
 
 		echo $playlist;
 	}
