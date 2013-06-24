@@ -109,14 +109,16 @@ class MovieController extends VideoLibraryController
 		$movieDetails = $response->result->moviedetails;
 		$links = $this->getMovieLinks($movieDetails);
 		$name = $movieDetails->title.' ('.$movieDetails->year.')';
-
 		$playlist = new M3UPlaylist();
+		$linkCount = count($links);
 
 		foreach ($links as $k=> $link)
 		{
+			$label = $linkCount > 1 ? $name.' (#'.++$k.')' : $name;
+			
 			$playlist->addItem(array(
 				'runtime'=>(int)$movieDetails->runtime,
-				'label'=>$name.' (#'.++$k.')',
+				'label'=>$label,
 				'url'=>$link));
 		}
 
