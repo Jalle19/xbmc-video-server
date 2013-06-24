@@ -50,7 +50,7 @@ h1#home-url {
 	}
 
 	.movie-description {
-		.movie-title, .movie-metadata, .movie-plot {
+		.movie-title, .movie-info, .movie-plot {
 			border-bottom: 1px dotted #CCC;
 			margin-bottom: 20px;
 		}
@@ -72,6 +72,16 @@ h1#home-url {
 				display: block;
 				margin-top: -10px;
 				font-style: italic;
+			}
+		}
+
+		.movie-info {
+			.movie-rating {
+				margin-right: 20px;
+
+				p {
+					margin-bottom: 5px;
+				}
 			}
 		}
 
@@ -105,3 +115,17 @@ h1#home-url {
 		}
 	}
 }
+
+.rating-star {
+	display: inline-block;
+	margin: 0 0 15px 0; // the star is not exactly 28px high
+	height: 28px;
+	font-size: 28px;
+}
+
+.rating-star-yellow:before {
+	content: "\2605";
+	position: absolute;
+	color: #FFCC33;
+}
+

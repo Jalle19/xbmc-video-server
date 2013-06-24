@@ -45,23 +45,37 @@ $this->pageTitle = $details->label;
 				</p>
 			</div>
 			
-			<div class="movie-metadata clearfix">
+			<div class="movie-info clearfix">
 				
-				<p><?php echo implode(' / ', $details->genre); ?></p>
-				<p><?php echo (int)($details->runtime / 60); ?> min</p>
-				
-				<p>
-					Rating: <?php echo round($details->rating, 1); ?> 
-					(<?php echo $details->votes; ?> votes)
-				</p>
-				
-				<?php
-				
-				// MPAA rating is not always available
-				if ($details->mpaa)
-					echo '<p>MPAA rating: '.$details->mpaa.'</p>';
+				<div class="pull-left movie-rating">
 
-				?>
+					<p>
+						Rating: <?php echo round($details->rating, 1); ?> 
+						(<?php echo $details->votes; ?> votes)
+					</p>
+					
+					<?php $this->renderPartial('/videoLibrary/_ratingStars', 
+							array('rating'=>(int)$details->rating)); ?>
+
+				</div>
+
+				<div class="pull-left">
+
+					<div class="movie-metadata clearfix">
+
+						<p><?php echo implode(' / ', $details->genre); ?></p>
+						<p><?php echo (int)($details->runtime / 60); ?> min</p>
+
+						<?php
+
+						// MPAA rating is not always available
+						if ($details->mpaa)
+							echo '<p>MPAA rating: '.$details->mpaa.'</p>';
+
+						?>
+					</div>
+
+				</div>
 			</div>
 			
 			<h3>Plot</h3>
