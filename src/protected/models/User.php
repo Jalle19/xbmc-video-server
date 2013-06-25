@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * This is the model class for table "user".
+ *
+ * The followings are the available columns in table 'user':
+ * @property integer $id
+ * @property string $role
+ * @property string $username
+ * @property string $password
+ */
+class User extends CActiveRecord
+{
+
+	const ROLE_ADMIN = 'admin';
+	const ROLE_USER = 'user';
+
+	/**
+	 * Returns the static model of the specified AR class.
+	 * @param string $className active record class name.
+	 * @return User the static model class
+	 */
+	public static function model($className = __CLASS__)
+	{
+		return parent::model($className);
+	}
+
+	/**
+	 * @return string the associated database table name
+	 */
+	public function tableName()
+	{
+		return 'user';
+	}
+
+	/**
+	 * @return array validation rules for model attributes.
+	 */
+	public function rules()
+	{
+		return array(
+			array('username, password', 'required'),
+			array('role', 'in', 'range'=>array_keys($this->getRoles())),
+		);
+	}
+
+	/**
+	 * @return array customized attribute labels (name=>label)
+	 */
+	public function attributeLabels()
+	{
+		return array(
+			'role'=>'Role',
+			'username'=>'Username',
+			'password'=>'Password',
+		);
+	}
+
+	public function getRoles()
+	{
+		return array(
+			self::ROLE_ADMIN=>'Administrator',
+			self::ROLE_USER=>'User',
+		);
+	}
+
+}
+

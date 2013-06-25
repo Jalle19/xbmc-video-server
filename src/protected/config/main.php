@@ -53,7 +53,10 @@ return array(
 			),
 		),
 		'config'=>array(
-			'class'=>'Config',
+			'class'=>'Settings', // there's a model called Config already
+		),
+		'db'=>array(
+			'connectionString' => 'sqlite:'.__DIR__.'/../data/xbmc-video-server.db',
 		),
 		'xbmc'=>array(
 			'class'=>'XBMC',
@@ -83,9 +86,6 @@ return array(
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
-		),
-		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 		),
 		// uncomment the following to use a MySQL database
 		/*

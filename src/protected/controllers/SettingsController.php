@@ -30,16 +30,17 @@ class SettingsController extends Controller
 
 			if ($configForm->validate())
 			{
-				// Try to save the configuration to file
-				try
+				// Update the configuration
+				foreach ($configForm->attributes as $attribute=> $value)
 				{
-					Yii::app()->config->save($configForm->attributes);
+					Config::model()->updateByPk($attribute, array(
+						'value'=>$value));
 				}
-				catch (CException $e)
-				{
-					Yii::app()->user->setFlash('error', $e->getMessage());
-				}
-
+				
+				// Mark configuration as done
+				Config::model()->updateByPk('isConfigured', array(
+					'value'=>'true'));
+				
 				Yii::app()->user->setFlash('success', 'Configuration saved');
 
 				// Refresh to avoid re-submitting the form
