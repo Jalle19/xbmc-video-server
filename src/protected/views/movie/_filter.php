@@ -31,14 +31,18 @@ Yii::app()->clientScript->registerScript(__CLASS__.'_nameTypeahead', "
 	echo $form->dropDownListControlGroup($model, 'genre', $model->getGenres(), array('prompt'=>''));
 	echo $form->textFieldControlGroup($model, 'year', array('span'=>1));
 
-	echo TbHtml::submitButton('Apply filter', array(
-		'color'=>TbHtml::BUTTON_COLOR_PRIMARY));
-
-	echo TbHtml::linkButton('Clear filter', array(
-		'color'=>TbHtml::BUTTON_COLOR_INFO,
-		'url'=>array('movie/index')));
-
 	?>
+	<div class="buttons">
+		<?php
+		echo TbHtml::submitButton('Apply filter', array(
+			'color'=>TbHtml::BUTTON_COLOR_PRIMARY));
+
+		echo TbHtml::linkButton('Clear filter', array(
+			'color'=>TbHtml::BUTTON_COLOR_INFO,
+			'url'=>array('movie/index')));
+
+		?>
+	</div>
 </div>
 <?php
 
