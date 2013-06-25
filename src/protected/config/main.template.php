@@ -49,6 +49,7 @@ return array(
 					'baseUrl'=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/',
 					'js'=>array(YII_DEBUG ? 'jquery.min.js' : 'jquery.js'),
 				),
+				'bbq'=>array('js'=>false),
 			),
 		),
 		'less'=>array(
