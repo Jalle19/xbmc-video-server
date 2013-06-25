@@ -8,8 +8,6 @@
 class VideoLibraryController extends Controller
 {
 	
-	const SORT_ORDER_ASCENDING = 'ascending';
-
 	/**
 	 * Redirects to the URL returned by getThumbnailUrl(). This wrapper is used 
 	 * so we don't have to generate the thumbnail URLs for all images in a grid 
@@ -38,18 +36,6 @@ class VideoLibraryController extends Controller
 			'path'=>$thumbnailPath));
 
 		return Yii::app()->xbmc->getAbsoluteVfsUrl($response->result->details->path);
-	}
-
-	/**
-	 * Sorts the specified result in place alphabetically. This can be used to 
-	 * fix XBMC's invalid sort position of certain movies.
-	 * @param array $results result set (array of objects)
-	 */
-	protected function sortResults(&$results)
-	{
-		usort($results, function($a, $b) {
-			return strcmp($a->label, $b->label);
-		});
 	}
 
 	/**

@@ -15,9 +15,7 @@ class MovieController extends VideoLibraryController
 	{
 		// Start building the request parameters
 		$requestParameters = array(
-			'properties'=>array('thumbnail'),
-			'sort'=>array(
-				'order'=>self::SORT_ORDER_ASCENDING, 'method'=>'label'));
+			'properties'=>array('thumbnail'));
 
 		// Get filter properties
 		$movieFilterForm = new MovieFilterForm();
@@ -51,14 +49,8 @@ class MovieController extends VideoLibraryController
 
 			$requestParameters['filter']->and[] = $filter;
 		}
-
-		// Get the movies
-		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetMovies', $requestParameters);
-
-		if (isset($response->result->movies))
-			$movies = $response->result->movies;
-		else
-			$movies = array();
+		
+		$movies = VideoLibrary::getMovies($requestParameters);
 
 		// If there is only one item in the result we redirect directly to the 
 		// details page
@@ -78,49 +70,26 @@ class MovieController extends VideoLibraryController
 	 */
 	public function actionDetails($id)
 	{
-		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetMovieDetails', array(
-			'movieid'=>(int)$id,
-			'properties'=>array(
-				'title',
-				'genre',
-				'year',
-				'rating',
-//				'director',
-//				'trailer',
-				'tagline',
-				'plot',
-//				'plotoutline',
-//				'originaltitle',
-//				'lastplayed',
-//				'playcount',
-//				'writer',
-//				'studio',
-				'mpaa',
-				'cast',
-//				'country',
-				'imdbnumber',
-				'runtime',
-//				'set',
-//				'showlink',
-				'streamdetails',
-//				'top250',
-				'votes',
-//				'fanart',
-				'thumbnail',
-				'file',
-//				'sorttitle',
-//				'resume',
-//				'setid',
-//				'dateadded',
-//				'tag',
-//				'art',
-			)
+		$movieDetails = VideoLibrary::getMovieDetails((int)$id, array(
+			'title',
+			'genre',
+			'year',
+			'rating',
+			'tagline',
+			'plot',
+			'mpaa',
+			'cast',
+			'imdbnumber',
+			'runtime',
+			'streamdetails',
+			'votes',
+			'thumbnail',
+			'file'
 		));
 
-		$this->registerScripts();
-
-		$movieDetails = $response->result->moviedetails;
-
+		if ($movieDetails === null)
+			throw new CHttpException(404, 'Not found');
+		
 		// Create a data provider for the actors. We only show one row (first 
 		// credited only), hence the 6
 		$actorDataProvider = new CArrayDataProvider(
@@ -130,6 +99,8 @@ class MovieController extends VideoLibraryController
 		));
 
 		$movieLinks = $this->getMovieLinks($movieDetails);
+		
+		$this->registerScripts();
 
 		$this->render('details', array(
 			'details'=>$movieDetails,
@@ -144,15 +115,16 @@ class MovieController extends VideoLibraryController
 	 */
 	public function actionGetMoviePlaylist($movieId)
 	{
-		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetMovieDetails', array(
-			'movieid'=>(int)$movieId,
-			'properties'=>array(
-				'file',
-				'runtime',
-				'title',
-				'year')));
+		$movieDetails = VideoLibrary::getMovieDetails((int)$movieId, array(
+			'file',
+			'runtime',
+			'title',
+			'year'
+		));
+		
+		if ($movieDetails === null)
+			throw new CHttpException(404, 'Not found');
 
-		$movieDetails = $response->result->moviedetails;
 		$links = $this->getMovieLinks($movieDetails);
 		$name = $movieDetails->title.' ('.$movieDetails->year.')';
 		$playlist = new M3UPlaylist();
@@ -210,22 +182,15 @@ class MovieController extends VideoLibraryController
 	
 	/**
 	 * Returns an array containing all movie names
-	 * TODO: Make a generic VideoLibrary model with getMovies() method
 	 * @return array the names
 	 */
 	public function getMovieNames()
 	{
-		// Get the list of movies along with their thumbnails
-		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetMovies');
-
-		// Sort the results
-		$movies = $response->result->movies;
-		$this->sortResults($movies);
-
 		$names = array();
-		foreach ($movies as $movie)
+		
+		foreach (VideoLibrary::getMovies() as $movie)
 			$names[] = $movie->label;
-
+		
 		return $names;
 	}
 	
