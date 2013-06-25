@@ -27,22 +27,32 @@ class MovieController extends VideoLibraryController
 
 			if ($movieFilterForm->validate())
 			{
-				$nativeFilters['title'] = $movieFilterForm->name;
-				$nativeFilters['genre'] = $movieFilterForm->genre;
-				$nativeFilters['year'] = $movieFilterForm->year;
-
-				$nativeFilters = array_filter($nativeFilters);
+				// Include partial matches on movie title
+				$nativeFilters['title'] = array(
+					'operator'=>'contains',
+					'value'=>$movieFilterForm->name);
+				
+				$nativeFilters['genre'] = array(
+					'operator'=>'is',
+					'value'=>$movieFilterForm->genre);
+				
+				$nativeFilters['year'] = array(
+					'operator'=>'is',
+					'value'=>$movieFilterForm->year);
 			}
 		}
 
 		// Add filter request parameter. If no filter is defined the parameter 
 		// must be omitted.
-		foreach ($nativeFilters as $field=> $value)
+		foreach ($nativeFilters as $field => $options)
 		{
+			if (empty($options['value']))
+				continue;
+
 			$filter = new stdClass();
 			$filter->field = $field;
-			$filter->operator = 'is';
-			$filter->value = $value;
+			$filter->operator = $options['operator'];
+			$filter->value = $options['value'];
 
 			if (!isset($requestParameters['filter']))
 				$requestParameters['filter'] = new stdClass();
