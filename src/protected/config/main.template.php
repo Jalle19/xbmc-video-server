@@ -43,6 +43,14 @@ return array(
 		'bootstrap'=>array(
 			'class'=>'bootstrap.components.TbApi',
 		),
+		'clientScript'=>array(
+			'packages'=>array(
+				'jquery'=>array(
+					'baseUrl'=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/',
+					'js'=>array(YII_DEBUG ? 'jquery.min.js' : 'jquery.js'),
+				),
+			),
+		),
 		'less'=>array(
 			'class'=>'composer.jalle19.yii-less.components.LessServerCompiler',
 			'files'=>array(
