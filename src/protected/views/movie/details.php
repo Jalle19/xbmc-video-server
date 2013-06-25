@@ -13,7 +13,7 @@ $this->pageTitle = $details->label.' ('.$details->year.')';
 		<div class="span3">
 			<?php echo CHtml::image(Thumbnail::get($details->thumbnail, 
 					Thumbnail::THUMBNAIL_SIZE_LARGE), '', array(
-				'class'=>'movie-thumbnail',
+				'class'=>'movie-thumbnail hidden-phone',
 			)); ?>
 			
 			<div class="movie-links">
@@ -68,7 +68,7 @@ $this->pageTitle = $details->label.' ('.$details->year.')';
 
 				</div>
 				
-				<div class="span6">
+				<div class="span6 hidden-phone">
 					<?php $this->widget('MediaFlags', array(
 							'streamDetails'=>$details->streamdetails)); ?>
 				</div>
