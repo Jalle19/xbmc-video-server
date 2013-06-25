@@ -53,7 +53,7 @@ class MovieController extends VideoLibraryController
 		}
 
 		// Get the movies
-		$response = $this->performRequest('VideoLibrary.GetMovies', $requestParameters);
+		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetMovies', $requestParameters);
 
 		if (isset($response->result->movies))
 			$movies = $response->result->movies;
@@ -78,7 +78,7 @@ class MovieController extends VideoLibraryController
 	 */
 	public function actionDetails($id)
 	{
-		$response = $this->performRequest('VideoLibrary.GetMovieDetails', array(
+		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetMovieDetails', array(
 			'movieid'=>(int)$id,
 			'properties'=>array(
 				'title',
@@ -144,7 +144,7 @@ class MovieController extends VideoLibraryController
 	 */
 	public function actionGetMoviePlaylist($movieId)
 	{
-		$response = $this->performRequest('VideoLibrary.GetMovieDetails', array(
+		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetMovieDetails', array(
 			'movieid'=>(int)$movieId,
 			'properties'=>array(
 				'file',
@@ -199,10 +199,10 @@ class MovieController extends VideoLibraryController
 				$rawFile = substr($rawFile, 8);
 
 			// Create the URL to the movie
-			$response = $this->performRequest('Files.PrepareDownload', array(
+			$response = Yii::app()->xbmc->performRequest('Files.PrepareDownload', array(
 				'path'=>$rawFile));
 
-			$files[] = $this->getAbsoluteVfsUrl($response->result->details->path);
+			$files[] = Yii::app()->xbmc->getAbsoluteVfsUrl($response->result->details->path);
 		}
 
 		return $files;
@@ -216,7 +216,7 @@ class MovieController extends VideoLibraryController
 	public function getMovieNames()
 	{
 		// Get the list of movies along with their thumbnails
-		$response = $this->performRequest('VideoLibrary.GetMovies');
+		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetMovies');
 
 		// Sort the results
 		$movies = $response->result->movies;

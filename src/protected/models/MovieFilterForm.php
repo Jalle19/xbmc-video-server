@@ -36,7 +36,7 @@ class MovieFilterForm extends CFormModel
 	 */
 	public function init()
 	{
-		$response = Yii::app()->controller->performRequest('VideoLibrary.GetGenres', array(
+		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetGenres', array(
 			'type'=>self::GENRE_TYPE_MOVIE,
 			'sort'=>array('order'=>self::SORT_ORDER_ASCENDING, 'method'=>'label')));
 

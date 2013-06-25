@@ -52,6 +52,9 @@ return array(
 				'bbq'=>array('js'=>false),
 			),
 		),
+		'xbmc'=>array(
+			'class'=>'XBMC',
+		),
 		'less'=>array(
 			'class'=>'composer.jalle19.yii-less.components.LessServerCompiler',
 			'files'=>array(

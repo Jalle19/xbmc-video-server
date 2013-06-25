@@ -14,7 +14,7 @@ class TvShowController extends VideoLibraryController
 	public function actionIndex()
 	{
 		// Get the list of movies along with their thumbnails
-		$response = $this->performRequest('VideoLibrary.GetTVShows', array(
+		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetTVShows', array(
 			'properties'=>array('thumbnail')));
 
 		$tvshows = $response->result->tvshows;

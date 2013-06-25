@@ -27,29 +27,9 @@ class Controller extends CController
 	public $breadcrumbs = array();
 
 	/**
-	 * @var SimpleJsonRpcClient\Client the JSON-RPC client
-	 */
-	protected $jsonRpcClient;
-
-	/**
 	 * @var string the page title. It is accessed through its setter and getter.
 	 */
 	private $_pageTitle;
-
-	/**
-	 * Initializes the controller
-	 */
-	public function init()
-	{
-		parent::init();
-
-		// Set up the JSON-RPC client
-		$xbmcParams = Yii::app()->params['xbmc'];
-		$endpoint = 'http://'.$xbmcParams['hostname'].':'.$xbmcParams['port']
-				.'/jsonrpc';
-
-		$this->jsonRpcClient = new SimpleJsonRpcClient\Client($endpoint, $xbmcParams['username'], $xbmcParams['password']);
-	}
 
 	/**
 	 * Getter for _pageTitle
@@ -67,28 +47,6 @@ class Controller extends CController
 	public function setPageTitle($pageTitle)
 	{
 		$this->pageTitle = $pageTitle.' - '.Yii::app()->name;
-	}
-
-	/**
-	 * Wrapper for \SimpleJsonRpcClient\Request
-	 * @param string $method
-	 * @param mixed $params
-	 * @param mixed $id
-	 * @return \SimpleJsonRpcClient\Response
-	 */
-	public function performRequest($method, $params = null, $id = 0)
-	{
-		$request = new SimpleJsonRpcClient\Request($method, $params, $id);
-		return $this->jsonRpcClient->performRequest($request);
-	}
-	
-	protected function getAbsoluteVfsUrl($relativeUrl)
-	{
-		$xbmcParams = Yii::app()->params['xbmc'];
-
-		return 'http://'.$xbmcParams['username'].':'.$xbmcParams['password'].'@'
-				.$xbmcParams['hostname'].':'.$xbmcParams['port'].'/'
-				.$relativeUrl;
 	}
 
 }

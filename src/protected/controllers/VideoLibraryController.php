@@ -34,12 +34,10 @@ class VideoLibraryController extends Controller
 		if (empty($thumbnailPath))
 			return Yii::app()->baseUrl.'/images/blank.png';
 
-		$request = new SimpleJsonRpcClient\Request('Files.PrepareDownload', array(
+		$response = Yii::app()->xbmc->performRequest('Files.PrepareDownload', array(
 			'path'=>$thumbnailPath));
 
-		$response = $this->jsonRpcClient->performRequest($request);
-
-		return $this->getAbsoluteVfsUrl($response->result->details->path);
+		return Yii::app()->xbmc->getAbsoluteVfsUrl($response->result->details->path);
 	}
 
 	/**
