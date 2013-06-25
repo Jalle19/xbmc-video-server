@@ -13,9 +13,10 @@ class TvShowController extends VideoLibraryController
 	 */
 	public function actionIndex()
 	{
+		$properties = array('thumbnail', 'fanart', 'art');
 		$tvshows = VideoLibrary::getTVShows(array(
-				'properties'=>array('thumbnail')));
-
+				'properties'=>$properties));
+		
 		$this->registerScripts();
 		$this->render('index', array(
 			'dataProvider'=>new LibraryDataProvider($tvshows, 'tvshowid')));

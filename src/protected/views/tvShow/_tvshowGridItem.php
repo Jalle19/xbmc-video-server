@@ -3,8 +3,15 @@
 /* @var $this TvShowController */
 
 $showUrl = $this->createUrl('details', array('id'=>$data->tvshowid));
+
+// Determine which artwork to display
+if (isset($data->art->poster))
+	$thumbnailPath = $data->art->poster;
+else
+	$thumbnailPath = $data->thumbnail;
+
 $thumbnailUrl = $this->createUrl('thumbnail/get', 
-		array('path'=>$data->thumbnail, 'size'=>Thumbnail::THUMBNAIL_SIZE_MEDIUM));
+		array('path'=>$thumbnailPath, 'size'=>Thumbnail::THUMBNAIL_SIZE_MEDIUM));
 
 $this->renderPartial('//videoLibrary/_gridItem', array(
 	'label'=>$data->label,
