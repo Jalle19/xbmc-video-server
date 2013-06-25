@@ -11,7 +11,8 @@ $this->pageTitle = $details->label.' ('.$details->year.')';
 <div class="movie-details">
 	<div class="row">
 		<div class="span3">
-			<?php echo CHtml::image($this->getThumbnailUrl($details->thumbnail), '', array(
+			<?php echo CHtml::image(Thumbnail::get($details->thumbnail, 
+					Thumbnail::THUMBNAIL_SIZE_LARGE), '', array(
 				'class'=>'movie-thumbnail',
 			)); ?>
 			
