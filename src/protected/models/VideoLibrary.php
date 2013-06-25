@@ -11,15 +11,39 @@ class VideoLibrary
 	const SORT_ORDER_ASCENDING = 'ascending';
 
 	/**
-	 * Returns a list of movies. If no sort mechanism is specified in 
-	 * @params the result will be sorted alphabetically by title.
+	 * Returns a list of movies
 	 * @param array $params request parameters
 	 * @return stdClass[] the movies
 	 */
 	public static function getMovies($params = array())
 	{
 		self::addDefaultSort($params);
+		self::addDefaultProperties($params);
+		
 		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetMovies', $params);
+
+		if (isset($response->result->movies))
+			$movies = $response->result->movies;
+		else
+			$movies = array();
+
+		return $movies;
+	}
+	
+	/**
+	 * Returns the recently added movies
+	 * @return stdClass[] the movies
+	 */
+	public static function getRecentlyAddedMovies($params = array())
+	{
+		self::addDefaultProperties($params);
+
+		// The grid shows six items per row, we don't want the 25th item to be 
+		// lonely
+		$params['limits'] = new stdClass();
+		$params['limits']->end = 24;
+
+		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetRecentlyAddedMovies', $params);
 
 		if (isset($response->result->movies))
 			$movies = $response->result->movies;
@@ -79,6 +103,16 @@ class VideoLibrary
 				'order'=>self::SORT_ORDER_ASCENDING,
 				'method'=>'label');
 		}
+	}
+	
+	/**
+	 * Adds a default set of properties for movie/show requests
+	 * @param array $params
+	 */
+	private static function addDefaultProperties(&$params)
+	{
+		if (!isset($params['properties']))
+			$params['properties'] = array('thumbnail');
 	}
 
 }

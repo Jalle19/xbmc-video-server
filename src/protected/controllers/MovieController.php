@@ -13,10 +13,6 @@ class MovieController extends VideoLibraryController
 	 */
 	public function actionIndex()
 	{
-		// Start building the request parameters
-		$requestParameters = array(
-			'properties'=>array('thumbnail'));
-
 		// Get filter properties
 		$movieFilterForm = new MovieFilterForm();
 		$nativeFilters = array();
@@ -42,8 +38,9 @@ class MovieController extends VideoLibraryController
 			}
 		}
 
-		// Add filter request parameter. If no filter is defined the parameter 
-		// must be omitted.
+		// Start building the request parameters
+		$requestParameters = array();
+		
 		foreach ($nativeFilters as $field => $options)
 		{
 			if (empty($options['value']))
@@ -72,6 +69,19 @@ class MovieController extends VideoLibraryController
 		$this->render('index', array(
 			'dataProvider'=>new LibraryDataProvider($movies, 'movieid'),
 			'movieFilterForm'=>$movieFilterForm));
+	}
+	
+	/**
+	 * Renders a list of recently added movies
+	 */
+	public function actionRecentlyAdded()
+	{
+		$movies = VideoLibrary::getRecentlyAddedMovies();
+		
+		$this->registerScripts();
+
+		$this->render('recentlyAdded', array(
+			'dataProvider'=>new LibraryDataProvider($movies, 'movieid')));
 	}
 	
 	/**
