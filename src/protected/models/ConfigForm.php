@@ -28,6 +28,11 @@ class ConfigForm extends CFormModel
 	 * @var string the password
 	 */
 	public $password;
+	
+	/**
+	 * @var string reverse proxy location
+	 */
+	public $proxyLocation;
 
 	/**
 	 * @return array the attribute labels for this model
@@ -50,6 +55,7 @@ class ConfigForm extends CFormModel
 		return array(
 			array('hostname, port, username, password', 'required'),
 			array('port', 'numerical', 'integerOnly'=>true),
+			array('proxyLocation', 'safe'),
 		);
 	}
 
