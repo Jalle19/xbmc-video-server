@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "bed11b97e521af3d7638cdb403fe97ff",
+    "hash": "f3cf5827f806eff08af4848b1447abe4",
     "packages": [
         {
             "name": "crisu83/yii-configbuilder",
@@ -43,12 +43,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yiistrap.git",
-                "reference": "44298b2a6ffedf72403c7646ff4508364754ba9b"
+                "reference": "078301476151489ec79a4974648292a48ac26230"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/44298b2a6ffedf72403c7646ff4508364754ba9b",
-                "reference": "44298b2a6ffedf72403c7646ff4508364754ba9b",
+                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/078301476151489ec79a4974648292a48ac26230",
+                "reference": "078301476151489ec79a4974648292a48ac26230",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -73,7 +73,51 @@
                 "bootstrap",
                 "yii"
             ],
-            "time": "2013-06-19 15:59:57"
+            "time": "2013-06-24 18:01:32"
+        },
+        {
+            "name": "eventviva/php-image-resize",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eventviva/php-image-resize.git",
+                "reference": "da648109f578a8b0588c1692adc28fa938e3d305"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eventviva/php-image-resize/zipball/da648109f578a8b0588c1692adc28fa938e3d305",
+                "reference": "da648109f578a8b0588c1692adc28fa938e3d305",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "EventViva",
+                    "homepage": "http://eventviva.com/"
+                }
+            ],
+            "description": "HP class to re-size and scale images",
+            "homepage": "https://github.com/eventviva/php-image-resize",
+            "keywords": [
+                "image",
+                "php",
+                "resize",
+                "scale"
+            ],
+            "time": "2013-04-21 20:56:10"
         },
         {
             "name": "jalle19/simple-json-rpc-client",
@@ -148,7 +192,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii/zipball/70949ed91606403fa246ab8b46bf62cc2fcc4b3b",
+                "url": "https://api.github.com/repos/yiisoft/yii/zipball/341bd2efc1b6fb5446bbd5efbd35f4a2dc47c2c5",
                 "reference": "e9e4a0d5be901d8bd48e516a2d9afe33d6fd05a6",
                 "shasum": ""
             },
@@ -503,7 +547,8 @@
         "jalle19/simple-json-rpc-client": 20,
         "jalle19/yii-less": 20,
         "crisu83/yii-configbuilder": 20,
-        "crisu83/yiistrap": 20
+        "crisu83/yiistrap": 20,
+        "eventviva/php-image-resize": 20
     },
     "platform": [
 
