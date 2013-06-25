@@ -9,21 +9,67 @@ class MovieController extends VideoLibraryController
 {
 
 	/**
-	 * Lists all movies in the library
+	 * Lists all movies in the library, optionally filtered
 	 */
 	public function actionIndex()
 	{
-		// Get the list of movies along with their thumbnails
-		$response = $this->performRequest('VideoLibrary.GetMovies', array(
-			'properties'=>array('thumbnail')));
+		// Start building the request parameters
+		$requestParameters = array(
+			'properties'=>array('thumbnail'),
+			'sort'=>array(
+				'order'=>self::SORT_ORDER_ASCENDING, 'method'=>'label'));
 
-		// Sort the results
-		$movies = $response->result->movies;
-		$this->sortResults($movies);
+		// Get filter properties
+		$movieFilterForm = new MovieFilterForm();
+		$nativeFilters = array();
+
+		if (isset($_GET['MovieFilterForm']))
+		{
+			$movieFilterForm->attributes = $_GET['MovieFilterForm'];
+
+			if ($movieFilterForm->validate())
+			{
+				$nativeFilters['title'] = $movieFilterForm->name;
+				$nativeFilters['genre'] = $movieFilterForm->genre;
+				$nativeFilters['year'] = $movieFilterForm->year;
+
+				$nativeFilters = array_filter($nativeFilters);
+			}
+		}
+
+		// Add filter request parameter. If no filter is defined the parameter 
+		// must be omitted.
+		foreach ($nativeFilters as $field=> $value)
+		{
+			$filter = new stdClass();
+			$filter->field = $field;
+			$filter->operator = 'is';
+			$filter->value = $value;
+
+			if (!isset($requestParameters['filter']))
+				$requestParameters['filter'] = new stdClass();
+
+			$requestParameters['filter']->and[] = $filter;
+		}
+
+		// Get the movies
+		$response = $this->performRequest('VideoLibrary.GetMovies', $requestParameters);
+
+		if (isset($response->result->movies))
+			$movies = $response->result->movies;
+		else
+			$movies = array();
+
+		// If there is only one item in the result we redirect directly to the 
+		// details page
+		if (count($movies) == 1)
+			$this->redirect(array('details', 'id'=>$movies[0]->movieid));
 
 		$this->registerScripts();
+		
 		$this->render('index', array(
-			'dataProvider'=>new LibraryDataProvider($movies, 'movieid')));
+			'dataProvider'=>new LibraryDataProvider($movies, 'movieid'),
+			'movieFilterForm'=>$movieFilterForm));
 	}
 	
 	/**
@@ -160,6 +206,27 @@ class MovieController extends VideoLibraryController
 		}
 
 		return $files;
+	}
+	
+	/**
+	 * Returns an array containing all movie names
+	 * TODO: Make a generic VideoLibrary model with getMovies() method
+	 * @return array the names
+	 */
+	public function getMovieNames()
+	{
+		// Get the list of movies along with their thumbnails
+		$response = $this->performRequest('VideoLibrary.GetMovies');
+
+		// Sort the results
+		$movies = $response->result->movies;
+		$this->sortResults($movies);
+
+		$names = array();
+		foreach ($movies as $movie)
+			$names[] = $movie->label;
+
+		return $names;
 	}
 	
 }

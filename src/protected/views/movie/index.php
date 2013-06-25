@@ -9,7 +9,10 @@ $this->pageTitle = 'Movies';
 
 <?php
 
-$this->widget('zii.widgets.CListView', array(
+$this->renderPartial('_filter', array(
+	'model'=>$movieFilterForm));
+
+$this->widget('ResultGrid', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_movieGridItem',
 	'itemsTagName'=>'ul',

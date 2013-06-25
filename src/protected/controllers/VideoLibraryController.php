@@ -7,6 +7,8 @@
  */
 class VideoLibraryController extends Controller
 {
+	
+	const SORT_ORDER_ASCENDING = 'ascending';
 
 	/**
 	 * Redirects to the URL returned by getThumbnailUrl(). This wrapper is used 
@@ -60,6 +62,11 @@ class VideoLibraryController extends Controller
 		// Image lazy-loader
 		Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl
 				.'/js/lazy-load-images.js', CClientScript::POS_END);
+		
+		// Twitter Typeahead
+		// TODO: Use bower.js
+		Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl
+				.'/js/typeahead.js', CClientScript::POS_END);
 	}
 
 }

@@ -76,7 +76,7 @@ class Controller extends CController
 	 * @param mixed $id
 	 * @return \SimpleJsonRpcClient\Response
 	 */
-	protected function performRequest($method, $params = null, $id = 0)
+	public function performRequest($method, $params = null, $id = 0)
 	{
 		$request = new SimpleJsonRpcClient\Request($method, $params, $id);
 		return $this->jsonRpcClient->performRequest($request);
