@@ -5,18 +5,17 @@
 /* @var $details stdClass */
 
 $this->pageTitle = $details->label.' ('.$details->year.')';
-// TODO: Show stream details somehow
 
 ?>
-<div class="movie-details">
+<div class="item-details">
 	<div class="row">
 		<div class="span3">
 			<?php echo CHtml::image(Thumbnail::get($details->thumbnail, 
 					Thumbnail::THUMBNAIL_SIZE_LARGE), '', array(
-				'class'=>'movie-thumbnail hidden-phone',
+				'class'=>'item-thumbnail hidden-phone',
 			)); ?>
 			
-			<div class="movie-links">
+			<div class="item-links">
 				<h3>Watch / Download</h3>
 				
 				<p>
@@ -31,7 +30,7 @@ $this->pageTitle = $details->label.' ('.$details->year.')';
 					'url'=>array('getMoviePlaylist', 'movieId'=>$details->movieid),
 				)); ?>
 				
-				<div class="movie-links">
+				<div class="item-links">
 					<?php
 
 					$numLinks = count($movieLinks);
@@ -51,9 +50,9 @@ $this->pageTitle = $details->label.' ('.$details->year.')';
 			</div>
 		</div>
 		
-		<div class="span9 movie-description">
-			<div class="movie-top row-fluid">
-				<div class="movie-title span6">
+		<div class="span9 item-description">
+			<div class="item-top row-fluid">
+				<div class="item-title span6">
 					<h2>
 						<a href="http://www.imdb.com/title/<?php echo $details->imdbnumber; ?>">
 							<?php echo $details->label; ?>
@@ -74,23 +73,21 @@ $this->pageTitle = $details->label.' ('.$details->year.')';
 				</div>
 			</div>
 			
-			<div class="movie-info clearfix">
+			<div class="item-info clearfix">
 				
-				<div class="pull-left movie-rating">
-
-					<p>
-						Rating: <?php echo round($details->rating, 1); ?> 
-						(<?php echo $details->votes; ?> votes)
-					</p>
-					
-					<?php $this->renderPartial('/videoLibrary/_ratingStars', 
-							array('rating'=>(int)$details->rating)); ?>
-
-				</div>
+				<?php
+				
+				$rating = $details->rating;
+				
+				if ((int)$rating > 0)
+					$this->renderPartial('/videoLibrary/_rating', array(
+						'rating'=>$rating, 'votes'=>$details->votes));
+				
+				?>
 
 				<div class="pull-left">
 
-					<div class="movie-metadata clearfix">
+					<div class="item-metadata clearfix">
 
 						<p><?php echo implode(' / ', $details->genre); ?></p>
 						<p><?php echo (int)($details->runtime / 60); ?> min</p>
@@ -109,7 +106,7 @@ $this->pageTitle = $details->label.' ('.$details->year.')';
 			
 			<h3>Plot</h3>
 			
-			<div class="movie-plot">
+			<div class="item-plot">
 				<p><?php echo $details->plot; ?></p>
 			</div>
 			

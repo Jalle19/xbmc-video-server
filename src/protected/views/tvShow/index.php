@@ -8,5 +8,5 @@ $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_tvshowGridItem',
 	'itemsTagName'=>'ul',
-	'itemsCssClass'=>'thumbnails movie-grid',
+	'itemsCssClass'=>'thumbnails item-grid',
 ));

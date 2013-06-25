@@ -16,5 +16,5 @@ $this->widget('ResultGrid', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_movieGridItem',
 	'itemsTagName'=>'ul',
-	'itemsCssClass'=>'thumbnails movie-grid',
+	'itemsCssClass'=>'thumbnails item-grid',
 ));
