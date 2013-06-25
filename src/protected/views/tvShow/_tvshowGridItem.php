@@ -2,7 +2,7 @@
 
 /* @var $this TvShowController */
 
-$showUrl = $this->createUrl('details', array('id'=>$data->tvshowid));
+$showUrl = $this->createUrl('showDetails', array('id'=>$data->tvshowid));
 
 // Determine which artwork to display
 if (isset($data->art->poster))

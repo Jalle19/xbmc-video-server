@@ -92,6 +92,25 @@ class VideoLibrary
 	}
 	
 	/**
+	 * Returns details about the specified TV show. The properties array 
+	 * specifies which attributes to return.
+	 * @param int $id the show ID
+	 * @param array $properties the properties to include in the result
+	 * @return mixed the show details or null if the show was not found
+	 */
+	public static function getTVShowDetails($id, $properties)
+	{
+		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetTVShowDetails', array(
+			'tvshowid'=>(int)$id,
+			'properties'=>$properties));
+
+		if (isset($response->result->tvshowdetails))
+			return $response->result->tvshowdetails;
+		else
+			return null;
+	}
+	
+	/**
 	 * Adds a default sorting method to the specified parameters
 	 * @param array $params the parameters
 	 */
