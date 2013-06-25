@@ -24,11 +24,11 @@ class XBMC extends CApplicationComponent
 	public function init()
 	{
 		// Set up the JSON-RPC client
-		$endpoint = 'http://'.Yii::app()->config->hostname.':'
-				.Yii::app()->config->port.'/jsonrpc';
+		$endpoint = 'http://'.Yii::app()->config->get('hostname').':'
+				.Yii::app()->config->get('port').'/jsonrpc';
 
 		$this->_client = new SimpleJsonRpcClient\Client($endpoint, 
-				Yii::app()->config->username, Yii::app()->config->password);
+				Yii::app()->config->get('username'), Yii::app()->config->get('password'));
 
 		parent::init();
 	}
@@ -64,14 +64,14 @@ class XBMC extends CApplicationComponent
 	public function getAbsoluteVfsUrl($path)
 	{
 		// Use reverse proxy for vfs:// paths (if specified)
-		$proxyLocation = Yii::app()->config->proxyLocation;
+		$proxyLocation = Yii::app()->config->get('proxyLocation');
 
 		if (!empty($proxyLocation) && substr($path, 0, 3) === 'vfs')
 			return 'http://'.$_SERVER['HTTP_HOST'].$proxyLocation.'/'.$path;
 		else
 		{
-			return 'http://'.Yii::app()->config->username.':'.Yii::app()->config->password.'@'
-					.Yii::app()->config->hostname.':'.Yii::app()->config->port.'/'
+			return 'http://'.Yii::app()->config->get('username').':'.Yii::app()->config->get('password').'@'
+					.Yii::app()->config->get('hostname').':'.Yii::app()->config->get('port').'/'
 					.$path;
 		}
 	}

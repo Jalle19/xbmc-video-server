@@ -48,22 +48,11 @@ class SettingsController extends Controller
 		}
 		else
 		{
-			// Populate the form based on the current settings. We ignore 
-			// exceptions that get thrown when the desired attribute isn't 
-			// available in the current configuration.
+			// Populate the form based on the current settings.
 			foreach (array_keys($configForm->attributes) as $attribute)
-			{
-				try
-				{
-					$configForm->{$attribute} = Yii::app()->config->{$attribute};
-				}
-				catch (CException $e)
-				{
-					;
-				}
-			}
+				$configForm->{$attribute} = Yii::app()->config->get($attribute);
 		}
-
+		
 		$this->render('index', array(
 			'model'=>$configForm,
 		));
