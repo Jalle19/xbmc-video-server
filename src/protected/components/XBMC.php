@@ -57,15 +57,23 @@ class XBMC extends CApplicationComponent
 	}
 
 	/**
-	 * Converts a VFS path to its absolute URL equivalent
-	 * @param string $path a VFS path returned from the API
-	 * @return string the URL to it
+	 * Returns the absolute URL to the specified API path
+	 * @param string $path a path returned from an API call
+	 * @return string
 	 */
 	public function getAbsoluteVfsUrl($path)
 	{
-		return 'http://'.Yii::app()->config->username.':'.Yii::app()->config->password.'@'
-				.Yii::app()->config->hostname.':'.Yii::app()->config->port.'/'
-				.$path;
+		// Use reverse proxy for vfs:// paths (if specified)
+		$proxyLocation = Yii::app()->config->proxyLocation;
+
+		if (!empty($proxyLocation) && substr($path, 0, 3) === 'vfs')
+			return $proxyLocation.'/'.$path;
+		else
+		{
+			return 'http://'.Yii::app()->config->username.':'.Yii::app()->config->password.'@'
+					.Yii::app()->config->hostname.':'.Yii::app()->config->port.'/'
+					.$path;
+		}
 	}
 
 }
