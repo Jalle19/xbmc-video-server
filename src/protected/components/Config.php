@@ -40,7 +40,14 @@ class Config extends CApplicationComponent
 		if (!property_exists(__CLASS__, $name) && isset($this->_config->{$name}))
 			return $this->_config->{$name};
 		else
-			return parent::__get($name);
+		{
+			try {
+				return parent::__get($name);
+			}
+			catch(CException $e) {
+				return null;
+			}
+		}
 	}
 
 	private function writeIniFile($data)
