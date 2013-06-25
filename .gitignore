@@ -2,3 +2,4 @@
 /vendor/
 /src/protected/config/main.php
 /src/css/styles.css
+/src/images/image-cache
