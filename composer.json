@@ -13,7 +13,6 @@
         "yiisoft/yii": "dev-master#e9e4a0d5be901d8bd48e516a2d9afe33d6fd05a6",
 		"jalle19/simple-json-rpc-client": "dev-master",
 		"jalle19/yii-less": "dev-master",
-		"crisu83/yii-configbuilder": "dev-master",
 		"crisu83/yiistrap": "dev-master",
 		"eventviva/php-image-resize": "dev-master"
     }

@@ -15,7 +15,6 @@ class XBMC extends CApplicationComponent
 	
 	/**
 	 * @var array configuration parameters
-	 * TODO: Proper configuration system
 	 */
 	private $_params;
 	
@@ -24,14 +23,12 @@ class XBMC extends CApplicationComponent
 	 */
 	public function init()
 	{
-		$this->_params = Yii::app()->params['xbmc'];
-		
 		// Set up the JSON-RPC client
-		$endpoint = 'http://'.$this->_params['hostname'].':'.$this->_params['port']
-				.'/jsonrpc';
+		$endpoint = 'http://'.Yii::app()->config->hostname.':'
+				.Yii::app()->config->port.'/jsonrpc';
 
 		$this->_client = new SimpleJsonRpcClient\Client($endpoint, 
-				$this->_params['username'], $this->_params['password']);
+				Yii::app()->config->username, Yii::app()->config->password);
 
 		parent::init();
 	}
@@ -42,11 +39,21 @@ class XBMC extends CApplicationComponent
 	 * @param mixed $params
 	 * @param mixed $id
 	 * @return \SimpleJsonRpcClient\Response
+	 * @throws CHttpException if the request fails completely
 	 */
 	public function performRequest($method, $params = null, $id = 0)
 	{
-		$request = new SimpleJsonRpcClient\Request($method, $params, $id);
-		return $this->_client->performRequest($request);
+		try
+		{
+			$request = new SimpleJsonRpcClient\Request($method, $params, $id);
+			
+			return $this->_client->performRequest($request);
+		}
+		catch (SimpleJsonRpcClient\Exception $e)
+		{
+			// Rethrow as CHttpException so we get to the error page
+			throw new CHttpException(500, $e->getMessage());
+		}
 	}
 
 	/**
@@ -56,8 +63,8 @@ class XBMC extends CApplicationComponent
 	 */
 	public function getAbsoluteVfsUrl($path)
 	{
-		return 'http://'.$this->_params['username'].':'.$this->_params['password'].'@'
-				.$this->_params['hostname'].':'.$this->_params['port'].'/'
+		return 'http://'.Yii::app()->config->username.':'.Yii::app()->config->password.'@'
+				.Yii::app()->config->hostname.':'.Yii::app()->config->port.'/'
 				.$path;
 	}
 

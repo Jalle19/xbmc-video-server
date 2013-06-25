@@ -52,6 +52,9 @@ return array(
 				'bbq'=>array('js'=>false),
 			),
 		),
+		'config'=>array(
+			'class'=>'Config',
+		),
 		'xbmc'=>array(
 			'class'=>'XBMC',
 		),
@@ -117,18 +120,4 @@ return array(
 		),
 	),
 
-	// application-level parameters that can be accessed
-	// using Yii::app()->params['paramName']
-	'params'=>array(
-		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
-		
-		// parameters for connecting to XBMC
-		'xbmc'=>array(
-			'hostname'=>'localhost',
-			'port'=>8080,
-			'username'=>'',
-			'password'=>'',
-		)
-	),
 );

@@ -52,11 +52,13 @@ $baseUrl = Yii::app()->baseUrl;
 								)		
 							), 
 							array('label'=>'TV Shows', 'url'=>array('tvShow/index')),
-							array('label'=>'Settings', 'url'=>'#'),
+							array('label'=>'Settings', 'url'=>array('settings/index')),
 						),
 					),
 				),
 			)); ?>
+			
+			<?php $this->widget('bootstrap.widgets.TbAlert'); ?>
 			
 			<div class="content">
 				<?php echo $content; ?>

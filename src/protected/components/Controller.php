@@ -48,5 +48,32 @@ class Controller extends CController
 	{
 		$this->pageTitle = $pageTitle.' - '.Yii::app()->name;
 	}
+	
+	/**
+	 * @return array the filter definitions for this controller
+	 */
+	public function filters()
+	{
+		return array(
+			'checkConfiguration',
+		);
+	}
+	
+	/**
+	 * Checks that the application has been configured, and if not redirects 
+	 * to the settings page.
+	 * @param CFilterChain $filterChain
+	 */
+	public function filterCheckConfiguration($filterChain)
+	{
+		if (!Yii::app()->config->isConfigured())
+		{
+			Yii::app()->user->setFlash('error', 'You must configure the application before you can use it');
+
+			$this->redirect(array('settings/index'));
+		}
+
+		$filterChain->run();
+	}
 
 }
