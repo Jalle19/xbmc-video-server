@@ -9,6 +9,8 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'XBMC Video Server',
 
+	'defaultController'=>'movie',
+
 	// preloading 'log' component
 	'preload'=>array('log', 'less'),
 	
