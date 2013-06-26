@@ -30,7 +30,8 @@ Yii::app()->clientScript->registerScript(__CLASS__.'_nameTypeahead', "
 
 	echo $form->dropDownListControlGroup($model, 'genre', $model->getGenres(), array('prompt'=>''));
 	echo $form->textFieldControlGroup($model, 'year', array('span'=>1));
-	echo $form->dropDownListControlGroup($model, 'quality', $model->getQualities(), array('prompt'=>'', 'span'=>1));
+	echo $form->dropDownListControlGroup($model, 'quality', $model->getQualities(), 
+			array('prompt'=>'', 'style'=>'width: 70px;'));
 
 	?>
 	<div class="buttons">
