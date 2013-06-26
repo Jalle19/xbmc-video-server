@@ -1,0 +1,39 @@
+@import "../../../vendor/crisu83/yiistrap/assets/less/bootstrap.less";
+@import "../../../vendor/crisu83/yiistrap/assets/less/responsive.less";
+@import "bootswatch/variables.less";
+@import "bootswatch/bootswatch.less";
+
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	background: @blueDark;
+
+	.login-centerer {
+		width: 100%;
+		height: 100%;
+
+		td {
+			vertical-align: middle;
+
+			.login-container {
+				display: table;
+				margin: 0 auto;
+
+				form {
+					margin: 0;
+					padding: 20px 20px 20px 20px;
+					background: #FFF;
+					.border-radius(@baseBorderRadius);
+					border: 1px solid @grayLight;
+
+					.form-actions {
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+	}
+}

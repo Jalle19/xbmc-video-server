@@ -67,6 +67,7 @@ return array(
 			'class'=>'composer.jalle19.yii-less.components.LessServerCompiler',
 			'files'=>array(
 				'css/less/styles.less'=>'css/styles.css',
+				'css/less/login.less'=>'css/login.css',
 			),
 			// LessServerCompiler-specific settings
 			'nodePath'=>'/usr/local/bin/node',
