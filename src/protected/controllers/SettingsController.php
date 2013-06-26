@@ -9,6 +9,34 @@ class SettingsController extends Controller
 {
 
 	/**
+	 * Returns the filters for this controller. In addition to parent filters 
+	 * we want access control.
+	 * @return array
+	 */
+	public function filters()
+	{
+		return array_merge(parent::filters(), array(
+			'accessControl',
+		));
+	}
+	
+	/**
+	 * Returns the access control rules
+	 * @return array
+	 */
+	public function accessRules()
+	{
+		return array(
+			array('allow',
+				'expression'=>function() {
+					return Yii::app()->user->role == User::ROLE_ADMIN;
+				},
+			),
+			array('deny'),
+		);
+	}
+	
+	/**
 	 * Override parent implementation so we don't get stuck in a redirect loop
 	 * @param CFilterChain $filterChain
 	 */
