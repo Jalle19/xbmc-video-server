@@ -9,3 +9,5 @@ INSERT INTO "config" VALUES('isConfigured','0');
 
 DROP TABLE IF EXISTS "user";
 CREATE TABLE "user" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , "role" VARCHAR NOT NULL  DEFAULT user, "username" VARCHAR NOT NULL  UNIQUE , "password" VARCHAR NOT NULL );
+
+INSERT INTO "user" ('role','username','password') VALUES('admin','admin','admin');
