@@ -53,6 +53,16 @@ $baseUrl = Yii::app()->baseUrl;
 							), 
 							array('label'=>'TV Shows', 'url'=>array('tvShow/index')),
 							array('label'=>'Settings', 'url'=>array('settings/index')),
+							array('label'=>'Users', 'items'=>array(
+								array(
+									'label'=>'Manage',
+									'url'=>array('user/admin'),
+								),
+								array(
+									'label'=>'Create new',
+									'url'=>array('user/create'),
+								)
+							)),
 						),
 					),
 				),

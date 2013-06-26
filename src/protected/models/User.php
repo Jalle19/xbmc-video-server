@@ -39,9 +39,30 @@ class User extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('username, password', 'required'),
+			array('role, username, password', 'required'),
+			array('username', 'unique'),
 			array('role', 'in', 'range'=>array_keys($this->getRoles())),
+			array('role', 'validateRole', 'on'=>'update'),
 		);
+	}
+	
+	/**
+	 * Checks that there is at least one administrator configured
+	 * @param string $attribute
+	 */
+	public function validateRole($attribute)
+	{
+		$role = $this->{$attribute};
+
+		if ($role != self::ROLE_ADMIN)
+		{
+			$administrators = $this->findAll('role = :role AND id != :id', array(
+				':role'=>self::ROLE_ADMIN,
+				':id'=>$this->id));
+			
+			if (count($administrators) === 0)
+				$this->addError($attribute, 'There must be at least one administrator');
+		}
 	}
 
 	/**
@@ -51,17 +72,44 @@ class User extends CActiveRecord
 	{
 		return array(
 			'role'=>'Role',
+			'roleName'=>'Role', // used in the manage view
 			'username'=>'Username',
 			'password'=>'Password',
 		);
 	}
 
+	/**
+	 * Returns the possible roles
+	 * @return array
+	 */
 	public function getRoles()
 	{
 		return array(
 			self::ROLE_ADMIN=>'Administrator',
 			self::ROLE_USER=>'User',
 		);
+	}
+	
+	/**
+	 * Returns the name of the user's role
+	 * @return string
+	 */
+	public function getRoleName()
+	{
+		$roles = $this->getRoles();
+
+		return $roles[$this->role];
+	}
+
+	/**
+	 * Returns a data provider for this model
+	 * @return \CActiveDataProvider
+	 */
+	public function getDataProvider()
+	{
+		return new CActiveDataProvider(__CLASS__, array(
+			'pagination'=>false
+		));
 	}
 
 }
