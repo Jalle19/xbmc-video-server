@@ -19,7 +19,6 @@ echo $form->textFieldControlGroup($model, 'hostname');
 echo $form->textFieldControlGroup($model, 'port', array('span'=>1));
 echo $form->textFieldControlGroup($model, 'username');
 echo $form->passwordFieldControlGroup($model, 'password');
-// TODO: Fix 'hint' in yiistrap
 echo $form->textFieldControlGroup($model, 'proxyLocation');
 
 ?>
