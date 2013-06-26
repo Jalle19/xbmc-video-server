@@ -193,16 +193,15 @@ class MovieController extends VideoLibraryController
 		$rawFiles = array();
 		$files = array();
 
-		// Check for multiple files
-		// TODO: Maybe just check for stack://?
-		if (strpos($movieDetails->file, ' , ') !== false)
+		// Check for stack files
+		if (strpos($movieDetails->file, 'stack://') !== false)
 			$rawFiles = preg_split('/ , /i', $movieDetails->file);
 		else
 			$rawFiles[] = $movieDetails->file;
 
 		foreach ($rawFiles as $rawFile)
 		{
-			// Detect and remove stack://
+			// Remove stack://
 			if (substr($rawFile, 0, 8) === 'stack://')
 				$rawFile = substr($rawFile, 8);
 
