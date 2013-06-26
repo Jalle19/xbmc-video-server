@@ -50,8 +50,21 @@ class Controller extends CController
 	public function filters()
 	{
 		return array(
+			'requireLogin',
 			'checkConfiguration',
 		);
+	}
+	
+	/**
+	 * Checks that someone is logged in and if not redirects to the login page
+	 * @param CFilterChain $filterChain
+	 */
+	public function filterRequireLogin($filterChain)
+	{
+		if (Yii::app()->user->isGuest)
+			$this->redirect(array('site/login'));
+
+		$filterChain->run();
 	}
 	
 	/**

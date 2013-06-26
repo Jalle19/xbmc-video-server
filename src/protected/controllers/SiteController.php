@@ -1,7 +1,21 @@
 <?php
 
+/**
+ * Displays exceptions and handles authentication
+ */
 class SiteController extends Controller
 {
+
+	/**
+	 * Returns the filters for this controller. We don't want any filters to 
+	 * apply in this context so we return an empty array.
+	 * @return array
+	 */
+	public function filters()
+	{
+		return array();
+	}
+
 	/**
 	 * This is the action to handle external exceptions.
 	 */
@@ -9,7 +23,7 @@ class SiteController extends Controller
 	{
 		if (($error = Yii::app()->errorHandler->error))
 		{
-			if(Yii::app()->request->isAjaxRequest)
+			if (Yii::app()->request->isAjaxRequest)
 				echo $error['message'];
 			else
 				$this->render('error', $error);
@@ -17,37 +31,39 @@ class SiteController extends Controller
 	}
 
 	/**
-	 * Displays the login page
+	 * Displays the login page and logs in the user if correct credentials are 
+	 * entered
 	 */
 	public function actionLogin()
 	{
-		$model=new LoginForm;
+		$this->layout = 'login';
 
-		// if it is ajax validation request
-		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
+		$model = new LoginForm();
+
+		if (isset($_POST['LoginForm']))
 		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
+			$model->attributes = $_POST['LoginForm'];
+
+			if ($model->validate())
+			{
+				if ($model->login())
+					$this->redirect(Yii::app()->user->returnUrl);
+				else
+					Yii::app()->user->setFlash('error', 'Invalid username or password');
+			}
 		}
 
-		// collect user input data
-		if(isset($_POST['LoginForm']))
-		{
-			$model->attributes=$_POST['LoginForm'];
-			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->user->returnUrl);
-		}
-		// display the login form
-		$this->render('login',array('model'=>$model));
+		$this->render('login', array('model'=>$model));
 	}
 
 	/**
-	 * Logs out the current user and redirect to homepage.
+	 * Logs out the current user and redirect to the login page (since all 
+	 * other pages require authentication)
 	 */
 	public function actionLogout()
 	{
 		Yii::app()->user->logout();
-		$this->redirect(Yii::app()->homeUrl);
+		$this->redirect(array('site/login'));
 	}
+
 }

@@ -13,9 +13,9 @@ class UserController extends Controller
 	 */
 	public function filters()
 	{
-		return array(
+		return array_merge(parent::filters(), array(
 			// TODO: Add access control
-		);
+		));
 	}
 
 	/**

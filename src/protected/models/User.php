@@ -14,6 +14,7 @@ class User extends CActiveRecord
 
 	const ROLE_ADMIN = 'admin';
 	const ROLE_USER = 'user';
+	const ROLE_NONE = '';
 
 	/**
 	 * Returns the static model of the specified AR class.

@@ -78,7 +78,7 @@ return array(
 			'forceCompile'=>false,
 		),
 		'user'=>array(
-			// enable cookie-based authentication
+			'class'=>'WebUser',
 			'allowAutoLogin'=>true,
 		),
 		'urlManager'=>array(
