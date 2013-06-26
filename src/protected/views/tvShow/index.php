@@ -1,8 +1,12 @@
-<h2><h2>TV Shows</h2></h2>
-
 <?php
 
 /* @var $dataProvider LibraryDataProvider */
+$this->pageTitle = 'TV Shows';
+
+?>
+<h2>TV Shows</h2>
+
+<?php 
 
 $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
