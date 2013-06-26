@@ -21,7 +21,7 @@ class MediaFlags extends CWidget
 		// Some media don't have any stream details, we can't render any flags 
 		// for those
 		if (count($this->streamDetails->audio) == 0 
-				|| count($this->streamDetails->video == 0))
+				|| count($this->streamDetails->video) == 0)
 		{
 			return;
 		}
