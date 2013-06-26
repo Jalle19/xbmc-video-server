@@ -35,6 +35,22 @@ class MovieController extends VideoLibraryController
 				$nativeFilters['year'] = array(
 					'operator'=>'is',
 					'value'=>$movieFilterForm->year);
+				
+				$quality = $movieFilterForm->quality;
+
+				// SD means anything less than 720p
+				if ($quality == MovieFilterForm::QUALITY_SD)
+				{
+					$nativeFilters['videoresolution'] = array(
+						'operator'=>'lessthan',
+						'value'=>(string)MovieFilterForm::QUALITY_720);
+				}
+				else
+				{
+					$nativeFilters['videoresolution'] = array(
+						'operator'=>'is',
+						'value'=>$quality);
+				}
 			}
 		}
 

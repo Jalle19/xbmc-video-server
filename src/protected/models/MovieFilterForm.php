@@ -10,6 +10,10 @@ class MovieFilterForm extends CFormModel
 
 	const GENRE_TYPE_MOVIE = 'movie';
 	const SORT_ORDER_ASCENDING = 'ascending';
+	
+	const QUALITY_SD = 'sd';
+	const QUALITY_720 = 720;
+	const QUALITY_1080 = 1080;
 
 	/**
 	 * @var string the movie title
@@ -25,6 +29,11 @@ class MovieFilterForm extends CFormModel
 	 * @var int the movie year
 	 */
 	public $year;
+	
+	/**
+	 * @var string the video quality
+	 */
+	public $quality;
 
 	/**
 	 * @var array list of all genres (key same as value)
@@ -65,6 +74,7 @@ class MovieFilterForm extends CFormModel
 			array('name', 'safe'),
 			array('genre', 'in', 'range'=>$this->_genres),
 			array('year', 'numerical', 'integerOnly'=>true),
+			array('quality', 'in', 'range'=>array_keys($this->getQualities())),
 		);
 	}
 
@@ -75,6 +85,19 @@ class MovieFilterForm extends CFormModel
 	public function getGenres()
 	{
 		return $this->_genres;
+	}
+	
+	/**
+	 * Returns the possible qualities
+	 * @return array
+	 */
+	public function getQualities()
+	{
+		return array(
+			self::QUALITY_SD=>'SD',
+			self::QUALITY_720=>'720p',
+			self::QUALITY_1080=>'1080p',
+		);
 	}
 
 }
