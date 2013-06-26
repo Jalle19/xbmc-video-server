@@ -8,11 +8,6 @@ class Controller extends CController
 {
 
 	/**
-	 * @var string the default layout for the controller view
-	 */
-	public $layout = '//layouts/main';
-
-	/**
 	 * @var array context menu items. This property will be assigned to 
 	 * {@link CMenu::items}.
 	 */
