@@ -2,3 +2,4 @@
 /vendor/
 /src/protected/data/xbmc-video-server.db
 /src/images/image-cache
+composer.phar
