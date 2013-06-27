@@ -34,6 +34,7 @@ class LoginForm extends CFormModel
 	{
 		return array(
 			array('username, password', 'required'),
+			array('password', 'authenticate'),
 			array('rememberMe', 'boolean'),
 		);
 	}
@@ -50,6 +51,19 @@ class LoginForm extends CFormModel
 			'rememberMe'=>'Remember me',
 		);
 	}
+	
+	/**
+	 * Validates the password
+	 * @param string $attribute
+	 */
+	public function authenticate($attribute)
+	{
+		$this->_identity = new UserIdentity($this->username, $this->password);
+		$this->_identity->authenticate();
+
+		if ($this->_identity->errorCode !== UserIdentity::ERROR_NONE)
+			$this->addError($attribute, 'Incorrect username or password');
+	}
 
 	/**
 	 * Logs in the user using the given username and password
@@ -57,12 +71,13 @@ class LoginForm extends CFormModel
 	 */
 	public function login()
 	{
+		// _identity should already have been set by authenticate()
 		if ($this->_identity === null)
 		{
 			$this->_identity = new UserIdentity($this->username, $this->password);
 			$this->_identity->authenticate();
 		}
-
+		
 		if ($this->_identity->errorCode === UserIdentity::ERROR_NONE)
 		{
 			// Set duration to 90 days if user checked "remember me"

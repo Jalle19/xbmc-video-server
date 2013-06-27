@@ -15,7 +15,7 @@ class UserIdentity extends CUserIdentity
 
 	/**
 	 * Authenticates a user
-	 * @return boolean whether authentication succeeds.
+	 * @return int the error code (ERROR_NONE if authentication succeeded)
 	 */
 	public function authenticate()
 	{
@@ -31,7 +31,7 @@ class UserIdentity extends CUserIdentity
 		else
 			$this->errorCode = self::ERROR_UNKNOWN_IDENTITY;
 
-		return !$this->errorCode;
+		return $this->errorCode;
 	}
 
 	/**

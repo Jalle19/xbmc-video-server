@@ -44,13 +44,8 @@ class SiteController extends Controller
 		{
 			$model->attributes = $_POST['LoginForm'];
 
-			if ($model->validate())
-			{
-				if ($model->login())
-					$this->redirect(Yii::app()->user->returnUrl);
-				else
-					Yii::app()->user->setFlash('error', 'Invalid username or password');
-			}
+			if ($model->validate() && $model->login())
+				$this->redirect(Yii::app()->user->returnUrl);
 		}
 
 		$this->render('login', array('model'=>$model));
