@@ -1,13 +1,13 @@
 <?php
 
 /* @var $this MovieController */
-if (isset($data->thumbnail))
-{
-	$thumbnailUrl = $this->createUrl('thumbnail/get', array(
-		'path'=>$data->thumbnail, 'size'=>Thumbnail::THUMBNAIL_SIZE_SMALL));
-}
-else
-	$thumbnailUrl = Yii::app()->baseUrl.'/images/blank.png';
+
+// Unlike movies and TV shows, actors don't always have the thumbnail property
+$thumbnail = isset($data->thumbnail) ? $data->thumbnail : '';
+
+$thumbnailUrl = $this->createUrl('thumbnail/get', array(
+	'path'=>$thumbnail, 'size'=>Thumbnail::THUMBNAIL_SIZE_SMALL, 
+	'type'=>Thumbnail::TYPE_ACTOR));
 
 $label = $data->name.' as <em>'.$data->role.'</em>';
 
