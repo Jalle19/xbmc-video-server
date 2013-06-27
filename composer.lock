@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yiistrap.git",
-                "reference": "078301476151489ec79a4974648292a48ac26230"
+                "reference": "12ec44f760a2ea16d4979ec3b17348ed95b2fbc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/078301476151489ec79a4974648292a48ac26230",
-                "reference": "078301476151489ec79a4974648292a48ac26230",
+                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/12ec44f760a2ea16d4979ec3b17348ed95b2fbc3",
+                "reference": "12ec44f760a2ea16d4979ec3b17348ed95b2fbc3",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -41,7 +41,7 @@
                 "bootstrap",
                 "yii"
             ],
-            "time": "2013-06-24 18:01:32"
+            "time": "2013-06-26 14:42:37"
         },
         {
             "name": "eventviva/php-image-resize",
@@ -160,7 +160,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii/zipball/341bd2efc1b6fb5446bbd5efbd35f4a2dc47c2c5",
+                "url": "https://api.github.com/repos/yiisoft/yii/zipball/63a3e57cc48bc9d3bd1cb24884276e52d55d3baa",
                 "reference": "e9e4a0d5be901d8bd48e516a2d9afe33d6fd05a6",
                 "shasum": ""
             },
