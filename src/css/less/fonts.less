@@ -1,0 +1,63 @@
+
+@charset "UTF-8";
+
+@font-face {
+  font-family: "fontastic-icons";
+  src:url("less/fonts/fontastic-icons.eot");
+  src:url("less/fonts/fontastic-icons.eot?#iefix") format("embedded-opentype"),
+    url("less/fonts/fontastic-icons.ttf") format("truetype"),
+    url("less/fonts/fontastic-icons.svg#fontastic-icons") format("svg"),
+    url("less/fonts/fontastic-icons.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[data-icon]:before {
+  font-family: "fontastic-icons";
+  content: attr(data-icon);
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+[class^="fontastic-icon-"], [class*=" fontastic-icon-"] {
+  &:before {
+    font-family: "fontastic-icons";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.fontastic-icon-tv:before {
+  content: "a ";
+}
+
+.fontastic-icon-video:before {
+  content: "b ";
+}
+
+.fontastic-icon-close:before {
+  content: "c ";
+}
+
+.fontastic-icon-disc:before {
+  content: "d ";
+}
+
+.fontastic-icon-settings:before {
+  content: "e ";
+}
+
+.fontastic-icon-user:before {
+  content: "f ";
+}
+
+.fontastic-icon-play:before {
+  content: "g ";
+}
+

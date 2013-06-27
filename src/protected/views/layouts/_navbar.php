@@ -10,21 +10,24 @@ $leftItems = array(
 			array(
 				'label'=>'Recently added', 'url'=>array('movie/recentlyAdded'),
 			),
-		)		
+		), 'linkOptions'=>array('class'=>'fontastic-icon-video'),
 	), 
-	array('label'=>'TV Shows', 'url'=>array('tvShow/index')),
+	array('label'=>'TV Shows', 'url'=>array('tvShow/index'), 
+		'linkOptions'=>array('class'=>'fontastic-icon-tv')),
 );
 
 // Normal users only see a log out link
 $rightItems = array(
-	array('label'=>'Log out', 'url'=>array('site/logout'))
+	array('label'=>'Log out', 'url'=>array('site/logout'), 
+		'linkOptions'=>array('class'=>'fontastic-icon-close'))
 );
 
 // Administrators see the Settings and Users menus
 if (Yii::app()->user->role == User::ROLE_ADMIN)
 {
 	$rightItems = array_merge(array(
-		array('label'=>'Settings', 'url'=>array('settings/index')),
+		array('label'=>'Settings', 'url'=>array('settings/index'),
+			'linkOptions'=>array('class'=>'fontastic-icon-settings')),
 		array('label'=>'Users', 'items'=>array(
 				array(
 					'label'=>'Manage',
@@ -34,7 +37,7 @@ if (Yii::app()->user->role == User::ROLE_ADMIN)
 					'label'=>'Create new',
 					'url'=>array('user/create'),
 				)
-			)),
+			), 'linkOptions'=>array('class'=>'fontastic-icon-user')),
 	), $rightItems);
 }
 

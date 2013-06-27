@@ -28,12 +28,14 @@ $this->pageTitle = $details->label.' ('.$details->year.')';
 					'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
 					'size'=>TbHtml::BUTTON_SIZE_LARGE,
 					'url'=>array('getMoviePlaylist', 'movieId'=>$details->movieid),
+					'class'=>'fontastic-icon-play',
 				)); ?>
 				
 				<div class="item-links">
 					<?php
 
 					$numLinks = count($movieLinks);
+					$linkOptions = array('class'=>'fontastic-icon-disc');
 
 					foreach ($movieLinks as $k=> $link)
 					{
@@ -42,7 +44,7 @@ $this->pageTitle = $details->label.' ('.$details->year.')';
 						else
 							$label = 'Download (part #'.(++$k).')';
 
-						echo CHtml::tag('p', array(), CHtml::link($label, $link));
+						echo CHtml::tag('p', array(), CHtml::link($label, $link, $linkOptions));
 					}
 
 					?>
