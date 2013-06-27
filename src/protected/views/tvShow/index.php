@@ -8,7 +8,7 @@ $this->pageTitle = 'TV Shows';
 
 <?php 
 
-$this->widget('zii.widgets.CListView', array(
+$this->widget('ResultGrid', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_tvshowGridItem',
 	'itemsTagName'=>'ul',
