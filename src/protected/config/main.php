@@ -11,8 +11,12 @@ return array(
 
 	'defaultController'=>'movie',
 
-	// preloading 'log' component
-	'preload'=>array('log', 'less'),
+	// preloaded components. Uncomment "less" in order to compile the LESS 
+	// files on the fly (requires node.js and lessc)
+	'preload'=>array(
+		'log', 
+		//'less'
+	),
 	
 	'aliases'=>array(
 		'bootstrap'=>realpath(__DIR__.'/../../../vendor/crisu83/yiistrap'),
