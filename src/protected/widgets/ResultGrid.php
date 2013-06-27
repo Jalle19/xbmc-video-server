@@ -10,6 +10,16 @@ Yii::import('zii.widgets.CListView');
 
 class ResultGrid extends CListView
 {
+	
+	/**
+	 * Initializes the component. We use it to override the summary text.
+	 */
+	public function init()
+	{
+		parent::init();
+		
+		$this->summaryText = '{count} results';
+	}
 
 	/**
 	 * Renders the data item list.
