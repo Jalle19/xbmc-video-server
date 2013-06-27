@@ -30,7 +30,7 @@ php composer.phar install
 sqlite3 src/protected/data/xbmc-video-server.db < src/protected/data/schema.sqlite.sql
 chmod 777 src/images/image-cache/
 chmod 777 src/protected/data
-chmod 777 src/protected/data/*
+chmod 777 src/protected/data/*.db
 chmod 777 src/protected/runtime/
 chmod 777 src/assets/
 ```
