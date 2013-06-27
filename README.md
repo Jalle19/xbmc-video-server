@@ -70,6 +70,11 @@ Once you've configured the application you should be able to browse your library
 Security implications
 ---------------------
 
-This application is insecure by virtue of design. Since there is only one set of credentials for XBMCs API and the only way to authenticate is by passing the authentication details in the URL, it is impossible to protect XBMC from malicious users. You can avoid exposing the actual API credentials to your users by configuring a proxy location, but on the other hand that exposes the whole API on a password-less URL. Thus, if you use a proxy location, you should specify a non-guessable one so that people can't guess it.
+This application is insecure by virtue of design. Since there is only one set of credentials for XBMCs API and the only way to authenticate from a media player (such as VLC) is by passing the credentials in the URL, it is impossible to protect XBMC from malicious users. You can avoid exposing the actual API credentials to your users by configuring a proxy location, but on the other hand that exposes the whole API on an authentication-less URL. Thus, if you use a proxy location, you should specify a non-guessable one so that outsiders can't accidentally gain access.
 
 Since the application is not meant for large-scale use (and in order to simplify development), the user passwords are stored in cleartext in the database, although this will most likely change in the future.
+
+Developers
+----------
+
+The application comes with pre-compiled CSS files. If you wish to re-compile the files on the fly you need to preload the "less" component and optionally change the path to node and lessc. All of this is done in `src/protected/config/main.php`.
