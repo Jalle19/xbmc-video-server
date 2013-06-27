@@ -3,6 +3,11 @@ XBMC Video Server
 
 This is a standalone web interface for XBMC which allows users to browse the library and download or stream the movies and TV shows in it.
 
+Screenshots
+-----------
+
+[![screenshot1](http://t.imgbox.com/acevYfF2.jpg)](http://i.imgbox.com/acevYfF2.jpg) [![screenshot2](http://t.imgbox.com/acmKKkJ1.jpg)](http://i.imgbox.com/acmKKkJ1.jpg)
+
 Requirements
 ------------
 
