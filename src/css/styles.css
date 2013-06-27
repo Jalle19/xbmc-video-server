@@ -6954,28 +6954,29 @@ legend {
   font-weight: normal;
   speak: none;
   line-height: 1;
+  padding-right: 6px;
   -webkit-font-smoothing: antialiased;
 }
 .fontastic-icon-tv:before {
-  content: "a ";
+  content: "a";
 }
 .fontastic-icon-video:before {
-  content: "b ";
+  content: "b";
 }
 .fontastic-icon-close:before {
-  content: "c ";
+  content: "c";
 }
 .fontastic-icon-disc:before {
-  content: "d ";
+  content: "d";
 }
 .fontastic-icon-settings:before {
-  content: "e ";
+  content: "e";
 }
 .fontastic-icon-user:before {
-  content: "f ";
+  content: "f";
 }
 .fontastic-icon-play:before {
-  content: "g ";
+  content: "g";
 }
 /*!
  *  Font Awesome 3.2.1
