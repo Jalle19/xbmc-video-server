@@ -25,7 +25,7 @@ Run the following commands, one by one, in the exact order shown here:
 ```
 sudo su 
 apt-get install libapache2-mod-php5 php5-gd php5-cli php5-sqlite git curl sqlite3
-a2enmod rewrite headers
+a2enmod rewrite
 service apache2 restart
 cd /var/www
 git clone git://github.com/Jalle19/xbmc-video-server.git
