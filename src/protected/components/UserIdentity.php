@@ -19,17 +19,29 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
+		// Try to match the user based on both the plain-text password and a 
+		// hashed varient. The default "admin" user has its password stored in 
+		// plaintext so we need to hash it on first login.
 		$user = User::model()->findByAttributes(array(
-			'username'=>$this->username,
-			'password'=>$this->password));
+			'username'=>$this->username));
+
+		$this->errorCode = self::ERROR_UNKNOWN_IDENTITY;
 
 		if ($user !== null)
 		{
-			$this->_userId = $user->id;
-			$this->errorCode = self::ERROR_NONE;
+			// Password is stored as plain-text
+			if ($user->password === $this->password)
+			{
+				// Re-save the user, that way the password will get hashed
+				$user->save();
+				$this->errorCode = self::ERROR_NONE;
+			}
+			elseif (User::checkPassword($this->password, $user->password))
+				$this->errorCode = self::ERROR_NONE;
+
+			if ($this->errorCode === self::ERROR_NONE)
+				$this->_userId = $user->id;
 		}
-		else
-			$this->errorCode = self::ERROR_UNKNOWN_IDENTITY;
 
 		return $this->errorCode;
 	}

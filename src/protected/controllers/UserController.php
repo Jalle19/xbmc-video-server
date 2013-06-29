@@ -67,6 +67,9 @@ class UserController extends Controller
 	public function actionUpdate($id)
 	{
 		$model = $this->loadModel($id);
+		
+		// Clear the password
+		$model->password = '';
 
 		if (isset($_POST['User']))
 		{

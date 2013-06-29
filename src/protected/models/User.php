@@ -9,12 +9,19 @@
  * @property string $username
  * @property string $password
  */
+use Hautelook\Phpass\PasswordHash;
+
 class User extends CActiveRecord
 {
 
 	const ROLE_ADMIN = 'admin';
 	const ROLE_USER = 'user';
 	const ROLE_NONE = '';
+	
+	/**
+	 * The base-2 logarithm of the iteration count used for password stretching
+	 */
+	const PHPASS_ITERATIONS = 8;
 
 	/**
 	 * Returns the static model of the specified AR class.
@@ -42,6 +49,8 @@ class User extends CActiveRecord
 		return array(
 			array('role, username, password', 'required'),
 			array('username', 'unique'),
+			// recommended by phpass
+			array('password', 'length', 'max'=>72),
 			array('role', 'in', 'range'=>array_keys($this->getRoles())),
 			array('role', 'validateRole', 'on'=>'update'),
 		);
@@ -78,6 +87,17 @@ class User extends CActiveRecord
 			'password'=>'Password',
 		);
 	}
+	
+	/**
+	 * Hashes the password before saving the model
+	 * @return boolean whether the record should be saved
+	 */
+	protected function beforeSave()
+	{
+		$this->password = $this->hashPassword($this->password);
+
+		return parent::beforeSave();
+	}
 
 	/**
 	 * Returns the possible roles
@@ -111,6 +131,36 @@ class User extends CActiveRecord
 		return new CActiveDataProvider(__CLASS__, array(
 			'pagination'=>false
 		));
+	}
+	
+	/**
+	 * Returns the hash for the specified password
+	 * @param string $password
+	 * @return string
+	 */
+	public static function hashPassword($password)
+	{
+		return self::getPasswordHasher()->hashPassword($password);
+	}
+
+	/**
+	 * Checks whether the given password matches the given hash
+	 * @param string $password
+	 * @param string $hash
+	 * @return boolean
+	 */
+	public static function checkPassword($password, $hash)
+	{
+		return self::getPasswordHasher()->checkPassword($password, $hash);
+	}
+
+	/**
+	 * Returns the password hasher
+	 * @return \Hautelook\Phpass\PasswordHash
+	 */
+	private static function getPasswordHasher()
+	{
+		return new PasswordHash(self::PHPASS_ITERATIONS, false);
 	}
 
 }

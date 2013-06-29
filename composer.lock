@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "997eae1283e5ff6bfc9dd853f22ac32f",
+    "hash": "5ff1a89bd01a0e9b971d22143bb3c2a9",
     "packages": [
         {
             "name": "crisu83/yiistrap",
@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yiistrap.git",
-                "reference": "12ec44f760a2ea16d4979ec3b17348ed95b2fbc3"
+                "reference": "23ed3118867f7f3a3fa4b8e9fc3d6839b50d35bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/12ec44f760a2ea16d4979ec3b17348ed95b2fbc3",
-                "reference": "12ec44f760a2ea16d4979ec3b17348ed95b2fbc3",
+                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/23ed3118867f7f3a3fa4b8e9fc3d6839b50d35bd",
+                "reference": "23ed3118867f7f3a3fa4b8e9fc3d6839b50d35bd",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -41,7 +41,7 @@
                 "bootstrap",
                 "yii"
             ],
-            "time": "2013-06-26 14:42:37"
+            "time": "2013-06-27 19:14:50"
         },
         {
             "name": "eventviva/php-image-resize",
@@ -88,6 +88,50 @@
             "time": "2013-04-21 20:56:10"
         },
         {
+            "name": "hautelook/phpass",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hautelook/phpass.git",
+                "reference": "0.3.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hautelook/phpass/zipball/0.3.1",
+                "reference": "0.3.1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Hautelook": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Public Domain"
+            ],
+            "authors": [
+                {
+                    "name": "Solar Designer",
+                    "email": "solar@openwall.com",
+                    "homepage": "http://openwall.com/phpass/"
+                }
+            ],
+            "description": "Portable PHP password hashing framework",
+            "homepage": "http://github.com/hautelook/phpass/",
+            "keywords": [
+                "blowfish",
+                "crypt",
+                "password",
+                "security"
+            ],
+            "time": "2013-05-01 13:59:26"
+        },
+        {
             "name": "jalle19/simple-json-rpc-client",
             "version": "dev-master",
             "source": {
@@ -122,12 +166,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Jalle19/yii-less.git",
-                "reference": "768e2b13b8eef43376d9a03c6ee1176a35774563"
+                "reference": "bfef5908481495c7ecd034727ad6a04580395348"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Jalle19/yii-less/zipball/768e2b13b8eef43376d9a03c6ee1176a35774563",
-                "reference": "768e2b13b8eef43376d9a03c6ee1176a35774563",
+                "url": "https://api.github.com/repos/Jalle19/yii-less/zipball/bfef5908481495c7ecd034727ad6a04580395348",
+                "reference": "bfef5908481495c7ecd034727ad6a04580395348",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -148,7 +192,7 @@
             "support": {
                 "source": "https://github.com/Jalle19/yii-less/tree/master"
             },
-            "time": "2013-06-22 09:15:48"
+            "time": "2013-06-28 11:20:29"
         },
         {
             "name": "yiisoft/yii",
@@ -160,7 +204,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii/zipball/63a3e57cc48bc9d3bd1cb24884276e52d55d3baa",
+                "url": "https://api.github.com/repos/yiisoft/yii/zipball/f12658e956de9f2e7a336af843b8d2a868f3162a",
                 "reference": "e9e4a0d5be901d8bd48e516a2d9afe33d6fd05a6",
                 "shasum": ""
             },
@@ -515,7 +559,8 @@
         "jalle19/simple-json-rpc-client": 20,
         "jalle19/yii-less": 20,
         "crisu83/yiistrap": 20,
-        "eventviva/php-image-resize": 20
+        "eventviva/php-image-resize": 20,
+        "hautelook/phpass": 20
     },
     "platform": [
 
