@@ -24,12 +24,7 @@ class VideoLibrary
 		
 		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetMovies', $params);
 
-		if (isset($response->result->movies))
-			$movies = $response->result->movies;
-		else
-			$movies = array();
-
-		return $movies;
+		return self::normalizeResponse($response, 'movies', array());
 	}
 	
 	/**
@@ -47,12 +42,7 @@ class VideoLibrary
 
 		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetRecentlyAddedMovies', $params);
 
-		if (isset($response->result->movies))
-			$movies = $response->result->movies;
-		else
-			$movies = array();
-
-		return $movies;
+		return self::normalizeResponse($response, 'movies', array());
 	}
 
 	/**
@@ -68,10 +58,7 @@ class VideoLibrary
 			'movieid'=>(int)$movieId,
 			'properties'=>$properties));
 
-		if (isset($response->result->moviedetails))
-			return $response->result->moviedetails;
-		else
-			return null;
+		return self::normalizeResponse($response, 'moviedetails', null);
 	}
 	
 	/**
@@ -85,12 +72,7 @@ class VideoLibrary
 		self::addDefaultSort($params);
 		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetTVShows', $params);
 
-		if (isset($response->result->tvshows))
-			$tvshows = $response->result->tvshows;
-		else
-			$tvshows = array();
-
-		return $tvshows;
+		return self::normalizeResponse($response, 'tvshows', array());
 	}
 	
 	/**
@@ -106,10 +88,7 @@ class VideoLibrary
 			'tvshowid'=>(int)$tvshowId,
 			'properties'=>$properties));
 
-		if (isset($response->result->tvshowdetails))
-			return $response->result->tvshowdetails;
-		else
-			return null;
+		return self::normalizeResponse($response, 'tvshowdetails', null);
 	}
 	
 	/**
@@ -122,10 +101,7 @@ class VideoLibrary
 		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetSeasons', array(
 			'tvshowid'=>(int)$tvshowId, 'properties'=>array('season')));
 		
-		if (isset($response->result->seasons))
-			return $response->result->seasons;
-		else
-			return array();
+		return self::normalizeResponse($response, 'seasons', array());
 	}
 	
 	/**
@@ -146,7 +122,7 @@ class VideoLibrary
 		$response = Yii::app()->xbmc->performRequest(
 				'VideoLibrary.GetEpisodes', $params);
 
-		return $response->result->episodes;
+		return self::normalizeResponse($response, 'episodes', array());
 	}
 	
 	/**
@@ -161,10 +137,7 @@ class VideoLibrary
 			'episodeid'=>(int)$episodeId,
 			'properties'=>$properties));
 
-		if (isset($response->result->episodedetails))
-			return $response->result->episodedetails;
-		else
-			return null;
+		return self::normalizeResponse($response, 'episodedetails', null);
 	}
 	
 	/**
@@ -244,6 +217,23 @@ class VideoLibrary
 	{
 		if (!isset($params['properties']))
 			$params['properties'] = array('thumbnail');
+	}
+	
+	/**
+	 * Returns the $resultSet from the $response object, or $defaultValue if 
+	 * the result set is not available
+	 * @param stdClass $response an API response object
+	 * @param string $resultSet the name of the result set
+	 * @param mixed $defaultValue the value to return if the result set is not 
+	 * available
+	 * @return mixed the normalized response
+	 */
+	private static function normalizeResponse($response, $resultSet, $defaultValue)
+	{
+		if (isset($response->result->{$resultSet}))
+			return $response->result->{$resultSet};
+		else
+			return $defaultValue;
 	}
 
 }
