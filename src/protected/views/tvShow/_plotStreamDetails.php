@@ -1,5 +1,5 @@
 <p>
-	<?php echo $episode->plot; ?>
+	<?php echo CHtml::encode($episode->plot); ?>
 </p>
 
 <div class="episode-streamdetails">
