@@ -35,15 +35,9 @@ class TvShowController extends Controller
 			'rating',
 			'plot',
 			'mpaa',
-			'episode',
 			'imdbnumber',
-			'votes',
 			'thumbnail',
-			'file',
 			'cast',
-			'episodeguide',
-			'season',
-			'art'
 		));
 
 		if ($showDetails === null)
