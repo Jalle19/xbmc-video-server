@@ -102,7 +102,7 @@ class MovieController extends Controller
 	 */
 	public function actionDetails($id)
 	{
-		$movieDetails = VideoLibrary::getMovieDetails((int)$id, array(
+		$movieDetails = VideoLibrary::getMovieDetails($id, array(
 			'title',
 			'genre',
 			'year',
@@ -143,7 +143,7 @@ class MovieController extends Controller
 	 */
 	public function actionGetMoviePlaylist($movieId)
 	{
-		$movieDetails = VideoLibrary::getMovieDetails((int)$movieId, array(
+		$movieDetails = VideoLibrary::getMovieDetails($movieId, array(
 			'file',
 			'runtime',
 			'title',

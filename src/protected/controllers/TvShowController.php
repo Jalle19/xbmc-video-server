@@ -28,7 +28,7 @@ class TvShowController extends Controller
 	 */
 	public function actionDetails($id)
 	{
-		$showDetails = VideoLibrary::getTVShowDetails((int)$id, array(
+		$showDetails = VideoLibrary::getTVShowDetails($id, array(
 			'title',
 			'genre',
 			'year',
@@ -51,7 +51,7 @@ class TvShowController extends Controller
 		
 		$this->render('details', array(
 			'details'=>$showDetails,
-			'seasons'=>VideoLibrary::getSeasons((int)$id),
+			'seasons'=>VideoLibrary::getSeasons($id),
 			'actorDataProvider'=>$actorDataProvider));
 	}
 	
