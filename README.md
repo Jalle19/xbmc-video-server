@@ -99,6 +99,8 @@ Yii framework (http://www.yiiframework.com/)
 
 Yiistrap (http://www.getyiistrap.com/)
 
+Yii-less (https://github.com/Crisu83/yii-less)
+
 eventviva/php-image-resize (https://github.com/eventviva/php-image-resize)
 
 phpass (http://www.openwall.com/phpass/) (https://github.com/hautelook/phpass)
