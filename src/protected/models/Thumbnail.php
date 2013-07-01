@@ -14,9 +14,9 @@
 class Thumbnail
 {
 
-	const THUMBNAIL_SIZE_SMALL = 116;
-	const THUMBNAIL_SIZE_MEDIUM = 160;
-	const THUMBNAIL_SIZE_LARGE = 270;
+	const SIZE_SMALL = 116;
+	const SIZE_MEDIUM = 160;
+	const SIZE_LARGE = 270;
 	
 	const TYPE_MOVIE = 'movie';
 	const TYPE_TVSHOW = 'tvshow';

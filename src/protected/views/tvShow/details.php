@@ -14,7 +14,7 @@ $this->pageTitle = $pageTitle;
 	<div class="row">
 		<div class="span3">
 			<?php echo CHtml::image(new ThumbnailTVShow($details->thumbnail, 
-					Thumbnail::THUMBNAIL_SIZE_LARGE), '', array(
+					Thumbnail::SIZE_LARGE), '', array(
 				'class'=>'item-thumbnail hidden-phone',
 			)); ?>
 		</div>

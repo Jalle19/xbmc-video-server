@@ -6,7 +6,7 @@
 $thumbnail = isset($data->thumbnail) ? $data->thumbnail : '';
 
 $thumbnailUrl = $this->createUrl('thumbnail/get', array(
-	'path'=>$thumbnail, 'size'=>Thumbnail::THUMBNAIL_SIZE_SMALL, 
+	'path'=>$thumbnail, 'size'=>Thumbnail::SIZE_SMALL, 
 	'type'=>Thumbnail::TYPE_ACTOR));
 
 $label = $data->name.' as <em>'.$data->role.'</em>';
