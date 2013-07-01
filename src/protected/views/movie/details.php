@@ -4,7 +4,7 @@
 /* @var $actorDataProvider LibraryDataProvider */
 /* @var $details stdClass */
 
-$this->pageTitle = $details->label.' ('.$details->year.')';
+$this->pageTitle = $details->label.' ('.$details->year.') - Movies';
 
 ?>
 <div class="item-details">
