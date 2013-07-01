@@ -94,9 +94,13 @@ Credits
 -------
 
 Yii framework (http://www.yiiframework.com/)
+
 Yiistrap (http://www.getyiistrap.com/)
+
 eventviva/php-image-resize (https://github.com/eventviva/php-image-resize)
+
 phpass (http://www.openwall.com/phpass/) (https://github.com/hautelook/phpass)
+
 Zend framework (http://framework.zend.com/)
 
 License
