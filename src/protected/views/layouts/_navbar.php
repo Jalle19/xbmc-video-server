@@ -13,7 +13,8 @@ $leftItems = array(
 		), 'linkOptions'=>array('class'=>'fontastic-icon-video'),
 	), 
 	array('label'=>'TV Shows', 'url'=>array('tvShow/index'), 
-		'linkOptions'=>array('class'=>'fontastic-icon-tv')),
+		'linkOptions'=>array('class'=>'fontastic-icon-tv'),
+		'active'=>in_array($this->route, array('tvShow/index', 'tvShow/details'))),
 );
 
 // Normal users only see a log out link

@@ -26,7 +26,7 @@ class TvShowController extends Controller
 	 * @param int $id the show ID
 	 * @throws CHttpException if the show could not be found
 	 */
-	public function actionShowDetails($id)
+	public function actionDetails($id)
 	{
 		$showDetails = VideoLibrary::getTVShowDetails((int)$id, array(
 			'title',
