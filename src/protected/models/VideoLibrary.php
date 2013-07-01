@@ -56,14 +56,14 @@ class VideoLibrary
 	/**
 	 * Returns details about the specified movie. The properties array 
 	 * specifies which movie attributes to return.
-	 * @param int $id the movie ID
+	 * @param int $movieId the movie ID
 	 * @param array $properties the properties to include in the result
 	 * @return mixed the movie details or null if the movie was not found
 	 */
-	public static function getMovieDetails($id, $properties)
+	public static function getMovieDetails($movieId, $properties)
 	{
 		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetMovieDetails', array(
-			'movieid'=>(int)$id,
+			'movieid'=>(int)$movieId,
 			'properties'=>$properties));
 
 		if (isset($response->result->moviedetails))
@@ -94,14 +94,14 @@ class VideoLibrary
 	/**
 	 * Returns details about the specified TV show. The properties array 
 	 * specifies which attributes to return.
-	 * @param int $id the show ID
+	 * @param int $tvshowId the show ID
 	 * @param array $properties the properties to include in the result
 	 * @return mixed the show details or null if the show was not found
 	 */
-	public static function getTVShowDetails($id, $properties)
+	public static function getTVShowDetails($tvshowId, $properties)
 	{
 		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetTVShowDetails', array(
-			'tvshowid'=>(int)$id,
+			'tvshowid'=>(int)$tvshowId,
 			'properties'=>$properties));
 
 		if (isset($response->result->tvshowdetails))
