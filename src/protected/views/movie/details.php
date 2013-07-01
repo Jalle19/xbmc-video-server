@@ -32,22 +32,8 @@ $this->pageTitle = $details->label.' ('.$details->year.') - Movies';
 				)); ?>
 				
 				<div class="item-links">
-					<?php
-
-					$numLinks = count($movieLinks);
-					$linkOptions = array('class'=>'fontastic-icon-disc');
-
-					foreach ($movieLinks as $k=> $link)
-					{
-						if ($numLinks == 1)
-							$label = 'Download';
-						else
-							$label = 'Download (part #'.(++$k).')';
-
-						echo CHtml::tag('p', array(), CHtml::link($label, $link, $linkOptions));
-					}
-
-					?>
+					<?php $this->renderPartial('/videoLibrary/_videoItemLinks', array(
+						'links'=>$movieLinks)); ?>
 				</div>
 			</div>
 		</div>
