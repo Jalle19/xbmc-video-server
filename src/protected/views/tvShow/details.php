@@ -81,9 +81,16 @@ $this->pageTitle = $pageTitle;
 				)); ?>
 			</div>
 
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="span12">
 			<h3>Seasons</h3>
 			
-			TODO
+			<?php echo $this->renderPartial('_seasons', array(
+				'details'=>$details,
+				'seasons'=>$seasons)); ?>
 		</div>
 	</div>
 </div>

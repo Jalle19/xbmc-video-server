@@ -98,7 +98,7 @@ class VideoLibrary
 	 * @param array $properties the properties to include in the result
 	 * @return mixed the show details or null if the show was not found
 	 */
-	public static function getTVShowDetails($tvshowId, $properties)
+	public static function getTVShowDetails($tvshowId, $properties = array())
 	{
 		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetTVShowDetails', array(
 			'tvshowid'=>(int)$tvshowId,
@@ -106,6 +106,61 @@ class VideoLibrary
 
 		if (isset($response->result->tvshowdetails))
 			return $response->result->tvshowdetails;
+		else
+			return null;
+	}
+	
+	/**
+	 * Returns the season for the specified TV show
+	 * @param int $tvshowId the TV show ID
+	 * @return stdClass[] the seasons
+	 */
+	public static function getSeasons($tvshowId)
+	{
+		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetSeasons', array(
+			'tvshowid'=>(int)$tvshowId, 'properties'=>array('season')));
+		
+		if (isset($response->result->seasons))
+			return $response->result->seasons;
+		else
+			return array();
+	}
+	
+	/**
+	 * Returns the episodes for the specified show and season
+	 * @param int $tvshowId the TV show ID
+	 * @param int $season the season number
+	 * @return stdClass[] the episodes
+	 */
+	public static function getEpisodes($tvshowId, $season, $properties)
+	{
+		$params = array(
+			'tvshowid'=>(int)$tvshowId, 
+			'season'=>(int)$season,
+			'properties'=>$properties);
+		
+		self::addDefaultSort($params);
+		
+		$response = Yii::app()->xbmc->performRequest(
+				'VideoLibrary.GetEpisodes', $params);
+
+		return $response->result->episodes;
+	}
+	
+	/**
+	 * Returns details about the specified TV show episode
+	 * @param int $episodeId the episode ID
+	 * @param array $properties the properties to include in the result
+	 * @return mixed the episode details or null if the episode was not found
+	 */
+	public static function getEpisodeDetails($episodeId, $properties)
+	{
+		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetEpisodeDetails', array(
+			'episodeid'=>(int)$episodeId,
+			'properties'=>$properties));
+
+		if (isset($response->result->episodedetails))
+			return $response->result->episodedetails;
 		else
 			return null;
 	}
@@ -154,7 +209,17 @@ class VideoLibrary
 
 		return $files;
 	}
-
+	
+	/**
+	 * Returns a string based on season and episode number, e.g. 1x05.
+	 * @param int $season the season
+	 * @param int $episode the episode
+	 */
+	public static function getEpisodeString($season, $episode)
+	{
+		return $season.'x'.str_pad($episode, 2, '0', STR_PAD_LEFT);
+	}
+	
 	/**
 	 * Adds a default sorting method to the specified parameters
 	 * @param array $params the parameters

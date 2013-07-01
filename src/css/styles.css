@@ -8494,7 +8494,7 @@ h1#home-url a:hover {
 }
 .item-details .item-thumbnail {
   display: block;
-  border: 1px dotted #CCC;
+  border: 1px dotted #E5E5E5;
   padding: 2px;
 }
 .item-details .item-links {
@@ -8503,7 +8503,7 @@ h1#home-url a:hover {
 .item-details .item-description .item-top,
 .item-details .item-description .item-info,
 .item-details .item-description .item-plot {
-  border-bottom: 1px dotted #CCC;
+  border-bottom: 1px dotted #E5E5E5;
   margin-bottom: 20px;
 }
 .item-details .item-description .item-top {
@@ -8542,7 +8542,7 @@ h1#home-url a:hover {
 .item-details .item-description .item-metadata p {
   float: left;
   padding: 0 10px;
-  border-left: 1px solid #CCC;
+  border-left: 1px solid #E5E5E5;
 }
 .item-details .item-description .item-metadata p:first-child {
   border: 0;
@@ -8556,6 +8556,36 @@ h1#home-url a:hover {
 }
 .item-details .item-description .actor-grid .thumbnail .caption {
   min-height: 60px;
+}
+.season-list {
+  border: 1px solid #E5E5E5;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.season-list .accordion-group {
+  margin-bottom: -1px;
+  border-width: 1px 0 0 0 ;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.season-list .accordion-group:first-child {
+  border-width: 0;
+}
+.season-list .accordion-group .accordion-inner {
+  padding: 20px;
+}
+.season-list .accordion-group .accordion-inner .episode-thumbnail {
+  max-width: 116px;
+}
+.season-download {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px dotted #E5E5E5;
+}
+.season-download .btn {
+  margin-right: 10px;
 }
 .rating-star {
   display: inline-block;
@@ -8571,6 +8601,9 @@ h1#home-url a:hover {
 .media-flags .flag-section {
   display: inline-block;
   margin-left: 10px;
+}
+.media-flags .flag-section:first-child {
+  margin-left: 0;
 }
 .media-flags .flag-section img {
   display: inline-block;

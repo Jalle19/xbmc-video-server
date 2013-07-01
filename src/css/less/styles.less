@@ -141,6 +141,39 @@ h1#home-url {
 	}
 }
 
+.season-list {
+	border: 1px solid #E5E5E5;
+	.border-radius(@baseBorderRadius);
+
+	.accordion-group {
+		margin-bottom: -1px;
+		border-width: 1px 0 0 0 ;
+		.border-radius(0);
+
+		&:first-child {
+			border-width: 0;
+		}
+
+		.accordion-inner {
+			padding: 20px;
+
+			.episode-thumbnail {
+				max-width: 116px;
+			}
+		}
+	}
+}
+
+.season-download {
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	border-bottom: 1px dotted #E5E5E5;
+
+	.btn {
+		margin-right: 10px;
+	}
+}
+
 .rating-star {
 	display: inline-block;
 	margin: 0 0 15px 0; // the star is not exactly 28px high
