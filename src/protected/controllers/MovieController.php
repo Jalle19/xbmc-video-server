@@ -130,12 +130,10 @@ class MovieController extends Controller
 			'pagination'=>array('pageSize'=>6)
 		));
 
-		$movieLinks = $this->getMovieLinks($movieDetails);
-		
 		$this->render('details', array(
 			'details'=>$movieDetails,
 			'actorDataProvider'=>$actorDataProvider,
-			'movieLinks'=>$movieLinks,
+			'movieLinks'=>VideoLibrary::getVideoLinks($movieDetails->file),
 		));
 	}
 	
@@ -155,7 +153,7 @@ class MovieController extends Controller
 		if ($movieDetails === null)
 			throw new CHttpException(404, 'Not found');
 
-		$links = $this->getMovieLinks($movieDetails);
+		$links = VideoLibrary::getVideoLinks($movieDetails->file);
 		$name = $movieDetails->title.' ('.$movieDetails->year.')';
 		$playlist = new M3UPlaylist();
 		$linkCount = count($links);
@@ -176,51 +174,6 @@ class MovieController extends Controller
 		echo $playlist;
 	}
 
-	/**
-	 * Returns an array with the download links for a movie. It takes the a 
-	 * result from GetMovieDetails as parameter.
-	 * @param stdClass $movieDetails
-	 * @return array the download links
-	 * @throws CHttpException if the files have been deleted from disk while 
-	 * the movie is still in the library
-	 */
-	private function getMovieLinks($movieDetails)
-	{
-		$rawFiles = array();
-		$files = array();
-
-		// Check for stack files
-		if (strpos($movieDetails->file, 'stack://') !== false)
-			$rawFiles = preg_split('/ , /i', $movieDetails->file);
-		else
-			$rawFiles[] = $movieDetails->file;
-
-		foreach ($rawFiles as $rawFile)
-		{
-			// Remove stack://
-			if (substr($rawFile, 0, 8) === 'stack://')
-				$rawFile = substr($rawFile, 8);
-
-			// Create the URL to the movie. If the file(s) have been deleted 
-			// from disc but the movie still exists in the library this call 
-			// will fail. We rethrow an exception with a more descriptive error
-			try 
-			{
-				$response = Yii::app()->xbmc->performRequest('Files.PrepareDownload', array(
-				'path'=>$rawFile));
-			}
-			catch(CHttpException $e) 
-			{
-				unset($e); // silence IDE warnings
-				throw new CHttpException(404, 'This movie has been deleted');
-			}
-
-			$files[] = Yii::app()->xbmc->getAbsoluteVfsUrl($response->result->details->path);
-		}
-
-		return $files;
-	}
-	
 	/**
 	 * Returns an array containing all movie names
 	 * @return array the names

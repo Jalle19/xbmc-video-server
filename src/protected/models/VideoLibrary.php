@@ -111,6 +111,51 @@ class VideoLibrary
 	}
 	
 	/**
+	 * Returns an array with the download links for a video. It takes a file
+	 * string from e.g. VideoLibrary.GetVideoDetails as parameter.
+	 * @param string $file a file string returned from the API
+	 * @return array the download links
+	 * @throws CHttpException if the files have been deleted from disk while
+	 * the item is still in the library
+	 */
+	public static function getVideoLinks($file)
+	{
+		$rawFiles = array();
+		$files = array();
+
+		// Check for stack files
+		if (strpos($file, 'stack://') !== false)
+			$rawFiles = preg_split('/ , /i', $file);
+		else
+			$rawFiles[] = $file;
+
+		foreach ($rawFiles as $rawFile)
+		{
+			// Remove stack://
+			if (substr($rawFile, 0, 8) === 'stack://')
+				$rawFile = substr($rawFile, 8);
+
+			// Create the URL to the file. If the file has been deleted from
+			// disc but the movie still exists in the library this call will
+			// fail. We rethrow an exception with a more descriptive error
+			try
+			{
+				$response = Yii::app()->xbmc->performRequest('Files.PrepareDownload', array(
+				'path'=>$rawFile));
+			}
+			catch(CHttpException $e)
+			{
+				unset($e); // silence IDE warnings
+				throw new CHttpException(404, 'This movie has been deleted');
+			}
+
+			$files[] = Yii::app()->xbmc->getAbsoluteVfsUrl($response->result->details->path);
+		}
+
+		return $files;
+	}
+
+	/**
 	 * Adds a default sorting method to the specified parameters
 	 * @param array $params the parameters
 	 */
