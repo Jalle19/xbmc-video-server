@@ -22,11 +22,8 @@ class ThumbnailController extends Controller
 	{
 		switch ($type)
 		{
-			case Thumbnail::TYPE_MOVIE:
-				$thumbnail = new ThumbnailMovie($path, $size);
-				break;
-			case Thumbnail::TYPE_TVSHOW:
-				$thumbnail = new ThumbnailTVShow($path, $size);
+			case Thumbnail::TYPE_VIDEO:
+				$thumbnail = new ThumbnailVideo($path, $size);
 				break;
 			case Thumbnail::TYPE_ACTOR:
 				$thumbnail = new ThumbnailActor($path, $size);

@@ -11,7 +11,7 @@ else
 	$thumbnailPath = $data->thumbnail;
 
 $thumbnailUrl = $this->createUrl('thumbnail/get', 
-		array('path'=>$thumbnailPath, 'size'=>Thumbnail::SIZE_MEDIUM, 'type'=>Thumbnail::TYPE_TVSHOW));
+		array('path'=>$thumbnailPath, 'size'=>Thumbnail::SIZE_MEDIUM, 'type'=>Thumbnail::TYPE_VIDEO));
 
 $this->renderPartial('//videoLibrary/_gridItem', array(
 	'label'=>$data->label,

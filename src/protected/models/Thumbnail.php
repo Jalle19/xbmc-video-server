@@ -18,8 +18,7 @@ class Thumbnail
 	const SIZE_MEDIUM = 160;
 	const SIZE_LARGE = 270;
 	
-	const TYPE_MOVIE = 'movie';
-	const TYPE_TVSHOW = 'tvshow';
+	const TYPE_VIDEO = 'movie';
 	const TYPE_ACTOR = 'actor';
 
 	/**

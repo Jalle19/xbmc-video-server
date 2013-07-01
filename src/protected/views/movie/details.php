@@ -10,7 +10,7 @@ $this->pageTitle = $details->label.' ('.$details->year.')';
 <div class="item-details">
 	<div class="row">
 		<div class="span3">
-			<?php echo CHtml::image(new ThumbnailMovie($details->thumbnail, 
+			<?php echo CHtml::image(new ThumbnailVideo($details->thumbnail, 
 					Thumbnail::SIZE_LARGE), '', array(
 				'class'=>'item-thumbnail hidden-phone',
 			)); ?>

@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Represents a TV show thumbnail
+ * Represents a video thumbnail
  *
  * @author Sam Stenvall <neggelandia@gmail.com>
  */
-class ThumbnailTVShow extends Thumbnail
+class ThumbnailVideo extends Thumbnail
 {
 
 	protected function getPlaceholder()
