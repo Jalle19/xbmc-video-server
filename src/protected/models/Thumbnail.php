@@ -90,9 +90,10 @@ class Thumbnail
 	/**
 	 * Returns the HTML for a lazy loaded image.
 	 * @param string $url the image URL
+	 * @param array $htmlOptions the htmlOptions for the image tag
 	 * @return string
 	 */
-	public static function lazyImage($url)
+	public static function lazyImage($url, $htmlOptions = array())
 	{
 		// Register the lazy loader
 		$cs = Yii::app()->clientScript;
@@ -103,10 +104,13 @@ class Thumbnail
 		$cs->registerScript(__CLASS__.'_unveil', '
 			$(".lazy").unveil(50);
 		', CClientScript::POS_READY);
+		
+		$htmlOptions = array_merge(
+				TbHtml::addClassName('lazy', $htmlOptions), 
+				array('data-src'=>$url));
 
-		return CHtml::image(Yii::app()->baseUrl.'/images/loader.gif', '', array(
-					'class'=>'lazy',
-					'data-src'=>$url));
+		return CHtml::image(Yii::app()->baseUrl.'/images/loader.gif', '', 
+				$htmlOptions);
 	}
 
 	/**
