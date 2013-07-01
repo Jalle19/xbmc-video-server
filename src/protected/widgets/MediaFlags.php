@@ -4,6 +4,8 @@
  * Renders the media flags for a media
  *
  * @author Sam Stenvall <neggelandia@gmail.com>
+ * @copyright Copyright &copy; Sam Stenvall 2013-
+ * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
  */
 class MediaFlags extends CWidget
 {

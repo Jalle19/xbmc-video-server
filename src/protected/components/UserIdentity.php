@@ -4,6 +4,10 @@
  * Represents the data needed to authenticate a user. It also provides the 
  * getId() method which is used to find the current user model through 
  * Yii::app()->user->id
+ * 
+ * @author Sam Stenvall <neggelandia@gmail.com>
+ * @copyright Copyright &copy; Sam Stenvall 2013-
+ * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
  */
 class UserIdentity extends CUserIdentity
 {

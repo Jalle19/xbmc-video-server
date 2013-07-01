@@ -93,6 +93,8 @@ The application comes with pre-compiled CSS files. If you wish to re-compile the
 Credits
 -------
 
+XBMC (http://xbmc.org/)
+
 Yii framework (http://www.yiiframework.com/)
 
 Yiistrap (http://www.getyiistrap.com/)
@@ -106,4 +108,4 @@ Zend framework (http://framework.zend.com/)
 License
 -------
 
-Coming soon, will most likely be licensed under the GPL.
+This software is licensed under the GNU GENERAL PUBLIC LICENSE Version 3.

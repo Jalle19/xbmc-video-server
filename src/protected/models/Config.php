@@ -6,6 +6,10 @@
  * The followings are the available columns in table 'config':
  * @property string $property
  * @property string $value
+ * 
+ * @author Sam Stenvall <neggelandia@gmail.com>
+ * @copyright Copyright &copy; Sam Stenvall 2013-
+ * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
  */
 class Config extends CActiveRecord
 {

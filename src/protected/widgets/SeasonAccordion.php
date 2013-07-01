@@ -4,6 +4,8 @@
  * Renders a collapsed list of seasons with episodes inside (accordion style)
  *
  * @author Sam Stenvall <neggelandia@gmail.com>
+ * @copyright Copyright &copy; Sam Stenvall 2013-
+ * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
  */
 class SeasonAccordion extends CWidget
 {

@@ -3,6 +3,9 @@
 /**
  * Controller is the customized base controller class.
  * All controller classes for this application should extend from this.
+ * 
+ * @copyright Copyright &copy; Sam Stenvall 2013-
+ * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
  */
 class Controller extends CController
 {
@@ -43,7 +46,7 @@ class Controller extends CController
 	{
 		$this->pageTitle = $pageTitle.' - '.Yii::app()->name;
 	}
-	
+
 	/**
 	 * @return array the filter definitions for this controller
 	 */
@@ -54,7 +57,7 @@ class Controller extends CController
 			'checkConfiguration',
 		);
 	}
-	
+
 	/**
 	 * Checks that someone is logged in and if not redirects to the login page
 	 * @param CFilterChain $filterChain
@@ -66,7 +69,7 @@ class Controller extends CController
 
 		$filterChain->run();
 	}
-	
+
 	/**
 	 * Checks that the application has been configured, and if not redirects 
 	 * to the settings page.
