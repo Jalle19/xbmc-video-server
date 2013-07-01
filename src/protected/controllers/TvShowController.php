@@ -63,7 +63,7 @@ class TvShowController extends Controller
 	 */
 	public function actionGetSeasonPlaylist($tvshowId, $season)
 	{
-		$tvshowDetails = VideoLibrary::getTVShowDetails($tvshowId);
+		$tvshowDetails = VideoLibrary::getTVShowDetails($tvshowId, array());
 		$episodes = VideoLibrary::getEpisodes($tvshowId, $season, array(
 					'episode',
 					'runtime',

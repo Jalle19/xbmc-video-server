@@ -98,7 +98,7 @@ class VideoLibrary
 	 * @param array $properties the properties to include in the result
 	 * @return mixed the show details or null if the show was not found
 	 */
-	public static function getTVShowDetails($tvshowId, $properties = array())
+	public static function getTVShowDetails($tvshowId, $properties)
 	{
 		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetTVShowDetails', array(
 			'tvshowid'=>(int)$tvshowId,
