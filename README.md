@@ -7,11 +7,11 @@ Screenshots
 -----------
 
 [![screenshot1](http://t.imgbox.com/acevYfF2.jpg)](http://i.imgbox.com/acevYfF2.jpg) [![screenshot2](http://t.imgbox.com/acmKKkJ1.jpg)](http://i.imgbox.com/acmKKkJ1.jpg)
+[![screenshot3](http://t.imgbox.com/abwHUlbv.jpg)](http://i.imgbox.com/abwHUlbv.jpg)
 
 Requirements
 ------------
 
-* Web server
 * PHP 5.3
 * allow_url_fopen = On in php.ini
 
@@ -50,7 +50,11 @@ Once logged in, you will be presented with a Settings form, which you must compl
 Proxy Location
 --------------
 
-The "Proxy Location" setting is a bit more exotic. Without it, all requests to the XBMC API (including the URLs to your movies and TV shows) are in the form of http://user:pass@hostname:port/API_PATH, which means in order to use the application over the Internet you'd have to forward the right port to the machine running XBMC. It also means you'd be exposing the XBMC API credentials to anyone using your application. What the "Proxy Location" setting does is replace the http://user:pass@hostname:port/ part with the specified location. To make this work you have to configure your web server to provide a reverse proxy on that location. Here's an example for Apache 2 (the configuration lines must be inside your VirtualHost definition):
+The "Proxy Location" setting is a bit more exotic. Without it, all requests to the XBMC API (including the URLs to your movies and TV shows) are in the form of http://user:pass@hostname:port/API_PATH, which means in order to use the application over the Internet you'd have to forward the right port to the machine running XBMC. It also means you'd be exposing the XBMC API credentials to anyone using your application. What the "Proxy Location" setting does is replace the http://user:pass@hostname:port/ part with the specified location.
+
+### Configuring a reverse proxy
+
+To make this work you have to configure your web server to provide a reverse proxy on that location. Here's an example for Apache 2 (the configuration lines must be inside your VirtualHost definition):
 
 ```
 	# Needed to make certain URLs work
@@ -64,6 +68,8 @@ The "Proxy Location" setting is a bit more exotic. Without it, all requests to t
 ```
 
 In the example above, "/xbmc-reverse-proxy" should match the "Proxy Location" in the application settings. The "eGJtYzp4Ym1j" part is username:password encoded with Base64 (in the example the credentials are the default xbmc:xbmc).
+
+In order for the directives above to work you need to run the following command: `sudo a2enmod headers proxy_http`
 
 **You should use a randomly generated long string as location (see Security implications)**
 
@@ -83,3 +89,17 @@ Developers
 ----------
 
 The application comes with pre-compiled CSS files. If you wish to re-compile the files on the fly you need to preload the "less" component and optionally change the path to node and lessc. All of this is done in `src/protected/config/main.php`.
+
+Credits
+-------
+
+Yii framework (http://www.yiiframework.com/)
+Yiistrap (http://www.getyiistrap.com/)
+eventviva/php-image-resize (https://github.com/eventviva/php-image-resize)
+phpass (http://www.openwall.com/phpass/) (https://github.com/hautelook/phpass)
+Zend framework (http://framework.zend.com/)
+
+License
+-------
+
+Coming soon, will most likely be licensed under the GPL.
