@@ -89,6 +89,28 @@ class Thumbnail
 	}
 	
 	/**
+	 * Returns the HTML for a lazy loaded image.
+	 * @param string $url the image URL
+	 * @return string
+	 */
+	public static function lazyImage($url)
+	{
+		// Register the lazy loader
+		$cs = Yii::app()->clientScript;
+
+		$cs->registerScriptFile(Yii::app()->baseUrl
+				.'/js/jquery.unveil.js', CClientScript::POS_END);
+
+		$cs->registerScript(__CLASS__.'_unveil', '
+			$(".lazy").unveil(50);
+		', CClientScript::POS_READY);
+
+		return CHtml::image(Yii::app()->baseUrl.'/images/loader.gif', '', array(
+					'class'=>'lazy',
+					'data-src'=>$url));
+	}
+
+	/**
 	 * Returns the URL to the thumbnail
 	 * @return string
 	 */

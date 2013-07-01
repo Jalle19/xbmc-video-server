@@ -6,9 +6,7 @@
 		{
 			?>
 			<div class="image-container">
-				<img src="<?php echo Yii::app()->baseUrl.'/images/loader.gif'; ?>" 
-					 data-src="<?php echo $thumbnailUrl; ?>" alt="" 
-					 class="lazy" />
+				<?php echo Thumbnail::lazyImage($thumbnailUrl); ?>
 			</div>
 			<?php
 		}
