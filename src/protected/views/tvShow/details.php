@@ -66,6 +66,19 @@ $this->pageTitle = $pageTitle;
 				<p><?php echo $details->plot; ?></p>
 			</div>
 			
+			<h3>Cast</h3>
+
+			<div class="row-fluid">
+				<?php $this->widget('zii.widgets.CListView', array(
+					'dataProvider'=>$actorDataProvider,
+					'itemView'=>'/videoLibrary/_actorGridItem',
+					'itemsTagName'=>'ul',
+					'itemsCssClass'=>'thumbnails actor-grid',
+					'enablePagination'=>false,
+					'template'=>'{items}'
+				)); ?>
+			</div>
+
 			<h3>Seasons</h3>
 			
 			TODO

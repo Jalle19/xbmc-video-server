@@ -40,6 +40,7 @@ class TvShowController extends Controller
 			'votes',
 			'thumbnail',
 			'file',
+			'cast',
 			'episodeguide',
 			'season',
 			'art'
@@ -47,9 +48,16 @@ class TvShowController extends Controller
 
 		if ($showDetails === null)
 			throw new CHttpException(404, 'Not found');
-
+		
+		$actorDataProvider = new CArrayDataProvider(
+				$showDetails->cast, array(
+			'keyField'=>'name',
+			'pagination'=>array('pageSize'=>6)
+		));
+		
 		$this->render('details', array(
-			'details'=>$showDetails));
+			'details'=>$showDetails,
+			'actorDataProvider'=>$actorDataProvider));
 	}
 
 }
