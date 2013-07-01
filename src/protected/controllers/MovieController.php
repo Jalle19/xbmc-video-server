@@ -5,7 +5,7 @@
  *
  * @author Sam Stenvall <neggelandia@gmail.com>
  */
-class MovieController extends VideoLibraryController
+class MovieController extends Controller
 {
 
 	/**
@@ -80,8 +80,6 @@ class MovieController extends VideoLibraryController
 		if (count($movies) == 1)
 			$this->redirect(array('details', 'id'=>$movies[0]->movieid));
 
-		$this->registerScripts();
-		
 		$this->render('index', array(
 			'dataProvider'=>new LibraryDataProvider($movies, 'movieid'),
 			'movieFilterForm'=>$movieFilterForm));
@@ -94,8 +92,6 @@ class MovieController extends VideoLibraryController
 	{
 		$movies = VideoLibrary::getRecentlyAddedMovies();
 		
-		$this->registerScripts();
-
 		$this->render('recentlyAdded', array(
 			'dataProvider'=>new LibraryDataProvider($movies, 'movieid')));
 	}
@@ -136,8 +132,6 @@ class MovieController extends VideoLibraryController
 
 		$movieLinks = $this->getMovieLinks($movieDetails);
 		
-		$this->registerScripts();
-
 		$this->render('details', array(
 			'details'=>$movieDetails,
 			'actorDataProvider'=>$actorDataProvider,

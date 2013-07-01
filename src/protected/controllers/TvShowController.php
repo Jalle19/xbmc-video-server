@@ -5,7 +5,7 @@
  *
  * @author Sam Stenvall <neggelandia@gmail.com>
  */
-class TvShowController extends VideoLibraryController
+class TvShowController extends Controller
 {
 
 	/**
@@ -17,7 +17,6 @@ class TvShowController extends VideoLibraryController
 		$tvshows = VideoLibrary::getTVShows(array(
 				'properties'=>$properties));
 		
-		$this->registerScripts();
 		$this->render('index', array(
 			'dataProvider'=>new LibraryDataProvider($tvshows, 'tvshowid')));
 	}
@@ -48,8 +47,6 @@ class TvShowController extends VideoLibraryController
 
 		if ($showDetails === null)
 			throw new CHttpException(404, 'Not found');
-
-		$this->registerScripts();
 
 		$this->render('details', array(
 			'details'=>$showDetails));

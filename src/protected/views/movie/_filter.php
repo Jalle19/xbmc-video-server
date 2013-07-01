@@ -11,7 +11,11 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 // Enable typeahead on the name field
 $typeaheadData = CJavaScript::encode($this->getMovieNames());
 
-Yii::app()->clientScript->registerScript(__CLASS__.'_nameTypeahead', "
+$cs = Yii::app()->clientScript;
+$cs->registerScriptFile(Yii::app()->baseUrl
+		.'/js/typeahead.js', CClientScript::POS_END);
+		
+$cs->registerScript(__CLASS__.'_nameTypeahead', "
 	$('#movie-filter-name').typeahead({
 		name: 'movie-name',
 		local: {$typeaheadData},
