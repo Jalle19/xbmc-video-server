@@ -23,7 +23,9 @@ $this->pageTitle = $pageTitle;
 			<div class="item-top row-fluid">
 				<div class="item-title span6">
 					<h2>
-						<?php echo $details->title; ?>
+						<a href="http://www.thetvdb.com/?tab=series&id=<?php echo $details->imdbnumber; ?>">
+							<?php echo $details->title; ?>
+						</a>
 					</h2>
 
 					<?php if(!empty($details->year))
