@@ -187,6 +187,8 @@ class MovieController extends VideoLibraryController
 	 * result from GetMovieDetails as parameter.
 	 * @param stdClass $movieDetails
 	 * @return array the download links
+	 * @throws CHttpException if the files have been deleted from disk while 
+	 * the movie is still in the library
 	 */
 	private function getMovieLinks($movieDetails)
 	{
@@ -205,9 +207,19 @@ class MovieController extends VideoLibraryController
 			if (substr($rawFile, 0, 8) === 'stack://')
 				$rawFile = substr($rawFile, 8);
 
-			// Create the URL to the movie
-			$response = Yii::app()->xbmc->performRequest('Files.PrepareDownload', array(
+			// Create the URL to the movie. If the file(s) have been deleted 
+			// from disc but the movie still exists in the library this call 
+			// will fail. We rethrow an exception with a more descriptive error
+			try 
+			{
+				$response = Yii::app()->xbmc->performRequest('Files.PrepareDownload', array(
 				'path'=>$rawFile));
+			}
+			catch(CHttpException $e) 
+			{
+				unset($e); // silence IDE warnings
+				throw new CHttpException(404, 'This movie has been deleted');
+			}
 
 			$files[] = Yii::app()->xbmc->getAbsoluteVfsUrl($response->result->details->path);
 		}
