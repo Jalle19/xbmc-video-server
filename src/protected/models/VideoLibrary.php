@@ -146,7 +146,7 @@ class VideoLibrary
 			catch(CHttpException $e)
 			{
 				unset($e); // silence IDE warnings
-				throw new CHttpException(404, 'This movie has been deleted');
+				throw new CHttpException(404, 'This file has been deleted');
 			}
 
 			$files[] = Yii::app()->xbmc->getAbsoluteVfsUrl($response->result->details->path);
