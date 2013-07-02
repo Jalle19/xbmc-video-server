@@ -34,7 +34,8 @@ class ThumbnailController extends Controller
 				throw new CHttpException(400, 'Invalid thumbnail type');
 		}
 
-		$this->redirect($thumbnail);
+		// Do a permanent redirect
+		$this->redirect($thumbnail, true, 301);
 	}
 
 }
