@@ -18,6 +18,7 @@ class MediaFlagAudioCodec extends MediaFlag
 			'aac'=>'80px-Aac',
 			'ac3'=>'80px-Ac3',
 			'aac'=>'80px-Aac',
+			'dca'=>'80px-Dts',
 			'dts'=>'80px-Dts',
 			'dtshd_ma'=>'80px-Dtshd_ma',
 			'flac'=>'80px-Flac',
