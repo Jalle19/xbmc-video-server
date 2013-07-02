@@ -11,8 +11,18 @@ $baseUrl = Yii::app()->baseUrl;
 		<title><?php echo $this->pageTitle; ?></title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<?php $cs->registerCssFile($baseUrl.'/css/styles.css'); ?>
-		<?php Yii::app()->bootstrap->registerCoreScripts(null, CClientScript::POS_BEGIN); ?>
+		<?php 
+		
+		// Add a cache buster to the CSS URL
+		$cssPath = realpath(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR
+				.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'css'
+				.DIRECTORY_SEPARATOR.'styles.css');
+
+		$cs->registerCssFile($baseUrl.'/css/styles.css?'.filemtime($cssPath));
+		
+		Yii::app()->bootstrap->registerCoreScripts(null, CClientScript::POS_BEGIN); 
+		
+		?>
 	</head>
 	
 	<body>
