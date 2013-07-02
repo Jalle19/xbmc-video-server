@@ -12,8 +12,9 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 $typeaheadData = CJavaScript::encode($this->getMovieNames());
 
 $cs = Yii::app()->clientScript;
+$script = YII_DEBUG ? 'typeahead.js' : 'typeahead.min.js';
 $cs->registerScriptFile(Yii::app()->baseUrl
-		.'/js/typeahead.js', CClientScript::POS_END);
+		.'/js/twitter-typeahead/'.$script, CClientScript::POS_END);
 		
 $cs->registerScript(__CLASS__.'_nameTypeahead', "
 	$('#movie-filter-name').typeahead({

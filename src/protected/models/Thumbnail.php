@@ -100,8 +100,9 @@ class Thumbnail
 		// Register the lazy loader
 		$cs = Yii::app()->clientScript;
 
+		$script = YII_DEBUG ? 'jquery.unveil.js' : 'jquery.unveil.min.js';
 		$cs->registerScriptFile(Yii::app()->baseUrl
-				.'/js/jquery.unveil.js', CClientScript::POS_END);
+				.'/js/jquery-unveil/'.$script, CClientScript::POS_END);
 
 		$cs->registerScript(__CLASS__.'_unveil', '
 			$(".lazy").unveil(50);
