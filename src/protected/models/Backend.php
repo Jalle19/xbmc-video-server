@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This is the model class for table "backends".
+ * This is the model class for table "backend".
  *
  * The followings are the available columns in table 'backends':
  * @property int $id
@@ -31,7 +31,7 @@ class Backend extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'backends';
+		return 'backend';
 	}
 
 	/**
