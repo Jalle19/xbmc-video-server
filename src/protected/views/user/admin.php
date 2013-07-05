@@ -3,11 +3,11 @@
 /* @var $this UserController */
 /* @var $model User */
 
-$this->pageTitle = 'Manage Users';
+$this->pageTitle = 'Manage users';
 
 ?>
 
-<h2>Manage Users</h2>
+<h2>Manage users</h2>
 
 <hr />
 

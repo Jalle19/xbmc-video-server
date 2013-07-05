@@ -3,10 +3,10 @@
 /* @var $this UserController */
 /* @var $model User */
 
-$this->pageTitle = 'Create New User';
+$this->pageTitle = 'Create new user';
 ?>
 
-<h2>Create New User</h2>
+<h2>Create new user</h2>
 
 <hr />
 
