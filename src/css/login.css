@@ -6927,3 +6927,6 @@ body .login-centerer td .login-container form {
 body .login-centerer td .login-container form .form-actions {
   margin-bottom: 0;
 }
+span.required {
+  color: #e74c3c;
+}
