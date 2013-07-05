@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yiistrap.git",
-                "reference": "23ed3118867f7f3a3fa4b8e9fc3d6839b50d35bd"
+                "reference": "ca834b38ba2305de86219fb2a187c595805c0394"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/23ed3118867f7f3a3fa4b8e9fc3d6839b50d35bd",
-                "reference": "23ed3118867f7f3a3fa4b8e9fc3d6839b50d35bd",
+                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/ca834b38ba2305de86219fb2a187c595805c0394",
+                "reference": "ca834b38ba2305de86219fb2a187c595805c0394",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -41,7 +41,7 @@
                 "bootstrap",
                 "yii"
             ],
-            "time": "2013-06-27 19:14:50"
+            "time": "2013-07-05 20:38:15"
         },
         {
             "name": "eventviva/php-image-resize",
@@ -166,12 +166,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Jalle19/yii-less.git",
-                "reference": "4055493e6d97f03001a599e632ad4718e2749383"
+                "reference": "fd9c1d38e169234b957d8d37ca79ed245f9a062a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Jalle19/yii-less/zipball/4055493e6d97f03001a599e632ad4718e2749383",
-                "reference": "4055493e6d97f03001a599e632ad4718e2749383",
+                "url": "https://api.github.com/repos/Jalle19/yii-less/zipball/fd9c1d38e169234b957d8d37ca79ed245f9a062a",
+                "reference": "fd9c1d38e169234b957d8d37ca79ed245f9a062a",
                 "shasum": ""
             },
             "type": "yii-extension",
@@ -192,7 +192,7 @@
             "support": {
                 "source": "https://github.com/Jalle19/yii-less/tree/master"
             },
-            "time": "2013-07-01 05:13:09"
+            "time": "2013-07-04 08:15:31"
         },
         {
             "name": "yiisoft/yii",
@@ -204,7 +204,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii/zipball/3b44a1d8558acd78bbb478dbb961e88952741f3d",
+                "url": "https://api.github.com/repos/yiisoft/yii/zipball/05bca7caa71aeaef072ab96c5a89bdc7d120857a",
                 "reference": "e9e4a0d5be901d8bd48e516a2d9afe33d6fd05a6",
                 "shasum": ""
             },
