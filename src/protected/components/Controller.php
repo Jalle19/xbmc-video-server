@@ -72,16 +72,16 @@ class Controller extends CController
 
 	/**
 	 * Checks that the application has been configured, and if not redirects 
-	 * to the settings page.
+	 * to the "create backend" page
 	 * @param CFilterChain $filterChain
 	 */
 	public function filterCheckConfiguration($filterChain)
 	{
-		if (!Yii::app()->config->isConfigured())
+		if (Yii::app()->config->getCurrent() === null)
 		{
-			Yii::app()->user->setFlash('error', 'You must configure the application before you can use it');
+			Yii::app()->user->setFlash('error', 'You must configure a backend before you can use the application');
 
-			$this->redirect(array('settings/index'));
+			$this->redirect(array('settings/create'));
 		}
 
 		$filterChain->run();

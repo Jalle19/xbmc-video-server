@@ -2,6 +2,8 @@
 
 /**
  * Handles the application settings
+ * 
+ * TODO: Rename to BackendController
  *
  * @author Sam Stenvall <neggelandia@gmail.com>
  * @copyright Copyright &copy; Sam Stenvall 2013-
@@ -9,6 +11,16 @@
  */
 class SettingsController extends Controller
 {
+
+	/**
+	 * Initializes the controller
+	 */
+	public function init()
+	{
+		parent::init();
+		
+		$this->defaultAction = 'admin';
+	}
 
 	/**
 	 * Returns the filters for this controller. In addition to parent filters 
@@ -21,7 +33,7 @@ class SettingsController extends Controller
 			'accessControl',
 		));
 	}
-	
+
 	/**
 	 * Returns the access control rules
 	 * @return array
@@ -37,56 +49,124 @@ class SettingsController extends Controller
 			array('deny'),
 		);
 	}
-	
+
 	/**
 	 * Override parent implementation so we don't get stuck in a redirect loop
 	 * @param CFilterChain $filterChain
 	 */
 	public function filterCheckConfiguration($filterChain)
 	{
-		$filterChain->run();
+		if ($this->route === 'settings/create')
+			$filterChain->run();
+		else
+			parent::filterCheckConfiguration($filterChain);
+	}
+	
+	public function actionChange($id)
+	{
+		$model = $this->loadModel($id);
+
+		Yii::app()->session->add('currentBackendId', $model->id);
+		Yii::app()->user->setFlash('success', 'Changed backend to '.$model->name);
+		
+		$this->redirect(Yii::app()->homeUrl);
 	}
 
 	/**
-	 * Displays and updates the application settings
+	 * Manages all backends
 	 */
-	public function actionIndex()
+	public function actionAdmin()
 	{
-		$configForm = new ConfigForm();
+		$model = new Backend();
+		$model->unsetAttributes();
+		if (isset($_GET['Backend']))
+			$model->attributes = $_GET['Backend'];
 
-		if (isset($_POST['ConfigForm']))
+		$this->render('admin', array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionCreate()
+	{
+		$model = new Backend();
+
+		if (isset($_POST['Backend']))
 		{
-			$configForm->attributes = $_POST['ConfigForm'];
+			$model->attributes = $_POST['Backend'];
 
-			if ($configForm->validate())
+			if ($model->save())
 			{
-				// Update the configuration
-				foreach ($configForm->attributes as $attribute=> $value)
-				{
-					Config::model()->updateByPk($attribute, array(
-						'value'=>$value));
-				}
+				Yii::app()->user->setFlash('success', 'Backend created successfully');
 				
-				// Mark configuration as done
-				Config::model()->updateByPk('isConfigured', array(
-					'value'=>'true'));
-				
-				Yii::app()->user->setFlash('success', 'Configuration saved');
-
-				// Refresh to avoid re-submitting the form
-				$this->refresh();
+				$this->redirect(array('admin'));
 			}
 		}
 		else
 		{
-			// Populate the form based on the current settings.
-			foreach (array_keys($configForm->attributes) as $attribute)
-				$configForm->{$attribute} = Yii::app()->config->get($attribute);
+			$model->hostname = 'localhost';
+			$model->port = 8080;
+			$model->username = 'xbmc';
+			$model->password = 'xbmc';
+
+			// Check "default" if there are no other backends
+			$backends = Backend::model()->findAll();
+
+			if (count($backends) === 0)
+				$model->default = true;
 		}
-		
-		$this->render('index', array(
-			'model'=>$configForm,
+
+		$this->render('create', array(
+			'model'=>$model,
 		));
+	}
+	
+	public function actionUpdate($id) {
+		$model = $this->loadModel($id);
+
+		if (isset($_POST['Backend']))
+		{
+			$model->attributes = $_POST['Backend'];
+
+			if ($model->save())
+			{
+				Yii::app()->user->setFlash('success', 'Backend updated successfully');
+
+				$this->redirect(array('admin'));
+			}
+		}
+
+		$this->render('update', array(
+			'model'=>$model,
+		));
+	}
+	
+	/**
+	 * Deletes a backend
+	 * @param int $id the backend ID
+	 */
+	public function actionDelete($id)
+	{
+		$this->loadModel($id)->delete();
+
+		if (!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	}
+	
+	/**
+	 * Finds and returns the backend with the specified ID
+	 * @param int $id the backend ID
+	 * @return Backend the backend model
+	 * @throws CHttpException if the model is not found
+	 */
+	private function loadModel($id)
+	{
+		$model = Backend::model()->findByPk($id);
+
+		if ($model === null)
+			throw new CHttpException(404, 'Could not find the specified backend');
+
+		return $model;
 	}
 
 }

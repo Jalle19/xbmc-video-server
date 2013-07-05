@@ -1,19 +1,15 @@
 <?php
 
+/* @var $this SettingsController */
 /* @var $form TbActiveForm */
-/* @var $model ConfigForm */
-$this->pageTitle = 'Settings';
-
-?>
-<h2>Settings</h2>
-
-<hr />
-
-<?php 
-
+/* @var $model Backend */
 $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-	'layout'=>TbHtml::FORM_LAYOUT_HORIZONTAL,
-));
+	'layout'=>TbHtml::FORM_LAYOUT_HORIZONTAL));
+
+echo $form->textFieldControlGroup($model, 'name');
+echo $form->checkBoxControlGroup($model, 'default');
+
+echo '<hr />';
 
 echo $form->textFieldControlGroup($model, 'hostname');
 echo $form->textFieldControlGroup($model, 'port', array('span'=>1));
@@ -22,13 +18,11 @@ echo $form->passwordFieldControlGroup($model, 'password');
 echo $form->textFieldControlGroup($model, 'proxyLocation');
 
 ?>
-
 <div class="form-actions">
-	<?php echo TbHtml::submitButton('Save changes', array(
+	<?php echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save changes', array(
 		'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
 	)); ?>
 </div>
-
 <?php
 
 $this->endWidget();
