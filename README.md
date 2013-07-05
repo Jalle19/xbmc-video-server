@@ -40,6 +40,12 @@ chmod 777 src/protected/runtime/
 chmod 777 src/assets/
 ```
 
+### Windows
+
+It is possible to install this application on Windows, but the process is quite complicated (you'll need to install XAMPP, Composer, git and sqlite3 manually).
+
+The least painful way to use this application on Windows is to install e.g. Ubuntu Server in a virtual machine using VirtualBox (both of which are free) and following the instructions above.
+
 Initial setup
 -------------
 
