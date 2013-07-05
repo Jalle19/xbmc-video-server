@@ -46,6 +46,17 @@ It is possible to install this application on Windows, but the process is quite 
 
 The least painful way to use this application on Windows is to install e.g. Ubuntu Server in a virtual machine using VirtualBox (both of which are free) and following the instructions above.
 
+### Updating
+
+To update your copy of the software to the latest version, run the following commands (assuming the same directory structure and setup as described under Installation):
+
+```
+cd /var/www/xbmc-video-server
+git pull
+php composer.phar update
+./src/protected/yiic migrate --interactive=0
+```
+
 Initial setup
 -------------
 
