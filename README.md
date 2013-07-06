@@ -14,6 +14,7 @@ Requirements
 
 * PHP 5.3
 * allow_url_fopen = On in php.ini
+* Apache with .htaccess support enabled
 
 Installation
 ------------
@@ -39,6 +40,8 @@ chmod 777 src/protected/data/*.db
 chmod 777 src/protected/runtime/
 chmod 777 src/assets/
 ```
+
+In addition to this you may have to change your Apache site configuration allow `.htaccess` files to be used. On a default Ubuntu installation, the file you'll have to edit is `/etc/apache2/sites-available/default`. You'll need to change `AllowOverride None` to `AllowOverride All` inside the `<Directory /var/www/>` tag. You must restart Apache for the changes to take effect (`service apache2 restart`).
 
 ### Windows
 
