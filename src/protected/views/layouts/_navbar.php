@@ -17,18 +17,56 @@ $leftItems = array(
 		'active'=>in_array($this->route, array('tvShow/index', 'tvShow/details'))),
 );
 
-// Normal users only see a log out link
-$rightItems = array(
-	array('label'=>'Log out', 'url'=>array('site/logout'), 
+// Normal users only see a the log out link and the change backend link (if 
+// there is more than one configured backend)
+$rightItems = array();
+
+$backends = Backend::model()->findAll();
+
+if (count($backends) > 1)
+{
+	$backendItems = array();
+	$currentBackend = Yii::app()->config->getCurrent();
+
+	foreach ($backends as $backend)
+	{
+		$label = $backend->name;
+
+		if ($currentBackend !== null && $currentBackend->id == $backend->id)
+			$label = TbHtml::icon(TbHtml::ICON_OK).' '.$label;
+
+		$backendItems[] = array(
+			'label'=>$label,
+			'url'=>array('settings/change', 'id'=>$backend->id),
+		);
+	}
+
+	$rightItems[] = array(
+		'label'=>'Change backend',
+		'icon'=>'cloud',
+		'items'=>$backendItems,
+	);
+}
+
+$rightItems = array_merge($rightItems, array(
+	array('label'=>'Log out', 'url'=>array('site/logout'),
 		'linkOptions'=>array('class'=>'fontastic-icon-close'))
-);
+		));
 
 // Administrators see the Settings and Users menus
 if (Yii::app()->user->role == User::ROLE_ADMIN)
 {
 	$rightItems = array_merge(array(
-		array('label'=>'Settings', 'url'=>array('settings/index'),
-			'linkOptions'=>array('class'=>'fontastic-icon-settings')),
+		array('label'=>'Backends', 'items'=>array(
+				array(
+					'label'=>'Manage',
+					'url'=>array('settings/admin'),
+				),
+				array(
+					'label'=>'Create new',
+					'url'=>array('settings/create'),
+				)
+			), 'linkOptions'=>array('class'=>'fontastic-icon-settings')),
 		array('label'=>'Users', 'items'=>array(
 				array(
 					'label'=>'Manage',
@@ -52,6 +90,7 @@ $navbarItems = array(
 	array(
 		'class'=>'bootstrap.widgets.TbNav',
 		'activateParents'=>true,
+		'encodeLabel'=>false, // because of icons in the Change backend menu
 		'items'=>$rightItems,
 		'htmlOptions'=>array('class'=>'pull-right'),
 	)
