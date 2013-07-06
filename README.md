@@ -3,11 +3,21 @@ XBMC Video Server
 
 This is a standalone web interface for XBMC which allows users to browse the library and download or stream the movies and TV shows in it.
 
+Features
+--------
+
+* Browse and filter movies
+* Browse TV shows, seasons and episodes
+* Stream media using an M3U playlist with one click
+* User management (application requires login)
+* Supports multiple XBMC instances and allows easy switching between them
+* No configuration files
+
 Screenshots
 -----------
 
 [![screenshot1](http://t.imgbox.com/acevYfF2.jpg)](http://i.imgbox.com/acevYfF2.jpg) [![screenshot2](http://t.imgbox.com/acmKKkJ1.jpg)](http://i.imgbox.com/acmKKkJ1.jpg)
-[![screenshot3](http://t.imgbox.com/abwHUlbv.jpg)](http://i.imgbox.com/abwHUlbv.jpg)
+[![screenshot3](http://t.imgbox.com/abwHUlbv.jpg)](http://i.imgbox.com/abwHUlbv.jpg) [![screenshot4](http://t.imgbox.com/adb00qtO.jpg)](http://i.imgbox.com/adb00qtO.jpg)
 
 Requirements
 ------------
