@@ -41,7 +41,29 @@ chmod 777 src/protected/runtime/
 chmod 777 src/assets/
 ```
 
-In addition to this you may have to change your Apache site configuration allow `.htaccess` files to be used. On a default Ubuntu installation, the file you'll have to edit is `/etc/apache2/sites-available/default`. You'll need to change `AllowOverride None` to `AllowOverride All` inside the `<Directory /var/www/>` tag. You must restart Apache for the changes to take effect (`service apache2 restart`).
+After running the commands above you'll have to modify Apache's default site configuration to allow `.htaccess` files to be used. On a default Ubuntu installation, this means you'll have to edit `/etc/apache2/sites-available/default` and change this:
+
+```
+<Directory /var/www/>
+	Options Indexes FollowSymLinks MultiViews
+	AllowOverride None
+	Order allow,deny
+	 allow from all
+</Directory>
+```
+
+into this:
+
+```
+<Directory /var/www/>
+	Options Indexes FollowSymLinks MultiViews
+	AllowOverride All
+	Order allow,deny
+	 allow from all
+</Directory>
+```
+
+After saving the file you must restart Apache using `service apache2 restart` for the changes to take effect.
 
 ### Windows
 
