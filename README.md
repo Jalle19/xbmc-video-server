@@ -62,7 +62,9 @@ Initial setup
 
 Once the installation is complete, use your web browser to browse to /xbmc-video-server on your web server (if you did the installation steps on your local machine the URL would be http://localhost/xbmc-video-server). You will be presented with a login form. Log in with username "admin" and password "admin" (you'll be able to change this later).
 
-Once logged in, you will be presented with a Settings form, which you must complete before being able to use the application. Here you should specify XBMC's hostname and port as well as the username and password for XBMC's web server.
+Once logged in, you will be asked to configure a backend. A backend is an instance of XBMC that the application connects to and displays library contents from. Here you should specify XBMC's hostname and port as well as the username and password for XBMC's web server.
+
+If you specify more than one backend, a "Change backend" menu item will appear which allows you to switch which backend is being used. This way you don't have to install this application once for every XBMC instance you have, or you can use it to connect to a friend's library (provided he has opened the relevant ports in his firewall).
 
 Proxy Location
 --------------
