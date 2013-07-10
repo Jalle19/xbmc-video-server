@@ -10,9 +10,6 @@
 class MovieFilterForm extends CFormModel
 {
 
-	const GENRE_TYPE_MOVIE = 'movie';
-	const SORT_ORDER_ASCENDING = 'ascending';
-	
 	const QUALITY_SD = 'sd';
 	const QUALITY_720 = 720;
 	const QUALITY_1080 = 1080;
@@ -43,21 +40,13 @@ class MovieFilterForm extends CFormModel
 	private $_genres;
 
 	/**
-	 * Initializes the model. The genre list is populated here.
+	 * Initializes the model. 
 	 */
 	public function init()
 	{
-		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetGenres', array(
-			'type'=>self::GENRE_TYPE_MOVIE,
-			'sort'=>array('order'=>self::SORT_ORDER_ASCENDING, 'method'=>'label')));
-
-		// For some reason some people don't get any genres, we need to log 
-		// these occurences so we can try to figure out what's going on
-		if (!isset($response->result->genres))
-			Yii::log('No genres found, complete response was: '.json_encode($response), CLogger::LEVEL_ERROR);
-		else
-			foreach ($response->result->genres as $genre)
-				$this->_genres[$genre->label] = $genre->label;
+		// Populate the genre list
+		foreach (VideoLibrary::getGenres() as $genre)
+			$this->_genres[$genre->label] = $genre->label;
 	}
 
 	/**

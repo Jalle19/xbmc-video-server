@@ -10,8 +10,27 @@
 class VideoLibrary
 {
 
+	const GENRE_TYPE_MOVIE = 'movie';
 	const SORT_ORDER_ASCENDING = 'ascending';
 
+	/**
+	 * Returns all genres available for the specified media type (default to 
+	 * movie genres).
+	 * @param string $type the media type (see class constants)
+	 * @return array the list of genres
+	 */
+	public static function getGenres($type = self::GENRE_TYPE_MOVIE)
+	{
+		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetGenres', array(
+			'type'=>$type, 'sort'=>array(
+				'order'=>self::SORT_ORDER_ASCENDING, 'method'=>'label')));
+
+		if (isset($response->result->genres))
+			return $response->result->genres;
+		else
+			return array();
+	}
+	
 	/**
 	 * Returns a list of movies
 	 * @param array $params request parameters
