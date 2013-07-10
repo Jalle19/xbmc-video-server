@@ -37,7 +37,7 @@ class MovieFilterForm extends CFormModel
 	/**
 	 * @var array list of all genres (key same as value)
 	 */
-	private $_genres;
+	private $_genres = array();
 
 	/**
 	 * Initializes the model. 
