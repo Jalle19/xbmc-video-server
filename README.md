@@ -35,7 +35,7 @@ Run the following commands, one by one, in the exact order shown here:
 
 ```
 sudo su 
-apt-get install libapache2-mod-php5 php5-gd php5-cli php5-sqlite git curl sqlite3
+apt-get install libapache2-mod-php5 php5-gd php5-cli php5-sqlite git curl
 a2enmod rewrite expires
 service apache2 restart
 cd /var/www
@@ -43,7 +43,7 @@ git clone git://github.com/Jalle19/xbmc-video-server.git
 cd xbmc-video-server
 curl -sS https://getcomposer.org/installer | php
 php composer.phar install
-sqlite3 src/protected/data/xbmc-video-server.db < src/protected/data/schema.sqlite.sql
+./src/protected/yiic createinitialdatabase
 chmod 777 src/images/image-cache/
 chmod 777 src/protected/data
 chmod 777 src/protected/data/*.db
