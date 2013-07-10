@@ -51,8 +51,13 @@ class MovieFilterForm extends CFormModel
 			'type'=>self::GENRE_TYPE_MOVIE,
 			'sort'=>array('order'=>self::SORT_ORDER_ASCENDING, 'method'=>'label')));
 
-		foreach ($response->result->genres as $genre)
-			$this->_genres[$genre->label] = $genre->label;
+		// For some reason some people don't get any genres, we need to log 
+		// these occurences so we can try to figure out what's going on
+		if (!isset($response->result->genres))
+			Yii::log('No genres found, complete response was: '.json_encode($response), CLogger::LEVEL_ERROR);
+		else
+			foreach ($response->result->genres as $genre)
+				$this->_genres[$genre->label] = $genre->label;
 	}
 
 	/**
