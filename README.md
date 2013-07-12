@@ -25,6 +25,7 @@ Requirements
 * PHP 5.3
 * allow_url_fopen = On in php.ini
 * Apache with .htaccess support enabled
+* VLC is currently the only supported player
 
 Installation
 ------------
