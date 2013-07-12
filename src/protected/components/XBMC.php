@@ -21,7 +21,7 @@ class XBMC extends CApplicationComponent
 	public function init()
 	{
 		// Connect to the current backend
-		$backend = Yii::app()->config->getCurrent();
+		$backend = Yii::app()->backendManager->getCurrent();
 		
 		$endpoint = 'http://'.$backend->hostname.':'.$backend->port.'/jsonrpc';
 
@@ -61,7 +61,7 @@ class XBMC extends CApplicationComponent
 	 */
 	public function getAbsoluteVfsUrl($path)
 	{
-		$backend = Yii::app()->config->getCurrent();
+		$backend = Yii::app()->backendManager->getCurrent();
 		
 		// Use reverse proxy for vfs:// paths (if specified)
 		$proxyLocation = $backend->proxyLocation;

@@ -1,15 +1,13 @@
 <?php
 
 /**
- * Handles the application settings
+ * Handles the backends
  * 
- * TODO: Rename to BackendController
- *
  * @author Sam Stenvall <neggelandia@gmail.com>
  * @copyright Copyright &copy; Sam Stenvall 2013-
  * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
  */
-class SettingsController extends Controller
+class BackendController extends Controller
 {
 
 	/**
@@ -56,7 +54,7 @@ class SettingsController extends Controller
 	 */
 	public function filterCheckConfiguration($filterChain)
 	{
-		if ($this->route === 'settings/create')
+		if ($this->route === 'backend/create')
 			$filterChain->run();
 		else
 			parent::filterCheckConfiguration($filterChain);

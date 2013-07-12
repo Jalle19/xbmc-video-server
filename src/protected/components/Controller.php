@@ -77,11 +77,11 @@ class Controller extends CController
 	 */
 	public function filterCheckConfiguration($filterChain)
 	{
-		if (Yii::app()->config->getCurrent() === null)
+		if (Yii::app()->backendManager->getCurrent() === null)
 		{
 			Yii::app()->user->setFlash('error', 'You must configure a backend before you can use the application');
 
-			$this->redirect(array('settings/create'));
+			$this->redirect(array('backend/create'));
 		}
 
 		$filterChain->run();

@@ -1,6 +1,6 @@
 <?php
 
-/* @var $this SettingsController */
+/* @var $this BackendController */
 /* @var $form TbActiveForm */
 /* @var $model Backend */
 $this->pageTitle = 'Add new backend';

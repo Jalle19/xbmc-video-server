@@ -52,8 +52,8 @@ return array(
 				'bbq'=>array('js'=>false),
 			),
 		),
-		'config'=>array(
-			'class'=>'Settings', // there's a model called Config already
+		'backendManager'=>array(
+			'class'=>'BackendManager',
 		),
 		'db'=>array(
 			'connectionString' => 'sqlite:'.__DIR__.'/../data/xbmc-video-server.db',

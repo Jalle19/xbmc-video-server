@@ -26,7 +26,7 @@ $backends = Backend::model()->findAll();
 if (count($backends) > 1)
 {
 	$backendItems = array();
-	$currentBackend = Yii::app()->config->getCurrent();
+	$currentBackend = Yii::app()->backendManager->getCurrent();
 
 	foreach ($backends as $backend)
 	{
@@ -37,7 +37,7 @@ if (count($backends) > 1)
 
 		$backendItems[] = array(
 			'label'=>$label,
-			'url'=>array('settings/change', 'id'=>$backend->id),
+			'url'=>array('backend/change', 'id'=>$backend->id),
 		);
 	}
 
@@ -53,18 +53,18 @@ $rightItems = array_merge($rightItems, array(
 		'linkOptions'=>array('class'=>'fontastic-icon-close'))
 		));
 
-// Administrators see the Settings and Users menus
+// Administrators see the Backend and Users menus
 if (Yii::app()->user->role == User::ROLE_ADMIN)
 {
 	$rightItems = array_merge(array(
 		array('label'=>'Backends', 'items'=>array(
 				array(
 					'label'=>'Manage',
-					'url'=>array('settings/admin'),
+					'url'=>array('backend/admin'),
 				),
 				array(
 					'label'=>'Create new',
-					'url'=>array('settings/create'),
+					'url'=>array('backend/create'),
 				)
 			), 'linkOptions'=>array('class'=>'fontastic-icon-settings')),
 		array('label'=>'Users', 'items'=>array(

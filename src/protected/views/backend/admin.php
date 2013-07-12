@@ -1,6 +1,6 @@
 <?php
 
-/* @var $this SettingsController */
+/* @var $this BackendController */
 /* @var $model Backend */
 
 $this->pageTitle = 'Manage backends';
