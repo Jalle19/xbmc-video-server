@@ -130,7 +130,7 @@ In order for the directives above to work you need to run the following command:
 User management
 ---------------
 
-Once you've configured the application you should be able to browse your library. You can now click the "Users" link in the main menu to configure new users. There are two user roles; User and Administrator. The difference is that a standard user cannot see (and cannot access by other means) the Settings and Users pages.
+Once you've configured the application you should be able to browse your library. You can now click the "Users" link in the main menu to configure new users. There are two user roles; User and Administrator. The difference is that a standard user cannot see (and cannot access by other means) the Backends and Users pages.
 
 Security implications
 ---------------------
