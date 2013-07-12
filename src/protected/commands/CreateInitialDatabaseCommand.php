@@ -14,7 +14,7 @@ class CreateInitialDatabaseCommand extends CConsoleCommand
 	 */
 	public function actionIndex()
 	{
-		$schema = realpath(file_get_contents(__DIR__
+		$schema = file_get_contents(realpath(__DIR__
 						.'/../data/schema.sqlite.sql'));
 
 		// Execute each command in the schema one by one
