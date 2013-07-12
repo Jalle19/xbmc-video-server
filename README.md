@@ -29,7 +29,9 @@ Requirements
 Installation
 ------------
 
-The following steps assume that your shell user is able to use the `sudo` command, that you're running a Debian/Ubuntu-based operating system, that you're going to use Apache 2 as web server and that its document root is located in /var/www.
+### Linux
+
+The following steps assume that your shell user is able to use the `sudo` command, that you're running a Debian/Ubuntu-based operating system, that you're going to use Apache as web server and that its document root is located in /var/www.
 
 Run the following commands, one by one, in the exact order shown here:
 
@@ -75,13 +77,7 @@ into this:
 
 After saving the file you must restart Apache using `service apache2 restart` for the changes to take effect.
 
-### Windows
-
-It is possible to install this application on Windows, but the process is not as straight-forward as on Linux (you'll need to install XAMPP, Composer and Git manually).
-
-The least painful way to use this application on Windows is to install e.g. Ubuntu Server in a virtual machine using VirtualBox (both of which are free) and following the instructions above.
-
-### Updating
+#### Updating on Linux
 
 To update your copy of the software to the latest version, run the following commands (assuming the same directory structure and setup as described under Installation):
 
@@ -90,6 +86,41 @@ cd /var/www/xbmc-video-server
 git pull
 php composer.phar update
 ./src/protected/yiic migrate --interactive=0
+```
+
+### Windows
+
+1. Download the XAMPP installer from http://sourceforge.net/projects/xampp/ and run it
+	* Uncheck all components except *Server / Apache* and *Program Languages / PHP*
+	* Follow the instructions until the installation is complete (ignore any warnings). Don't open the XAMPP control panel just yet.
+2. Open the file `C:\xampp\php\php.ini` and remove the leading semi-colon from the line reading `;extension=php_openssl.dll`. Save the file.
+3. Download the Composer installer from http://getcomposer.org/download/ and run it
+	* Browse to `C:\xampp\php\php.exe` when the installer asks for the path to php.exe
+4. Download the msysgit installer from http://code.google.com/p/msysgit/ and run it
+	* Use the default options on all screens except at *Adjusting your PATH environment*, there you must select *Run Git from the Windows Command Prompt*.
+5. Start the XAMPP Control Panel
+	* Click the *Config* button and check Apache under *Autostart of modules*, then click *Save*
+	* Start Apache by clicking the *Start* button in the middle of the window
+6. While still in the XAMPP Control Panel, click *Shell* to launch a command prompt in the XAMPP directory. Then, run the following commands, one by one:
+
+```
+cd htdocs
+git clone git://github.com/Jalle19/xbmc-video-server.git
+cd xbmc-video-server
+composer install
+.\src\protected\yiic createinitialdatabase
+```
+
+#### Updating on Windows
+
+Open the XAMPP Control Panel and click the Shell button to launch a command prompt in the XAMPP directory. Then, run the following commands one by one:
+
+
+```
+cd htdocs\xbmc-video-server
+git pull
+composer update
+.\src\protected\yiic migrate --interactive=0
 ```
 
 Initial setup
