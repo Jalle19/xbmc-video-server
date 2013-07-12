@@ -26,10 +26,7 @@ class VideoLibrary
 			'type'=>$type, 'sort'=>array(
 				'order'=>self::SORT_ORDER_ASCENDING, 'method'=>'label')));
 
-		if (isset($response->result->genres))
-			return $response->result->genres;
-		else
-			return array();
+		return self::normalizeResponse($response, 'genres', array());
 	}
 	
 	/**
