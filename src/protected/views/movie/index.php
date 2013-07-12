@@ -1,5 +1,6 @@
 <?php
 
+/* @var $filterForm MovieFilterForm */
 /* @var $dataProvider LibraryDataProvider */
 $this->pageTitle = 'Movies';
 
@@ -10,7 +11,7 @@ $this->pageTitle = 'Movies';
 <?php
 
 $this->renderPartial('_filter', array(
-	'model'=>$movieFilterForm));
+	'model'=>$filterForm));
 
 $this->widget('ResultGrid', array(
 	'dataProvider'=>$dataProvider,

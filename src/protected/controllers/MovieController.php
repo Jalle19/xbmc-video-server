@@ -15,64 +15,16 @@ class MovieController extends Controller
 	 */
 	public function actionIndex()
 	{
-		// Get filter properties
-		$movieFilterForm = new MovieFilterForm();
-		$nativeFilters = array();
+		// Get the appropriate request parameters from the filter
+		$filterForm = new MovieFilterForm();
+		$requestParameters = array();
 
 		if (isset($_GET['MovieFilterForm']))
 		{
-			$movieFilterForm->attributes = $_GET['MovieFilterForm'];
+			$filterForm->attributes = $_GET['MovieFilterForm'];
 
-			if ($movieFilterForm->validate())
-			{
-				// Include partial matches on movie title
-				$nativeFilters['title'] = array(
-					'operator'=>'contains',
-					'value'=>$movieFilterForm->name);
-				
-				$nativeFilters['genre'] = array(
-					'operator'=>'is',
-					'value'=>$movieFilterForm->genre);
-				
-				$nativeFilters['year'] = array(
-					'operator'=>'is',
-					'value'=>$movieFilterForm->year);
-				
-				$quality = $movieFilterForm->quality;
-
-				// SD means anything less than 720p
-				if ($quality == MovieFilterForm::QUALITY_SD)
-				{
-					$nativeFilters['videoresolution'] = array(
-						'operator'=>'lessthan',
-						'value'=>(string)MovieFilterForm::QUALITY_720);
-				}
-				else
-				{
-					$nativeFilters['videoresolution'] = array(
-						'operator'=>'is',
-						'value'=>$quality);
-				}
-			}
-		}
-
-		// Start building the request parameters
-		$requestParameters = array();
-		
-		foreach ($nativeFilters as $field => $options)
-		{
-			if (empty($options['value']))
-				continue;
-
-			$filter = new stdClass();
-			$filter->field = $field;
-			$filter->operator = $options['operator'];
-			$filter->value = $options['value'];
-
-			if (!isset($requestParameters['filter']))
-				$requestParameters['filter'] = new stdClass();
-
-			$requestParameters['filter']->and[] = $filter;
+			if (!$filterForm->isEmpty() && $filterForm->validate())
+				$requestParameters['filter'] = $filterForm->getFilter();
 		}
 		
 		$movies = VideoLibrary::getMovies($requestParameters);
@@ -84,7 +36,7 @@ class MovieController extends Controller
 
 		$this->render('index', array(
 			'dataProvider'=>new LibraryDataProvider($movies, 'movieid'),
-			'movieFilterForm'=>$movieFilterForm));
+			'filterForm'=>$filterForm));
 	}
 	
 	/**

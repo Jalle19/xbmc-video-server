@@ -7,22 +7,12 @@
  * @copyright Copyright &copy; Sam Stenvall 2013-
  * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
  */
-class MovieFilterForm extends CFormModel
+class MovieFilterForm extends VideoFilterForm
 {
 
 	const QUALITY_SD = 'sd';
 	const QUALITY_720 = 720;
 	const QUALITY_1080 = 1080;
-
-	/**
-	 * @var string the movie title
-	 */
-	public $name;
-
-	/**
-	 * @var string the movie genre
-	 */
-	public $genre;
 
 	/**
 	 * @var int the movie year
@@ -35,30 +25,30 @@ class MovieFilterForm extends CFormModel
 	public $quality;
 
 	/**
-	 * @var array list of all genres (key same as value)
+	 * Populates and returns the list of genres
+	 * @implements VideoFilterForm
+	 * @return array
 	 */
-	private $_genres = array();
-
-	/**
-	 * Initializes the model. 
-	 */
-	public function init()
+	public function getGenres()
 	{
-		// Populate the genre list
-		foreach (VideoLibrary::getGenres() as $genre)
-			$this->_genres[$genre->label] = $genre->label;
-	}
+		if (empty($this->_genres))
+		{
+			foreach (VideoLibrary::getGenres() as $genre)
+				$this->_genres[$genre->label] = $genre->label;
+		}
 
+		return $this->_genres;
+	}
+	
 	/**
 	 * @return array the attribute labels for this model
 	 */
 	public function attributeLabels()
 	{
-		return array(
-			'name'=>'Name',
-			'genre'=>'Genre',
+		return array_merge(parent::attributeLabels(), array(
 			'year'=>'Year',
-		);
+			'quality'=>'Quality',
+		));
 	}
 
 	/**
@@ -66,23 +56,12 @@ class MovieFilterForm extends CFormModel
 	 */
 	public function rules()
 	{
-		return array(
-			array('name', 'safe'),
-			array('genre', 'in', 'range'=>$this->_genres),
+		return array_merge(parent::rules(), array(
 			array('year', 'numerical', 'integerOnly'=>true),
 			array('quality', 'in', 'range'=>array_keys($this->getQualities())),
-		);
+		));
 	}
 
-	/**
-	 * Getter for $_genres;
-	 * @return array
-	 */
-	public function getGenres()
-	{
-		return $this->_genres;
-	}
-	
 	/**
 	 * Returns the possible qualities
 	 * @return array
@@ -94,6 +73,46 @@ class MovieFilterForm extends CFormModel
 			self::QUALITY_720=>'720p',
 			self::QUALITY_1080=>'1080p',
 		);
+	}
+	
+	/**
+	 * Returns the defined filter as an array
+	 * @return array the filter
+	 */
+	public function getFilterDefinitions()
+	{
+		$filter = array();
+
+		// Include partial matches on movie title
+		$filter['title'] = array(
+			'operator'=>'contains',
+			'value'=>$this->name);
+
+		$filter['genre'] = array(
+			'operator'=>'is',
+			'value'=>$this->genre);
+
+		$filter['year'] = array(
+			'operator'=>'is',
+			'value'=>$this->year);
+
+		$quality = $this->quality;
+
+		// SD means anything less than 720p
+		if ($quality == self::QUALITY_SD)
+		{
+			$filter['videoresolution'] = array(
+				'operator'=>'lessthan',
+				'value'=>(string)self::QUALITY_720);
+		}
+		else
+		{
+			$filter['videoresolution'] = array(
+				'operator'=>'is',
+				'value'=>$quality);
+		}
+
+		return $filter;
 	}
 
 }
