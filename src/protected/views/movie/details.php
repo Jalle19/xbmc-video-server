@@ -24,17 +24,19 @@ $this->pageTitle = $details->label.' ('.$details->year.') - Movies';
 					individual files for later viewing using the links below it.
 				</p>
 				
-				<?php echo TbHtml::linkButton('Watch', array(
+				<?php 
+				
+				echo TbHtml::linkButton('Watch', array(
 					'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
 					'size'=>TbHtml::BUTTON_SIZE_LARGE,
 					'url'=>array('getMoviePlaylist', 'movieId'=>$details->movieid),
 					'class'=>'fontastic-icon-play',
-				)); ?>
+				)); 
 				
-				<div class="item-links">
-					<?php $this->renderPartial('/videoLibrary/_videoItemLinks', array(
-						'links'=>$movieLinks)); ?>
-				</div>
+				$this->renderPartial('/videoLibrary/_videoItemLinks', array(
+						'links'=>$movieLinks));
+				
+				?>
 			</div>
 		</div>
 		

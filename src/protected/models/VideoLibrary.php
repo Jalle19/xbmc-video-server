@@ -183,20 +183,19 @@ class VideoLibrary
 				$rawFile = substr($rawFile, 8);
 
 			// Create the URL to the file. If the file has been deleted from
-			// disc but the movie still exists in the library this call will
-			// fail. We rethrow an exception with a more descriptive error
+			// disc but the movie still exists in the library the API call 
+			// throws an exception. We just skip this file if that's the case.
 			try
 			{
-				$response = Yii::app()->xbmc->performRequest('Files.PrepareDownload', array(
-				'path'=>$rawFile));
+				$response = Yii::app()->xbmc->performRequest(
+						'Files.PrepareDownload', array('path'=>$rawFile));
+				
+				$files[] = Yii::app()->xbmc->getAbsoluteVfsUrl($response->result->details->path);
 			}
 			catch(CHttpException $e)
 			{
-				unset($e); // silence IDE warnings
-				throw new CHttpException(404, 'This file has been deleted');
+				$files[] = false;
 			}
-
-			$files[] = Yii::app()->xbmc->getAbsoluteVfsUrl($response->result->details->path);
 		}
 
 		return $files;
