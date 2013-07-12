@@ -5,6 +5,10 @@ class m130705_222015_multiple_backends extends CDbMigration
 
 	public function up()
 	{
+		// Check if this migration needs to be applied at all
+		if (Yii::app()->db->schema->getTable('config') === null)
+			return;
+		
 		// Retrieve the current configuration
 		$backend = array();
 		$config = Yii::app()->db->createCommand('SELECT * FROM `config`')->queryAll();
