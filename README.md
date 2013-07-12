@@ -6,8 +6,8 @@ This is a standalone web interface for XBMC which allows users to browse the lib
 Features
 --------
 
-* Browse and filter movies
-* Browse TV shows, seasons and episodes
+* Browse and filter movies and TV shows
+* Browse seasons and episodes for a TV show
 * Stream media using an M3U playlist with one click
 * User management (application requires login)
 * Supports multiple XBMC instances and allows easy switching between them
