@@ -15,12 +15,25 @@ class TvShowController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$properties = array('thumbnail', 'fanart', 'art');
-		$tvshows = VideoLibrary::getTVShows(array(
-				'properties'=>$properties));
-		
+		// Get the appropriate request parameters from the filter
+		$filterForm = new TVShowFilterForm();
+
+		$requestParameters = array(
+			'properties'=>array('thumbnail', 'fanart', 'art'));
+
+		if (isset($_GET['TVShowFilterForm']))
+		{
+			$filterForm->attributes = $_GET['TVShowFilterForm'];
+
+			if (!$filterForm->isEmpty() && $filterForm->validate())
+				$requestParameters['filter'] = $filterForm->getFilter();
+		}
+
+		$tvshows = VideoLibrary::getTVShows($requestParameters);
+
 		$this->render('index', array(
-			'dataProvider'=>new LibraryDataProvider($tvshows, 'tvshowid')));
+			'dataProvider'=>new LibraryDataProvider($tvshows, 'tvshowid'),
+			'filterForm'=>$filterForm));
 	}
 	
 	/**
@@ -165,6 +178,20 @@ class TvShowController extends Controller
 		));
 
 		return new LibraryDataProvider($episodes, 'label');
+	}
+	
+	/**
+	 * Returns an array containing the names of all TV shows
+	 * @return array the names
+	 */
+	public function getTVShowNames()
+	{
+		$names = array();
+
+		foreach (VideoLibrary::getTVShows() as $movie)
+			$names[] = $movie->label;
+
+		return $names;
 	}
 
 }

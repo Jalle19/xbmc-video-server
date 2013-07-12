@@ -11,6 +11,7 @@ class VideoLibrary
 {
 
 	const GENRE_TYPE_MOVIE = 'movie';
+	const GENRE_TYPE_TVSHOW = 'tvshow';
 	const SORT_ORDER_ASCENDING = 'ascending';
 
 	/**
