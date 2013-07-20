@@ -80,10 +80,15 @@ $this->pageTitle = $details->label.' ('.$details->year.') - Movies';
 					<div class="item-metadata clearfix">
 
 						<p><?php echo implode(' / ', $details->genre); ?></p>
-						<p><?php echo (int)($details->runtime / 60); ?> min</p>
-
 						<?php
 
+						// Runtime and MPAA rating are not always available
+						if ($details->runtime && (int)$details->runtime > 0)
+						{
+							echo CHtml::tag('p', array(), 
+									(int)($details->runtime / 60).' min');
+						}
+						
 						// MPAA rating is not always available
 						if ($details->mpaa)
 							echo '<p>MPAA rating: '.$details->mpaa.'</p>';
