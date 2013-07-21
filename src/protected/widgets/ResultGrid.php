@@ -36,8 +36,22 @@ class ResultGrid extends CListView
 		// Get rid of that pesky dot at the end
 		$emptyText = substr(Yii::t('zii', 'No results found.'), 0, strlen(Yii::t('zii', 'No results found.')) - 1);
 
-		if (count($data) > 0)
+		if (count($data) > 0) 
+		{
+			// Register the lazy loader
+			$cs = Yii::app()->clientScript;
+
+			$script = YII_DEBUG ? 'jquery.unveil.js' : 'jquery.unveil.min.js';
+			$cs->registerScriptFile(Yii::app()->baseUrl
+					.'/js/jquery-unveil/'.$script, CClientScript::POS_END);
+
+			$cs->registerScript(__CLASS__.'_unveil', '
+				$(".lazy").unveil(50);
+			', CClientScript::POS_READY);
+		
+			// Render the items
 			parent::renderItems();
+		}
 		else
 			echo CHtml::tag('div', array('class'=>'alert alert-block alert-error'), $emptyText);
 	}
@@ -47,7 +61,7 @@ class ResultGrid extends CListView
 	 */
 	public function renderKeys()
 	{
-
+		
 	}
 
 }
