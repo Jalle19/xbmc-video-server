@@ -112,5 +112,10 @@ return array(
 			),
 		),
 	),
+	
+	// application-level parameters
+	'params'=>array(
+		'minimumBackendVersion'=>13,
+	)
 
 );

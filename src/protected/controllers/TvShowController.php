@@ -64,6 +64,10 @@ class TvShowController extends Controller
 			'pagination'=>array('pageSize'=>6)
 		));
 		
+		// Check backend version and warn about incompatibilities
+		if (!Yii::app()->xbmc->meetsMinimumRequirements())
+			Yii::app()->user->setFlash('info', 'Streaming of video files is not possible from XBMC 12 "Frodo" and earlier backends');
+		
 		$this->render('details', array(
 			'details'=>$showDetails,
 			'seasons'=>VideoLibrary::getSeasons($id),

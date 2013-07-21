@@ -83,6 +83,10 @@ class MovieController extends Controller
 			'keyField'=>'name',
 			'pagination'=>array('pageSize'=>6)
 		));
+		
+		// Check backend version and warn about incompatibilities
+		if (!Yii::app()->xbmc->meetsMinimumRequirements())
+			Yii::app()->user->setFlash('info', 'Streaming of video files is not possible from XBMC 12 "Frodo" backends');
 
 		$this->render('details', array(
 			'details'=>$movieDetails,

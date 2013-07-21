@@ -32,6 +32,15 @@ class XBMC extends CApplicationComponent
 	}
 	
 	/**
+	 * Checks whether the current backend meets the minimum version requirements
+	 * @return boolean
+	 */
+	public function meetsMinimumRequirements()
+	{
+		return $this->getVersion() >= Yii::app()->params['minimumBackendVersion'];
+	}
+	
+	/**
 	 * Wrapper for \SimpleJsonRpcClient\Request
 	 * @param string $method
 	 * @param mixed $params
@@ -75,4 +84,16 @@ class XBMC extends CApplicationComponent
 		}
 	}
 
+	/**
+	 * Returns the major version number of the currently used backend.
+	 * @return int the version number
+	 */
+	private function getVersion()
+	{
+		$version = Yii::app()->xbmc->performRequest('Application.GetProperties', 
+				array('properties'=>array('version')));
+
+		return $version->result->version->major;
+	}
+	
 }
