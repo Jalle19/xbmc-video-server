@@ -57,26 +57,16 @@ $rightItems = array_merge($rightItems, array(
 if (Yii::app()->user->role == User::ROLE_ADMIN)
 {
 	$rightItems = array_merge(array(
-		array('label'=>'Backends', 'items'=>array(
-				array(
-					'label'=>'Manage',
-					'url'=>array('backend/admin'),
-				),
-				array(
-					'label'=>'Create new',
-					'url'=>array('backend/create'),
-				)
-			), 'linkOptions'=>array('class'=>'fontastic-icon-settings')),
-		array('label'=>'Users', 'items'=>array(
-				array(
-					'label'=>'Manage',
-					'url'=>array('user/admin'),
-				),
-				array(
-					'label'=>'Create new',
-					'url'=>array('user/create'),
-				)
-			), 'linkOptions'=>array('class'=>'fontastic-icon-user')),
+		array('label'=>'Settings', 'items'=>array(
+			array('label'=>'Settings'),
+			array('label'=>'Manage', 'url'=>array('setting/admin')),
+			array('label'=>'Backends'),
+			array('label'=>'Manage', 'url'=>array('backend/admin')),
+			array('label'=>'Create new', 'url'=>array('backend/create')),
+			array('label'=>'Users'),
+			array('label'=>'Manage', 'url'=>array('user/admin')),
+			array('label'=>'Create new', 'url'=>array('user/create'))
+		), 'linkOptions'=>array('class'=>'fontastic-icon-settings')),
 	), $rightItems);
 }
 
