@@ -22,4 +22,20 @@ class FormHelper
 		));
 	}
 
+	/**
+	 * Generates a nicely formatted help block, useful to explain what a form or 
+	 * a page does
+	 * @param string $content the block content
+	 * @return string the HTML for the help block
+	 */
+	public static function helpBlock($content)
+	{
+		$output  = CHtml::openTag('p', array('class'=>'form-help'));
+		$output .= TbHtml::icon(TbHtml::ICON_EXCLAMATION_SIGN);
+		$output .= $content;
+		$output .= CHtml::closeTag('p');
+		
+		return $output;
+	}
+
 }

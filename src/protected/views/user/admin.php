@@ -9,6 +9,10 @@ $this->pageTitle = 'Manage users';
 
 <h2>Manage users</h2>
 
+<?php echo FormHelper::helpBlock('This is where you configure users. Every user 
+	has a role. Administrators can do anything while a normal user can only 
+	switch backends (if more than one has been configured).'); ?>
+
 <hr />
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(

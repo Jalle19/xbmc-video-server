@@ -9,6 +9,11 @@ $this->pageTitle = 'Manage backends';
 
 <h2>Manage backends</h2>
 
+<?php echo FormHelper::helpBlock('This is where you configure your backends. A 
+	backend is an instance of XBMC that the application connects to and serves 
+	library contents from. If you specify more than one backend, a new item 
+	will appear in the main menu, allowing you to easily switch backends.'); ?>
+
 <hr />
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
