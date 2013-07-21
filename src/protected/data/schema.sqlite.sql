@@ -11,3 +11,4 @@ CREATE TABLE "settings" ("name" VARCHAR PRIMARY KEY NOT NULL , "value" VARCHAR);
 
 INSERT INTO "settings" ('name','value') VALUES ('applicationName','XBMC Video Server');
 INSERT INTO "settings" ('name','value') VALUES ('singleFilePlaylist','0');
+INSERT INTO "settings" ('name','value') VALUES ('showHelpBlocks','1');
