@@ -26,22 +26,19 @@ class SettingController extends AdminOnlyController
 	 */
 	public function actionAdmin()
 	{
-		$models = Setting::model()->findAll();
+		$settings = Setting::model()->findAll();
 
 		if (isset($_POST['Setting']))
 		{
-			$settings = $_POST['Setting'];
-
-			foreach ($settings as $name=> $value)
+			foreach ($_POST['Setting'] as $name=> $value)
 				$this->saveSetting($name, $value);
-
+			
 			Yii::app()->user->setFlash('success', 'Settings updated successfully');
 			$this->refresh();
 		}
 
-
 		$this->render('admin', array(
-			'settings'=>$models,
+			'settings'=>$settings,
 		));
 	}
 
