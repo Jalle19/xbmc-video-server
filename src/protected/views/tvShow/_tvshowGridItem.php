@@ -15,5 +15,5 @@ $thumbnail = new ThumbnailVideo($thumbnailPath, Thumbnail::SIZE_MEDIUM);
 $this->renderPartial('//videoLibrary/_gridItem', array(
 	'label'=>$data->label,
 	'itemUrl'=>$showUrl,
-	'thumbnailUrl'=>$thumbnail,
+	'thumbnail'=>$thumbnail,
 ));
