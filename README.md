@@ -18,6 +18,7 @@ Screenshots
 
 [![screenshot1](http://t.imgbox.com/acevYfF2.jpg)](http://i.imgbox.com/acevYfF2.jpg) [![screenshot2](http://t.imgbox.com/acmKKkJ1.jpg)](http://i.imgbox.com/acmKKkJ1.jpg)
 [![screenshot3](http://t.imgbox.com/abwHUlbv.jpg)](http://i.imgbox.com/abwHUlbv.jpg) [![screenshot4](http://t.imgbox.com/adb00qtO.jpg)](http://i.imgbox.com/adb00qtO.jpg)
+[![screenshot5](http://t.imgbox.com//adjO39Yq.jpg)](http://i.imgbox.com//adjO39Yq.jpg)
 
 Requirements
 ------------
@@ -25,7 +26,7 @@ Requirements
 * PHP 5.3
 * allow_url_fopen = On in php.ini
 * Apache with .htaccess support enabled
-* VLC is currently the only supported player
+* XBMC 13 (Gotham)
 
 Installation
 ------------
