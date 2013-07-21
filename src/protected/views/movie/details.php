@@ -26,10 +26,15 @@ $this->pageTitle = $details->label.' ('.$details->year.') - Movies';
 				
 				<?php 
 				
+				if (count($movieLinks) === 1 && Setting::getValue('singleFilePlaylist'))
+					$watchUrl = $movieLinks[0];
+				else
+					$watchUrl = array('getMoviePlaylist', 'movieId'=>$details->movieid);
+				
 				echo TbHtml::linkButton('Watch', array(
 					'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
 					'size'=>TbHtml::BUTTON_SIZE_LARGE,
-					'url'=>array('getMoviePlaylist', 'movieId'=>$details->movieid),
+					'url'=>$watchUrl,
 					'class'=>'fontastic-icon-play',
 				)); 
 				

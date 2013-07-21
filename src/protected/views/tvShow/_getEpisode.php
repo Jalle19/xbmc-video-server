@@ -4,13 +4,19 @@
 
 <?php 
 
+$links = VideoLibrary::getVideoLinks($episode->file);
+
+if (count($links) === 1 && Setting::getValue('singleFilePlaylist'))
+	$watchUrl = $links[0];
+else
+	$watchUrl = array('getEpisodePlaylist', 'episodeId'=>$episode->episodeid);
+
 echo TbHtml::linkButton('Watch', array(
 	'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
 	'size'=>TbHtml::BUTTON_SIZE_SMALL,
-	'url'=>$this->createUrl('getEpisodePlaylist', array(
-		'episodeId'=>$episode->episodeid)),
+	'url'=>$watchUrl,
 	'class'=>'fontastic-icon-play',
 )); 
 
 $this->renderPartial('/videoLibrary/_videoItemLinks', array(
-	'links'=>VideoLibrary::getVideoLinks($episode->file)));
+	'links'=>$links));
