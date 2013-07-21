@@ -8492,6 +8492,10 @@ span.required {
   padding: 10px 20px;
   margin: 20px 0;
 }
+.help-block {
+  font-size: smaller;
+  font-style: italic;
+}
 .movie-filter-form .control-group,
 .movie-filter-form .buttons {
   display: inline-block;
