@@ -20,3 +20,11 @@ CREATE TABLE `user` (
 );
 
 INSERT INTO `user` (`role`,`username`,`password`) VALUES('admin','admin','admin');
+
+CREATE TABLE `settings` (
+	`name` VARCHAR(255) NOT NULL,
+	`value` VARCHAR(255) NULL DEFAULT NULL
+);
+
+INSERT INTO `settings` (`name`,`value`) VALUES ('applicationName','XBMC Video Server');
+INSERT INTO `settings` (`name`,`value`) VALUES ('singleFilePlaylist','0');

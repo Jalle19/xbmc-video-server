@@ -5,3 +5,9 @@ DROP TABLE IF EXISTS "user";
 CREATE TABLE "user" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , "role" VARCHAR NOT NULL  DEFAULT user, "username" VARCHAR NOT NULL  UNIQUE , "password" VARCHAR NOT NULL );
 
 INSERT INTO "user" ('role','username','password') VALUES('admin','admin','admin');
+
+DROP TABLE IF EXISTS "settings";
+CREATE TABLE "settings" ("name" VARCHAR PRIMARY KEY NOT NULL , "value" VARCHAR);
+
+INSERT INTO "settings" ('name','value') VALUES ('applicationName','XBMC Video Server');
+INSERT INTO "settings" ('name','value') VALUES ('singleFilePlaylist','0');
