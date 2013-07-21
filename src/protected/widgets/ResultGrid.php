@@ -42,4 +42,12 @@ class ResultGrid extends CListView
 			echo CHtml::tag('div', array('class'=>'alert alert-block alert-error'), $emptyText);
 	}
 
+	/**
+	 * Override parent implementation and do nothing since we don't need this
+	 */
+	public function renderKeys()
+	{
+
+	}
+
 }
