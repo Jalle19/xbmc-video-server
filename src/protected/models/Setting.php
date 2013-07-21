@@ -17,6 +17,7 @@ class Setting extends CActiveRecord
 	// We need one attribute per setting
 	public $applicationName;
 	public $singleFilePlaylist;
+	public $showHelpBlocks;
 	
 	/**
 	 * @var array setting definitions
@@ -32,6 +33,11 @@ class Setting extends CActiveRecord
 			'type'=>self::TYPE_CHECKBOX,
 			'default'=>'0',
 			'description'=>'You may have to right-click and copy the address in order to stream (not download) the file',
+		),
+		'showHelpBlocks'=>array(
+			'label'=>'Show help blocks on administration pages',
+			'type'=>self::TYPE_CHECKBOX,
+			'default'=>'1',
 		),
 	);
 	

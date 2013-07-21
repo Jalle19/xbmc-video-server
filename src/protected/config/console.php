@@ -6,6 +6,10 @@ return array(
 	
 	'preload'=>array('log'),
 	
+	'import'=>array(
+		'application.models.*',
+	),
+	
 	'components'=>array(
 		'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/xbmc-video-server.db',
