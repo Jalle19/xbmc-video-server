@@ -90,8 +90,8 @@ class XBMC extends CApplicationComponent
 	 */
 	private function getVersion()
 	{
-		$version = Yii::app()->xbmc->performRequest('Application.GetProperties', 
-				array('properties'=>array('version')));
+		$version = $this->performRequest('Application.GetProperties', array(
+			'properties'=>array('version')));
 
 		return $version->result->version->major;
 	}
