@@ -8478,6 +8478,9 @@ h1#home-url a:hover {
 span.required {
   color: #e74c3c;
 }
+.btn-padded {
+  margin-left: 20px;
+}
 .movie-filter-form .control-group,
 .movie-filter-form .buttons {
   display: inline-block;

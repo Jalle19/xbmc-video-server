@@ -15,6 +15,7 @@ echo $form->passwordFieldControlGroup($model, 'password');
 <div class="form-actions">
 	<?php echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Update', 
 			array('color'=>TbHtml::BUTTON_COLOR_PRIMARY)); ?>
+	<?php echo FormHelper::cancelButton(array('user/admin')); ?>
 </div>
 
 <?php $this->endWidget(); ?>

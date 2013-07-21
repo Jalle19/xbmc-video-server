@@ -22,6 +22,7 @@ echo $form->textFieldControlGroup($model, 'proxyLocation');
 	<?php echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save changes', array(
 		'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
 	)); ?>
+	<?php echo FormHelper::cancelButton(array('backend/admin')); ?>
 </div>
 <?php
 
