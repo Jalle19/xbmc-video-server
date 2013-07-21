@@ -10,11 +10,10 @@ if (isset($data->art->poster))
 else
 	$thumbnailPath = $data->thumbnail;
 
-$thumbnailUrl = $this->createUrl('thumbnail/get', 
-		array('path'=>$thumbnailPath, 'size'=>Thumbnail::SIZE_MEDIUM, 'type'=>Thumbnail::TYPE_VIDEO));
+$thumbnail = new ThumbnailVideo($thumbnailPath, Thumbnail::SIZE_MEDIUM);
 
 $this->renderPartial('//videoLibrary/_gridItem', array(
 	'label'=>$data->label,
 	'itemUrl'=>$showUrl,
-	'thumbnailUrl'=>$thumbnailUrl,
+	'thumbnailUrl'=>$thumbnail,
 ));

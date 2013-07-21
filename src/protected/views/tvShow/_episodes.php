@@ -31,8 +31,8 @@ $dataProvider = $this->getEpisodeDataProvider($tvshowId, $season);
 			'type'=>'raw',
 			'header'=>'',
 			'value'=>function($data) {
-				$url = $this->createUrl('thumbnail/get', array('path'=>$data->thumbnail, 'size'=>Thumbnail::SIZE_SMALL, 'type'=>Thumbnail::TYPE_VIDEO));
-				return Thumbnail::lazyImage($url, array('class'=>'item-thumbnail episode-thumbnail'));
+				$thumbnail = new ThumbnailVideo($data->thumbnail, Thumbnail::SIZE_SMALL);
+				return Thumbnail::lazyImage($thumbnail, array('class'=>'item-thumbnail episode-thumbnail'));
 			}
 		),
 		array(
