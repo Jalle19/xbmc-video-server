@@ -30,17 +30,6 @@ class Controller extends CController
 	private $_pageTitle;
 
 	/**
-	 * Initializes the controller
-	 */
-	public function init()
-	{
-		// Set application name
-		Yii::app()->name = Setting::getValue('applicationName');
-
-		parent::init();
-	}
-
-	/**
 	 * Getter for _pageTitle
 	 * @return string
 	 */
