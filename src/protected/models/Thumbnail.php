@@ -114,6 +114,17 @@ class Thumbnail
 	 */
 	public static function lazyImage($url, $htmlOptions = array())
 	{
+		// Register the lazy loader
+		$cs = Yii::app()->clientScript;
+
+		$script = YII_DEBUG ? 'jquery.unveil.js' : 'jquery.unveil.min.js';
+		$cs->registerScriptFile(Yii::app()->baseUrl
+				.'/js/jquery-unveil/'.$script, CClientScript::POS_END);
+
+		$cs->registerScript(__CLASS__.'_unveil', '
+			$(".lazy").unveil(50);
+		', CClientScript::POS_READY);
+
 		$htmlOptions = array_merge(
 				TbHtml::addClassName('lazy', $htmlOptions), 
 				array('data-src'=>$url));
