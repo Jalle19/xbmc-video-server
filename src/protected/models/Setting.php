@@ -49,7 +49,14 @@ class Setting extends CActiveRecord
 	);
 	
 	/**
-	 * Returns the value for the specified setting
+	 * @var Setting[] list of all settings and their current values (runtime 
+	 * cache)
+	 */
+	private static $_settings;
+	
+	/**
+	 * Returns the value for the specified setting. All settings are cached for 
+	 * the duration of the request since this method can be called quite a lot.
 	 * @param string $name the name of the setting
 	 * @return mixed the setting value
 	 * @throws CHttpException if the specified setting doesn't exist
@@ -59,8 +66,12 @@ class Setting extends CActiveRecord
 		if (!isset(self::$definitions[$name]))
 			throw new CHttpException(400, "Unknown setting $name");
 
-		$setting = self::model()->findByPk($name);
-		return $setting->value;
+		if (self::$_settings === null)
+			self::$_settings = self::model()->findAll();
+
+		foreach (self::$_settings as $setting)
+			if ($setting->name == $name)
+				return $setting->value;
 	}
 	
 	/**
