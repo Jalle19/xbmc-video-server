@@ -60,6 +60,7 @@ return array(
 		),
 		'db'=>array(
 			'connectionString' => 'sqlite:'.__DIR__.'/../data/xbmc-video-server.db',
+			'schemaCachingDuration'=>3600,
 		),
 		// To use MySQL instead of SQLite, uncomment the 'db' section below and 
 		// comment out the 'db' section above. You will then have to configure 
