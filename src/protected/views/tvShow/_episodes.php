@@ -15,7 +15,7 @@ $dataProvider = $this->getEpisodeDataProvider($tvshowId, $season);
 	)); ?> or choose individual episodes from the list below
 </div>
 
-<?php $this->widget('bootstrap.widgets.TbGridView', array(
+<?php $this->widget('EpisodeList', array(
 	'type'=>TbHtml::GRID_TYPE_STRIPED,
 	'dataProvider'=>$dataProvider,
 	'template'=>'{items}',
