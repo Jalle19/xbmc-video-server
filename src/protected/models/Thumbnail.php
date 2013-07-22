@@ -1,12 +1,11 @@
 <?php
 
 /**
- * Represents a thumbnail. When the constructor is called a resized version of 
- * the thumbnail is created according to the specified size. The resized image 
- * is automatically cached to the harddrive using ImageCache.
- * 
- * When used as a string the object will return the URL to the requested 
- * thumbnail, or a place holder if no thumbnail exists.
+ * Represents a thumbnail. When used as a string the object will return the URL 
+ * to a cached copy of the thumbnail if one exists, otherwise it will return 
+ * the URL to ThumbnailController which generates the cached copy, thus the 
+ * next time the thumbnail is rendered, the cached copy will be returned as the 
+ * URL.
  *
  * @see ImageCache
  * @author Sam Stenvall <neggelandia@gmail.com>
