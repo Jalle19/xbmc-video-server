@@ -9,10 +9,11 @@ RewriteRule . index.php
 
 # cache styles and scripts
 <IfModule mod_expires.c>
-        ExpiresActive On
-        ExpiresByType image/gif "access plus 360 days"
-        ExpiresByType image/jpeg "access plus 360 days"
-        ExpiresByType image/png "access plus 360 days"
-        ExpiresByType text/css "access plus 360 days"
-        ExpiresByType text/javascript "access plus 360 days"
+		ExpiresActive On
+		ExpiresByType image/gif "access plus 360 days"
+		ExpiresByType image/jpeg "access plus 360 days"
+		ExpiresByType image/png "access plus 360 days"
+		ExpiresByType text/css "access plus 360 days"
+		ExpiresByType text/javascript "access plus 360 days"
+		ExpiresByType text/javascript "access plus 360 days"
 </IfModule>
