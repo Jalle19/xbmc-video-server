@@ -19,6 +19,18 @@ class BackendController extends AdminOnlyController
 		
 		$this->defaultAction = 'admin';
 	}
+	
+	/**
+	 * Override parent implementation to allow everyone to change backend
+	 * @return array the access control rules
+	 */
+	public function accessRules()
+	{
+		$rules = array(
+			array('allow', 'actions'=>array('change'))
+		);
+		return array_merge($rules, parent::accessRules());
+	}
 
 	/**
 	 * Override parent implementation so we don't get stuck in a redirect loop
