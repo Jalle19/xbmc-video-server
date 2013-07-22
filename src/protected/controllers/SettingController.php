@@ -75,7 +75,7 @@ class SettingController extends AdminOnlyController
 	 */
 	private function loadModel($name)
 	{
-		return Setting::model()->findByAttributes(array('name'=>$name));
+		return Setting::model()->findByPk($name);
 	}
 
 }

@@ -52,7 +52,7 @@ class Setting extends CActiveRecord
 		if (!isset(self::$definitions[$name]))
 			throw new CHttpException(400, "Unknown setting $name");
 
-		$setting = self::model()->findByAttributes(array('name'=>$name));
+		$setting = self::model()->findByPk($name);
 		return $setting->value;
 	}
 	

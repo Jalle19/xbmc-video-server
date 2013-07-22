@@ -5,7 +5,7 @@ class m130721_140306_add_show_help_setting extends CDbMigration
 
 	public function up()
 	{
-		$setting = Setting::model()->findByAttributes(array('name'=>'showHelpBlocks'));
+		$setting = Setting::model()->findByPk('showHelpBlocks');
 		if ($setting !== null)
 			return;
 
