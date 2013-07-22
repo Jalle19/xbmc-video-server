@@ -21,11 +21,6 @@ class Thumbnail
 	const SIZE_LARGE = 270;
 	
 	/**
-	 * @var string the URL to the place holder image
-	 */
-	protected $_placeholder;
-
-	/**
 	 * @var string the path to the thumbnail
 	 */
 	private $_path;
