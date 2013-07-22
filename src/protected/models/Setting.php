@@ -96,6 +96,15 @@ class Setting extends CActiveRecord
 	{
 		return 'settings';
 	}
-
+	
+	/**
+	 * @return array the validation rules for this model
+	 */
+	public function rules()
+	{
+		return array(
+			array('applicationName', 'required'),
+		);
+	}
 }
 

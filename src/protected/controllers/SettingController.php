@@ -30,11 +30,28 @@ class SettingController extends AdminOnlyController
 
 		if (isset($_POST['Setting']))
 		{
-			foreach ($_POST['Setting'] as $name=> $value)
-				$this->saveSetting($name, $value);
-			
-			Yii::app()->user->setFlash('success', 'Settings updated successfully');
-			$this->refresh();
+			$allValid = true;
+
+			// Validate all settings
+			foreach ($settings as $setting)
+			{
+				$value = $_POST['Setting'][$setting->name];
+				$setting->{$setting->name} = $value;
+				$setting->value = $value;
+
+				if (!$setting->validate(array($setting->name)))
+					$allValid = false;
+			}
+
+			// Only if all are valid we save them and refresh the page
+			if ($allValid)
+			{
+				foreach ($settings as $setting)
+					$setting->save(false);
+
+				Yii::app()->user->setFlash('success', 'Settings updated successfully');
+				$this->refresh();
+			}
 		}
 
 		$this->render('admin', array(
@@ -65,7 +82,7 @@ class SettingController extends AdminOnlyController
 	{
 		$setting = $this->loadModel($name);
 		$setting->value = $value;
-		$setting->save();
+		$setting->save(false);
 	}
 
 	/**
