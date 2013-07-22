@@ -1,22 +1,16 @@
 <?php
 
-class m130721_140306_add_show_help_setting extends CDbMigration
+class m130721_140306_add_show_help_setting extends AddSettingMigration
 {
 
-	public function up()
+	public function getDefaultValue()
 	{
-		$setting = Setting::model()->findByPk('showHelpBlocks');
-		if ($setting !== null)
-			return;
-
-		$this->insert('settings', array(
-			'name'=>'showHelpBlocks',
-			'value'=>'1'));
+		return '1';
 	}
 
-	public function down()
+	public function getName()
 	{
-		$this->delete('settings', 'name = :name', array(':name'=>'showHelpBlocks'));
+		return 'showHelpBlocks';
 	}
 
 }
