@@ -51,7 +51,18 @@ if (count($backends) > 1)
 $rightItems = array_merge($rightItems, array(
 	array('label'=>'Log out', 'url'=>array('site/logout'),
 		'linkOptions'=>array('class'=>'fontastic-icon-close'))
-		));
+));
+
+// Show refresh button if "Cache all API calls" is enabled
+if (Setting::getValue('cacheApiCalls'))
+{
+	$rightItems = array_merge($rightItems, array(
+		array('label'=>TbHtml::icon(TbHtml::ICON_REFRESH, array('class'=>'icon-large')),
+			'url'=>array('site/flushCache'),
+			'linkOptions'=>array('confirm'=>'Are you sure you want to flush the cache?'),
+		)
+	));
+}
 
 // Administrators see the Backend and Users menus
 if (Yii::app()->user->role == User::ROLE_ADMIN)

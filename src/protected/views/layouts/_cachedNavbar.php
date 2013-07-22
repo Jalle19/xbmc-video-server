@@ -10,7 +10,9 @@ if (count(Backend::model()->findAll()) === 1)
 	if ($this->beginCache('MainMenu', array(
 		'dependency'=>$cacheDependency,
 		'duration'=>$cacheDuration,
-		'varyByExpression'=>function() { return Yii::app()->user->role; }
+		'varyByExpression'=>function() { 
+			return Yii::app()->user->role.'_'.intval(Setting::getValue('cacheApiCalls')); 
+		}
 	)))
 	{
 		$this->renderPartial('//layouts/_navbar');

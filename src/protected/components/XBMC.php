@@ -11,6 +11,11 @@ class XBMC extends CApplicationComponent
 {
 	
 	/**
+	 * @var Backend the current backend
+	 */
+	private $_backend;
+	
+	/**
 	 * @var SimpleJsonRpcClient\Client the JSON-RPC client
 	 */
 	private $_client;
@@ -21,12 +26,12 @@ class XBMC extends CApplicationComponent
 	public function init()
 	{
 		// Connect to the current backend
-		$backend = Yii::app()->backendManager->getCurrent();
+		$this->_backend = Yii::app()->backendManager->getCurrent();
 		
-		$endpoint = 'http://'.$backend->hostname.':'.$backend->port.'/jsonrpc';
+		$endpoint = 'http://'.$this->_backend->hostname.':'.$this->_backend->port.'/jsonrpc';
 
 		$this->_client = new SimpleJsonRpcClient\Client($endpoint, 
-				$backend->username, $backend->password);
+				$this->_backend->username, $this->_backend->password);
 
 		parent::init();
 	}
@@ -41,6 +46,35 @@ class XBMC extends CApplicationComponent
 	}
 	
 	/**
+	 * Wrapper for performRequestInternal(). It caches the results indefinitely 
+	 * if the "cacheApiCalls" setting is enabled.
+	 */
+	public function performRequest($method, $params = null, $id = 0)
+	{
+		if (Setting::getValue('cacheApiCalls'))
+		{
+			// Calculate a unique cache ID for this API call to this backend
+			$cacheId = md5(serialize($this->_backend->attributes).
+					serialize($method).
+					serialize($params).
+					serialize($id));
+
+			$result = Yii::app()->cache->get($cacheId);
+
+			// Not found in cache
+			if ($result === false)
+			{
+				$result = $this->performRequestInternal($method, $params, $id);
+				Yii::app()->cache->set($cacheId, $result);
+			}
+
+			return $result;
+		}
+		else
+			return $this->performRequestInternal($method, $params, $id);
+	}
+	
+	/**
 	 * Wrapper for \SimpleJsonRpcClient\Request
 	 * @param string $method
 	 * @param mixed $params
@@ -48,7 +82,7 @@ class XBMC extends CApplicationComponent
 	 * @return \SimpleJsonRpcClient\Response
 	 * @throws CHttpException if the request fails completely
 	 */
-	public function performRequest($method, $params = null, $id = 0)
+	private function performRequestInternal($method, $params = null, $id = 0)
 	{
 		try
 		{

@@ -18,6 +18,7 @@ class Setting extends CActiveRecord
 	public $applicationName;
 	public $singleFilePlaylist;
 	public $showHelpBlocks;
+	public $cacheApiCalls;
 	
 	/**
 	 * @var array setting definitions
@@ -38,6 +39,12 @@ class Setting extends CActiveRecord
 			'label'=>'Show help blocks on administration pages',
 			'type'=>self::TYPE_CHECKBOX,
 			'default'=>'1',
+		),
+		'cacheApiCalls'=>array(
+			'label'=>'Cache all API results',
+			'type'=>self::TYPE_CHECKBOX,
+			'default'=>'0',
+			'description'=>'Useful on slow hardware. A refresh button will appear in the menu which flushes the cache',
 		),
 	);
 	

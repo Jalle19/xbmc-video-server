@@ -64,5 +64,15 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(array('site/login'));
 	}
+	
+	/**
+	 * Flushes the application cache and redirects to the home URL
+	 */
+	public function actionFlushCache()
+	{
+		Yii::app()->cache->flush();
+		Yii::app()->user->setFlash('success', 'The cache has been flushed successfully');
+		$this->redirect(Yii::app()->homeUrl);
+	}
 
 }
