@@ -23,7 +23,7 @@ Yii::app()->name = Setting::getValue('applicationName');
 
 		$cs->registerCssFile($baseUrl.'/css/styles.css?'.filemtime($cssPath));
 		
-		Yii::app()->bootstrap->registerCoreScripts(null, CClientScript::POS_BEGIN); 
+		$this->registerScripts();
 		
 		?>
 	</head>
