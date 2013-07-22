@@ -49,7 +49,8 @@ $dataProvider = $this->getEpisodeDataProvider($tvshowId, $season);
 		array(
 			'header'=>'Runtime',
 			'value'=>function($data) {
-				return (int)($data->runtime / 60).' min';
+				if ((int)$data->runtime > 0)
+					return (int)($data->runtime / 60).' min';
 			}
 		),
 	),
