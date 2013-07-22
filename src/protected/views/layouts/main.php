@@ -44,7 +44,7 @@ Yii::app()->name = Setting::getValue('applicationName');
 				</div>
 			</div>
 			
-			<?php $this->renderPartial('//layouts/_navbar'); ?>
+			<?php $this->renderPartial('//layouts/_cachedNavbar'); ?>
 			
 			<?php $this->widget('bootstrap.widgets.TbAlert'); ?>
 			

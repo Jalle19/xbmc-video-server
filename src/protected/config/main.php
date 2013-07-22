@@ -43,6 +43,9 @@ return array(
 		'bootstrap'=>array(
 			'class'=>'bootstrap.components.TbApi',
 		),
+		'cache'=>array(
+			'class'=>'CFileCache',
+		),
 		'clientScript'=>array(
 			'packages'=>array(
 				'jquery'=>array(
