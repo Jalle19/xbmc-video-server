@@ -11,16 +11,6 @@ class SettingController extends AdminOnlyController
 {
 
 	/**
-	 * Initializes the controller
-	 */
-	public function init()
-	{
-		parent::init();
-
-		$this->defaultAction = 'admin';
-	}
-
-	/**
 	 * Displays a form with all settings and allows the user to save or reset 
 	 * them.
 	 */

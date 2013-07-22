@@ -11,16 +11,6 @@ class BackendController extends AdminOnlyController
 {
 
 	/**
-	 * Initializes the controller
-	 */
-	public function init()
-	{
-		parent::init();
-		
-		$this->defaultAction = 'admin';
-	}
-	
-	/**
 	 * Override parent implementation to allow everyone to change backend
 	 * @return array the access control rules
 	 */

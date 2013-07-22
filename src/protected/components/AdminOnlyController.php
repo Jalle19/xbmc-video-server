@@ -9,6 +9,16 @@
  */
 abstract class AdminOnlyController extends Controller
 {
+	
+	/**
+	 * Initializes the controller
+	 */
+	public function init()
+	{
+		parent::init();
+
+		$this->defaultAction = 'admin';
+	}
 
 	/**
 	 * Returns the filters for this controller. In addition to parent filters 
