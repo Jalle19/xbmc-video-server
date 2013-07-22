@@ -49,5 +49,13 @@ class ResultGrid extends CListView
 	{
 
 	}
+	
+	/**
+	 * Override parent implementation and do nothing since we don't need this
+	 */
+	public function registerClientScript()
+	{
+		
+	}
 
 }
