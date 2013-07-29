@@ -31,6 +31,10 @@ class SettingController extends AdminOnlyController
 
 				if (!$setting->validate(array($setting->name)))
 					$allValid = false;
+				
+				// Flush the API call cache whenever its option is disabled
+				if ($setting->name == 'cacheApiCalls' && !$value)
+					Yii::app()->apiCallCache->flush();
 			}
 
 			// Only if all are valid we save them and refresh the page
