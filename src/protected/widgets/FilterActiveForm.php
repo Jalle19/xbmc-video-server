@@ -20,22 +20,25 @@ class FilterActiveForm extends TbActiveForm
 	 * @param string $attribute the attribute name
 	 * @param string $data JavaScript-encoded array containing the data for the 
 	 * typeahead
+	 * @param array $htmlOptions options to pass to the control group
 	 * @return string the HTML for the input
 	 */
-	public function typeaheadFieldControlGroup($model, $attribute, $data)
+	public function typeaheadFieldControlGroup($model, $attribute, $data, $htmlOptions = array())
 	{
 		$this->registerTypeahead();
 
 		// Generate a unique ID for this element
-		$id = CHtml::ID_PREFIX.CHtml::$count++;
+		$htmlOptions = TbHtml::defaultOption('id', 
+				CHtml::ID_PREFIX.CHtml::$count++, $htmlOptions);
+		$htmlOptions = TbHtml::addClassName('twitter-typeahead-input', 
+				$htmlOptions);
+		$id = $htmlOptions['id'];
 
 		Yii::app()->clientScript->registerScript($id, "
 			$('#{$id}').typeahead({name: '{$id}',local: {$data},limit: 10});
 		", CClientScript::POS_READY);
 
-		return $this->textFieldControlGroup($model, $attribute, array(
-					'id'=>$id,
-					'class'=>'twitter-typeahead-input'));
+		return $this->textFieldControlGroup($model, $attribute, $htmlOptions);
 	}
 
 	/**
