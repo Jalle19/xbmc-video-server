@@ -59,13 +59,13 @@ class XBMC extends CApplicationComponent
 					serialize($params).
 					serialize($id));
 
-			$result = Yii::app()->cache->get($cacheId);
+			$result = Yii::app()->apiCallCache->get($cacheId);
 
 			// Not found in cache
 			if ($result === false)
 			{
 				$result = $this->performRequestInternal($method, $params, $id);
-				Yii::app()->cache->set($cacheId, $result);
+				Yii::app()->apiCallCache->set($cacheId, $result);
 			}
 
 			return $result;

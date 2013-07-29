@@ -43,6 +43,11 @@ return array(
 		'bootstrap'=>array(
 			'class'=>'bootstrap.components.TbApi',
 		),
+		// cache for API calls
+		'apiCallCache'=>array(
+			'class'=>'ApiCallCache',
+		),
+		// general cache
 		'cache'=>array(
 			'class'=>'CFileCache',
 		),

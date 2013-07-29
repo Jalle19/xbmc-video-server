@@ -66,11 +66,11 @@ class SiteController extends Controller
 	}
 	
 	/**
-	 * Flushes the application cache and redirects to the home URL
+	 * Flushes the API call cache and redirects to the home URL
 	 */
 	public function actionFlushCache()
 	{
-		Yii::app()->cache->flush();
+		Yii::app()->apiCallCache->flush();
 		Yii::app()->user->setFlash('success', 'The cache has been flushed successfully');
 		$this->redirect(Yii::app()->homeUrl);
 	}
