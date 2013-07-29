@@ -31,15 +31,14 @@ class ResultGrid extends CListView
 	 */
 	public function renderItems()
 	{
-		$data = $this->dataProvider->getData();
-
 		// Get rid of that pesky dot at the end
-		$emptyText = substr(Yii::t('zii', 'No results found.'), 0, strlen(Yii::t('zii', 'No results found.')) - 1);
+		if ($this->emptyText === null)
+			$this->emptyText = substr(Yii::t('zii', 'No results found.'), 0, strlen(Yii::t('zii', 'No results found.')) - 1);
 
-		if (count($data) > 0)
+		if ($this->dataProvider->totalItemCount > 0)
 			parent::renderItems();
 		else
-			echo CHtml::tag('div', array('class'=>'alert alert-block alert-error'), $emptyText);
+			echo CHtml::tag('div', array('class'=>'alert alert-block alert-error'), $this->emptyText);
 	}
 
 	/**
