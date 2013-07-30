@@ -79,12 +79,18 @@ class Controller extends CController
 	 */
 	public function registerScripts()
 	{
-		// Register core scripts
-		Yii::app()->bootstrap->registerCoreScripts(null, CClientScript::POS_BEGIN);
+		$cs = Yii::app()->clientScript;
+		
+		// Register Bootstrap scripts
+		$bootstrapBaseUrl = Yii::app()->baseUrl.'/js/bootstrap';
+
+		foreach (array('dropdown', 'alert', 'collapse') as $script)
+		{
+			$cs->registerScriptFile($bootstrapBaseUrl.'/bootstrap.'.$script.
+					'.min.js', CClientScript::POS_END);
+		}
 
 		// Register the lazy loader
-		$cs = Yii::app()->clientScript;
-
 		$script = YII_DEBUG ? 'jquery.unveil.js' : 'jquery.unveil.min.js';
 		$cs->registerScriptFile(Yii::app()->baseUrl
 				.'/js/jquery-unveil/'.$script, CClientScript::POS_END);
