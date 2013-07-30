@@ -52,6 +52,7 @@ return array(
 			'class'=>'CFileCache',
 		),
 		'clientScript'=>array(
+			'coreScriptPosition'=>CClientScript::POS_END,
 			'packages'=>array(
 				'jquery'=>array(
 					'baseUrl'=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/',
