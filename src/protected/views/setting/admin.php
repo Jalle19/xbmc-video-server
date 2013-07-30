@@ -23,10 +23,13 @@ foreach ($settings as $setting)
 {
 	$name = $setting->name;
 	
-	if(isset(Setting::$definitions[$name]['description']))
-		$htmlOptions = array('help'=>Setting::$definitions[$name]['description']);
+	if (isset(Setting::$definitions[$name]['htmlOptions']))
+		$htmlOptions = Setting::$definitions[$name]['htmlOptions'];
 	else
 		$htmlOptions = array();
+
+	if (isset(Setting::$definitions[$name]['description']))
+		$htmlOptions['help'] = Setting::$definitions[$name]['description'];
 	
 	switch (Setting::$definitions[$name]['type'])
 	{
