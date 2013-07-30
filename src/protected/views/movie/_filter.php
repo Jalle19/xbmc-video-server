@@ -11,24 +11,22 @@ $form = $this->beginWidget('FilterActiveForm', array(
 <div class="movie-filter-form well">
 	<?php
 
-	// Cache this fragment if the "cache API calls" setting is enabled
+	// Cache the encoded JavaScript if the "cache API calls" setting is enabled
 	if (Setting::getValue('cacheApiCalls'))
 	{
-		if ($this->beginCache('MovieFilterTypeahead', array(
-			'duration'=>31536000,
-		)))
+		$cacheId = 'MovieFilterTypeahead';
+		$typeaheadData = Yii::app()->apiCallCache->get($cacheId);
+
+		if ($typeaheadData === false)
 		{
-			echo $form->typeaheadFieldControlGroup($model, 'name', 
-					CJavaScript::encode($this->getMovieNames()), array(
-						'id'=>'movie-filter-form-typeahead'
-					));
-			
-			$this->endCache();
+			$typeaheadData = CJavaScript::encode($this->getMovieNames());
+			Yii::app()->apiCallCache->set($cacheId, $typeaheadData);
 		}
 	}
 	else
-		echo $form->typeaheadFieldControlGroup($model, 'name', CJavaScript::encode($this->getMovieNames()));
+		$typeaheadData = CJavaScript::encode($this->getMovieNames());
 	
+	echo $form->typeaheadFieldControlGroup($model, 'name', $typeaheadData);
 	echo $form->dropDownListControlGroup($model, 'genre', $model->getGenres(), array('prompt'=>''));
 	echo $form->textFieldControlGroup($model, 'year', array('span'=>1));
 	echo $form->dropDownListControlGroup($model, 'quality', $model->getQualities(), 
