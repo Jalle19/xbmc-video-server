@@ -16,9 +16,9 @@ Features
 Screenshots
 -----------
 
-[![screenshot1](http://t.imgbox.com/acevYfF2.jpg)](http://i.imgbox.com/acevYfF2.jpg) [![screenshot2](http://t.imgbox.com/acmKKkJ1.jpg)](http://i.imgbox.com/acmKKkJ1.jpg)
-[![screenshot3](http://t.imgbox.com/abwHUlbv.jpg)](http://i.imgbox.com/abwHUlbv.jpg) [![screenshot4](http://t.imgbox.com/adb00qtO.jpg)](http://i.imgbox.com/adb00qtO.jpg)
-[![screenshot5](http://t.imgbox.com/adjO39Yq.jpg)](http://i.imgbox.com/adjO39Yq.jpg)
+[![screenshot1](http://t.imgbox.com/acmBvtxu.jpg)](http://i.imgbox.com/acmBvtxu.jpg) [![screenshot2](http://t.imgbox.com/adnpVKJX.jpg)](http://i.imgbox.com/adnpVKJX.jpg)
+[![screenshot3](http://t.imgbox.com/aduVLZeC.jpg)](http://i.imgbox.com/aduVLZeC.jpg) [![screenshot4](http://t.imgbox.com/abwHUlbv.jpg)](http://i.imgbox.com/abwHUlbv.jpg) 
+[![screenshot5](http://t.imgbox.com/acqDAYlX.jpg)](http://i.imgbox.com/acqDAYlX.jpg)
 
 Requirements
 ------------
