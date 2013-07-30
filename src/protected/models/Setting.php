@@ -19,6 +19,7 @@ class Setting extends CActiveRecord
 	public $singleFilePlaylist;
 	public $showHelpBlocks;
 	public $cacheApiCalls;
+	public $pagesize;
 	
 	/**
 	 * @var array setting definitions
@@ -45,6 +46,15 @@ class Setting extends CActiveRecord
 			'type'=>self::TYPE_CHECKBOX,
 			'default'=>'0',
 			'description'=>'Useful on slow hardware. A refresh button will appear in the menu which flushes the cache',
+		),
+		'pagesize'=>array(
+			'label'=>'Amount of results to show per page',
+			'type'=>self::TYPE_TEXT,
+			'default'=>'60',
+			'description'=>'Leave empty to disable pagination altogether',
+			'htmlOptions'=>array(
+				'span'=>1,
+			),
 		),
 	);
 	
@@ -122,6 +132,7 @@ class Setting extends CActiveRecord
 	{
 		return array(
 			array('applicationName', 'required'),
+			array('pagesize', 'numerical', 'integerOnly'=>true, 'min'=>1),
 		);
 	}
 }
