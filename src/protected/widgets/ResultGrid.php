@@ -14,13 +14,20 @@ class ResultGrid extends CListView
 {
 	
 	/**
-	 * Initializes the component. We use it to override the summary text.
+	 * Initializes the component
 	 */
 	public function init()
 	{
+		// Configure the pager
+		$this->pager = array(
+			'class'=>'bootstrap.widgets.TbPager',
+			'maxButtonCount'=>10,
+			'htmlOptions'=>array(
+				'align'=>TbHtml::PAGINATION_ALIGN_RIGHT,
+			),
+		);
+
 		parent::init();
-		
-		$this->summaryText = '{count} results';
 	}
 
 	/**
