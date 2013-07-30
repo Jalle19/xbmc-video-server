@@ -15,7 +15,7 @@ RewriteRule . index.php
 		ExpiresByType image/png "access plus 360 days"
 		ExpiresByType text/css "access plus 360 days"
 		ExpiresByType text/javascript "access plus 360 days"
-		ExpiresByType text/javascript "access plus 360 days"
+		ExpiresByType application/javascript "access plus 360 days"
 		ExpiresByType application/x-font-woff "access plus 360 days"
 		# Naturally Internet Explorer uses some vendor-specific MIME types
 		ExpiresByType application/vnd.ms-fontobject "access plus 360 days"
