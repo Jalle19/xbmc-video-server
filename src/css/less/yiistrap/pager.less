@@ -1,0 +1,20 @@
+.pager {
+	text-align: inherit !important;
+
+	.pagination > ul > li {
+		& > a {
+			padding: 0 14px;
+			line-height: 34px;
+			.border-radius(0);
+		}
+
+		// first and last item should have border-radius
+		&:first-child a {
+			.border-radius(3px 0 0 3px);
+		}
+
+		&:last-child a {
+			.border-radius(0 3px 3px 0);
+		}
+	}
+}

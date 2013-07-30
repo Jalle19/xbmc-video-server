@@ -8461,6 +8461,26 @@ a .icon-flip-vertical:before {
 .icon-renren:before {
   content: "\f18b";
 }
+.pager {
+  text-align: inherit !important;
+}
+.pager .pagination > ul > li > a {
+  padding: 0 14px;
+  line-height: 34px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.pager .pagination > ul > li:first-child a {
+  -webkit-border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+}
+.pager .pagination > ul > li:last-child a {
+  -webkit-border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
+}
 h1 > a,
 h2 > a,
 h3 > a,
@@ -8516,6 +8536,9 @@ span.required {
 }
 .item-grid .thumbnail .caption {
   min-height: 60px;
+}
+.pager {
+  border-top: 1px solid #dddddd;
 }
 .item-details .item-thumbnail {
   display: block;
