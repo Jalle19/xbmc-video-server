@@ -108,9 +108,8 @@ class Thumbnail
 	 */
 	public static function lazyImage($url, $htmlOptions = array())
 	{
-		$htmlOptions = array_merge(
-				TbHtml::addClassName('lazy', $htmlOptions), 
-				array('data-src'=>$url));
+		TbArray::defaultValue('data-src', $url, $htmlOptions);
+		TbHtml::addCssClass('lazy', $htmlOptions);
 
 		return CHtml::image(Yii::app()->baseUrl.'/images/loader.gif', '', 
 				$htmlOptions);

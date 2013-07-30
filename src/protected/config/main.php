@@ -23,7 +23,7 @@ return array(
 		'application.components.*',
 		'application.controllers.*',
 		'application.widgets.*',
-		'bootstrap.helpers.TbHtml',
+		'bootstrap.helpers.*',
 	),
 
 	'modules'=>array(

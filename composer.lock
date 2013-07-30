@@ -11,15 +11,26 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yiistrap.git",
-                "reference": "e5056488ccbd07f57907a3938c2b98aca77ad807"
+                "reference": "5b3c5b2c0c30f94f66db39034e90a679a216c100"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/e5056488ccbd07f57907a3938c2b98aca77ad807",
-                "reference": "e5056488ccbd07f57907a3938c2b98aca77ad807",
+                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/5b3c5b2c0c30f94f66db39034e90a679a216c100",
+                "reference": "5b3c5b2c0c30f94f66db39034e90a679a216c100",
                 "shasum": ""
             },
+            "require-dev": {
+                "codeception/codeception": "@stable",
+                "crisu83/yii-composer": "dev-master",
+                "php": ">=5.3.0",
+                "yiisoft/yii": "1.1.13"
+            },
             "type": "yii-extension",
+            "extra": {
+                "yii-install-writable": [
+                    "tests/_log"
+                ]
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
@@ -41,7 +52,7 @@
                 "bootstrap",
                 "yii"
             ],
-            "time": "2013-07-18 10:18:26"
+            "time": "2013-07-30 00:13:16"
         },
         {
             "name": "eventviva/php-image-resize",
@@ -204,7 +215,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii/zipball/271e06f65115a80b151eeedb42d394ce6e1656d6",
+                "url": "https://api.github.com/repos/yiisoft/yii/zipball/7f3003e3ba9fa0c9154dd1b32f358667d3085314",
                 "reference": "e9e4a0d5be901d8bd48e516a2d9afe33d6fd05a6",
                 "shasum": ""
             },
@@ -280,17 +291,17 @@
         },
         {
             "name": "zendframework/zend-escaper",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "target-dir": "Zend/Escaper",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendEscaper.git",
-                "reference": "release-2.2.1"
+                "reference": "release-2.2.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendEscaper/zipball/release-2.2.1",
-                "reference": "release-2.2.1",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendEscaper/zipball/release-2.2.2",
+                "reference": "release-2.2.2",
                 "shasum": ""
             },
             "require": {
@@ -320,17 +331,17 @@
         },
         {
             "name": "zendframework/zend-http",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "target-dir": "Zend/Http",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendHttp.git",
-                "reference": "release-2.2.1"
+                "reference": "release-2.2.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendHttp/zipball/release-2.2.1",
-                "reference": "release-2.2.1",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendHttp/zipball/release-2.2.2",
+                "reference": "release-2.2.2",
                 "shasum": ""
             },
             "require": {
@@ -361,21 +372,21 @@
                 "http",
                 "zf2"
             ],
-            "time": "2013-06-12 19:48:18"
+            "time": "2013-07-23 20:00:11"
         },
         {
             "name": "zendframework/zend-loader",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "target-dir": "Zend/Loader",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendLoader.git",
-                "reference": "release-2.2.1"
+                "reference": "release-2.2.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendLoader/zipball/release-2.2.1",
-                "reference": "release-2.2.1",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendLoader/zipball/release-2.2.2",
+                "reference": "release-2.2.2",
                 "shasum": ""
             },
             "require": {
@@ -408,17 +419,17 @@
         },
         {
             "name": "zendframework/zend-stdlib",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "target-dir": "Zend/Stdlib",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendStdlib.git",
-                "reference": "release-2.2.1"
+                "reference": "release-2.2.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendStdlib/zipball/release-2.2.1",
-                "reference": "release-2.2.1",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendStdlib/zipball/release-2.2.2",
+                "reference": "release-2.2.2",
                 "shasum": ""
             },
             "require": {
@@ -448,21 +459,21 @@
                 "stdlib",
                 "zf2"
             ],
-            "time": "2013-06-12 19:46:58"
+            "time": "2013-06-20 18:01:22"
         },
         {
             "name": "zendframework/zend-uri",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "target-dir": "Zend/Uri",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendUri.git",
-                "reference": "release-2.2.1"
+                "reference": "release-2.2.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendUri/zipball/release-2.2.1",
-                "reference": "release-2.2.1",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendUri/zipball/release-2.2.2",
+                "reference": "release-2.2.2",
                 "shasum": ""
             },
             "require": {
@@ -495,17 +506,17 @@
         },
         {
             "name": "zendframework/zend-validator",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "target-dir": "Zend/Validator",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendValidator.git",
-                "reference": "release-2.2.1"
+                "reference": "release-2.2.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendValidator/zipball/release-2.2.1",
-                "reference": "release-2.2.1",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendValidator/zipball/release-2.2.2",
+                "reference": "release-2.2.2",
                 "shasum": ""
             },
             "require": {
@@ -521,6 +532,7 @@
                 "zendframework/zend-db": "Zend\\Db component",
                 "zendframework/zend-i18n": "Zend\\I18n component to allow translation of validation error messages as well as to use the various Date validators",
                 "zendframework/zend-math": "Zend\\Math component",
+                "zendframework/zend-resources": "Translations of validator messages",
                 "zendframework/zend-servicemanager": "Zend\\ServiceManager component to allow using the ValidatorPluginManager and validator chains"
             },
             "type": "library",
@@ -544,7 +556,7 @@
                 "validator",
                 "zf2"
             ],
-            "time": "2013-06-12 19:48:36"
+            "time": "2013-06-21 15:00:13"
         }
     ],
     "packages-dev": [

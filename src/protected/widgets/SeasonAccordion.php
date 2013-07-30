@@ -25,7 +25,7 @@ class SeasonAccordion extends CWidget
 	 */
 	public function init()
 	{
-		$this->htmlOptions = TbHtml::addClassName('accordion', $this->htmlOptions);
+		TbHtml::addCssClass('accordion', $this->htmlOptions);
 
 		parent::init();
 	}
@@ -54,7 +54,7 @@ class SeasonAccordion extends CWidget
 
 			$bodyOptions = array('class'=>'accordion-body collapse', 'id'=>$id);
 			if ($itemCount === 1)
-				$bodyOptions = TbHtml::addClassName('in', $bodyOptions);
+				TbHtml::addCssClass('in', $bodyOptions);
 
 			echo CHtml::openTag('div', array('class'=>'accordion-group'));
 			echo CHtml::tag('div', array('class'=>'accordion-heading'), $label);
