@@ -24,8 +24,7 @@ $this->pageTitle = $details->label.' ('.$details->year.') - Movies';
 					individual files for later viewing using the links below it.
 				</p>
 				
-				<?php $this->widget('RetrieveMediaWidget', array(
-					'type'=>RetrieveMediaWidget::MEDIA_TYPE_MOVIE,
+				<?php $this->widget('RetrieveMovieWidget', array(
 					'links'=>$movieLinks,
 					'details'=>$details,
 				)); ?>

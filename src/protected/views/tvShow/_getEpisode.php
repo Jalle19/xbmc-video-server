@@ -4,8 +4,7 @@
 
 <?php 
 
-$this->widget('RetrieveMediaWidget', array(
-	'type'=>RetrieveMediaWidget::MEDIA_TYPE_TVSHOW,
+$this->widget('RetrieveTVShowWidget', array(
 	'links'=>VideoLibrary::getVideoLinks($episode->file),
 	'details'=>$episode,
 ));

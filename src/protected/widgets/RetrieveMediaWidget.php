@@ -1,17 +1,14 @@
 <?php
 
 /**
- * Renders a Watch button and links to the media items.
+ * Base class for rendering a watch button and links to media items
  *
  * @author Sam Stenvall <neggelandia@gmail.com>
  * @copyright Copyright &copy; Sam Stenvall 2013-
  * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
  */
-class RetrieveMediaWidget extends CWidget
+abstract class RetrieveMediaWidget extends CWidget
 {
-
-	const MEDIA_TYPE_MOVIE = 'movie';
-	const MEDIA_TYPE_TVSHOW = 'tvshow';
 
 	/**
 	 * @var string the type of media that the links are for
@@ -27,6 +24,10 @@ class RetrieveMediaWidget extends CWidget
 	 * @var stdClass the media details
 	 */
 	public $details;
+	
+	abstract protected function getPlayListUrl();
+	
+	abstract protected function getWatchButtonOptions();
 
 	/**
 	 * Initializes the widget
@@ -34,7 +35,7 @@ class RetrieveMediaWidget extends CWidget
 	 */
 	public function init()
 	{
-		foreach (array('type', 'links', 'details') as $attribute)
+		foreach (array('links', 'details') as $attribute)
 			if (!isset($this->{$attribute}))
 				throw new Exception($attribute.' must be defined');
 	}
@@ -72,51 +73,15 @@ class RetrieveMediaWidget extends CWidget
 	/**
 	 * Returns the stream URL for the media. If the media has a single link and 
 	 * the "singleFilePlaylist" setting is enabled, the direct link will be 
-	 * returned, otherwise a URL to a playlist will be returned
+	 * returned, otherwise the media playlist URL will be returned
 	 * @return string the stream URL
 	 */
-	private function getStreamUrl()
+	protected function getStreamUrl()
 	{
 		if (count($this->links) === 1 && Setting::getValue('singleFilePlaylist'))
 			return $this->links[0];
 		else
-		{
-			if ($this->type === self::MEDIA_TYPE_MOVIE)
-				return array('getMoviePlaylist', 'movieId'=>$this->details->movieid);
-			elseif ($this->type === self::MEDIA_TYPE_TVSHOW)
-				return array('getEpisodePlaylist', 'episodeId'=>$this->details->episodeid);
-		}
-	}
-
-	/**
-	 * Determines the options for the Watch button
-	 * @return array the options
-	 */
-	private function getWatchButtonOptions()
-	{
-		// General options
-		$options = array(
-			'url'=>$this->getStreamUrl(),
-			'class'=>'fontastic-icon-play',
-		);
-
-		// Options that vary by media type
-		if ($this->type === self::MEDIA_TYPE_MOVIE)
-		{
-			$mediaSpecificOptions = array(
-				'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
-				'size'=>TbHtml::BUTTON_SIZE_LARGE,
-			);
-		}
-		elseif ($this->type === self::MEDIA_TYPE_TVSHOW)
-		{
-			$mediaSpecificOptions = array(
-				'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
-				'size'=>TbHtml::BUTTON_SIZE_SMALL,
-			);
-		}
-
-		return array_merge($options, $mediaSpecificOptions);
+			return $this->getPlayListUrl();
 	}
 
 	/**
