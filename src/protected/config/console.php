@@ -1,6 +1,8 @@
 <?php
 
-// This is just a bare-bone configuration file so we can run "yiic migrate"
+// define aliases
+Yii::setPathOfAlias('composer', realpath(__DIR__.'/../../../vendor'));
+
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	
