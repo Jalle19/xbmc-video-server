@@ -48,11 +48,7 @@ cd xbmc-video-server
 curl -sS https://getcomposer.org/installer | php
 php composer.phar install
 ./src/protected/yiic createinitialdatabase
-chmod 777 src/images/image-cache/
-chmod 777 src/protected/data
-chmod 777 src/protected/data/*.db
-chmod 777 src/protected/runtime/
-chmod 777 src/assets/
+./src/protected/yiic setpermissions
 ```
 
 After running the commands above you'll have to modify Apache's default site configuration to allow `.htaccess` files to be used. On a default Ubuntu installation, this means you'll have to edit `/etc/apache2/sites-available/default` and change this:
