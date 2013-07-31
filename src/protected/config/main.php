@@ -1,5 +1,9 @@
 <?php
 
+// define aliases
+Yii::setPathOfAlias('bootstrap', realpath(__DIR__.'/../../../vendor/crisu83/yiistrap'));
+Yii::setPathOfAlias('composer', realpath(__DIR__.'/../../../vendor'));
+
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'XBMC Video Server',
@@ -12,11 +16,6 @@ return array(
 		//'less'
 	),
 	
-	'aliases'=>array(
-		'bootstrap'=>realpath(__DIR__.'/../../../vendor/crisu83/yiistrap'),
-		'composer'=>realpath(__DIR__.'/../../../vendor'),
-	),
-
 	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
