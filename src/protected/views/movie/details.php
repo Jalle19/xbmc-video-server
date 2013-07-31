@@ -24,24 +24,11 @@ $this->pageTitle = $details->label.' ('.$details->year.') - Movies';
 					individual files for later viewing using the links below it.
 				</p>
 				
-				<?php 
-				
-				if (count($movieLinks) === 1 && Setting::getValue('singleFilePlaylist'))
-					$watchUrl = $movieLinks[0];
-				else
-					$watchUrl = array('getMoviePlaylist', 'movieId'=>$details->movieid);
-				
-				echo TbHtml::linkButton('Watch', array(
-					'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
-					'size'=>TbHtml::BUTTON_SIZE_LARGE,
-					'url'=>$watchUrl,
-					'class'=>'fontastic-icon-play',
-				)); 
-				
-				$this->renderPartial('/videoLibrary/_videoItemLinks', array(
-						'links'=>$movieLinks));
-				
-				?>
+				<?php $this->widget('RetrieveMediaWidget', array(
+					'type'=>RetrieveMediaWidget::MEDIA_TYPE_MOVIE,
+					'links'=>$movieLinks,
+					'details'=>$details,
+				)); ?>
 			</div>
 		</div>
 		
