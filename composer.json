@@ -2,10 +2,6 @@
 	"repositories": [
 		{
 			"type": "vcs",
-			"url": "https://github.com/Jalle19/simple-json-rpc-client"
-		},
-		{
-			"type": "vcs",
 			"url": "https://github.com/Jalle19/yii-less"
 		}
 	],
