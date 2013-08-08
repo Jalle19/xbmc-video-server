@@ -50,9 +50,10 @@ $dataProvider = $this->getEpisodeDataProvider($tvshowId, $season);
 		),
 		array(
 			'header'=>'Runtime',
+			'type'=>'html',
 			'value'=>function($data) {
-				if ((int)$data->runtime > 0)
-					return (int)($data->runtime / 60).' min';
+				Yii::app()->controller->renderPartial('//videoLibrary/_runtime', 
+						array('runtime'=>$data->runtime));
 			}
 		),
 	),

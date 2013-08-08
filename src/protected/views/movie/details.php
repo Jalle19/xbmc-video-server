@@ -74,11 +74,8 @@ $this->pageTitle = $details->label.' ('.$details->year.') - Movies';
 						<?php
 
 						// Runtime and MPAA rating are not always available
-						if ($details->runtime && (int)$details->runtime > 0)
-						{
-							echo CHtml::tag('p', array(), 
-									(int)($details->runtime / 60).' min');
-						}
+						Yii::app()->controller->renderPartial('//videoLibrary/_runtime', 
+								array('runtime'=>$details->runtime));
 						
 						// MPAA rating is not always available
 						if ($details->mpaa)
