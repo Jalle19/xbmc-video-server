@@ -86,7 +86,7 @@ To update your copy of the software to the latest version, run the following com
 ```
 cd /var/www/xbmc-video-server
 git pull
-php composer.phar update
+php composer.phar install
 ./src/protected/yiic migrate --interactive=0
 ```
 
@@ -121,7 +121,7 @@ Open the XAMPP Control Panel and click the Shell button to launch a command prom
 ```
 cd htdocs\xbmc-video-server
 git pull
-composer update
+composer install
 .\src\protected\yiic migrate --interactive=0
 ```
 
