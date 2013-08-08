@@ -24,7 +24,8 @@ $dataProvider = $this->getEpisodeDataProvider($tvshowId, $season);
 			'type'=>'raw',
 			'header'=>'Episode',
 			'value'=>function($data) {
-				$this->renderPartial('_getEpisode', array('episode'=>$data));
+				// $this not available in PHP < 5.4
+				Yii::app()->controller->renderPartial('_getEpisode', array('episode'=>$data));
 			}
 		),
 		array(
@@ -43,7 +44,8 @@ $dataProvider = $this->getEpisodeDataProvider($tvshowId, $season);
 			'type'=>'raw',
 			'header'=>'Plot',
 			'value'=>function($data) {
-				$this->renderPartial('_plotStreamDetails', array('episode'=>$data));
+				// $this not available in PHP < 5.4
+				Yii::app()->controller->renderPartial('_plotStreamDetails', array('episode'=>$data));
 			}
 		),
 		array(
