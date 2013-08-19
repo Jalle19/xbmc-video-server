@@ -20,7 +20,7 @@ class SetPermissionsCommand extends PermissionsCommand
 		$this->permissions = array(
 			'assets'=>array('mode'=>0777),
 			'images/image-cache'=>array('mode'=>0777),
-			'protected/data'=>array('mode'=>0755),
+			'protected/data'=>array('mode'=>0777),
 			'protected/data/xbmc-video-server.db'=>array('mode'=>0666),
 			'protected/runtime'=>array('mode'=>0777),
 		);
