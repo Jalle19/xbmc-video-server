@@ -3,20 +3,54 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "5ff1a89bd01a0e9b971d22143bb3c2a9",
+    "hash": "f1e6fee62ded1968c8f518c87120aa37",
     "packages": [
+        {
+            "name": "crisu83/yii-consoletools",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Crisu83/yii-consoletools.git",
+                "reference": "6d7c251dc5cdac3788016316e99fd31d91ccd8c2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Crisu83/yii-consoletools/zipball/6d7c251dc5cdac3788016316e99fd31d91ccd8c2",
+                "reference": "6d7c251dc5cdac3788016316e99fd31d91ccd8c2",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Christoffer Niska",
+                    "email": "christoffer.niska@gmail.com",
+                    "homepage": "http://www.cniska.net/"
+                }
+            ],
+            "description": "A collection of tools for developing console commands for Yii.",
+            "keywords": [
+                "console",
+                "tools",
+                "yii"
+            ],
+            "time": "2013-08-12 13:28:18"
+        },
         {
             "name": "crisu83/yiistrap",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yiistrap.git",
-                "reference": "5b3c5b2c0c30f94f66db39034e90a679a216c100"
+                "reference": "588688af403b31e1655a4bc99eaa8df3b3f2fc90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/5b3c5b2c0c30f94f66db39034e90a679a216c100",
-                "reference": "5b3c5b2c0c30f94f66db39034e90a679a216c100",
+                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/588688af403b31e1655a4bc99eaa8df3b3f2fc90",
+                "reference": "588688af403b31e1655a4bc99eaa8df3b3f2fc90",
                 "shasum": ""
             },
             "require-dev": {
@@ -25,7 +59,7 @@
                 "php": ">=5.3.0",
                 "yiisoft/yii": "1.1.13"
             },
-            "type": "yii-extension",
+            "type": "library",
             "extra": {
                 "yii-install-writable": [
                     "tests/_log"
@@ -52,7 +86,7 @@
                 "bootstrap",
                 "yii"
             ],
-            "time": "2013-07-30 00:13:16"
+            "time": "2013-08-08 15:16:57"
         },
         {
             "name": "eventviva/php-image-resize",
@@ -148,12 +182,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Jalle19/simple-json-rpc-client.git",
-                "reference": "9f5cbf57eb913d294d09eaab965c6466d5ba61a3"
+                "reference": "a43b905f4df4828e0408ae3e21f830d2d4f1cffa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Jalle19/simple-json-rpc-client/zipball/9f5cbf57eb913d294d09eaab965c6466d5ba61a3",
-                "reference": "9f5cbf57eb913d294d09eaab965c6466d5ba61a3",
+                "url": "https://api.github.com/repos/Jalle19/simple-json-rpc-client/zipball/a43b905f4df4828e0408ae3e21f830d2d4f1cffa",
+                "reference": "a43b905f4df4828e0408ae3e21f830d2d4f1cffa",
                 "shasum": ""
             },
             "require": {
@@ -165,11 +199,16 @@
                     "SimpleJsonRpcClient\\": "src/"
                 }
             },
-            "support": {
-                "source": "https://github.com/Jalle19/simple-json-rpc-client/tree/master",
-                "issues": "https://github.com/Jalle19/simple-json-rpc-client/issues"
-            },
-            "time": "2013-06-25 12:05:57"
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "description": "Simple JSON-RPC 2.0 client which utilizes Zend for HTTP functionality",
+            "homepage": "https://github.com/Jalle19/simple-json-rpc-client",
+            "keywords": [
+                "jsonrpc"
+            ],
+            "time": "2013-08-06 17:18:17"
         },
         {
             "name": "jalle19/yii-less",
@@ -215,7 +254,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii/zipball/7f3003e3ba9fa0c9154dd1b32f358667d3085314",
+                "url": "https://api.github.com/repos/yiisoft/yii/zipball/19983dbf47aa972770658e7c9eb1fd2d70825258",
                 "reference": "e9e4a0d5be901d8bd48e516a2d9afe33d6fd05a6",
                 "shasum": ""
             },
@@ -571,6 +610,7 @@
         "jalle19/simple-json-rpc-client": 20,
         "jalle19/yii-less": 20,
         "crisu83/yiistrap": 20,
+        "crisu83/yii-consoletools": 20,
         "eventviva/php-image-resize": 20,
         "hautelook/phpass": 20
     },
