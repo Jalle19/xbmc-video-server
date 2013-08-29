@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yii-consoletools.git",
-                "reference": "6d7c251dc5cdac3788016316e99fd31d91ccd8c2"
+                "reference": "d71553c59adfcd6eeb10d58af38974898e719052"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yii-consoletools/zipball/6d7c251dc5cdac3788016316e99fd31d91ccd8c2",
-                "reference": "6d7c251dc5cdac3788016316e99fd31d91ccd8c2",
+                "url": "https://api.github.com/repos/Crisu83/yii-consoletools/zipball/d71553c59adfcd6eeb10d58af38974898e719052",
+                "reference": "d71553c59adfcd6eeb10d58af38974898e719052",
                 "shasum": ""
             },
             "type": "library",
@@ -37,7 +37,7 @@
                 "tools",
                 "yii"
             ],
-            "time": "2013-08-12 13:28:18"
+            "time": "2013-08-21 12:49:00"
         },
         {
             "name": "crisu83/yiistrap",
@@ -45,12 +45,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yiistrap.git",
-                "reference": "588688af403b31e1655a4bc99eaa8df3b3f2fc90"
+                "reference": "bb43dae837d0c4021a686535e0a0e685d55faaa7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/588688af403b31e1655a4bc99eaa8df3b3f2fc90",
-                "reference": "588688af403b31e1655a4bc99eaa8df3b3f2fc90",
+                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/bb43dae837d0c4021a686535e0a0e685d55faaa7",
+                "reference": "bb43dae837d0c4021a686535e0a0e685d55faaa7",
                 "shasum": ""
             },
             "require-dev": {
@@ -86,7 +86,7 @@
                 "bootstrap",
                 "yii"
             ],
-            "time": "2013-08-08 15:16:57"
+            "time": "2013-08-23 21:24:41"
         },
         {
             "name": "eventviva/php-image-resize",
@@ -138,12 +138,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hautelook/phpass.git",
-                "reference": "0.3.1"
+                "reference": "94845c6e7eecdc025e8b33dd272d03db06c87f2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hautelook/phpass/zipball/0.3.1",
-                "reference": "0.3.1",
+                "url": "https://api.github.com/repos/hautelook/phpass/zipball/94845c6e7eecdc025e8b33dd272d03db06c87f2a",
+                "reference": "94845c6e7eecdc025e8b33dd272d03db06c87f2a",
                 "shasum": ""
             },
             "require": {
@@ -182,12 +182,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Jalle19/simple-json-rpc-client.git",
-                "reference": "a43b905f4df4828e0408ae3e21f830d2d4f1cffa"
+                "reference": "3a48e7de1f81ca158f98666eb89610ceaa54a745"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Jalle19/simple-json-rpc-client/zipball/a43b905f4df4828e0408ae3e21f830d2d4f1cffa",
-                "reference": "a43b905f4df4828e0408ae3e21f830d2d4f1cffa",
+                "url": "https://api.github.com/repos/Jalle19/simple-json-rpc-client/zipball/3a48e7de1f81ca158f98666eb89610ceaa54a745",
+                "reference": "3a48e7de1f81ca158f98666eb89610ceaa54a745",
                 "shasum": ""
             },
             "require": {
@@ -208,7 +208,7 @@
             "keywords": [
                 "jsonrpc"
             ],
-            "time": "2013-08-06 17:18:17"
+            "time": "2013-08-21 08:51:27"
         },
         {
             "name": "jalle19/yii-less",
@@ -254,7 +254,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii/zipball/19983dbf47aa972770658e7c9eb1fd2d70825258",
+                "url": "https://api.github.com/repos/yiisoft/yii/zipball/1c2aadf8e6e7fc37d34b9e1d629c32ea0be42d00",
                 "reference": "e9e4a0d5be901d8bd48e516a2d9afe33d6fd05a6",
                 "shasum": ""
             },
@@ -330,17 +330,17 @@
         },
         {
             "name": "zendframework/zend-escaper",
-            "version": "2.2.2",
+            "version": "2.2.4",
             "target-dir": "Zend/Escaper",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendEscaper.git",
-                "reference": "release-2.2.2"
+                "reference": "5db67b32359d86326077209f1fefbbf1183911e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendEscaper/zipball/release-2.2.2",
-                "reference": "release-2.2.2",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendEscaper/zipball/5db67b32359d86326077209f1fefbbf1183911e8",
+                "reference": "5db67b32359d86326077209f1fefbbf1183911e8",
                 "shasum": ""
             },
             "require": {
@@ -370,17 +370,17 @@
         },
         {
             "name": "zendframework/zend-http",
-            "version": "2.2.2",
+            "version": "2.2.4",
             "target-dir": "Zend/Http",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendHttp.git",
-                "reference": "release-2.2.2"
+                "reference": "23c58ffd0929dc328c62f1fe12e7a343638c70c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendHttp/zipball/release-2.2.2",
-                "reference": "release-2.2.2",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendHttp/zipball/23c58ffd0929dc328c62f1fe12e7a343638c70c8",
+                "reference": "23c58ffd0929dc328c62f1fe12e7a343638c70c8",
                 "shasum": ""
             },
             "require": {
@@ -411,21 +411,21 @@
                 "http",
                 "zf2"
             ],
-            "time": "2013-07-23 20:00:11"
+            "time": "2013-08-21 17:08:02"
         },
         {
             "name": "zendframework/zend-loader",
-            "version": "2.2.2",
+            "version": "2.2.4",
             "target-dir": "Zend/Loader",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendLoader.git",
-                "reference": "release-2.2.2"
+                "reference": "11a952589d37879d92fee78e70eed731c1073ed3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendLoader/zipball/release-2.2.2",
-                "reference": "release-2.2.2",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendLoader/zipball/11a952589d37879d92fee78e70eed731c1073ed3",
+                "reference": "11a952589d37879d92fee78e70eed731c1073ed3",
                 "shasum": ""
             },
             "require": {
@@ -454,21 +454,21 @@
                 "loader",
                 "zf2"
             ],
-            "time": "2013-05-01 21:53:24"
+            "time": "2013-08-21 17:07:14"
         },
         {
             "name": "zendframework/zend-stdlib",
-            "version": "2.2.2",
+            "version": "2.2.4",
             "target-dir": "Zend/Stdlib",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendStdlib.git",
-                "reference": "release-2.2.2"
+                "reference": "7c87ce4e840957596bf3401fa4ae4fb0355682e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendStdlib/zipball/release-2.2.2",
-                "reference": "release-2.2.2",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendStdlib/zipball/7c87ce4e840957596bf3401fa4ae4fb0355682e2",
+                "reference": "7c87ce4e840957596bf3401fa4ae4fb0355682e2",
                 "shasum": ""
             },
             "require": {
@@ -498,21 +498,21 @@
                 "stdlib",
                 "zf2"
             ],
-            "time": "2013-06-20 18:01:22"
+            "time": "2013-08-21 17:08:07"
         },
         {
             "name": "zendframework/zend-uri",
-            "version": "2.2.2",
+            "version": "2.2.4",
             "target-dir": "Zend/Uri",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendUri.git",
-                "reference": "release-2.2.2"
+                "reference": "e2a4b038a0939d46e53bfa40cfc9f1791533ae84"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendUri/zipball/release-2.2.2",
-                "reference": "release-2.2.2",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendUri/zipball/e2a4b038a0939d46e53bfa40cfc9f1791533ae84",
+                "reference": "e2a4b038a0939d46e53bfa40cfc9f1791533ae84",
                 "shasum": ""
             },
             "require": {
@@ -545,17 +545,17 @@
         },
         {
             "name": "zendframework/zend-validator",
-            "version": "2.2.2",
+            "version": "2.2.4",
             "target-dir": "Zend/Validator",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendValidator.git",
-                "reference": "release-2.2.2"
+                "reference": "3aa2c87ee3d36763b30087b1188f42a6c95f414f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendValidator/zipball/release-2.2.2",
-                "reference": "release-2.2.2",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendValidator/zipball/3aa2c87ee3d36763b30087b1188f42a6c95f414f",
+                "reference": "3aa2c87ee3d36763b30087b1188f42a6c95f414f",
                 "shasum": ""
             },
             "require": {
@@ -563,12 +563,14 @@
                 "zendframework/zend-stdlib": "self.version"
             },
             "require-dev": {
+                "zendframework/zend-filter": "self.version",
                 "zendframework/zend-i18n": "self.version",
                 "zendframework/zend-math": "self.version",
                 "zendframework/zend-servicemanager": "self.version"
             },
             "suggest": {
                 "zendframework/zend-db": "Zend\\Db component",
+                "zendframework/zend-filter": "Zend\\Filter component, required by the Digits validator",
                 "zendframework/zend-i18n": "Zend\\I18n component to allow translation of validation error messages as well as to use the various Date validators",
                 "zendframework/zend-math": "Zend\\Math component",
                 "zendframework/zend-resources": "Translations of validator messages",
@@ -595,7 +597,7 @@
                 "validator",
                 "zf2"
             ],
-            "time": "2013-06-21 15:00:13"
+            "time": "2013-08-21 17:07:51"
         }
     ],
     "packages-dev": [
