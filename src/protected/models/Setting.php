@@ -31,7 +31,7 @@ class Setting extends CActiveRecord
 			'default'=>'XBMC Video Server',
 		),
 		'singleFilePlaylist'=>array(
-			'label'=>'Use playlists even when movie consists of a single file',
+			'label'=>"Don't use playlists when item consists of a single file",
 			'type'=>self::TYPE_CHECKBOX,
 			'default'=>'0',
 			'description'=>'You may have to right-click and copy the address in order to stream (not download) the file',
