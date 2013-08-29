@@ -29,9 +29,9 @@ class MovieController extends Controller
 		
 		$movies = VideoLibrary::getMovies($requestParameters);
 
-		// If there is only one item in the result we redirect directly to the 
-		// details page
-		if (count($movies) == 1)
+		// Go directly to the details page if we have an exact match on the 
+		// movie name
+		if (count($movies) === 1 && $filterForm->name === $movies[0]->label)
 			$this->redirect(array('details', 'id'=>$movies[0]->movieid));
 
 		$this->render('index', array(
