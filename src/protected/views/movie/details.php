@@ -90,7 +90,10 @@ $this->pageTitle = $details->label.' ('.$details->year.') - Movies';
 			<h3>Plot</h3>
 			
 			<div class="item-plot">
-				<p><?php echo $details->plot; ?></p>
+				<p>
+					<?php echo !empty($details->plot) ? $details->plot 
+							: 'Not available'; ?>
+				</p>
 			</div>
 			
 			<h3>Cast</h3>
