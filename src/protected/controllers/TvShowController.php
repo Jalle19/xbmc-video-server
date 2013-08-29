@@ -30,6 +30,11 @@ class TvShowController extends Controller
 		}
 
 		$tvshows = VideoLibrary::getTVShows($requestParameters);
+		
+		// Go directly to the details page if we have an exact match on the 
+		// show name
+		if (count($tvshows) === 1 && $filterForm->name === $tvshows[0]->label)
+			$this->redirect(array('details', 'id'=>$tvshows[0]->tvshowid));
 
 		$this->render('index', array(
 			'dataProvider'=>new LibraryDataProvider($tvshows, 'tvshowid'),
