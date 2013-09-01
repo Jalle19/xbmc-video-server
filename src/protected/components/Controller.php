@@ -74,6 +74,19 @@ class Controller extends CController
 	}
 	
 	/**
+	 * Logs the message using Yii:log(). Before the message is logged it is 
+	 * run through sprintf(), which means this method takes an unlimited 
+	 * amount of parameters, e.g. $this->log('This is %s', 'magic');
+	 * @param string $message the message
+	 */
+	public function log($message)
+	{
+		$message = call_user_func_array('sprintf', func_get_args());
+
+		Yii::log($message, CLogger::LEVEL_INFO, get_class($this));
+	}
+	
+	/**
 	 * Register scripts needed on all pages (this method should be called from 
 	 * the main layout file)
 	 */
