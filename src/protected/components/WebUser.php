@@ -14,6 +14,16 @@ class WebUser extends CWebUser
 	 * @var User the user model
 	 */
 	private $_model;
+	
+	/**
+	 * @return string the username of the current user
+	 */
+	public function getName()
+	{
+		$user = $this->loadUser();
+
+		return $user !== null ? $user->username : 'guest';
+	}
 
 	/**
 	 * Returns the user's role
