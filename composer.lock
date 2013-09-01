@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "f1e6fee62ded1968c8f518c87120aa37",
+    "hash": "45a84d442e9064a525a4e4ccb5342e69",
     "packages": [
         {
             "name": "crisu83/yii-consoletools",
@@ -246,16 +246,16 @@
         },
         {
             "name": "yiisoft/yii",
-            "version": "dev-master",
+            "version": "1.1.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii.git",
-                "reference": "e9e4a0d5be901d8bd48e516a2d9afe33d6fd05a6"
+                "reference": "f0fee98ee84f70f1f3652f65562c9670e919cb4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii/zipball/1c2aadf8e6e7fc37d34b9e1d629c32ea0be42d00",
-                "reference": "e9e4a0d5be901d8bd48e516a2d9afe33d6fd05a6",
+                "url": "https://api.github.com/repos/yiisoft/yii/zipball/f0fee98ee84f70f1f3652f65562c9670e919cb4e",
+                "reference": "f0fee98ee84f70f1f3652f65562c9670e919cb4e",
                 "shasum": ""
             },
             "require": {
@@ -326,7 +326,7 @@
                 "framework",
                 "yii"
             ],
-            "time": "2012-12-30 18:45:45"
+            "time": "2013-08-12 00:12:08"
         },
         {
             "name": "zendframework/zend-escaper",
@@ -608,7 +608,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "yiisoft/yii": 20,
         "jalle19/simple-json-rpc-client": 20,
         "jalle19/yii-less": 20,
         "crisu83/yiistrap": 20,
