@@ -13,7 +13,7 @@ return array(
 	// files on the fly (requires node.js and lessc)
 	'preload'=>array(
 		'log', 
-		//'less'
+		'less'
 	),
 	
 	// autoloading model and component classes
@@ -115,8 +115,13 @@ return array(
 			'class'=>'CLogRouter',
 			'routes'=>array(
 				array(
-					'class'=>'CFileLogRoute',
+					'class'=>'CDbLogRoute',
+					'logTableName'=>'log',
+					'connectionID'=>'db',
 				),
+				array(
+					'class'=>'CFileLogRoute',
+				)
 			),
 		),
 	),
