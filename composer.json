@@ -1,14 +1,8 @@
 {
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "https://github.com/Jalle19/yii-less"
-		}
-	],
-    "require": {
+	"require": {
         "yiisoft/yii": "1.1.14",
 		"jalle19/simple-json-rpc-client": "dev-master",
-		"jalle19/yii-less": "dev-master",
+		"crisu83/yii-less": "dev-master",
 		"crisu83/yiistrap": "dev-master",
 		"crisu83/yii-consoletools": "dev-master",
 		"eventviva/php-image-resize": "dev-master",

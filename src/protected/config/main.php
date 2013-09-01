@@ -82,7 +82,7 @@ return array(
 			'class'=>'XBMC',
 		),
 		'less'=>array(
-			'class'=>'composer.jalle19.yii-less.components.LessServerCompiler',
+			'class'=>'composer.crisu83.yii-less.components.LessServerCompiler',
 			'files'=>array(
 				'css/less/styles.less'=>'css/styles.css',
 				'css/less/login.less'=>'css/login.css',
