@@ -117,6 +117,8 @@ class TvShowController extends Controller
 					'url'=>$link));
 			}
 		}
+		
+		$this->log('"%s" streamed season %d of "%s"', Yii::app()->user->name, $season, $tvshowDetails->label);
 
 		header('Content-Type: audio/x-mpegurl');
 		header('Content-Disposition: attachment; filename="'.$playlistName.'.m3u"');
@@ -141,11 +143,12 @@ class TvShowController extends Controller
 		if ($episode === null)
 			throw new CHttpException(404, 'Not found');
 
+		$episodeString = VideoLibrary::getEpisodeString($episode->season, 
+				$episode->episode);
+		
 		// Construct the playlist
 		$playlist = new M3UPlaylist();
-		$name = $episode->showtitle.' - '.VideoLibrary::getEpisodeString(
-						$episode->season, $episode->episode);
-
+		$name = $episode->showtitle.' - '.$episodeString;
 		$links = VideoLibrary::getVideoLinks($episode->file);
 		$linkCount = count($links);
 
@@ -159,6 +162,8 @@ class TvShowController extends Controller
 				'label'=>$label,
 				'url'=>$link));
 		}
+		
+		$this->log('"%s" streamed %s of "%s"', Yii::app()->user->name, $episodeString, $episode->showtitle);
 
 		header('Content-Type: audio/x-mpegurl');
 		header('Content-Disposition: attachment; filename="'.$name.'.m3u"');

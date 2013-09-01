@@ -125,6 +125,8 @@ class MovieController extends Controller
 				'label'=>$label,
 				'url'=>$link));
 		}
+		
+		$this->log('"%s" streamed "%s"', Yii::app()->user->name, $movieDetails->title);
 
 		header('Content-Type: audio/x-mpegurl');
 		header('Content-Disposition: attachment; filename="'.$name.'.m3u"');

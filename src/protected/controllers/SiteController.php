@@ -56,7 +56,10 @@ class SiteController extends Controller
 			$model->attributes = $_POST['LoginForm'];
 
 			if ($model->validate() && $model->login())
+			{
+				$this->log('"%s" logged in', $model->username);
 				$this->redirect(Yii::app()->user->returnUrl);
+			}
 		}
 
 		$this->render('login', array('model'=>$model));
@@ -68,6 +71,7 @@ class SiteController extends Controller
 	 */
 	public function actionLogout()
 	{
+		$this->log('"%s" logged out', Yii::app()->user->name);
 		Yii::app()->user->logout();
 		$this->redirect(array('site/login'));
 	}
