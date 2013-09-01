@@ -20,6 +20,7 @@ class Setting extends CActiveRecord
 	public $showHelpBlocks;
 	public $cacheApiCalls;
 	public $pagesize;
+	public $disableFrodoWarning;
 	
 	/**
 	 * @var array setting definitions
@@ -55,6 +56,11 @@ class Setting extends CActiveRecord
 			'htmlOptions'=>array(
 				'span'=>1,
 			),
+		),
+		'disableFrodoWarning'=>array(
+			'label'=>"Don't warn about XBMC version incompatibility",
+			'type'=>self::TYPE_CHECKBOX,
+			'default'=>'0',
 		),
 	);
 	

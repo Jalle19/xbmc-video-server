@@ -70,7 +70,7 @@ class TvShowController extends Controller
 		));
 		
 		// Check backend version and warn about incompatibilities
-		if (!Yii::app()->xbmc->meetsMinimumRequirements())
+		if (!Yii::app()->xbmc->meetsMinimumRequirements() && !Setting::getValue('disableFrodoWarning'))
 			Yii::app()->user->setFlash('info', 'Streaming of video files is not possible from XBMC 12 "Frodo" and earlier backends');
 		
 		$this->render('details', array(

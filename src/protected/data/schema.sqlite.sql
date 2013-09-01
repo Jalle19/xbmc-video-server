@@ -14,3 +14,4 @@ INSERT INTO "settings" ('name','value') VALUES ('singleFilePlaylist','0');
 INSERT INTO "settings" ('name','value') VALUES ('showHelpBlocks','1');
 INSERT INTO "settings" ('name','value') VALUES ('cacheApiCalls','0');
 INSERT INTO "settings" ('name','value') VALUES ('pagesize','60');
+INSERT INTO "settings" ('name','value') VALUES ('disableFrodoWarning','0');
