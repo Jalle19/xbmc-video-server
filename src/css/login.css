@@ -6915,7 +6915,8 @@ body .login-centerer td .login-container {
   margin: 0 auto;
   padding: 20px 0;
 }
-body .login-centerer td .login-container form {
+body .login-centerer td .login-container form,
+body .login-centerer td .login-container .error-container {
   margin: 0;
   padding: 20px 20px 20px 20px;
   background: #FFF;
@@ -6924,7 +6925,8 @@ body .login-centerer td .login-container form {
   border-radius: 6px;
   border: 1px solid #b4bcc2;
 }
-body .login-centerer td .login-container form .form-actions {
+body .login-centerer td .login-container form .form-actions,
+body .login-centerer td .login-container .error-container .form-actions {
   margin-bottom: 0;
 }
 span.required {

@@ -6,8 +6,10 @@ $this->pageTitle = Yii::app()->name.' - Error';
 
 ?>
 
-<h3>Error <?php echo $code; ?></h3>
+<div class="error-container">
+	<h3>Error <?php echo $code; ?></h3>
 
-<div class="alert alert-block alert-error">
-	<?php echo CHtml::encode($message); ?>
+	<div class="alert alert-block alert-error">
+		<?php echo CHtml::encode($message); ?>
+	</div>
 </div>

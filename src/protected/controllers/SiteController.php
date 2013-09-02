@@ -30,7 +30,14 @@ class SiteController extends Controller
 			if (Yii::app()->request->isAjaxRequest)
 				echo $error['message'];
 			else
+			{
+				// Change layout if the user is not logged in, otherwise he 
+				// will "see" the real application
+				if (Yii::app()->user->isGuest)
+					$this->layout = 'login';
+
 				$this->render('error', $error);
+			}
 		}
 	}
 
