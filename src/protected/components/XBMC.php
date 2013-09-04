@@ -30,8 +30,9 @@ class XBMC extends CApplicationComponent
 		
 		$endpoint = 'http://'.$this->_backend->hostname.':'.$this->_backend->port.'/jsonrpc';
 
+		$flags = SimpleJsonRpcClient\Client::FLAG_ATTEMPT_UTF8_RECOVERY;
 		$this->_client = new SimpleJsonRpcClient\Client($endpoint, 
-				$this->_backend->username, $this->_backend->password);
+				$this->_backend->username, $this->_backend->password, $flags);
 
 		parent::init();
 	}
