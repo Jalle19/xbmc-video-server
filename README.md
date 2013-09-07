@@ -121,6 +121,39 @@ composer install
 .\src\protected\yiic migrate --interactive=0
 ```
 
+### Mac OS X
+
+1. Download the XAMPP installer for Mac OS X from http://sourceforge.net/projects/xampp/ and run it. Follow the instructions until the setup is complete. Once completed it will automatically run Apache and open the web server test page.
+
+2. Open `/Applications/XAMPP/etc/php.ini` and remove the leading semi-colon from the line reading `;extension=php_openssl.dll`, then save the file.
+
+3. Run `/Applications/XAMPP/manager-osx.app`, go to the Manage Servers tab, select Apache and click Restart.
+
+4. Download and install Git from http://git-scm.com/downloads/. You may have to Ctrl-right-click (hold the Ctrl key while right-clicking) the file and select Open in order to be able to install it.
+
+5. Open a terminal and run the following commands one by one:
+
+```
+cd /Applications/XAMPP/htdocs
+git clone git://github.com/Jalle19/xbmc-video-server.git
+cd xbmc-video-server
+curl -sS https://getcomposer.org/installer | php -d detect_unicode=Off
+php -d detect_unicode=Off composer.phar install
+./src/protected/yiic createinitialdatabase
+./src/protected/yiic setpermissions
+```
+
+#### Updating on Mac OS X
+
+Open a terminal and run the following commands:
+
+```
+cd /Applications/XAMPP/htdocs/xbmc-video-server
+git pull
+php -d detect_unicode=Off composer.phar install
+./src/protected/yiic migrate --interactive=0
+```
+
 Initial setup
 -------------
 
