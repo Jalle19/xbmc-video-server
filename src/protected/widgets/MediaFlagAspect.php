@@ -14,16 +14,25 @@ class MediaFlagAspect extends MediaFlag
 	{
 		$aspect = $this->video->width / $this->video->height;
 
-		if ($aspect > 2.3)
-			return '50px-2.35';
-		elseif ($aspect > 2)
-			return '50px-2.20';
-		elseif ($aspect > 1.5)
-			return '50px-1.66';
-		elseif ($aspect > 1)
+		// Borrowed from https://github.com/xbmc/xbmc/blob/master/xbmc/utils/StreamDetails.cpp
+		if ($aspect < 1.3499)
 			return '50px-1.33';
-		else
-			return false;
+		else if ($aspect < 1.5080)
+			return '50px-1.37';
+		else if ($aspect < 1.8147)
+			return '50px-1.66';
+		else if ($aspect < 2.0174)
+			return '50px-1.85';
+		else if ($aspect < 2.2738)
+			return '50px-2.20';
+		else if ($aspect < 2.3749)
+			return '50px-2.35';
+		else if ($aspect < 2.4739)
+			return '50px-2.40';
+		else if ($aspect < 2.6529)
+			return '50px-2.55';
+
+		return '50px-2.76';
 	}
 
 }
