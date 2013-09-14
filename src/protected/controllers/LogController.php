@@ -28,5 +28,44 @@ class LogController extends AdminOnlyController
 			'model'=>$model,
 		));
 	}
+	
+	/**
+	 * Flushes the system log and redirects to the admin page
+	 */
+	public function actionFlush()
+	{
+		Yii::app()->db->createCommand()->truncateTable('log');
+		Yii::app()->user->setFlash('success', 'System log flushed successfully');
+		$this->redirect(array('admin'));
+	}
+
+	/**
+	 * Displays the specified log item in its fullness
+	 * @param int $id the item primary key
+	 */
+	public function actionView($id)
+	{
+		$model = $this->loadModel($id);
+
+		$this->render('view', array(
+			'model'=>$model
+		));
+	}
+
+	/**
+	 * Loads the specified model and returns it
+	 * @param int $id the primary key of the model
+	 * @return Log the model
+	 * @throws CHttpException if the model does not exist
+	 */
+	private function loadModel($id)
+	{
+		$model = Log::model()->findByPk($id);
+
+		if ($model === null)
+			throw new CHttpException(404, 'Not found');
+
+		return $model;
+	}
 
 }

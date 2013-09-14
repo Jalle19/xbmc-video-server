@@ -8609,6 +8609,9 @@ span.required {
 .button-column a {
   color: #2c3e50;
 }
+.detail-view {
+  margin-top: 20px;
+}
 .movie-filter-form .control-group,
 .movie-filter-form .buttons {
   display: inline-block;
