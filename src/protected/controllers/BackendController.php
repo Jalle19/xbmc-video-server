@@ -39,6 +39,8 @@ class BackendController extends AdminOnlyController
 		$model = $this->loadModel($id);
 
 		Yii::app()->session->add('currentBackendId', $model->id);
+		$this->log('"%s" switched backend to "%s"', Yii::app()->user->name, 
+						$model->name);
 		Yii::app()->user->setFlash('success', 'Changed backend to '.$model->name);
 		
 		$this->redirect(Yii::app()->homeUrl);
@@ -69,6 +71,9 @@ class BackendController extends AdminOnlyController
 
 			if ($model->save())
 			{
+				$this->log('"%s" created backend "%s"', Yii::app()->user->name, 
+						$model->name);
+				
 				Yii::app()->user->setFlash('success', 'Backend created successfully');
 				
 				$this->redirect(array('admin'));
@@ -102,6 +107,9 @@ class BackendController extends AdminOnlyController
 
 			if ($model->save())
 			{
+				$this->log('"%s" updated backend "%s"', Yii::app()->user->name, 
+						$model->name);
+				
 				Yii::app()->user->setFlash('success', 'Backend updated successfully');
 
 				$this->redirect(array('admin'));
@@ -119,8 +127,12 @@ class BackendController extends AdminOnlyController
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+		$model = $this->loadModel($id);
+		$model->delete();
 
+		$this->log('"%s" deleted backend "%s"', Yii::app()->user->name, 
+						$model->name);
+		
 		if (!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}

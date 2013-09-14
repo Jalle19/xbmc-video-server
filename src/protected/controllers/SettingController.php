@@ -43,6 +43,7 @@ class SettingController extends AdminOnlyController
 				foreach ($settings as $setting)
 					$setting->save(false);
 
+				$this->log('"%s" updated the application settings', Yii::app()->user->name);
 				Yii::app()->user->setFlash('success', 'Settings updated successfully');
 				$this->refresh();
 			}

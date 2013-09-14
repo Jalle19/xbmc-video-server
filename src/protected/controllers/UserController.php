@@ -23,6 +23,8 @@ class UserController extends AdminOnlyController
 
 			if ($model->save())
 			{
+				$this->log('"%s" created user "%s"', Yii::app()->user->name, 
+						$model->username);
 				Yii::app()->user->setFlash('success', 'Created user <em>'.$model->username.'</em>');
 
 				$this->redirect(array('admin'));
@@ -51,6 +53,8 @@ class UserController extends AdminOnlyController
 
 			if ($model->save())
 			{
+				$this->log('"%s" updated user "%s"', Yii::app()->user->name, 
+						$model->username);
 				Yii::app()->user->setFlash('success', 'Updated user <em>'.$model->username.'</em>');
 
 				$this->redirect(array('admin'));
@@ -68,7 +72,11 @@ class UserController extends AdminOnlyController
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
+		$model = $this->loadModel($id);
+		$model->delete();
+		
+		$this->log('"%s" deleted user "%s"', Yii::app()->user->name, 
+						$model->username);
 
 		if (!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
