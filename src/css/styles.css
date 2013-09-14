@@ -8608,6 +8608,7 @@ span.required {
 }
 .button-column a {
   color: #2c3e50;
+  text-decoration: none;
 }
 .detail-view {
   margin-top: 20px;
