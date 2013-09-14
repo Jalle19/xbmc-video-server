@@ -9,7 +9,7 @@ Features
 * Browse and filter movies and TV shows
 * Browse seasons and episodes for a TV show
 * Stream media using an M3U playlist with one click
-* User management (application requires login)
+* User management (application requires login), including logging to see who's doing what
 * Supports multiple XBMC instances and allows easy switching between them
 * No configuration files
 
