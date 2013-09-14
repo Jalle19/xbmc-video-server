@@ -13,6 +13,10 @@ $this->pageTitle = 'Manage users';
 	has a role. Administrators can do anything while a normal user can only 
 	switch backends (if more than one has been configured).'); ?>
 
+<?php echo TbHtml::linkButton('Create new user', array(
+	'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
+	'url'=>array('create'))); ?>
+
 <hr />
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(

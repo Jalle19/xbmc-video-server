@@ -14,6 +14,10 @@ $this->pageTitle = 'Manage backends';
 	library contents from. If you specify more than one backend, a new item 
 	will appear in the main menu, allowing you to easily switch backends.'); ?>
 
+<?php echo TbHtml::linkButton('Create new backend', array(
+	'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
+	'url'=>array('create'))); ?>
+
 <hr />
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
