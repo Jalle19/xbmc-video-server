@@ -73,6 +73,9 @@ class Log extends CActiveRecord
 			'criteria'=>$criteria,
 			'pagination'=>array(
 				'pageSize'=>20,
+			),
+			'sort'=>array(
+				'defaultOrder'=>'id DESC',
 			)
 		));
 	}
