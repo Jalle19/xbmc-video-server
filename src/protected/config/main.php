@@ -13,7 +13,7 @@ return array(
 	// files on the fly (requires node.js and lessc)
 	'preload'=>array(
 		'log', 
-		'less'
+		//'less'
 	),
 	
 	// autoloading model and component classes
