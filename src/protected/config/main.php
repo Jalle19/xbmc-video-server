@@ -115,7 +115,7 @@ return array(
 			'class'=>'CLogRouter',
 			'routes'=>array(
 				array(
-					'class'=>'CDbLogRoute',
+					'class'=>'DbLogRoute',
 					'logTableName'=>'log',
 					'connectionID'=>'db',
 				),
