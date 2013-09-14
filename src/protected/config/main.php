@@ -57,7 +57,6 @@ return array(
 					'baseUrl'=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/',
 					'js'=>array(YII_DEBUG ? 'jquery.js' : 'jquery.min.js'),
 				),
-				'bbq'=>array('js'=>false),
 			),
 		),
 		'backendManager'=>array(
