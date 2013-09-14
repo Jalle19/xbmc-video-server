@@ -11,7 +11,7 @@ Yii::app()->name = Setting::getValue('applicationName');
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title><?php echo $this->pageTitle; ?></title>
+		<title><?php echo strip_tags($this->pageTitle); ?></title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<?php 
