@@ -10,17 +10,11 @@
 class RetrieveTVShowWidget extends RetrieveMediaWidget
 {
 
-	/**
-	 * @return string the log category
-	 */
 	protected function getLogCategory()
 	{
 		return 'TvShowController';
 	}
 
-	/**
-	 * @return string the data label for the download link
-	 */
 	protected function getLogMessage()
 	{
 		// Retrieve the name of the TV show
@@ -30,17 +24,11 @@ class RetrieveTVShowWidget extends RetrieveMediaWidget
 		return '"'.Yii::app()->user->name.'" downloaded "'.$episodeLabel.'"';
 	}
 
-	/**
-	 * @return mixed the episode playlist URL
-	 */
 	protected function getPlayListUrl()
 	{
 		return array('getEpisodePlaylist', 'episodeId'=>$this->details->episodeid);
 	}
 
-	/**
-	 * @return array the options for the watch button
-	 */
 	protected function getWatchButtonOptions()
 	{
 		return array(

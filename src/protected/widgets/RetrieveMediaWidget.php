@@ -25,12 +25,24 @@ abstract class RetrieveMediaWidget extends CWidget
 	 */
 	public $details;
 	
+	/**
+	 * @return string the category to use when logging download link clicks
+	 */
 	abstract protected function getLogCategory();
 	
+	/**
+	 * @return string the category to use when logging download link clicks
+	 */
 	abstract protected function getLogMessage();
 	
+	/**
+	 * @return string the URL for the Watch button
+	 */
 	abstract protected function getPlayListUrl();
 	
+	/**
+	 * @return array the options for the Watch button
+	 */
 	abstract protected function getWatchButtonOptions();
 
 	/**
