@@ -38,7 +38,7 @@ class Setting extends CActiveRecord
 			'description'=>'You may have to right-click and copy the address in order to stream (not download) the file',
 		),
 		'showHelpBlocks'=>array(
-			'label'=>'Show help blocks on administration pages',
+			'label'=>'Show help blocks throughout the site',
 			'type'=>self::TYPE_CHECKBOX,
 			'default'=>'1',
 		),
