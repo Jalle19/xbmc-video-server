@@ -76,7 +76,9 @@ if (Yii::app()->user->role == User::ROLE_ADMIN)
 			array('label'=>'Create new', 'url'=>array('backend/create')),
 			array('label'=>'Users'),
 			array('label'=>'Manage', 'url'=>array('user/admin')),
-			array('label'=>'Create new', 'url'=>array('user/create'))
+			array('label'=>'Create new', 'url'=>array('user/create')),
+			array('label'=>'Logs'),
+			array('label'=>'Show logs', 'url'=>array('log/'))
 		), 'linkOptions'=>array('class'=>'fontastic-icon-settings')),
 	), $rightItems);
 }

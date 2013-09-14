@@ -237,6 +237,25 @@ span.required {
 	}
 }
 
+.log-grid {
+	tr.error-row td {
+		background-color: @red !important;
+		color: #FFF;
+		
+		&.button-column {
+			background-color: #FFF !important;
+		}
+		
+		&.message-column {
+			width: 400px;
+			max-width: 400px;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+}
+
 @media all and (max-width: 767px) {
 	.item-grid {
 		.thumbnail {
