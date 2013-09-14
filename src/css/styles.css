@@ -8705,6 +8705,11 @@ span.required {
 .item-details .item-description .actor-grid .thumbnail .caption {
   min-height: 60px;
 }
+.recently-added-shows {
+  margin-top: 20px;
+  padding: 20px;
+}
+.recently-added-shows,
 .season-list {
   border: 1px solid #E5E5E5;
   -webkit-border-radius: 6px;

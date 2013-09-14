@@ -172,6 +172,18 @@ class TvShowController extends Controller
 	}
 	
 	/**
+	 * Displays a list of the recently added episodes
+	 */
+	public function actionRecentlyAdded()
+	{
+		$episodes = VideoLibrary::getRecentlyAddedEpisodes();
+
+		$this->render('recentlyAdded', array(
+			'dataProvider'=>new LibraryDataProvider($episodes, 'episodeid'),
+		));
+	}
+	
+	/**
 	 * Returns a data provider containing the episodes for the specified show 
 	 * and season
 	 * @param int $tvshowId the TV show ID

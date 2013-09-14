@@ -93,6 +93,32 @@ class VideoLibrary
 	}
 	
 	/**
+	 * Returns the recently added episodes
+	 * @param array $params (optional) request parameters
+	 * @return stdClass[] the recently added episodes
+	 */
+	public static function getRecentlyAddedEpisodes($params = array())
+	{
+		$params['properties'] = array(
+			'title',
+			'plot',
+			'runtime',
+			'season',
+			'episode',
+			'streamdetails',
+			'thumbnail',
+			'file',
+			'tvshowid'
+		);
+
+		self::addDefaultSort($params);
+		$response = Yii::app()->xbmc->performRequest(
+				'VideoLibrary.GetRecentlyAddedEpisodes', $params);
+
+		return self::normalizeResponse($response, 'episodes', array());
+	}
+	
+	/**
 	 * Returns details about the specified TV show. The properties array 
 	 * specifies which attributes to return.
 	 * @param int $tvshowId the show ID

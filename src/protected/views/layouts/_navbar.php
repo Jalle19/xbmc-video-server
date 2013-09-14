@@ -11,10 +11,18 @@ $leftItems = array(
 				'label'=>'Recently added', 'url'=>array('movie/recentlyAdded'),
 			),
 		), 'linkOptions'=>array('class'=>'fontastic-icon-video'),
-	), 
-	array('label'=>'TV Shows', 'url'=>array('tvShow/index'), 
-		'linkOptions'=>array('class'=>'fontastic-icon-tv'),
-		'active'=>in_array($this->route, array('tvShow/index', 'tvShow/details'))),
+	),
+	array('label'=>'TV Shows', 
+		'items'=>array(
+			array(
+				'label'=>'Browse', 'url'=>array('tvShow/index'),
+				'active'=>in_array($this->route, array('tvShow/index', 'tvShow/details')),
+			),
+			array(
+				'label'=>'Recently added', 'url'=>array('tvShow/recentlyAdded'),
+			),
+		), 'linkOptions'=>array('class'=>'fontastic-icon-tv'),
+	),
 );
 
 // Normal users only see a the log out link and the change backend link (if 
