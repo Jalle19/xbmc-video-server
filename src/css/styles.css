@@ -8613,6 +8613,9 @@ span.required {
 .detail-view {
   margin-top: 20px;
 }
+.grid-view td {
+  vertical-align: top !important;
+}
 .movie-filter-form .control-group,
 .movie-filter-form .buttons {
   display: inline-block;
