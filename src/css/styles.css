@@ -8516,6 +8516,9 @@ span.required {
   font-size: smaller;
   font-style: italic;
 }
+.button-column a {
+  color: #2c3e50;
+}
 .movie-filter-form .control-group,
 .movie-filter-form .buttons {
   display: inline-block;
