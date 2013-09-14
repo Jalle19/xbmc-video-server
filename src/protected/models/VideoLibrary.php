@@ -111,7 +111,6 @@ class VideoLibrary
 			'tvshowid'
 		);
 
-		self::addDefaultSort($params);
 		$response = Yii::app()->xbmc->performRequest(
 				'VideoLibrary.GetRecentlyAddedEpisodes', $params);
 
