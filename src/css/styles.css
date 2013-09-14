@@ -6323,6 +6323,90 @@ a.badge:focus {
     overflow: visible !important;
   }
 }
+.grid-view {
+  font-size: 13px;
+}
+.grid-view .table th > .sort-link {
+  color: #333;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  position: relative;
+}
+.grid-view .table th > .sort-link:hover {
+  text-decoration: none;
+}
+.grid-view .table th > .sort-link .caret {
+  border-color: transparent;
+  border-style: solid;
+  border-width: 4px;
+  display: none;
+  position: absolute;
+  right: 5px;
+}
+.grid-view .table th > .sort-link.asc .caret {
+  border-bottom-color: #333;
+  display: block;
+  top: 4px;
+}
+.grid-view .table th > .sort-link.desc .caret {
+  border-top-color: #333;
+  display: block;
+  top: 8px;
+}
+.grid-view .table .filters > td .filter-container {
+  padding: 0 16px 0 0;
+}
+.grid-view .table .filters > td .filter-container input[type="text"],
+.grid-view .table .filters > td .filter-container select {
+  margin-bottom: 0;
+  width: 100%;
+}
+.grid-view .table tr.selected td {
+  background: #eee;
+}
+.grid-view .table td {
+  vertical-align: middle;
+}
+.grid-view .table .checkbox-column {
+  width: 15px;
+}
+.grid-view .table .number-column {
+  text-align: right;
+}
+.grid-view .table .button-column {
+  text-align: right;
+  min-width: 50px;
+}
+.grid-view .summary {
+  color: #b4bcc2;
+  font-size: 12px;
+  padding: 6px 0;
+  text-align: right;
+}
+.grid-view .empty {
+  font-style: italic;
+}
+.grid-view.grid-view-loading {
+  background: url(../img/loader.gif) no-repeat 100% 10px;
+}
+.grid-view.grid-view-loading .table {
+  opacity: 0.5;
+}
+.grid-view.grid-view-loading .table th > .sort-link .caret {
+  display: none;
+}
+.detail-view .null {
+  color: #FFC0CB;
+}
+.detail-view th {
+  text-align: right;
+  width: 160px;
+}
+span.required {
+  color: #b94a48;
+  font-weight: bold;
+}
 h1 {
   font-size: 48px;
   font-weight: 900;
@@ -8481,6 +8565,9 @@ a .icon-flip-vertical:before {
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
 }
+.grid-view.grid-view-loading {
+  background-image: url(../images/loader.gif);
+}
 h1 > a,
 h2 > a,
 h3 > a,
@@ -8515,6 +8602,9 @@ span.required {
 .help-block {
   font-size: smaller;
   font-style: italic;
+}
+.button-column {
+  min-width: auto !important;
 }
 .button-column a {
   color: #2c3e50;
@@ -8659,6 +8749,20 @@ span.required {
 .media-flags .flag-section img {
   display: inline-block;
   margin-right: 5px;
+}
+.log-grid tr.error-row td {
+  background-color: #e74c3c !important;
+  color: #FFF;
+}
+.log-grid tr.error-row td.button-column {
+  background-color: #FFF !important;
+}
+.log-grid tr.error-row td.message-column {
+  width: 400px;
+  max-width: 400px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 @media all and (max-width: 767px) {
   .item-grid .thumbnail .image-container {
