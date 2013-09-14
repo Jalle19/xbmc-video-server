@@ -94,7 +94,9 @@ class XBMC extends CApplicationComponent
 		catch (SimpleJsonRpcClient\Exception $e)
 		{
 			// Rethrow as CHttpException so we get to the error page
-			throw new CHttpException(500, $e->getMessage());
+			$message = $e->getMessage().' ('.$e->getCode().')';
+			
+			throw new CHttpException(500, $message);
 		}
 	}
 
