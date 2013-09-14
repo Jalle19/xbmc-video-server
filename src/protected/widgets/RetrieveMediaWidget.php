@@ -61,6 +61,10 @@ abstract class RetrieveMediaWidget extends CWidget
 	 */
 	public function run()
 	{
+		// Don't render links for spectators
+		if (Yii::app()->user->role === User::ROLE_SPECTATOR)
+			return;
+		
 		if (!$this->checkLinks())
 		{
 			echo CHtml::tag('p', array('class'=>'missing-video-file'), TbHtml::icon(TBHtml::ICON_WARNING_SIGN).

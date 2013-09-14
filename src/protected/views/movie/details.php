@@ -10,25 +10,38 @@ $this->pageTitle = $details->label.' ('.$details->year.') - Movies';
 <div class="item-details">
 	<div class="row">
 		<div class="span3">
-			<?php echo CHtml::image(new ThumbnailVideo($details->thumbnail, 
+			<?php 
+			
+			echo CHtml::image(new ThumbnailVideo($details->thumbnail, 
 					Thumbnail::SIZE_LARGE), '', array(
 				'class'=>'item-thumbnail hidden-phone',
-			)); ?>
+			));
 			
-			<div class="item-links">
-				<h3>Watch / Download</h3>
-				
-				<p>
-					Click the Watch button to start streaming the video (open 
-					the file in your favorite media player), or download the 
-					individual files for later viewing using the links below it.
-				</p>
-				
-				<?php $this->widget('RetrieveMovieWidget', array(
-					'links'=>$movieLinks,
-					'details'=>$details,
-				)); ?>
-			</div>
+			// The check is also done in RetrieveMediaWidget but we don't want 
+			// to show this piece of text at all if the user can't do what it 
+			// says
+			if (Yii::app()->user->role !== User::ROLE_SPECTATOR)
+			{
+				?>
+				<div class="item-links">
+					<h3>Watch / Download</h3>
+
+					<p>
+						Click the Watch button to start streaming the video (open 
+						the file in your favorite media player), or download the 
+						individual files for later viewing using the links below it.
+					</p>
+
+					<?php $this->widget('RetrieveMovieWidget', array(
+						'links'=>$movieLinks,
+						'details'=>$details,
+					)); ?>
+				</div>
+				<?php
+			}
+			
+			?>
+			
 		</div>
 		
 		<div class="span9 item-description">

@@ -9,6 +9,33 @@
  */
 class MovieController extends Controller
 {
+	
+	/**
+	 * Override parent implementation to add access control filter
+	 * @return array the filters for this controller
+	 */
+	public function filters()
+	{
+		return array_merge(parent::filters(), array(
+			'accessControl'
+		));
+	}
+
+	/**
+	 * @return array the access rules for this controller
+	 */
+	public function accessRules()
+	{
+		return array(
+			// Prevent spectators from retrieving the playlist file
+			array('deny',
+				'actions'=>array('getMoviePlaylist'),
+				'expression'=>function() {
+					return Yii::app()->user->role === User::ROLE_SPECTATOR;
+				}
+			)
+		);
+	}
 
 	/**
 	 * Lists all movies in the library, optionally filtered

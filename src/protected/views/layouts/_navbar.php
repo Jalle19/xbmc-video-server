@@ -61,8 +61,9 @@ $rightItems = array_merge($rightItems, array(
 		'linkOptions'=>array('class'=>'fontastic-icon-close'))
 ));
 
-// Show refresh button if "Cache all API calls" is enabled
-if (Setting::getValue('cacheApiCalls'))
+// Show refresh button if "Cache all API calls" is enabled (except for spectators)
+if (Setting::getValue('cacheApiCalls') && 
+		Yii::app()->user->role !== User::ROLE_SPECTATOR)
 {
 	$rightItems = array_merge($rightItems, array(
 		array('label'=>TbHtml::icon(TbHtml::ICON_REFRESH, array('class'=>'icon-large')),

@@ -20,6 +20,7 @@ class User extends CActiveRecord
 
 	const ROLE_ADMIN = 'admin';
 	const ROLE_USER = 'user';
+	const ROLE_SPECTATOR = 'spectator';
 	const ROLE_NONE = '';
 	
 	/**
@@ -112,6 +113,7 @@ class User extends CActiveRecord
 		return array(
 			self::ROLE_ADMIN=>'Administrator',
 			self::ROLE_USER=>'User',
+			self::ROLE_SPECTATOR=>'Spectator',
 		);
 	}
 	

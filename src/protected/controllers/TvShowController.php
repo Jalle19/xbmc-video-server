@@ -9,6 +9,34 @@
  */
 class TvShowController extends Controller
 {
+	
+	/**
+	 * Override parent implementation to add access control filter
+	 * @return array the filters for this controller
+	 */
+	public function filters()
+	{
+		return array_merge(parent::filters(), array(
+			'accessControl'
+		));
+	}
+
+	/**
+	 * @return array the access rules for this controller
+	 */
+	public function accessRules()
+	{
+		return array(
+			// Prevent spectators from retrieving the playlist file
+			array('deny',
+				'actions'=>array('getEpisodePlaylist', 'getSeasonPlaylist'),
+				'expression'=>function() {
+					return Yii::app()->user->role === User::ROLE_SPECTATOR;
+				}
+			)
+		);
+	}
+
 
 	/**
 	 * Lists all TV shows in the library
