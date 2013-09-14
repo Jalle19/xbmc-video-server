@@ -189,6 +189,7 @@ class TvShowController extends Controller
 					'streamdetails',
 					'thumbnail',
 					'file',
+					'tvshowid', // needed by RetrieveTvShowWidget
 		));
 
 		return new LibraryDataProvider($episodes, 'label');

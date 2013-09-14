@@ -111,6 +111,10 @@ class Controller extends CController
 		$cs->registerScript(__CLASS__.'_unveil', '
 			$(".lazy").unveil(50);
 		', CClientScript::POS_READY);
+		
+		// Register the JavaScript logger
+		$cs->registerScriptFile(Yii::app()->baseUrl.'/js/js-logger.js', 
+				CClientScript::POS_END);
 	}
 
 }

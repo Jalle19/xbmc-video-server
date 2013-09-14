@@ -9,6 +9,22 @@
  */
 class RetrieveMovieWidget extends RetrieveMediaWidget
 {
+	
+	/**
+	 * @return string the log category
+	 */
+	protected function getLogCategory()
+	{
+		return 'MovieController';
+	}
+
+	/**
+	 * @return string the data label for the download link
+	 */
+	protected function getLogMessage()
+	{
+		return '"'.Yii::app()->user->name.'" downloaded "'.$this->details->title.'"';
+	}
 
 	/**
 	 * @return mixed the movie playlist URL

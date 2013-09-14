@@ -25,6 +25,10 @@ abstract class RetrieveMediaWidget extends CWidget
 	 */
 	public $details;
 	
+	abstract protected function getLogCategory();
+	
+	abstract protected function getLogMessage();
+	
 	abstract protected function getPlayListUrl();
 	
 	abstract protected function getWatchButtonOptions();
@@ -92,7 +96,12 @@ abstract class RetrieveMediaWidget extends CWidget
 		echo CHtml::openTag('div', array('class'=>'item-links'));
 
 		$numLinks = count($this->links);
-		$linkOptions = array('class'=>'fontastic-icon-disc');
+		$linkOptions = array(
+			'class'=>'fontastic-icon-disc loggable-link',
+			'data-log-category'=>$this->getLogCategory(),
+			'data-log-message'=>$this->getLogMessage(),
+			'data-log-url'=>Yii::app()->controller->createUrl('/log/logEvent'),
+		);
 
 		foreach ($this->links as $k=> $link)
 		{

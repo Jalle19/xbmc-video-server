@@ -9,6 +9,31 @@
  */
 class LogController extends AdminOnlyController
 {
+	
+	/**
+	 * Override parent implementation in order to force POST for the logEvent 
+	 * action
+	 * @return array the filters for this controller
+	 */
+	public function filters()
+	{
+		return array_merge(parent::filters(), array(
+			'postOnly + logEvent',
+		));
+	}
+
+	/**
+	 * Override parent implementation to allow anyone to post log events
+	 * @return array the access rules for this controller
+	 */
+	public function accessRules()
+	{
+		return array_merge(array(
+			array('allow',
+				'actions'=>array('logEvent'),
+			),
+			), parent::accessRules());
+	}
 
 	/**
 	 * Lists all items in the log
@@ -37,6 +62,20 @@ class LogController extends AdminOnlyController
 		Yii::app()->db->createCommand()->truncateTable('log');
 		Yii::app()->user->setFlash('success', 'System log flushed successfully');
 		$this->redirect(array('admin'));
+	}
+	
+	/**
+	 * AJAX-only action which logs the event described in the POST data. Used 
+	 * to log link clicks using JavaScript.
+	 * @throws CHttpException if the request is invalid
+	 */
+	public function actionLogEvent()
+	{
+		foreach (array('logCategory', 'logMessage') as $attribute)
+			if (!isset($_POST[$attribute]))
+				throw new CHttpException(400, 'Invalid request');
+
+		Yii::log($_POST['logMessage'], CLogger::LEVEL_INFO, $_POST['logCategory']);
 	}
 
 	/**

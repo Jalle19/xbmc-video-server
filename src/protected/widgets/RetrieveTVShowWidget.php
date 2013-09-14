@@ -11,6 +11,26 @@ class RetrieveTVShowWidget extends RetrieveMediaWidget
 {
 
 	/**
+	 * @return string the log category
+	 */
+	protected function getLogCategory()
+	{
+		return 'TvShowController';
+	}
+
+	/**
+	 * @return string the data label for the download link
+	 */
+	protected function getLogMessage()
+	{
+		// Retrieve the name of the TV show
+		$tvshow = VideoLibrary::getTVShowDetails($this->details->tvshowid, array());
+		$episodeLabel = $tvshow->label.' - '.$this->details->label;
+		
+		return '"'.Yii::app()->user->name.'" downloaded "'.$episodeLabel.'"';
+	}
+
+	/**
 	 * @return mixed the episode playlist URL
 	 */
 	protected function getPlayListUrl()
