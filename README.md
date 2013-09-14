@@ -193,7 +193,7 @@ In order for the directives above to work you need to run the following command:
 User management
 ---------------
 
-Once you've configured the application you should be able to browse your library. You can configure new users from the Settings menu. There are two user roles; User and Administrator. The difference is that a standard user cannot see (and cannot access by other means) the settings pages.
+Once you've configured the application you should be able to browse your library. You can configure new users from the Settings menu. There are three user roles; user, administrator and spectator. A standard user cannot see (and cannot access by other means) the settings pages, a spectator can't stream or download anything (just "spectate"), and an administrator can naturally do everything.
 
 Security implications
 ---------------------
