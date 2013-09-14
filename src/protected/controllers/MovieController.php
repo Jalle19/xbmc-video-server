@@ -7,36 +7,14 @@
  * @copyright Copyright &copy; Sam Stenvall 2013-
  * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
  */
-class MovieController extends Controller
+class MovieController extends MediaController
 {
 	
-	/**
-	 * Override parent implementation to add access control filter
-	 * @return array the filters for this controller
-	 */
-	public function filters()
+	protected function getSpectatorProhibitedActions()
 	{
-		return array_merge(parent::filters(), array(
-			'accessControl'
-		));
+		return array('getMoviePlaylist');
 	}
-
-	/**
-	 * @return array the access rules for this controller
-	 */
-	public function accessRules()
-	{
-		return array(
-			// Prevent spectators from retrieving the playlist file
-			array('deny',
-				'actions'=>array('getMoviePlaylist'),
-				'expression'=>function() {
-					return Yii::app()->user->role === User::ROLE_SPECTATOR;
-				}
-			)
-		);
-	}
-
+	
 	/**
 	 * Lists all movies in the library, optionally filtered
 	 */
