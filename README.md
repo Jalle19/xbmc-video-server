@@ -19,6 +19,7 @@ Screenshots
 [![screenshot1](http://t.imgbox.com/acmBvtxu.jpg)](http://i.imgbox.com/acmBvtxu.jpg) [![screenshot2](http://t.imgbox.com/adnpVKJX.jpg)](http://i.imgbox.com/adnpVKJX.jpg)
 [![screenshot3](http://t.imgbox.com/aduVLZeC.jpg)](http://i.imgbox.com/aduVLZeC.jpg) [![screenshot4](http://t.imgbox.com/abwHUlbv.jpg)](http://i.imgbox.com/abwHUlbv.jpg) 
 [![screenshot5](http://t.imgbox.com/acqDAYlX.jpg)](http://i.imgbox.com/acqDAYlX.jpg)
+[![screenshot6](http://t.imgbox.com/adgXBXJD.jpg)](http://i.imgbox.com/adgXBXJD.jpg)
 
 Requirements
 ------------
