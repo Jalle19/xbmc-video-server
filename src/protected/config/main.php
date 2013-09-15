@@ -76,6 +76,7 @@ return array(
 			'username'=>'root',
 			'password'=>'',
 			'charset'=>'utf8',
+			'schemaCachingDuration'=>3600,
 		),*/
 		'xbmc'=>array(
 			'class'=>'XBMC',
