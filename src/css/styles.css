@@ -8776,6 +8776,10 @@ span.required {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.log-details .exception-message {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+}
 @media all and (max-width: 767px) {
   .item-grid .thumbnail .image-container {
     display: none;
