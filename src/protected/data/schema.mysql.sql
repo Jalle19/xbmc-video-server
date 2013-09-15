@@ -22,7 +22,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`role`,`username`,`password`) VALUES('admin','admin','admin');
 
 CREATE TABLE `settings` (
-	`name` VARCHAR(255) NOT NULL,
+	`name` VARCHAR(255) PRIMARY KEY NOT NULL,
 	`value` VARCHAR(255) NULL DEFAULT NULL
 );
 
