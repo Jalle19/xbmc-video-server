@@ -21,6 +21,7 @@ class Setting extends CActiveRecord
 	public $cacheApiCalls;
 	public $pagesize;
 	public $disableFrodoWarning;
+	public $useHttpsForVfsUrls;
 	
 	/**
 	 * @var array setting definitions
@@ -61,6 +62,15 @@ class Setting extends CActiveRecord
 			'label'=>"Don't warn about XBMC version incompatibility",
 			'type'=>self::TYPE_CHECKBOX,
 			'default'=>'0',
+		),
+		'useHttpsForVfsUrls'=>array(
+			'label'=>"Use HTTPS when streaming",
+			'type'=>self::TYPE_CHECKBOX,
+			'default'=>'0',
+			'description'=>'When checked, streaming will be done over HTTPS if 
+				the application is accessed over HTTPS. This will usually only 
+				work if the server uses a real signed certificate, thus it is 
+				not enabled by default.',
 		),
 	);
 	
