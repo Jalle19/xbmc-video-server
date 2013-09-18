@@ -83,6 +83,27 @@ abstract class VideoFilterForm extends CFormModel
 
 		return $filters;
 	}
+	
+	/**
+	 * Returns the definitions for the common filters
+	 * @return array the filter definitions
+	 */
+	public function getCommonFilterDefinitions()
+	{
+		$filter = array();
+
+		// only do a partial match on the title
+		$filter['title'] = array(
+			'operator'=>'contains',
+			'value'=>$this->name);
+
+		$filter['genre'] = array(
+			'operator'=>'is',
+			'value'=>$this->genre);
+		
+		
+		return $filter;
+	}
 
 	/**
 	 * Should populate and returns the list of genres

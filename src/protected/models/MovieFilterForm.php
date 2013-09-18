@@ -81,16 +81,7 @@ class MovieFilterForm extends VideoFilterForm
 	 */
 	public function getFilterDefinitions()
 	{
-		$filter = array();
-
-		// Include partial matches on movie title
-		$filter['title'] = array(
-			'operator'=>'contains',
-			'value'=>$this->name);
-
-		$filter['genre'] = array(
-			'operator'=>'is',
-			'value'=>$this->genre);
+		$filter = parent::getCommonFilterDefinitions();
 
 		$filter['year'] = array(
 			'operator'=>'is',

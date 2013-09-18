@@ -28,25 +28,11 @@ class TVShowFilterForm extends VideoFilterForm
 	}
 
 	/**
-	 * Returns the request parameters for this filter. It can be used to filter 
-	 * results from VideoLibrary::getMovies()
 	 * @return array the request parameters
 	 */
 	public function getFilterDefinitions()
 	{
-		// Build the filter
-		$filter = array();
-
-		// Include partial matches
-		$filter['title'] = array(
-			'operator'=>'contains',
-			'value'=>$this->name);
-
-		$filter['genre'] = array(
-			'operator'=>'is',
-			'value'=>$this->genre);
-
-		return $filter;
+		return parent::getCommonFilterDefinitions();
 	}
 
 }
