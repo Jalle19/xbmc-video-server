@@ -113,7 +113,10 @@ class XBMC extends CApplicationComponent
 		$proxyLocation = $backend->proxyLocation;
 
 		if (!empty($proxyLocation) && substr($path, 0, 3) === 'vfs')
-			return 'http://'.$_SERVER['HTTP_HOST'].$proxyLocation.'/'.$path;
+		{
+			$scheme = Yii::app()->request->isSecureConnection ? 'https://' : 'http://';
+			return $scheme.$_SERVER['HTTP_HOST'].$proxyLocation.'/'.$path;
+		}
 		else
 		{
 			return 'http://'.$backend->username.':'.$backend->password.'@'
