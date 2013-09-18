@@ -209,7 +209,10 @@ class TvShowController extends MediaController
 					'tvshowid', // needed by RetrieveTvShowWidget
 		));
 
-		return new LibraryDataProvider($episodes, 'label');
+		// We never want pagination here
+		return new LibraryDataProvider($episodes, 'label', array(
+			'pagination'=>false,
+		));
 	}
 	
 	/**

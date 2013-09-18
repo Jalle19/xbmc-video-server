@@ -15,16 +15,18 @@ class LibraryDataProvider extends CArrayDataProvider
 	 * Class constructor
 	 * @param array $rawData the data
 	 * @param string $keyField the data field that should be used as key
+	 * @param array $config the component configuration (optional)
 	 */
-	public function __construct($rawData, $keyField)
+	public function __construct($rawData, $keyField, $config = array())
 	{
-		// Optionally apply pagination
+		// Optionally apply pagination, unless it has been explicitly disabled
 		$pagesize = Setting::getValue('pagesize');
-		
-		parent::__construct($rawData, array(
-			'keyField'=>$keyField,
-			'pagination'=>$pagesize ? array('pageSize'=>$pagesize) : false,
-		));
+		if (!isset($config['pagination']))
+			$config['pagination'] = $pagesize ? array('pageSize'=>$pagesize) : false;
+
+		$config['keyField'] = $keyField;
+
+		parent::__construct($rawData, $config);
 	}
 
 }
