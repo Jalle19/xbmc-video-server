@@ -16,6 +16,8 @@ $form = $this->beginWidget('FilterActiveForm', array(
 			CJavaScript::encode($this->getTVShowNames()));
 
 	echo $form->dropDownListControlGroup($model, 'genre', $model->getGenres(), array('prompt'=>''));
+	echo $form->dropDownListControlGroup($model, 'watchedStatus', $model->getWatchedStatuses(), array(
+		'prompt'=>'', 'style'=>'width: 120px;'));
 
 	?>
 	<div class="buttons">

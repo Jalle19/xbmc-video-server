@@ -31,6 +31,8 @@ $form = $this->beginWidget('FilterActiveForm', array(
 	echo $form->textFieldControlGroup($model, 'year', array('span'=>1));
 	echo $form->dropDownListControlGroup($model, 'quality', $model->getQualities(), 
 			array('prompt'=>'', 'style'=>'width: 70px;'));
+	echo $form->dropDownListControlGroup($model, 'watchedStatus', $model->getWatchedStatuses(), array(
+		'prompt'=>'', 'style'=>'width: 120px;'));
 
 	?>
 	<div class="buttons">

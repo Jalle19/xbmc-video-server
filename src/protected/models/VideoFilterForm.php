@@ -9,6 +9,9 @@
  */
 abstract class VideoFilterForm extends CFormModel
 {
+	
+	const WATCHED_STATUS_WATCHED = 'watched';
+	const WATCHED_STATUS_UNWATCHED = 'unwatched';
 
 	/**
 	 * @var string the movie title
@@ -19,6 +22,11 @@ abstract class VideoFilterForm extends CFormModel
 	 * @var string the movie genre
 	 */
 	public $genre;
+	
+	/**
+	 * @var string watched status
+	 */
+	public $watchedStatus;
 
 	/**
 	 * @var array list of all genres (key same as value)
@@ -33,6 +41,7 @@ abstract class VideoFilterForm extends CFormModel
 		return array(
 			'name'=>'Name',
 			'genre'=>'Genre',
+			'watchedStatus'=>'Watched status',
 		);
 	}
 
@@ -44,6 +53,7 @@ abstract class VideoFilterForm extends CFormModel
 		return array(
 			array('name', 'safe'),
 			array('genre', 'in', 'range'=>$this->getGenres()),
+			array('watchedStatus', 'in', 'range'=>array_keys($this->getWatchedStatuses())),
 		);
 	}
 
@@ -70,7 +80,8 @@ abstract class VideoFilterForm extends CFormModel
 
 		foreach ($this->getFilterDefinitions() as $field=> $options)
 		{
-			if (empty($options['value']))
+			// '0' is a valid value so we can't use empty()
+			if ($options['value'] === '')
 				continue;
 
 			$filter = new stdClass();
@@ -82,6 +93,17 @@ abstract class VideoFilterForm extends CFormModel
 		}
 
 		return $filters;
+	}
+	
+	/**
+	 * Returns a list of possible watched statuses
+	 */
+	public function getWatchedStatuses()
+	{
+		return array(
+			self::WATCHED_STATUS_WATCHED=>'Watched',
+			self::WATCHED_STATUS_UNWATCHED=>'Unwatched',
+		);
 	}
 	
 	/**
@@ -101,6 +123,23 @@ abstract class VideoFilterForm extends CFormModel
 			'operator'=>'is',
 			'value'=>$this->genre);
 		
+		if ($this->watchedStatus)
+		{
+			switch ($this->watchedStatus)
+			{
+				case self::WATCHED_STATUS_WATCHED:
+					$operator = 'greaterthan';
+					break;
+				case self::WATCHED_STATUS_UNWATCHED:
+					$operator = 'is';
+					break;
+			}
+
+			$filter['playcount'] = array(
+				'operator'=>$operator,
+				'value'=>'0',
+			);
+		}
 		
 		return $filter;
 	}
