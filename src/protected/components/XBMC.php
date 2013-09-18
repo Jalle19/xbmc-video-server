@@ -113,7 +113,12 @@ class XBMC extends CApplicationComponent
 		$proxyLocation = $backend->proxyLocation;
 
 		if (!empty($proxyLocation) && substr($path, 0, 3) === 'vfs')
-			return 'http://'.$_SERVER['HTTP_HOST'].$proxyLocation.'/'.$path;
+			if (empty($_SERVER['HTTPS']))
+				return 'http://'.$_SERVER['HTTP_HOST'].$proxyLocation.'/'.$path;
+			else
+			{
+				return 'https://'.$_SERVER['HTTP_HOST'].$proxyLocation.'/'.$path;
+			}
 		else
 		{
 			return 'http://'.$backend->username.':'.$backend->password.'@'
