@@ -8716,6 +8716,10 @@ span.required {
   -moz-border-radius: 6px;
   border-radius: 6px;
 }
+.recently-added-shows .episode-thumbnail,
+.season-list .episode-thumbnail {
+  max-width: 116px;
+}
 .season-list .accordion-group {
   margin-bottom: -1px;
   border-width: 1px 0 0 0 ;
@@ -8728,9 +8732,6 @@ span.required {
 }
 .season-list .accordion-group .accordion-inner {
   padding: 20px;
-}
-.season-list .accordion-group .accordion-inner .episode-thumbnail {
-  max-width: 116px;
 }
 .season-download {
   padding-bottom: 20px;
