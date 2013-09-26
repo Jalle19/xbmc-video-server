@@ -53,7 +53,7 @@ abstract class VideoFilterForm extends CFormModel
 		return array(
 			array('name', 'safe'),
 			array('genre', 'in', 'range'=>$this->getGenres()),
-			array('watchedStatus', 'in', 'range'=>array_keys($this->getWatchedStatuses())),
+			array('watchedStatus', 'in', 'range'=>array_keys(self::getWatchedStatuses())),
 		);
 	}
 
@@ -96,9 +96,11 @@ abstract class VideoFilterForm extends CFormModel
 	}
 	
 	/**
-	 * Returns a list of possible watched statuses
+	 * Returns a list of possible watched statuses. Used for validation and 
+	 * population of dropdown lists.
+	 * @return array
 	 */
-	public function getWatchedStatuses()
+	public static function getWatchedStatuses()
 	{
 		return array(
 			self::WATCHED_STATUS_WATCHED=>'Watched',
