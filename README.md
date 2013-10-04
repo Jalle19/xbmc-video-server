@@ -218,11 +218,22 @@ Yiistrap (http://www.getyiistrap.com/)
 
 Yii-less (https://github.com/Crisu83/yii-less)
 
+yii-consoletools (https://github.com/Crisu83/yii-consoletools)
+
 eventviva/php-image-resize (https://github.com/eventviva/php-image-resize)
 
 phpass (http://www.openwall.com/phpass/) (https://github.com/hautelook/phpass)
 
 Zend framework (http://framework.zend.com/)
+
+Bootswatch (http://bootswatch.com/)
+
+Font Awesome (http://fortawesome.github.io/Font-Awesome/)
+
+jQuery Unveil (http://luis-almeida.github.io/unveil/)
+
+typeahead.js (http://twitter.github.io/typeahead.js/)
+
 
 License
 -------
