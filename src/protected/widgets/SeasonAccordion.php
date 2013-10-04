@@ -46,11 +46,19 @@ class SeasonAccordion extends CWidget
 		foreach ($this->items as $k=> $item)
 		{
 			$id = __CLASS__.'_'.$this->id.'_'.$k;
+			$contentId = $id.'_content';
+			
+			$linkOptions = array(
+				'class'=>'accordion-toggle episode-toggle',
+				'data-content-id'=>$contentId,
+				'data-toggle'=>'collapse',
+				'data-parent'=>$this->id);
 
-			$label = CHtml::link($item['label'], '#'.$id, array(
-						'class'=>'accordion-toggle',
-						'data-toggle'=>'collapse',
-						'data-parent'=>$this->id));
+			// Add content-url data attributes to the link when available
+			if (isset($item['contentUrl']))
+				$linkOptions['data-content-url'] = $item['contentUrl'];
+
+			$label = CHtml::link($item['label'], '#'.$id, $linkOptions);
 
 			$bodyOptions = array('class'=>'accordion-body collapse', 'id'=>$id);
 			if ($itemCount === 1)
@@ -59,7 +67,8 @@ class SeasonAccordion extends CWidget
 			echo CHtml::openTag('div', array('class'=>'accordion-group'));
 			echo CHtml::tag('div', array('class'=>'accordion-heading'), $label);
 			echo CHtml::openTag('div', $bodyOptions);
-			echo CHtml::tag('div', array('class'=>'accordion-inner'), $item['content']);
+			echo CHtml::tag('div', array('id'=>$contentId, 
+				'class'=>'accordion-inner'), $item['content']);
 			echo CHtml::closeTag('div');
 			echo CHtml::closeTag('div');
 		}

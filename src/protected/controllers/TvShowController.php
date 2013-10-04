@@ -10,6 +10,17 @@
 class TvShowController extends MediaController
 {
 	
+	/**
+	 * Adds an AJAX-only filter on the renderEpisodeList action
+	 * @return array the filters for this controller
+	 */
+	public function filters()
+	{
+		return array_merge(parent::filters(), array(
+			'ajaxOnly + renderEpisodeList',
+		));
+	}
+	
 	protected function getSpectatorProhibitedActions()
 	{
 		return array('getEpisodePlaylist', 'getSeasonPlaylist');
@@ -82,6 +93,16 @@ class TvShowController extends MediaController
 			'details'=>$showDetails,
 			'seasons'=>VideoLibrary::getSeasons($id),
 			'actorDataProvider'=>$actorDataProvider));
+	}
+	
+	/**
+	 * Renders the episode list for the specified TV show and season. This 
+	 * action must only be called using AJAX.
+	 */
+	public function actionRenderEpisodeList($tvshowid, $season)
+	{
+		$this->renderPartial('_episodes', array(
+			'tvshowId'=>$tvshowid, 'season'=>$season));
 	}
 	
 	/**
