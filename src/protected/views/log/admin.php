@@ -30,6 +30,7 @@ $this->pageTitle = 'Application log';
 			'level',
 			'category',
 			'logtime',
+			'source_address',
 			array(
 				'name'=>'message',
 				'cssClassExpression'=>function($data) {

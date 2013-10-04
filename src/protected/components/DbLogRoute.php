@@ -19,6 +19,7 @@ class DbLogRoute extends CDbLogRoute
 			'category'=>'varchar(128)',
 			'logtime'=>'datetime',
 			'message'=>'text',
+			'source_address'=>'varchar(45)',
 		));
 	}
 
@@ -32,6 +33,7 @@ class DbLogRoute extends CDbLogRoute
 				'category'=>$log[2],
 				'logtime'=>date('Y-m-d H:i:s', (int)$log[3]),
 				'message'=>$log[0],
+				'source_address'=>$_SERVER['REMOTE_ADDR'],
 			));
 		}
 	}

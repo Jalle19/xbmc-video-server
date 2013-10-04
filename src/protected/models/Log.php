@@ -8,6 +8,7 @@
  * @property string $level
  * @property string $category
  * @property string $logtime
+ * @property string $source_address
  * @property string $message
  */
 class Log extends CActiveRecord
@@ -37,7 +38,7 @@ class Log extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('id, level, category, logtime, message', 'safe', 'on'=>'search'),
+			array('id, level, category, logtime, source_address, message', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -51,6 +52,7 @@ class Log extends CActiveRecord
 			'level'=>'Level',
 			'category'=>'Category',
 			'logtime'=>'Logtime',
+			'source_address'=>'Source address',
 			'message'=>'Message',
 		);
 	}
@@ -67,6 +69,7 @@ class Log extends CActiveRecord
 		$criteria->compare('level', $this->level, true);
 		$criteria->compare('category', $this->category, true);
 		$criteria->compare('logtime', $this->logtime, true);
+		$criteria->compare('source_address', $this->source_address, true);
 		$criteria->compare('message', $this->message, true);
 
 		return new CActiveDataProvider($this, array(

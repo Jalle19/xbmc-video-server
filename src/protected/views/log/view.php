@@ -15,6 +15,7 @@ $this->pageTitle = $pageTitle;
 			'level',
 			'category',
 			'logtime',
+			'source_address',
 			array(
 				'name'=>'message',
 				'type'=>'html',
