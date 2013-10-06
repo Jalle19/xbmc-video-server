@@ -214,12 +214,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Jalle19/simple-json-rpc-client.git",
-                "reference": "2555b8350d90f9f14e52f40df21337e541203af2"
+                "reference": "f6dcf9c55a17be417ff245eb109fe6245f91a15e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Jalle19/simple-json-rpc-client/zipball/2555b8350d90f9f14e52f40df21337e541203af2",
-                "reference": "2555b8350d90f9f14e52f40df21337e541203af2",
+                "url": "https://api.github.com/repos/Jalle19/simple-json-rpc-client/zipball/f6dcf9c55a17be417ff245eb109fe6245f91a15e",
+                "reference": "f6dcf9c55a17be417ff245eb109fe6245f91a15e",
                 "shasum": ""
             },
             "require": {
@@ -240,7 +240,7 @@
             "keywords": [
                 "jsonrpc"
             ],
-            "time": "2013-09-04 21:04:14"
+            "time": "2013-10-06 11:20:01"
         },
         {
             "name": "yiisoft/yii",

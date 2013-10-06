@@ -87,9 +87,9 @@ class XBMC extends CApplicationComponent
 	{
 		try
 		{
-			$request = new SimpleJsonRpcClient\Request($method, $params, $id);
+			$request = new SimpleJsonRpcClient\Request\Request($method, $params, $id);
 			
-			return $this->_client->performRequest($request);
+			return $this->_client->sendRequest($request);
 		}
 		catch (SimpleJsonRpcClient\Exception $e)
 		{
