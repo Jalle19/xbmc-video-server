@@ -11,15 +11,15 @@ class BackendController extends AdminOnlyController
 {
 
 	/**
-	 * Override parent implementation to allow everyone to change backend
+	 * Override parent implementation to allow everyone to change backend and 
+	 * update the library
 	 * @return array the access control rules
 	 */
 	public function accessRules()
 	{
-		$rules = array(
-			array('allow', 'actions'=>array('change'))
-		);
-		return array_merge($rules, parent::accessRules());
+		return array_merge(array(
+			array('allow', 'actions'=>array('change', 'updateLibrary'))
+		), parent::accessRules());
 	}
 
 	/**
@@ -48,6 +48,24 @@ class BackendController extends AdminOnlyController
 		Yii::app()->user->setFlash('success', 'Changed backend to '.$model->name);
 		
 		$this->redirect(Yii::app()->homeUrl);
+	}
+	
+	/**
+	 * Initiates a library update and redirects the user to his previous 
+	 * location
+	 */
+	public function actionUpdateLibrary()
+	{
+		// Update the library. There will be no indication if success/failure 
+		// so we have to assume it worked
+		Yii::app()->xbmc->sendNotification('VideoLibrary.Scan');
+		Yii::app()->user->setFlash('success', 'Library update has been initiated');
+
+		// Remind users that they'll have to flush their cache
+		if (Setting::getValue('cacheApiCalls'))
+			Yii::app()->user->setFlash('info', "You'll have to flush the API call cache to see any newly scanned content");
+
+		$this->redirectToPrevious(Yii::app()->homeUrl);
 	}
 
 	/**

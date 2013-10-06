@@ -25,10 +25,9 @@ $leftItems = array(
 	),
 );
 
-// Normal users only see a the log out link and the change backend link (if 
-// there is more than one configured backend)
 $rightItems = array();
 
+// Add a "Change backend" menu when there's more than one configured backend
 $backends = Backend::model()->findAll();
 
 if (count($backends) > 1)
@@ -56,41 +55,40 @@ if (count($backends) > 1)
 	);
 }
 
-$rightItems = array_merge($rightItems, array(
-	array('label'=>'Log out', 'url'=>array('site/logout'),
-		'linkOptions'=>array('class'=>'fontastic-icon-close'))
-));
-
-// Show refresh button if "Cache all API calls" is enabled (except for spectators)
-if (Setting::getValue('cacheApiCalls') && 
-		Yii::app()->user->role !== User::ROLE_SPECTATOR)
-{
-	$rightItems = array_merge($rightItems, array(
-		array('label'=>TbHtml::icon(TbHtml::ICON_REFRESH, array('class'=>'icon-large')),
-			'url'=>array('site/flushCache'),
-			'linkOptions'=>array('confirm'=>'Are you sure you want to flush the cache?'),
-		)
-	));
-}
-
-// Administrators see the Backend and Users menus
+// Add the "Settings" menu for administrators
 if (Yii::app()->user->role == User::ROLE_ADMIN)
 {
-	$rightItems = array_merge(array(
-		array('label'=>'Settings', 'items'=>array(
-			array('label'=>'Settings'),
-			array('label'=>'Manage', 'url'=>array('setting/admin')),
-			array('label'=>'Backends'),
-			array('label'=>'Manage', 'url'=>array('backend/admin')),
-			array('label'=>'Create new', 'url'=>array('backend/create')),
-			array('label'=>'Users'),
-			array('label'=>'Manage', 'url'=>array('user/admin')),
-			array('label'=>'Create new', 'url'=>array('user/create')),
-			array('label'=>'System log'),
-			array('label'=>'Browse', 'url'=>array('log/')),
-		), 'linkOptions'=>array('class'=>'fontastic-icon-settings')),
-	), $rightItems);
+	$rightItems[] = array('label'=>'Settings', 'items'=>array(
+		array('label'=>'Settings'),
+		array('label'=>'Manage', 'url'=>array('setting/admin')),
+		array('label'=>'Backends'),
+		array('label'=>'Manage', 'url'=>array('backend/admin')),
+		array('label'=>'Create new', 'url'=>array('backend/create')),
+		array('label'=>'Users'),
+		array('label'=>'Manage', 'url'=>array('user/admin')),
+		array('label'=>'Create new', 'url'=>array('user/create')),
+		array('label'=>'System log'),
+		array('label'=>'Browse', 'url'=>array('log/')),
+	), 'linkOptions'=>array('class'=>'fontastic-icon-settings'));
 }
+
+// Add the "Actions" menu
+$rightItems[] = array(
+	'label'=>'Actions', 'items'=>array(
+		// user-related actions
+		array('label'=>'User'),
+		array('label'=>'Log out', 'url'=>array('site/logout')),
+		// system-related
+		array('label'=>'System'),
+		array('label'=>'Flush cache', 
+			'url'=>array('site/flushCache'),
+			'linkOptions'=>array('confirm'=>'Are you sure you want to flush the cache?'),
+		),
+		array('label'=>'Update library', 
+			'url'=>array('backend/updateLibrary'), 
+			'linkOptions'=>array('confirm'=>"Are you sure you want to update the backend's library?"))
+	), 'icon'=>'tasks',
+);
 
 // Construct the menu
 $navbarItems = array(

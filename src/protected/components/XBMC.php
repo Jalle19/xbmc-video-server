@@ -99,6 +99,29 @@ class XBMC extends CApplicationComponent
 			throw new CHttpException(500, $message);
 		}
 	}
+	
+	/**
+	 * Sends a notification
+	 * @param string $method
+	 * @param mixed $params
+	 * @throws CHttpException if the request fails
+	 */
+	public function sendNotification($method, $params = null)
+	{
+		try
+		{
+			$notification = new SimpleJsonRpcClient\Request\Notification($method, $params);
+			
+			$this->_client->sendNotification($notification);
+		}
+		catch (SimpleJsonRpcClient\Exception $e)
+		{
+			// Rethrow as CHttpException so we get to the error page
+			$message = $e->getMessage().' ('.$e->getCode().')';
+
+			throw new CHttpException(500, $message);
+		}
+	}
 
 	/**
 	 * Returns the absolute URL to the specified API path
