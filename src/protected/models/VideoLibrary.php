@@ -134,14 +134,19 @@ class VideoLibrary
 	}
 	
 	/**
-	 * Returns the season for the specified TV show
+	 * Returns the season for the specified TV show, sorted alphabetically
 	 * @param int $tvshowId the TV show ID
 	 * @return stdClass[] the seasons
 	 */
 	public static function getSeasons($tvshowId)
 	{
-		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetSeasons', array(
-			'tvshowid'=>(int)$tvshowId, 'properties'=>array('season')));
+		$params = array('tvshowid'=>(int)$tvshowId, 
+			'properties'=>array('season'));
+		
+		self::addDefaultSort($params);
+		
+		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetSeasons', 
+				$params);
 		
 		return self::normalizeResponse($response, 'seasons', array());
 	}
