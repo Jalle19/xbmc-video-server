@@ -116,5 +116,22 @@ class Controller extends CController
 		$cs->registerScriptFile(Yii::app()->baseUrl.'/js/js-logger.js', 
 				CClientScript::POS_END);
 	}
+	
+	/**
+	 * Redirects to the user's URL referrer, or to the specified fallback URL 
+	 * if no referrer is available. $fallback can be anything that can be 
+	 * passed to CController::redirect().
+	 * @see CController::redirect()
+	 * @param mixed $fallback the fallback URL
+	 */
+	public function redirectToPrevious($fallback)
+	{
+		$returnTo = Yii::app()->request->urlReferrer;
+
+		if ($returnTo)
+			$this->redirect($returnTo);
+		else
+			$this->redirect($fallback);
+	}
 
 }

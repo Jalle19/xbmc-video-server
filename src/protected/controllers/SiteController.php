@@ -83,7 +83,7 @@ class SiteController extends Controller
 	{
 		Yii::app()->apiCallCache->flush();
 		Yii::app()->user->setFlash('success', 'The cache has been flushed successfully');
-		$this->redirect(Yii::app()->homeUrl);
+		$this->redirectToPrevious(Yii::app()->homeUrl);
 	}
 
 }
