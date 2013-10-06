@@ -34,6 +34,10 @@ class BackendController extends AdminOnlyController
 			parent::filterCheckConfiguration($filterChain);
 	}
 	
+	/**
+	 * Switches to the specified backend
+	 * @param int $id the backend ID
+	 */
 	public function actionChange($id)
 	{
 		$model = $this->loadModel($id);
@@ -61,6 +65,9 @@ class BackendController extends AdminOnlyController
 		));
 	}
 
+	/**
+	 * Creates a new backend, then return to the admin action
+	 */
 	public function actionCreate()
 	{
 		$model = new Backend();
@@ -98,6 +105,10 @@ class BackendController extends AdminOnlyController
 		));
 	}
 	
+	/**
+	 * Updates the specified backend, then returns to the admin action
+	 * @param int $id the backend ID
+	 */
 	public function actionUpdate($id) {
 		$model = $this->loadModel($id);
 
