@@ -187,24 +187,33 @@ Proxy Location
 
 The "Proxy Location" setting is a bit more exotic. Without it, all requests to the XBMC API (including the URLs to your movies and TV shows) are in the form of http://user:pass@hostname:port/API_PATH, which means in order to use the application over the Internet you'd have to forward the right port to the machine running XBMC. It also means you'd be exposing the XBMC API credentials to anyone using your application. What the "Proxy Location" setting does is replace the http://user:pass@hostname:port/ part with the specified location.
 
+### Example
+
+Let's say you have installed XBMC Video Server on one machine, and XBMC is running on a different machine:
+
+http://xbmc-video-server.example.com/xbmc-video-server/
+
+http://xbmc.example.com:8080/
+
+What we want to do is map e.g. `/xbmc` to `http://xbmc.example.com:8080/`, this way you don't have to forward the 8080 port to the computer running XBMC.
+
 ### Configuring a reverse proxy
 
-To make this work you have to configure your web server to provide a reverse proxy on that location. Here's an example for Apache 2 (the configuration lines must be inside your VirtualHost definition):
+To make this work you have to configure your web server to provide a reverse proxy. To do this, open the file `/etc/apache2/sites-available/default` (or `/etc/apache2/sites-available/000-default.conf` if you're running Ubuntu 13.10 or newer) and add the following inside the `<VirtualHost *:80>` block:
 
 ```
-	# Needed to make certain URLs work
 	AllowEncodedSlashes On
 	
-	<Location /xbmc-reverse-proxy>
-		ProxyPass http://host:port
-		ProxyPassReverse http://host:port
+	<Location /xbmc>
+		ProxyPass http://xbmc.example.com:8080
+		ProxyPassReverse http://xbmc.example.com:8080
 		RequestHeader set Authorization "Basic eGJtYzp4Ym1j"
 	</Location>
 ```
 
-In the example above, "/xbmc-reverse-proxy" should match the "Proxy Location" in the application settings. The "eGJtYzp4Ym1j" part is username:password encoded with Base64 (in the example the credentials are the default xbmc:xbmc).
+After saving the file also have to run `sudo a2enmod headers proxy_http && sudo service apache2 restart`.
 
-In order for the directives above to work you need to run the following command: `sudo a2enmod headers proxy_http`
+In the example above the "Proxy Location" field in the XBMC Video Server settings should contain `/xbmc`. The "eGJtYzp4Ym1j" part is username:password encoded with Base64 (in the example the credentials are the default xbmc:xbmc).
 
 **You should use a randomly generated long string as location (see Security implications)**
 
