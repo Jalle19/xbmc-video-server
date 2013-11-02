@@ -1,0 +1,2 @@
+bootstrap.alert.min.js needs a hack to make dropdown menus work correctly on 
+mobile browsers. See http://stackoverflow.com/questions/17435359/bootstrap-collapsed-menu-links-not-working-on-mobile-devices/17440942#17440942
