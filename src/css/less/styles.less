@@ -83,6 +83,17 @@ span.required {
 	}
 }
 
+.item-grid, .actor-grid {
+	.caption {
+		min-height: 60px;
+
+		// override color to make links look like normal text
+		a {
+			color: @gray !important;
+		}
+	}
+}
+
 .item-grid {
 	.thumbnail {
 		.image-container {
@@ -93,10 +104,6 @@ span.required {
 			img {
 				max-height: 240px;
 			}
-		}
-
-		.caption {
-			min-height: 60px;
 		}
 	}
 }
@@ -188,10 +195,6 @@ span.required {
 		.actor-grid .thumbnail {
 			.image-container {
 				min-height: 182px;
-			}
-
-			.caption {
-				min-height: 60px;
 			}
 		}
 	}

@@ -111,8 +111,7 @@ $this->pageTitle = $details->label.' ('.$details->year.') - Movies';
 			
 			<h3>Cast</h3>
 			
-			<?php echo FormHelper::helpBlock('Click an actor image to '
-					. 'see other movies with that actor'); ?>
+			<?php echo FormHelper::helpBlock("Click an image to see other movies with that person, or click the name to go to the person's IMDb page"); ?>
 			
 			<div class="row-fluid">
 				<?php $this->widget('zii.widgets.CListView', array(

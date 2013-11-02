@@ -1,24 +1,33 @@
 <?php
 
-// If $itemUrl is false we use a <div> instead of an <a>
-if ($itemUrl !== false)
-	$thumbnailOpen = CHtml::openTag('a', array('class'=>'thumbnail', 'href'=>$itemUrl));
-else
-	$thumbnailOpen = CHtml::openTag('div', array('class'=>'thumbnail'));
-
-$thumbnailClose = CHtml::closeTag($itemUrl !== false ? 'a' : 'div');
+if (!isset($labelUrl))
+	$labelUrl = $itemUrl;
 
 ?>
 <li class="span2">
-	<?php echo $thumbnailOpen; ?>
+	<div class="thumbnail">
 		
 		<div class="image-container">
-			<?php echo Thumbnail::lazyImage($thumbnail); ?>
+			<?php 
+			
+			if ($itemUrl)
+				echo CHtml::link(Thumbnail::lazyImage($thumbnail), $itemUrl);
+			else
+				echo Thumbnail::lazyImage($thumbnail);
+			
+			?>
 		</div>
 		
 		<div class="caption">
-			<?php echo $label; ?>
+			<?php 
+			
+			if ($labelUrl)
+				echo CHtml::link($label, $labelUrl);
+			else
+				echo $label;
+			
+			?>
 		</div>
 	
-	<?php echo $thumbnailClose; ?>
+	</div>
 </li>

@@ -8,33 +8,6 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
-.clearfix {
-  *zoom: 1;
-}
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-.clearfix:after {
-  clear: both;
-}
-.hide-text {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
-}
-.input-block-level {
-  display: block;
-  width: 100%;
-  min-height: 30px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
 article,
 aside,
 details,
@@ -5271,6 +5244,33 @@ a.badge:focus {
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 @-ms-viewport {
   width: device-width;
 }
@@ -8627,6 +8627,14 @@ span.required {
 .movie-filter-form .buttons button {
   margin-right: 20px;
 }
+.item-grid .caption,
+.actor-grid .caption {
+  min-height: 60px;
+}
+.item-grid .caption a,
+.actor-grid .caption a {
+  color: #95a5a6 !important;
+}
 .item-grid .thumbnail .image-container {
   width: 100%;
   height: 240px;
@@ -8634,9 +8642,6 @@ span.required {
 }
 .item-grid .thumbnail .image-container img {
   max-height: 240px;
-}
-.item-grid .thumbnail .caption {
-  min-height: 60px;
 }
 .pager {
   border-top: 1px solid #dddddd;
@@ -8702,9 +8707,6 @@ span.required {
 }
 .item-details .item-description .actor-grid .thumbnail .image-container {
   min-height: 182px;
-}
-.item-details .item-description .actor-grid .thumbnail .caption {
-  min-height: 60px;
 }
 .recently-added-shows {
   margin-top: 20px;
