@@ -81,7 +81,7 @@ abstract class VideoFilterForm extends CFormModel
 		foreach ($this->getFilterDefinitions() as $field=> $options)
 		{
 			// '0' is a valid value so we can't use empty()
-			if ($options['value'] === '')
+			if ($options['value'] === '' || $options['value'] === null)
 				continue;
 
 			$filter = new stdClass();
