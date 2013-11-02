@@ -111,10 +111,13 @@ $this->pageTitle = $details->label.' ('.$details->year.') - Movies';
 			
 			<h3>Cast</h3>
 			
+			<?php echo FormHelper::helpBlock('Click an actor image to '
+					. 'see other movies with that actor'); ?>
+			
 			<div class="row-fluid">
 				<?php $this->widget('zii.widgets.CListView', array(
 					'dataProvider'=>$actorDataProvider,
-					'itemView'=>'/videoLibrary/_actorGridItem',
+					'itemView'=>'_actorGridItem',
 					'itemsTagName'=>'ul',
 					'itemsCssClass'=>'thumbnails actor-grid',
 					'enablePagination'=>false,
