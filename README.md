@@ -39,7 +39,7 @@ Run the following commands, one by one, in the exact order shown here:
 
 ```
 sudo su 
-apt-get install libapache2-mod-php5 php5-gd php5-cli php5-sqlite git curl
+apt-get install libapache2-mod-php5 php5-gd php5-cli php5-sqlite php5-json git curl
 a2enmod rewrite expires
 service apache2 restart
 cd /var/www
@@ -51,7 +51,9 @@ php composer.phar install
 ./src/protected/yiic setpermissions
 ```
 
-After running the commands above you'll have to modify Apache's default site configuration to allow `.htaccess` files to be used. On a default Ubuntu installation, this means you'll have to edit `/etc/apache2/sites-available/default` and change this:
+#### Debian and Ubuntu 13.04 or older
+
+After running the commands above you'll have to modify Apache's default site configuration to allow `.htaccess` files to be used. This means you'll have to edit `/etc/apache2/sites-available/default` and change this:
 
 ```
 <Directory /var/www/>
@@ -72,6 +74,23 @@ into this:
 	 allow from all
 </Directory>
 ```
+
+After saving the file you must restart Apache using `service apache2 restart` for the changes to take effect.
+
+#### Ubuntu 13.10 and newer
+
+After running the commands above you'll need to add the following to the file `/etc/apache2/sites-available/000-default.conf`:
+
+```
+<Directory /var/www/>
+	Options Indexes FollowSymLinks MultiViews
+	AllowOverride All
+	Order allow,deny
+	 allow from all
+</Directory>
+```
+
+You'll also need to edit `/etc/php5/apache2/php.ini` and change the line `;date.timezone =` to something like this: `date.timezone = Europe/Helsinki`. Look at http://us2.php.net/manual/en/datetime.configuration.php#113068 for possible timezone values.
 
 After saving the file you must restart Apache using `service apache2 restart` for the changes to take effect.
 
