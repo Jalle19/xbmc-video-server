@@ -8,8 +8,11 @@ $thumbnail = new ThumbnailActor($thumbnailPath, Thumbnail::SIZE_SMALL);
 
 $label = $data->name.' as <em>'.$data->role.'</em>';
 
+if(!isset($itemUrl))
+	$itemUrl = false;
+
 $this->renderPartial('//videoLibrary/_gridItem', array(
 	'label'=>$label,
-	'itemUrl'=>'#',
+	'itemUrl'=>$itemUrl,
 	'thumbnail'=>$thumbnail,
 ));
