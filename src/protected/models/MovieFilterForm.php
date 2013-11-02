@@ -23,6 +23,11 @@ class MovieFilterForm extends VideoFilterForm
 	 * @var string the video quality
 	 */
 	public $quality;
+	
+	/**
+	 * @var string name of actor that is in the movie
+	 */
+	public $actor;
 
 	/**
 	 * Populates and returns the list of genres
@@ -48,6 +53,7 @@ class MovieFilterForm extends VideoFilterForm
 		return array_merge(parent::attributeLabels(), array(
 			'year'=>'Year',
 			'quality'=>'Quality',
+			'actor'=>'Actor'
 		));
 	}
 
@@ -59,6 +65,7 @@ class MovieFilterForm extends VideoFilterForm
 		return array_merge(parent::rules(), array(
 			array('year', 'numerical', 'integerOnly'=>true),
 			array('quality', 'in', 'range'=>array_keys($this->getQualities())),
+			array('actor', 'safe'),
 		));
 	}
 
@@ -86,6 +93,11 @@ class MovieFilterForm extends VideoFilterForm
 		$filter['year'] = array(
 			'operator'=>'is',
 			'value'=>$this->year);
+		
+		$filter['actor'] = array(
+			'operator'=>'contains',
+			'value'=>$this->actor,
+		);
 
 		$quality = $this->quality;
 

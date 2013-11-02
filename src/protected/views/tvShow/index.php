@@ -9,7 +9,7 @@ $this->pageTitle = 'TV Shows';
 
 <?php 
 
-$this->renderPartial('_filter', array(
+$this->widget('TVShowFilter', array(
 	'model'=>$filterForm));
 
 $this->widget('ResultGrid', array(

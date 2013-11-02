@@ -8616,14 +8616,15 @@ span.required {
 .grid-view td {
   vertical-align: top !important;
 }
-.movie-filter-form .control-group,
-.movie-filter-form .buttons {
+.movie-filter-form .control-group {
   display: inline-block;
+  margin-right: 20px;
 }
-.movie-filter-form .control-group,
-.movie-filter-form .buttons,
-.movie-filter-form .control-group > button,
-.movie-filter-form .buttons > button {
+.movie-filter-form .buttons button,
+.movie-filter-form .buttons a {
+  margin: 10px 0 20px 0;
+}
+.movie-filter-form .buttons button {
   margin-right: 20px;
 }
 .item-grid .thumbnail .image-container {

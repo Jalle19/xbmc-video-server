@@ -138,19 +138,5 @@ class MovieController extends MediaController
 
 		echo $playlist;
 	}
-
-	/**
-	 * Returns an array containing all movie names
-	 * @return array the names
-	 */
-	public function getMovieNames()
-	{
-		$names = array();
-		
-		foreach (VideoLibrary::getMovies() as $movie)
-			$names[] = $movie->label;
-		
-		return $names;
-	}
 	
 }

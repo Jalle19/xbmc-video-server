@@ -235,19 +235,5 @@ class TvShowController extends MediaController
 			'pagination'=>false,
 		));
 	}
-	
-	/**
-	 * Returns an array containing the names of all TV shows
-	 * @return array the names
-	 */
-	public function getTVShowNames()
-	{
-		$names = array();
-
-		foreach (VideoLibrary::getTVShows() as $movie)
-			$names[] = $movie->label;
-
-		return $names;
-	}
 
 }

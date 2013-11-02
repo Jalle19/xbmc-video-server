@@ -65,10 +65,19 @@ span.required {
 }
 
 .movie-filter-form {
-	.control-group, .buttons {
+	.control-group {
 		display: inline-block;
+		margin-right: 20px;
+	}
 
-		&, & > button {
+	// ironically the inputs in this container are <button> or <a>
+	.buttons {
+		button, a {
+			margin: 10px 0 20px 0;
+		}
+
+		// add a left margin only on the "Clear filter" button
+		button {
 			margin-right: 20px;
 		}
 	}
