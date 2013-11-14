@@ -9,7 +9,7 @@ class m131004_175217_add_ipaddress_column extends CDbMigration
 		$table = Yii::app()->db->schema->getTable('log');
 		$columns = $table->getColumnNames();
 
-		if (!isset($columns['source_address']))
+		if (!in_array('source_address', $columns))
 			$this->addColumn('log', 'source_address', 'VARCHAR(45)');
 	}
 
