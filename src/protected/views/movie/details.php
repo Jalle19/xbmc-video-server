@@ -36,6 +36,11 @@ $this->pageTitle = $details->label.' ('.$details->year.') - Movies';
 						'links'=>$movieLinks,
 						'details'=>$details,
 					)); ?>
+                    
+                    
+                    
+                    
+                    
 				</div>
 				<?php
 			}
@@ -65,6 +70,22 @@ $this->pageTitle = $details->label.' ('.$details->year.') - Movies';
 					<?php $this->widget('MediaFlags', array(
 							'streamDetails'=>$details->streamdetails)); ?>
 				</div>
+ 
+                <div class="span9">
+                    
+            
+                <!--- Added video Container from videojs. Christian Arroyo -->
+                <br />
+               <video id="example_video_1" class="video-js vjs-default-skin"
+              controls preload="auto" width="840" height="350"
+              poster="<?php echo  new ThumbnailVideo($details->thumbnail, Thumbnail::SIZE_LARGE);?> "
+              data-setup='{"example_option":true}'>
+              <!-- create the media link to the mp4 from widgets/playerwidget.php and widgets/PlaterIt.php -->
+             <source src="<?php $this->widget('playerwidget', array('links'=>$movieLinks,'details'=>$details,)); ?>" type='video/mp4' />
+                </video>
+                <!--- End of video Container -->
+                </div>
+                
 			</div>
 			
 			<div class="item-info clearfix">

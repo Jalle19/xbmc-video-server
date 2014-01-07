@@ -11,9 +11,11 @@ Yii::app()->name = Setting::getValue('applicationName');
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+    <link href="//vjs.zencdn.net/4.2/video-js.css" rel="stylesheet">
 		<title><?php echo strip_tags($this->pageTitle); ?></title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
 		<?php 
 		
 		// Add a cache buster to the CSS URL
@@ -23,9 +25,11 @@ Yii::app()->name = Setting::getValue('applicationName');
 
 		$cs->registerCssFile($baseUrl.'/css/styles.css?'.filemtime($cssPath));
 		
+		
 		$this->registerScripts();
 		
 		?>
+        
 	</head>
 	
 	<body>
@@ -54,5 +58,6 @@ Yii::app()->name = Setting::getValue('applicationName');
 			
 		</div>
 	</body>
-	
+	  <?php Yii::app()->clientScript->registerScriptFile('http://vjs.zencdn.net/4.3/video.js', CClientScript::POS_END); ?>
+    
 </html>
