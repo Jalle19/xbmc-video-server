@@ -1,5 +1,7 @@
 <?php
 
+use SimpleJsonRpcClient\Client\HttpPostClient as JsonRPCClient;
+
 /**
  * Application component for accessing XBMC's JSON-RPC API and related functions
  *
@@ -16,7 +18,7 @@ class XBMC extends CApplicationComponent
 	private $_backend;
 	
 	/**
-	 * @var SimpleJsonRpcClient\Client the JSON-RPC client
+	 * @var JsonRPCClient the JSON-RPC client
 	 */
 	private $_client;
 	
@@ -30,8 +32,8 @@ class XBMC extends CApplicationComponent
 		
 		$endpoint = 'http://'.$this->_backend->hostname.':'.$this->_backend->port.'/jsonrpc';
 
-		$flags = SimpleJsonRpcClient\Client::FLAG_ATTEMPT_UTF8_RECOVERY;
-		$this->_client = new SimpleJsonRpcClient\Client($endpoint, 
+		$flags = JsonRPCClient::FLAG_ATTEMPT_UTF8_RECOVERY;
+		$this->_client = new JsonRPCClient($endpoint, 
 				$this->_backend->username, $this->_backend->password, $flags);
 
 		parent::init();
@@ -91,7 +93,7 @@ class XBMC extends CApplicationComponent
 			
 			return $this->_client->sendRequest($request);
 		}
-		catch (SimpleJsonRpcClient\Exception $e)
+		catch (SimpleJsonRpcClient\Exception\BaseException $e)
 		{
 			// Rethrow as CHttpException so we get to the error page
 			$message = $e->getMessage().' ('.$e->getCode().')';
@@ -114,7 +116,7 @@ class XBMC extends CApplicationComponent
 			
 			$this->_client->sendNotification($notification);
 		}
-		catch (SimpleJsonRpcClient\Exception $e)
+		catch (SimpleJsonRpcClient\Exception\BaseException $e)
 		{
 			// Rethrow as CHttpException so we get to the error page
 			$message = $e->getMessage().' ('.$e->getCode().')';
