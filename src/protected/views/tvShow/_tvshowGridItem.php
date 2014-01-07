@@ -13,7 +13,7 @@ else
 $thumbnail = new ThumbnailVideo($thumbnailPath, Thumbnail::SIZE_MEDIUM);
 
 $this->renderPartial('//videoLibrary/_gridItem', array(
-	'label'=>$data->label,
+	'label'=>CHtml::link($data->label, $showUrl),
 	'itemUrl'=>$showUrl,
 	'thumbnail'=>$thumbnail,
 ));

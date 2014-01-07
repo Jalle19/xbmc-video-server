@@ -1,9 +1,3 @@
-<?php
-
-if (!isset($labelUrl))
-	$labelUrl = $itemUrl;
-
-?>
 <li class="span2">
 	<div class="thumbnail">
 		
@@ -19,14 +13,7 @@ if (!isset($labelUrl))
 		</div>
 		
 		<div class="caption">
-			<?php 
-			
-			if ($labelUrl)
-				echo CHtml::link($label, $labelUrl);
-			else
-				echo $label;
-			
-			?>
+			<?php echo $label; ?>
 		</div>
 	
 	</div>

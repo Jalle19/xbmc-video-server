@@ -23,7 +23,7 @@ $this->pageTitle = $pageTitle;
 			<div class="item-top row-fluid">
 				<div class="item-title span6">
 					<h2>
-						<a href="http://www.thetvdb.com/?tab=series&amp;id=<?php echo $details->imdbnumber; ?>">
+						<a href="http://www.thetvdb.com/?tab=series&amp;id=<?php echo $details->imdbnumber; ?>" target="_blank">
 							<?php echo $details->title; ?>
 						</a>
 					</h2>

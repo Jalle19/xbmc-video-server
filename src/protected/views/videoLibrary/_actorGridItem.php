@@ -14,8 +14,8 @@ if(!isset($itemUrl))
 	$itemUrl = false;
 
 $this->renderPartial('//videoLibrary/_gridItem', array(
-	'label'=>$label,
-	'labelUrl'=>$labelUrl,
+	// the label is used for IMDb links so we make it open in a new tab
+	'label'=>CHtml::link($label, $labelUrl, array('target'=>'_blank')),
 	'itemUrl'=>$itemUrl,
 	'thumbnail'=>$thumbnail,
 ));
