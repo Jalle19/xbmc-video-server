@@ -1,5 +1,6 @@
 <?php
 
+/* @var $this MovieController */
 /* @var $filterForm MovieFilterForm */
 /* @var $dataProvider LibraryDataProvider */
 $this->pageTitle = 'Movies';
