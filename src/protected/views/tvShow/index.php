@@ -15,6 +15,4 @@ $this->widget('TVShowFilter', array(
 $this->widget('ResultGrid', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_tvshowGridItem',
-	'itemsTagName'=>'ul',
-	'itemsCssClass'=>'thumbnails item-grid',
 ));

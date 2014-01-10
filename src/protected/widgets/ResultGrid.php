@@ -26,6 +26,8 @@ class ResultGrid extends CListView
 				'align'=>TbHtml::PAGINATION_ALIGN_RIGHT,
 			),
 		);
+		$this->itemsTagName = 'ul';
+		$this->itemsCssClass = 'thumbnails item-grid';
 
 		parent::init();
 	}
