@@ -8565,8 +8565,15 @@ a .icon-flip-vertical:before {
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
 }
+.grid-view {
+  font-size: inherit;
+}
 .grid-view.grid-view-loading {
   background-image: url(../images/loader.gif);
+}
+.grid-view .summary {
+  font-size: inherit;
+  color: inherit;
 }
 h1 > a,
 h2 > a,
@@ -8759,6 +8766,9 @@ span.required {
 .media-flags .flag-section img {
   display: inline-block;
   margin-right: 5px;
+}
+.log-grid {
+  font-size: 13px;
 }
 .log-grid tr.error-row td {
   background-color: #e74c3c !important;
