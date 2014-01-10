@@ -8802,11 +8802,3 @@ span.required {
   font-family: "Courier New", Courier, monospace;
   font-size: 12px;
 }
-@media all and (max-width: 767px) {
-  .item-grid .thumbnail .image-container {
-    display: none;
-  }
-  .item-grid .thumbnail .caption {
-    min-height: auto;
-  }
-}
