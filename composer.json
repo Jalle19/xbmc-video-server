@@ -6,6 +6,7 @@
 		"crisu83/yiistrap": "dev-master",
 		"crisu83/yii-consoletools": "dev-master",
 		"eventviva/php-image-resize": "dev-master",
-		"hautelook/phpass": "dev-master"
+		"hautelook/phpass": "dev-master",
+		"mobiledetect/mobiledetectlib": "2.7.*"
     }
 }
