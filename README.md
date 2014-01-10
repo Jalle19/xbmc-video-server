@@ -26,7 +26,7 @@ Requirements
 * PHP 5.4
 * allow_url_fopen = On in php.ini
 * Apache with .htaccess support enabled
-* XBMC 13 (Gotham)
+* XBMC 12 "Frodo" (seeking works reliably on v13 "Gotham" only)
 
 Installation
 ------------
