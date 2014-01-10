@@ -1,12 +1,13 @@
 <?php
 
 /**
- * Sub-class of CListView. It fixes a bug in Yii where an empty data provider 
- * causes invalid HTML, which in turn triggers some weird layout bugs.
+ * Displays media results as a grid with posters and labels.
  *
  * @author Sam Stenvall <neggelandia@gmail.com>
  * @copyright Copyright &copy; Sam Stenvall 2013-
  * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
+ * 
+ * TODO: Combine ResultGrid and ResultList somehow to reduce the amount of code duplication
  */
 Yii::import('zii.widgets.CListView');
 
@@ -18,14 +19,7 @@ class ResultGrid extends CListView
 	 */
 	public function init()
 	{
-		// Configure the pager
-		$this->pager = array(
-			'class'=>'bootstrap.widgets.TbPager',
-			'maxButtonCount'=>10,
-			'htmlOptions'=>array(
-				'align'=>TbHtml::PAGINATION_ALIGN_RIGHT,
-			),
-		);
+		$this->pager = ResultHelper::getDefaultPagerConfiguration();
 		$this->itemsTagName = 'ul';
 		$this->itemsCssClass = 'thumbnails item-grid';
 
@@ -64,6 +58,19 @@ class ResultGrid extends CListView
 	public function registerClientScript()
 	{
 		
+	}
+	
+	/**
+	 * Renders the summary and the display mode toggle.
+	 */
+	public function renderSummary()
+	{
+		// Render the actual summary into a variable
+		ob_start();
+		parent::renderSummary();
+		$summaryContent = ob_get_clean();
+		
+		ResultHelper::renderDisplayModeToggle($summaryContent);
 	}
 
 }

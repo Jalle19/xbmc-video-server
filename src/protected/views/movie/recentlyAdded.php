@@ -9,7 +9,17 @@ $this->pageTitle = 'Recently added movies';
 
 <?php
 
-$this->widget('ResultGrid', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_movieGridItem',
-));
+switch ($this->getDisplayMode())
+{
+	case MediaController::DISPLAY_MODE_GRID:
+		$this->widget('ResultGrid', array(
+			'dataProvider'=>$dataProvider,
+			'itemView'=>'_movieGridItem',
+		));
+		break;
+	case MediaController::DISPLAY_MODE_LIST:
+		$this->widget('ResultList', array(
+			'dataProvider'=>$dataProvider,
+		));
+		break;
+}

@@ -8634,6 +8634,20 @@ span.required {
 .movie-filter-form .buttons button {
   margin-right: 20px;
 }
+.display-mode-toggle {
+  margin-bottom: 20px;
+  text-align: right;
+}
+.display-mode-toggle .summary {
+  display: inline-block;
+  margin-bottom: 0;
+}
+.display-mode-toggle .btn-group {
+  margin-left: 20px;
+}
+.display-mode-toggle .btn-group ul > li > a {
+  text-align: left;
+}
 .item-grid .caption,
 .actor-grid .caption {
   min-height: 60px;

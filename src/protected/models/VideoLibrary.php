@@ -37,7 +37,7 @@ class VideoLibrary
 	public static function getMovies($params = array())
 	{
 		self::addDefaultSort($params);
-		self::addDefaultProperties($params);
+		self::ensureProperties($params, array('year', 'genre', 'thumbnail'));
 		
 		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetMovies', $params);
 
@@ -50,7 +50,7 @@ class VideoLibrary
 	 */
 	public static function getRecentlyAddedMovies($params = array())
 	{
-		self::addDefaultProperties($params);
+		self::ensureProperties($params, array('year', 'genre', 'thumbnail'));
 
 		// The grid shows six items per row, we don't want the 25th item to be 
 		// lonely

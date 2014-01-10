@@ -35,7 +35,7 @@ class TvShowController extends MediaController
 		$filterForm = new TVShowFilterForm();
 
 		$requestParameters = array(
-			'properties'=>array('thumbnail', 'fanart', 'art'));
+			'properties'=>array('thumbnail', 'fanart', 'art', 'genre', 'year'));
 
 		if (isset($_GET['TVShowFilterForm']))
 		{

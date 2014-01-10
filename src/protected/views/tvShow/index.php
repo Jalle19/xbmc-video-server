@@ -12,7 +12,17 @@ $this->pageTitle = 'TV Shows';
 $this->widget('TVShowFilter', array(
 	'model'=>$filterForm));
 
-$this->widget('ResultGrid', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_tvshowGridItem',
-));
+switch ($this->getDisplayMode())
+{
+	case MediaController::DISPLAY_MODE_GRID:
+		$this->widget('ResultGrid', array(
+			'dataProvider'=>$dataProvider,
+			'itemView'=>'_tvshowGridItem',
+		));
+		break;
+	case MediaController::DISPLAY_MODE_LIST:
+		$this->widget('ResultList', array(
+			'dataProvider'=>$dataProvider,
+		));
+		break;
+}
