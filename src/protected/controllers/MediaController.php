@@ -89,8 +89,13 @@ abstract class MediaController extends Controller
 
 		if ($displayMode === null)
 		{
-			// TODO: Determine by browser
-			$displayMode = self::DISPLAY_MODE_GRID;
+			// Use list mode by default for phones
+			$detector = new Mobile_Detect();
+			
+			if ($detector->isMobile() && !$detector->isTablet())
+				$displayMode = self::DISPLAY_MODE_LIST;
+			else
+				$displayMode = self::DISPLAY_MODE_GRID;
 		}
 
 		return $displayMode;
