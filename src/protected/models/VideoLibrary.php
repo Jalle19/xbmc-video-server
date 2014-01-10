@@ -266,6 +266,19 @@ class VideoLibrary
 	}
 	
 	/**
+	 * Ensures that the specified properties are specified in 
+	 * params['properties']
+	 * @param array $params the parameters
+	 * @param array $properties the properties
+	 */
+	private static function ensureProperties(&$params, $properties)
+	{
+		self::addDefaultProperties($params);
+		$params['properties'] = array_unique(array_merge($params['properties'], 
+				$properties));
+	}
+
+	/**
 	 * Returns the $resultSet from the $response object, or $defaultValue if 
 	 * the result set is not available
 	 * @param stdClass $response an API response object
