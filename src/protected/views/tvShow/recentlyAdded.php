@@ -10,7 +10,7 @@ $this->pageTitle = 'Recently added episodes';
 <?php echo FormHelper::helpBlock('You can click the show name to jump directly 
 	to the show details page'); ?>
 
-<div class="recently-added-shows item-details">
+<div class="item-details">
 	<?php $this->widget('RecentlyAddedEpisodeList', array(
 		'dataProvider'=>$dataProvider,
 	)); ?>
