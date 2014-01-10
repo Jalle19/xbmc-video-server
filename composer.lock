@@ -3,11 +3,11 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "1f90a9bf02e26c96ab61cb03e5f3eee8",
+    "hash": "bd134b2a3feff2e628165d8db1ee9f68",
     "packages": [
         {
             "name": "crisu83/yii-consoletools",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yii-consoletools.git",
@@ -41,7 +41,7 @@
         },
         {
             "name": "crisu83/yii-less",
-            "version": "dev-master",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yii-less.git",
@@ -73,23 +73,23 @@
         },
         {
             "name": "crisu83/yiistrap",
-            "version": "dev-master",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Crisu83/yiistrap.git",
-                "reference": "24537d27105acfc247417895dad6779a78c83296"
+                "reference": "abd12f7e663b162138587b8801f510d72a6daf4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/24537d27105acfc247417895dad6779a78c83296",
-                "reference": "24537d27105acfc247417895dad6779a78c83296",
+                "url": "https://api.github.com/repos/Crisu83/yiistrap/zipball/abd12f7e663b162138587b8801f510d72a6daf4e",
+                "reference": "abd12f7e663b162138587b8801f510d72a6daf4e",
                 "shasum": ""
             },
             "require-dev": {
                 "codeception/codeception": "@stable",
-                "crisu83/yii-composer": "dev-master",
+                "crisu83/yii-composer": ">=1.0.0",
                 "php": ">=5.3.0",
-                "yiisoft/yii": "1.1.13"
+                "yiisoft/yii": ">=1.1.13"
             },
             "type": "library",
             "extra": {
@@ -118,7 +118,7 @@
                 "bootstrap",
                 "yii"
             ],
-            "time": "2013-09-01 21:42:53"
+            "time": "2013-11-13 09:28:59"
         },
         {
             "name": "eventviva/php-image-resize",
@@ -126,12 +126,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/eventviva/php-image-resize.git",
-                "reference": "da648109f578a8b0588c1692adc28fa938e3d305"
+                "reference": "c3feead0123a1cd9356f87f338cda626c73252b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eventviva/php-image-resize/zipball/da648109f578a8b0588c1692adc28fa938e3d305",
-                "reference": "da648109f578a8b0588c1692adc28fa938e3d305",
+                "url": "https://api.github.com/repos/eventviva/php-image-resize/zipball/c3feead0123a1cd9356f87f338cda626c73252b3",
+                "reference": "c3feead0123a1cd9356f87f338cda626c73252b3",
                 "shasum": ""
             },
             "require": {
@@ -151,10 +151,10 @@
             "authors": [
                 {
                     "name": "EventViva",
-                    "homepage": "http://eventviva.com/"
+                    "homepage": "https://eventviva.com/"
                 }
             ],
-            "description": "HP class to re-size and scale images",
+            "description": "PHP class to re-size and scale images",
             "homepage": "https://github.com/eventviva/php-image-resize",
             "keywords": [
                 "image",
@@ -162,20 +162,20 @@
                 "resize",
                 "scale"
             ],
-            "time": "2013-04-21 20:56:10"
+            "time": "2013-11-15 20:47:56"
         },
         {
             "name": "hautelook/phpass",
-            "version": "dev-master",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hautelook/phpass.git",
-                "reference": "94845c6e7eecdc025e8b33dd272d03db06c87f2a"
+                "reference": "da4c2c693aa4e1c616a350015c90af0da82a0fd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hautelook/phpass/zipball/94845c6e7eecdc025e8b33dd272d03db06c87f2a",
-                "reference": "94845c6e7eecdc025e8b33dd272d03db06c87f2a",
+                "url": "https://api.github.com/repos/hautelook/phpass/zipball/da4c2c693aa4e1c616a350015c90af0da82a0fd8",
+                "reference": "da4c2c693aa4e1c616a350015c90af0da82a0fd8",
                 "shasum": ""
             },
             "require": {
@@ -206,11 +206,11 @@
                 "password",
                 "security"
             ],
-            "time": "2013-05-01 13:59:26"
+            "time": "2012-08-31 00:00:00"
         },
         {
             "name": "jalle19/simple-json-rpc-client",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Jalle19/simple-json-rpc-client.git",
@@ -381,7 +381,7 @@
         },
         {
             "name": "zendframework/zend-escaper",
-            "version": "2.2.4",
+            "version": "2.2.5",
             "target-dir": "Zend/Escaper",
             "source": {
                 "type": "git",
@@ -421,17 +421,17 @@
         },
         {
             "name": "zendframework/zend-http",
-            "version": "2.2.4",
+            "version": "2.2.5",
             "target-dir": "Zend/Http",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendHttp.git",
-                "reference": "23c58ffd0929dc328c62f1fe12e7a343638c70c8"
+                "reference": "5b8745a7f857fbf3bd989b2ccaebd6778de7c25a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendHttp/zipball/23c58ffd0929dc328c62f1fe12e7a343638c70c8",
-                "reference": "23c58ffd0929dc328c62f1fe12e7a343638c70c8",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendHttp/zipball/5b8745a7f857fbf3bd989b2ccaebd6778de7c25a",
+                "reference": "5b8745a7f857fbf3bd989b2ccaebd6778de7c25a",
                 "shasum": ""
             },
             "require": {
@@ -462,28 +462,25 @@
                 "http",
                 "zf2"
             ],
-            "time": "2013-08-21 17:08:02"
+            "time": "2013-10-23 15:00:05"
         },
         {
             "name": "zendframework/zend-loader",
-            "version": "2.2.4",
+            "version": "2.2.5",
             "target-dir": "Zend/Loader",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendLoader.git",
-                "reference": "11a952589d37879d92fee78e70eed731c1073ed3"
+                "reference": "9e3537a6012dc0b184f66f8668e6c33fd805f0eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendLoader/zipball/11a952589d37879d92fee78e70eed731c1073ed3",
-                "reference": "11a952589d37879d92fee78e70eed731c1073ed3",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendLoader/zipball/9e3537a6012dc0b184f66f8668e6c33fd805f0eb",
+                "reference": "9e3537a6012dc0b184f66f8668e6c33fd805f0eb",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
-            },
-            "suggest": {
-                "zendframework/zend-stdlib": "Zend\\Stdlib component"
             },
             "type": "library",
             "extra": {
@@ -505,21 +502,21 @@
                 "loader",
                 "zf2"
             ],
-            "time": "2013-08-21 17:07:14"
+            "time": "2013-10-20 06:00:17"
         },
         {
             "name": "zendframework/zend-stdlib",
-            "version": "2.2.4",
+            "version": "2.2.5",
             "target-dir": "Zend/Stdlib",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendStdlib.git",
-                "reference": "7c87ce4e840957596bf3401fa4ae4fb0355682e2"
+                "reference": "f440ecfc828d61d620662a03987c8287e1e4801e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendStdlib/zipball/7c87ce4e840957596bf3401fa4ae4fb0355682e2",
-                "reference": "7c87ce4e840957596bf3401fa4ae4fb0355682e2",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendStdlib/zipball/f440ecfc828d61d620662a03987c8287e1e4801e",
+                "reference": "f440ecfc828d61d620662a03987c8287e1e4801e",
                 "shasum": ""
             },
             "require": {
@@ -549,11 +546,11 @@
                 "stdlib",
                 "zf2"
             ],
-            "time": "2013-08-21 17:08:07"
+            "time": "2013-10-20 06:00:20"
         },
         {
             "name": "zendframework/zend-uri",
-            "version": "2.2.4",
+            "version": "2.2.5",
             "target-dir": "Zend/Uri",
             "source": {
                 "type": "git",
@@ -596,17 +593,17 @@
         },
         {
             "name": "zendframework/zend-validator",
-            "version": "2.2.4",
+            "version": "2.2.5",
             "target-dir": "Zend/Validator",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/Component_ZendValidator.git",
-                "reference": "3aa2c87ee3d36763b30087b1188f42a6c95f414f"
+                "reference": "8c23193a617a03dd7ee6c25049132c942f31ec28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/Component_ZendValidator/zipball/3aa2c87ee3d36763b30087b1188f42a6c95f414f",
-                "reference": "3aa2c87ee3d36763b30087b1188f42a6c95f414f",
+                "url": "https://api.github.com/repos/zendframework/Component_ZendValidator/zipball/8c23193a617a03dd7ee6c25049132c942f31ec28",
+                "reference": "8c23193a617a03dd7ee6c25049132c942f31ec28",
                 "shasum": ""
             },
             "require": {
@@ -625,7 +622,8 @@
                 "zendframework/zend-i18n": "Zend\\I18n component to allow translation of validation error messages as well as to use the various Date validators",
                 "zendframework/zend-math": "Zend\\Math component",
                 "zendframework/zend-resources": "Translations of validator messages",
-                "zendframework/zend-servicemanager": "Zend\\ServiceManager component to allow using the ValidatorPluginManager and validator chains"
+                "zendframework/zend-servicemanager": "Zend\\ServiceManager component to allow using the ValidatorPluginManager and validator chains",
+                "zendframework/zend-uri": "Zend\\Uri component, required by the Uri and Sitemap\\Loc validators"
             },
             "type": "library",
             "extra": {
@@ -648,7 +646,7 @@
                 "validator",
                 "zf2"
             ],
-            "time": "2013-08-21 17:07:51"
+            "time": "2013-10-20 06:00:22"
         }
     ],
     "packages-dev": [
@@ -659,12 +657,7 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "jalle19/simple-json-rpc-client": 20,
-        "crisu83/yii-less": 20,
-        "crisu83/yiistrap": 20,
-        "crisu83/yii-consoletools": 20,
-        "eventviva/php-image-resize": 20,
-        "hautelook/phpass": 20
+        "eventviva/php-image-resize": 20
     },
     "platform": [
 
