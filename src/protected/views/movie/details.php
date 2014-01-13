@@ -62,8 +62,11 @@ $this->pageTitle = $details->label.' ('.$details->year.') - Movies';
 				</div>
 				
 				<div class="span6 hidden-phone">
-					<?php $this->widget('MediaFlags', array(
-							'streamDetails'=>$details->streamdetails)); ?>
+					<?php
+							$this->widget('MediaFlags', array(
+							'streamDetails'=>$details->streamdetails,
+							'file'=>$details->file
+					)); ?>
 				</div>
 			</div>
 			
