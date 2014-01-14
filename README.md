@@ -79,8 +79,7 @@ After running the commands above you'll need to add the following to the file `/
 <Directory /var/www/xbmc-video-server/>
 	Options Indexes FollowSymLinks MultiViews
 	AllowOverride All
-	Order allow,deny
-	 allow from all
+	Require all granted
 </Directory>
 ```
 above
