@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Audio source flag
+ *
+ * @author Stefan Spühler <git@tuxli.ch>
+ * @copyright Copyright &copy; Stefan Spühler 2013-
+ * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
+ */
+
 class MediaFlagAudioSource extends MediaFlag
 {
 
