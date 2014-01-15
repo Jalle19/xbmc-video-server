@@ -30,6 +30,11 @@ class MovieFilterForm extends VideoFilterForm
 	public $actor;
 
 	/**
+	 * @var float rating of the movie
+	 */
+	public $rating;
+
+	/**
 	 * Populates and returns the list of genres
 	 * @implements VideoFilterForm
 	 * @return array
@@ -53,7 +58,8 @@ class MovieFilterForm extends VideoFilterForm
 		return array_merge(parent::attributeLabels(), array(
 			'year'=>'Year',
 			'quality'=>'Quality',
-			'actor'=>'Actor'
+			'actor'=>'Actor',
+			'rating'=>'Minimum rating'
 		));
 	}
 
@@ -66,6 +72,7 @@ class MovieFilterForm extends VideoFilterForm
 			array('year', 'numerical', 'integerOnly'=>true),
 			array('quality', 'in', 'range'=>array_keys($this->getQualities())),
 			array('actor', 'safe'),
+			array('rating', 'numerical'),
 		));
 	}
 
@@ -98,6 +105,10 @@ class MovieFilterForm extends VideoFilterForm
 			'operator'=>'contains',
 			'value'=>$this->actor,
 		);
+
+		$filter['rating'] = array(
+			'operator'=>'greaterthan',
+			'value'=>$this->rating);
 
 		$quality = $this->quality;
 

@@ -33,6 +33,9 @@ class MovieFilter extends VideoFilter
 		
 		echo $this->form->textFieldControlGroup($this->model, 'year', 
 				array('style'=>'max-width: 40px;'));
+
+		echo $this->form->textFieldControlGroup($this->model, 'rating', 
+				array('style'=>'max-width: 90px;'));
 		
 		echo $this->form->dropDownListControlGroup($this->model, 'quality', 
 				$this->model->getQualities(), 
