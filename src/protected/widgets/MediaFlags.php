@@ -16,7 +16,7 @@ class MediaFlags extends CWidget
 	public $streamDetails;
 
 	/**
-	 * @var stdClass details for a media file
+	 * @var string the media file name
 	 */
 	public $file;
 	
