@@ -25,16 +25,13 @@ class MediaFlags extends CWidget
 	 */
 	public function run()
 	{
-		// Some media don't have any stream details, we can't render any flags 
-		// for those
-		if (count($this->streamDetails->audio) == 0 
-				|| count($this->streamDetails->video) == 0)
-		{
-			return;
-		}
+		echo CHtml::openTag('div', array('class'=>'media-flags'));
 		
-		?>
-		<div class="media-flags">
+		// Some media don't have any stream details, we have to skip the flags
+		// that depend on them.
+		if ($this->hasStreamDetails())
+		{
+			?>
 			<div class="flag-section">
 				<?php $this->widget('MediaFlagResolution', array(
 				'streamDetails'=>$this->streamDetails));
@@ -53,15 +50,29 @@ class MediaFlags extends CWidget
 				<?php $this->widget('MediaFlagAspect', array(
 						'streamDetails'=>$this->streamDetails)); ?>
 			</div>
-
-			<div class="flag-section">
-				<?php $this->widget('MediaFlagVideoSource', array(
-					'file'=>$this->file));
-				$this->widget('MediaFlagAudioSource', array(
-					'file'=>$this->file)); ?>
-			</div>
+			<?php
+		}
+		
+		?>
+		<div class="flag-section">
+			<?php $this->widget('MediaFlagVideoSource', array(
+				'file'=>$this->file));
+			$this->widget('MediaFlagAudioSource', array(
+				'file'=>$this->file)); ?>
 		</div>
 		<?php
+		
+		echo CHtml::closeTag('div');
+	}
+	
+	/**
+	 * Checks whether the stream details are available.
+	 * @return boolean
+	 */
+	private function hasStreamDetails()
+	{
+		return count($this->streamDetails->audio) !== 0 
+		       && count($this->streamDetails->video) !== 0;
 	}
 
 }
