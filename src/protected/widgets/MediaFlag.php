@@ -41,6 +41,7 @@ abstract class MediaFlag extends CWidget
 	public function init()
 	{
 		parent::init();
+		
 		$this->audio = $this->streamDetails->audio[0];
 		$this->video = $this->streamDetails->video[0];
 		$this->_iconBaseDir = Yii::app()->baseUrl.'/images/xbmc-media-flags';
