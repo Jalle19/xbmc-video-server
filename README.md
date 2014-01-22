@@ -51,7 +51,11 @@ php composer.phar install
 ./src/protected/yiic setpermissions
 ```
 
-After running the commands above you'll have to add a few lines to Apache's default site configuration to allow `.htaccess` files to be used. This means you'll have to edit `/etc/apache2/sites-available/default` (the file is named `000-default` on newer versions of Ubuntu) and add the following right before the last line (`</VirtualHost>`):
+After running the commands above you'll have to add a few lines to Apache's default site configuration to allow `.htaccess` files to be used. The exact process varies depending on which version of Linux you use.
+
+#### Debian and Ubuntu 13.04 or older
+
+Open the file `/etc/apache2/sites-available/default` and add the following right before the last line (`</VirtualHost>`):
 
 ```
 <Directory /var/www/xbmc-video-server/>
@@ -65,6 +69,18 @@ After running the commands above you'll have to add a few lines to Apache's defa
 After saving the file you must restart Apache using `service apache2 restart` for the changes to take effect.
 
 #### Ubuntu 13.10 and newer
+
+Open the file `/etc/apache2/sites-available/000-default` and add the following right before the last line (`</VirtualHost>`):
+
+```
+<Directory /var/www/xbmc-video-server/>
+	Options FollowSymLinks
+	AllowOverride All
+	Require all granted
+</Directory>
+```
+
+After saving the file you must restart Apache using `service apache2 restart` for the changes to take effect.
 
 In addition to the above steps you'll also need to edit `/etc/php5/apache2/php.ini` and change the line `;date.timezone =` to something like this: `date.timezone = Europe/Helsinki`. Look at http://us2.php.net/manual/en/datetime.configuration.php#113068 for possible timezone values.
 
