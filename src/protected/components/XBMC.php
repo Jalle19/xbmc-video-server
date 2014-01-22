@@ -144,6 +144,9 @@ class XBMC extends CApplicationComponent
 			if (Setting::getValue('useHttpsForVfsUrls') && Yii::app()->request->isSecureConnection)
 				$scheme = 'https://';
 			
+			// Remove the beginning "vfs/" from the path
+			$path = substr($path, 4);
+			
 			return $scheme.$_SERVER['HTTP_HOST'].$proxyLocation.'/'.$path;
 		}
 		else
