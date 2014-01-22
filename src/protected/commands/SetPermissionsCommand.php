@@ -6,6 +6,8 @@ Yii::import('composer.crisu83.yii-consoletools.commands.PermissionsCommand');
  * Sets the correct permissions for certain files and directories
  *
  * @author Sam Stenvall <neggelandia@gmail.com>
+ * @copyright Copyright &copy; Sam Stenvall 2014-
+ * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
  */
 class SetPermissionsCommand extends PermissionsCommand
 {

@@ -10,6 +10,10 @@
  * @property string $logtime
  * @property string $source_address
  * @property string $message
+ * 
+ * @author Sam Stenvall <neggelandia@gmail.com>
+ * @copyright Copyright &copy; Sam Stenvall 2014-
+ * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
  */
 class Log extends CActiveRecord
 {
