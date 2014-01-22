@@ -75,6 +75,18 @@ class MovieFilterForm extends VideoFilterForm
 			array('rating', 'numerical', 'max'=>'10'),
 		));
 	}
+	
+	/**
+	 * Pre-validation logic
+	 * @return boolean whether to perform validation at all
+	 */
+	protected function beforeValidate()
+	{
+		// Convert commas to dots
+		$this->rating = str_replace(',', '.', $this->rating);
+
+		return parent::beforeValidate();
+	}
 
 	/**
 	 * Returns the possible qualities
