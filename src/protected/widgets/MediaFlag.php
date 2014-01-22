@@ -11,24 +11,9 @@ abstract class MediaFlag extends CWidget
 {
 
 	/**
-	 * @var stdClass stream details for a media file
-	 */
-	public $streamDetails;
-
-	/**
 	 * @var string the media file name
 	 */
 	public $file;
-
-	/**
-	 * @var stdClass the audio part of the stream details
-	 */
-	protected $audio;
-
-	/**
-	 * @var stdClass the video part of the stream details
-	 */
-	protected $video;
 
 	/**
 	 * @var string the base URL to the flag icons
@@ -40,10 +25,6 @@ abstract class MediaFlag extends CWidget
 	 */
 	public function init()
 	{
-		parent::init();
-		
-		$this->audio = $this->streamDetails->audio[0];
-		$this->video = $this->streamDetails->video[0];
 		$this->_iconBaseDir = Yii::app()->baseUrl.'/images/xbmc-media-flags';
 	}
 

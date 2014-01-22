@@ -57,13 +57,11 @@ class MediaFlags extends CWidget
 			<div class="flag-section">
 				<?php $this->widget('MediaFlagVideoSource', array(
 					'file'=>$this->file,
-					'streamDetails'=>$this->streamDetails
 				)); ?>
 			</div>
 			<div class="flag-section">
 				<?php $this->widget('MediaFlagAudioSource', array(
 					'file'=>$this->file,
-					'streamDetails'=>$this->streamDetails
 				)); ?>
 			</div>
 		</div>
