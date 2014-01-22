@@ -72,7 +72,7 @@ class MovieFilterForm extends VideoFilterForm
 			array('year', 'numerical', 'integerOnly'=>true),
 			array('quality', 'in', 'range'=>array_keys($this->getQualities())),
 			array('actor', 'safe'),
-			array('rating', 'numerical'),
+			array('rating', 'numerical', 'max'=>'10'),
 		));
 	}
 
