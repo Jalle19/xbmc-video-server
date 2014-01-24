@@ -58,7 +58,15 @@ class BackendController extends AdminOnlyController
 						$model->name);
 		Yii::app()->user->setFlash('success', 'Changed backend to '.$model->name);
 		
-		$this->redirect(Yii::app()->homeUrl);
+		// Always redirect to the previous page, except when that page is a 
+		// movie or TV show details page since they will most likely not be 
+		// the same across backends
+		$referrer = Yii::app()->request->urlReferrer;
+		
+		if (strpos($referrer, 'tvShow/details') !== false || strpos($referrer, 'movie/details') !== false)
+			$this->redirect(Yii::app()->homeUrl);
+		else
+			$this->redirectToPrevious(Yii::app()->homeUrl);
 	}
 	
 	/**
