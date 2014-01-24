@@ -48,7 +48,9 @@ class Backend extends CActiveRecord
 			array('default', 'requireDefaultBackend'),
 			array('port, default', 'numerical', 'integerOnly'=>true),
 			array('proxyLocation', 'safe'),
+			// the following rules depend on each other so they must come in this order
 			array('hostname', 'checkConnectivity'),
+			array('hostname', 'checkServerType'),
 		);
 	}
 	
@@ -98,6 +100,43 @@ class Backend extends CActiveRecord
 
 		if (@fsockopen($hostname, $port, $errno) === false || $errno !== 0)
 			$this->addError($attribute, "Unable to connect to $hostname:$port, make sure XBMC is running and has its web server enabled");
+	}
+
+	/**
+	 * Checks that the server running on hostname:port is actually XBMC and not 
+	 * some other software. We do this by looking at the authentication realm 
+	 * string.
+	 */
+	public function checkServerType($attribute)
+	{
+		if (!$this->isAttributesValid(array('hostname', 'port')))
+			return;
+
+		// Create a HTTP client and a GET request
+		$httpClient = new Zend\Http\Client();
+		$httpRequest = new \Zend\Http\Request();
+		$httpRequest->setUri('http://'.$this->hostname.':'.$this->port.'/');
+
+		// Perform the request
+		try
+		{
+			$httpResponse = $httpClient->dispatch($httpRequest);
+
+			// We expect there to be WWW-Authenticate header with the realm "XBMC"
+			foreach ($httpResponse->getHeaders() as $header)
+				if ($header instanceof Zend\Http\Header\WWWAuthenticate)
+					if (preg_match('/xbmc/i', $header->value))
+						return;
+
+			// We just want to get to the catch clause, the message is irrelevant
+			throw new Exception('Invalid credentials');
+		}
+		catch (\Exception $e)
+		{
+			unset($e); // avoid IDE warnings
+
+			$this->addError($attribute, "The server at $this->hostname:$this->port doesn't seem to be an XBMC instance");
+		}
 	}
 
 	/**
