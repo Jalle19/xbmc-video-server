@@ -51,6 +51,7 @@ class Backend extends CActiveRecord
 			// the following rules depend on each other so they must come in this order
 			array('hostname', 'checkConnectivity'),
 			array('hostname', 'checkServerType'),
+			array('username', 'checkCredentials'),
 		);
 	}
 	
@@ -102,6 +103,39 @@ class Backend extends CActiveRecord
 			$this->addError($attribute, "Unable to connect to $hostname:$port, make sure XBMC is running and has its web server enabled");
 	}
 
+	/**
+	 * Checks that the credentials entered are valid. We do this by requesting 
+	 * "/" on the server and checking the HTTP status code.
+	 * @param string $attribute the attribute being validated ("username" in 
+	 * this case)
+	 */
+	public function checkCredentials($attribute)
+	{
+		if (!$this->isAttributesValid(array('hostname', 'port', 'username', 'password')))
+			return;
+
+		// Create a HTTP client and a GET request
+		$httpClient = new Zend\Http\Client();
+		$httpClient->setAuth($this->username, $this->password);
+		$httpRequest = new \Zend\Http\Request();
+		$httpRequest->setUri('http://'.$this->hostname.':'.$this->port.'/');
+
+		// Perform the request
+		try
+		{
+			$httpResponse = $httpClient->dispatch($httpRequest);
+
+			if ($httpResponse->getStatusCode() === 401)
+				throw new Exception('Invalid credentials');
+		}
+		catch (\Exception $e)
+		{
+			unset($e); // avoid IDE warnings
+
+			$this->addError($attribute, 'Invalid credentials');
+		}
+	}
+	
 	/**
 	 * Checks that the server running on hostname:port is actually XBMC and not 
 	 * some other software. We do this by looking at the authentication realm 
