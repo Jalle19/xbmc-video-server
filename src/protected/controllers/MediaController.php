@@ -57,11 +57,7 @@ abstract class MediaController extends Controller
 	public function actionSetDisplayMode($mode)
 	{
 		$this->setDisplayMode($mode);
-
-		if (Yii::app()->request->urlReferrer)
-			$this->redirect(Yii::app()->request->urlReferrer);
-		else
-			$this->redirect(Yii::app()->homeUrl);
+		$this->redirectToPrevious(Yii::app()->homeUrl);
 	}
 	
 	/**
