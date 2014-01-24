@@ -139,7 +139,8 @@ class BackendController extends AdminOnlyController
 	 * Updates the specified backend, then returns to the admin action
 	 * @param int $id the backend ID
 	 */
-	public function actionUpdate($id) {
+	public function actionUpdate($id)
+	{
 		$model = $this->loadModel($id);
 
 		if (isset($_POST['Backend']))
