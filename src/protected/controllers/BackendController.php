@@ -9,6 +9,17 @@
  */
 class BackendController extends AdminOnlyController
 {
+	
+	/**
+	 * Override parent to force AJAX only on the delete action
+	 * @return array the filters
+	 */
+	public function filters()
+	{
+		return array_merge(parent::filters(), array(
+			'ajaxOnly + delete',
+		));
+	}
 
 	/**
 	 * Override parent implementation to allow everyone to change backend and 
