@@ -48,6 +48,7 @@ class Backend extends CActiveRecord
 			array('default', 'requireDefaultBackend'),
 			array('port, default', 'numerical', 'integerOnly'=>true),
 			array('proxyLocation', 'safe'),
+			array('hostname', 'checkConnectivity'),
 		);
 	}
 	
@@ -78,6 +79,25 @@ class Backend extends CActiveRecord
 			'proxyLocation'=>'Proxy location',
 			'default'=>'Set as default',
 		);
+	}
+	
+	/**
+	 * Checks that there is actually something listening on the specified 
+	 * hostname and port.
+	 * @param string $attribute the attribute being validated ("hostname" in 
+	 * this case)
+	 */
+	public function checkConnectivity($attribute)
+	{
+		if (!$this->isAttributesValid(array('hostname', 'port')))
+			return;
+
+		$hostname = $this->{$attribute};
+		$port = $this->port;
+		$errno = 0;
+
+		if (@fsockopen($hostname, $port, $errno) === false || $errno !== 0)
+			$this->addError($attribute, "Unable to connect to $hostname:$port, make sure XBMC is running and has its web server enabled");
 	}
 
 	/**
@@ -127,6 +147,21 @@ class Backend extends CActiveRecord
 		return new CActiveDataProvider(__CLASS__, array(
 			'pagination'=>false
 		));
+	}
+	
+	/**
+	 * Checks whether any of the specified attributes have errors and returns 
+	 * true if they don't
+	 * @param array $attributes the attributes to check
+	 * @return boolean whether any of the attributes have errors
+	 */
+	private function isAttributesValid($attributes)
+	{
+		foreach ($attributes as $attribute)
+			if ($this->hasErrors($attribute))
+				return false;
+
+		return true;
 	}
 
 }
