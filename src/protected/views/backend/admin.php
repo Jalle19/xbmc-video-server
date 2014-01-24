@@ -22,7 +22,7 @@ $this->pageTitle = 'Manage backends';
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
 	'type'=>TbHtml::GRID_TYPE_STRIPED,
-	'dataProvider'=>$model->dataProvider,
+	'dataProvider'=>Backend::model()->dataProvider,
 	'enableSorting'=>false,
 	'template'=>'{items}',
 	'columns'=>array(

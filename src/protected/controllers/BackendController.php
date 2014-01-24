@@ -92,14 +92,7 @@ class BackendController extends AdminOnlyController
 	 */
 	public function actionAdmin()
 	{
-		$model = new Backend();
-		$model->unsetAttributes();
-		if (isset($_GET['Backend']))
-			$model->attributes = $_GET['Backend'];
-
-		$this->render('admin', array(
-			'model'=>$model,
-		));
+		$this->render('admin');
 	}
 
 	/**
