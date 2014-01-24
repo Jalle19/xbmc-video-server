@@ -157,6 +157,10 @@ class BackendController extends AdminOnlyController
 	public function actionDelete($id)
 	{
 		$model = $this->loadModel($id);
+		
+		if ($model == Yii::app()->backendManager->getCurrent())
+			throw new CHttpException(403, "You can't delete the current backend. Please switch to another one if you want to delete this.");
+
 		$model->delete();
 
 		$this->log('"%s" deleted backend "%s"', Yii::app()->user->name, 
