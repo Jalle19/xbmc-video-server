@@ -28,12 +28,10 @@ class ResultList extends TbGridView
 		// Configure columns
 		$this->columns = array(
 				array(
-					'class'=>'CLinkColumn',
+					'name'=>'label',
 					'header'=>'Title',
-					'labelExpression'=>function($data) {
-						return $data->label;
-					},
-					'urlExpression'=>function($data) {
+					'type'=>'html',
+					'value'=>function($data) {
 						// Determine the name of the ID property
 						if (isset($data->movieid))
 							$id = $data->movieid;
@@ -42,8 +40,8 @@ class ResultList extends TbGridView
 						else
 							$id = null;
 						
-						return Yii::app()->controller->createUrl('details', array('id'=>$id));
-					}
+						return CHtml::link($data->label, Yii::app()->controller->createUrl('details', array('id'=>$id)));
+					},
 				),
 				array(
 					'name'=>'year',
