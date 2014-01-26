@@ -8570,6 +8570,7 @@ a .icon-flip-vertical:before {
 }
 .grid-view.grid-view-loading {
   background-image: url(../images/loader.gif);
+  background-position: left top;
 }
 .grid-view .summary {
   font-size: inherit;
