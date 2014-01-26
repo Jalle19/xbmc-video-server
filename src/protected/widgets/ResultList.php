@@ -22,6 +22,9 @@ class ResultList extends TbGridView
 		$this->pager = $this->pager = ResultHelper::getDefaultPagerConfiguration();
 		$this->pagerCssClass = 'pager';
 		
+		// Make the list sortable
+		$this->dataProvider->makeSortable();
+		
 		// Configure columns
 		$this->columns = array(
 				array(

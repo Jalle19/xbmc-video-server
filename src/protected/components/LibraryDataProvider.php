@@ -29,4 +29,30 @@ class LibraryDataProvider extends CArrayDataProvider
 		parent::__construct($rawData, $config);
 	}
 
+	/**
+	 * Makes the data in this provider sortable
+	 */
+	public function makeSortable()
+	{
+		// Nothing to do unless we have more than one data item
+		if (count($this->rawData) <= 1)
+			return;
+
+		$sort = new CSort();
+		$sort->attributes = array();
+
+		// Parse attributes from one of our data items
+		foreach (array_keys(get_object_vars($this->rawData[0])) as $property)
+		{
+			$sort->attributes[$property] = array(
+				'asc'=>$property.' ASC',
+				'desc'=>$property.' DESC'
+			);
+		}
+
+		// "label" is included in practically all API results
+		$sort->defaultOrder = 'label ASC';
+		$this->sort = $sort;
+	}
+
 }
