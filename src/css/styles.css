@@ -8576,6 +8576,9 @@ a .icon-flip-vertical:before {
   font-size: inherit;
   color: inherit;
 }
+.grid-view .table th > .sort-link {
+  font-size: 15px;
+}
 h1 > a,
 h2 > a,
 h3 > a,
