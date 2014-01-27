@@ -49,5 +49,25 @@ class ResultHelper
 		</div>
 		<?php
 	}
+	
+	/**
+	 * Formats a rating
+	 * @param float $rating the rating
+	 * @return string the formatted rating
+	 */
+	public static function formatRating($rating)
+	{
+		return round($rating, 1);
+	}
+
+	/**
+	 * Formats a runtime
+	 * @param int $runtime runtime in minutes
+	 * @return string the runtime string
+	 */
+	public static function formatRuntime($runtime)
+	{
+		return (int)($runtime / 60).' min';
+	}
 
 }

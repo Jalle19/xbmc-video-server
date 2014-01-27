@@ -1,7 +1,7 @@
 <div class="pull-left item-rating">
 
 	<p>
-		Rating: <?php echo round($rating, 1); ?>
+		Rating: <?php echo ResultHelper::formatRating($rating); ?>
 		
 		<?php if (isset($votes))
 			echo '('.$votes.' votes)'; ?>
