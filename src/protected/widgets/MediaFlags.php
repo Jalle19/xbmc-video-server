@@ -1,5 +1,7 @@
 <?php
 
+Yii::import('application.widgets.flags.*');
+
 /**
  * Renders the media flags for a media
  *

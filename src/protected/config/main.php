@@ -23,6 +23,8 @@ return array(
 		'application.helpers.*',
 		'application.controllers.*',
 		'application.widgets.*',
+		'application.widgets.filter.*',
+		'application.widgets.results.*',
 		'bootstrap.helpers.*',
 	),
 
