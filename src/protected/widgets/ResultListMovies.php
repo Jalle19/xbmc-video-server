@@ -16,6 +16,38 @@ class ResultListMovies extends ResultList
 			$this->getLabelColumn(),
 			$this->getYearColumn(),
 			$this->getGenreColumn(),
+			$this->getRatingColumn(),
+			$this->getRuntimeColumn(),
+		);
+	}
+
+	/**
+	 * Returns the column definition for the rating column
+	 * @return array
+	 */
+	private function getRatingColumn()
+	{
+		return array(
+			'name'=>'rating',
+			'header'=>'Rating',
+			'value'=>function($data) {
+				echo ResultHelper::formatRating($data->rating);
+			}
+		);
+	}
+
+	/**
+	 * Returns the column definition for the runtime column
+	 * @return array
+	 */
+	private function getRuntimeColumn()
+	{
+		return array(
+			'name'=>'runtime',
+			'header'=>'Runtime',
+			'value'=>function($data) {
+				echo ResultHelper::formatRuntime($data->runtime);
+			}
 		);
 	}
 
