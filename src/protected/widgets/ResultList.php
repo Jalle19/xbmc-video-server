@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Displays media results as a simple list.
+ * Base class for a widget that displays media results as a simple list.
  *
  * @author Sam Stenvall <neggelandia@gmail.com>
  * @copyright Copyright &copy; Sam Stenvall 2014-
@@ -9,7 +9,7 @@
  */
 Yii::import('bootstrap.widgets.TbGridView');
 
-class ResultList extends TbGridView
+abstract class ResultList extends TbGridView
 {
 	
 	/**
@@ -26,14 +26,15 @@ class ResultList extends TbGridView
 		$this->dataProvider->makeSortable();
 		
 		// Configure columns
-		$this->columns = array(
-			$this->getLabelColumn(),
-			$this->getYearColumn(),
-			$this->getGenreColumn(),
-		);
+		$this->columns = $this->getColumnDefinitions();
 		
 		parent::init();
 	}
+	
+	/**
+	 * Returns the column definitions
+	 */
+	abstract public function getColumnDefinitions();
 	
 	/**
 	 * @see ResultGrid::ResultGrid()

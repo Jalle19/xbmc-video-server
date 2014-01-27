@@ -21,7 +21,7 @@ switch ($this->getDisplayMode())
 		));
 		break;
 	case MediaController::DISPLAY_MODE_LIST:
-		$this->widget('ResultList', array(
+		$this->widget('ResultListTVShows', array(
 			'dataProvider'=>$dataProvider,
 		));
 		break;
