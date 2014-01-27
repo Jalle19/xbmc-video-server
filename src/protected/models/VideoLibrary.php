@@ -274,8 +274,11 @@ class VideoLibrary
 	private static function ensureProperties(&$params, $properties)
 	{
 		self::addDefaultProperties($params);
-		$params['properties'] = array_unique(array_merge($params['properties'], 
-				$properties));
+		
+		// array_merge naturally merges the two arrays, array_unique removes 
+		// duplicate values and array_values renumbers the index
+		$params['properties'] = array_values(array_unique(array_merge($params['properties'], 
+				$properties)));
 	}
 
 	/**
