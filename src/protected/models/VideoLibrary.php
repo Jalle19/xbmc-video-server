@@ -13,6 +13,20 @@ class VideoLibrary
 	const GENRE_TYPE_MOVIE = 'movie';
 	const GENRE_TYPE_TVSHOW = 'tvshow';
 	const SORT_ORDER_ASCENDING = 'ascending';
+	
+	/**
+	 * @var string[] default properties for movies
+	 */
+	private static $_defaultMovieProperties = array(
+		'year', 'genre', 'thumbnail', 'rating', 'runtime'
+	);
+
+	/**
+	 * @var string[] default properties for TV shows
+	 */
+	private static $_defaultTVShowProperties = array(
+		'year', 'genre', 'thumbnail'
+	);
 
 	/**
 	 * Returns all genres available for the specified media type (default to 
@@ -37,7 +51,7 @@ class VideoLibrary
 	public static function getMovies($params = array())
 	{
 		self::addDefaultSort($params);
-		self::ensureProperties($params, array('year', 'genre', 'thumbnail'));
+		self::ensureProperties($params, self::$_defaultMovieProperties);
 		
 		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetMovies', $params);
 
@@ -50,7 +64,7 @@ class VideoLibrary
 	 */
 	public static function getRecentlyAddedMovies($params = array())
 	{
-		self::ensureProperties($params, array('year', 'genre', 'thumbnail'));
+		self::ensureProperties($params, self::$_defaultMovieProperties);
 
 		// The grid shows six items per row, we don't want the 25th item to be 
 		// lonely
@@ -87,6 +101,7 @@ class VideoLibrary
 	public static function getTVShows($params = array())
 	{
 		self::addDefaultSort($params);
+		self::ensureProperties($params, self::$_defaultTVShowProperties);
 		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetTVShows', $params);
 
 		return self::normalizeResponse($response, 'tvshows', array());
