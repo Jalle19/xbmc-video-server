@@ -60,6 +60,12 @@ class SiteController extends Controller
 				$this->log('"%s" logged in', $model->username);
 				$this->redirect(Yii::app()->user->returnUrl);
 			}
+			else
+			{
+				// Log invalid login attempts
+				if (!empty($model->username) && !empty($model->password))
+					$this->log('Invalid login attempt for user "%s"', $model->username);
+			}
 		}
 
 		$this->render('login', array('model'=>$model));
