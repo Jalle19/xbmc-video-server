@@ -105,7 +105,7 @@ class ResultList extends TbGridView
 	}
 
 	/**
-	 * Returns the column definition for the gebre column
+	 * Returns the column definition for the genre column
 	 * @return array
 	 */
 	protected function getGenreColumn()
