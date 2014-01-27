@@ -27,39 +27,10 @@ class ResultList extends TbGridView
 		
 		// Configure columns
 		$this->columns = array(
-				array(
-					'name'=>'label',
-					'header'=>'Title',
-					'type'=>'html',
-					'value'=>function($data) {
-						// Determine the name of the ID property
-						if (isset($data->movieid))
-							$id = $data->movieid;
-						elseif (isset($data->tvshowid))
-							$id = $data->tvshowid;
-						else
-							$id = null;
-						
-						return CHtml::link($data->label, Yii::app()->controller->createUrl('details', array('id'=>$id)));
-					},
-				),
-				array(
-					'name'=>'year',
-					'header'=>'Year',
-					'value'=>function($data) {
-						// Year is zero when it's not available
-						if ($data->year !== 0)
-							echo $data->year;
-					}
-				),
-				array(
-					'name'=>'genre',
-					'header'=>'Genre',
-					'value'=>function($data) {
-						return implode(' / ', $data->genre);
-					}
-				)
-			);
+			$this->getLabelColumn(),
+			$this->getYearColumn(),
+			$this->getGenreColumn(),
+		);
 		
 		parent::init();
 	}
@@ -90,6 +61,62 @@ class ResultList extends TbGridView
 		$summaryContent = ob_get_clean();
 		
 		ResultHelper::renderDisplayModeToggle($summaryContent);
+	}
+	
+	/**
+	 * Returns the column definition for the label column
+	 * @return array
+	 */
+	protected function getLabelColumn()
+	{
+		return array(
+			'name'=>'label',
+			'header'=>'Title',
+			'type'=>'html',
+			'value'=>function($data) {
+				// Determine the name of the ID property
+				if (isset($data->movieid))
+					$id = $data->movieid;
+				elseif (isset($data->tvshowid))
+					$id = $data->tvshowid;
+				else
+					$id = null;
+
+				return CHtml::link($data->label, Yii::app()->controller->createUrl('details', array('id'=>$id)));
+			},
+		);
+	}
+
+	/**
+	 * Returns the column definition for the year column
+	 * @return array
+	 */
+	protected function getYearColumn()
+	{
+		return array(
+			'name'=>'year',
+			'header'=>'Year',
+			'value'=>function($data) {
+				// Year is zero when it's not available
+				if ($data->year !== 0)
+					echo $data->year;
+			}
+		);
+	}
+
+	/**
+	 * Returns the column definition for the gebre column
+	 * @return array
+	 */
+	protected function getGenreColumn()
+	{
+		return array(
+			'name'=>'genre',
+			'header'=>'Genre',
+			'value'=>function($data) {
+				return implode(' / ', $data->genre);
+			}
+		);
 	}
 
 }
