@@ -271,16 +271,6 @@ class VideoLibrary
 	}
 	
 	/**
-	 * Adds a default set of properties for movie/show requests
-	 * @param array $params
-	 */
-	private static function addDefaultProperties(&$params)
-	{
-		if (!isset($params['properties']))
-			$params['properties'] = array('thumbnail');
-	}
-	
-	/**
 	 * Ensures that the specified properties are specified in 
 	 * params['properties']
 	 * @param array $params the parameters
@@ -288,12 +278,11 @@ class VideoLibrary
 	 */
 	private static function ensureProperties(&$params, $properties)
 	{
-		self::addDefaultProperties($params);
-		
-		// array_merge naturally merges the two arrays, array_unique removes 
-		// duplicate values and array_values renumbers the index
-		$params['properties'] = array_values(array_unique(array_merge($params['properties'], 
-				$properties)));
+		if (!isset($params['properties']))
+			$params['properties'] = array();
+
+		$params['properties'] = array_values(array_unique(
+				array_merge($params['properties'], $properties)));
 	}
 
 	/**
