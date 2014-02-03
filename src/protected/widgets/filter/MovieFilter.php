@@ -29,7 +29,7 @@ class MovieFilter extends VideoFilter
 
 		echo $this->form->typeaheadFieldControlGroup($this->model, 'name', $typeaheadData);
 		echo $this->form->dropDownListControlGroup($this->model, 'genre', 
-				$this->model->getGenres(), array('prompt'=>''));
+				$this->model->getGenres(), array('empty'=>' '));
 		
 		echo $this->form->textFieldControlGroup($this->model, 'year', 
 				array('style'=>'max-width: 40px;'));
@@ -39,11 +39,11 @@ class MovieFilter extends VideoFilter
 		
 		echo $this->form->dropDownListControlGroup($this->model, 'quality', 
 				$this->model->getQualities(), 
-				array('prompt'=>'', 'style'=>'width: 70px;'));
+				array('empty'=>' ', 'style'=>'width: 70px;'));
 
 		echo $this->form->dropDownListControlGroup($this->model, 'watchedStatus', 
 				VideoFilterForm::getWatchedStatuses(), 
-				array('prompt'=>'', 'style'=>'width: 120px;'));
+				array('empty'=>' ', 'style'=>'width: 120px;'));
 
 		echo $this->form->textFieldControlGroup($this->model, 'actor');
 	}

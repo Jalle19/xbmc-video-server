@@ -28,10 +28,10 @@ class FilterActiveForm extends TbActiveForm
 		$this->registerTypeahead();
 
 		// Generate a unique ID for this element
-		TbArray::defaultValue('id', CHtml::ID_PREFIX.CHtml::$count++, $htmlOptions);
+		CHtml::resolveNameID($model, $attribute, $htmlOptions);
 		TbHtml::addCssClass('twitter-typeahead-input', $htmlOptions);
 		$id = $htmlOptions['id'];
-
+		
 		Yii::app()->clientScript->registerScript($id, "
 			$('#{$id}').typeahead({name: '{$id}',local: {$data},limit: 10});
 		", CClientScript::POS_READY);

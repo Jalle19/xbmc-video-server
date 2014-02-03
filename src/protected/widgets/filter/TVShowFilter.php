@@ -16,11 +16,11 @@ class TVShowFilter extends VideoFilter
 			CJavaScript::encode($this->getTVShowNames()));
 
 		echo $this->form->dropDownListControlGroup($this->model, 'genre', 
-				$this->model->getGenres(), array('prompt'=>''));
+				$this->model->getGenres(), array('empty'=>' '));
 		
 		echo $this->form->dropDownListControlGroup($this->model, 'watchedStatus', 
 				VideoFilterForm::getWatchedStatuses(), 
-				array('prompt'=>'', 'style'=>'width: 120px;'));
+				array('empty'=>' ', 'style'=>'width: 120px;'));
 	}
 	
 	/**
