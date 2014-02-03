@@ -27,7 +27,8 @@ class Setting extends CActiveRecord
 	public $pagesize;
 	public $disableFrodoWarning;
 	public $useHttpsForVfsUrls;
-	
+	public $whitelist;
+
 	/**
 	 * @var array setting definitions
 	 */
@@ -77,14 +78,22 @@ class Setting extends CActiveRecord
 				work if the server uses a real signed certificate, thus it is 
 				not enabled by default.',
 		),
+		'whitelist'=>array(
+			'label'=>'Access whitelist',
+			'type'=>self::TYPE_TEXT_WIDE,
+			'default'=>'',
+			'description'=>"If specified, access is restricted to the defined 
+				whitelist. Valid values are IP addresses, IP subnets and 
+				domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com"
+		),
 	);
-	
+
 	/**
 	 * @var Setting[] list of all settings and their current values (runtime 
 	 * cache)
 	 */
 	private static $_settings;
-	
+
 	/**
 	 * Returns the value for the specified setting. All settings are cached for 
 	 * the duration of the request since this method can be called quite a lot.
@@ -104,7 +113,7 @@ class Setting extends CActiveRecord
 			if ($setting->name == $name)
 				return $setting->value;
 	}
-	
+
 	/**
 	 * Populates the model attributes
 	 */
@@ -121,7 +130,7 @@ class Setting extends CActiveRecord
 	public function attributeLabels()
 	{
 		$attributeLabels = array();
-		
+
 		foreach(self::$definitions as $setting => $definition)
 			$attributeLabels[$setting] = $definition['label'];
 
@@ -145,7 +154,7 @@ class Setting extends CActiveRecord
 	{
 		return 'settings';
 	}
-	
+
 	/**
 	 * @return array the validation rules for this model
 	 */
@@ -154,7 +163,34 @@ class Setting extends CActiveRecord
 		return array(
 			array('applicationName', 'required'),
 			array('pagesize', 'numerical', 'integerOnly'=>true, 'min'=>1),
+			array('whitelist', 'validateWhitelist'),
 		);
 	}
-}
 
+	/**
+	 * Validates the "whitelist" attribute. We consider it valid if it is 
+	 * empty, if it is not we check if the definitions are legal. Additionally 
+	 * we show a warning flash if the definitions would lead to the user being 
+	 * locked out.
+	 * @param string $attribute the attribute being validated
+	 */
+	public function validateWhitelist($attribute)
+	{
+		$definitions = $this->{$attribute};
+		if (empty($definitions))
+			return;
+
+		$whitelist = Yii::app()->whitelist;
+		$definitions = $whitelist->parseDefinitions($definitions);
+
+		if (!$whitelist->validateDefinitions($definitions))
+			$this->addError($attribute, 'Invalid whitelist definition');
+		else
+		{
+			$whitelist->setDefinitions($definitions);
+			if (!$whitelist->check())
+				Yii::app()->user->setFlash('warning', 'The specified whitelist restrictions will lock you out from this location');
+		}
+	}
+
+}

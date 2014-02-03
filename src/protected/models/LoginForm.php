@@ -39,6 +39,7 @@ class LoginForm extends CFormModel
 		return array(
 			array('username, password', 'required'),
 			array('password', 'authenticate'),
+			array('username', 'checkWhitelist'),
 			array('rememberMe', 'boolean'),
 		);
 	}
@@ -56,6 +57,21 @@ class LoginForm extends CFormModel
 		);
 	}
 	
+	/**
+	 * Checks the client against the whitelist
+	 * @param string $attribute the attribute being validated
+	 */
+	public function checkWhitelist($attribute)
+	{
+		if (!Yii::app()->whitelist->check())
+		{
+			// Display the error as a flash since technically it has nothing 
+			// to do with the username attribute
+			$this->addError($attribute, '');
+			Yii::app()->user->setFlash('error', 'Your location is not whitelisted');
+		}
+	}
+
 	/**
 	 * Validates the password
 	 * @param string $attribute

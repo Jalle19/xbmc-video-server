@@ -130,6 +130,9 @@ return array(
 				)
 			),
 		),
+		'whitelist'=>array(
+			'class'=>'Whitelist',
+		)
 	),
 	
 	// application-level parameters
