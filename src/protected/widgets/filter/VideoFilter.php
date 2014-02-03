@@ -74,9 +74,11 @@ abstract class VideoFilter extends CWidget
 		echo TbHtml::submitButton('Apply filter', array(
 			'color'=>TbHtml::BUTTON_COLOR_PRIMARY));
 
+		$controller = Yii::app()->controller;
+		
 		echo TbHtml::linkButton('Clear filter', array(
 			'color'=>TbHtml::BUTTON_COLOR_INFO,
-			'url'=>array('movie/index')));
+			'url'=>$controller->createUrl($controller->route)));
 	}
 
 }
