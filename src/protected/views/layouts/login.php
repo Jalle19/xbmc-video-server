@@ -19,7 +19,14 @@ $baseUrl = Yii::app()->baseUrl;
 			<tr>
 				<td>
 					<div class="login-container">
-						<?php echo $content; ?>
+						<?php 
+						
+						$this->widget('bootstrap.widgets.TbAlert', array(
+							'closeText'=>false));
+						
+						echo $content; 
+						
+						?>
 					</div>
 				</td>
 			</tr>
