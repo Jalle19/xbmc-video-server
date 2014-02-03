@@ -16,6 +16,7 @@ class Setting extends CActiveRecord
 
 	// Setting types
 	const TYPE_TEXT = 'text';
+	const TYPE_TEXT_WIDE = 'text-wide';
 	const TYPE_CHECKBOX = 'checkbox';
 
 	// We need one attribute per setting

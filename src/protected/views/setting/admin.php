@@ -33,6 +33,9 @@ foreach ($settings as $setting)
 	
 	switch (Setting::$definitions[$name]['type'])
 	{
+		case Setting::TYPE_TEXT_WIDE:
+			$htmlOptions['class'] = 'span5';
+			// fall through
 		case Setting::TYPE_TEXT:
 			echo $form->textFieldControlGroup($setting, $name, $htmlOptions);
 			break;
