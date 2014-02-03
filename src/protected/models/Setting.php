@@ -69,7 +69,7 @@ class Setting extends CActiveRecord
 			'default'=>'0',
 		),
 		'useHttpsForVfsUrls'=>array(
-			'label'=>"Use HTTPS when streaming",
+			'label'=>'Use HTTPS when streaming',
 			'type'=>self::TYPE_CHECKBOX,
 			'default'=>'0',
 			'description'=>'When checked, streaming will be done over HTTPS if 
