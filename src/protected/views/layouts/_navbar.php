@@ -73,22 +73,31 @@ if (Yii::app()->user->role == User::ROLE_ADMIN)
 }
 
 // Add the "Actions" menu
-$rightItems[] = array(
-	'label'=>'Actions', 'items'=>array(
-		// user-related actions
-		array('label'=>'User'),
-		array('label'=>'Log out', 'url'=>array('site/logout')),
-		// system-related
-		array('label'=>'System'),
-		array('label'=>'Flush cache', 
-			'url'=>array('site/flushCache'),
-			'linkOptions'=>array('confirm'=>'Are you sure you want to flush the cache?'),
-		),
-		array('label'=>'Update library', 
-			'url'=>array('backend/updateLibrary'), 
-			'linkOptions'=>array('confirm'=>"Are you sure you want to update the backend's library?"))
-	), 'icon'=>'tasks',
+$actions = array(
+	// user-related actions
+	array('label'=>'User'),
+	array('label'=>'Log out', 'url'=>array('site/logout')),
+	// system-related
+	array('label'=>'System'),
 );
+
+// Only show "Flush cache" if cacheApiCalls is enabled
+if (Setting::getValue('cacheApiCalls'))
+{
+	$actions[] = array(
+		'label'=>'Flush cache',
+		'url'=>array('site/flushCache'),
+		'linkOptions'=>array('confirm'=>'Are you sure you want to flush the cache?'),
+	);
+}
+
+$actions[] = array(
+	'label'=>'Update library', 
+	'url'=>array('backend/updateLibrary'), 
+	'linkOptions'=>array('confirm'=>"Are you sure you want to update the backend's library?")
+);
+
+$rightItems[] = array('label'=>'Actions', 'items'=>$actions, 'icon'=>'tasks');
 
 // Construct the menu
 $navbarItems = array(
