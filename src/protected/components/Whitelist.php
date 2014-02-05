@@ -83,14 +83,27 @@ class Whitelist extends CApplicationComponent
 	}
 
 	/**
-	 * Checks the client address and/or hostname against the whitelisted. No 
-	 * check is done if the whitelist is not active
+	 * Checks the client address and/or hostname against the whitelisted. The 
+	 * check is omitted if no whitelist definitions have been specified or if 
+	 * the override file is present.
+	 * @param boolean $ignoreOverride whether to honor the override file when 
+	 * checking.
 	 * @return boolean whether the client is whitelisted or not
 	 */
-	public function check()
+	public function check($ignoreOverride = false)
 	{
 		if (!$this->_isActive)
 			return true;
+		
+		// Discard the check if the override file is present or if the 
+		// whitelist is inactive
+		$overrideFile = Yii::app()->basePath.'/../../whitelist.override';
+		
+		if (!$ignoreOverride && file_exists($overrideFile))
+		{
+			Yii::app()->user->setFlash('info', 'Whitelist override in effect');
+			return true;
+		}
 
 		$address = $_SERVER['REMOTE_ADDR'];
 		$hostname = gethostbyaddr($address);

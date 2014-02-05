@@ -188,7 +188,7 @@ class Setting extends CActiveRecord
 		else
 		{
 			$whitelist->setDefinitions($definitions);
-			if (!$whitelist->check())
+			if (!$whitelist->check(true))
 				Yii::app()->user->setFlash('warning', 'The specified whitelist restrictions will lock you out from this location');
 		}
 	}
