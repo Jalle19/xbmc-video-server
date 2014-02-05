@@ -210,16 +210,16 @@
         },
         {
             "name": "jalle19/php-whitelist-check",
-            "version": "1.0.1",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Jalle19/php-whitelist-check.git",
-                "reference": "0b7e58bb88f59c6c4a0c5ef3284a1e1efc3196f5"
+                "reference": "e489b868286ffb4d8baedfb9b310fac0566b4e9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Jalle19/php-whitelist-check/zipball/0b7e58bb88f59c6c4a0c5ef3284a1e1efc3196f5",
-                "reference": "0b7e58bb88f59c6c4a0c5ef3284a1e1efc3196f5",
+                "url": "https://api.github.com/repos/Jalle19/php-whitelist-check/zipball/e489b868286ffb4d8baedfb9b310fac0566b4e9e",
+                "reference": "e489b868286ffb4d8baedfb9b310fac0566b4e9e",
                 "shasum": ""
             },
             "require": {
@@ -248,7 +248,7 @@
                 "ipv6",
                 "whitelist"
             ],
-            "time": "2014-02-03 12:31:55"
+            "time": "2014-02-05 11:37:24"
         },
         {
             "name": "jalle19/simple-json-rpc-client",
