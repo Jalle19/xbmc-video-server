@@ -287,16 +287,16 @@
         },
         {
             "name": "mobiledetect/mobiledetectlib",
-            "version": "2.7.7",
+            "version": "2.7.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/serbanghita/Mobile-Detect.git",
-                "reference": "bea11a6f0f702f8263da7e02d91b36ba27da5c26"
+                "reference": "aad192c0e0152ccd6a4ce4b4c2c901d4994063f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/bea11a6f0f702f8263da7e02d91b36ba27da5c26",
-                "reference": "bea11a6f0f702f8263da7e02d91b36ba27da5c26",
+                "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/aad192c0e0152ccd6a4ce4b4c2c901d4994063f0",
+                "reference": "aad192c0e0152ccd6a4ce4b4c2c901d4994063f0",
                 "shasum": ""
             },
             "require": {
@@ -335,7 +335,7 @@
                 "mobile detector",
                 "php mobile detect"
             ],
-            "time": "2014-01-17 15:58:35"
+            "time": "2014-02-05 18:07:26"
         },
         {
             "name": "xrstf/ip-utils",
