@@ -98,8 +98,10 @@ class Backend extends CActiveRecord
 		$hostname = $this->{$attribute};
 		$port = $this->port;
 		$errno = 0;
+		$errStr = '';
 
-		if (@fsockopen($hostname, $port, $errno) === false || $errno !== 0)
+		// The default timeout is 1 minute, reduce that to 5 seconds
+		if (@fsockopen($hostname, $port, $errno, $errStr, 5) === false || $errno !== 0)
 			$this->addError($attribute, "Unable to connect to $hostname:$port, make sure XBMC is running and has its web server enabled");
 	}
 
