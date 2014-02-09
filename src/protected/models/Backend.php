@@ -140,6 +140,8 @@ class Backend extends CActiveRecord
 	 * Checks that the server running on hostname:port is actually XBMC and not 
 	 * some other software. We do this by looking at the authentication realm 
 	 * string.
+	 * @param string $attribute the attribute being validated ("username" in 
+	 * this case)
 	 */
 	public function checkServerType($attribute)
 	{
