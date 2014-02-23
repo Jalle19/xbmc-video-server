@@ -23,6 +23,16 @@ class LogController extends AdminOnlyController
 	}
 
 	/**
+	 * Override parent implementation so the user can check the logs even when 
+	 * a backend is not yet configured
+	 * @param CFilterChain $filterChain
+	 */
+	public function filterCheckConfiguration($filterChain)
+	{
+		$filterChain->run();
+	}
+
+	/**
 	 * Override parent implementation to allow anyone to post log events
 	 * @return array the access rules for this controller
 	 */
