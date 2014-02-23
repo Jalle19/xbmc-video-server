@@ -95,7 +95,7 @@ abstract class RetrieveMediaWidget extends CWidget
 	 */
 	private function getDownloadName($link)
 	{
-		return substr($link, strrpos($link, '%2f') + 3);
+		return urldecode(substr($link, strrpos($link, '%2f') + 3));
 	}
 
 	/**
