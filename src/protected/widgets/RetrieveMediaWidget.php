@@ -89,6 +89,14 @@ abstract class RetrieveMediaWidget extends CWidget
 
 		return true;
 	}
+	
+	/**
+	 * @return the filename part of the full link to a file
+	 */
+	private function getDownloadName($link)
+	{
+		return substr($link, strrpos($link, '%2f') + 3);
+	}
 
 	/**
 	 * Returns the stream URL for the media. If the media has a single link and 
@@ -126,6 +134,9 @@ abstract class RetrieveMediaWidget extends CWidget
 			else
 				$label = 'Download (part #'.(++$k).')';
 
+			// Add the "download" attribute
+			$linkOptions['download'] = $this->getDownloadName($link);
+			
 			echo CHtml::tag('p', array(), CHtml::link($label, $link, $linkOptions));
 		}
 
