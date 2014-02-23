@@ -11,7 +11,11 @@ if (count(Backend::model()->findAll()) === 1)
 		'dependency'=>$cacheDependency,
 		'duration'=>$cacheDuration,
 		'varyByExpression'=>function() { 
-			return Yii::app()->user->role.'_'.intval(Setting::getValue('cacheApiCalls')); 
+			return implode('_', array(
+				Yii::app()->user->role,
+				intval(Setting::getValue('cacheApiCalls')),
+				intval(Yii::app()->backendManager->getCurrent() === null),
+			));
 		}
 	)))
 	{

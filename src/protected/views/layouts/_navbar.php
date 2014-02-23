@@ -99,6 +99,21 @@ $actions[] = array(
 
 $rightItems[] = array('label'=>'Actions', 'items'=>$actions, 'icon'=>'tasks');
 
+// Completely override the items when the application hasn't been configured yet
+if (Yii::app()->backendManager->getCurrent() === null)
+{
+	$leftItems = array();
+	
+	$rightItems = array(
+		array('label'=>'Settings', 'items'=>array(
+			array('label'=>'Backends'),
+			array('label'=>'Create new', 'url'=>array('backend/create')),
+			array('label'=>'System log'),
+			array('label'=>'Browse', 'url'=>array('log/')),
+		), 'linkOptions'=>array('class'=>'fontastic-icon-settings')),
+	);
+}
+
 // Construct the menu
 $navbarItems = array(
 	array(
