@@ -103,7 +103,10 @@ class Backend extends CActiveRecord
 
 		// The default timeout is 1 minute, reduce that to 5 seconds
 		if (@fsockopen($hostname, $port, $errno, $errStr, 5) === false || $errno !== 0)
+		{
+			Yii::log('Failed to connect to '.$hostname.':'.$port.'. The exact error was: '.$errStr.' ('.$errno.')', CLogger::LEVEL_ERROR, 'Backend');
 			$this->addError($attribute, "Unable to connect to $hostname:$port, make sure XBMC is running and has its web server enabled");
+		}
 	}
 
 	/**
@@ -156,25 +159,39 @@ class Backend extends CActiveRecord
 		$httpRequest = new \Zend\Http\Request();
 		$httpRequest->setUri('http://'.$this->hostname.':'.$this->port.'/');
 
-		// Perform the request
+		// Perform the request (we deliberately don't catch Zend exceptions 
+		// since we can't recover from them anyway)
 		try
 		{
 			$httpResponse = $httpClient->dispatch($httpRequest);
 
 			// We expect there to be WWW-Authenticate header with the realm "XBMC"
+			$requiresAuthentication = false;
+			
 			foreach ($httpResponse->getHeaders() as $header)
+			{
 				if ($header instanceof Zend\Http\Header\WWWAuthenticate)
-					if (preg_match('/xbmc/i', $header->value))
-						return;
+				{
+					$requiresAuthentication = true;
 
-			// We just want to get to the catch clause, the message is irrelevant
-			throw new Exception('Invalid credentials');
+					if (!preg_match('/xbmc/i', $header->value))
+						throw new InvalidRealmException($header->value);
+				}
+			}
+
+			if (!$requiresAuthentication)
+				throw new AuthenticationLessServerException();
 		}
-		catch (\Exception $e)
+		catch (AuthenticationLessServerException $e)
 		{
-			unset($e); // avoid IDE warnings
+			$this->addError($attribute, 'The server does not ask for authentication');
+		}
+		catch (InvalidRealmException $e)
+		{
+			$message = "The server at $this->hostname:$this->port doesn't seem to be an XBMC instance";
 
-			$this->addError($attribute, "The server at $this->hostname:$this->port doesn't seem to be an XBMC instance");
+			Yii::log($message.' (the server identified as "'.$e->getMessage().'")', CLogger::LEVEL_ERROR, 'Backend');
+			$this->addError($attribute, $message);
 		}
 	}
 
