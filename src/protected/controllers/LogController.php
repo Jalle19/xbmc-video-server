@@ -75,7 +75,9 @@ class LogController extends AdminOnlyController
 			if (!isset($_POST[$attribute]))
 				throw new CHttpException(400, 'Invalid request');
 
-		Yii::log($_POST['logMessage'], CLogger::LEVEL_INFO, $_POST['logCategory']);
+		// The message may be HTML-encoded
+		$message = html_entity_decode($_POST['logMessage']);
+		Yii::log($message, CLogger::LEVEL_INFO, $_POST['logCategory']);
 	}
 
 	/**

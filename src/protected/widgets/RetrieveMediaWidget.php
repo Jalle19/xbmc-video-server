@@ -115,7 +115,7 @@ abstract class RetrieveMediaWidget extends CWidget
 		$linkOptions = array(
 			'class'=>'fontastic-icon-disc loggable-link',
 			'data-log-category'=>$this->getLogCategory(),
-			'data-log-message'=>$this->getLogMessage(),
+			'data-log-message'=>htmlentities($this->getLogMessage()),
 			'data-log-url'=>Yii::app()->controller->createUrl('/log/logEvent'),
 		);
 
