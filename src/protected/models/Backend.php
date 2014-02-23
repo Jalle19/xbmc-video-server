@@ -46,7 +46,8 @@ class Backend extends CActiveRecord
 		return array(
 			array('name, hostname, port, username, password', 'required'),
 			array('default', 'requireDefaultBackend'),
-			array('port, default', 'numerical', 'integerOnly'=>true),
+			array('default', 'numerical', 'integerOnly'=>true),
+			array('port', 'numerical', 'integerOnly'=>true, 'max'=>65535),
 			array('proxyLocation', 'safe'),
 			// the following rules depend on each other so they must come in this order
 			array('hostname', 'checkConnectivity'),
