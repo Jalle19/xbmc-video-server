@@ -107,7 +107,7 @@ class BackendController extends AdminOnlyController
 			$model->attributes = $_POST['Backend'];
 
 			// Check whether this is the first backend ever created, if so we 
-			// redirect to movie/index
+			// redirect to the settings page
 			$firstRun = Yii::app()->backendManager->getCurrent() === null;
 			
 			if ($model->save())
@@ -118,7 +118,7 @@ class BackendController extends AdminOnlyController
 				Yii::app()->user->setFlash('success', 'Backend created successfully');
 				
 				if ($firstRun)
-					$this->redirect(array('movie/index'));
+					$this->redirect(array('setting/admin'));
 				else
 					$this->redirect(array('admin'));
 			}
