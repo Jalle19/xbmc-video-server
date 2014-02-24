@@ -9,6 +9,8 @@
  */
 class BackendManager extends CApplicationComponent
 {
+	
+	const SESSION_KEY = 'currentBackendId';
 
 	/**
 	 * @var Backend the current backend
@@ -22,7 +24,7 @@ class BackendManager extends CApplicationComponent
 	 */
 	public function init()
 	{
-		$currentBackendId = Yii::app()->session->get('currentBackendId');
+		$currentBackendId = Yii::app()->session->get(self::SESSION_KEY);
 
 		if ($currentBackendId !== null)
 			$this->_backend = Backend::model()->findByPk($currentBackendId);
@@ -38,6 +40,15 @@ class BackendManager extends CApplicationComponent
 	public function getCurrent()
 	{
 		return $this->_backend;
+	}
+	
+	/**
+	 * Sets the default backend
+	 * @param Backend $backend
+	 */
+	public function setCurrent($backend)
+	{
+		Yii::app()->session->add(self::SESSION_KEY, $backend->id);
 	}
 
 }

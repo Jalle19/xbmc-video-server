@@ -56,7 +56,8 @@ class BackendController extends AdminOnlyController
 		// Only switch if the new backend is connectable
 		if ($model->isConnectable())
 		{
-			Yii::app()->session->add('currentBackendId', $model->id);
+			Yii::app()->backendManager->setCurrent($model);
+			
 			$this->log('"%s" switched backend to "%s"', Yii::app()->user->name, 
 							$model->name);
 			Yii::app()->user->setFlash('success', 'Changed backend to '.$model->name);
