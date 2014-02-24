@@ -52,21 +52,27 @@ class BackendController extends AdminOnlyController
 	public function actionChange($id)
 	{
 		$model = $this->loadModel($id);
+		
+		// Only switch if the new backend is connectable
+		if ($model->isConnectable())
+		{
+			Yii::app()->session->add('currentBackendId', $model->id);
+			$this->log('"%s" switched backend to "%s"', Yii::app()->user->name, 
+							$model->name);
+			Yii::app()->user->setFlash('success', 'Changed backend to '.$model->name);
+			
+			// Redirect to homeUrl if the previous page was either a TV show 
+			// or movie details page since they will not be the same across 
+			// backends
+			$referrer = Yii::app()->request->urlReferrer;
 
-		Yii::app()->session->add('currentBackendId', $model->id);
-		$this->log('"%s" switched backend to "%s"', Yii::app()->user->name, 
-						$model->name);
-		Yii::app()->user->setFlash('success', 'Changed backend to '.$model->name);
-		
-		// Always redirect to the previous page, except when that page is a 
-		// movie or TV show details page since they will most likely not be 
-		// the same across backends
-		$referrer = Yii::app()->request->urlReferrer;
-		
-		if (strpos($referrer, 'tvShow/details') !== false || strpos($referrer, 'movie/details') !== false)
-			$this->redirect(Yii::app()->homeUrl);
+			if (strpos($referrer, 'tvShow/details') !== false || strpos($referrer, 'movie/details') !== false)
+				$this->redirect(Yii::app()->homeUrl);
+		}
 		else
-			$this->redirectToPrevious(Yii::app()->homeUrl);
+			Yii::app()->user->setFlash('error', 'Unable to switch backends, the backend "'.$model->name.'" is not connectable');
+		
+		$this->redirectToPrevious(Yii::app()->homeUrl);
 	}
 	
 	/**
