@@ -28,6 +28,7 @@ class Setting extends CActiveRecord
 	public $disableFrodoWarning;
 	public $useHttpsForVfsUrls;
 	public $whitelist;
+	public $ignoreArticle;
 
 	/**
 	 * @var array setting definitions
@@ -68,6 +69,12 @@ class Setting extends CActiveRecord
 				'span'=>1,
 			),
 			'order'=>500,
+		),
+		'ignoreArticle'=>array(
+			'label'=>'Ignore article ("the") in results',
+			'type'=>self::TYPE_CHECKBOX,
+			'default'=>'',
+			'order'=>550,
 		),
 		'disableFrodoWarning'=>array(
 			'label'=>"Don't warn about XBMC version incompatibility",

@@ -17,3 +17,4 @@ INSERT INTO "settings" ('name','value') VALUES ('pagesize','60');
 INSERT INTO "settings" ('name','value') VALUES ('disableFrodoWarning','0');
 INSERT INTO "settings" ('name','value') VALUES ('useHttpsForVfsUrls','0');
 INSERT INTO "settings" ('name','value') VALUES ('whitelist','');
+INSERT INTO "settings" ('name','value') VALUES ('ignoreArticle','0');
