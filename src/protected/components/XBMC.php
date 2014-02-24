@@ -60,7 +60,8 @@ class XBMC extends CApplicationComponent
 			$cacheId = md5(serialize($this->_backend->attributes).
 					serialize($method).
 					serialize($params).
-					serialize($id));
+					serialize($id).
+					1); // increment to invalidate all previous caches
 
 			$result = Yii::app()->apiCallCache->get($cacheId);
 
@@ -68,9 +69,16 @@ class XBMC extends CApplicationComponent
 			if ($result === false)
 			{
 				$result = $this->performRequestInternal($method, $params, $id);
-				Yii::app()->apiCallCache->set($cacheId, $result);
+				
+				// Store the raw response instead of the object
+				Yii::app()->apiCallCache->set($cacheId, $result->getRawResponse());
 			}
-
+			else
+			{
+				// Recreate the full object based on the stored JSON
+				$result = new SimpleJsonRpcClient\Response\Response($result);
+			}
+			
 			return $result;
 		}
 		else
