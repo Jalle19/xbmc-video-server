@@ -96,17 +96,8 @@ class Backend extends CActiveRecord
 		if (!$this->isAttributesValid(array('hostname', 'port')))
 			return;
 
-		$hostname = $this->{$attribute};
-		$port = $this->port;
-		$errno = 0;
-		$errStr = '';
-
-		// The default timeout is 1 minute, reduce that to 5 seconds
-		if (@fsockopen($hostname, $port, $errno, $errStr, 5) === false || $errno !== 0)
-		{
-			Yii::log('Failed to connect to '.$hostname.':'.$port.'. The exact error was: '.$errStr.' ('.$errno.')', CLogger::LEVEL_ERROR, 'Backend');
-			$this->addError($attribute, "Unable to connect to $hostname:$port, make sure XBMC is running and has its web server enabled");
-		}
+		if (!$this->isConnectable())
+			$this->addError($attribute, "Unable to connect to $this->hostname:$this->port, make sure XBMC is running and has its web server enabled");
 	}
 
 	/**
@@ -233,6 +224,25 @@ class Backend extends CActiveRecord
 		parent::afterSave();
 	}
 	
+	/**
+	 * @return boolean whether this backend is connectable
+	 */
+	public function isConnectable()
+	{
+		$errno = 0;
+		$errStr = '';
+
+		// The default timeout is 1 minute, reduce that to 5 seconds
+		//
+		if (@fsockopen($this->hostname, $this->port, $errno, $errStr, 5) === false || $errno !== 0)
+		{
+			Yii::log('Failed to connect to '.$this->hostname.':'.$this->port.'. The exact error was: '.$errStr.' ('.$errno.')', CLogger::LEVEL_ERROR, 'Backend');
+			return false;
+		}
+
+		return true;
+	}
+
 	/**
 	 * Returns a data provider for this model
 	 * @return \CActiveDataProvider
