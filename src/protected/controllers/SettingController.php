@@ -17,6 +17,13 @@ class SettingController extends AdminOnlyController
 	public function actionAdmin()
 	{
 		$settings = Setting::model()->findAll();
+		
+		// Sort the settings according to their defined order
+		usort($settings, function($a, $b)
+		{
+			return Setting::$definitions[$a->name]['order'] > 
+				   Setting::$definitions[$b->name]['order'];
+		});
 
 		if (isset($_POST['Setting']))
 		{

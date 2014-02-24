@@ -37,23 +37,27 @@ class Setting extends CActiveRecord
 			'label'=>'Application name',
 			'type'=>self::TYPE_TEXT,
 			'default'=>'XBMC Video Server',
+			'order'=>100,
 		),
 		'singleFilePlaylist'=>array(
 			'label'=>"Don't use playlists when item consists of a single file",
 			'type'=>self::TYPE_CHECKBOX,
 			'default'=>'0',
 			'description'=>'You may have to right-click and copy the address in order to stream (not download) the file',
+			'order'=>200,
 		),
 		'showHelpBlocks'=>array(
 			'label'=>'Show help blocks throughout the site',
 			'type'=>self::TYPE_CHECKBOX,
 			'default'=>'1',
+			'order'=>300,
 		),
 		'cacheApiCalls'=>array(
 			'label'=>'Cache all API results',
 			'type'=>self::TYPE_CHECKBOX,
 			'default'=>'0',
 			'description'=>'Useful on slow hardware. A refresh button will appear in the menu which flushes the cache',
+			'order'=>400,
 		),
 		'pagesize'=>array(
 			'label'=>'Amount of results to show per page',
@@ -63,11 +67,13 @@ class Setting extends CActiveRecord
 			'htmlOptions'=>array(
 				'span'=>1,
 			),
+			'order'=>500,
 		),
 		'disableFrodoWarning'=>array(
 			'label'=>"Don't warn about XBMC version incompatibility",
 			'type'=>self::TYPE_CHECKBOX,
 			'default'=>'0',
+			'order'=>600,
 		),
 		'useHttpsForVfsUrls'=>array(
 			'label'=>'Use HTTPS when streaming',
@@ -77,6 +83,7 @@ class Setting extends CActiveRecord
 				the application is accessed over HTTPS. This will usually only 
 				work if the server uses a real signed certificate, thus it is 
 				not enabled by default.',
+			'order'=>700,
 		),
 		'whitelist'=>array(
 			'label'=>'Access whitelist',
@@ -84,7 +91,8 @@ class Setting extends CActiveRecord
 			'default'=>'',
 			'description'=>"If specified, access is restricted to the defined 
 				whitelist. Valid values are IP addresses, IP subnets and 
-				domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com"
+				domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com",
+			'order'=>800,
 		),
 	);
 
