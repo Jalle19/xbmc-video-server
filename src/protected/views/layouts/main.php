@@ -19,9 +19,9 @@ Yii::app()->name = Setting::getValue('applicationName');
 		// Add a cache buster to the CSS URL
 		$cssPath = realpath(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR
 				.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'css'
-				.DIRECTORY_SEPARATOR.'styles.css');
+				.DIRECTORY_SEPARATOR.'styles-min.css');
 
-		$cs->registerCssFile($baseUrl.'/css/styles.css?'.filemtime($cssPath));
+		$cs->registerCssFile($baseUrl.'/css/styles-min.css?'.filemtime($cssPath));
 		
 		$this->registerScripts();
 		

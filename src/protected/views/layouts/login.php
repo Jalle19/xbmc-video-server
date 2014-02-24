@@ -11,7 +11,7 @@ $baseUrl = Yii::app()->baseUrl;
 		<title><?php echo $this->pageTitle; ?></title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<?php $cs->registerCssFile($baseUrl.'/css/login.css'); ?>
+		<?php $cs->registerCssFile($baseUrl.'/css/login-min.css'); ?>
 	</head>
 	
 	<body>
