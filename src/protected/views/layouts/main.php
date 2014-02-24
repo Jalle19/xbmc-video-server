@@ -4,9 +4,6 @@
 $cs = Yii::app()->clientScript;
 $baseUrl = Yii::app()->baseUrl;
 
-// Set the application name
-Yii::app()->name = Setting::getValue('applicationName');
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

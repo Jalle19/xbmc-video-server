@@ -14,6 +14,16 @@ class Controller extends CController
 	 * @var string the page title. It is accessed through its setter and getter.
 	 */
 	private $_pageTitle;
+	
+	/**
+	 * Initializes the controller. The application name is set here.
+	 */
+	public function init()
+	{
+		Yii::app()->name = Setting::getValue('applicationName');
+
+		parent::init();
+	}
 
 	/**
 	 * Getter for _pageTitle
