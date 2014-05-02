@@ -14,6 +14,11 @@ class ChangeLanguageForm extends CFormModel
 	public $language;
 
 	/**
+	 * @var boolean whether to store this language as default for the current user 
+	 */
+	public $setDefault = false;
+
+	/**
 	 * Initializes the model
 	 */
 	public function init()
@@ -30,7 +35,7 @@ class ChangeLanguageForm extends CFormModel
 	public function rules()
 	{
 		return array(
-			array('language', 'required'),
+			array('language, setDefault', 'required'),
 			array('language', 'in', 'range'=>array_keys(Yii::app()->languageManager->getAvailableLanguages())),
 		);
 	}
