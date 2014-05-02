@@ -17,12 +17,13 @@ class SettingController extends AdminOnlyController
 	public function actionAdmin()
 	{
 		$settings = Setting::model()->findAll();
+		$definitions = Setting::model()->getDefinitions();
 		
 		// Sort the settings according to their defined order
-		usort($settings, function($a, $b)
+		usort($settings, function($a, $b) use($definitions)
 		{
-			return Setting::$definitions[$a->name]['order'] > 
-				   Setting::$definitions[$b->name]['order'];
+			return $definitions[$a->name]['order'] > 
+				   $definitions[$b->name]['order'];
 		});
 
 		if (isset($_POST['Setting']))
@@ -51,13 +52,14 @@ class SettingController extends AdminOnlyController
 					$setting->save(false);
 
 				$this->log('"%s" updated the application settings', Yii::app()->user->name);
-				Yii::app()->user->setFlash('success', 'Settings updated successfully');
+				Yii::app()->user->setFlash('success', Yii::t('Settings', 'Settings updated successfully'));
 				$this->refresh();
 			}
 		}
 
 		$this->render('admin', array(
 			'settings'=>$settings,
+			'definitions'=>$definitions,
 		));
 	}
 
@@ -67,10 +69,10 @@ class SettingController extends AdminOnlyController
 	 */
 	public function actionReset()
 	{
-		foreach (Setting::$definitions as $name=> $definition)
+		foreach (Setting::model()->getDefinitions() as $name=> $definition)
 			$this->saveSetting($name, $definition['default']);
 
-		Yii::app()->user->setFlash('success', 'Settings have been reset to defaults');
+		Yii::app()->user->setFlash('success', Yii::t('Settings', 'Settings have been reset to defaults'));
 
 		$this->redirect(array('setting/admin'));
 	}
