@@ -36,7 +36,39 @@ Installation
 
 ### Linux
 
-The following steps assume that your shell user is able to use the `sudo` command, that you're running a Debian/Ubuntu-based operating system, that you're going to use Apache as web server and that its document root is located in /var/www.
+This section contains instructions on how to install this application on Ubuntu 14.04 and Debian Wheezy. If you're using another version of the above or a different distribution altogether you'll eventually have to adapt them slightly. The instructions assume that your shell user is able to use the `sudo` command.
+
+#### Ubuntu 14.04
+
+Run the following commands, one by one, in the exact order shown here:
+
+```
+sudo su 
+apt-get install libapache2-mod-php5 php5-gd php5-cli php5-sqlite php5-json git curl
+a2enmod rewrite expires
+service apache2 restart
+cd /var/www/html
+git clone git://github.com/Jalle19/xbmc-video-server.git
+cd xbmc-video-server
+curl -sS https://getcomposer.org/installer | php
+php composer.phar install
+./src/protected/yiic createinitialdatabase
+./src/protected/yiic setpermissions
+```
+
+After running the commands above you'll have to add a few lines to Apache's default site configuration to allow `.htaccess` files to be used. Open the file `/etc/apache2/sites-available/000-default` and add the following right before the last line (`</VirtualHost>`):
+
+```
+<Directory /var/www/html/xbmc-video-server/>
+	Options FollowSymLinks
+	AllowOverride All
+	Require all granted
+</Directory>
+```
+
+Finally, after saving the file you must restart Apache using `service apache2 restart` for the changes to take effect.
+
+#### Debian Wheezy
 
 Run the following commands, one by one, in the exact order shown here:
 
@@ -54,47 +86,24 @@ php composer.phar install
 ./src/protected/yiic setpermissions
 ```
 
-After running the commands above you'll have to add a few lines to Apache's default site configuration to allow `.htaccess` files to be used. The exact process varies depending on which version of Linux you use.
-
-#### Debian and Ubuntu 13.04 or older
-
-Open the file `/etc/apache2/sites-available/default` and add the following right before the last line (`</VirtualHost>`):
+After running the commands above you'll have to add a few lines to Apache's default site configuration to allow `.htaccess` files to be used. Open the file `/etc/apache2/sites-available/default` and add the following right before the last line (`</VirtualHost>`):
 
 ```
 <Directory /var/www/xbmc-video-server/>
 	Options FollowSymLinks
 	AllowOverride All
 	Order allow,deny
-	allow from all
+	Allow from all
 </Directory>
 ```
 
-After saving the file you must restart Apache using `service apache2 restart` for the changes to take effect.
-
-#### Ubuntu 13.10 and newer
-
-Open the file `/etc/apache2/sites-available/000-default` and add the following right before the last line (`</VirtualHost>`):
-
-```
-<Directory /var/www/xbmc-video-server/>
-	Options FollowSymLinks
-	AllowOverride All
-	Require all granted
-</Directory>
-```
-
-After saving the file you must restart Apache using `service apache2 restart` for the changes to take effect.
-
-In addition to the above steps you'll also need to edit `/etc/php5/apache2/php.ini` and change the line `;date.timezone =` to something like this: `date.timezone = Europe/Helsinki`. Look at http://us2.php.net/manual/en/datetime.configuration.php#113068 for possible timezone values.
-
-After saving the file you must restart Apache using `service apache2 restart` for the changes to take effect.
+Finally, after saving the file you must restart Apache using `service apache2 restart` for the changes to take effect.
 
 #### Updating on Linux
 
-To update your copy of the software to the latest version, run the following commands (assuming the same directory structure and setup as described under Installation):
+To update your copy of the software to the latest version, run the following commands inside the xbmc-video-server directory:
 
 ```
-cd /var/www/xbmc-video-server
 git pull
 php composer.phar install
 ./src/protected/yiic migrate --interactive=0
