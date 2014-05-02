@@ -7,7 +7,7 @@ $this->pageTitle = $title = Yii::t('User', 'Update {username}', array('{username
 
 ?>
 
-<h2><?php echo title; ?></h2>
+<h2><?php echo $title; ?></h2>
 
 <hr />
 
