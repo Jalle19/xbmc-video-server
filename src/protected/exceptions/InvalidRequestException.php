@@ -11,6 +11,6 @@ class InvalidRequestException extends CHttpException
 {
 	public function __construct()
 	{
-		parent::__construct(400, 'Invalid request');
+		parent::__construct(400, Yii::t('Exceptions', 'Invalid request'));
 	}
 }

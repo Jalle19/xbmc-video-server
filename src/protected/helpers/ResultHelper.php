@@ -34,11 +34,11 @@ class ResultHelper
 				
 				echo $summary;
 	
-				echo TbHtml::buttonDropdown('Display mode', array(
-					array('label'=>'Grid view', 'url'=>array(
+				echo TbHtml::buttonDropdown(Yii::t('DisplayMode', 'Display mode'), array(
+					array('label'=>Yii::t('DisplayMode', 'Grid view'), 'url'=>array(
 						'setDisplayMode', 'mode'=>MediaController::DISPLAY_MODE_GRID)),
-					array('label'=>'List view', 'url'=>array('setDisplayMode', 
-						'mode'=>MediaController::DISPLAY_MODE_LIST)),
+					array('label'=>Yii::t('DisplayMode', 'List view'), 'url'=>array(
+						'setDisplayMode', 'mode'=>MediaController::DISPLAY_MODE_LIST)),
 				), array(
 					'color'=>TbHtml::BUTTON_COLOR_INFO,
 					'icon'=>'reorder',

@@ -57,12 +57,12 @@ abstract class RetrieveMediaWidget extends CWidget
 		if (!$this->checkLinks())
 		{
 			echo CHtml::tag('p', array('class'=>'missing-video-file'), TbHtml::icon(TBHtml::ICON_WARNING_SIGN).
-					'The file(s) for this item is not available');
+					Yii::t('RetrieveMediaWidget', 'The file(s) for this item is not available'));
 
 			return;
 		}
 
-		echo TbHtml::linkButton('Watch', $this->getWatchButtonOptions());
+		echo TbHtml::linkButton(Yii::t('RetrieveMediaWidget', 'Watch'), $this->getWatchButtonOptions());
 		$this->renderLinks();
 	}
 
@@ -119,9 +119,9 @@ abstract class RetrieveMediaWidget extends CWidget
 		foreach ($this->links as $k=> $link)
 		{
 			if ($numLinks == 1)
-				$label = 'Download';
+				$label = Yii::t('RetrieveMediaWidget', 'Download');
 			else
-				$label = 'Download (part #'.(++$k).')';
+				$label = Yii::t('RetrieveMediaWidget', 'Download (part #{partNumber})', array('{partNumber}'=>++$k));
 
 			// Add the "download" attribute
 			$linkOptions['download'] = $this->getDownloadName($link);

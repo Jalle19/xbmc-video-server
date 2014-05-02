@@ -36,7 +36,7 @@ $baseUrl = Yii::app()->baseUrl;
 						</a>
 					</h1>
 					<p class="lead">
-						Free your library
+						<?php echo Yii::t('Misc', 'Free your library'); ?>
 					</p>
 				</div>
 			</div>

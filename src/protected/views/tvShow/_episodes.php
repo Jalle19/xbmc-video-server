@@ -7,13 +7,13 @@ if (Yii::app()->user->role !== User::ROLE_SPECTATOR)
 {
 	?>
 	<div class="season-download">
-		<?php echo TbHtml::linkButton('Watch the whole season', array(
+		<?php echo TbHtml::linkButton(Yii::t('TVShows', 'Watch the whole season'), array(
 			'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
 			'size'=>TbHtml::BUTTON_SIZE_LARGE,
 			'url'=>$this->createUrl('tvShow/getSeasonPlaylist', 
 					array('tvshowId'=>$tvshowId, 'season'=>$season)),
 			'class'=>'fontastic-icon-play',
-		)); ?> or choose individual episodes from the list below
+		)).' '.Yii::t('TVShows', 'or choose individual episodes from the list below'); ?>
 	</div>
 	<?php
 }

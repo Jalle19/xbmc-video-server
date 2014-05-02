@@ -36,9 +36,9 @@ class ChangePasswordForm extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
-			'currentPassword'=>'Current password',
-			'newPassword'=>'New password',
-			'newPasswordRepeat'=>'New password (repeat)',
+			'currentPassword'=>Yii::t('Password', 'Current password'),
+			'newPassword'=>Yii::t('Password', 'New password'),
+			'newPasswordRepeat'=>Yii::t('Password', 'New password (repeat)'),
 		);
 	}
 
@@ -52,7 +52,7 @@ class ChangePasswordForm extends CFormModel
 			array('currentPassword', 'checkCurrentPassword'),
 			array('newPassword', 'compare', 'compareAttribute'=>'newPasswordRepeat'),
 			array('newPassword', 'compare', 'compareAttribute'=>'currentPassword',
-				'operator'=>'!=', 'message'=>'New password cannot be the same as the old one'),
+				'operator'=>'!=', 'message'=>Yii::t('Password', 'New password cannot be the same as the old one')),
 		);
 	}
 
@@ -74,7 +74,7 @@ class ChangePasswordForm extends CFormModel
 	public function checkCurrentPassword($attribute)
 	{
 		if (!User::checkPassword($this->{$attribute}, $this->_user->password))
-			$this->addError($attribute, 'Incorrect password');
+			$this->addError($attribute, Yii::t('Password', 'Incorrect password'));
 	}
 
 }

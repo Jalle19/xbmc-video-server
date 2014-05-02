@@ -57,15 +57,15 @@ $this->pageTitle = $pageTitle;
 				</div>
 			</div>
 			
-			<h3>Plot</h3>
+			<h3><?php echo Yii::t('Media', 'Plot'); ?></h3>
 			
 			<div class="item-plot">
 				<p><?php echo $details->plot; ?></p>
 			</div>
 			
-			<h3>Cast</h3>
+			<h3><?php echo Yii::t('Media', 'Cast'); ?></h3>
 			
-			<?php echo FormHelper::helpBlock("Click the name to go to the person's IMDb page"); ?>
+			<?php echo FormHelper::helpBlock(Yii::t('TVShows', "Click the name to go to the person's IMDb page")); ?>
 
 			<div class="row-fluid">
 				<?php $this->widget('zii.widgets.CListView', array(
@@ -83,7 +83,7 @@ $this->pageTitle = $pageTitle;
 	
 	<div class="row">
 		<div class="span12">
-			<h3>Seasons</h3>
+			<h3><?php echo Yii::t('TVShows', 'Seasons'); ?></h3>
 			
 			<?php echo $this->renderPartial('_seasons', array(
 				'details'=>$details,

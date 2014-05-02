@@ -1,11 +1,11 @@
 <?php
 
 /* @var $model Log */
-$pageTitle = 'Details for log item #'.$model->id;
-$this->pageTitle = $pageTitle;
+$this->pageTitle = $title = Yii::t('Log', 'Details for log item #{id}', 
+		array('{id}'=>$model->id));
 
 ?>
-<h2><?php echo $pageTitle; ?></h2>
+<h2><?php echo $title; ?></h2>
 
 <div class="log-details">
 	<?php $this->widget('bootstrap.widgets.TbDetailView', array(

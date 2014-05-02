@@ -22,7 +22,7 @@ class MPAARating extends CWidget
 	{
 		// MPAA rating is not always available
 		if ($this->rating)
-			echo '<p>MPAA rating: '.$this->rating.'</p>';
+			echo '<p>'.Yii::t('Media', 'MPAA rating').': '.$this->rating.'</p>';
 	}
 
 }

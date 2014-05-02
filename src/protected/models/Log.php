@@ -52,12 +52,12 @@ class Log extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id'=>'ID',
-			'level'=>'Level',
-			'category'=>'Category',
-			'logtime'=>'Logtime',
-			'source_address'=>'Source address',
-			'message'=>'Message',
+			'id'=>Yii::t('Log', 'ID'),
+			'level'=>Yii::t('Log', 'Level'),
+			'category'=>Yii::t('Log', 'Category'),
+			'logtime'=>Yii::t('Log', 'Logtime'),
+			'source_address'=>Yii::t('Log', 'Source address'),
+			'message'=>Yii::t('Log', 'Message'),
 		);
 	}
 

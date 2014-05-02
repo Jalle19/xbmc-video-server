@@ -3,11 +3,11 @@
 /* @var $this UserController */
 /* @var $model User */
 
-$this->pageTitle = 'Update '.$model->username;
+$this->pageTitle = $title = Yii::t('User', 'Update {username}', array('{username}'=>$model->username));
 
 ?>
 
-<h2>Update <em><?php echo $model->username; ?></em></h2>
+<h2><?php echo $title; ?></h2>
 
 <hr />
 

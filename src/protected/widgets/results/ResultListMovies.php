@@ -29,7 +29,7 @@ class ResultListMovies extends ResultList
 	{
 		return array(
 			'name'=>'rating',
-			'header'=>'Rating',
+			'header'=>Yii::t('MovieList', 'Rating'),
 			'value'=>function($data) {
 				echo ResultHelper::formatRating($data->rating);
 			}
@@ -44,7 +44,7 @@ class ResultListMovies extends ResultList
 	{
 		return array(
 			'name'=>'runtime',
-			'header'=>'Runtime',
+			'header'=>Yii::t('GenericList', 'Runtime'),
 			'value'=>function($data) {
 				echo ResultHelper::formatRuntime($data->runtime);
 			}

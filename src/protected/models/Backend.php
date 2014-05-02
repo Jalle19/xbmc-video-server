@@ -74,14 +74,13 @@ class Backend extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id'=>'ID',
-			'name'=>'Backend name',
-			'hostname'=>'Hostname',
-			'port'=>'Port',
-			'username'=>'Username',
-			'password'=>'Password',
-			'proxyLocation'=>'Proxy location',
-			'default'=>'Set as default',
+			'name'=>Yii::t('Backend', 'Backend name'),
+			'hostname'=>Yii::t('Backend', 'Hostname'),
+			'port'=>Yii::t('Backend', 'Port'),
+			'username'=>Yii::t('Backend', 'Username'),
+			'password'=>Yii::t('Backend', 'Password'),
+			'proxyLocation'=>Yii::t('Backend', 'Proxy location'),
+			'default'=>Yii::t('Backend', 'Set as default'),
 		);
 	}
 	
@@ -97,7 +96,8 @@ class Backend extends CActiveRecord
 			return;
 
 		if (!$this->isConnectable())
-			$this->addError($attribute, "Unable to connect to $this->hostname:$this->port, make sure XBMC is running and has its web server enabled");
+			$this->addError($attribute, Yii::t('Backend', 'Unable to connect to {hostname}:{port}, make sure XBMC is running and has its web server enabled', 
+					array('{hostname}'=>$this->hostname, '{port}'=>$this->port)));
 	}
 
 	/**
@@ -129,7 +129,7 @@ class Backend extends CActiveRecord
 		{
 			unset($e); // avoid IDE warnings
 
-			$this->addError($attribute, 'Invalid credentials');
+			$this->addError($attribute, Yii::t('Backend', 'Invalid credentials'));
 		}
 	}
 	
@@ -175,7 +175,7 @@ class Backend extends CActiveRecord
 		}
 		catch (AuthenticationLessServerException $e)
 		{
-			$this->addError($attribute, 'The server does not ask for authentication');
+			$this->addError($attribute, Yii::t('Backend', 'The server does not ask for authentication'));
 		}
 		catch (InvalidRealmException $e)
 		{
@@ -195,7 +195,7 @@ class Backend extends CActiveRecord
 	{
 		if (!$this->{$attribute})
 		{
-			$error = 'There must be a default backend';
+			$error = Yii::t('Backend', 'There must be a default backend');
 			
 			// If this backend is currently the default one it must remain so
 			if (!$this->isNewRecord)

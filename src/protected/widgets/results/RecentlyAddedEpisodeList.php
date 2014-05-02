@@ -16,7 +16,7 @@ class RecentlyAddedEpisodeList extends EpisodeList
 		$showColumn = array(
 			array(
 				'type'=>'raw',
-				'header'=>'TV Show',
+				'header'=>Yii::t('RecentlyAddedEpisodes', 'TV Show'),
 				'value'=>function($data) {
 					$ctrl = Yii::app()->controller;		
 					

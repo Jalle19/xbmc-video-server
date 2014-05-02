@@ -39,9 +39,9 @@ abstract class VideoFilterForm extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
-			'name'=>'Name',
-			'genre'=>'Genre',
-			'watchedStatus'=>'Watched status',
+			'name'=>Yii::t('FilterForm', 'Name'),
+			'genre'=>Yii::t('FilterForm', 'Genre'),
+			'watchedStatus'=>Yii::t('FilterForm', 'Watched status'),
 		);
 	}
 
@@ -103,8 +103,8 @@ abstract class VideoFilterForm extends CFormModel
 	public static function getWatchedStatuses()
 	{
 		return array(
-			self::WATCHED_STATUS_WATCHED=>'Watched',
-			self::WATCHED_STATUS_UNWATCHED=>'Unwatched',
+			self::WATCHED_STATUS_WATCHED=>Yii::t('WatchedStatus', 'Watched'),
+			self::WATCHED_STATUS_UNWATCHED=>Yii::t('WatchedStatus', 'Unwatched'),
 		);
 	}
 	

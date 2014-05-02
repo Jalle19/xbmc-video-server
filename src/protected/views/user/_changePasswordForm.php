@@ -13,7 +13,7 @@ echo $form->passwordFieldControlGroup($model, 'newPasswordRepeat');
 
 ?>
 <div class="form-actions">
-	<?php echo TbHtml::submitButton('Change password',
+	<?php echo TbHtml::submitButton(Yii::t('User', 'Change password'),
 			array('color'=>TbHtml::BUTTON_COLOR_PRIMARY)); ?>
 	<?php echo FormHelper::cancelButton(array('movie/index')); ?>
 </div>

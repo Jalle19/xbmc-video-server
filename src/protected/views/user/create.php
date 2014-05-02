@@ -3,10 +3,10 @@
 /* @var $this UserController */
 /* @var $model User */
 
-$this->pageTitle = 'Create new user';
+$this->pageTitle = $title = Yii::t('User', 'Create new user');
 ?>
 
-<h2>Create new user</h2>
+<h2><?php echo $title; ?></h2>
 
 <hr />
 

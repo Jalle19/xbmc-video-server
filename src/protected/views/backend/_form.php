@@ -18,11 +18,12 @@ echo $form->passwordFieldControlGroup($model, 'password');
 
 $readmeUrl = 'https://github.com/Jalle19/xbmc-video-server#proxy-location';
 echo $form->textFieldControlGroup($model, 'proxyLocation', array(
-	'help'=>'See '.CHtml::link($readmeUrl, $readmeUrl).' for how to configure this'));
+	'help'=>Yii::t('Backend', 'See {readmeUrl} for how to configure this', 
+			array('{readmeUrl}'=>CHtml::link($readmeUrl, $readmeUrl)))));
 
 ?>
 <div class="form-actions">
-	<?php echo TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save changes', array(
+	<?php echo TbHtml::submitButton($model->isNewRecord ? Yii::t('Forms', 'Create') : Yii::t('Forms', 'Save changes'), array(
 		'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
 	)); ?>
 	<?php echo FormHelper::cancelButton(array('backend/admin')); ?>

@@ -1,25 +1,25 @@
 <?php 
 
 $leftItems = array(
-	array('label'=>'Movies', 
+	array('label'=>Yii::t('Menu', 'Movies'), 
 		'items'=>array(
 			array(
-				'label'=>'Browse', 'url'=>array('movie/index'),
+				'label'=>Yii::t('Menu', 'Browse'), 'url'=>array('movie/index'),
 				'active'=>in_array($this->route, array('movie/index', 'movie/details')),
 			),
 			array(
-				'label'=>'Recently added', 'url'=>array('movie/recentlyAdded'),
+				'label'=>Yii::t('Menu', 'Recently added'), 'url'=>array('movie/recentlyAdded'),
 			),
 		), 'linkOptions'=>array('class'=>'fontastic-icon-video'),
 	),
-	array('label'=>'TV Shows', 
+	array('label'=>Yii::t('Menu', 'TV Shows'), 
 		'items'=>array(
 			array(
-				'label'=>'Browse', 'url'=>array('tvShow/index'),
+				'label'=>Yii::t('Menu', 'Browse'), 'url'=>array('tvShow/index'),
 				'active'=>in_array($this->route, array('tvShow/index', 'tvShow/details')),
 			),
 			array(
-				'label'=>'Recently added', 'url'=>array('tvShow/recentlyAdded'),
+				'label'=>Yii::t('Menu', 'Recently added'), 'url'=>array('tvShow/recentlyAdded'),
 			),
 		), 'linkOptions'=>array('class'=>'fontastic-icon-tv'),
 	),
@@ -49,7 +49,7 @@ if (count($backends) > 1)
 	}
 
 	$rightItems[] = array(
-		'label'=>'Change backend',
+		'label'=>Yii::t('Menu', 'Change backend'),
 		'icon'=>'cloud',
 		'items'=>$backendItems,
 	);
@@ -58,47 +58,47 @@ if (count($backends) > 1)
 // Add the "Settings" menu for administrators
 if (Yii::app()->user->role == User::ROLE_ADMIN)
 {
-	$rightItems[] = array('label'=>'Settings', 'items'=>array(
-		array('label'=>'Settings'),
-		array('label'=>'Manage', 'url'=>array('setting/admin')),
-		array('label'=>'Backends'),
-		array('label'=>'Manage', 'url'=>array('backend/admin')),
-		array('label'=>'Create new', 'url'=>array('backend/create')),
-		array('label'=>'Users'),
-		array('label'=>'Manage', 'url'=>array('user/admin')),
-		array('label'=>'Create new', 'url'=>array('user/create')),
-		array('label'=>'System log'),
-		array('label'=>'Browse', 'url'=>array('log/')),
+	$rightItems[] = array('label'=>Yii::t('Menu', 'Settings'), 'items'=>array(
+		array('label'=>Yii::t('Menu', 'Settings')),
+		array('label'=>Yii::t('Menu', 'Manage'), 'url'=>array('setting/admin')),
+		array('label'=>Yii::t('Menu', 'Backends')),
+		array('label'=>Yii::t('Menu', 'Manage'), 'url'=>array('backend/admin')),
+		array('label'=>Yii::t('Menu', 'Create new'), 'url'=>array('backend/create')),
+		array('label'=>Yii::t('Menu', 'Users')),
+		array('label'=>Yii::t('Menu', 'Manage'), 'url'=>array('user/admin')),
+		array('label'=>Yii::t('Menu', 'Create new'), 'url'=>array('user/create')),
+		array('label'=>Yii::t('Menu', 'System log')),
+		array('label'=>Yii::t('Menu', 'Browse'), 'url'=>array('log/')),
 	), 'linkOptions'=>array('class'=>'fontastic-icon-settings'));
 }
 
 // Add the "Actions" menu
 $actions = array(
 	// user-related actions
-	array('label'=>'User'),
-	array('label'=>'Change password', 'url'=>array('user/changePassword')),
-	array('label'=>'Log out', 'url'=>array('site/logout')),
+	array('label'=>Yii::t('Menu', 'User')),
+	array('label'=>Yii::t('Menu', 'Change password'), 'url'=>array('user/changePassword')),
+	array('label'=>Yii::t('Menu', 'Log out'), 'url'=>array('site/logout')),
 	// system-related
-	array('label'=>'System'),
+	array('label'=>Yii::t('Menu', 'System')),
 );
 
 // Only show "Flush cache" if cacheApiCalls is enabled
 if (Setting::getValue('cacheApiCalls'))
 {
 	$actions[] = array(
-		'label'=>'Flush cache',
+		'label'=>Yii::t('Menu', 'Flush cache'),
 		'url'=>array('site/flushCache'),
-		'linkOptions'=>array('confirm'=>'Are you sure you want to flush the cache?'),
+		'linkOptions'=>array('confirm'=>Yii::t('Misc', 'Are you sure you want to flush the cache?')),
 	);
 }
 
 $actions[] = array(
-	'label'=>'Update library', 
+	'label'=>Yii::t('Menu', 'Update library'), 
 	'url'=>array('backend/updateLibrary'), 
-	'linkOptions'=>array('confirm'=>"Are you sure you want to update the backend's library?")
+	'linkOptions'=>array('confirm'=>Yii::t('Misc', "Are you sure you want to update the backend's library?"))
 );
 
-$rightItems[] = array('label'=>'Actions', 'items'=>$actions, 'icon'=>'tasks');
+$rightItems[] = array('label'=>Yii::t('Menu', 'Actions'), 'items'=>$actions, 'icon'=>'tasks');
 
 // Completely override the items when the application hasn't been configured yet
 if (Yii::app()->backendManager->getCurrent() === null)
@@ -106,11 +106,11 @@ if (Yii::app()->backendManager->getCurrent() === null)
 	$leftItems = array();
 	
 	$rightItems = array(
-		array('label'=>'Settings', 'items'=>array(
-			array('label'=>'Backends'),
-			array('label'=>'Create new', 'url'=>array('backend/create')),
-			array('label'=>'System log'),
-			array('label'=>'Browse', 'url'=>array('log/')),
+		array('label'=>Yii::t('Menu', 'Settings'), 'items'=>array(
+			array('label'=>Yii::t('Menu', 'Backends')),
+			array('label'=>Yii::t('Menu', 'Create new'), 'url'=>array('backend/create')),
+			array('label'=>Yii::t('Menu', 'System log')),
+			array('label'=>Yii::t('Menu', 'Browse'), 'url'=>array('log/')),
 		), 'linkOptions'=>array('class'=>'fontastic-icon-settings')),
 	);
 }

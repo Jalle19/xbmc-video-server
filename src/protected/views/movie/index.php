@@ -3,11 +3,11 @@
 /* @var $this MovieController */
 /* @var $filterForm MovieFilterForm */
 /* @var $dataProvider LibraryDataProvider */
-$this->pageTitle = 'Movies';
+$this->pageTitle = $title = Yii::t('Movies', 'Movies');
 
 ?>
 
-<h2>Movies</h2>
+<h2><?php echo $title; ?></h2>
 
 <?php
 

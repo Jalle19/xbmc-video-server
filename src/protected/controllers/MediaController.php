@@ -58,7 +58,7 @@ abstract class MediaController extends Controller
 	{
 		// Check backend version and warn about incompatibilities
 		if (!Yii::app()->xbmc->meetsMinimumRequirements() && !Setting::getValue('disableFrodoWarning'))
-			Yii::app()->user->setFlash('info', 'Streaming of video files is not possible from XBMC 12 "Frodo" backends');
+			Yii::app()->user->setFlash('info', Yii::t('Misc', 'Streaming of video files is not possible from XBMC 12 "Frodo" backends'));
 
 		$filterChain->run();
 	}
