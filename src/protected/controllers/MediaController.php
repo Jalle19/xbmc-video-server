@@ -12,7 +12,7 @@
  */
 abstract class MediaController extends Controller
 {
-	
+
 	const DISPLAY_MODE_GRID = 'grid';
 	const DISPLAY_MODE_LIST = 'list';
 
@@ -29,7 +29,8 @@ abstract class MediaController extends Controller
 	public function filters()
 	{
 		return array_merge(parent::filters(), array(
-			'accessControl'
+			'accessControl',
+			'checkBackendCanStream + details',
 		));
 	}
 
@@ -43,12 +44,25 @@ abstract class MediaController extends Controller
 			array('deny',
 				'actions'=>$this->getSpectatorProhibitedActions(),
 				'expression'=>function() {
-					return Yii::app()->user->role === User::ROLE_SPECTATOR;
-				}
+			return Yii::app()->user->role === User::ROLE_SPECTATOR;
+		}
 			)
 		);
 	}
-	
+
+	/**
+	 * Displays a flash if the backend doesn't support streaming
+	 * @param CFilterChain $filterChain the filter chain
+	 */
+	public function filterCheckBackendCanStream($filterChain)
+	{
+		// Check backend version and warn about incompatibilities
+		if (!Yii::app()->xbmc->meetsMinimumRequirements() && !Setting::getValue('disableFrodoWarning'))
+			Yii::app()->user->setFlash('info', 'Streaming of video files is not possible from XBMC 12 "Frodo" backends');
+
+		$filterChain->run();
+	}
+
 	/**
 	 * Sets the display mode for results and redirects the user back to where 
 	 * he came from.
@@ -59,7 +73,7 @@ abstract class MediaController extends Controller
 		$this->setDisplayMode($mode);
 		$this->redirectToPrevious(Yii::app()->homeUrl);
 	}
-	
+
 	/**
 	 * Setter for displayMode.
 	 * @param string $mode the desired display mode
@@ -87,7 +101,7 @@ abstract class MediaController extends Controller
 		{
 			// Use list mode by default for phones
 			$detector = new Detection\MobileDetect();
-			
+
 			if ($detector->isMobile() && !$detector->isTablet())
 				$displayMode = self::DISPLAY_MODE_LIST;
 			else
