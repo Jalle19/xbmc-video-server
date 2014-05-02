@@ -76,18 +76,10 @@ if (Yii::app()->user->role == User::ROLE_ADMIN)
 $actions = array(
 	// user-related actions
 	array('label'=>'User'),
+	array('label'=>'Change password', 'url'=>array('user/changePassword')),
+	array('label'=>'Log out', 'url'=>array('site/logout')),
 	// system-related
 	array('label'=>'System'),
-);
-
-if (Yii::app()->user->role == User::ROLE_USER) {
-        $actions[] = array(
-                'label'=>'Change my password', 'url'=>array('account/update')
-        );
-}
-
-$actions[] = array(
-        'label'=>'Log out', 'url'=>array('site/logout'),
 );
 
 // Only show "Flush cache" if cacheApiCalls is enabled
