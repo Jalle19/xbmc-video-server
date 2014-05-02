@@ -18,4 +18,4 @@ echo $form->passwordFieldControlGroup($model, 'newPasswordRepeat');
 	<?php echo FormHelper::cancelButton(array('movie/index')); ?>
 </div>
 
-<?php $this->endWidget(); ?>
+<?php $this->endWidget();
