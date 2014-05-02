@@ -16,15 +16,16 @@ class Controller extends CController
 	private $_pageTitle;
 	
 	/**
-	 * Initializes the controller. The application name is set here.
+	 * Initializes the controller. The application name and language is set here.
 	 */
 	public function init()
 	{
 		Yii::app()->name = Setting::getValue('applicationName');
+		Yii::app()->language = Yii::app()->languageManager->getCurrent();
 
 		parent::init();
 	}
-
+	
 	/**
 	 * Getter for _pageTitle
 	 * @return string
@@ -51,6 +52,7 @@ class Controller extends CController
 		return array(
 			'requireLogin',
 			'checkConfiguration',
+			array('ChangeLanguageFilter'),
 		);
 	}
 
@@ -107,7 +109,7 @@ class Controller extends CController
 		// Register Bootstrap scripts
 		$bootstrapBaseUrl = Yii::app()->baseUrl.'/js/bootstrap';
 
-		foreach (array('dropdown', 'alert', 'collapse') as $script)
+		foreach (array('dropdown', 'alert', 'collapse', 'modal') as $script)
 		{
 			$cs->registerScriptFile($bootstrapBaseUrl.'/bootstrap.'.$script.
 					'.min.js', CClientScript::POS_END);

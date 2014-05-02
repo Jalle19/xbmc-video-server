@@ -88,6 +88,9 @@ return array(
 		'xbmc'=>array(
 			'class'=>'XBMC',
 		),
+		'languageManager'=>array(
+			'class'=>'LanguageManager',
+		),
 		'less'=>array(
 			'class'=>'composer.crisu83.yii-less.components.LessServerCompiler',
 			'files'=>array(

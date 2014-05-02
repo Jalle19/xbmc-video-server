@@ -17,7 +17,7 @@ $baseUrl = Yii::app()->baseUrl;
 		$cssPath = realpath(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR
 				.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'css'
 				.DIRECTORY_SEPARATOR.'styles-min.css');
-
+		
 		$cs->registerCssFile($baseUrl.'/css/styles-min.css?'.filemtime($cssPath));
 		
 		$this->registerScripts();
@@ -50,6 +50,15 @@ $baseUrl = Yii::app()->baseUrl;
 			</div>
 			
 		</div>
+		
+		<?php $this->widget('bootstrap.widgets.TbModal', array(
+			'id'=>'change-language-modal',
+			'header'=>Yii::t('Language', 'Change language'),
+			'closeText'=>false,
+			'content'=>$this->renderPartial('//site/_changeLanguageModalContent', array(
+				'model'=>new ChangeLanguageForm(),
+			), true),
+		)); ?>
 	</body>
 	
 </html>
