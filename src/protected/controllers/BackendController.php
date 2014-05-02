@@ -60,7 +60,8 @@ class BackendController extends AdminOnlyController
 			
 			$this->log('"%s" switched backend to "%s"', Yii::app()->user->name, 
 							$model->name);
-			Yii::app()->user->setFlash('success', 'Changed backend to '.$model->name);
+			Yii::app()->user->setFlash('success', Yii::t('Backend', 'Changed backend to {backendName}', 
+					array('{backendName}'=>$model->name)));
 			
 			// Redirect to homeUrl if the previous page was either a TV show 
 			// or movie details page since they will not be the same across 
@@ -71,7 +72,8 @@ class BackendController extends AdminOnlyController
 				$this->redirect(Yii::app()->homeUrl);
 		}
 		else
-			Yii::app()->user->setFlash('error', 'Unable to switch backends, the backend "'.$model->name.'" is not connectable');
+			Yii::app()->user->setFlash('error', Yii::t('Backend', 'Unable to switch backends, the backend {backendName} is not connectable', 
+					array('{backendName}'=>$model->name)));
 		
 		$this->redirectToPrevious(Yii::app()->homeUrl);
 	}
@@ -85,11 +87,11 @@ class BackendController extends AdminOnlyController
 		// Update the library. There will be no indication if success/failure 
 		// so we have to assume it worked
 		Yii::app()->xbmc->sendNotification('VideoLibrary.Scan');
-		Yii::app()->user->setFlash('success', 'Library update has been initiated');
+		Yii::app()->user->setFlash('success', Yii::t('Misc', 'Library update has been initiated'));
 
 		// Remind users that they'll have to flush their cache
 		if (Setting::getValue('cacheApiCalls'))
-			Yii::app()->user->setFlash('info', "You'll have to flush the API call cache to see any newly scanned content");
+			Yii::app()->user->setFlash('info', Yii::t('Misc', "You'll have to flush the API call cache to see any newly scanned content"));
 
 		$this->redirectToPrevious(Yii::app()->homeUrl);
 	}
@@ -122,7 +124,7 @@ class BackendController extends AdminOnlyController
 				$this->log('"%s" created backend "%s"', Yii::app()->user->name, 
 						$model->name);
 				
-				Yii::app()->user->setFlash('success', 'Backend created successfully');
+				Yii::app()->user->setFlash('success', Yii::t('Backend', 'Backend created successfully'));
 				
 				if ($firstRun)
 					$this->redirect(array('setting/admin'));
@@ -166,7 +168,7 @@ class BackendController extends AdminOnlyController
 				$this->log('"%s" updated backend "%s"', Yii::app()->user->name, 
 						$model->name);
 				
-				Yii::app()->user->setFlash('success', 'Backend updated successfully');
+				Yii::app()->user->setFlash('success', Yii::t('Backend', 'Backend updated successfully'));
 
 				$this->redirect(array('admin'));
 			}

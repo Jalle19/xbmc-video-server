@@ -47,7 +47,7 @@ class UserController extends AdminOnlyController
 
 				// Log and inform
 				$this->log('"%s" updated his/her password', Yii::app()->user->name);
-				Yii::app()->user->setFlash('success', 'Password successfully changed');
+				Yii::app()->user->setFlash('success', Yii::t('User', 'Password successfully changed'));
 
 				$this->redirect(array('movie/index'));
 			}
@@ -73,7 +73,8 @@ class UserController extends AdminOnlyController
 			{
 				$this->log('"%s" created user "%s"', Yii::app()->user->name, 
 						$model->username);
-				Yii::app()->user->setFlash('success', 'Created user <em>'.$model->username.'</em>');
+				Yii::app()->user->setFlash('success', Yii::t('User', 'Created user {username}', 
+						array('{username}'=>'<em>'.$model->username.'</em>')));
 
 				$this->redirect(array('admin'));
 			}
@@ -103,7 +104,8 @@ class UserController extends AdminOnlyController
 			{
 				$this->log('"%s" updated user "%s"', Yii::app()->user->name, 
 						$model->username);
-				Yii::app()->user->setFlash('success', 'Updated user <em>'.$model->username.'</em>');
+				Yii::app()->user->setFlash('success', Yii::t('User', 'Updated user {username}', 
+						array('{username}'=>'<em>'.$model->username.'</em>')));
 
 				$this->redirect(array('admin'));
 			}

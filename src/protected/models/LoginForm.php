@@ -51,9 +51,9 @@ class LoginForm extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
-			'username'=>'Username',
-			'password'=>'Password',
-			'rememberMe'=>'Remember me',
+			'username'=>Yii::t('Login', 'Username'),
+			'password'=>Yii::t('Login', 'Password'),
+			'rememberMe'=>Yii::t('Login', 'Remember me'),
 		);
 	}
 	
@@ -68,7 +68,7 @@ class LoginForm extends CFormModel
 			// Display the error as a flash since technically it has nothing 
 			// to do with the username attribute
 			$this->addError($attribute, '');
-			Yii::app()->user->setFlash('error', 'Your location is not whitelisted');
+			Yii::app()->user->setFlash('error', Yii::t('Login', 'Your location is not whitelisted'));
 		}
 	}
 
@@ -82,7 +82,7 @@ class LoginForm extends CFormModel
 		$this->_identity->authenticate();
 
 		if ($this->_identity->errorCode !== UserIdentity::ERROR_NONE)
-			$this->addError($attribute, 'Incorrect username or password');
+			$this->addError($attribute, Yii::t('Login', 'Incorrect username or password'));
 	}
 
 	/**

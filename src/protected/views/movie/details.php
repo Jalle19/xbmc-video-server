@@ -4,7 +4,7 @@
 /* @var $actorDataProvider LibraryDataProvider */
 /* @var $details stdClass */
 
-$this->pageTitle = $details->label.' ('.$details->year.') - Movies';
+$this->pageTitle = $details->label.' ('.$details->year.') - '.Yii::t('Movies', 'Movies');
 
 ?>
 <div class="item-details">
@@ -24,12 +24,12 @@ $this->pageTitle = $details->label.' ('.$details->year.') - Movies';
 			{
 				?>
 				<div class="item-links">
-					<h3>Watch / Download</h3>
+					<h3><?php echo Yii::t('Movies', 'Watch / Download'); ?></h3>
 
 					<p>
-						Click the Watch button to start streaming the video (open 
+						<?php Yii::t('Movies', 'Click the Watch button to start streaming the video (open 
 						the file in your favorite media player), or download the 
-						individual files for later viewing using the links below it.
+						individual files for later viewing using the links below it.'); ?>
 					</p>
 
 					<?php $this->widget('RetrieveMovieWidget', array(
@@ -106,13 +106,13 @@ $this->pageTitle = $details->label.' ('.$details->year.') - Movies';
 			<div class="item-plot">
 				<p>
 					<?php echo !empty($details->plot) ? $details->plot 
-							: 'Not available'; ?>
+							: Yii::t('Misc', 'Not available'); ?>
 				</p>
 			</div>
 			
 			<h3>Cast</h3>
 			
-			<?php echo FormHelper::helpBlock("Click an image to see other movies with that person, or click the name to go to the person's IMDb page"); ?>
+			<?php echo FormHelper::helpBlock(Yii::t('Movies', "Click an image to see other movies with that person, or click the name to go to the person's IMDb page")); ?>
 			
 			<div class="row-fluid">
 				<?php $this->widget('zii.widgets.CListView', array(

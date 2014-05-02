@@ -3,10 +3,10 @@
 /* @var $this BackendController */
 /* @var $form TbActiveForm */
 /* @var $model Backend */
-$this->pageTitle = 'Add new backend';
+$this->pageTitle = $title = Yii::t('Backend', 'Create new backend');
 
 ?>
-<h2>Create new backend</h2>
+<h2><?php echo $title; ?></h2>
 
 <hr />
 

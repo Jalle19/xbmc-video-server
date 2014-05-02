@@ -17,7 +17,7 @@ class FormHelper
 	 */
 	public static function cancelButton($url)
 	{
-		return TbHtml::linkButton('Cancel', array(
+		return TbHtml::linkButton(Yii::t('Forms', 'Cancel'), array(
 			'url'=>$url,
 			'color'=>TbHtml::BUTTON_COLOR_INFO,
 			'class'=>'btn-padded',

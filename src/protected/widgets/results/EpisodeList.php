@@ -38,7 +38,7 @@ class EpisodeList extends CWidget
 		return array(
 			array(
 				'type'=>'raw',
-				'header'=>'Episode',
+				'header'=>Yii::t('EpisodeList', 'Episode'),
 				'value'=>function($data) {
 					// $this not available in PHP < 5.4
 					Yii::app()->controller->renderPartial('_getEpisode', array('episode'=>$data));
@@ -53,19 +53,19 @@ class EpisodeList extends CWidget
 				}
 			),
 			array(
-				'header'=>'Title',
+				'header'=>Yii::t('GenericList', 'Title'),
 				'name'=>'title',
 			),
 			array(
 				'type'=>'raw',
-				'header'=>'Plot',
+				'header'=>Yii::t('EpisodeList', 'Plot'),
 				'value'=>function($data) {
 					// $this not available in PHP < 5.4
 					Yii::app()->controller->renderPartial('_plotStreamDetails', array('episode'=>$data));
 				}
 			),
 			array(
-				'header'=>'Runtime',
+				'header'=>Yii::t('GenericList', 'Runtime'),
 				'type'=>'html',
 				'value'=>function($data) {
 					Yii::app()->controller->renderPartial('//videoLibrary/_runtime', array('runtime'=>$data->runtime));

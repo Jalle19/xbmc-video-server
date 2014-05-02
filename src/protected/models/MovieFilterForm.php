@@ -56,10 +56,10 @@ class MovieFilterForm extends VideoFilterForm
 	public function attributeLabels()
 	{
 		return array_merge(parent::attributeLabels(), array(
-			'year'=>'Year',
-			'quality'=>'Quality',
-			'actor'=>'Actor',
-			'rating'=>'Minimum rating'
+			'year'=>Yii::t('FilterForm', 'Year'),
+			'quality'=>Yii::t('FilterForm', 'Quality'),
+			'actor'=>Yii::t('FilterForm', 'Actor'),
+			'rating'=>Yii::t('FilterForm', 'Minimum rating'),
 		));
 	}
 

@@ -2,21 +2,21 @@
 
 /* @var $model Log */
 
-$this->pageTitle = 'Application log';
+$this->pageTitle = $title = Yii::t('Log', 'Application log');
 
 ?>
-<h2>System log</h2>
+<h2><?php echo $title; ?></h2>
 
-<?php echo FormHelper::helpBlock('This is the system log. You can sort and 
+<?php echo FormHelper::helpBlock(Yii::t('Log', 'This is the system log. You can sort and 
 	filter the table freely to find the information you need. To see the full 
 	error message (in case it has been clipped), click the view icon on the 
 	right. You can also flush the log by pressing the <i>Flush logs</i> 
-	button.'); ?>
+	button.')); ?>
 
-<?php echo TbHtml::linkButton('Flush logs', array(
+<?php echo TbHtml::linkButton(Yii::t('Log', 'Flush logs'), array(
 	'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
 	'url'=>array('flush'),
-	'confirm'=>'Are you sure?',
+	'confirm'=>Yii::t('Misc', 'Are you sure?'),
 )); ?>
 
 <hr />

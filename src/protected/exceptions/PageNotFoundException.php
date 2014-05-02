@@ -12,7 +12,7 @@ class PageNotFoundException extends CHttpException
 
 	public function __construct()
 	{
-		parent::__construct(404, 'The requested page does not exist');
+		parent::__construct(404, Yii::t('Exceptions', 'The requested page does not exist'));
 	}
 
 }

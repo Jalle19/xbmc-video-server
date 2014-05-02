@@ -42,4 +42,4 @@ if (count($seasons) > 0)
 	));
 }
 else
-	echo CHtml::tag('div', array('class'=>'alert alert-block alert-error'), 'There are no episodes for this show');
+	echo CHtml::tag('div', array('class'=>'alert alert-block alert-error'), Yii::t('TV Shows', 'There are no episodes for this show'));

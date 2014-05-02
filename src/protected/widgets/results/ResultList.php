@@ -43,7 +43,7 @@ abstract class ResultList extends TbGridView
 	{
 		// Get rid of that pesky dot at the end
 		if ($this->emptyText === null)
-			$this->emptyText = substr(Yii::t('zii', 'No results found.'), 0, strlen(Yii::t('zii', 'No results found.')) - 1);
+			$this->emptyText = substr(Yii::t('GenericList', 'No results found.'), 0, strlen(Yii::t('GenericList', 'No results found.')) - 1);
 
 		if ($this->dataProvider->totalItemCount > 0)
 			parent::renderItems();
@@ -72,7 +72,7 @@ abstract class ResultList extends TbGridView
 	{
 		return array(
 			'name'=>'label',
-			'header'=>'Title',
+			'header'=>Yii::t('GenericList', 'Title'),
 			'type'=>'html',
 			'value'=>function($data) {
 				// Determine the name of the ID property
@@ -96,7 +96,7 @@ abstract class ResultList extends TbGridView
 	{
 		return array(
 			'name'=>'year',
-			'header'=>'Year',
+			'header'=>Yii::t('GenericList', 'Year'),
 			'value'=>function($data) {
 				// Year is zero when it's not available
 				if ($data->year !== 0)
@@ -113,7 +113,7 @@ abstract class ResultList extends TbGridView
 	{
 		return array(
 			'name'=>'genre',
-			'header'=>'Genre',
+			'header'=>Yii::t('GenericList', 'Genre'),
 			'value'=>function($data) {
 				return implode(' / ', $data->genre);
 			}

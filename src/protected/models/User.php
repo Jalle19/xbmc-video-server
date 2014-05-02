@@ -76,7 +76,7 @@ class User extends CActiveRecord
 				':id'=>$this->id));
 			
 			if (count($administrators) === 0)
-				$this->addError($attribute, 'There must be at least one administrator');
+				$this->addError($attribute, Yii::t('User', 'There must be at least one administrator'));
 		}
 	}
 
@@ -86,10 +86,9 @@ class User extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'role'=>'Role',
-			'roleName'=>'Role', // used in the manage view
-			'username'=>'Username',
-			'password'=>'Password',
+			'role'=>Yii::t('User', 'Role'),
+			'username'=>Yii::t('User', 'Username'),
+			'password'=>Yii::t('User', 'Password'),
 		);
 	}
 	
@@ -111,9 +110,9 @@ class User extends CActiveRecord
 	public function getRoles()
 	{
 		return array(
-			self::ROLE_ADMIN=>'Administrator',
-			self::ROLE_USER=>'User',
-			self::ROLE_SPECTATOR=>'Spectator',
+			self::ROLE_ADMIN=>Yii::t('UserRole', 'Administrator'),
+			self::ROLE_USER=>Yii::t('UserRole', 'User'),
+			self::ROLE_SPECTATOR=>Yii::t('UserRole', 'Spectator'),
 		);
 	}
 	

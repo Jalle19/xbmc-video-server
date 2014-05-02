@@ -3,11 +3,11 @@
 /* @var $this UserController */
 /* @var $model User */
 
-$this->pageTitle = 'Change password';
+$this->pageTitle = $title = Yii::t('User', 'Change password');
 
 ?>
 
-<h2>Change password</h2>
+<h2><?php echo $title; ?></h2>
 
 <hr />
 

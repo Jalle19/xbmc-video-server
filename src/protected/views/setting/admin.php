@@ -3,14 +3,14 @@
 /* @var $this SettingsController */
 /* @var $form TbActiveForm */
 /* @var $settings Setting[] */
-$this->pageTitle = 'Settings';
+$this->pageTitle = $title = 'Settings';
 
 ?>
-<h2>Settings</h2>
+<h2><?php echo $title; ?></h2>
 
-<?php echo FormHelper::helpBlock('This is where you configure global 
+<?php echo FormHelper::helpBlock(Yii::t('Settings', 'This is where you configure global 
 	application settings. These settings apply regardless of which backend is 
-	currently in use.'); ?>
+	currently in use.')); ?>
 
 <hr />
 
@@ -48,9 +48,9 @@ foreach ($settings as $setting)
 }
 
 echo CHtml::openTag('div', array('class'=>'form-actions'));
-echo TbHtml::submitButton('Save changes', array(
+echo TbHtml::submitButton(Yii::t('Forms', 'Save changes'), array(
 	'color'=>TbHtml::BUTTON_COLOR_PRIMARY));
-echo TbHtml::linkButton('Reset to defaults', array(
+echo TbHtml::linkButton(Yii::t('Forms', 'Reset to defaults'), array(
 	'url'=>array('setting/reset'),
 	'color'=>TbHtml::BUTTON_COLOR_INFO, 
 	'class'=>'btn-padded'));

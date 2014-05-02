@@ -70,7 +70,7 @@ class LogController extends AdminOnlyController
 	public function actionFlush()
 	{
 		Yii::app()->db->createCommand()->truncateTable('log');
-		Yii::app()->user->setFlash('success', 'System log flushed successfully');
+		Yii::app()->user->setFlash('success', Yii::t('Log', 'System log flushed successfully'));
 		$this->redirect(array('admin'));
 	}
 	

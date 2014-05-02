@@ -88,7 +88,7 @@ class SiteController extends Controller
 	public function actionFlushCache()
 	{
 		Yii::app()->apiCallCache->flush();
-		Yii::app()->user->setFlash('success', 'The cache has been flushed successfully');
+		Yii::app()->user->setFlash('success', Yii::t('Misc', 'The cache has been flushed successfully'));
 		$this->redirectToPrevious(Yii::app()->homeUrl);
 	}
 

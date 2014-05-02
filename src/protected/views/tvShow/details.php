@@ -65,7 +65,7 @@ $this->pageTitle = $pageTitle;
 			
 			<h3>Cast</h3>
 			
-			<?php echo FormHelper::helpBlock("Click the name to go to the person's IMDb page"); ?>
+			<?php echo FormHelper::helpBlock(Yii::t('TV Shows', "Click the name to go to the person's IMDb page")); ?>
 
 			<div class="row-fluid">
 				<?php $this->widget('zii.widgets.CListView', array(

@@ -4,7 +4,7 @@
 		Rating: <?php echo ResultHelper::formatRating($rating); ?>
 		
 		<?php if (isset($votes))
-			echo '('.$votes.' votes)'; ?>
+			echo Yii::t('Media', '({numVotes} votes)', array('{numVotes}'=>$votes)); ?>
 	</p>
 
 	<?php $this->renderPartial('/videoLibrary/_ratingStars', 

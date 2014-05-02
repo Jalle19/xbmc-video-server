@@ -75,7 +75,7 @@ class Controller extends CController
 	{
 		if (Yii::app()->backendManager->getCurrent() === null)
 		{
-			Yii::app()->user->setFlash('error', 'You must configure a backend before you can use the application');
+			Yii::app()->user->setFlash('error', Yii::t('Backend', 'You must configure a backend before you can use the application'));
 
 			$this->redirect(array('backend/create'));
 		}

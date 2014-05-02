@@ -7,7 +7,7 @@ $thumbnailPath = isset($data->thumbnail) ? $data->thumbnail : '';
 $thumbnail = new ThumbnailActor($thumbnailPath, Thumbnail::SIZE_SMALL);
 
 // Make the label a link to the IMDB search page for the actor
-$label = $data->name.' as <em>'.$data->role.'</em>';
+$label = Yii::t('Media', '{actorName} as {role}', array('{actorName}'=>$data->name, '{role}'=>'<em>'.$data->role.'</em>'));
 $labelUrl = 'http://www.imdb.com/find?q='.urlencode($data->name).'&s=nm';
 
 if(!isset($itemUrl))

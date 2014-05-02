@@ -36,7 +36,7 @@ class ResultGrid extends CListView
 	{
 		// Get rid of that pesky dot at the end
 		if ($this->emptyText === null)
-			$this->emptyText = substr(Yii::t('zii', 'No results found.'), 0, strlen(Yii::t('zii', 'No results found.')) - 1);
+			$this->emptyText = substr(Yii::t('GenericList', 'No results found.'), 0, strlen(Yii::t('GenericList', 'No results found.')) - 1);
 
 		if ($this->dataProvider->totalItemCount > 0)
 			parent::renderItems();

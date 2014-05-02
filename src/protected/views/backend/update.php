@@ -3,11 +3,12 @@
 /* @var $this BackendController */
 /* @var $model Backend */
 
-$this->pageTitle = 'Update '.$model->name;
+$this->pageTitle = $title = Yii::t('Backend', 'Update {backendName}', 
+		array('{backendName}'=>$model->name));
 
 ?>
 
-<h2>Update <em><?php echo $model->username; ?></em></h2>
+<h2><?php echo $title; ?></h2>
 
 <hr />
 

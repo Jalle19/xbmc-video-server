@@ -2,10 +2,10 @@
 
 /* @var $filterForm MovieFilterForm */
 /* @var $dataProvider LibraryDataProvider */
-$this->pageTitle = 'TV Shows';
+$this->pageTitle = $title = 'TV Shows';
 
 ?>
-<h2>TV Shows</h2>
+<h2><?php echo $title; ?></h2>
 
 <?php 
 

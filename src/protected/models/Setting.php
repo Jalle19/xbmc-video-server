@@ -131,12 +131,12 @@ class Setting extends CActiveRecord
 		$definitions = $whitelist->parseDefinitions($definitions);
 
 		if (!$whitelist->validateDefinitions($definitions))
-			$this->addError($attribute, 'Invalid whitelist definition');
+			$this->addError($attribute, Yii::t('Settings', 'Invalid whitelist definition'));
 		else
 		{
 			$whitelist->setDefinitions($definitions);
 			if (!$whitelist->check(true))
-				Yii::app()->user->setFlash('warning', 'The specified whitelist restrictions will lock you out from this location');
+				Yii::app()->user->setFlash('warning', Yii::t('Settings', 'The specified whitelist restrictions will lock you out from this location'));
 		}
 	}
 	
@@ -150,70 +150,70 @@ class Setting extends CActiveRecord
 		{
 			$this->_definitions = array(
 				'applicationName'=>array(
-					'label'=>'Application name',
+					'label'=>Yii::t('Settings', 'Application name'),
 					'type'=>self::TYPE_TEXT,
 					'default'=>'XBMC Video Server',
 					'order'=>100,
 				),
 				'singleFilePlaylist'=>array(
-					'label'=>"Don't use playlists when item consists of a single file",
+					'label'=>Yii::t('Settings', "Don't use playlists when item consists of a single file"),
 					'type'=>self::TYPE_CHECKBOX,
 					'default'=>'0',
-					'description'=>'You may have to right-click and copy the address in order to stream (not download) the file',
+					'description'=>Yii::t('Settings', 'You may have to right-click and copy the address in order to stream (not download) the file'),
 					'order'=>200,
 				),
 				'showHelpBlocks'=>array(
-					'label'=>'Show help blocks throughout the site',
+					'label'=>Yii::t('Settings', 'Show help blocks throughout the site'),
 					'type'=>self::TYPE_CHECKBOX,
 					'default'=>'1',
 					'order'=>300,
 				),
 				'cacheApiCalls'=>array(
-					'label'=>'Cache all API results',
+					'label'=>Yii::t('Settings', 'Cache all API results'),
 					'type'=>self::TYPE_CHECKBOX,
 					'default'=>'0',
-					'description'=>'Useful on slow hardware. A refresh button will appear in the menu which flushes the cache',
+					'description'=>Yii::t('Settings', 'Useful on slow hardware. A refresh button will appear in the menu which flushes the cache'),
 					'order'=>400,
 				),
 				'pagesize'=>array(
-					'label'=>'Amount of results to show per page',
+					'label'=>Yii::t('Settings', 'Amount of results to show per page'),
 					'type'=>self::TYPE_TEXT,
 					'default'=>'60',
-					'description'=>'Leave empty to disable pagination altogether',
+					'description'=>Yii::t('Settings', 'Leave empty to disable pagination altogether'),
 					'htmlOptions'=>array(
 						'span'=>1,
 					),
 					'order'=>500,
 				),
 				'ignoreArticle'=>array(
-					'label'=>'Ignore article ("the") in results',
+					'label'=>Yii::t('Settings', 'Ignore article ("the") in results'),
 					'type'=>self::TYPE_CHECKBOX,
 					'default'=>'',
 					'order'=>550,
 				),
 				'disableFrodoWarning'=>array(
-					'label'=>"Don't warn about XBMC version incompatibility",
+					'label'=>Yii::t('Settings', "Don't warn about XBMC version incompatibility"),
 					'type'=>self::TYPE_CHECKBOX,
 					'default'=>'0',
 					'order'=>600,
 				),
 				'useHttpsForVfsUrls'=>array(
-					'label'=>'Use HTTPS when streaming',
+					'label'=>Yii::t('Settings', 'Use HTTPS when streaming'),
 					'type'=>self::TYPE_CHECKBOX,
 					'default'=>'0',
-					'description'=>'When checked, streaming will be done over HTTPS if 
+					'description'=>Yii::t('Settings', 'When checked, streaming will be done over HTTPS if 
 						the application is accessed over HTTPS. This will usually only 
 						work if the server uses a real signed certificate, thus it is 
-						not enabled by default.',
+						not enabled by default.'),
 					'order'=>700,
 				),
 				'whitelist'=>array(
-					'label'=>'Access whitelist',
+					'label'=>Yii::t('Settings', 'Access whitelist'),
 					'type'=>self::TYPE_TEXT_WIDE,
 					'default'=>'',
-					'description'=>"If specified, access is restricted to the defined 
+					'description'=>Yii::t('Settings', "If specified, access is restricted to the defined 
 						whitelist. Valid values are IP addresses, IP subnets and 
-						domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com",
+						domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com"),
 					'order'=>800,
 				),
 			);
