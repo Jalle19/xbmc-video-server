@@ -46,17 +46,6 @@ abstract class RetrieveMediaWidget extends CWidget
 	abstract protected function getWatchButtonOptions();
 
 	/**
-	 * Initializes the widget
-	 * @throws Exception if required attributes are undefined
-	 */
-	public function init()
-	{
-		foreach (array('links', 'details') as $attribute)
-			if (!isset($this->{$attribute}))
-				throw new Exception($attribute.' must be defined');
-	}
-
-	/**
 	 * Runs the widget
 	 */
 	public function run()
