@@ -119,7 +119,7 @@ class Setting extends CActiveRecord
 	public static function getValue($name)
 	{
 		if (!isset(self::$definitions[$name]))
-			throw new CHttpException(400, "Unknown setting $name");
+			throw new InvalidRequestException();
 
 		if (self::$_settings === null)
 			self::$_settings = self::model()->findAll();

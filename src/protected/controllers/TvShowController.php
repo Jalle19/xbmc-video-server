@@ -77,7 +77,7 @@ class TvShowController extends MediaController
 		));
 
 		if ($showDetails === null)
-			throw new CHttpException(404, 'Not found');
+			throw new PageNotFoundException();
 		
 		$actorDataProvider = new CArrayDataProvider(
 				$showDetails->cast, array(
@@ -120,7 +120,7 @@ class TvShowController extends MediaController
 					'file'));
 
 		if ($tvshowDetails === null || empty($episodes))
-			throw new CHttpException(404, 'Not found');
+			throw new PageNotFoundException();
 
 		// Construct the playlist
 		$playlist = new M3UPlaylist();
@@ -167,7 +167,7 @@ class TvShowController extends MediaController
 					'file'));
 
 		if ($episode === null)
-			throw new CHttpException(404, 'Not found');
+			throw new PageNotFoundException();
 
 		$episodeString = VideoLibrary::getEpisodeString($episode->season, 
 				$episode->episode);

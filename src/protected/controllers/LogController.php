@@ -83,7 +83,7 @@ class LogController extends AdminOnlyController
 	{
 		foreach (array('logCategory', 'logMessage') as $attribute)
 			if (!isset($_POST[$attribute]))
-				throw new CHttpException(400, 'Invalid request');
+				throw new InvalidRequestException();
 
 		// The message may be HTML-encoded
 		$message = html_entity_decode($_POST['logMessage']);
@@ -114,7 +114,7 @@ class LogController extends AdminOnlyController
 		$model = Log::model()->findByPk($id);
 
 		if ($model === null)
-			throw new CHttpException(404, 'Not found');
+			throw new PageNotFoundException();
 
 		return $model;
 	}

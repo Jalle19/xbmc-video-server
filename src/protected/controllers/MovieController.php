@@ -79,7 +79,7 @@ class MovieController extends MediaController
 		));
 
 		if ($movieDetails === null)
-			throw new CHttpException(404, 'Not found');
+			throw new PageNotFoundException();
 		
 		// Create a data provider for the actors. We only show one row (first 
 		// credited only), hence the 6
@@ -114,7 +114,7 @@ class MovieController extends MediaController
 		));
 		
 		if ($movieDetails === null)
-			throw new CHttpException(404, 'Not found');
+			throw new PageNotFoundException();
 
 		$links = VideoLibrary::getVideoLinks($movieDetails->file);
 		$name = $movieDetails->title.' ('.$movieDetails->year.')';

@@ -69,7 +69,7 @@ abstract class MediaController extends Controller
 	{
 		// Check that the mode is valid
 		if (!in_array($mode, array(self::DISPLAY_MODE_GRID, self::DISPLAY_MODE_LIST)))
-			throw new CHttpException(400, 'Invalid request');
+			throw new InvalidRequestException();
 
 		Yii::app()->session->add('mediaDisplayMode', $mode);
 	}

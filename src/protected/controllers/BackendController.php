@@ -186,7 +186,7 @@ class BackendController extends AdminOnlyController
 		$model = $this->loadModel($id);
 		
 		if ($model == Yii::app()->backendManager->getCurrent())
-			throw new CHttpException(403, "You can't delete the current backend. Please switch to another one if you want to delete this.");
+			throw new CHttpException(403, Yii::t('Backend', "You can't delete the current backend. Please switch to another one if you want to delete this."));
 
 		$model->delete();
 
@@ -208,7 +208,7 @@ class BackendController extends AdminOnlyController
 		$model = Backend::model()->findByPk($id);
 
 		if ($model === null)
-			throw new CHttpException(404, 'Could not find the specified backend');
+			throw new PageNotFoundException();
 
 		return $model;
 	}
