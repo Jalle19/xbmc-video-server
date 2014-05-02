@@ -74,6 +74,11 @@ if (Yii::app()->user->role == User::ROLE_ADMIN)
 
 // Add the "Actions" menu
 $actions = array(
+	// interface-related actions
+	array('label'=>Yii::t('Menu', 'Interface')),
+	array('label'=>Yii::t('Menu', 'Change language'), 'url'=>'#', 
+		'linkOptions'=>array('data-toggle'=>'modal', 
+							 'data-target'=>'#change-language-modal')),
 	// user-related actions
 	array('label'=>Yii::t('Menu', 'User')),
 	array('label'=>Yii::t('Menu', 'Change password'), 'url'=>array('user/changePassword')),
