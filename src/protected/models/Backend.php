@@ -123,7 +123,7 @@ class Backend extends CActiveRecord
 			$httpResponse = $httpClient->dispatch($httpRequest);
 
 			if ($httpResponse->getStatusCode() === 401)
-				throw new Exception('Invalid credentials');
+				throw new Exception();
 		}
 		catch (\Exception $e)
 		{
@@ -195,18 +195,20 @@ class Backend extends CActiveRecord
 	{
 		if (!$this->{$attribute})
 		{
+			$error = 'There must be a default backend';
+			
 			// If this backend is currently the default one it must remain so
 			if (!$this->isNewRecord)
 			{
 				$model = $this->findByPk($this->id);
 
 				if ($model->default)
-					$this->addError($attribute, 'There must be a default backend');
+					$this->addError($attribute, $error);
 			}
 
 			// If there are no other backends then this must be the default one
 			if (count(Backend::model()->findAll()) === 0)
-				$this->addError($attribute, 'There must be a default backend');
+				$this->addError($attribute, $error);
 		}
 	}
 	
