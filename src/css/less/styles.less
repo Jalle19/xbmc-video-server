@@ -112,7 +112,12 @@ select {
 
 .item-grid, .actor-grid {
 	.caption {
-		min-height: 60px;
+		padding: 6px;
+		
+		// overflow after three lines of text
+		min-height: 59px;
+		max-height: 59px;
+		overflow: hidden;
 
 		// override color to make links look like normal text
 		a {
