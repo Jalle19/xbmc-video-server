@@ -50,13 +50,8 @@ $this->pageTitle = $pageTitle;
 
 						<p><?php echo implode(' / ', $details->genre); ?></p>
 
-						<?php
-
-						// MPAA rating is not always available
-						if ($details->mpaa)
-							echo '<p>MPAA rating: '.$details->mpaa.'</p>';
-						
-						?>
+						<?php $this->widget('MPAARating', array(
+							'rating'=>$details->mpaa)); ?>
 					</div>
 
 				</div>
