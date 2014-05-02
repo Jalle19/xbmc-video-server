@@ -29,79 +29,8 @@ class Setting extends CActiveRecord
 	public $useHttpsForVfsUrls;
 	public $whitelist;
 	public $ignoreArticle;
-
-	/**
-	 * @var array setting definitions
-	 */
-	public static $definitions = array(
-		'applicationName'=>array(
-			'label'=>'Application name',
-			'type'=>self::TYPE_TEXT,
-			'default'=>'XBMC Video Server',
-			'order'=>100,
-		),
-		'singleFilePlaylist'=>array(
-			'label'=>"Don't use playlists when item consists of a single file",
-			'type'=>self::TYPE_CHECKBOX,
-			'default'=>'0',
-			'description'=>'You may have to right-click and copy the address in order to stream (not download) the file',
-			'order'=>200,
-		),
-		'showHelpBlocks'=>array(
-			'label'=>'Show help blocks throughout the site',
-			'type'=>self::TYPE_CHECKBOX,
-			'default'=>'1',
-			'order'=>300,
-		),
-		'cacheApiCalls'=>array(
-			'label'=>'Cache all API results',
-			'type'=>self::TYPE_CHECKBOX,
-			'default'=>'0',
-			'description'=>'Useful on slow hardware. A refresh button will appear in the menu which flushes the cache',
-			'order'=>400,
-		),
-		'pagesize'=>array(
-			'label'=>'Amount of results to show per page',
-			'type'=>self::TYPE_TEXT,
-			'default'=>'60',
-			'description'=>'Leave empty to disable pagination altogether',
-			'htmlOptions'=>array(
-				'span'=>1,
-			),
-			'order'=>500,
-		),
-		'ignoreArticle'=>array(
-			'label'=>'Ignore article ("the") in results',
-			'type'=>self::TYPE_CHECKBOX,
-			'default'=>'',
-			'order'=>550,
-		),
-		'disableFrodoWarning'=>array(
-			'label'=>"Don't warn about XBMC version incompatibility",
-			'type'=>self::TYPE_CHECKBOX,
-			'default'=>'0',
-			'order'=>600,
-		),
-		'useHttpsForVfsUrls'=>array(
-			'label'=>'Use HTTPS when streaming',
-			'type'=>self::TYPE_CHECKBOX,
-			'default'=>'0',
-			'description'=>'When checked, streaming will be done over HTTPS if 
-				the application is accessed over HTTPS. This will usually only 
-				work if the server uses a real signed certificate, thus it is 
-				not enabled by default.',
-			'order'=>700,
-		),
-		'whitelist'=>array(
-			'label'=>'Access whitelist',
-			'type'=>self::TYPE_TEXT_WIDE,
-			'default'=>'',
-			'description'=>"If specified, access is restricted to the defined 
-				whitelist. Valid values are IP addresses, IP subnets and 
-				domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com",
-			'order'=>800,
-		),
-	);
+	
+	private $_definitions;
 
 	/**
 	 * @var Setting[] list of all settings and their current values (runtime 
@@ -118,7 +47,9 @@ class Setting extends CActiveRecord
 	 */
 	public static function getValue($name)
 	{
-		if (!isset(self::$definitions[$name]))
+		$definitions = self::model()->getDefinitions();
+		
+		if (!isset($definitions[$name]))
 			throw new InvalidRequestException();
 
 		if (self::$_settings === null)
@@ -145,8 +76,9 @@ class Setting extends CActiveRecord
 	public function attributeLabels()
 	{
 		$attributeLabels = array();
+		$definitions = $this->getDefinitions();
 
-		foreach(self::$definitions as $setting => $definition)
+		foreach($definitions as $setting => $definition)
 			$attributeLabels[$setting] = $definition['label'];
 
 		return $attributeLabels;
@@ -206,6 +138,88 @@ class Setting extends CActiveRecord
 			if (!$whitelist->check(true))
 				Yii::app()->user->setFlash('warning', 'The specified whitelist restrictions will lock you out from this location');
 		}
+	}
+	
+	/**
+	 * Returns the settings definitions
+	 * @return array
+	 */
+	public function getDefinitions()
+	{
+		if ($this->_definitions === null)
+		{
+			$this->_definitions = array(
+				'applicationName'=>array(
+					'label'=>'Application name',
+					'type'=>self::TYPE_TEXT,
+					'default'=>'XBMC Video Server',
+					'order'=>100,
+				),
+				'singleFilePlaylist'=>array(
+					'label'=>"Don't use playlists when item consists of a single file",
+					'type'=>self::TYPE_CHECKBOX,
+					'default'=>'0',
+					'description'=>'You may have to right-click and copy the address in order to stream (not download) the file',
+					'order'=>200,
+				),
+				'showHelpBlocks'=>array(
+					'label'=>'Show help blocks throughout the site',
+					'type'=>self::TYPE_CHECKBOX,
+					'default'=>'1',
+					'order'=>300,
+				),
+				'cacheApiCalls'=>array(
+					'label'=>'Cache all API results',
+					'type'=>self::TYPE_CHECKBOX,
+					'default'=>'0',
+					'description'=>'Useful on slow hardware. A refresh button will appear in the menu which flushes the cache',
+					'order'=>400,
+				),
+				'pagesize'=>array(
+					'label'=>'Amount of results to show per page',
+					'type'=>self::TYPE_TEXT,
+					'default'=>'60',
+					'description'=>'Leave empty to disable pagination altogether',
+					'htmlOptions'=>array(
+						'span'=>1,
+					),
+					'order'=>500,
+				),
+				'ignoreArticle'=>array(
+					'label'=>'Ignore article ("the") in results',
+					'type'=>self::TYPE_CHECKBOX,
+					'default'=>'',
+					'order'=>550,
+				),
+				'disableFrodoWarning'=>array(
+					'label'=>"Don't warn about XBMC version incompatibility",
+					'type'=>self::TYPE_CHECKBOX,
+					'default'=>'0',
+					'order'=>600,
+				),
+				'useHttpsForVfsUrls'=>array(
+					'label'=>'Use HTTPS when streaming',
+					'type'=>self::TYPE_CHECKBOX,
+					'default'=>'0',
+					'description'=>'When checked, streaming will be done over HTTPS if 
+						the application is accessed over HTTPS. This will usually only 
+						work if the server uses a real signed certificate, thus it is 
+						not enabled by default.',
+					'order'=>700,
+				),
+				'whitelist'=>array(
+					'label'=>'Access whitelist',
+					'type'=>self::TYPE_TEXT_WIDE,
+					'default'=>'',
+					'description'=>"If specified, access is restricted to the defined 
+						whitelist. Valid values are IP addresses, IP subnets and 
+						domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com",
+					'order'=>800,
+				),
+			);
+		}
+		
+		return $this->_definitions;
 	}
 
 }

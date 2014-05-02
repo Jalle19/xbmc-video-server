@@ -23,15 +23,15 @@ foreach ($settings as $setting)
 {
 	$name = $setting->name;
 	
-	if (isset(Setting::$definitions[$name]['htmlOptions']))
-		$htmlOptions = Setting::$definitions[$name]['htmlOptions'];
+	if (isset($definitions[$name]['htmlOptions']))
+		$htmlOptions = $definitions[$name]['htmlOptions'];
 	else
 		$htmlOptions = array();
 
-	if (isset(Setting::$definitions[$name]['description']))
-		$htmlOptions['help'] = Setting::$definitions[$name]['description'];
+	if (isset($definitions[$name]['description']))
+		$htmlOptions['help'] = $definitions[$name]['description'];
 	
-	switch (Setting::$definitions[$name]['type'])
+	switch ($definitions[$name]['type'])
 	{
 		case Setting::TYPE_TEXT_WIDE:
 			$htmlOptions['class'] = 'span5';
