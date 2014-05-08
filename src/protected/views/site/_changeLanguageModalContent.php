@@ -7,6 +7,15 @@
 $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	'layout'=>TbHtml::FORM_LAYOUT_HORIZONTAL)); 
 
+// Notify administrators that changing the language here only affects them
+if (Yii::app()->user->getRole() === User::ROLE_ADMIN)
+{
+	$settingsLink = CHtml::link(Yii::t('Settings', 'Settings'), $this->createUrl('setting/admin'));
+
+	echo FormHelper::helpBlock(Yii::t('Language', 'To change the application language for all users go to {settingsUrl} instead', array(
+		'{settingsUrl}'=>$settingsLink)));
+}
+
 echo $form->dropdownListControlGroup($model, 'language', LanguageManager::getAvailableLanguages());
 echo $form->checkboxControlGroup($model, 'setDefault');
 
