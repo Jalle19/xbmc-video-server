@@ -8,6 +8,7 @@
  * @property string $role
  * @property string $username
  * @property string $password
+ * @property string $language
  * 
  * @author Sam Stenvall <neggelandia@gmail.com>
  * @copyright Copyright &copy; Sam Stenvall 2013-

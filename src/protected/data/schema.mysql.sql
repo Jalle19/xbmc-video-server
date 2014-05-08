@@ -16,10 +16,11 @@ CREATE TABLE `user` (
 	`id` INT PRIMARY KEY AUTO_INCREMENT NOT NULL, 
 	`role` VARCHAR(255) NOT NULL DEFAULT "user", 
 	`username` VARCHAR(255) NOT NULL, 
-	`password` VARCHAR(255) NOT NULL
+	`password` VARCHAR(255) NOT NULL,
+	`language` VARCHAR(255)
 );
 
-INSERT INTO `user` (`role`,`username`,`password`) VALUES('admin','admin','admin');
+INSERT INTO `user` (`role`,`username`,`password`,`language`) VALUES('admin','admin','admin',NULL);
 
 CREATE TABLE `settings` (
 	`name` VARCHAR(255) PRIMARY KEY NOT NULL,
