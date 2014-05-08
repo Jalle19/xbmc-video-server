@@ -18,6 +18,7 @@ class Setting extends CActiveRecord
 	const TYPE_TEXT = 'text';
 	const TYPE_TEXT_WIDE = 'text-wide';
 	const TYPE_CHECKBOX = 'checkbox';
+	const TYPE_DROPDOWN = 'dropdown';
 
 	// We need one attribute per setting
 	public $applicationName;

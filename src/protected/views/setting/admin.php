@@ -42,6 +42,9 @@ foreach ($settings as $setting)
 		case Setting::TYPE_CHECKBOX:
 			echo $form->checkBoxControlGroup($setting, $name, $htmlOptions);
 			break;
+		case Setting::TYPE_DROPDOWN:
+			echo $form->dropDownListControlGroup($setting, $name, $definitions[$name]['listData']);
+			break;
 		default:
 			break;
 	}
