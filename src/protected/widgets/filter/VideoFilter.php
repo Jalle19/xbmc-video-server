@@ -76,8 +76,10 @@ abstract class VideoFilter extends CWidget
 
 		$controller = Yii::app()->controller;
 		
+		// Disable when no filter is defined
 		echo TbHtml::linkButton('Clear filter', array(
 			'color'=>TbHtml::BUTTON_COLOR_INFO,
+			'disabled'=>$this->model->isEmpty(),
 			'url'=>$controller->createUrl($controller->route)));
 	}
 
