@@ -62,7 +62,7 @@ class ChangePasswordForm extends CFormModel
 	 */
 	protected function beforeValidate()
 	{
-		$this->_user = User::model()->findByPk(Yii::app()->user->id);
+		$this->_user = findCurrent();
 
 		return parent::beforeValidate();
 	}

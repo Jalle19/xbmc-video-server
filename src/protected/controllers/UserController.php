@@ -41,7 +41,7 @@ class UserController extends AdminOnlyController
 			if ($model->validate())
 			{
 				// Change the password
-				$user = $this->loadModel(Yii::app()->user->id);
+				$user = User::model()->findCurrent();
 				$user->password = $model->newPassword;
 				$user->save();
 
@@ -143,21 +143,6 @@ class UserController extends AdminOnlyController
 		$this->render('admin', array(
 			'model'=>$model,
 		));
-	}
-
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param int $id the ID of the model to be loaded
-	 * @return User the loaded model
-	 * @throws CHttpException
-	 */
-	public function loadModel($id)
-	{
-		$model = User::model()->findByPk($id);
-		if ($model === null)
-			throw new PageNotFoundException();
-		return $model;
 	}
 
 }

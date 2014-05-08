@@ -118,6 +118,14 @@ class User extends CActiveRecord
 	{
 		$this->_hashPasswordBeforeSave = false;
 	}
+	
+	/**
+	 * @return User the model for the currently logged in user
+	 */
+	public function findCurrent()
+	{
+		return $this->findByPk(Yii::app()->user->id);
+	}
 
 	/**
 	 * Returns the possible roles
