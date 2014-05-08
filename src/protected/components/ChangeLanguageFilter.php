@@ -29,6 +29,17 @@ class ChangeLanguageFilter extends CFilter
 				$languages = LanguageManager::getAvailableLanguages();
 				$newLanguage = $languages[$model->language];
 				
+				// Update user's default language
+				if ($model->setDefault)
+				{
+					$user = User::model()->findByPk(Yii::app()->user->id);
+					$user->language = $model->language;
+
+					// Don't rehash the password, it hasn't been changed
+					$user->inhibitPasswordHash();
+					$user->save();
+				}
+
 				// Update and inform
 				Yii::app()->languageManager->setCurrent($model->language);
 				Yii::app()->user->setFlash('success', Yii::t('Language', 'Language changed to {newLanguage}', array('{newLanguage}'=>$newLanguage)));

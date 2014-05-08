@@ -26,8 +26,16 @@ class LanguageManager extends CApplicationComponent
 	public function init()
 	{
 		$applicationLanguage = Setting::getValue('language');
-		$this->setCurrent(Yii::app()->session->get(self::SESSION_KEY, $applicationLanguage));
-		
+		$sessionLanguage = Yii::app()->session->get(self::SESSION_KEY);
+		$userLanguage = $this->getUserLanguage();
+
+		if ($sessionLanguage)
+			$this->_currentLanguage = $sessionLanguage;
+		elseif ($userLanguage)
+			$this->_currentLanguage = $userLanguage;
+		else
+			$this->_currentLanguage = $applicationLanguage;
+
 		parent::init();
 	}
 
