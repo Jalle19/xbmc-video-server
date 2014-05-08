@@ -27,6 +27,12 @@ class User extends CActiveRecord
 	 * The base-2 logarithm of the iteration count used for password stretching
 	 */
 	const PHPASS_ITERATIONS = 8;
+	
+	/**
+	 * @var boolean whether to hash the password before saving the model. 
+	 * Defaults to true.
+	 */
+	private $_hashPasswordBeforeSave = true;
 
 	/**
 	 * Returns the static model of the specified AR class.
@@ -94,14 +100,23 @@ class User extends CActiveRecord
 	}
 	
 	/**
-	 * Hashes the password before saving the model
-	 * @return boolean whether the record should be saved
+	 * Hashes the password before saving the model, unless hashing has been 
+	 * inhibited
 	 */
 	protected function beforeSave()
 	{
-		$this->password = $this->hashPassword($this->password);
+		if ($this->_hashPasswordBeforeSave)
+			$this->password = $this->hashPassword($this->password);
 
 		return parent::beforeSave();
+	}
+
+	/**
+	 * Inhibits the automatic hashing of the password on save
+	 */
+	public function inhibitPasswordHash()
+	{
+		$this->_hashPasswordBeforeSave = false;
 	}
 
 	/**
