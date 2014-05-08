@@ -1,7 +1,8 @@
 <?php
 
 /**
- * Keeps track of what languages are available and which one should be used
+ * Keeps track of what languages are available and provides functionality for 
+ * setting and changing the language
  *
  * @author Sam Stenvall <neggelandia@gmail.com>
  * @copyright Copyright &copy; Sam Stenvall 2014-
@@ -18,12 +19,15 @@ class LanguageManager extends CApplicationComponent
 	private $_currentLanguage;
 
 	/**
-	 * Initializes the component. The current language is loaded here
+	 * Initializes the component. The application language is set here. The 
+	 * language selected is the one the user has specified, if not the 
+	 * configured application language (which defaults to en_us).
 	 */
 	public function init()
 	{
-		$this->setCurrent(Yii::app()->session->get(self::SESSION_KEY));
-
+		$applicationLanguage = Setting::getValue('language');
+		$this->setCurrent(Yii::app()->session->get(self::SESSION_KEY, $applicationLanguage));
+		
 		parent::init();
 	}
 

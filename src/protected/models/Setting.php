@@ -21,6 +21,7 @@ class Setting extends CActiveRecord
 	const TYPE_DROPDOWN = 'dropdown';
 
 	// We need one attribute per setting
+	public $language;
 	public $applicationName;
 	public $singleFilePlaylist;
 	public $showHelpBlocks;
@@ -109,7 +110,7 @@ class Setting extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('applicationName', 'required'),
+			array('language, applicationName', 'required'),
 			array('pagesize', 'numerical', 'integerOnly'=>true, 'min'=>1),
 			array('whitelist', 'validateWhitelist'),
 		);
@@ -150,6 +151,13 @@ class Setting extends CActiveRecord
 		if ($this->_definitions === null)
 		{
 			$this->_definitions = array(
+				'language'=>array(
+					'label'=>Yii::t('Settings', 'Application language'),
+					'type'=>self::TYPE_DROPDOWN,
+					'default'=>'en_us',
+					'listData'=>LanguageManager::getAvailableLanguages(),
+					'order'=>50,
+				),
 				'applicationName'=>array(
 					'label'=>Yii::t('Settings', 'Application name'),
 					'type'=>self::TYPE_TEXT,
