@@ -16,7 +16,7 @@ echo $form->textFieldControlGroup($model, 'port', array('span'=>1));
 echo $form->textFieldControlGroup($model, 'username');
 echo $form->passwordFieldControlGroup($model, 'password');
 
-$readmeUrl = 'https://github.com/Jalle19/xbmc-video-server/tree/apache-config-change#proxy-location';
+$readmeUrl = 'https://github.com/Jalle19/xbmc-video-server#proxy-location';
 echo $form->textFieldControlGroup($model, 'proxyLocation', array(
 	'help'=>'See '.CHtml::link($readmeUrl, $readmeUrl).' for how to configure this'));
 
