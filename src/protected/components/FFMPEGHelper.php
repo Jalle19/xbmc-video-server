@@ -32,10 +32,10 @@ class FFMPEGHelper
 	 */
 	public function getTranscoderArguments()
 	{
-		// TODO: Handle resolution
 		$args = array(
 			'-c:v'=>$this->getVideoCodec(),
 			'-b:v'=>$this->_preset->video_bitrate.'k',
+			'-vf scale=-1:'.$this->getVideoHeight(),
 			'-c:a'=>$this->getAudioCodec(),
 			'-b:a'=>$this->_preset->audio_bitrate.'k',
 		);
@@ -90,6 +90,22 @@ class FFMPEGHelper
 		{
 			case TranscoderPreset::VIDEO_CODEC_VPX:
 				return 'libvpx';
+		}
+	}
+	
+	/**
+	 * @return int the desired video height
+	 */
+	private function getVideoHeight()
+	{
+		switch ($this->_preset->resolution)
+		{
+			case TranscoderPreset::VIDEO_RESOLUTION_480P:
+				return 480;
+			case TranscoderPreset::VIDEO_RESOLUTION_576P:
+				return 576;
+			case TranscoderPreset::VIDEO_RESOLUTION_720P:
+				return 720;
 		}
 	}
 

@@ -25,6 +25,10 @@ class TranscoderPreset extends CActiveRecord
 	const AUDIO_CHANNELS_ORIGINAL = 0;
 	const AUDO_CODEC_VORBIS = 'vorbis';
 	const VIDEO_CODEC_VPX = 'vpx';
+	const VIDEO_RESOLUTION_ORIGINAL = 'original';
+	const VIDEO_RESOLUTION_480P = '480p';
+	const VIDEO_RESOLUTION_576P = '576p';
+	const VIDEO_RESOLUTION_720P = '720p';
 
 	/**
 	 * @var array valid video codecs
