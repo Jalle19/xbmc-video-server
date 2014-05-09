@@ -23,6 +23,7 @@ class TranscoderPreset extends CActiveRecord
 {
 
 	const AUDIO_CHANNELS_ORIGINAL = 0;
+	const AUDO_CODEC_VORBIS = 'vorbis';
 	const VIDEO_CODEC_VPX = 'vpx';
 
 	/**
@@ -36,7 +37,7 @@ class TranscoderPreset extends CActiveRecord
 	 * @var array valid audio codecs
 	 */
 	public static $validAudioCodecs = array(
-		'vorbis'=>'Ogg Vorbis',
+		self::AUDO_CODEC_VORBIS=>'Ogg Vorbis',
 	);
 
 	/**
@@ -108,6 +109,20 @@ class TranscoderPreset extends CActiveRecord
 			array('video_bitrate, audio_bitrate, audio_channels', 'numerical', 'integerOnly'=>true),
 			array('name, video_codec, resolution, audio_codec', 'safe'),
 		);
+	}
+	
+	/**
+	 * Returns the MIME type for the specified preset
+	 * @param TranscoderPreset $preset
+	 * @return string the MIME type
+	 */
+	public function getMIMEType()
+	{
+		switch ($this->video_codec)
+		{
+			case self::VIDEO_CODEC_VPX:
+				return 'video/webm';
+		}
 	}
 
 }
