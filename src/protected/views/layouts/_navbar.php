@@ -67,6 +67,9 @@ if (Yii::app()->user->role == User::ROLE_ADMIN)
 		array('label'=>Yii::t('Menu', 'Users')),
 		array('label'=>Yii::t('Menu', 'Manage'), 'url'=>array('user/admin')),
 		array('label'=>Yii::t('Menu', 'Create new'), 'url'=>array('user/create')),
+		array('label'=>'Transcoder presets'),
+		array('label'=>'Manage', 'url'=>array('transcoderPreset/admin')),
+		array('label'=>'Create new', 'url'=>array('transcoderPreset/create')),
 		array('label'=>Yii::t('Menu', 'System log')),
 		array('label'=>Yii::t('Menu', 'Browse'), 'url'=>array('log/')),
 	), 'linkOptions'=>array('class'=>'fontastic-icon-settings'));
