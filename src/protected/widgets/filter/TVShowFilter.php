@@ -13,7 +13,7 @@ class TVShowFilter extends VideoFilter
 	protected function renderControls()
 	{
 		echo $this->form->typeaheadFieldControlGroup($this->model, 'name', 
-			CJavaScript::encode($this->getTVShowNames()));
+			CJavaScript::encode($this->getTypeaheadNames(VideoLibrary::getTVShows())));
 
 		echo $this->form->dropDownListControlGroup($this->model, 'genre', 
 				$this->model->getGenres(), array('empty'=>' '));
@@ -21,20 +21,6 @@ class TVShowFilter extends VideoFilter
 		echo $this->form->dropDownListControlGroup($this->model, 'watchedStatus', 
 				VideoFilterForm::getWatchedStatuses(), 
 				array('empty'=>' ', 'style'=>'width: 120px;'));
-	}
-	
-	/**
-	 * Returns an array containing the names of all TV shows
-	 * @return array the names
-	 */
-	private function getTVShowNames()
-	{
-		$names = array();
-
-		foreach (VideoLibrary::getTVShows() as $movie)
-			$names[] = $movie->label;
-
-		return $names;
 	}
 
 }

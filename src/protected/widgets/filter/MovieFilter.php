@@ -20,7 +20,7 @@ class MovieFilter extends VideoFilter
 
 			if ($typeaheadData === false)
 			{
-				$typeaheadData = CJavaScript::encode($this->getMovieNames());
+				$typeaheadData = CJavaScript::encode($this->getTypeaheadNames(VideoLibrary::getTVShows()));
 				Yii::app()->apiCallCache->set($cacheId, $typeaheadData);
 			}
 		}
@@ -46,20 +46,6 @@ class MovieFilter extends VideoFilter
 				array('empty'=>' ', 'style'=>'width: 120px;'));
 
 		echo $this->form->textFieldControlGroup($this->model, 'actor');
-	}
-	
-	/**
-	 * Returns an array containing all movie names
-	 * @return array the names
-	 */
-	private function getMovieNames()
-	{
-		$names = array();
-		
-		foreach (VideoLibrary::getMovies() as $movie)
-			$names[] = $movie->label;
-		
-		return $names;
 	}
 
 }

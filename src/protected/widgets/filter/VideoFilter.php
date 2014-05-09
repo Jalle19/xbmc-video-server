@@ -82,5 +82,19 @@ abstract class VideoFilter extends CWidget
 			'disabled'=>$this->model->isEmpty(),
 			'url'=>$controller->createUrl($controller->route)));
 	}
+	
+	/**
+	 * Returns an array of names for a typeahead field
+	 * @param stdClass[] $mediaSource the source data
+	 */
+	protected function getTypeaheadNames($mediaSource)
+	{
+		$names = array();
+
+		foreach ($mediaSource as $media)
+			$names[] = $media->label;
+
+		return $names;
+	}
 
 }
