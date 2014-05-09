@@ -100,6 +100,7 @@ class TranscoderPreset extends CActiveRecord
 	{
 		return array(
 			array('name, video_codec, video_bitrate, resolution, audio_codec, audio_bitrate, audio_channels', 'required'),
+			array('video_codec', 'unique', 'message'=>'There can only be one preset per codec'),
 			array('video_codec', 'in', 'range'=>array_keys(self::$validVideoCodecs)),
 			array('audio_codec', 'in', 'range'=>array_keys(self::$validAudioCodecs)),
 			array('resolution', 'in', 'range'=>array_keys(self::$validResolutions)),
