@@ -56,7 +56,7 @@ php composer.phar install
 ./src/protected/yiic setpermissions
 ```
 
-After running the commands above you'll have to add a few lines to Apache's default site configuration to allow `.htaccess` files to be used. Open the file `/etc/apache2/sites-available/000-default` and add the following right before the last line (`</VirtualHost>`):
+After running the commands above you'll have to add a few lines to Apache's default site configuration to allow `.htaccess` files to be used. Open the file `/etc/apache2/sites-available/000-default.conf` and add the following right before the last line (`</VirtualHost>`):
 
 ```
 <Directory /var/www/html/xbmc-video-server/>
