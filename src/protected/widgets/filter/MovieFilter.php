@@ -20,12 +20,12 @@ class MovieFilter extends VideoFilter
 
 			if ($typeaheadData === false)
 			{
-				$typeaheadData = CJavaScript::encode($this->getTypeaheadNames(VideoLibrary::getTVShows()));
+				$typeaheadData = CJavaScript::encode($this->getTypeaheadNames(VideoLibrary::getMovies()));
 				Yii::app()->apiCallCache->set($cacheId, $typeaheadData);
 			}
 		}
 		else
-			$typeaheadData = CJavaScript::encode($this->getMovieNames());
+			$typeaheadData = CJavaScript::encode($this->getTypeaheadNames(VideoLibrary::getMovies()));
 
 		echo $this->form->typeaheadFieldControlGroup($this->model, 'name', $typeaheadData);
 		echo $this->form->dropDownListControlGroup($this->model, 'genre', 
