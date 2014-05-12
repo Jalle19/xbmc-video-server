@@ -34,6 +34,17 @@ class SettingController extends AdminOnlyController
 			foreach ($settings as $setting)
 			{
 				$value = $_POST['Setting'][$setting->name];
+				
+				// Update the application language and reset any user 
+				// language preferences if the default is changed
+				if ($setting->name === 'language' && $setting->value !== $value)
+				{
+					User::model()->updateAll(array(
+						'language'=>null));
+
+					Yii::app()->languageManager->setCurrent($value);
+				}
+
 				$setting->{$setting->name} = $value;
 				$setting->value = $value;
 

@@ -56,6 +56,19 @@ class LanguageManager extends CApplicationComponent
 		$this->_currentLanguage = Yii::app()->language = $language;
 		Yii::app()->session->add(self::SESSION_KEY, $language);
 	}
+	
+	/**
+	 * Returns the language the current user has specifically chosen, or null 
+	 * if no choice has been made
+	 * @return mixed the language or null
+	 */
+	private function getUserLanguage()
+	{
+		if (!Yii::app()->user->isGuest)
+			return User::model()->findByPk(Yii::app()->user->id)->language;
+		
+		return null;
+	}
 
 	/**
 	 * Returns a key value map of the available languages, including the source 
