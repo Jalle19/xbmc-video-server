@@ -21,7 +21,7 @@ class LanguageManager extends CApplicationComponent
 	/**
 	 * Initializes the component. The application language is set here. The 
 	 * language selected is the one the user has specified, if not the 
-	 * configured application language (which defaults to en_us).
+	 * configured application language (which defaults to en).
 	 */
 	public function init()
 	{
@@ -77,7 +77,7 @@ class LanguageManager extends CApplicationComponent
 	 */
 	public static function getAvailableLanguages()
 	{
-		$locales = array('en_us');
+		$locales = array('en');
 		$translations = new FilesystemIterator(Yii::app()->basePath.'/messages');
 
 		foreach ($translations as $fileInfo)
@@ -90,7 +90,7 @@ class LanguageManager extends CApplicationComponent
 		$languages = array();
 
 		foreach ($locales as $language)
-			$languages[$language] = CLocale::getInstance('en_us')->getLanguage($language);
+			$languages[$language] = CLocale::getInstance('en')->getLanguage($language);
 
 		return $languages;
 	}

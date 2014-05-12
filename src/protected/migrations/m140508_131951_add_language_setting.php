@@ -5,7 +5,7 @@ class m140508_131951_add_language_setting extends AddSettingMigration
 
 	public function getDefaultValue()
 	{
-		return 'en_us';
+		return 'en';
 	}
 
 	public function getName()
