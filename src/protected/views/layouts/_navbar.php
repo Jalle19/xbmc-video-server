@@ -79,10 +79,6 @@ $actions = array(
 	array('label'=>Yii::t('Menu', 'Change language'), 'url'=>'#', 
 		'linkOptions'=>array('data-toggle'=>'modal', 
 							 'data-target'=>'#change-language-modal')),
-	// user-related actions
-	array('label'=>Yii::t('Menu', 'User')),
-	array('label'=>Yii::t('Menu', 'Change password'), 'url'=>array('user/changePassword')),
-	array('label'=>Yii::t('Menu', 'Log out'), 'url'=>array('site/logout')),
 	// system-related
 	array('label'=>Yii::t('Menu', 'System')),
 );
@@ -102,6 +98,13 @@ $actions[] = array(
 	'url'=>array('backend/updateLibrary'), 
 	'linkOptions'=>array('confirm'=>Yii::t('Misc', "Are you sure you want to update the backend's library?"))
 );
+
+// user-related actions
+$actions = array_merge($actions, array(
+	array('label'=>Yii::t('Menu', 'User')),
+	array('label'=>Yii::t('Menu', 'Change password'), 'url'=>array('user/changePassword')),
+	array('label'=>Yii::t('Menu', 'Log out'), 'url'=>array('site/logout')),
+));
 
 $rightItems[] = array('label'=>Yii::t('Menu', 'Actions'), 'items'=>$actions, 'icon'=>'tasks');
 
