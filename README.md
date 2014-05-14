@@ -12,6 +12,7 @@ Features
 * User management (application requires login), including logging to see who's doing what and restricting access based on a whitelist
 * Supports multiple XBMC instances and allows easy switching between them
 * No configuration files
+* Multiple languages
 
 Screenshots
 -----------
