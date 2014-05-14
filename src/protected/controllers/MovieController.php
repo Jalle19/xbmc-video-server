@@ -16,6 +16,16 @@ class MovieController extends MediaController
 	}
 	
 	/**
+	 * @return array the filters for this controller
+	 */
+	public function filters()
+	{
+		return array_merge(parent::filters(), array(
+			'ajaxOnly + ajaxDisplayVideoPlayer',
+		));
+	}
+
+	/**
 	 * Lists all movies in the library, optionally filtered
 	 */
 	public function actionIndex()
@@ -99,6 +109,23 @@ class MovieController extends MediaController
 		));
 	}
 	
+	/**
+	 * Renders a video player for the specified movie
+	 * @param int $movieId the movie ID
+	 */
+	public function actionAjaxDisplayVideoPlayer($movieId)
+	{
+		$movieDetails = VideoLibrary::getMovieDetails($movieId, array(
+					'file'));
+
+		// Render the video player modal
+		$this->widget('VideoPlayer', array(
+			'id'=>'#'.VideoPlayer::HTML_ID,
+			'videoDetails'=>$movieDetails,
+			'videoLinks'=>VideoLibrary::getVideoLinks($movieDetails->file),
+		));
+	}
+
 	/**
 	 * Serves a playlist containing the specified movie's files to the browser
 	 * @param int $movieId the movie ID

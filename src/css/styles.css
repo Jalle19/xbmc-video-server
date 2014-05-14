@@ -7553,6 +7553,9 @@ select {
 .item-details .item-links {
   margin-top: 20px;
 }
+.item-details .item-links button {
+  margin-bottom: 20px;
+}
 .item-details .item-description .item-top,
 .item-details .item-description .item-info,
 .item-details .item-description .item-plot {
@@ -7646,6 +7649,9 @@ select {
 .season-episode-list-info .season-download .btn {
   margin-right: 10px;
 }
+.get-episode-column {
+  min-width: 200px;
+}
 .rating-star {
   display: inline-block;
   margin: 0 0 15px 0;
@@ -7694,4 +7700,20 @@ select {
 }
 #change-language-modal .modal-footer {
   display: none;
+}
+.video-player {
+  position: absolute;
+  left: 0;
+  width: 94%;
+  margin: 0 3%;
+}
+.video-player.modal.fade.in {
+  top: 20px !important;
+}
+.video-player .modal-body {
+  max-height: 40% !important;
+}
+.video-player .modal-body video {
+  width: 100%;
+  height: 100%;
 }

@@ -33,5 +33,26 @@ class RetrieveMovieWidget extends RetrieveMediaWidget
 			'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
 		);
 	}
+	
+	protected function renderWatchInBrowserButton()
+	{
+		// Don't render anything if the movie is not in a single file
+		if (count($this->links) > 1)
+			return '';
+
+		$playerUrl = Yii::app()->controller->createUrl('movie/ajaxDisplayVideoPlayer', array(
+			'movieId'=>$this->details->movieid));
+
+		$buttonOptions = array(
+			'id'=>'watchInBrowser_'.$this->details->movieid,
+			'class'=>'fontastic-icon-play',
+			'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
+		);
+
+		echo TbHtml::ajaxButton('Watch in browser', $playerUrl, array(
+			'success'=>'js:function(data) {
+				$(data).modal();
+			}'), $buttonOptions);
+	}
 
 }

@@ -35,4 +35,13 @@ class RetrieveTVShowWidget extends RetrieveMediaWidget
 		);
 	}
 
+	/**
+	 * TODO: Implement transcoding for TV shows
+	 * @return string
+	 */
+	protected function renderWatchInBrowserButton()
+	{
+		return '';
+	}
+
 }

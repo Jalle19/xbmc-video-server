@@ -127,6 +127,10 @@ class Controller extends CController
 		// Register the JavaScript logger
 		$cs->registerScriptFile(Yii::app()->baseUrl.'/js/js-logger.js', 
 				CClientScript::POS_END);
+		
+		// Register the video player helper
+		$cs->registerScriptFile(Yii::app()->baseUrl.'/js/video-player.js', 
+				CClientScript::POS_END);
 	}
 	
 	/**

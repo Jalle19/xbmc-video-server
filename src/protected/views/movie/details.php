@@ -22,15 +22,13 @@ $this->pageTitle = $details->getDisplayName().' - '.Yii::t('Movies', 'Movies');
 			// says
 			if (Yii::app()->user->role !== User::ROLE_SPECTATOR)
 			{
+				// TODO: Add transcoding setting and ability detection
+				// TODO: Enable "Watch in browser" only when transcoding is enabled
+				// TODO: Disable on multipart videos
+				
 				?>
 				<div class="item-links">
 					<h3><?php echo Yii::t('Movies', 'Watch / Download'); ?></h3>
-
-					<p>
-						<?php echo Yii::t('Movies', 'Click the Watch button to start streaming the video (open 
-						the file in your favorite media player), or download the 
-						individual files for later viewing using the links below it.'); ?>
-					</p>
 
 					<?php $this->widget('RetrieveMovieWidget', array(
 						'links'=>$movieLinks,

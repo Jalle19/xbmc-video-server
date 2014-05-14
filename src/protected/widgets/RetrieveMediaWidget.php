@@ -44,6 +44,11 @@ abstract class RetrieveMediaWidget extends CWidget
 	 * @return array the options for the Watch in external player button
 	 */
 	abstract protected function getWatchButtonOptions();
+	
+	/**
+	 * Renders the "Watch in browser" button
+	 */
+	abstract protected function renderWatchInBrowserButton();
 
 	/**
 	 * Runs the widget
@@ -62,6 +67,7 @@ abstract class RetrieveMediaWidget extends CWidget
 			return;
 		}
 
+		$this->renderWatchInBrowserButton();
 		echo TbHtml::linkButton(Yii::t('RetrieveMediaWidget', 'Watch in external player'), $this->getWatchButtonOptions());
 		$this->renderLinks();
 	}
