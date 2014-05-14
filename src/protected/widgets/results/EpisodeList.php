@@ -39,6 +39,9 @@ class EpisodeList extends CWidget
 			array(
 				'type'=>'raw',
 				'header'=>Yii::t('EpisodeList', 'Episode'),
+				'cssClassExpression'=>function() {
+					return 'get-episode-column';
+				},
 				'value'=>function($data) {
 					Yii::app()->controller->renderPartial('_getEpisode', array('episode'=>$data));
 				}

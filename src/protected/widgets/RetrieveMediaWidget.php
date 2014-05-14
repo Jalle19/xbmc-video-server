@@ -41,7 +41,7 @@ abstract class RetrieveMediaWidget extends CWidget
 	abstract protected function getPlayListUrl();
 	
 	/**
-	 * @return array the options for the Watch button
+	 * @return array the options for the Watch in external player button
 	 */
 	abstract protected function getWatchButtonOptions();
 
@@ -62,7 +62,7 @@ abstract class RetrieveMediaWidget extends CWidget
 			return;
 		}
 
-		echo TbHtml::linkButton(Yii::t('RetrieveMediaWidget', 'Watch'), $this->getWatchButtonOptions());
+		echo TbHtml::linkButton(Yii::t('RetrieveMediaWidget', 'Watch in external player'), $this->getWatchButtonOptions());
 		$this->renderLinks();
 	}
 
