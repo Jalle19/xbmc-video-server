@@ -43,21 +43,18 @@ class Setting extends CActiveRecord
 	 * the duration of the request since this method can be called quite a lot.
 	 * @param string $name the name of the setting
 	 * @return mixed the setting value
-	 * @throws CHttpException if the specified setting doesn't exist
+	 * @throws InvalidRequestException if the specified setting doesn't exist
 	 */
 	public static function getValue($name)
 	{
-		$definitions = self::model()->getDefinitions();
-		
-		if (!isset($definitions[$name]))
-			throw new InvalidRequestException();
-
 		if (self::$_settings === null)
 			self::$_settings = self::model()->findAll();
 
 		foreach (self::$_settings as $setting)
 			if ($setting->name == $name)
 				return $setting->value;
+			
+		throw new InvalidRequestException();
 	}
 
 	/**
