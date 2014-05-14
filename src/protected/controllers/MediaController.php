@@ -97,18 +97,28 @@ abstract class MediaController extends Controller
 	{
 		$displayMode = Yii::app()->session->get('mediaDisplayMode');
 
+		// Use list mode by default for phones
 		if ($displayMode === null)
-		{
-			// Use list mode by default for phones
-			$detector = new Detection\MobileDetect();
-
-			if ($detector->isMobile() && !$detector->isTablet())
-				$displayMode = self::DISPLAY_MODE_LIST;
-			else
-				$displayMode = self::DISPLAY_MODE_GRID;
-		}
+			$displayMode = $this->isMobile() ? self::DISPLAY_MODE_LIST : self::DISPLAY_MODE_GRID;
 
 		return $displayMode;
+	}
+
+	/**
+	 * Checks whether the visitor is using a mobile device or not (tablets are 
+	 * not counted as mobile)
+	 * @return boolean
+	 */
+	private function isMobile()
+	{
+		// A device cannot suddenly become a mobile so we store the result
+		if (!isset($_SESSION['isMobile']))
+		{
+			$detector = new Detection\MobileDetect();
+			$_SESSION['isMobile'] = $detector->isMobile() && !$detector->isTablet();
+		}
+
+		return $_SESSION['isMobile'];
 	}
 
 }
