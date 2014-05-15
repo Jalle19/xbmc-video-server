@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "0e584f36976a0f3eec8851081afe39d2",
+    "hash": "d56f9c3e8aaff59a1718917ddcdb6200",
     "packages": [
         {
             "name": "crisu83/yii-consoletools",
@@ -163,6 +163,58 @@
                 "scale"
             ],
             "time": "2014-03-13 14:43:33"
+        },
+        {
+            "name": "gavroche/browser",
+            "version": "v2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gabrielbull/php-browser.git",
+                "reference": "3bb627dc02416b34ad8260d059359812ca7ef2e4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gabrielbull/php-browser/zipball/3bb627dc02416b34ad8260d059359812ca7ef2e4",
+                "reference": "3bb627dc02416b34ad8260d059359812ca7ef2e4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Browser": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gabriel Bull",
+                    "email": "me@gabrielbull.com",
+                    "homepage": "http://gabrielbull.com/"
+                },
+                {
+                    "name": "Chris Schuld",
+                    "email": "contact@chrisschuld.com"
+                }
+            ],
+            "description": "Detecting the user's browser, operating system and language.",
+            "homepage": "https://github.com/gabrielbull/php-browser",
+            "keywords": [
+                "browser",
+                "detection",
+                "language",
+                "operating system",
+                "os"
+            ],
+            "time": "2014-03-09 12:54:13"
         },
         {
             "name": "hautelook/phpass",

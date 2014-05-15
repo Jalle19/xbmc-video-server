@@ -11,6 +11,15 @@ class Browser
 {
 
 	/**
+	 * @return boolean whether the user browser is Internet Explorer
+	 */
+	public static function isInternetExplorer()
+	{
+		$browser = new Browser\Browser();
+		return $browser->getBrowser() === $browser::IE;
+	}
+
+	/**
 	 * @return boolean whether the user browser is a mobile browser (tablets 
 	 * not including)
 	 */

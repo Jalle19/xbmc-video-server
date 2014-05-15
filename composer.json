@@ -7,6 +7,7 @@
 		"crisu83/yiistrap": "1.2.*",
 		"crisu83/yii-consoletools": "1.0.*",
 		"eventviva/php-image-resize": "dev-master",
+		"gavroche/browser": "2.2.*",
 		"hautelook/phpass": "0.3.*",
 		"mobiledetect/mobiledetectlib": "2.7.*",
 		"zendframework/zend-http": "2.2.*"
