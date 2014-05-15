@@ -113,10 +113,7 @@ abstract class MediaController extends Controller
 	{
 		// A device cannot suddenly become a mobile so we store the result
 		if (!isset($_SESSION['isMobile']))
-		{
-			$detector = new Detection\MobileDetect();
-			$_SESSION['isMobile'] = $detector->isMobile() && !$detector->isTablet();
-		}
+			$_SESSION['isMobile'] = Browser::isMobile();
 
 		return $_SESSION['isMobile'];
 	}
