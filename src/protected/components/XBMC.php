@@ -136,9 +136,11 @@ class XBMC extends CApplicationComponent
 	/**
 	 * Returns the absolute URL to the specified API path
 	 * @param string $path a path returned from an API call
+	 * @param boolean $omitCredentials whether to omit the XBMC credentials in 
+	 * the generated URLs
 	 * @return string
 	 */
-	public function getAbsoluteVfsUrl($path)
+	public function getAbsoluteVfsUrl($path, $omitCredentials = false)
 	{
 		$backend = Yii::app()->backendManager->getCurrent();
 		
@@ -159,8 +161,14 @@ class XBMC extends CApplicationComponent
 		}
 		else
 		{
-			return 'http://'.$backend->username.':'.$backend->password.'@'
-					.$backend->hostname.':'.$backend->port.'/'.$path;
+			$url = 'http://{credentials}'.$backend->hostname.':'.$backend->port.'/'.$path;
+			
+			if ($omitCredentials)
+				$url = str_replace('{credentials}', '', $url);
+			else
+				$url = str_replace('{credentials}', $backend->username.':'.$backend->password.'@', $url);
+
+			return $url;
 		}
 	}
 

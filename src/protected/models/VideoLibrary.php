@@ -206,11 +206,13 @@ class VideoLibrary
 	 * Returns an array with the download links for a video. It takes a file
 	 * string from e.g. VideoLibrary.GetVideoDetails as parameter.
 	 * @param string $file a file string returned from the API
+	 * @param boolean $omitCredentials whether URL credentials should be 
+	 * omitted
 	 * @return array the download links
 	 * @throws CHttpException if the files have been deleted from disk while
 	 * the item is still in the library
 	 */
-	public static function getVideoLinks($file)
+	public static function getVideoLinks($file, $omitCredentials = false)
 	{
 		$rawFiles = array();
 		$files = array();
@@ -235,7 +237,7 @@ class VideoLibrary
 				$response = Yii::app()->xbmc->performRequest(
 						'Files.PrepareDownload', array('path'=>$rawFile));
 				
-				$files[] = Yii::app()->xbmc->getAbsoluteVfsUrl($response->result->details->path);
+				$files[] = Yii::app()->xbmc->getAbsoluteVfsUrl($response->result->details->path, $omitCredentials);
 			}
 			catch(CHttpException $e)
 			{
