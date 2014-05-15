@@ -2,8 +2,12 @@
 var populatedSeasons = [];
 
 $('.episode-toggle').click(function() {
-	var contentUrl = $(this).data().contentUrl;
-	var contentId = $(this).data().contentId;
+	populateSeason(this);
+});
+
+function populateSeason(season) {
+	var contentUrl = $(season).data().contentUrl;
+	var contentId = $(season).data().contentId;
 	var contentContainer = $('#' + contentId);
 	
 	// only populate once
@@ -20,5 +24,10 @@ $('.episode-toggle').click(function() {
 		
 		populatedSeasons.push(contentId);
 	}
-	
-});
+}
+
+function populateAll() {
+	$('.episode-toggle').each(function() {
+		populateSeason(this);
+	});
+}
