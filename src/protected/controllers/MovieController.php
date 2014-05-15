@@ -89,10 +89,14 @@ class MovieController extends MediaController
 			'pagination'=>array('pageSize'=>6)
 		));
 		
+		// Get the movie links. Omit credentials if the browser is determined 
+		// to be Internet Explorer since they don't support credentials in URLs
+		$movieLinks = VideoLibrary::getVideoLinks($movieDetails->file, Browser::isInternetExplorer());
+		
 		$this->render('details', array(
 			'details'=>$movieDetails,
 			'actorDataProvider'=>$actorDataProvider,
-			'movieLinks'=>VideoLibrary::getVideoLinks($movieDetails->file),
+			'movieLinks'=>$movieLinks,
 		));
 	}
 	
