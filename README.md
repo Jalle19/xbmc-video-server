@@ -196,12 +196,7 @@ To avoid this we can tell Apache (the actual web server) to forward requests on 
 
 ### Example
 
-Let's say you have installed XBMC Video Server on one machine, and XBMC is running on a different machine:
-
-http://xbmc-video-server.example.com/xbmc-video-server/
-http://xbmc.example.com:8080/
-
-What we want to do is map forward requests on `http://xbmc-video-server.example.com/xbmc-vfs` to `http://xbmc.example.com:8080/vfs`.
+Let's say you have installed XBMC Video Server on one machine (http://xbmc-video-server.example.com/xbmc-video-server/) and XBMC is running on a different machine (http://xbmc.example.com:8080/). What we want to do is forward requests on `http://xbmc-video-server.example.com/xbmc-vfs` to `http://xbmc.example.com:8080/vfs`.
 
 ### Configuring a reverse proxy (Linux)
 
