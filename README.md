@@ -224,7 +224,7 @@ Replace `/xbmc-vfs` by anything you like, preferably something non-guessable (se
 
 ### Configuring a reverse proxy (Windows)
 
-1. Open `C:\xampp\apache\conf\httpd.conf` and remove the leading hashtag from the line beginning with `#eGJtYzpteXNlY3JldA==`. Save the file.
+1. Open `C:\xampp\apache\conf\httpd.conf` and remove the leading hashtag from the line beginning with `#LoadModule proxy_http_module`. Save the file.
 2. Open `C:\xampp\apache\conf\extra\httpd-proxy.conf`. Remove everything between the two `<IfModule>` sections, then add the following instead:
 
 ```
