@@ -190,23 +190,22 @@ If you specify more than one backend, a "Change backend" menu item will appear w
 Proxy Location
 --------------
 
-The "Proxy Location" setting is a bit more exotic. Without it, all requests to the XBMC API (including the URLs to your movies and TV shows) are in the form of http://user:pass@hostname:port/vfs/pathtomovie.mkv, which means in order to use the application over the Internet you'd have to forward the right port to the machine running XBMC. It also means you'd be exposing the XBMC API credentials to anyone using your application.
+The "Proxy Location" setting is a bit more exotic. Without it, all requests to the XBMC API (including the URLs to your movies and TV shows) are in the form of `http://user:pass@hostname:port/vfs/pathtomovie.mkv`. This means that in order to use the application over the Internet you'd have to forward the right port (usually 8080) to the machine running XBMC in addition to forwarding port 80 to the machine running XBMC Video Server. It also means you'd be exposing the XBMC API credentials to anyone using your application.
 
-To avoid this we can tell Apache to forward requests on `/xbmc-vfs` to `http://user:pass@hostname:port/vfs`, this way your API credentials won't leak through the media URLs.
+To avoid this we can tell Apache (the actual web server) to forward requests on a particular location (`/xbmc-vfs` in these examples) to `http://user:pass@hostname:port/vfs`. This way your API credentials won't leak through the media URLs.
 
 ### Example
 
 Let's say you have installed XBMC Video Server on one machine, and XBMC is running on a different machine:
 
 http://xbmc-video-server.example.com/xbmc-video-server/
-
 http://xbmc.example.com:8080/
 
-What we want to do is map e.g. `/xbmc-vfs` to `http://xbmc.example.com:8080/vfs`, this way you don't have to forward the 8080 port to the computer running XBMC and we avoid exposing the XBMC API to the Internet.
+What we want to do is map forward requests on `http://xbmc-video-server.example.com/xbmc-vfs` to `http://xbmc.example.com:8080/vfs`.
 
-### Configuring a reverse proxy
+### Configuring a reverse proxy (Linux)
 
-To make this work you have to configure your web server to provide a reverse proxy. To do this, open the file `/etc/apache2/sites-available/default` (`/etc/apache2/sites-available/000-default.conf` on newer Ubuntu versions) and add the following inside the `<VirtualHost *:80>` block:
+1. Open the file `/etc/apache2/sites-available/default` (`/etc/apache2/sites-available/000-default.conf` on newer Ubuntu versions) and add the following inside the `<VirtualHost *:80>` block:
 
 ```
 	AllowEncodedSlashes On
@@ -218,11 +217,30 @@ To make this work you have to configure your web server to provide a reverse pro
 	</Location>
 ```
 
-After saving the file also have to run `sudo a2enmod headers proxy_http && sudo service apache2 restart`.
+Replace `/xbmc-vfs` by anything you like, preferably something non-guessable (see Security implications). Then, replace `xbmc.example.com:8080` with the IP address/hostname and port of the machine that runs XBMC. Finally, replace `eGJtYzp4Ym1j` with your `username:password` encoded as Base64 (e.g. xbmc:mysecret -> eGJtYzpteXNlY3JldA==).
 
-In the example above the "Proxy Location" field in the XBMC Video Server settings should contain `/xbmc-vfs`. The "eGJtYzp4Ym1j" part is username:password encoded with Base64 (in the example the credentials are the default xbmc:xbmc).
+2. Save the file and run `sudo a2enmod headers proxy_http && sudo service apache2 restart`
+3. In XBMC Video Server, go to Settings -> Backends -> Update and put `/xbmc-vfs` in the "Proxy location" field.
 
-**You should use a randomly generated long string as location (see Security implications)**
+### Configuring a reverse proxy (Windows)
+
+1. Open `C:\xampp\apache\conf\httpd.conf` and remove the leading hashtag from the line beginning with `#eGJtYzpteXNlY3JldA==`. Save the file.
+2. Open `C:\xampp\apache\conf\extra\httpd-proxy.conf`. Remove everything between the two `<IfModule>` sections, then add the following instead:
+
+```
+AllowEncodedSlashes On
+
+<Location "/xbmc-vfs">
+    ProxyPass http://gorbachov.negge.fi:8080/vfs
+    ProxyPassReverse http://gorbachov.negge.fi:8080/vfs
+    RequestHeader set Authorization "Basic eGJtYzp4Ym1jMQ=="
+</Location>
+```
+
+See the Linux instructions on what the values mean and what you should replace them with.
+
+3. Finally, open the XAMPP Control Panel and restart Apache.
+4. In XBMC Video Server, go to Settings -> Backends -> Update and put `/xbmc-vfs` in the "Proxy location" field.
 
 User management
 ---------------
