@@ -277,6 +277,8 @@ phpass (http://www.openwall.com/phpass/) (https://github.com/hautelook/phpass)
 
 Zend framework (http://framework.zend.com/)
 
+mobiledetectlib (https://github.com/serbanghita/Mobile-Detect) and gavroche/browser (https://github.com/gabrielbull/php-browser)
+
 Bootswatch (http://bootswatch.com/)
 
 Font Awesome (http://fortawesome.github.io/Font-Awesome/)
