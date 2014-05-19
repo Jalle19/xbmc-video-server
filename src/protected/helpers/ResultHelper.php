@@ -57,7 +57,7 @@ class ResultHelper
 	 */
 	public static function formatRating($rating)
 	{
-		return round($rating, 1);
+		return number_format($rating, 1);
 	}
 
 	/**
