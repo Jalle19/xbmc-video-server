@@ -120,8 +120,8 @@ class TvShowController extends MediaController
 
 		// Construct the playlist
 		$playlist = new M3UPlaylist();
-		$playlistName = $tvshowDetails->label.' - Season '.$season;
-		$playlistName = str_replace(' ', '_', $playlistName);
+		$playlist->name = $tvshowDetails->label.' - Season '.$season;
+		$playlist->sanitizeFilename();
 
 		foreach ($episodes as $episode)
 		{
@@ -144,7 +144,7 @@ class TvShowController extends MediaController
 		$this->log('"%s" streamed season %d of "%s"', Yii::app()->user->name, $season, $tvshowDetails->label);
 
 		header('Content-Type: audio/x-mpegurl');
-		header('Content-Disposition: attachment; filename="'.$playlistName.'.m3u"');
+		header('Content-Disposition: attachment; filename="'.$playlist->name.'.m3u"');
 
 		echo $playlist;
 	}
@@ -171,8 +171,8 @@ class TvShowController extends MediaController
 		
 		// Construct the playlist
 		$playlist = new M3UPlaylist();
-		$name = $episode->showtitle.' - '.$episodeString;
-		$name = str_replace(' ', '_', $name);
+        $playlist->name = $episode->showtitle.' - '.$episodeString;
+        $playlist->sanitizeFilename();
 		$links = VideoLibrary::getVideoLinks($episode->file);
 		$linkCount = count($links);
 
@@ -190,7 +190,7 @@ class TvShowController extends MediaController
 		$this->log('"%s" streamed %s of "%s"', Yii::app()->user->name, $episodeString, $episode->showtitle);
 
 		header('Content-Type: audio/x-mpegurl');
-		header('Content-Disposition: attachment; filename="'.$name.'.m3u"');
+		header('Content-Disposition: attachment; filename="'.$playlist->name.'.m3u"');
 
 		echo $playlist;
 	}
