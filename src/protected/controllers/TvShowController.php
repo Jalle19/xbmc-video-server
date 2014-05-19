@@ -121,6 +121,7 @@ class TvShowController extends MediaController
 		// Construct the playlist
 		$playlist = new M3UPlaylist();
 		$playlistName = $tvshowDetails->label.' - Season '.$season;
+		$playlistName = str_replace(' ', '_', $playlistName);
 
 		foreach ($episodes as $episode)
 		{
@@ -171,6 +172,7 @@ class TvShowController extends MediaController
 		// Construct the playlist
 		$playlist = new M3UPlaylist();
 		$name = $episode->showtitle.' - '.$episodeString;
+		$name = str_replace(' ', '_', $name);
 		$links = VideoLibrary::getVideoLinks($episode->file);
 		$linkCount = count($links);
 

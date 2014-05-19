@@ -118,6 +118,7 @@ class MovieController extends MediaController
 
 		$links = VideoLibrary::getVideoLinks($movieDetails->file);
 		$name = $movieDetails->title.' ('.$movieDetails->year.')';
+		$name = str_replace(' ', '_', $name);
 		$playlist = new M3UPlaylist();
 		$linkCount = count($links);
 
