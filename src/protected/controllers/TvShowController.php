@@ -35,7 +35,7 @@ class TvShowController extends MediaController
 		$filterForm = new TVShowFilterForm();
 
 		$requestParameters = array(
-			'properties'=>array('thumbnail', 'fanart', 'art', 'genre', 'year'));
+			'properties'=>array('thumbnail', 'art', 'genre', 'year'));
 
 		if (isset($_GET['TVShowFilterForm']))
 		{
@@ -50,7 +50,7 @@ class TvShowController extends MediaController
 		// Go directly to the details page if we have an exact match on the 
 		// show name
 		if (count($tvshows) === 1 && $filterForm->name === $tvshows[0]->label)
-			$this->redirect(array('details', 'id'=>$tvshows[0]->tvshowid));
+			$this->redirect(array('details', 'id'=>$tvshows[0]->getId()));
 
 		$this->render('index', array(
 			'dataProvider'=>new LibraryDataProvider($tvshows, 'tvshowid'),
@@ -65,7 +65,6 @@ class TvShowController extends MediaController
 	public function actionDetails($id)
 	{
 		$showDetails = VideoLibrary::getTVShowDetails($id, array(
-			'title',
 			'genre',
 			'year',
 			'rating',
@@ -125,7 +124,7 @@ class TvShowController extends MediaController
 
 		foreach ($episodes as $episode)
 		{
-			$name = $episode->showtitle.' - '.VideoLibrary::getEpisodeString($season, $episode->episode);
+			$name = $episode->getDisplayName();
 			$links = VideoLibrary::getVideoLinks($episode->file);
 			$linkCount = count($links);
 
@@ -165,13 +164,10 @@ class TvShowController extends MediaController
 
 		if ($episode === null)
 			throw new PageNotFoundException();
-
-		$episodeString = VideoLibrary::getEpisodeString($episode->season, 
-				$episode->episode);
 		
 		// Construct the playlist
 		$playlist = new M3UPlaylist();
-		$name = $episode->showtitle.' - '.$episodeString;
+		$name = $episode->getDisplayName();
 		$links = VideoLibrary::getVideoLinks($episode->file);
 		$linkCount = count($links);
 
@@ -186,7 +182,7 @@ class TvShowController extends MediaController
 				'url'=>$link));
 		}
 		
-		$this->log('"%s" streamed %s of "%s"', Yii::app()->user->name, $episodeString, $episode->showtitle);
+		$this->log('"%s" streamed %s of "%s"', Yii::app()->user->name, $episode->getEpisodeString(), $episode->showtitle);
 
 		header('Content-Type: audio/x-mpegurl');
 		header('Content-Disposition: attachment; filename="'.M3UPlaylist::sanitizeFilename($name).'.m3u"');
@@ -216,7 +212,6 @@ class TvShowController extends MediaController
 	public function getEpisodeDataProvider($tvshowId, $season)
 	{
 		$episodes = VideoLibrary::getEpisodes($tvshowId, $season, array(
-					'title',
 					'plot',
 					'runtime',
 					'season',

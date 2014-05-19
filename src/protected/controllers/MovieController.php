@@ -62,7 +62,6 @@ class MovieController extends MediaController
 	public function actionDetails($id)
 	{
 		$movieDetails = VideoLibrary::getMovieDetails($id, array(
-			'title',
 			'genre',
 			'year',
 			'rating',
@@ -109,7 +108,6 @@ class MovieController extends MediaController
 		$movieDetails = VideoLibrary::getMovieDetails($movieId, array(
 			'file',
 			'runtime',
-			'title',
 			'year'
 		));
 		
@@ -117,7 +115,7 @@ class MovieController extends MediaController
 			throw new PageNotFoundException();
 
 		$links = VideoLibrary::getVideoLinks($movieDetails->file);
-		$name = $movieDetails->title.' ('.$movieDetails->year.')';
+		$name = $movieDetails->getDisplayName();
 		$playlist = new M3UPlaylist();
 		$linkCount = count($links);
 
@@ -131,7 +129,7 @@ class MovieController extends MediaController
 				'url'=>$link));
 		}
 		
-		$this->log('"%s" streamed "%s"', Yii::app()->user->name, $movieDetails->title);
+		$this->log('"%s" streamed "%s"', Yii::app()->user->name, $name);
 
 		header('Content-Type: audio/x-mpegurl');
 		header('Content-Disposition: attachment; filename="'.M3UPlaylist::sanitizeFilename($name).'.m3u"');

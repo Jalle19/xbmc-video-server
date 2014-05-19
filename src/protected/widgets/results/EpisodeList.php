@@ -66,7 +66,7 @@ class EpisodeList extends CWidget
 				'header'=>Yii::t('GenericList', 'Runtime'),
 				'type'=>'html',
 				'value'=>function($data) {
-					Yii::app()->controller->renderPartial('//videoLibrary/_runtime', array('runtime'=>$data->runtime));
+					echo $data->getRuntimeString();
 				}
 			),
 		);

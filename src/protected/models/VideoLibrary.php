@@ -46,7 +46,7 @@ class VideoLibrary
 	/**
 	 * Returns a list of movies
 	 * @param array $params request parameters
-	 * @return stdClass[] the movies
+	 * @return Movie[] the movies
 	 */
 	public static function getMovies($params = array())
 	{
@@ -55,7 +55,7 @@ class VideoLibrary
 		
 		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetMovies', $params);
 
-		return self::normalizeResponse($response, 'movies', array());
+		return self::normalizeResponse($response, 'movies', array(), new Movie());
 	}
 	
 	/**
@@ -73,7 +73,7 @@ class VideoLibrary
 
 		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetRecentlyAddedMovies', $params);
 
-		return self::normalizeResponse($response, 'movies', array());
+		return self::normalizeResponse($response, 'movies', array(), new Movie());
 	}
 
 	/**
@@ -81,7 +81,7 @@ class VideoLibrary
 	 * specifies which movie attributes to return.
 	 * @param int $movieId the movie ID
 	 * @param array $properties the properties to include in the result
-	 * @return mixed the movie details or null if the movie was not found
+	 * @return Movie the movie details or null if the movie was not found
 	 */
 	public static function getMovieDetails($movieId, $properties)
 	{
@@ -89,14 +89,14 @@ class VideoLibrary
 			'movieid'=>(int)$movieId,
 			'properties'=>$properties));
 
-		return self::normalizeResponse($response, 'moviedetails', null);
+		return self::normalizeResponse($response, 'moviedetails', null, new Movie());
 	}
 	
 	/**
 	 * Returns a list of TV shows. If no sort mechanism is specified in 
 	 * @params the result will be sorted alphabetically by title.
 	 * @param array $params request parameters
-	 * @return stdClass[] the TV shows
+	 * @return TVShow[] the TV shows
 	 */
 	public static function getTVShows($params = array())
 	{
@@ -104,18 +104,17 @@ class VideoLibrary
 		self::ensureProperties($params, self::$_defaultTVShowProperties);
 		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetTVShows', $params);
 
-		return self::normalizeResponse($response, 'tvshows', array());
+		return self::normalizeResponse($response, 'tvshows', array(), new TVShow());
 	}
 	
 	/**
 	 * Returns the recently added episodes
 	 * @param array $params (optional) request parameters
-	 * @return stdClass[] the recently added episodes
+	 * @return Episode[] the recently added episodes
 	 */
 	public static function getRecentlyAddedEpisodes($params = array())
 	{
 		$params['properties'] = array(
-			'title',
 			'plot',
 			'runtime',
 			'season',
@@ -130,7 +129,7 @@ class VideoLibrary
 		$response = Yii::app()->xbmc->performRequest(
 				'VideoLibrary.GetRecentlyAddedEpisodes', $params);
 
-		return self::normalizeResponse($response, 'episodes', array());
+		return self::normalizeResponse($response, 'episodes', array(), new Episode());
 	}
 	
 	/**
@@ -138,7 +137,7 @@ class VideoLibrary
 	 * specifies which attributes to return.
 	 * @param int $tvshowId the show ID
 	 * @param array $properties the properties to include in the result
-	 * @return mixed the show details or null if the show was not found
+	 * @return TVShow the show details or null if the show was not found
 	 */
 	public static function getTVShowDetails($tvshowId, $properties)
 	{
@@ -146,7 +145,7 @@ class VideoLibrary
 			'tvshowid'=>(int)$tvshowId,
 			'properties'=>$properties));
 
-		return self::normalizeResponse($response, 'tvshowdetails', null);
+		return self::normalizeResponse($response, 'tvshowdetails', null, new TVShow());
 	}
 	
 	/**
@@ -171,7 +170,7 @@ class VideoLibrary
 	 * Returns the episodes for the specified show and season
 	 * @param int $tvshowId the TV show ID
 	 * @param int $season the season number
-	 * @return stdClass[] the episodes
+	 * @return Episode[] the episodes
 	 */
 	public static function getEpisodes($tvshowId, $season, $properties)
 	{
@@ -185,14 +184,14 @@ class VideoLibrary
 		$response = Yii::app()->xbmc->performRequest(
 				'VideoLibrary.GetEpisodes', $params);
 
-		return self::normalizeResponse($response, 'episodes', array());
+		return self::normalizeResponse($response, 'episodes', array(), new Episode());
 	}
 	
 	/**
 	 * Returns details about the specified TV show episode
 	 * @param int $episodeId the episode ID
 	 * @param array $properties the properties to include in the result
-	 * @return mixed the episode details or null if the episode was not found
+	 * @return Episode the episode details or null if the episode was not found
 	 */
 	public static function getEpisodeDetails($episodeId, $properties)
 	{
@@ -200,7 +199,7 @@ class VideoLibrary
 			'episodeid'=>(int)$episodeId,
 			'properties'=>$properties));
 
-		return self::normalizeResponse($response, 'episodedetails', null);
+		return self::normalizeResponse($response, 'episodedetails', null, new Episode());
 	}
 	
 	/**
@@ -247,16 +246,6 @@ class VideoLibrary
 		}
 
 		return $files;
-	}
-	
-	/**
-	 * Returns a string based on season and episode number, e.g. 1x05.
-	 * @param int $season the season
-	 * @param int $episode the episode
-	 */
-	public static function getEpisodeString($season, $episode)
-	{
-		return $season.'x'.str_pad($episode, 2, '0', STR_PAD_LEFT);
 	}
 	
 	/**

@@ -17,14 +17,12 @@ class RetrieveTVShowWidget extends RetrieveMediaWidget
 
 	protected function getLogMessage()
 	{
-		$episodeLabel = $this->details->showtitle.' - '.$this->details->label;
-		
-		return '"'.Yii::app()->user->name.'" downloaded "'.$episodeLabel.'"';
+		return '"'.Yii::app()->user->name.'" downloaded "'.$this->details->showtitle.' - '.$this->details->getDisplayName().'"';
 	}
 
 	protected function getPlayListUrl()
 	{
-		return array('getEpisodePlaylist', 'episodeId'=>$this->details->episodeid);
+		return array('getEpisodePlaylist', 'episodeId'=>$this->details->getId());
 	}
 
 	protected function getWatchButtonOptions()

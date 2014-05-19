@@ -60,14 +60,4 @@ class ResultHelper
 		return number_format($rating, 1);
 	}
 
-	/**
-	 * Formats a runtime
-	 * @param int $runtime runtime in minutes
-	 * @return string the runtime string
-	 */
-	public static function formatRuntime($runtime)
-	{
-		return (int)($runtime / 60).' min';
-	}
-
 }

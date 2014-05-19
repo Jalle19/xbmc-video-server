@@ -75,15 +75,8 @@ abstract class ResultList extends TbGridView
 			'header'=>Yii::t('GenericList', 'Title'),
 			'type'=>'html',
 			'value'=>function($data) {
-				// Determine the name of the ID property
-				if (isset($data->movieid))
-					$id = $data->movieid;
-				elseif (isset($data->tvshowid))
-					$id = $data->tvshowid;
-				else
-					$id = null;
-
-				return CHtml::link($data->label, Yii::app()->controller->createUrl('details', array('id'=>$id)));
+				/* @var $data Media */
+				return CHtml::link($data->label, Yii::app()->controller->createUrl('details', array('id'=>$data->getId())));
 			},
 		);
 	}
@@ -115,7 +108,8 @@ abstract class ResultList extends TbGridView
 			'name'=>'genre',
 			'header'=>Yii::t('GenericList', 'Genre'),
 			'value'=>function($data) {
-				return implode(' / ', $data->genre);
+				/* @var $data Media */
+				return $data->getGenreString();
 			}
 		);
 	}

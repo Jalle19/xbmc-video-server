@@ -1,5 +1,10 @@
+<?php
+
+/* @var $episode Episode */
+
+?>
 <p>
-	<?php echo CHtml::encode($episode->plot); ?>
+	<?php echo CHtml::encode($episode->getPlot()); ?>
 </p>
 
 <div class="episode-streamdetails">

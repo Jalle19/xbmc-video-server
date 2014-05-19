@@ -1,14 +1,19 @@
+<?php
+
+/* @var $item Media */
+
+?>
 <div class="pull-left item-rating">
 
 	<p>
 		<?php echo Yii::t('Media', 'Rating'); ?>: 
-		<?php echo ResultHelper::formatRating($rating); ?>
+		<?php echo $item->getRating(); ?>
 		
-		<?php if (isset($votes))
-			echo Yii::t('Media', '({numVotes} votes)', array('{numVotes}'=>$votes)); ?>
+		<?php if (isset($item->votes))
+			echo Yii::t('Media', '({numVotes} votes)', array('{numVotes}'=>$item->votes)); ?>
 	</p>
 
 	<?php $this->renderPartial('/videoLibrary/_ratingStars', 
-			array('rating'=>(int)$rating)); ?>
+			array('rating'=>(int)$item->rating)); ?>
 
 </div>

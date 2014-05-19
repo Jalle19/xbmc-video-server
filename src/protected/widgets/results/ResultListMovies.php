@@ -31,7 +31,8 @@ class ResultListMovies extends ResultList
 			'name'=>'rating',
 			'header'=>Yii::t('MovieList', 'Rating'),
 			'value'=>function($data) {
-				echo ResultHelper::formatRating($data->rating);
+				/* @var $data Movie */
+				echo $data->getRating();
 			}
 		);
 	}
@@ -46,7 +47,8 @@ class ResultListMovies extends ResultList
 			'name'=>'runtime',
 			'header'=>Yii::t('GenericList', 'Runtime'),
 			'value'=>function($data) {
-				echo ResultHelper::formatRuntime($data->runtime);
+				/* @var $data Movie */
+				echo $data->getRuntimeString();
 			}
 		);
 	}

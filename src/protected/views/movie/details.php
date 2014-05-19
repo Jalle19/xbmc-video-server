@@ -2,9 +2,9 @@
 
 /* @var $this MovieController */
 /* @var $actorDataProvider LibraryDataProvider */
-/* @var $details stdClass */
+/* @var $details Movie */
 
-$this->pageTitle = $details->label.' ('.$details->year.') - '.Yii::t('Movies', 'Movies');
+$this->pageTitle = $details->getDisplayName().' - '.Yii::t('Movies', 'Movies');
 
 ?>
 <div class="item-details">
@@ -48,7 +48,7 @@ $this->pageTitle = $details->label.' ('.$details->year.') - '.Yii::t('Movies', '
 			<div class="item-top row-fluid">
 				<div class="item-title span6">
 					<h2>
-						<a href="http://www.imdb.com/title/<?php echo $details->imdbnumber; ?>" target="_blank">
+						<a href="<?php echo $details->getIMDbUrl(); ?>" target="_blank">
 							<?php echo $details->label; ?>
 						</a>
 					</h2>
@@ -73,11 +73,9 @@ $this->pageTitle = $details->label.' ('.$details->year.') - '.Yii::t('Movies', '
 				
 				<?php
 				
-				$rating = $details->rating;
-				
-				if ((int)$rating > 0)
+				if ($details->hasRating())
 					$this->renderPartial('/videoLibrary/_rating', array(
-						'rating'=>$rating, 'votes'=>$details->votes));
+						'item'=>$details));
 				
 				?>
 
@@ -85,12 +83,14 @@ $this->pageTitle = $details->label.' ('.$details->year.') - '.Yii::t('Movies', '
 
 					<div class="item-metadata clearfix">
 
-						<p><?php echo implode(' / ', $details->genre); ?></p>
+						<p><?php echo $details->getGenreString(); ?></p>
 						<?php
 
 						// Runtime and MPAA rating are not always available
-						Yii::app()->controller->renderPartial('//videoLibrary/_runtime', 
-								array('runtime'=>$details->runtime));
+						$runtime = $details->getRuntimeString();
+						
+						if ($runtime)
+							echo CHtml::tag('p', array(), $runtime);
 						
 						$this->widget('MPAARating', array(
 							'rating'=>$details->mpaa));
@@ -105,8 +105,7 @@ $this->pageTitle = $details->label.' ('.$details->year.') - '.Yii::t('Movies', '
 			
 			<div class="item-plot">
 				<p>
-					<?php echo !empty($details->plot) ? $details->plot 
-							: Yii::t('Misc', 'Not available'); ?>
+					<?php echo $details->getPlot(); ?>
 				</p>
 			</div>
 			

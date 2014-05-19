@@ -1,13 +1,9 @@
 <?php
 
 /* @var $this TvShowController */
-/* @var $details stdClass */
+/* @var $details TVShow */
 
-$pageTitle = $details->title;
-if (!empty($details->year))
-	$pageTitle .= ' ('.$details->year.')';
-
-$this->pageTitle = $pageTitle;
+$this->pageTitle = $details->getDisplayName();
 
 ?>
 <div class="item-details">
@@ -23,8 +19,8 @@ $this->pageTitle = $pageTitle;
 			<div class="item-top row-fluid">
 				<div class="item-title span6">
 					<h2>
-						<a href="http://www.thetvdb.com/?tab=series&amp;id=<?php echo $details->imdbnumber; ?>" target="_blank">
-							<?php echo $details->title; ?>
+						<a href="<?php echo $details->getTVDBUrl(); ?>" target="_blank">
+							<?php echo $details->label; ?>
 						</a>
 					</h2>
 
@@ -37,10 +33,8 @@ $this->pageTitle = $pageTitle;
 				
 				<?php
 				
-				$rating = (int)$details->rating;
-				
-				if ($rating > 0)
-					$this->renderPartial('/videoLibrary/_rating', array('rating'=>$rating));
+				if ($details->hasRating())
+					$this->renderPartial('/videoLibrary/_rating', array('item'=>$details));
 				
 				?>
 				
@@ -48,7 +42,7 @@ $this->pageTitle = $pageTitle;
 
 					<div class="item-metadata clearfix">
 
-						<p><?php echo implode(' / ', $details->genre); ?></p>
+						<p><?php echo $details->getGenreString(); ?></p>
 
 						<?php $this->widget('MPAARating', array(
 							'rating'=>$details->mpaa)); ?>
@@ -60,7 +54,7 @@ $this->pageTitle = $pageTitle;
 			<h3><?php echo Yii::t('Media', 'Plot'); ?></h3>
 			
 			<div class="item-plot">
-				<p><?php echo $details->plot; ?></p>
+				<p><?php echo $details->getPlot(); ?></p>
 			</div>
 			
 			<h3><?php echo Yii::t('Media', 'Cast'); ?></h3>

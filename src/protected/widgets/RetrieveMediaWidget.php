@@ -21,7 +21,7 @@ abstract class RetrieveMediaWidget extends CWidget
 	public $links;
 
 	/**
-	 * @var stdClass the media details
+	 * @var Media the media details
 	 */
 	public $details;
 	

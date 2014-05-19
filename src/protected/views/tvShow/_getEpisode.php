@@ -1,5 +1,10 @@
+<?php
+
+/* @var $episode Episode */
+
+?>
 <p>
-	<?php echo VideoLibrary::getEpisodeString($episode->season, $episode->episode); ?>
+	<?php echo $episode->getEpisodeString(); ?>
 </p>
 
 <?php 
