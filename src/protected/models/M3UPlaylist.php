@@ -1,5 +1,7 @@
 <?php
 
+use Behat\Transliterator\Transliterator;
+
 /**
  * Represents an M3U playlist. Once populated using addItem() it can be used as 
  * a string
@@ -15,6 +17,11 @@ class M3UPlaylist
 	 * @var array the playlist items
 	 */
 	private $_items = array();
+
+	/**
+	 * Filename
+	 */
+	public $name;
 
 	/**
 	 * Adds an item to the playlist
@@ -42,6 +49,14 @@ class M3UPlaylist
 		}
 
 		return ob_get_clean();
+	}
+
+	/**
+	 * Sanitize filename for use in POSIX systems
+	 */
+	public function sanitizeFilename()
+	{
+		$this->name = Transliterator::transliterate($this->name);
 	}
 
 }

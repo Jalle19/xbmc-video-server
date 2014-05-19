@@ -117,13 +117,14 @@ class MovieController extends MediaController
 			throw new PageNotFoundException();
 
 		$links = VideoLibrary::getVideoLinks($movieDetails->file);
-		$name = $movieDetails->title.' ('.$movieDetails->year.')';
 		$playlist = new M3UPlaylist();
+		$playlist->name = $movieDetails->title.' ('.$movieDetails->year.')';
+		$playlist->sanitizeFilename();
 		$linkCount = count($links);
 
 		foreach ($links as $k=> $link)
 		{
-			$label = $linkCount > 1 ? $name.' (#'.++$k.')' : $name;
+			$label = $linkCount > 1 ? $playlist->name.' (#'.++$k.')' : $playlist->name;
 			
 			$playlist->addItem(array(
 				'runtime'=>(int)$movieDetails->runtime,
@@ -134,7 +135,7 @@ class MovieController extends MediaController
 		$this->log('"%s" streamed "%s"', Yii::app()->user->name, $movieDetails->title);
 
 		header('Content-Type: audio/x-mpegurl');
-		header('Content-Disposition: attachment; filename="'.$name.'.m3u"');
+		header('Content-Disposition: attachment; filename="'.$playlist->name.'.m3u"');
 
 		echo $playlist;
 	}
