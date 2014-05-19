@@ -296,12 +296,27 @@ class VideoLibrary
 	 * @param string $resultSet the name of the result set
 	 * @param mixed $defaultValue the value to return if the result set is not 
 	 * available
+	 * @param mixed an instance of the class the results should be mapped to, or 
+	 * null to use stdClass
 	 * @return mixed the normalized response
 	 */
-	private static function normalizeResponse($response, $resultSet, $defaultValue)
+	private static function normalizeResponse($response, $resultSet, $defaultValue, $targetObject = null)
 	{
 		if (isset($response->result->{$resultSet}))
+		{
+			$mapper = new JsonMapper();
+			$result = $response->result->{$resultSet};
+
+			if ($targetObject !== null)
+			{
+				if (is_array($result))
+					return $mapper->mapArray($result, new ArrayObject(), $targetObject)->getArrayCopy();
+				elseif (is_object($result))
+					return $mapper->map($result, $targetObject);
+			}
+
 			return $response->result->{$resultSet};
+		}
 		else
 			return $defaultValue;
 	}
