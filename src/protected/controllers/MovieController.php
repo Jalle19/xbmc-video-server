@@ -124,7 +124,7 @@ class MovieController extends MediaController
 
 		foreach ($links as $k=> $link)
 		{
-			$label = $linkCount > 1 ? $name.' (#'.++$k.')' : $name;
+			$label = $linkCount > 1 ? $playlist->name.' (#'.++$k.')' : $playlist->name;
 			
 			$playlist->addItem(array(
 				'runtime'=>(int)$movieDetails->runtime,
