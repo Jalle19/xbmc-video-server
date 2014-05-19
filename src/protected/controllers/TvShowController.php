@@ -171,8 +171,8 @@ class TvShowController extends MediaController
 		
 		// Construct the playlist
 		$playlist = new M3UPlaylist();
-        $playlist->name = $episode->showtitle.' - '.$episodeString;
-        $playlist->sanitizeFilename();
+		$playlist->name = $episode->showtitle.' - '.$episodeString;
+		$playlist->sanitizeFilename();
 		$links = VideoLibrary::getVideoLinks($episode->file);
 		$linkCount = count($links);
 

@@ -117,9 +117,9 @@ class MovieController extends MediaController
 			throw new PageNotFoundException();
 
 		$links = VideoLibrary::getVideoLinks($movieDetails->file);
-        $playlist = new M3UPlaylist();
-        $playlist->name = $movieDetails->title.' ('.$movieDetails->year.')';
-        $playlist->sanitizeFilename();
+		$playlist = new M3UPlaylist();
+		$playlist->name = $movieDetails->title.' ('.$movieDetails->year.')';
+		$playlist->sanitizeFilename();
 		$linkCount = count($links);
 
 		foreach ($links as $k=> $link)

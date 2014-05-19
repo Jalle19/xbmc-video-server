@@ -16,12 +16,12 @@ class M3UPlaylist
 	/**
 	 * @var array the playlist items
 	 */
-    private $_items = array();
+	private $_items = array();
 
-    /**
-     * Filename
-     */
-    public $name;
+	/**
+	 * Filename
+	 */
+	public $name;
 
 	/**
 	 * Adds an item to the playlist
@@ -51,12 +51,12 @@ class M3UPlaylist
 		return ob_get_clean();
 	}
 
-    /**
-     * Sanitize filename for use in POSIX systems
-     */
-    public function sanitizeFilename()
-    {
-        $this->name = Transliterator::transliterate($this->name);
-    }
+	/**
+	 * Sanitize filename for use in POSIX systems
+	 */
+	public function sanitizeFilename()
+	{
+		$this->name = Transliterator::transliterate($this->name);
+	}
 
 }
