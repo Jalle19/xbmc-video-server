@@ -40,7 +40,6 @@ class EpisodeList extends CWidget
 				'type'=>'raw',
 				'header'=>Yii::t('EpisodeList', 'Episode'),
 				'value'=>function($data) {
-					// $this not available in PHP < 5.4
 					Yii::app()->controller->renderPartial('_getEpisode', array('episode'=>$data));
 				}
 			),
@@ -60,7 +59,6 @@ class EpisodeList extends CWidget
 				'type'=>'raw',
 				'header'=>Yii::t('EpisodeList', 'Plot'),
 				'value'=>function($data) {
-					// $this not available in PHP < 5.4
 					Yii::app()->controller->renderPartial('_plotStreamDetails', array('episode'=>$data));
 				}
 			),
