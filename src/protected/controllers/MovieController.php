@@ -114,20 +114,12 @@ class MovieController extends MediaController
 		if ($movieDetails === null)
 			throw new PageNotFoundException();
 
-		$links = VideoLibrary::getVideoLinks($movieDetails->file);
 		$name = $movieDetails->getDisplayName();
 		$playlist = new M3UPlaylist();
-		$linkCount = count($links);
-
-		foreach ($links as $k=> $link)
-		{
-			$label = $linkCount > 1 ? $name.' (#'.++$k.')' : $name;
-			
-			$playlist->addItem(array(
-				'runtime'=>(int)$movieDetails->runtime,
-				'label'=>$label,
-				'url'=>$link));
-		}
+		
+		// Add the playlist items
+		foreach ($this->getPlaylistItems($movieDetails) as $item)
+			$playlist->addItem($item);
 		
 		$this->log('"%s" streamed "%s"', Yii::app()->user->name, $name);
 

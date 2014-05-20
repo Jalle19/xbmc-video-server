@@ -123,22 +123,8 @@ class TvShowController extends MediaController
 		$playlistName = $showTitle.' - Season '.$season;
 
 		foreach ($episodes as $episode)
-		{
-			$name = $episode->getDisplayName();
-			$links = VideoLibrary::getVideoLinks($episode->file);
-			$linkCount = count($links);
-
-			// Most TV shows only have one file, but you never know
-			foreach ($links as $k=> $link)
-			{
-				$label = $linkCount > 1 ? $name.' (#'.++$k.')' : $name;
-
-				$playlist->addItem(array(
-					'runtime'=>(int)$episode->runtime,
-					'label'=>$label,
-					'url'=>$link));
-			}
-		}
+			foreach($this->getPlaylistItems($episode) as $item)
+				$playlist->addItem($item);
 		
 		$this->log('"%s" streamed season %d of "%s"', Yii::app()->user->name, $season, $showTitle);
 
@@ -168,20 +154,10 @@ class TvShowController extends MediaController
 		// Construct the playlist
 		$playlist = new M3UPlaylist();
 		$name = $episode->getDisplayName();
-		$links = VideoLibrary::getVideoLinks($episode->file);
-		$linkCount = count($links);
-
-		// Most TV shows only have one file, but you never know
-		foreach ($links as $k=> $link)
-		{
-			$label = $linkCount > 1 ? $name.' (#'.++$k.')' : $name;
-
-			$playlist->addItem(array(
-				'runtime'=>(int)$episode->runtime,
-				'label'=>$label,
-				'url'=>$link));
-		}
 		
+		foreach ($this->getPlaylistItems($episode) as $item)
+			$playlist->addItem($item);
+
 		$this->log('"%s" streamed %s of "%s"', Yii::app()->user->name, $episode->getEpisodeString(), $episode->showtitle);
 
 		header('Content-Type: audio/x-mpegurl');

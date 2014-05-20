@@ -109,6 +109,34 @@ abstract class MediaController extends Controller
 
 		return $displayMode;
 	}
+	
+	/**
+	 * Returns an array of playlist items for the specified media item's files.
+	 * Most items have just one file but some have more, hence it returns an 
+	 * array.
+	 * @param Media $media the media
+	 * @return array
+	 */
+	protected function getPlaylistItems(Media $media)
+	{
+		$items = array();
+		$name = $media->getDisplayName();
+
+		$links = VideoLibrary::getVideoLinks($media->file);
+		$linkCount = count($links);
+
+		foreach ($links as $k => $link)
+		{
+			$label = $linkCount > 1 ? $name.' (#'.++$k.')' : $name;
+
+			$items[] = array(
+				'runtime'=>(int)$media->runtime,
+				'label'=>$label,
+				'url'=>$link);
+		}
+
+		return $items;
+	}
 
 	/**
 	 * Checks whether the visitor is using a mobile device or not (tablets are 
