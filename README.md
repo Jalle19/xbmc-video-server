@@ -279,6 +279,8 @@ Zend framework (http://framework.zend.com/)
 
 mobiledetectlib (https://github.com/serbanghita/Mobile-Detect) and gavroche/browser (https://github.com/gabrielbull/php-browser)
 
+jsonmapper (https://github.com/netresearch/jsonmapper)
+
 Bootswatch (http://bootswatch.com/)
 
 Font Awesome (http://fortawesome.github.io/Font-Awesome/)
