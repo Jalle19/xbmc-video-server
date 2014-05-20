@@ -1,10 +1,13 @@
 <?php
 
+use Behat\Transliterator\Transliterator;
+
 /**
  * Represents an M3U playlist. Once populated using addItem() it can be used as 
  * a string
  *
  * @author Sam Stenvall <neggelandia@gmail.com>
+ * @author Víctor Zabalza <vzabalza@gmail.com>
  * @copyright Copyright &copy; Sam Stenvall 2013-
  * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
  */
@@ -42,6 +45,17 @@ class M3UPlaylist
 		}
 
 		return ob_get_clean();
+	}
+	
+	/**
+	 * Sanitizes the specified filename to minimize issues with various 
+	 * platforms
+	 * @param string $name the filename
+	 * @return string the sanitized filename
+	 */
+	public static function sanitizeFilename($name)
+	{
+		return Transliterator::transliterate($name);
 	}
 
 }

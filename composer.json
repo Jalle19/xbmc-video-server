@@ -6,6 +6,7 @@
 		"crisu83/yii-less": "2.0.*",
 		"crisu83/yiistrap": "1.2.*",
 		"crisu83/yii-consoletools": "1.0.*",
+		"behat/transliterator": "1.0.*",
 		"eventviva/php-image-resize": "dev-master",
 		"gavroche/browser": "2.2.*",
 		"hautelook/phpass": "0.3.*",

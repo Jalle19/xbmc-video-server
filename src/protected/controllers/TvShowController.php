@@ -143,7 +143,7 @@ class TvShowController extends MediaController
 		$this->log('"%s" streamed season %d of "%s"', Yii::app()->user->name, $season, $tvshowDetails->label);
 
 		header('Content-Type: audio/x-mpegurl');
-		header('Content-Disposition: attachment; filename="'.$playlistName.'.m3u"');
+		header('Content-Disposition: attachment; filename="'.M3UPlaylist::sanitizeFilename($playlistName).'.m3u"');
 
 		echo $playlist;
 	}
@@ -188,7 +188,7 @@ class TvShowController extends MediaController
 		$this->log('"%s" streamed %s of "%s"', Yii::app()->user->name, $episodeString, $episode->showtitle);
 
 		header('Content-Type: audio/x-mpegurl');
-		header('Content-Disposition: attachment; filename="'.$name.'.m3u"');
+		header('Content-Disposition: attachment; filename="'.M3UPlaylist::sanitizeFilename($name).'.m3u"');
 
 		echo $playlist;
 	}

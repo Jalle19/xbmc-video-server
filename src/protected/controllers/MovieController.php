@@ -134,7 +134,7 @@ class MovieController extends MediaController
 		$this->log('"%s" streamed "%s"', Yii::app()->user->name, $movieDetails->title);
 
 		header('Content-Type: audio/x-mpegurl');
-		header('Content-Disposition: attachment; filename="'.$name.'.m3u"');
+		header('Content-Disposition: attachment; filename="'.M3UPlaylist::sanitizeFilename($name).'.m3u"');
 
 		echo $playlist;
 	}
