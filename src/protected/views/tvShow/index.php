@@ -17,7 +17,7 @@ switch ($this->getDisplayMode())
 	case MediaController::DISPLAY_MODE_GRID:
 		$this->widget('ResultGrid', array(
 			'dataProvider'=>$dataProvider,
-			'itemView'=>'_tvshowGridItem',
+			'itemView'=>'//videoLibrary/_mediaGridItem',
 		));
 		break;
 	case MediaController::DISPLAY_MODE_LIST:

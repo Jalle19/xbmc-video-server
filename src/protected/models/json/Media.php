@@ -80,6 +80,14 @@ abstract class Media extends CComponent
 	 * @return the display name of this item
 	 */
 	abstract public function getDisplayName();
+	
+	/**
+	 * @return string the artwork for this item
+	 */
+	public function getArtwork()
+	{
+		return $this->thumbnail;
+	}
 
 	/**
 	 * Returns the list of genres as a string
