@@ -21,6 +21,12 @@ abstract class MediaController extends Controller
 	 * performing
 	 */
 	abstract protected function getSpectatorProhibitedActions();
+	
+	/**
+	 * Some parts of the code assume we're in either Movie or TvShowController 
+	 * so make sure the common actions are actually available
+	 */
+	abstract public function actionDetails($id);
 
 	/**
 	 * Override parent implementation to add access control filter
