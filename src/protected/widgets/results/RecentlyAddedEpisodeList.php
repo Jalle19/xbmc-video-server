@@ -18,12 +18,7 @@ class RecentlyAddedEpisodeList extends EpisodeList
 				'type'=>'raw',
 				'header'=>Yii::t('RecentlyAddedEpisodes', 'TV Show'),
 				'value'=>function($data) {
-					$ctrl = Yii::app()->controller;		
-					
-					$tvshow = VideoLibrary::getTVShowDetails($data->tvshowid, array());
-					$tvshowUrl = $ctrl->createUrl('tvShow/details', array('id'=>$data->tvshowid));
-
-					return CHtml::link($tvshow->label, $tvshowUrl);
+					return CHtml::link($data->showtitle, Yii::app()->createUrl('tvShow/details', array('id'=>$data->tvshowid)));
 				}
 			)
 		);

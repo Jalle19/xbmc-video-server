@@ -17,9 +17,7 @@ class RetrieveTVShowWidget extends RetrieveMediaWidget
 
 	protected function getLogMessage()
 	{
-		// Retrieve the name of the TV show
-		$tvshow = VideoLibrary::getTVShowDetails($this->details->tvshowid, array());
-		$episodeLabel = $tvshow->label.' - '.$this->details->label;
+		$episodeLabel = $this->details->showtitle.' - '.$this->details->label;
 		
 		return '"'.Yii::app()->user->name.'" downloaded "'.$episodeLabel.'"';
 	}

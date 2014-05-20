@@ -109,22 +109,23 @@ class TvShowController extends MediaController
 	 */
 	public function actionGetSeasonPlaylist($tvshowId, $season)
 	{
-		$tvshowDetails = VideoLibrary::getTVShowDetails($tvshowId, array());
 		$episodes = VideoLibrary::getEpisodes($tvshowId, $season, array(
 					'episode',
+					'showtitle',
 					'runtime',
 					'file'));
 
-		if ($tvshowDetails === null || empty($episodes))
+		if (empty($episodes))
 			throw new PageNotFoundException();
 
 		// Construct the playlist
+		$showTitle = $episodes[0]->showtitle;
 		$playlist = new M3UPlaylist();
-		$playlistName = $tvshowDetails->label.' - Season '.$season;
+		$playlistName = $showTitle.' - Season '.$season;
 
 		foreach ($episodes as $episode)
 		{
-			$name = $tvshowDetails->label.' - '.VideoLibrary::getEpisodeString($season, $episode->episode);
+			$name = $episode->showtitle.' - '.VideoLibrary::getEpisodeString($season, $episode->episode);
 			$links = VideoLibrary::getVideoLinks($episode->file);
 			$linkCount = count($links);
 
@@ -140,7 +141,7 @@ class TvShowController extends MediaController
 			}
 		}
 		
-		$this->log('"%s" streamed season %d of "%s"', Yii::app()->user->name, $season, $tvshowDetails->label);
+		$this->log('"%s" streamed season %d of "%s"', Yii::app()->user->name, $season, $showTitle);
 
 		header('Content-Type: audio/x-mpegurl');
 		header('Content-Disposition: attachment; filename="'.M3UPlaylist::sanitizeFilename($playlistName).'.m3u"');
@@ -223,7 +224,7 @@ class TvShowController extends MediaController
 					'streamdetails',
 					'thumbnail',
 					'file',
-					'tvshowid', // needed by RetrieveTvShowWidget
+					'showtitle',
 		));
 
 		// We never want pagination here

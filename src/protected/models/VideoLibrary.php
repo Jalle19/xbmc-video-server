@@ -123,7 +123,8 @@ class VideoLibrary
 			'streamdetails',
 			'thumbnail',
 			'file',
-			'tvshowid'
+			'tvshowid',
+			'showtitle',
 		);
 
 		$response = Yii::app()->xbmc->performRequest(
