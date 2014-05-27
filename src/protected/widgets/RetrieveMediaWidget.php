@@ -88,15 +88,18 @@ abstract class RetrieveMediaWidget extends CWidget
 	}
 
 	/**
-	 * Returns the stream URL for the media. If the media has a single link and 
-	 * the "singleFilePlaylist" setting is enabled, the direct link will be 
-	 * returned, otherwise the media playlist URL will be returned
+	 * Returns the stream URL for the media. A direct link will be returned if 
+	 * the user is on a mobile device or if the "singleFilePlaylist" setting 
+	 * is enabled, otherwise the media playlist URL will be returned
 	 * @return string the stream URL
 	 */
 	protected function getStreamUrl()
 	{
-		if (count($this->links) === 1 && Setting::getValue('singleFilePlaylist'))
+		if (count($this->links) === 1 && (Setting::getValue('singleFilePlaylist') 
+				|| (Browser::isMobile() || Browser::isTablet())))
+		{
 			return $this->links[0];
+		}
 		else
 			return $this->getPlayListUrl();
 	}
