@@ -13,13 +13,18 @@ $baseUrl = Yii::app()->baseUrl;
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<?php 
 		
-		// Add a cache buster to the CSS URL
-		$cssPath = realpath(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR
-				.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'css'
-				.DIRECTORY_SEPARATOR.'styles-min.css');
+		$cssDirectory = realpath(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR
+				.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'css');
 		
+		// Add a cache buster to the CSS URL
+		$cssPath = $cssDirectory.DIRECTORY_SEPARATOR.'styles-min.css';
 		$cs->registerCssFile($baseUrl.'/css/styles-min.css?'.filemtime($cssPath));
 		
+		// Register custom stylesheet if one exists
+		$customCss = $cssDirectory.DIRECTORY_SEPARATOR.'custom.css';
+		if (is_readable($customCss))
+			$cs->registerCssFile($baseUrl.'/css/custom.css?'.filemtime($customCss));
+
 		$this->registerScripts();
 		
 		?>
