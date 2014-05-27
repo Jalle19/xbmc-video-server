@@ -7604,9 +7604,6 @@ select {
 .item-details .item-description .actor-grid .thumbnail .image-container {
   min-height: 182px;
 }
-.episode-thumbnail {
-  max-width: 116px;
-}
 .season-list {
   border: 1px solid #E5E5E5;
   -webkit-border-radius: 6px;

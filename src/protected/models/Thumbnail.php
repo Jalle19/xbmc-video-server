@@ -36,34 +36,32 @@ class Thumbnail
 
 	/**
 	 * Class constructor
-	 * @param string $thumbnailPath the thumbnail path
+	 * @param string $thumbnailPath the thumbnail path. If empty the placeholder 
+	 * image will be used instead.
 	 * @param int $size the size constant
 	 */
 	public function __construct($thumbnailPath, $size)
 	{
+		if (empty($thumbnailPath))
+			$thumbnailPath = $this->getPlaceholder();
+
 		$this->_path = $thumbnailPath;
 		$this->_size = $size;
 		$this->_cache = new ImageCache();
 	}
 	
 	/**
-	 * Returns the URL to a cached thumbnail or false if no cached copy exists. 
-	 * If the thumbnail path is empty, the placeholder image will be returned.
+	 * Returns the URL to a cached thumbnail or false if no cached copy exists
 	 * @return mixed
 	 */
 	public function getUrl()
 	{
-		if (empty($this->_path))
-			return $this->getPlaceholder();
-		else
-		{
-			$filename = $this->getFilename();
+		$filename = $this->getFilename();
 
-			if ($this->_cache->has($filename))
-				return $this->_cache->getCacheUrl().'/'.$filename;
+		if ($this->_cache->has($filename))
+			return $this->_cache->getCacheUrl().'/'.$filename;
 
-			return false;
-		}
+		return false;
 	}
 	
 	/**
@@ -71,11 +69,20 @@ class Thumbnail
 	 */
 	public function generate()
 	{
-		$response = Yii::app()->xbmc->performRequest('Files.PrepareDownload', 
-				array('path'=>$this->_path));
+		// The path to the image can be either the placeholder image, in which 
+		// case we just prepend the host info, or it can be a VFS url in which 
+		// case we need to resolve it
+		if (substr($this->_path, 0, 5) === 'image')
+		{
+			$response = Yii::app()->xbmc->performRequest('Files.PrepareDownload', 
+					array('path'=>$this->_path));
 
-		$imageUrl = Yii::app()->xbmc->getAbsoluteVfsUrl($response->result->details->path);
+			$imageUrl = Yii::app()->xbmc->getAbsoluteVfsUrl($response->result->details->path);
+		}
+		else
+			$imageUrl = Yii::app()->request->getHostInfo().$this->_path;
 
+		// Resize the image and save it in the cache
 		$image = new Eventviva\ImageResize($imageUrl);
 		$image->resizeToWidth($this->_size);
 		$image->save($this->_cache->getCachePath().DIRECTORY_SEPARATOR.
