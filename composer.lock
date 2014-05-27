@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "28dc16cfdeac17280c3f69fc16a106be",
+    "hash": "0f88b3540818a85ac230491f1a8b067e",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -919,6 +919,66 @@
                 "zf2"
             ],
             "time": "2014-03-03 23:00:13"
+        },
+        {
+            "name": "zetacomponents/system-information",
+            "version": "1.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zetacomponents/SystemInformation.git",
+                "reference": "031a34fb32701419c054840e9676803da5930214"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zetacomponents/SystemInformation/zipball/031a34fb32701419c054840e9676803da5930214",
+                "reference": "031a34fb32701419c054840e9676803da5930214",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "apache2"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Alexeev"
+                },
+                {
+                    "name": "Sebastian Bergmann"
+                },
+                {
+                    "name": "Jan Borsodi"
+                },
+                {
+                    "name": "Raymond Bosman"
+                },
+                {
+                    "name": "Frederik Holljen"
+                },
+                {
+                    "name": "Kore Nordmann"
+                },
+                {
+                    "name": "Derick Rethans"
+                },
+                {
+                    "name": "Vadym Savchuk"
+                },
+                {
+                    "name": "Tobias Schlitt"
+                },
+                {
+                    "name": "Alexandru Stanoi"
+                }
+            ],
+            "description": "Provides access to common system variables, such as CPU type and speed, and the available amount of memory.",
+            "homepage": "https://github.com/zetacomponents",
+            "time": "2009-09-01 10:37:43"
         }
     ],
     "packages-dev": [

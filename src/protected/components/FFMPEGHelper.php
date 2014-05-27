@@ -53,8 +53,11 @@ class FFMPEGHelper
 				break;
 		}
 
-		// Encode in realtime
-		$args[] = '-re';
+		// Threading control
+		$systemInfo = ezcSystemInfo::getInstance();
+		$threads = $systemInfo->cpuCount > 0 ? $systemInfo->cpuCount : 'auto';
+
+		$args[] = '-re -threads '.$threads;
 
 		// Convert to string
 		$argString = '';

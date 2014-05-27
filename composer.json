@@ -13,6 +13,7 @@
 		"mobiledetect/mobiledetectlib": "2.7.*",
 		"netresearch/jsonmapper": "0.1.*",
 		"symfony/process": "2.4.*",
-		"zendframework/zend-http": "2.2.*"
+		"zendframework/zend-http": "2.2.*",
+		"zetacomponents/system-information": "1.0.*"
     }
 }
