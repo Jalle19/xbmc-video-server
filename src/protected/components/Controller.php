@@ -130,6 +130,21 @@ class Controller extends CController
 	}
 	
 	/**
+	 * Registers the custom stylesheet if it exists
+	 */
+	public function registerCustomCss()
+	{
+
+		$customCss = $this->getCssBaseDir().DIRECTORY_SEPARATOR.'custom.css';
+
+		if (is_readable($customCss))
+		{
+			$cs = Yii::app()->clientScript;
+			$cs->registerCssFile(Yii::app()->baseUrl.'/css/custom.css?'.filemtime($customCss));
+		}
+	}
+
+	/**
 	 * @return string the absolute path to the css/ directory
 	 */
 	public function getCssBaseDir()

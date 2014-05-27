@@ -18,9 +18,7 @@ $baseUrl = Yii::app()->baseUrl;
 		$cs->registerCssFile($baseUrl.'/css/styles-min.css?'.filemtime($cssPath));
 		
 		// Register custom stylesheet if one exists
-		$customCss = $this->getCssBaseDir().DIRECTORY_SEPARATOR.'custom.css';
-		if (is_readable($customCss))
-			$cs->registerCssFile($baseUrl.'/css/custom.css?'.filemtime($customCss));
+		$this->registerCustomCss();
 
 		$this->registerScripts();
 		
