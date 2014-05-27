@@ -58,14 +58,19 @@ class SeasonAccordion extends CWidget
 			if (isset($item['contentUrl']))
 				$linkOptions['data-content-url'] = $item['contentUrl'];
 
-			$label = CHtml::link($item['season']->getDisplayName(), '#'.$id, $linkOptions);
+			// Render the contents of the heading
+			$heading = $this->render('_season', array(
+				'linkUrl'=>'#'.$id,
+				'linkOptions'=>$linkOptions,
+				'season'=>$item['season'],
+			), true);
 
 			$bodyOptions = array('class'=>'accordion-body collapse', 'id'=>$id);
 			if ($itemCount === 1)
 				TbHtml::addCssClass('in', $bodyOptions);
 
 			echo CHtml::openTag('div', array('class'=>'accordion-group'));
-			echo CHtml::tag('div', array('class'=>'accordion-heading'), $label);
+			echo CHtml::tag('div', array('class'=>'accordion-heading'), $heading);
 			echo CHtml::openTag('div', $bodyOptions);
 			echo CHtml::tag('div', array('id'=>$contentId, 
 				'class'=>'accordion-inner'), $item['content']);
