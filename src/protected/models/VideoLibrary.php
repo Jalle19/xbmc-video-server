@@ -167,6 +167,23 @@ class VideoLibrary
 	}
 	
 	/**
+	 * Returns information about a single season
+	 * @param int $tvshowId the tv show ID
+	 * @param int $season the season number
+	 * @return Season the season details
+	 */
+	public static function getSeasonDetails($tvshowId, $season)
+	{
+		$seasons = self::getSeasons($tvshowId);
+
+		foreach ($seasons as $seasonObj)
+			if ($seasonObj->season == $season)
+				return $seasonObj;
+
+		return null;
+	}
+
+	/**
 	 * Returns the episodes for the specified show and season
 	 * @param int $tvshowId the TV show ID
 	 * @param int $season the season number
