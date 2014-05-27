@@ -8,18 +8,8 @@
  * @copyright Copyright &copy; Sam Stenvall 2013-
  * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
  */
-abstract class Media extends CComponent
+abstract class Media extends Base
 {
-
-	/**
-	 * @var string
-	 */
-	public $label;
-
-	/**
-	 * @var string
-	 */
-	public $thumbnail;
 
 	/**
 	 * @var float
@@ -70,24 +60,6 @@ abstract class Media extends CComponent
 	 * @var object
 	 */
 	public $streamdetails;
-
-	/**
-	 * @return the ID of this item
-	 */
-	abstract public function getId();
-
-	/**
-	 * @return the display name of this item
-	 */
-	abstract public function getDisplayName();
-	
-	/**
-	 * @return string the artwork for this item
-	 */
-	public function getArtwork()
-	{
-		return $this->thumbnail;
-	}
 
 	/**
 	 * Returns the list of genres as a string
