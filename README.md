@@ -194,6 +194,15 @@ The "Proxy Location" setting is a bit more exotic. Without it, all requests to t
 
 To avoid this we can tell Apache (the actual web server) to forward requests on a particular location (`/xbmc-vfs` in these examples) to `http://user:pass@hostname:port/vfs`. This way your API credentials won't leak through the media URLs.
 
+### Benefits
+
+There are various issues that can be solved by using a reverse proxy:
+
+* XBMC credentials are not exposed through the media URLs
+* External use will work even if the backend is configured with an internal IP address
+* Clicking the "Download" links in Internet Explorer won't require you to enter the API credentials
+* Clicking the "Download" link in Firefox will correctly open the "Save file as" dialog like it should
+
 ### Example
 
 Let's say you have installed XBMC Video Server on one machine (http://xbmc-video-server.example.com/xbmc-video-server/) and XBMC is running on a different machine (http://xbmc.example.com:8080/). What we want to do is forward requests on `http://xbmc-video-server.example.com/xbmc-vfs` to `http://xbmc.example.com:8080/vfs`.
