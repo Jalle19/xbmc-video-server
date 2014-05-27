@@ -130,6 +130,15 @@ class Controller extends CController
 	}
 	
 	/**
+	 * @return string the absolute path to the css/ directory
+	 */
+	public function getCssBaseDir()
+	{
+		return realpath(Yii::app()->basePath.DIRECTORY_SEPARATOR.'..'.
+				DIRECTORY_SEPARATOR.'css');
+	}
+
+	/**
 	 * Redirects to the user's URL referrer, or to the specified fallback URL 
 	 * if no referrer is available. $fallback can be anything that can be 
 	 * passed to CController::redirect().
