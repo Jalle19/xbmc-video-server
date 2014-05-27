@@ -15,6 +15,7 @@
 class Thumbnail
 {
 
+	const SIZE_VERY_SMALL = 70;
 	const SIZE_SMALL = 116;
 	const SIZE_MEDIUM = 160;
 	const SIZE_LARGE = 270;
