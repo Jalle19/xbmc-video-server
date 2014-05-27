@@ -28,5 +28,14 @@ class Browser
 		$detector = new Detection\MobileDetect();
 		return $detector->isMobile() && !$detector->isTablet();
 	}
+	
+	/**
+	 * @return boolean whether the user browser is a tablet browser
+	 */
+	public static function isTablet()
+	{
+		$detector = new Detection\MobileDetect();
+		return $detector->isTablet();
+	}
 
 }
