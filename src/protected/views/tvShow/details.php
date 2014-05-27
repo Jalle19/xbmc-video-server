@@ -16,8 +16,8 @@ $this->pageTitle = $details->getDisplayName();
 		</div>
 		
 		<div class="span9 item-description">
-			<div class="item-top row-fluid">
-				<div class="item-title span6">
+			<div class="item-top">
+				<div class="item-title">
 					<h2>
 						<a href="<?php echo $details->getTVDBUrl(); ?>" target="_blank">
 							<?php echo $details->label; ?>
