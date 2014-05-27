@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "91877c355f2543e3f2ae56fac150aeba",
+    "hash": "28dc16cfdeac17280c3f69fc16a106be",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -469,6 +469,55 @@
             ],
             "description": "Map nested JSON structures onto PHP classes",
             "time": "2014-03-17 12:49:41"
+        },
+        {
+            "name": "symfony/process",
+            "version": "v2.4.5",
+            "target-dir": "Symfony/Component/Process",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Process.git",
+                "reference": "a7118cb290c62068b3c8ecfbf8b2eda8421fb841"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/a7118cb290c62068b3c8ecfbf8b2eda8421fb841",
+                "reference": "a7118cb290c62068b3c8ecfbf8b2eda8421fb841",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Process\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Process Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-05-22 13:46:01"
         },
         {
             "name": "xrstf/ip-utils",
