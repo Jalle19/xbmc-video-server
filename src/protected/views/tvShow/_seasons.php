@@ -11,8 +11,9 @@ if (count($seasons) > 0)
 	// Use lazy-loading for the accordion contents
 	foreach ($seasons as $season)
 	{
+		/* @var $season Season */
 		$items[] = array(
-			'label'=>$season->label,
+			'season'=>$season,
 			'content'=>CHtml::image(Yii::app()->baseUrl.'/images/loader.gif', 'Loader'),
 			// Pass along the URL where the content can be found at
 			'contentUrl'=>$this->createUrl('tvShow/renderEpisodeList', 

@@ -28,6 +28,7 @@ return array(
 		'application.widgets.*',
 		'application.widgets.filter.*',
 		'application.widgets.results.*',
+		'application.widgets.season.*',
 		'bootstrap.helpers.*',
 	),
 

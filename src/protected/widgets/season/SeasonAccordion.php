@@ -58,7 +58,7 @@ class SeasonAccordion extends CWidget
 			if (isset($item['contentUrl']))
 				$linkOptions['data-content-url'] = $item['contentUrl'];
 
-			$label = CHtml::link($item['label'], '#'.$id, $linkOptions);
+			$label = CHtml::link($item['season']->getDisplayName(), '#'.$id, $linkOptions);
 
 			$bodyOptions = array('class'=>'accordion-body collapse', 'id'=>$id);
 			if ($itemCount === 1)
