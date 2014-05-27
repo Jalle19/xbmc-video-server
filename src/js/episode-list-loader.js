@@ -3,6 +3,9 @@ var populatedSeasons = [];
 
 $('.episode-toggle').click(function() {
 	populateSeason(this);
+	
+	// Hide the additional season data displayed when the accordion is closed
+	$(this).parent().parent().find('.hide-when-toggled').toggle(200);
 });
 
 function populateSeason(season) {
