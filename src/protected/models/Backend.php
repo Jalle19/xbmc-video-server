@@ -92,7 +92,7 @@ class Backend extends CActiveRecord
 	 */
 	public function checkConnectivity($attribute)
 	{
-		if (!$this->isAttributesValid(array('hostname', 'port')))
+		if (!$this->areAttributesValid(array('hostname', 'port')))
 			return;
 
 		if (!$this->isConnectable())
@@ -108,7 +108,7 @@ class Backend extends CActiveRecord
 	 */
 	public function checkCredentials($attribute)
 	{
-		if (!$this->isAttributesValid(array('hostname', 'port', 'username', 'password')))
+		if (!$this->areAttributesValid(array('hostname', 'port', 'username', 'password')))
 			return;
 
 		// Create a HTTP client and a GET request
@@ -142,7 +142,7 @@ class Backend extends CActiveRecord
 	 */
 	public function checkServerType($attribute)
 	{
-		if (!$this->isAttributesValid(array('hostname', 'port')))
+		if (!$this->areAttributesValid(array('hostname', 'port')))
 			return;
 
 		// Create a HTTP client and a GET request
@@ -262,7 +262,7 @@ class Backend extends CActiveRecord
 	 * @param array $attributes the attributes to check
 	 * @return boolean whether any of the attributes have errors
 	 */
-	private function isAttributesValid($attributes)
+	private function areAttributesValid($attributes)
 	{
 		foreach ($attributes as $attribute)
 			if ($this->hasErrors($attribute))
