@@ -263,13 +263,24 @@ select {
 	}
 }
 
-.season-download {
-	padding-bottom: 20px;
+.season-episode-list-info {
 	margin-bottom: 20px;
 	border-bottom: 1px dotted #E5E5E5;
-
-	.btn {
-		margin-right: 10px;
+	
+	// Put the margin on the elements inside since they can wrap around on 
+	// small viewports
+	.season-artwork, .season-download {
+		margin-bottom: 20px;
+	}
+	
+	.season-artwork {
+		margin-right: 20px;
+	}
+	
+	.season-download {
+		.btn {
+			margin-right: 10px;
+		}
 	}
 }
 

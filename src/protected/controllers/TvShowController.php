@@ -96,6 +96,8 @@ class TvShowController extends MediaController
 	 */
 	public function actionRenderEpisodeList($tvshowid, $season)
 	{
+		$season = VideoLibrary::getSeasonDetails($tvshowid, $season);
+		
 		$this->renderPartial('_episodes', array(
 			'tvshowId'=>$tvshowid, 'season'=>$season));
 	}

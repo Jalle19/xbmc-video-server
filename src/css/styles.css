@@ -7629,12 +7629,18 @@ select {
 .season .season-info {
   padding-left: 15px;
 }
-.season-download {
-  padding-bottom: 20px;
+.season-episode-list-info {
   margin-bottom: 20px;
   border-bottom: 1px dotted #E5E5E5;
 }
-.season-download .btn {
+.season-episode-list-info .season-artwork,
+.season-episode-list-info .season-download {
+  margin-bottom: 20px;
+}
+.season-episode-list-info .season-artwork {
+  margin-right: 20px;
+}
+.season-episode-list-info .season-download .btn {
   margin-right: 10px;
 }
 .rating-star {
