@@ -2,6 +2,7 @@
 /vendor/
 /src/protected/data/xbmc-video-server.db
 /src/images/image-cache
-/src/css/custom.css
+/src/css/custom-login.css
+/src/css/custom-styles.css
 composer.phar
 whitelist.override

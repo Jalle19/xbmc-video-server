@@ -130,17 +130,17 @@ class Controller extends CController
 	}
 	
 	/**
-	 * Registers the custom stylesheet if it exists
+	 * Registers the specified custom stylesheet if it exists
+	 * @param string the stylesheet filename
 	 */
-	public function registerCustomCss()
+	public function registerCustomCss($styleheet)
 	{
-
-		$customCss = $this->getCssBaseDir().DIRECTORY_SEPARATOR.'custom.css';
+		$customCss = $this->getCssBaseDir().DIRECTORY_SEPARATOR.$styleheet;
 
 		if (is_readable($customCss))
 		{
 			$cs = Yii::app()->clientScript;
-			$cs->registerCssFile(Yii::app()->baseUrl.'/css/custom.css?'.filemtime($customCss));
+			$cs->registerCssFile(Yii::app()->baseUrl.'/css/'.$styleheet.'?'.filemtime($customCss));
 		}
 	}
 
