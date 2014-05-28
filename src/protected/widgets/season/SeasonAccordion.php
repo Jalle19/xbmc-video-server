@@ -59,7 +59,7 @@ class SeasonAccordion extends CWidget
 				$linkOptions['data-content-url'] = $item['contentUrl'];
 
 			// Render the contents of the heading
-			$heading = $this->render('_season', array(
+			$heading = $this->render('_seasonAccordionHeading', array(
 				'linkUrl'=>'#'.$id,
 				'linkOptions'=>$linkOptions,
 				'season'=>$item['season'],
