@@ -91,15 +91,13 @@ class TvShowController extends MediaController
 	}
 	
 	/**
-	 * Renders the episode list for the specified TV show and season. This 
-	 * action must only be called using AJAX.
+	 * AJAX wrapper for renderEpisodeList.
+	 * @see renderEpisodeList
 	 */
 	public function actionRenderEpisodeList($tvshowid, $season)
 	{
-		$season = VideoLibrary::getSeasonDetails($tvshowid, $season);
-		
-		$this->renderPartial('_episodes', array(
-			'tvshowId'=>$tvshowid, 'season'=>$season));
+		$this->layout = false;
+		$this->renderEpisodeList($tvshowid, $season);
 	}
 	
 	/**
@@ -205,6 +203,19 @@ class TvShowController extends MediaController
 		return new LibraryDataProvider($episodes, 'label', array(
 			'pagination'=>false,
 		));
+	}
+	
+	/**
+	 * Renders the list of episodes for the specified TV show and season
+	 * @param int $tvshowid the TV show ID
+	 * @param int $season the season
+	 */
+	private function renderEpisodeList($tvshowid, $season)
+	{
+		$season = VideoLibrary::getSeasonDetails($tvshowid, $season);
+
+		$this->render('_episodes', array(
+			'tvshowId'=>$tvshowid, 'season'=>$season));
 	}
 
 }
