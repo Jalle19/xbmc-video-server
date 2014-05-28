@@ -19,18 +19,25 @@ class Seasons extends CWidget
 	 * @var Season[] the seasons
 	 */
 	public $seasons;
+	
+	/**
+	 * @var string the current display mode
+	 */
+	public $displayMode;
 
 	/**
 	 * Initializes the widget
 	 */
 	public function init()
 	{
+		// Determine the display mode
+		
 		/* @var $ctrl MediaController */
 		$ctrl = Yii::app()->controller;
-		$displayMode = $ctrl->getDisplayMode(DisplayMode::CONTEXT_SEASONS);
+		$this->displayMode = $ctrl->getDisplayMode(DisplayMode::CONTEXT_SEASONS);
 
 		// Register some required scripts
-		if ($this->hasSeasons() && $displayMode === DisplayMode::MODE_LIST)
+		if ($this->hasSeasons() && $this->displayMode === DisplayMode::MODE_LIST)
 		{
 			// Register JavaScript for asynchronously loading episode lists
 			Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.
