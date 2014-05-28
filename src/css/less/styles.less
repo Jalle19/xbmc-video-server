@@ -144,95 +144,93 @@ select {
 	border-top: 1px solid @tableBorder;
 }
 
-.item-details {
-	.item-thumbnail {
-		display: block;
-		border: 1px dotted #E5E5E5;
-		padding: 2px;
-		
-		// because Chrome sucks
-		&.episode-thumbnail {
-			max-width: 116px;
+.item-thumbnail {
+	display: block;
+	border: 1px dotted #E5E5E5;
+	padding: 2px;
+
+	// because Chrome sucks
+	&.episode-thumbnail {
+		max-width: 116px;
+	}
+}
+
+.item-links {
+	margin-top: 20px;
+}
+
+.item-description {
+	.item-top, .item-info, .item-plot {
+		border-bottom: 1px dotted #E5E5E5;
+		margin-bottom: 20px;
+	}
+
+	.item-top {
+		position: relative;
+
+		.media-flags {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+		}
+
+		&, .media-flags {
+			padding-bottom: 20px;
 		}
 	}
 
-	.item-links {
-		margin-top: 20px;
+	.item-title {
+		h2, p {
+			display: inline-block;
+		}
+
+		h2 {
+			margin-right: 10px;
+		}
+
+		p {
+			font-size: larger;
+		}
+
+		.tagline {
+			display: block;
+			margin: -10px 0 0 0;
+			font-style: italic;
+		}
 	}
 
-	.item-description {
-		.item-top, .item-info, .item-plot {
-			border-bottom: 1px dotted #E5E5E5;
-			margin-bottom: 20px;
-		}
-
-		.item-top {
-			position: relative;
-
-			.media-flags {
-				position: absolute;
-				bottom: 0;
-				right: 0;
-			}
-
-			&, .media-flags {
-				padding-bottom: 20px;
-			}
-		}
-
-		.item-title {
-			h2, p {
-				display: inline-block;
-			}
-
-			h2 {
-				margin-right: 10px;
-			}
+	.item-info {
+		.item-rating {
+			margin-right: 20px;
 
 			p {
-				font-size: larger;
-			}
-
-			.tagline {
-				display: block;
-				margin: -10px 0 0 0;
-				font-style: italic;
+				margin-bottom: 5px;
 			}
 		}
+	}
 
-		.item-info {
-			.item-rating {
-				margin-right: 20px;
+	.item-metadata {
+		p {
+			float: left;
+			padding: 0 10px;
+			border-left: 1px solid #E5E5E5;
 
-				p {
-					margin-bottom: 5px;
-				}
+			&:first-child {
+				border: 0;
+				padding-left: 0;
 			}
 		}
+	}
 
-		.item-metadata {
-			p {
-				float: left;
-				padding: 0 10px;
-				border-left: 1px solid #E5E5E5;
-
-				&:first-child {
-					border: 0;
-					padding-left: 0;
-				}
-			}
+	.item-plot {
+		p {
+			font-style: italic;
 		}
+	}
 
-		.item-plot {
-			p {
-				font-style: italic;
-			}
-		}
-
-		.actor-grid .thumbnail {
-			.image-container {
-				min-height: 182px;
-			}
+	.actor-grid .thumbnail {
+		.image-container {
+			min-height: 182px;
 		}
 	}
 }

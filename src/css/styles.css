@@ -7542,69 +7542,69 @@ select {
 .pager {
   border-top: 1px solid #dddddd;
 }
-.item-details .item-thumbnail {
+.item-thumbnail {
   display: block;
   border: 1px dotted #E5E5E5;
   padding: 2px;
 }
-.item-details .item-thumbnail.episode-thumbnail {
+.item-thumbnail.episode-thumbnail {
   max-width: 116px;
 }
-.item-details .item-links {
+.item-links {
   margin-top: 20px;
 }
-.item-details .item-description .item-top,
-.item-details .item-description .item-info,
-.item-details .item-description .item-plot {
+.item-description .item-top,
+.item-description .item-info,
+.item-description .item-plot {
   border-bottom: 1px dotted #E5E5E5;
   margin-bottom: 20px;
 }
-.item-details .item-description .item-top {
+.item-description .item-top {
   position: relative;
 }
-.item-details .item-description .item-top .media-flags {
+.item-description .item-top .media-flags {
   position: absolute;
   bottom: 0;
   right: 0;
 }
-.item-details .item-description .item-top,
-.item-details .item-description .item-top .media-flags {
+.item-description .item-top,
+.item-description .item-top .media-flags {
   padding-bottom: 20px;
 }
-.item-details .item-description .item-title h2,
-.item-details .item-description .item-title p {
+.item-description .item-title h2,
+.item-description .item-title p {
   display: inline-block;
 }
-.item-details .item-description .item-title h2 {
+.item-description .item-title h2 {
   margin-right: 10px;
 }
-.item-details .item-description .item-title p {
+.item-description .item-title p {
   font-size: larger;
 }
-.item-details .item-description .item-title .tagline {
+.item-description .item-title .tagline {
   display: block;
   margin: -10px 0 0 0;
   font-style: italic;
 }
-.item-details .item-description .item-info .item-rating {
+.item-description .item-info .item-rating {
   margin-right: 20px;
 }
-.item-details .item-description .item-info .item-rating p {
+.item-description .item-info .item-rating p {
   margin-bottom: 5px;
 }
-.item-details .item-description .item-metadata p {
+.item-description .item-metadata p {
   float: left;
   padding: 0 10px;
   border-left: 1px solid #E5E5E5;
 }
-.item-details .item-description .item-metadata p:first-child {
+.item-description .item-metadata p:first-child {
   border: 0;
   padding-left: 0;
 }
-.item-details .item-description .item-plot p {
+.item-description .item-plot p {
   font-style: italic;
 }
-.item-details .item-description .actor-grid .thumbnail .image-container {
+.item-description .actor-grid .thumbnail .image-container {
   min-height: 182px;
 }
 .season-list {
