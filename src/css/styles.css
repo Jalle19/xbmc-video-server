@@ -7547,6 +7547,9 @@ select {
   border: 1px dotted #E5E5E5;
   padding: 2px;
 }
+.item-details .item-thumbnail.episode-thumbnail {
+  max-width: 116px;
+}
 .item-details .item-links {
   margin-top: 20px;
 }
