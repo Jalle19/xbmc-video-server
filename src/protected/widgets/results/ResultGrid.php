@@ -70,7 +70,7 @@ class ResultGrid extends CListView
 		parent::renderSummary();
 		$summaryContent = ob_get_clean();
 		
-		ResultHelper::renderDisplayModeToggle($summaryContent);
+		ResultHelper::renderDisplayModeToggle($summaryContent, DisplayMode::CONTEXT_RESULTS);
 	}
 
 }

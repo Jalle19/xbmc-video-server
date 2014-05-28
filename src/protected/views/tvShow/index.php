@@ -12,15 +12,15 @@ $this->pageTitle = $title = Yii::t('TVShows', 'TV Shows');
 $this->widget('TVShowFilter', array(
 	'model'=>$filterForm));
 
-switch ($this->getDisplayMode())
+switch ($this->getDisplayMode(DisplayMode::CONTEXT_RESULTS))
 {
-	case MediaController::DISPLAY_MODE_GRID:
+	case DisplayMode::MODE_GRID:
 		$this->widget('ResultGrid', array(
 			'dataProvider'=>$dataProvider,
 			'itemView'=>'//videoLibrary/_mediaGridItem',
 		));
 		break;
-	case MediaController::DISPLAY_MODE_LIST:
+	case DisplayMode::MODE_LIST:
 		$this->widget('ResultListTVShows', array(
 			'dataProvider'=>$dataProvider,
 		));

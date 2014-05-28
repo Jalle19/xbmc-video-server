@@ -13,9 +13,6 @@
 abstract class MediaController extends Controller
 {
 
-	const DISPLAY_MODE_GRID = 'grid';
-	const DISPLAY_MODE_LIST = 'list';
-
 	/**
 	 * @return array list of actions that a spectator should be prohibited from 
 	 * performing
@@ -70,46 +67,74 @@ abstract class MediaController extends Controller
 	}
 
 	/**
-	 * Sets the display mode for results and redirects the user back to where 
-	 * he came from.
+	 * Sets the display mode for the specified context and redirects the user 
+	 * back to where he came from.
 	 * @param string $mode the desired display mode
+	 * @param string $context the context
 	 */
-	public function actionSetDisplayMode($mode)
+	public function actionSetDisplayMode($mode, $context)
 	{
-		$this->setDisplayMode($mode);
+		$this->setDisplayMode(new DisplayMode($mode, $context));
 		$this->redirectToPrevious(Yii::app()->homeUrl);
 	}
 
 	/**
-	 * Setter for displayMode.
-	 * @param string $mode the desired display mode
+	 * Persists the specified display mode
+	 * @param DisplayMode $displayMode the display mode
 	 * @throws CHttpException if the specified mode is invalid
 	 */
-	public function setDisplayMode($mode)
+	public function setDisplayMode($displayMode)
 	{
-		// Check that the mode is valid
-		if (!in_array($mode, array(self::DISPLAY_MODE_GRID, self::DISPLAY_MODE_LIST)))
+		if (!$displayMode->validate())
 			throw new InvalidRequestException();
 
-		Yii::app()->session->add('mediaDisplayMode', $mode);
+		Yii::app()->session->add($this->getSessionKey($displayMode->context), $displayMode);
 	}
 
 	/**
-	 * Getter for displayMode. If no mode has been set we default to grid mode 
-	 * when the browser is determined to be a desktop or tablet and list mode 
-	 * for phones.
+	 * Returns the current display mode for the specified context
+	 * @param string $context the context
 	 */
-	public function getDisplayMode()
+	public function getDisplayMode($context)
 	{
-		$displayMode = Yii::app()->session->get('mediaDisplayMode');
+		/* @var $model DisplayMode */
+		$model = Yii::app()->session->get($this->getSessionKey($context));
 
-		// Use list mode by default for phones
-		if ($displayMode === null)
-			$displayMode = $this->isMobile() ? self::DISPLAY_MODE_LIST : self::DISPLAY_MODE_GRID;
-
+		// Use default display mode if no specific one is stored
+		if ($model === null)
+			$displayMode = $this->getDefaultDisplayMode($context);
+		else
+			$displayMode = $model->mode;
+		
 		return $displayMode;
 	}
 	
+	/**
+	 * Returns the default display mode for the specified context
+	 * @param string $context the context
+	 * @return string the display mode
+	 */
+	private function getDefaultDisplayMode($context)
+	{
+		// Mobile browsers always get list mode regardless of context, and 
+		// the season context defaults to list mode too
+		if ($this->isMobile() || $context === DisplayMode::CONTEXT_SEASONS)
+			return DisplayMode::MODE_LIST;
+
+		return DisplayMode::MODE_GRID;
+	}
+
+	/**
+	 * Returns the session key to use for storing a display mode with the 
+	 * specified context
+	 * @param string $context the display mode context
+	 * @return string the session key
+	 */
+	private function getSessionKey($context)
+	{
+		return 'mediaDisplayMode['.$context.']';
+	}
+
 	/**
 	 * Returns an array of playlist items for the specified media item's files.
 	 * Most items have just one file but some have more, hence it returns an 
