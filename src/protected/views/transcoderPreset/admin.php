@@ -28,7 +28,6 @@
 		'resolution',
 		'audio_codec',
 		'audio_bitrate',
-		'audio_channels',
 		array(
 			'name'=>'audio_channels',
 			'value'=>function($data) {
