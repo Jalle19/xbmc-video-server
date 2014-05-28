@@ -53,7 +53,7 @@ class EpisodeList extends CWidget
 			),
 			array(
 				'header'=>Yii::t('GenericList', 'Title'),
-				'name'=>'displayName',
+				'name'=>'title',
 			),
 			array(
 				'type'=>'raw',

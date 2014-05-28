@@ -197,6 +197,7 @@ class TvShowController extends MediaController
 					'streamdetails',
 					'thumbnail',
 					'file',
+					'title',
 					'showtitle',
 		));
 

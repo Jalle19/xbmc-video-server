@@ -35,6 +35,11 @@ class Episode extends Media
 	 */
 	public $season;
 	
+	/**
+	 * @var string the episode title (not the same as the label)
+	 */
+	public $title;
+	
 	public function getId()
 	{
 		return $this->episodeid;
