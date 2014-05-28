@@ -266,7 +266,7 @@ Regardless of whether you use a reverse proxy or not, your smb:// login credenti
 Interface customization
 -----------------------
 
-If for some reason you're not satisfied with the look and feel of the application, you can create a file named `custom.css` in the `src/css/` directory. When this file exists it will be used as a stylesheet on all pages, so here you can override anything you want.
+If for some reason you're not satisfied with the look and feel of the application, you can customize it by adding your own stylesheets. There are two stylesheets you can add, `custom-login.css` and `custom-styles.css`. These files should be placed in the `src/css` directory. If they exist they are loaded after the applications default stylesheet, which means you can override anything you want. The `custom-login.css` is only used on the login page so if you don't need to customize anything there you don't have to create the file.
 
 Developers
 ----------
