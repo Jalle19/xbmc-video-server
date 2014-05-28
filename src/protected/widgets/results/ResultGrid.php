@@ -15,6 +15,12 @@ class ResultGrid extends CListView
 {
 	
 	/**
+	 * @var string the display mode context to use in the toggle switch. 
+	 * Defaults to DisplayMode::CONTEXT_RESULTS 
+	 */
+	public $displayModeContext = DisplayMode::CONTEXT_RESULTS;
+
+	/**
 	 * Initializes the component
 	 */
 	public function init()
@@ -70,7 +76,7 @@ class ResultGrid extends CListView
 		parent::renderSummary();
 		$summaryContent = ob_get_clean();
 		
-		ResultHelper::renderDisplayModeToggle($summaryContent, DisplayMode::CONTEXT_RESULTS);
+		ResultHelper::renderDisplayModeToggle($summaryContent, $this->displayModeContext);
 	}
 
 }
