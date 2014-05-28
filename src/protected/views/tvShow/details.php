@@ -75,13 +75,8 @@ $this->pageTitle = $details->getDisplayName();
 		</div>
 	</div>
 	
-	<div class="row">
-		<div class="span12">
-			<h3><?php echo Yii::t('TVShows', 'Seasons'); ?></h3>
-			
-			<?php echo $this->renderPartial('_seasons', array(
-				'details'=>$details,
-				'seasons'=>$seasons)); ?>
-		</div>
-	</div>
+	<?php $this->widget('Seasons', array(
+		'tvshow'=>$details,
+		'seasons'=>$seasons,
+	)); ?>
 </div>
