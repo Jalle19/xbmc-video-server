@@ -35,6 +35,11 @@ class Season extends Base
 	 * @var int the season ID
 	 */
 	public $seasonid;
+	
+	/**
+	 * @var int the TV show ID
+	 */
+	public $tvshowid;
 
 	public function getId()
 	{
@@ -42,12 +47,18 @@ class Season extends Base
 	}
 
 	/**
-	 * @return mixed the poster or null if it's not available
+	 * @return mixed the season poster. If this is the first season of a show 
+	 * and the artwork is not available we fall back to the show's artwork
 	 */
 	public function getArtwork()
 	{
 		if (isset($this->art->poster))
 			return $this->art->poster;
+		elseif ($this->season === 1)
+		{
+			$tvshow = VideoLibrary::getTVShowDetails($this->tvshowid, array('art', 'thumbnail'));
+			return $tvshow->getArtwork();
+		}
 
 		return null;
 	}

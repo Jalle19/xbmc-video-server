@@ -156,7 +156,7 @@ class VideoLibrary
 	public static function getSeasons($tvshowId)
 	{
 		$params = array('tvshowid'=>(int)$tvshowId, 
-			'properties'=>array('season', 'art', 'episode', 'showtitle'));
+			'properties'=>array('season', 'art', 'episode', 'showtitle', 'tvshowid'));
 		
 		self::addDefaultSort($params);
 		
