@@ -34,11 +34,16 @@ class ResultHelper
 				
 				echo $summary;
 	
+				// Get the current display mode so we can show an icon next to it
+				$currentMode = Yii::app()->controller->getDisplayMode();
+				
 				echo TbHtml::buttonDropdown(Yii::t('DisplayMode', 'Display mode'), array(
 					array('label'=>Yii::t('DisplayMode', 'Grid view'), 'url'=>array(
-						'setDisplayMode', 'mode'=>MediaController::DISPLAY_MODE_GRID)),
+						'setDisplayMode', 'mode'=>MediaController::DISPLAY_MODE_GRID), 
+						'icon'=>$currentMode ===  MediaController::DISPLAY_MODE_GRID ? TbHtml::ICON_OK : ''),
 					array('label'=>Yii::t('DisplayMode', 'List view'), 'url'=>array(
-						'setDisplayMode', 'mode'=>MediaController::DISPLAY_MODE_LIST)),
+						'setDisplayMode', 'mode'=>MediaController::DISPLAY_MODE_LIST), 
+						'icon'=>$currentMode ===  MediaController::DISPLAY_MODE_LIST ? TbHtml::ICON_OK : ''),
 				), array(
 					'color'=>TbHtml::BUTTON_COLOR_INFO,
 					'icon'=>'reorder',
