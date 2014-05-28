@@ -28,7 +28,10 @@ abstract class Base extends CComponent
 	/**
 	 * @return the display name of this item
 	 */
-	abstract public function getDisplayName();
+	public function getDisplayName()
+	{
+		return $this->label;
+	}
 
 	/**
 	 * @return string the artwork for this item

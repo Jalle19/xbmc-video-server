@@ -35,11 +35,6 @@ class Episode extends Media
 	 */
 	public $season;
 	
-	public function getDisplayName()
-	{
-		return $this->label;
-	}
-	
 	public function getId()
 	{
 		return $this->episodeid;

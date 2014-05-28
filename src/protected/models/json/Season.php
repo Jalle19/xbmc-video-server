@@ -36,11 +36,6 @@ class Season extends Base
 	 */
 	public $seasonid;
 
-	public function getDisplayName()
-	{
-		return $this->label;
-	}
-
 	public function getId()
 	{
 		return $this->seasonid;
