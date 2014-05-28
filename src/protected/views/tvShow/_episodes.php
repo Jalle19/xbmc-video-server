@@ -2,7 +2,7 @@
 
 /* @var $season Season */
 /* @var $this TvShowController */
-$dataProvider = $this->getEpisodeDataProvider($tvshowId, $season->season);
+$dataProvider = $this->getEpisodeDataProvider($season->tvshowid, $season->season);
 
 ?>
 <div class="season-episode-list-info row-fluid">
@@ -28,7 +28,7 @@ $dataProvider = $this->getEpisodeDataProvider($tvshowId, $season->season);
 				'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
 				'size'=>TbHtml::BUTTON_SIZE_LARGE,
 				'url'=>$this->createUrl('tvShow/getSeasonPlaylist', 
-						array('tvshowId'=>$tvshowId, 'season'=>$season->season)),
+						array('tvshowId'=>$season->tvshowid, 'season'=>$season->season)),
 				'class'=>'fontastic-icon-play',
 			)).' '.Yii::t('TVShows', 'or choose individual episodes from the list below'); ?>
 		</div>

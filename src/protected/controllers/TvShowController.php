@@ -97,7 +97,9 @@ class TvShowController extends MediaController
 	public function actionRenderEpisodeList($tvshowid, $season)
 	{
 		$this->layout = false;
-		$this->renderEpisodeList($tvshowid, $season);
+		
+		$season = VideoLibrary::getSeasonDetails($tvshowid, $season);
+		$this->renderEpisodeList($season);
 	}
 	
 	/**
@@ -206,16 +208,13 @@ class TvShowController extends MediaController
 	}
 	
 	/**
-	 * Renders the list of episodes for the specified TV show and season
-	 * @param int $tvshowid the TV show ID
-	 * @param int $season the season
+	 * Renders the list of episodes for the specified season
+	 * @param Season $season the season
 	 */
-	private function renderEpisodeList($tvshowid, $season)
+	private function renderEpisodeList($season)
 	{
-		$season = VideoLibrary::getSeasonDetails($tvshowid, $season);
-
 		$this->render('_episodes', array(
-			'tvshowId'=>$tvshowid, 'season'=>$season));
+			'season'=>$season));
 	}
 
 }
