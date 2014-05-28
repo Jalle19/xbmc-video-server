@@ -91,6 +91,20 @@ class TvShowController extends MediaController
 	}
 	
 	/**
+	 * Wrapper for renderEpisodeList()
+	 * @see renderEpisodeList()
+	 */
+	public function actionSeason($tvshowid, $season)
+	{
+		$season = VideoLibrary::getSeasonDetails($tvshowid, $season);
+		
+		$this->pageTitle = Yii::t('TVShow', 'Season {season} - {showTitle}', array(
+			'{season}'=>$season->season, '{showTitle}'=>$season->showtitle));
+		
+		$this->renderEpisodeList($season);
+	}
+
+	/**
 	 * AJAX wrapper for renderEpisodeList.
 	 * @see renderEpisodeList
 	 */

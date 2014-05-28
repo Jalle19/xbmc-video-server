@@ -16,7 +16,7 @@ $leftItems = array(
 		'items'=>array(
 			array(
 				'label'=>Yii::t('Menu', 'Browse'), 'url'=>array('tvShow/index'),
-				'active'=>in_array($this->route, array('tvShow/index', 'tvShow/details')),
+				'active'=>in_array($this->route, array('tvShow/index', 'tvShow/details', 'tvShow/season')),
 			),
 			array(
 				'label'=>Yii::t('Menu', 'Recently added'), 'url'=>array('tvShow/recentlyAdded'),
