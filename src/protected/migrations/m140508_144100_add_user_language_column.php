@@ -1,25 +1,21 @@
 <?php
 
-class m140508_144100_add_user_language_column extends CDbMigration
+class m140508_144100_add_user_language_column extends AddColumnMigration
 {
 
-	public function up()
+	protected function getColumnName()
 	{
-		$table = Yii::app()->db->schema->getTable('user');
-
-		if ($table === null)
-			return false;
-
-		// Check if column already exists
-		$columns = $table->getColumnNames();
-
-		if (!in_array('language', $columns))
-			$this->addColumn('user', 'language', 'string NULL');
+		return 'language';
 	}
 
-	public function down()
+	protected function getColumnType()
 	{
-		$this->dropColumn('user', 'language');
+		return 'string NULL';
+	}
+
+	protected function getTableName()
+	{
+		return 'user';
 	}
 
 }

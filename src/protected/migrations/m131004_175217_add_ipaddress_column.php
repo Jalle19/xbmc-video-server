@@ -1,27 +1,21 @@
 <?php
 
-class m131004_175217_add_ipaddress_column extends CDbMigration
+class m131004_175217_add_ipaddress_column extends AddColumnMigration
 {
 
-	public function up()
+	protected function getColumnName()
 	{
-		// Check that the table exists, if not it will be created automatically 
-		// later and we don't have to do anything
-		$table = Yii::app()->db->schema->getTable('log');
-
-		if ($table === null)
-			return true;
-
-		// Check if column already exists
-		$columns = $table->getColumnNames();
-
-		if (!in_array('source_address', $columns))
-			$this->addColumn('log', 'source_address', 'VARCHAR(45)');
+		return 'source_address';
 	}
 
-	public function down()
+	protected function getColumnType()
 	{
-		$this->dropColumn('log', 'source_address');
+		return 'VARCHAR(45)';
+	}
+
+	protected function getTableName()
+	{
+		return 'log';
 	}
 
 }
