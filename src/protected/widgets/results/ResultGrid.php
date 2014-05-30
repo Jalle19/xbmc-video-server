@@ -28,6 +28,12 @@ class ResultGrid extends CListView
 		$this->pager = ResultHelper::getDefaultPagerConfiguration();
 		$this->itemsTagName = 'ul';
 		$this->itemsCssClass = 'thumbnails item-grid';
+		
+		// needed to update the URL when page is changed
+		$this->enableHistory = true;
+		
+		// trigger unveiling of images when the grid is updated through AJAX
+		$this->afterAjaxUpdate = new CJavaScriptExpression("function() { $('.lazy').unveil(); }");
 
 		parent::init();
 	}
@@ -56,14 +62,6 @@ class ResultGrid extends CListView
 	public function renderKeys()
 	{
 
-	}
-	
-	/**
-	 * Override parent implementation and do nothing since we don't need this
-	 */
-	public function registerClientScript()
-	{
-		
 	}
 	
 	/**
