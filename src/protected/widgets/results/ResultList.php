@@ -22,6 +22,9 @@ abstract class ResultList extends TbGridView
 		$this->pager = $this->pager = ResultHelper::getDefaultPagerConfiguration();
 		$this->pagerCssClass = 'pager';
 		
+		// needed to update the URL when page is changed
+		$this->enableHistory = true;
+		
 		// Make the list sortable
 		$this->dataProvider->makeSortable();
 		
