@@ -9,6 +9,9 @@ $this->pageTitle = $title = Yii::t('TVShows', 'TV Shows');
 
 <?php 
 
+$this->widget('TVShowFilter', array(
+	'model'=>$filterForm));
+
 $this->renderPartial('//videoLibrary/_results', array(
 	'dataProvider'=>$dataProvider,
 	'widgetList'=>'ResultListTVShows'));
