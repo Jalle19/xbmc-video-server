@@ -18,8 +18,8 @@
  */
 return array (
   'Click the Watch button to start streaming the video (open 
-						the file in your favorite media player), or download the 
-						individual files for later viewing using the links below it.' => 'Pour lancer le streaming cliquez sur le bouton Voir un fichier à télécharger au format M3U vous sera proposé (l\'ouvrir avec le logiciel VLC). Vous pouvez aussi télécharger le film pour le voir plus tard en cliquant sur le lien Télécharger.',
+					the file in your favorite media player), or download the 
+					individual files for later viewing using the links below it.' => 'Pour lancer le streaming cliquez sur le bouton Voir un fichier à télécharger au format M3U vous sera proposé (l\'ouvrir avec le logiciel VLC). Vous pouvez aussi télécharger le film pour le voir plus tard en cliquant sur le lien Télécharger.',
   'Click an image to see other movies with that person, or click the name to go to the person\'s IMDb page' => 'Cliquez sur l\'image d\'un(e) acteur/trice pour voir tous les films disponibles dans lesquels il/elle joue. En cliquant sur son nom vous accéderez à la page de sa filmographie sur le site IMDb.',
   'Movies' => 'Films',
   'Recently added movies' => 'Derniers films ajoutés',

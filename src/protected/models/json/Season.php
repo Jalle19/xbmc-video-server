@@ -68,7 +68,7 @@ class Season extends Base
 	 */
 	public function getEpisodesString()
 	{
-		return Yii::t('Season', '{num} episodes', array('{num}'=>$this->episode));
+		return Yii::t('TVShows', '{num} episodes', array('{num}'=>$this->episode));
 	}
 
 }

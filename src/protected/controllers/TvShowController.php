@@ -98,7 +98,7 @@ class TvShowController extends MediaController
 	{
 		$season = VideoLibrary::getSeasonDetails($tvshowid, $season);
 		
-		$this->pageTitle = Yii::t('TVShow', 'Season {season} - {showTitle}', array(
+		$this->pageTitle = Yii::t('TVShows', 'Season {season} - {showTitle}', array(
 			'{season}'=>$season->season, '{showTitle}'=>$season->showtitle));
 		
 		$this->renderEpisodeList($season);
