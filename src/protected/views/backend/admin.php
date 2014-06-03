@@ -38,6 +38,7 @@ $this->pageTitle = $title = Yii::t('Backend', 'Manage backends');
 			}
 		),
 		'macAddress',
+		'subnetMask',
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 			'template'=>'{update} {delete}',

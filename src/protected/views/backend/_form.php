@@ -23,8 +23,15 @@ echo $form->textFieldControlGroup($model, 'proxyLocation', array(
 	'help'=>Yii::t('Backend', 'See {readmeUrl} for how to configure this', 
 			array('{readmeUrl}'=>CHtml::link($readmeUrl, $readmeUrl)))));
 
+echo '<hr />';
+
+echo FormHelper::helpBlock(Yii::t('Backend', 'The following items are only required if you want the backend to me woken using Wake on LAN'));
+
 echo $form->textFieldControlGroup($model, 'macAddress', array(
 	'help'=>Yii::t('Backend', 'If a MAC address is entered a Wake-on-LAN packet will be sent to it whenever someone logs in')));
+
+echo $form->textFieldControlGroup($model, 'subnetMask', array(
+	'help'=>Yii::t('Backend', "If you don't know what this, leave it empty. Otherwise enter the subnet mask, e.g. 255.255.0.0")));
 
 ?>
 <div class="form-actions">

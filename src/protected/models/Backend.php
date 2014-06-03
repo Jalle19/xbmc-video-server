@@ -13,6 +13,7 @@
  * @property string $proxyLocation
  * @property int $default
  * @property string $macAddress
+ * @property string $subnetMask
  * 
  * @author Sam Stenvall <neggelandia@gmail.com>
  * @copyright Copyright &copy; Sam Stenvall 2014-
@@ -55,6 +56,7 @@ class Backend extends CActiveRecord
 			array('hostname', 'checkServerType'),
 			array('username', 'checkCredentials'),
 			array('macAddress', 'validateMacAddress'),
+			array('subnetMask', 'validateSubnetMask'),
 		);
 	}
 	
@@ -84,6 +86,7 @@ class Backend extends CActiveRecord
 			'proxyLocation'=>Yii::t('Backend', 'Proxy location'),
 			'default'=>Yii::t('Backend', 'Set as default'),
 			'macAddress'=>Yii::t('Backend', 'MAC address'),
+			'subnetMask'=>Yii::t('Backend', 'Subnet mask'),
 		);
 	}
 	
@@ -224,14 +227,28 @@ class Backend extends CActiveRecord
 		if (!empty($this->macAddress) && !preg_match('/^([0-9A-F]{2}[:-]){5}([0-9A-F]{2})$/i', $this->macAddress))
 			$this->addError($attribute, Yii::t('Backend', 'Invalid MAC address'));
 	}
+	
+	/**
+	 * Validates the subnet mask attribute
+	 * @param string $attribute the attribute being validated
+	 */
+	public function validateSubnetMask($attribute)
+	{
+		if (!empty($this->subnetMask) && !filter_var($this->subnetMask, FILTER_VALIDATE_IP))
+			$this->addError($attribute, Yii::t('Backend', 'Invalid subnet mask'));
+	}
 
 	/**
-	 * Formats the MAC address before saving the model
+	 * Formats the MAC address and sets the default subnet mask before saving 
+	 * the model
 	 * @return boolean whether the save should happen or not
 	 */
 	protected function beforeSave()
 	{
 		$this->macAddress = strtolower(str_replace('-', ':', $this->macAddress));
+		
+		if (empty($this->subnetMask))
+			$this->subnetMask = '255.255.255.0';
 
 		return parent::beforeSave();
 	}
