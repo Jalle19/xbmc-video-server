@@ -1,5 +1,7 @@
 <?php
 
+use \yiilazyimage\components\LazyImage as LazyImage;
+
 /* @var $season Season */
 /* @var $this TvShowController */
 $dataProvider = $this->getEpisodeDataProvider($season->tvshowid, $season->season);
@@ -7,7 +9,7 @@ $dataProvider = $this->getEpisodeDataProvider($season->tvshowid, $season->season
 ?>
 <div class="season-episode-list-info row-fluid">
 	<div class="season-artwork pull-left">
-		<?php echo Thumbnail::lazyImage(new ThumbnailSeason($season->getArtwork(), Thumbnail::SIZE_MEDIUM)); ?>
+		<?php echo LazyImage::image(new ThumbnailSeason($season->getArtwork(), Thumbnail::SIZE_MEDIUM)); ?>
 	</div>
 	
 	<h3>

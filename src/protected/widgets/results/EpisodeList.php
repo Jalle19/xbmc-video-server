@@ -1,5 +1,7 @@
 <?php
 
+use \yiilazyimage\components\LazyImage as LazyImage;
+
 /**
  * Renders an EpisodeGrid with the column definitions defined by getColumns().
  *
@@ -48,7 +50,7 @@ class EpisodeList extends CWidget
 				'header'=>'',
 				'value'=>function($data) {
 					$thumbnail = new ThumbnailVideo($data->thumbnail, Thumbnail::SIZE_SMALL);
-					return Thumbnail::lazyImage($thumbnail, array('class'=>'item-thumbnail episode-thumbnail'));
+					return LazyImage::image($thumbnail, '', array('class'=>'item-thumbnail episode-thumbnail'));
 				}
 			),
 			array(

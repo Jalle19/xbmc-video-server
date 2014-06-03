@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "91877c355f2543e3f2ae56fac150aeba",
+    "hash": "b777a5a4704b598de8b5f9392088555d",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -382,6 +382,44 @@
                 "jsonrpc"
             ],
             "time": "2014-02-24 12:23:28"
+        },
+        {
+            "name": "jalle19/yii-lazy-image",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Jalle19/yii-lazy-image.git",
+                "reference": "900423a19010f686b9791c2d0d7e29b1e260ff17"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Jalle19/yii-lazy-image/zipball/900423a19010f686b9791c2d0d7e29b1e260ff17",
+                "reference": "900423a19010f686b9791c2d0d7e29b1e260ff17",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "yiisoft/yii": "1.1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "yiilazyimage": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Lazy image loader for the Yii framework",
+            "homepage": "https://github.com/Jalle19/yii-lazy-image",
+            "keywords": [
+                "image",
+                "lazy",
+                "loader",
+                "yii"
+            ],
+            "time": "2014-06-03 13:28:26"
         },
         {
             "name": "mobiledetect/mobiledetectlib",

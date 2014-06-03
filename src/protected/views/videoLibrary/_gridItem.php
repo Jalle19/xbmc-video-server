@@ -4,10 +4,12 @@
 		<div class="image-container">
 			<?php 
 			
+			$image = \yiilazyimage\components\LazyImage::image($thumbnail);
+			
 			if ($itemUrl)
-				echo CHtml::link(Thumbnail::lazyImage($thumbnail), $itemUrl);
+				echo CHtml::link($image, $itemUrl);
 			else
-				echo Thumbnail::lazyImage($thumbnail);
+				echo $image;
 			
 			?>
 		</div>

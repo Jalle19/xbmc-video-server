@@ -115,15 +115,6 @@ class Controller extends CController
 					'.min.js', CClientScript::POS_END);
 		}
 
-		// Register the lazy loader
-		$script = YII_DEBUG ? 'jquery.unveil.js' : 'jquery.unveil.min.js';
-		$cs->registerScriptFile(Yii::app()->baseUrl
-				.'/js/jquery-unveil/'.$script, CClientScript::POS_END);
-
-		$cs->registerScript(__CLASS__.'_unveil', '
-			$(".lazy").unveil(50);
-		', CClientScript::POS_READY);
-		
 		// Register the JavaScript logger
 		$cs->registerScriptFile(Yii::app()->baseUrl.'/js/js-logger.js', 
 				CClientScript::POS_END);

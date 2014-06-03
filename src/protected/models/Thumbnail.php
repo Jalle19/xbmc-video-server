@@ -109,21 +109,6 @@ class Thumbnail
 	}
 
 	/**
-	 * Returns the HTML for a lazy loaded image.
-	 * @param string $url the image URL
-	 * @param array $htmlOptions the htmlOptions for the image tag
-	 * @return string
-	 */
-	public static function lazyImage($url, $htmlOptions = array())
-	{
-		TbArray::defaultValue('data-src', $url, $htmlOptions);
-		TbHtml::addCssClass('lazy', $htmlOptions);
-
-		return CHtml::image(Yii::app()->baseUrl.'/images/loader.gif', '', 
-				$htmlOptions);
-	}
-	
-	/**
 	 * Converts this object to the URL to the thumbnail it represents. If a 
 	 * cached copy exists, that URL will be returned, otherwise a URL which 
 	 * generates the image is returned. This way the image will only be 
