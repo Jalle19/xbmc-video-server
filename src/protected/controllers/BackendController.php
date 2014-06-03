@@ -117,7 +117,7 @@ class BackendController extends AdminOnlyController
 
 			// Check whether this is the first backend ever created, if so we 
 			// redirect to the settings page
-			$firstRun = Yii::app()->backendManager->getCurrent() === null;
+			$firstRun = $this->getCurrent() === null;
 			
 			if ($model->save())
 			{
@@ -187,7 +187,7 @@ class BackendController extends AdminOnlyController
 	{
 		$model = $this->loadModel($id);
 		
-		if ($model == Yii::app()->backendManager->getCurrent())
+		if ($model == $this->getCurrent())
 			throw new CHttpException(403, Yii::t('Backend', "You can't delete the current backend. Please switch to another one if you want to delete this."));
 
 		$model->delete();
@@ -199,6 +199,14 @@ class BackendController extends AdminOnlyController
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 	
+	/**
+	 * @return Backend the current backend
+	 */
+	private function getCurrent()
+	{
+		return Yii::app()->backendManager->getCurrent();
+	}
+
 	/**
 	 * Finds and returns the backend with the specified ID
 	 * @param int $id the backend ID
