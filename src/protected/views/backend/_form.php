@@ -16,10 +16,15 @@ echo $form->textFieldControlGroup($model, 'port', array('span'=>1));
 echo $form->textFieldControlGroup($model, 'username');
 echo $form->passwordFieldControlGroup($model, 'password');
 
+echo '<hr />';
+
 $readmeUrl = 'https://github.com/Jalle19/xbmc-video-server#proxy-location';
 echo $form->textFieldControlGroup($model, 'proxyLocation', array(
 	'help'=>Yii::t('Backend', 'See {readmeUrl} for how to configure this', 
 			array('{readmeUrl}'=>CHtml::link($readmeUrl, $readmeUrl)))));
+
+echo $form->textFieldControlGroup($model, 'macAddress', array(
+	'help'=>Yii::t('Backend', 'If a MAC address is entered a Wake-on-LAN packet will be sent to it whenever someone logs in')));
 
 ?>
 <div class="form-actions">

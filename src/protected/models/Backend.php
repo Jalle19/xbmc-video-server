@@ -12,6 +12,7 @@
  * @property string $password
  * @property string $proxyLocation
  * @property int $default
+ * @property string $macAddress
  * 
  * @author Sam Stenvall <neggelandia@gmail.com>
  * @copyright Copyright &copy; Sam Stenvall 2014-
@@ -53,6 +54,7 @@ class Backend extends CActiveRecord
 			array('hostname', 'checkConnectivity'),
 			array('hostname', 'checkServerType'),
 			array('username', 'checkCredentials'),
+			array('macAddress', 'validateMacAddress'),
 		);
 	}
 	
@@ -81,6 +83,7 @@ class Backend extends CActiveRecord
 			'password'=>Yii::t('Backend', 'Password'),
 			'proxyLocation'=>Yii::t('Backend', 'Proxy location'),
 			'default'=>Yii::t('Backend', 'Set as default'),
+			'macAddress'=>Yii::t('Backend', 'MAC address'),
 		);
 	}
 	
@@ -212,6 +215,27 @@ class Backend extends CActiveRecord
 		}
 	}
 	
+	/**
+	 * Validates the MAC address attribute
+	 * @param string $attribute the attribute being validated
+	 */
+	public function validateMacAddress($attribute)
+	{
+		if (!empty($this->macAddress) && !preg_match('/^([0-9A-F]{2}[:-]){5}([0-9A-F]{2})$/i', $this->macAddress))
+			$this->addError($attribute, Yii::t('Backend', 'Invalid MAC address'));
+	}
+
+	/**
+	 * Formats the MAC address before saving the model
+	 * @return boolean whether the save should happen or not
+	 */
+	protected function beforeSave()
+	{
+		$this->macAddress = strtolower(str_replace('-', ':', $this->macAddress));
+
+		return parent::beforeSave();
+	}
+
 	/**
 	 * Makes sure that no other backend is set as default if this one is
 	 */

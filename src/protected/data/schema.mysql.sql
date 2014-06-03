@@ -8,6 +8,7 @@ CREATE TABLE `backend` (
 	`password` VARCHAR(255) NOT NULL, 
 	`proxyLocation` VARCHAR(255), 
 	`default` INT NOT NULL,
+    `macAddress` VARCHAR(255), 
 	PRIMARY KEY (`id`)
 );
 

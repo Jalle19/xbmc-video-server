@@ -37,6 +37,7 @@ $this->pageTitle = $title = Yii::t('Backend', 'Manage backends');
 				return $data->default ? TbHtml::icon(TbHtml::ICON_OK) : '';
 			}
 		),
+		'macAddress',
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 			'template'=>'{update} {delete}',
