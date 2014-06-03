@@ -11,13 +11,12 @@ class BackendController extends AdminOnlyController
 {
 	
 	/**
-	 * Override parent to force AJAX only on the delete action
 	 * @return array the filters
 	 */
 	public function filters()
 	{
 		return array_merge(parent::filters(), array(
-			'ajaxOnly + delete',
+			'ajaxOnly + delete, ajaxCheckConnectivity',
 		));
 	}
 
@@ -94,6 +93,50 @@ class BackendController extends AdminOnlyController
 			Yii::app()->user->setFlash('info', Yii::t('Misc', "You'll have to flush the API call cache to see any newly scanned content"));
 
 		$this->redirectToPrevious(Yii::app()->homeUrl);
+	}
+
+	/**
+	 * Displays the "waiting for connection" page where the user is asked to 
+	 * wait until the backend has been woken using WOL
+	 */
+	public function actionWaitForConnectivity()
+	{
+		$backend = $this->getCurrent();
+
+		// Determine the IP address of the backend
+		$ipAddress = null;
+
+		if (filter_var($backend->hostname, FILTER_VALIDATE_IP))
+			$ipAddress = $backend->hostname;
+		else
+			$ipAddress = gethostbyname($backend->hostname);
+
+		// Send the WOL packet
+		$wol = new \Phpwol\Factory();
+		$magicPacket = $wol->magicPacket();
+
+		if (!$ipAddress || !$magicPacket->send($backend->macAddress, $ipAddress, $backend->subnetMask))
+			throw new CHttpException(500, Yii::t('Backend', 'Unable to send WOL packet'));
+
+		// Register the poller which redirects once the backend is reachable
+		Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.
+				'/js/wol-poll.js', CClientScript::POS_END);
+
+		// Render the "waiting" page
+		Yii::app()->user->setFlash('error', Yii::t('Backend', 'The current backend is not connectable at the moment'));
+
+		$this->render('waitForConnectivity');
+	}
+
+	/**
+	 * AJAX polling URL which returns whether the current backend is 
+	 * connectable or not
+	 */
+	public function actionAjaxCheckConnectivity()
+	{
+		$this->layout = false;
+		echo json_encode(array('status'=>$this->getCurrent()->isConnectable()));
+		Yii::app()->end();
 	}
 
 	/**
