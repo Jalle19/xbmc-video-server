@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "b777a5a4704b598de8b5f9392088555d",
+    "hash": "0ae88f0faf41af33679e415e0b9a1c0b",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -507,6 +507,41 @@
             ],
             "description": "Map nested JSON structures onto PHP classes",
             "time": "2014-03-17 12:49:41"
+        },
+        {
+            "name": "tomnomnom/phpwol",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TomNomNom/phpwol.git",
+                "reference": "1c31562040a14d0512669dd38e4421b2c600370f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TomNomNom/phpwol/zipball/1c31562040a14d0512669dd38e4421b2c600370f",
+                "reference": "1c31562040a14d0512669dd38e4421b2c600370f",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Phpwol": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Hudson",
+                    "email": "mail@tomnomnom.com",
+                    "homepage": "http://tomhudson.co.uk/"
+                }
+            ],
+            "description": "Wake On LAN for PHP",
+            "homepage": "https://github.com/TomNomNom/phpwol/",
+            "time": "2013-02-18 00:19:45"
         },
         {
             "name": "xrstf/ip-utils",
