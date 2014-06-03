@@ -17,10 +17,17 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'This is where you configure your backends. A 
-	backend is an instance of XBMC that the application connects to and serves 
-	library contents from. If you specify more than one backend, a new item 
-	will appear in the main menu, allowing you to easily switch backends.' => 'Ici vous configurez vos sources. Une source est une instance du logiciel XBMC qui gère le contenu de la librairie. Si vous configurez plusieurs sources, un nouvel objet apparaitra dans le menu, vous permettant de passer d\'une source à l\'autre.',
+  'If a MAC address is entered a Wake-on-LAN packet will be sent to it whenever someone logs in' => '',
+  'If you don\'t know what this, leave it empty. Otherwise enter the subnet mask, e.g. 255.255.0.0' => '',
+  'Invalid MAC address' => '',
+  'Invalid subnet mask' => '',
+  'MAC address' => '',
+  'Subnet mask' => '',
+  'The current backend is not connectable at the moment' => '',
+  'The following items are only required if you want the backend to me woken using Wake on LAN' => '',
+  'Unable to send WOL packet' => '',
+  'Waiting for connection' => '',
+  'Wake on LAN packet sent, this page will be automatically refreshed once the backend is reachable' => '',
   'Backend created successfully' => 'Source crée avec succès',
   'Backend name' => 'Nom de la source',
   'Backend updated successfully' => 'Source mise à jour avec succès',
@@ -37,6 +44,10 @@ return array (
   'Set as default' => 'Par défaut',
   'The server does not ask for authentication' => 'Le serveur ne demande pas pour l\'authentification',
   'There must be a default backend' => 'Il doit y avoir une source par défaut',
+  'This is where you configure your backends. A 
+	backend is an instance of XBMC that the application connects to and serves 
+	library contents from. If you specify more than one backend, a new item 
+	will appear in the main menu, allowing you to easily switch backends.' => 'Ici vous configurez vos sources. Une source est une instance du logiciel XBMC qui gère le contenu de la librairie. Si vous configurez plusieurs sources, un nouvel objet apparaitra dans le menu, vous permettant de passer d\'une source à l\'autre.',
   'Unable to connect to {hostname}:{port}, make sure XBMC is running and has its web server enabled' => 'Impossible de se connecter à : {hostname}:{port}, assurez-vous que le logiciel XBMC est lancé avec son option Serveur Web activée',
   'Unable to switch backends, the backend {backendName} is not connectable' => 'Impossible d\'échanger les sources, la source {backendName} n\'est pas connectable',
   'Update {backendName}' => 'Mise à jour de : {backendName}',
