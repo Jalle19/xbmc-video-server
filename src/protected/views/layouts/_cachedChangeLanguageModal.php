@@ -12,6 +12,7 @@ if ($this->beginCache('ChangeLanguageModal', array(
 		return implode('_', array(
 			Yii::app()->user->role,
 			Yii::app()->language,
+			Yii::app()->controller->route
 		));
 	}
 )))
