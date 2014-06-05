@@ -21,6 +21,11 @@
  */
 class Backend extends CActiveRecord
 {
+	
+	/**
+	 * Timeout (in seconds) limit while checking if a backend is connectable
+	 */
+	const SOCKET_TIMEOUT = 1.5;
 
 	/**
 	 * Returns the static model of the specified AR class.
@@ -275,9 +280,8 @@ class Backend extends CActiveRecord
 		$errno = 0;
 		$errStr = '';
 
-		// The default timeout is 1 minute, reduce that to 5 seconds
-		//
-		if (@fsockopen($this->hostname, $this->port, $errno, $errStr, 5) === false || $errno !== 0)
+		if (@fsockopen($this->hostname, $this->port, $errno, $errStr, 
+				self::SOCKET_TIMEOUT) === false || $errno !== 0)
 		{
 			Yii::log('Failed to connect to '.$this->hostname.':'.$this->port.'. The exact error was: '.$errStr.' ('.$errno.')', CLogger::LEVEL_ERROR, 'Backend');
 			return false;
