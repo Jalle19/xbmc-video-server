@@ -52,7 +52,7 @@ class Controller extends CController
 		return array(
 			'requireLogin',
 			'checkConfiguration',
-			'checkBackendConnectivity - backend/waitForConnectivity, backend/ajaxCheckConnectivity',
+			'checkBackendConnectivity - backend/waitForConnectivity, backend/ajaxCheckConnectivity, site/login',
 			array('ChangeLanguageFilter'),
 		);
 	}
