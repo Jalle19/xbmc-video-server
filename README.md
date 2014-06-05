@@ -10,7 +10,7 @@ Features
 * Browse seasons and episodes for a TV show
 * Stream media using an M3U playlist with one click
 * User management (application requires login), including logging to see who's doing what and restricting access based on a whitelist
-* Supports multiple XBMC instances and allows easy switching between them
+* Supports multiple XBMC instances and allows easy switching between them, including the ability to wake them using WOL if it's not available
 * No configuration files
 * Multiple languages
 * Customizable interface
@@ -185,6 +185,8 @@ Initial setup
 Once the installation is complete, use your web browser to browse to /xbmc-video-server on your web server (if you did the installation steps on your local machine the URL would be http://localhost/xbmc-video-server). You will be presented with a login form. Log in with username "admin" and password "admin" (you'll be able to change this later).
 
 Once logged in, you will be asked to configure a backend. A backend is an instance of XBMC that the application connects to and displays library contents from. Here you should specify XBMC's hostname and port as well as the username and password for XBMC's web server.
+
+If you generally put your XBMC computer to sleep you can enter its MAC address when configuring the backend. When a MAC address is present, XBMC Video Server will automatically wake the computer using Wake on LAN if it is deemed unconnectable. A loading screen is presented while this happens.
 
 If you specify more than one backend, a "Change backend" menu item will appear which allows you to switch which backend is being used. This way you don't have to install this application once for every XBMC instance you have, or you can use it to connect to a friend's library (provided he has opened the relevant ports in his firewall).
 
