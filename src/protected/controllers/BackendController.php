@@ -52,27 +52,20 @@ class BackendController extends AdminOnlyController
 	{
 		$model = $this->loadModel($id);
 		
-		// Only switch if the new backend is connectable
-		if ($model->isConnectable())
-		{
-			Yii::app()->backendManager->setCurrent($model);
-			
-			$this->log('"%s" switched backend to "%s"', Yii::app()->user->name, 
-							$model->name);
-			Yii::app()->user->setFlash('success', Yii::t('Backend', 'Changed backend to {backendName}', 
-					array('{backendName}'=>$model->name)));
-			
-			// Redirect to homeUrl if the previous page was either a TV show 
-			// or movie details page since they will not be the same across 
-			// backends
-			$referrer = Yii::app()->request->urlReferrer;
+		Yii::app()->backendManager->setCurrent($model);
 
-			if (strpos($referrer, 'tvShow/details') !== false || strpos($referrer, 'movie/details') !== false)
-				$this->redirect(Yii::app()->homeUrl);
-		}
-		else
-			Yii::app()->user->setFlash('error', Yii::t('Backend', 'Unable to switch backends, the backend {backendName} is not connectable', 
-					array('{backendName}'=>$model->name)));
+		$this->log('"%s" switched backend to "%s"', Yii::app()->user->name, 
+						$model->name);
+		Yii::app()->user->setFlash('success', Yii::t('Backend', 'Changed backend to {backendName}', 
+				array('{backendName}'=>$model->name)));
+
+		// Redirect to homeUrl if the previous page was either a TV show 
+		// or movie details page since they will not be the same across 
+		// backends
+		$referrer = Yii::app()->request->urlReferrer;
+
+		if (strpos($referrer, 'tvShow/details') !== false || strpos($referrer, 'movie/details') !== false)
+			$this->redirect(Yii::app()->homeUrl);
 		
 		$this->redirectToPrevious(Yii::app()->homeUrl);
 	}

@@ -49,7 +49,6 @@ return array (
 	library contents from. If you specify more than one backend, a new item 
 	will appear in the main menu, allowing you to easily switch backends.' => 'Ici vous configurez vos sources. Une source est une instance du logiciel XBMC qui gère le contenu de la librairie. Si vous configurez plusieurs sources, un nouvel objet apparaitra dans le menu, vous permettant de passer d\'une source à l\'autre.',
   'Unable to connect to {hostname}:{port}, make sure XBMC is running and has its web server enabled' => 'Impossible de se connecter à : {hostname}:{port}, assurez-vous que le logiciel XBMC est lancé avec son option Serveur Web activée',
-  'Unable to switch backends, the backend {backendName} is not connectable' => 'Impossible d\'échanger les sources, la source {backendName} n\'est pas connectable',
   'Update {backendName}' => 'Mise à jour de : {backendName}',
   'Username' => 'Nom d\'utilisateur',
   'You can\'t delete the current backend. Please switch to another one if you want to delete this.' => 'Vous ne pouvez pas supprimer la source actuelle. Veuillez échanger avec une autre si vous souhaitez supprimer celle-ci',
