@@ -16,6 +16,7 @@ if (count(Backend::model()->findAll()) === 1)
 				intval(Setting::getValue('cacheApiCalls')),
 				intval(Yii::app()->backendManager->getCurrent() === null),
 				Yii::app()->language,
+				Yii::app()->baseUrl,
 			));
 		}
 	)))
