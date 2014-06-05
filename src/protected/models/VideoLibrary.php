@@ -124,6 +124,7 @@ class VideoLibrary
 			'file',
 			'tvshowid',
 			'showtitle',
+			'title',
 		);
 
 		$response = Yii::app()->xbmc->performRequest(
