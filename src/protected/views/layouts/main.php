@@ -51,7 +51,13 @@ $baseUrl = Yii::app()->baseUrl;
 			
 		</div>
 		
-		<?php $this->renderPartial('//layouts/_cachedChangeLanguageModal'); ?>
+		<?php $this->widget('bootstrap.widgets.TbModal', array(
+			'id'=>'change-language-modal',
+			'header'=>Yii::t('Language', 'Change language'),
+			'closeText'=>false,
+			'content'=>$this->renderPartial('//layouts/_cachedChangeLanguageModalContent', array(
+				'model'=>new ChangeLanguageForm()), true),
+		)); ?>
 	</body>
 	
 </html>
