@@ -22,7 +22,7 @@ $this->pageTitle = $details->getDisplayName().' - '.Yii::t('Movies', 'Movies');
 		if (Yii::app()->user->role !== User::ROLE_SPECTATOR)
 		{
 			?>
-			<div class="item-links">
+			<div class="hidden-phone">
 				<h3><?php echo Yii::t('Movies', 'Watch / Download'); ?></h3>
 
 				<p>
@@ -30,12 +30,12 @@ $this->pageTitle = $details->getDisplayName().' - '.Yii::t('Movies', 'Movies');
 					the file in your favorite media player), or download the 
 					individual files for later viewing using the links below it.'); ?>
 				</p>
-
-				<?php $this->widget('RetrieveMovieWidget', array(
-					'links'=>$movieLinks,
-					'details'=>$details,
-				)); ?>
 			</div>
+
+			<?php $this->widget('RetrieveMovieWidget', array(
+				'links'=>$movieLinks,
+				'details'=>$details,
+			)); ?>
 			<?php
 		}
 
@@ -60,7 +60,7 @@ $this->pageTitle = $details->getDisplayName().' - '.Yii::t('Movies', 'Movies');
 
 			</div>
 
-			<div class="span6 hidden-phone">
+			<div class="span6">
 				<?php $this->widget('MediaFlags', array(
 					'streamDetails'=>$details->streamdetails,
 					'file'=>$details->file
@@ -108,19 +108,23 @@ $this->pageTitle = $details->getDisplayName().' - '.Yii::t('Movies', 'Movies');
 			</p>
 		</div>
 
-		<h3><?php echo Yii::t('Media', 'Cast'); ?></h3>
+		<div class="cast">
+		
+			<h3><?php echo Yii::t('Media', 'Cast'); ?></h3>
 
-		<?php echo FormHelper::helpBlock(Yii::t('Movies', "Click an image to see other movies with that person, or click the name to go to the person's IMDb page")); ?>
+			<?php echo FormHelper::helpBlock(Yii::t('Movies', "Click an image to see other movies with that person, or click the name to go to the person's IMDb page")); ?>
 
-		<div class="row-fluid">
-			<?php $this->widget('zii.widgets.CListView', array(
-				'dataProvider'=>$actorDataProvider,
-				'itemView'=>'_actorGridItem',
-				'itemsTagName'=>'ul',
-				'itemsCssClass'=>'thumbnails actor-grid',
-				'enablePagination'=>false,
-				'template'=>'{items}'
-			)); ?>
+			<div class="row-fluid">
+				<?php $this->widget('zii.widgets.CListView', array(
+					'dataProvider'=>$actorDataProvider,
+					'itemView'=>'_actorGridItem',
+					'itemsTagName'=>'ul',
+					'itemsCssClass'=>'thumbnails actor-grid',
+					'enablePagination'=>false,
+					'template'=>'{items}'
+				)); ?>
+			</div>
+			
 		</div>
 	</div>
 </div>

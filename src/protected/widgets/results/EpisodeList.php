@@ -60,6 +60,9 @@ class EpisodeList extends CWidget
 			array(
 				'type'=>'raw',
 				'header'=>Yii::t('EpisodeList', 'Plot'),
+				'cssClassExpression'=>function() {
+					return 'episode-list-plot';
+				},
 				'value'=>function($data) {
 					Yii::app()->controller->renderPartial('_plotStreamDetails', array('episode'=>$data));
 				}

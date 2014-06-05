@@ -29,7 +29,7 @@ class ResultHelper
 	{
 		?>
 		<div class="row">
-			<div class="span6 pull-right display-mode-toggle">
+			<div class="span12 pull-right display-mode-toggle">
 				<?php 
 				
 				echo $summary;

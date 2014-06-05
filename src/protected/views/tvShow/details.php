@@ -56,19 +56,23 @@ $this->pageTitle = $details->getDisplayName();
 			<p><?php echo $details->getPlot(); ?></p>
 		</div>
 
-		<h3 class="hidden-phone"><?php echo Yii::t('Media', 'Cast'); ?></h3>
+		<div class="cast">
+			
+			<h3><?php echo Yii::t('Media', 'Cast'); ?></h3>
 
-		<?php echo FormHelper::helpBlock(Yii::t('TVShows', "Click the name to go to the person's IMDb page")); ?>
+			<?php echo FormHelper::helpBlock(Yii::t('TVShows', "Click the name to go to the person's IMDb page")); ?>
 
-		<div class="row-fluid hidden-phone">
-			<?php $this->widget('zii.widgets.CListView', array(
-				'dataProvider'=>$actorDataProvider,
-				'itemView'=>'/videoLibrary/_actorGridItem',
-				'itemsTagName'=>'ul',
-				'itemsCssClass'=>'thumbnails actor-grid',
-				'enablePagination'=>false,
-				'template'=>'{items}'
-			)); ?>
+			<div class="row-fluid">
+				<?php $this->widget('zii.widgets.CListView', array(
+					'dataProvider'=>$actorDataProvider,
+					'itemView'=>'/videoLibrary/_actorGridItem',
+					'itemsTagName'=>'ul',
+					'itemsCssClass'=>'thumbnails actor-grid',
+					'enablePagination'=>false,
+					'template'=>'{items}'
+				)); ?>
+			</div>
+			
 		</div>
 
 	</div>

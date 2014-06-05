@@ -8,33 +8,6 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
-.clearfix {
-  *zoom: 1;
-}
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-.clearfix:after {
-  clear: both;
-}
-.hide-text {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
-}
-.input-block-level {
-  display: block;
-  width: 100%;
-  min-height: 30px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
 article,
 aside,
 details,
@@ -4137,6 +4110,33 @@ a.thumbnail:focus {
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 @-ms-viewport {
   width: device-width;
 }
@@ -7531,13 +7531,31 @@ select {
 .actor-grid .caption a {
   color: #95a5a6 !important;
 }
+.item-grid .caption p,
+.actor-grid .caption p {
+  margin-bottom: 0;
+}
 .item-grid .thumbnail .image-container {
   width: 100%;
-  height: 240px;
   text-align: center;
 }
+@media (min-width: 768px) {
+  .item-grid .thumbnail .image-container {
+    height: 140px;
+  }
+}
+@media (min-width: 980px) {
+  .item-grid .thumbnail .image-container {
+    height: 195px;
+  }
+}
+@media (min-width: 1200px) {
+  .item-grid .thumbnail .image-container {
+    height: 240px;
+  }
+}
 .item-grid .thumbnail .image-container img {
-  max-height: 240px;
+  max-height: 100%;
 }
 .pager {
   border-top: 1px solid #dddddd;
@@ -7604,8 +7622,23 @@ select {
 .item-description .item-plot p {
   font-style: italic;
 }
-.item-description .actor-grid .thumbnail .image-container {
-  min-height: 182px;
+@media (min-width: 768px) {
+  .item-description .actor-grid .thumbnail .image-container {
+    height: 105px;
+  }
+}
+@media (min-width: 980px) {
+  .item-description .actor-grid .thumbnail .image-container {
+    height: 148px;
+  }
+}
+@media (min-width: 1200px) {
+  .item-description .actor-grid .thumbnail .image-container {
+    height: 185px;
+  }
+}
+.item-description .actor-grid .thumbnail .image-container img {
+  max-height: 100%;
 }
 .season-list {
   border: 1px solid #E5E5E5;
@@ -7694,4 +7727,31 @@ select {
 }
 #change-language-modal .modal-footer {
   display: none;
+}
+/**
+ * This file contains styles intended for screens smaller than 767px wide
+ */
+@media (max-width: 767px) {
+  .item-grid .thumbnail .image-container,
+  .episode-thumbnail,
+  .cast,
+  .media-flags {
+    display: none;
+  }
+  .episode-list-plot p {
+    max-height: 9.3em;
+    overflow: hidden;
+    margin-bottom: 0;
+  }
+  .item-grid .caption {
+    min-height: 0;
+  }
+}
+/**
+ * This file contains styles intended for screens smaller than 979px wide
+ */
+@media (max-width: 979px) {
+  .media-flags {
+    display: none;
+  }
 }

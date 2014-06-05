@@ -1,0 +1,24 @@
+/**
+ * This file contains styles intended for screens smaller than 767px wide
+ */
+
+@media (max-width: 767px) {
+	.item-grid .thumbnail .image-container,
+	.episode-thumbnail,
+	.cast,
+	.media-flags {
+		display: none;
+	}
+	
+	.episode-list-plot p {
+		// minor hack to keep long plot descriptions from taking up the whole 
+		// screen
+		max-height: 9.3em;
+		overflow: hidden;
+		margin-bottom: 0;
+	}
+	
+	.item-grid .caption {
+		min-height: 0;
+	}
+}

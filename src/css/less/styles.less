@@ -123,6 +123,10 @@ select {
 		a {
 			color: @gray !important;
 		}
+		
+		p {
+			margin-bottom: 0;
+		}
 	}
 }
 
@@ -130,11 +134,24 @@ select {
 	.thumbnail {
 		.image-container {
 			width: 100%;
-			height: 240px;
 			text-align: center;
 
+			// vary the height of the image container (and thus the image) 
+			// depending on the viewport
+			@media (min-width: 768px) {
+				height: 140px;
+			}
+			
+			@media (min-width: 980px) {
+				height: 195px;
+			}
+			
+			@media (min-width: 1200px) {
+				height: 240px;
+			}
+			
 			img {
-				max-height: 240px;
+				max-height: 100%;
 			}
 		}
 	}
@@ -230,7 +247,21 @@ select {
 
 	.actor-grid .thumbnail {
 		.image-container {
-			min-height: 182px;
+			@media (min-width: 768px) {
+				height: 105px;
+			}
+			
+			@media (min-width: 980px) {
+				height: 148px;
+			}
+			
+			@media (min-width: 1200px) {
+				height: 185px;
+			}
+			
+			img {
+				max-height: 100%;
+			}
 		}
 	}
 }
@@ -354,3 +385,7 @@ select {
 		display: none;
 	}
 }
+
+// Import overrides for small screens
+@import "styles-max-767.less";
+@import "styles-max-979.less";
