@@ -50,7 +50,7 @@ class VideoLibrary
 	 */
 	public static function getMovies($params = array())
 	{
-		self::addDefaultSort($params);
+		self::addDefaultSort($params, 'sorttitle');
 		self::ensureProperties($params, self::$_defaultMovieProperties);
 		
 		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetMovies', $params);
@@ -266,17 +266,19 @@ class VideoLibrary
 	}
 	
 	/**
-	 * Adds a default sorting method to the specified parameters
+	 * Adds the specified sort method to the request parameters. The sort 
+	 * method defaults to "label":
 	 * @param array $params the parameters
+	 * @param string $sortMethod the sort method to use
 	 */
-	private static function addDefaultSort(&$params)
+	private static function addDefaultSort(&$params, $sortMethod = 'label')
 	{
 		if (!isset($params['sort']))
 		{
 			$params['sort'] = array(
 				'order'=>self::SORT_ORDER_ASCENDING,
 				'ignorearticle'=>(boolean)Setting::getValue('ignoreArticle'),
-				'method'=>'sorttitle');
+				'method'=>$sortMethod);
 		}
 	}
 	
