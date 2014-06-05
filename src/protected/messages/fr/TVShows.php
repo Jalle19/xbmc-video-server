@@ -17,7 +17,7 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Season {season} - {showTitle}' => 'Séries {season} - {showTitle}',
+  'Season {season} - {showTitle}' => 'Saison {season} - {showTitle}',
   '{num} episodes' => '{num} épisodes',
   'Click the name to go to the person\'s IMDb page' => 'Cliquez sur le nom d\'un(e) acteur/trice pour voir la page de sa filmographie sur le site IMDb.',
   'Recently added episodes' => 'Derniers épisodes ajoutés',
