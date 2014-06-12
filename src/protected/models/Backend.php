@@ -274,8 +274,10 @@ class Backend extends CActiveRecord
 	
 	/**
 	 * @return boolean whether this backend is connectable
+	 * @param boolean whether unsuccessful attempts should be logged. Defaults 
+	 * to true.
 	 */
-	public function isConnectable()
+	public function isConnectable($logFailure = true)
 	{
 		$errno = 0;
 		$errStr = '';
@@ -283,7 +285,9 @@ class Backend extends CActiveRecord
 		if (@fsockopen($this->hostname, $this->port, $errno, $errStr, 
 				self::SOCKET_TIMEOUT) === false || $errno !== 0)
 		{
-			Yii::log('Failed to connect to '.$this->hostname.':'.$this->port.'. The exact error was: '.$errStr.' ('.$errno.')', CLogger::LEVEL_ERROR, 'Backend');
+			if ($logFailure)
+				Yii::log('Failed to connect to '.$this->hostname.':'.$this->port.'. The exact error was: '.$errStr.' ('.$errno.')', CLogger::LEVEL_ERROR, 'Backend');
+			
 			return false;
 		}
 

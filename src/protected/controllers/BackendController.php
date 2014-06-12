@@ -128,7 +128,7 @@ class BackendController extends AdminOnlyController
 	public function actionAjaxCheckConnectivity()
 	{
 		$this->layout = false;
-		echo json_encode(array('status'=>$this->getCurrent()->isConnectable()));
+		echo json_encode(array('status'=>$this->getCurrent()->isConnectable(false)));
 		Yii::app()->end();
 	}
 
