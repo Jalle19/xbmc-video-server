@@ -1,0 +1,23 @@
+{
+	"name": "xbmc-video-server",
+	"version": "1.5.3",
+	"description": "Web interface for streaming or download media from an XBMC library",
+	"main": "Gruntfile.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"devDependencies": {
+		"grunt": "~0.4.5",
+		"grunt-contrib-less": "~0.11.0",
+		"grunt-contrib-watch": "~0.6.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Jalle19/xbmc-video-server.git"
+	},
+	"author": "Sam Stenvall",
+	"license": "GPL-3.0",
+	"bugs": {
+		"url": "https://github.com/Jalle19/xbmc-video-server/issues"
+	}
+}

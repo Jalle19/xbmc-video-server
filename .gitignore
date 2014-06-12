@@ -6,3 +6,4 @@
 /src/css/custom-styles.css
 composer.phar
 whitelist.override
+/node_modules

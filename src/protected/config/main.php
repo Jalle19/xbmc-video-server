@@ -9,11 +9,9 @@ return array(
 	'name'=>'XBMC Video Server',
 	'defaultController'=>'movie',
 
-	// preloaded components. Uncomment "less" in order to compile the LESS 
-	// files on the fly (requires node.js and lessc)
+	// preloaded components
 	'preload'=>array(
 		'log', 
-		//'less'
 	),
 	
 	// autoloading model and component classes
@@ -93,20 +91,6 @@ return array(
 		),
 		'languageManager'=>array(
 			'class'=>'LanguageManager',
-		),
-		'less'=>array(
-			'class'=>'composer.crisu83.yii-less.components.LessServerCompiler',
-			'files'=>array(
-				'css/less/styles.less'=>'css/styles.css',
-				'css/less/login.less'=>'css/login.css',
-			),
-			// LessServerCompiler-specific settings
-			'nodePath'=>'/usr/local/bin/node',
-			'compilerPath'=>'/usr/local/bin/lessc',
-			'strictImports'=>false,
-			'compression'=>false,
-			'optimizationLevel'=>2,
-			'forceCompile'=>false,
 		),
 		'user'=>array(
 			'class'=>'WebUser',
