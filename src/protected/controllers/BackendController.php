@@ -59,14 +59,20 @@ class BackendController extends AdminOnlyController
 		Yii::app()->user->setFlash('success', Yii::t('Backend', 'Changed backend to {backendName}', 
 				array('{backendName}'=>$model->name)));
 
-		// Redirect to homeUrl if the previous page was either a TV show 
-		// or movie details page since they will not be the same across 
-		// backends
+		// Redirect to the previous page, unless that page was a details page 
+		// or the "waiting for connectivity" page, in which case we go to the 
+		// home URL
 		$referrer = Yii::app()->request->urlReferrer;
-
-		if (strpos($referrer, 'tvShow/details') !== false || strpos($referrer, 'movie/details') !== false)
-			$this->redirect(Yii::app()->homeUrl);
 		
+		$invalidReferrers = array(
+			'tvShow/details',
+			'movie/details',
+			'backend/waitForConnectivity');
+
+		foreach ($invalidReferrers as $invalidReferrer)
+			if (strpos($referrer, $invalidReferrer) !== false)
+				$this->redirect(Yii::app()->homeUrl);
+
 		$this->redirectToPrevious(Yii::app()->homeUrl);
 	}
 	
