@@ -14,11 +14,13 @@ The repository contains a NetBeans project that you can use. Just open the proje
 
 ### CSS handling
 
-The styles for the application are coded in LESS, and the CSS files contained in the repository are automatically genereted using a Yii application component. The component is not enabled by default since it requires `node` and `lessc` to be installed on the development machine.
+The styles for the application are coded in LESS. The LESS files are then combined and compressed into minified stylesheets, which are used by the application. This process is triggered automatically whenever a LESS file is changed as long as the Grunt task runner is running. To install and run Grunt, run the following commands in the project root directory:
 
-To enable automatic compilation of the LESS files you need to preload the "less" component and optionally change the path to node and lessc. All of this is done in `src/protected/config/main.php`. For more information on how the LESS compiler works, look at https://github.com/Jalle19/yii-less. You'll also want to temporarily modify the main layout file to use the unminimized `styles.css` file instead of `styles-min.css`.
-
-The minified CSS files are thus far created manually (I've been using http://refresh-sf.com/yui/ for this). In the future some automation in this regard would be nice.
+```
+sudo apt-get install nodejs npm
+npm install
+grunt
+```
 
 ## Translations
 
