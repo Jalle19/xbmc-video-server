@@ -73,12 +73,14 @@ if (Yii::app()->user->role == User::ROLE_ADMIN)
 }
 
 // Add the "Actions" menu
+$changeLanguageItem = array('label'=>Yii::t('Menu', 'Change language'), 'url'=>'#',
+	'linkOptions'=>array(
+		'data-toggle'=>'modal', 'data-target'=>'#change-language-modal'));
+
 $actions = array(
 	// interface-related actions
 	array('label'=>Yii::t('Menu', 'Interface')),
-	array('label'=>Yii::t('Menu', 'Change language'), 'url'=>'#', 
-		'linkOptions'=>array('data-toggle'=>'modal', 
-							 'data-target'=>'#change-language-modal')),
+	$changeLanguageItem,
 	// system-related
 	array('label'=>Yii::t('Menu', 'System')),
 );
@@ -115,6 +117,7 @@ if (Yii::app()->backendManager->getCurrent() === null)
 	
 	$rightItems = array(
 		array('label'=>Yii::t('Menu', 'Settings'), 'items'=>array(
+			$changeLanguageItem,
 			array('label'=>Yii::t('Menu', 'Backends')),
 			array('label'=>Yii::t('Menu', 'Create new'), 'url'=>array('backend/create')),
 			array('label'=>Yii::t('Menu', 'System log')),
