@@ -17,7 +17,7 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'If the backend has been powered off completely you\'ll have to turn it on manually.' => '',
+  'If the backend has been powered off completely you\'ll have to turn it on manually.' => 'Si la source est complètement éteinte (signifiant que la carte réseau ne peut recevoir le paquet magique) vous devez l\'allumer manuellement.',
   'Backend created successfully' => 'Source créée avec succès',
   'Backend name' => 'Nom de la source',
   'Backend updated successfully' => 'Source mise à jour avec succès',
