@@ -270,11 +270,6 @@ Interface customization
 
 If for some reason you're not satisfied with the look and feel of the application, you can customize it by adding your own stylesheets. There are two stylesheets you can add, `custom-login.css` and `custom-styles.css`. These files should be placed in the `src/css` directory. If they exist they are loaded after the applications default stylesheet, which means you can override anything you want. The `custom-login.css` is only used on the login page so if you don't need to customize anything there you don't have to create the file.
 
-Developers
-----------
-
-The application comes with pre-compiled CSS files. If you wish to re-compile the files on the fly you need to preload the "less" component and optionally change the path to node and lessc. All of this is done in `src/protected/config/main.php`.
-
 Credits
 -------
 
