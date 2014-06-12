@@ -129,6 +129,9 @@ class Controller extends CController
 	{
 		$cs = Yii::app()->clientScript;
 		
+		// Make sure jQuery is registered at all times
+		$cs->registerCoreScript('jquery');
+		
 		// Register Bootstrap scripts
 		$bootstrapBaseUrl = Yii::app()->baseUrl.'/js/bootstrap';
 
