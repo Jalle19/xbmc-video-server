@@ -122,6 +122,8 @@ if (Yii::app()->backendManager->getCurrent() === null)
 			array('label'=>Yii::t('Menu', 'Create new'), 'url'=>array('backend/create')),
 			array('label'=>Yii::t('Menu', 'System log')),
 			array('label'=>Yii::t('Menu', 'Browse'), 'url'=>array('log/')),
+			array('label'=>Yii::t('Menu', 'User')),
+			array('label'=>Yii::t('Menu', 'Log out'), 'url'=>array('site/logout')),
 		), 'linkOptions'=>array('class'=>'fontastic-icon-settings')),
 	);
 }
