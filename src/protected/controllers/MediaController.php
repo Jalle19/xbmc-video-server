@@ -33,6 +33,7 @@ abstract class MediaController extends Controller
 	{
 		return array_merge(parent::filters(), array(
 			'accessControl',
+			'checkBackendConnectivity',
 			'checkBackendCanStream + details',
 		));
 	}
@@ -51,6 +52,28 @@ abstract class MediaController extends Controller
 		}
 			)
 		);
+	}
+	
+	/**
+	 * Checks whether the current backend is connectable. If it is we continue 
+	 * as normal, if not we redirect to the "waiting for WOL" page if a MAC 
+	 * address has been configured, otherwise we just error out.
+	 * @param CFilterChain $filterChain
+	 */
+	public function filterCheckBackendConnectivity($filterChain)
+	{
+		/* @var $backend Backend */
+		$backend = Yii::app()->backendManager->getCurrent();
+
+		if (!$backend->isConnectable())
+		{
+			if ($backend->macAddress)
+				$this->redirect(array('backend/waitForConnectivity'));
+			else
+				throw new CHttpException(500, Yii::t('Backend', 'The current backend is not connectable at the moment'));
+		}
+
+		$filterChain->run();
 	}
 
 	/**
