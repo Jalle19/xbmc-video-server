@@ -17,5 +17,15 @@ class m131004_175217_add_ipaddress_column extends AddColumnMigration
 	{
 		return 'log';
 	}
+	
+	public function up()
+	{
+		// It's okay if the table doesn't exist, it is created correctly the 
+		// first time the application is run
+		if (Yii::app()->db->schema->getTable($this->getTableName()) === null)
+			return true;
+
+		return parent::up();
+	}
 
 }
