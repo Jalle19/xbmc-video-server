@@ -1,4 +1,4 @@
-(function() {
+function startPolling() {
 	var pollUrl = createUrl('backend/ajaxCheckConnectivity');
 
 	// Start polling the server for updates
@@ -27,4 +27,4 @@
 
 		return path.join('/');
 	}
-})();
+}
