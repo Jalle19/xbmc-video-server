@@ -114,7 +114,7 @@ class Controller extends CController
 
 		foreach (array('dropdown', 'alert', 'collapse', 'modal') as $script)
 		{
-			$cs->registerScriptFile($bootstrapBaseUrl.'/bootstrap.'.$script.
+			$cs->registerScriptFile($bootstrapBaseUrl.'/bootstrap-'.$script.
 					'.min.js', CClientScript::POS_END);
 		}
 
