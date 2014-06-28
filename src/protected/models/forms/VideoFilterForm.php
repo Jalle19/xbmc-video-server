@@ -68,6 +68,26 @@ abstract class VideoFilterForm extends CFormModel
 
 		return true;
 	}
+	
+	/**
+	 * Returns the request parameters that represent the current filter.
+	 * @return array the request parameters
+	 */
+	public function buildRequestParameters()
+	{
+		$modelClass = get_class($this);
+		$parameters = array();
+
+		if (isset($_GET[$modelClass]))
+		{
+			$this->attributes = $_GET[$modelClass];
+
+			if (!$this->isEmpty() && $this->validate())
+				$parameters['filter'] = $this->getFilter();
+		}
+
+		return $parameters;
+	}
 
 	/**
 	 * Returns a filter object which can be used when quering for media using 

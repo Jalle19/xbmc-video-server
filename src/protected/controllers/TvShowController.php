@@ -33,17 +33,10 @@ class TvShowController extends MediaController
 	{
 		// Get the appropriate request parameters from the filter
 		$filterForm = new TVShowFilterForm();
-
-		$requestParameters = array(
-			'properties'=>array('thumbnail', 'art', 'genre', 'year'));
-
-		if (isset($_GET['TVShowFilterForm']))
-		{
-			$filterForm->attributes = $_GET['TVShowFilterForm'];
-
-			if (!$filterForm->isEmpty() && $filterForm->validate())
-				$requestParameters['filter'] = $filterForm->getFilter();
-		}
+		
+		$requestParameters = $filterForm->buildRequestParameters();
+		$requestParameters['properties'] = array('thumbnail', 'art', 
+			'genre', 'year');
 
 		$tvshows = VideoLibrary::getTVShows($requestParameters);
 		

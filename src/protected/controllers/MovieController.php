@@ -22,17 +22,7 @@ class MovieController extends MediaController
 	{
 		// Get the appropriate request parameters from the filter
 		$filterForm = new MovieFilterForm();
-		$requestParameters = array();
-
-		if (isset($_GET['MovieFilterForm']))
-		{
-			$filterForm->attributes = $_GET['MovieFilterForm'];
-
-			if (!$filterForm->isEmpty() && $filterForm->validate())
-				$requestParameters['filter'] = $filterForm->getFilter();
-		}
-		
-		$movies = VideoLibrary::getMovies($requestParameters);
+		$movies = VideoLibrary::getMovies($filterForm->buildRequestParameters());
 
 		// Go directly to the details page if we have an exact match on the 
 		// movie name
