@@ -11,11 +11,6 @@ class Controller extends CController
 {
 
 	/**
-	 * @var string the page title. It is accessed through its setter and getter.
-	 */
-	private $_pageTitle;
-	
-	/**
 	 * Initializes the controller. The application name and language is set here.
 	 */
 	public function init()
@@ -26,15 +21,6 @@ class Controller extends CController
 		parent::init();
 	}
 	
-	/**
-	 * Getter for _pageTitle
-	 * @return string
-	 */
-	public function getPageTitle()
-	{
-		return !$this->_pageTitle ? Yii::app()->name : $this->_pageTitle;
-	}
-
 	/**
 	 * Setter for _pageTitle
 	 * @param string $pageTitle
