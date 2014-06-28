@@ -48,7 +48,7 @@ Run the following commands, one by one, in the exact order shown here:
 
 ```
 sudo su 
-apt-get install libapache2-mod-php5 php5-gd php5-cli php5-sqlite php5-json git curl
+apt-get install libapache2-mod-php5 php5-gd php5-cli php5-sqlite php5-json php5-gd git curl
 a2enmod rewrite expires
 service apache2 restart
 cd /var/www/html
@@ -78,7 +78,7 @@ Run the following commands, one by one, in the exact order shown here:
 
 ```
 sudo su 
-apt-get install libapache2-mod-php5 php5-gd php5-cli php5-sqlite php5-json git curl
+apt-get install libapache2-mod-php5 php5-gd php5-cli php5-sqlite php5-json php5-gd git curl
 a2enmod rewrite expires
 service apache2 restart
 cd /var/www
