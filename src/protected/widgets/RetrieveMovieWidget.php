@@ -10,11 +10,6 @@
 class RetrieveMovieWidget extends RetrieveMediaWidget
 {
 	
-	protected function getLogCategory()
-	{
-		return 'MovieController';
-	}
-
 	protected function getLogMessage()
 	{
 		return '"'.Yii::app()->user->name.'" downloaded "'.$this->details->getDisplayName().'"';

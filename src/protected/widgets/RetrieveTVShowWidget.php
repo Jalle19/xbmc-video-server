@@ -10,11 +10,6 @@
 class RetrieveTVShowWidget extends RetrieveMediaWidget
 {
 
-	protected function getLogCategory()
-	{
-		return 'TvShowController';
-	}
-
 	protected function getLogMessage()
 	{
 		return '"'.Yii::app()->user->name.'" downloaded "'.$this->details->showtitle.' - '.$this->details->getDisplayName().'"';

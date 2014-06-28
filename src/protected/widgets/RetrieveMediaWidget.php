@@ -28,11 +28,6 @@ abstract class RetrieveMediaWidget extends CWidget
 	/**
 	 * @return string the category to use when logging download link clicks
 	 */
-	abstract protected function getLogCategory();
-	
-	/**
-	 * @return string the category to use when logging download link clicks
-	 */
 	abstract protected function getLogMessage();
 	
 	/**
@@ -114,7 +109,7 @@ abstract class RetrieveMediaWidget extends CWidget
 		$numLinks = count($this->links);
 		$linkOptions = array(
 			'class'=>'fa fa-floppy loggable-link',
-			'data-log-category'=>$this->getLogCategory(),
+			'data-log-category'=>get_class($this->owner),
 			'data-log-message'=>htmlentities($this->getLogMessage()),
 			'data-log-url'=>Yii::app()->controller->createUrl('/log/logEvent'),
 		);
