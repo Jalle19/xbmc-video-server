@@ -22,6 +22,8 @@ npm install
 grunt
 ```
 
+If you're using Debian you'll need to install nodejs from the `wheezy-backports` repository. NPM is not packaged so it has to be installed manually by running `curl https://www.npmjs.org/install.sh | sudo sh`. See https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager for more information. 
+
 ## Translations
 
 Translations are always welcome, and even though it involves a little bit of work (apart from the actual translating) it's not that complicated. Here's what you need to do:
