@@ -33,7 +33,7 @@ class Whitelist extends CApplicationComponent
 
 		if (!empty($definitions))
 		{
-			$definitions = $this->parseDefinitions(Setting::getValue('whitelist'));
+			$definitions = $this->parseDefinitions($definitions);
 			$this->setDefinitions($definitions);
 		}
 
