@@ -4,6 +4,7 @@
 /src/images/image-cache
 /src/css/custom-login.css
 /src/css/custom-styles.css
+/src/js/xbmc-video-server.js
 composer.phar
 whitelist.override
 /node_modules

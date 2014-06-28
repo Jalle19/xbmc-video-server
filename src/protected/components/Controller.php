@@ -99,31 +99,6 @@ class Controller extends CController
 	}
 	
 	/**
-	 * Register scripts needed on all pages (this method should be called from 
-	 * the main layout file)
-	 */
-	public function registerScripts()
-	{
-		$cs = Yii::app()->clientScript;
-		
-		// Make sure jQuery is registered at all times
-		$cs->registerCoreScript('jquery');
-		
-		// Register Bootstrap scripts
-		$bootstrapBaseUrl = Yii::app()->baseUrl.'/js/bootstrap';
-
-		foreach (array('dropdown', 'alert', 'collapse', 'modal') as $script)
-		{
-			$cs->registerScriptFile($bootstrapBaseUrl.'/bootstrap-'.$script.
-					'.min.js', CClientScript::POS_END);
-		}
-
-		// Register the JavaScript logger
-		$cs->registerScriptFile(Yii::app()->baseUrl.'/js/js-logger.js', 
-				CClientScript::POS_END);
-	}
-	
-	/**
 	 * Registers the specified custom stylesheet if it exists
 	 * @param string the stylesheet filename
 	 */
@@ -145,6 +120,15 @@ class Controller extends CController
 	{
 		return realpath(Yii::app()->basePath.DIRECTORY_SEPARATOR.'..'.
 				DIRECTORY_SEPARATOR.'css');
+	}
+	
+	/**
+	 * @return string the absolute path to the js/ directory
+	 */
+	public function getScriptBaseDir()
+	{
+		return realpath(Yii::app()->basePath.DIRECTORY_SEPARATOR.'..'.
+				DIRECTORY_SEPARATOR.'js');
 	}
 
 	/**

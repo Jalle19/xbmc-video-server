@@ -117,9 +117,6 @@ class BackendController extends AdminOnlyController
 		if (!$ipAddress || !$magicPacket->send($backend->macAddress, $ipAddress, $backend->subnetMask))
 			throw new CHttpException(500, Yii::t('Backend', 'Unable to send WOL packet'));
 
-		// Register the poller which redirects once the backend is reachable
-		Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.
-				'/js/wol-poll.js', CClientScript::POS_END);
 
 		// Render the "waiting" page
 		Yii::app()->user->setFlash('error', Yii::t('Backend', 'The current backend is not connectable at the moment'));

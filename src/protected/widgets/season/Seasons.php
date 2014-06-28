@@ -39,10 +39,6 @@ class Seasons extends CWidget
 		// Register some required scripts
 		if ($this->hasSeasons() && $this->displayMode === DisplayMode::MODE_LIST)
 		{
-			// Register JavaScript for asynchronously loading episode lists
-			Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.
-					'/js/episode-list-loader.js', CClientScript::POS_END);
-
 			// If we only have one season we want the "drawer" to open 
 			// automatically on page load
 			if (count($this->seasons) === 1)

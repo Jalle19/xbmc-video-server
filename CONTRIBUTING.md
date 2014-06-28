@@ -12,9 +12,13 @@ If you're adding new .php files to the project please remember to add the copyri
 
 The repository contains a NetBeans project that you can use. Just open the project in NetBeans to get started.
 
-### CSS handling
+### Styles and scripts handling
 
-The styles for the application are coded in LESS. The LESS files are then combined and compressed into minified stylesheets, which are used by the application. This process is triggered automatically whenever a LESS file is changed as long as the Grunt task runner is running. To install and run Grunt, run the following commands in the project root directory:
+The styles for the application are coded in LESS. The LESS files are then combined and compressed into minified stylesheets, which are used by the application. This process is triggered automatically whenever a LESS file is changed as long as the Grunt task runner is running.
+
+Something similar happens for script files. Grunt is used to concatenate and minify all scripts used by the application. Similar to the LESS files this process is automatic and is triggered every time a script file is changed.
+
+To install and run Grunt, run the following commands in the project root directory:
 
 ```
 sudo apt-get install nodejs npm

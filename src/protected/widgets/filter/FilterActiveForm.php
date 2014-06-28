@@ -25,8 +25,6 @@ class FilterActiveForm extends TbActiveForm
 	 */
 	public function typeaheadFieldControlGroup($model, $attribute, $data, $htmlOptions = array())
 	{
-		$this->registerTypeahead();
-
 		// Generate a unique ID for this element
 		CHtml::resolveNameID($model, $attribute, $htmlOptions);
 		TbHtml::addCssClass('twitter-typeahead-input', $htmlOptions);
@@ -37,16 +35,6 @@ class FilterActiveForm extends TbActiveForm
 		", CClientScript::POS_READY);
 
 		return $this->textFieldControlGroup($model, $attribute, $htmlOptions);
-	}
-
-	/**
-	 * Register the typeahead script
-	 */
-	private function registerTypeahead()
-	{
-		$script = YII_DEBUG ? 'typeahead.js' : 'typeahead.min.js';
-		Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl
-				.'/js/twitter-typeahead/'.$script, CClientScript::POS_END);
 	}
 
 }
