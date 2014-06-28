@@ -128,8 +128,7 @@ class UserController extends AdminOnlyController
 		$this->log('"%s" deleted user "%s"', Yii::app()->user->name, 
 						$model->username);
 
-		if (!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		$this->redirectOnDelete();
 	}
 
 }

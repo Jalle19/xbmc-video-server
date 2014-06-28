@@ -50,6 +50,15 @@ abstract class ModelController extends Controller
 
 		return $model;
 	}
+	
+	/**
+	 * Performs a standard redirect after a model has been deleted
+	 */
+	protected function redirectOnDelete()
+	{
+		if (!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	}
 
 	/**
 	 * @return string the name of the model class this controller represents

@@ -228,8 +228,7 @@ class BackendController extends AdminOnlyController
 		$this->log('"%s" deleted backend "%s"', Yii::app()->user->name, 
 						$model->name);
 		
-		if (!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		$this->redirectOnDelete();
 	}
 	
 	/**
