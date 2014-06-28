@@ -354,16 +354,16 @@
         },
         {
             "name": "jalle19/yii-lazy-image",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Jalle19/yii-lazy-image.git",
-                "reference": "900423a19010f686b9791c2d0d7e29b1e260ff17"
+                "reference": "8440028b7223b88fcd3f25e917ac8c40006567a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Jalle19/yii-lazy-image/zipball/900423a19010f686b9791c2d0d7e29b1e260ff17",
-                "reference": "900423a19010f686b9791c2d0d7e29b1e260ff17",
+                "url": "https://api.github.com/repos/Jalle19/yii-lazy-image/zipball/8440028b7223b88fcd3f25e917ac8c40006567a8",
+                "reference": "8440028b7223b88fcd3f25e917ac8c40006567a8",
                 "shasum": ""
             },
             "require": {
@@ -388,7 +388,7 @@
                 "loader",
                 "yii"
             ],
-            "time": "2014-06-03 13:28:26"
+            "time": "2014-06-28 08:52:20"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
