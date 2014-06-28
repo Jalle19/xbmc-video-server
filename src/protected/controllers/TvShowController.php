@@ -91,6 +91,9 @@ class TvShowController extends MediaController
 	{
 		$season = VideoLibrary::getSeasonDetails($tvshowid, $season);
 		
+		if (!$season)
+			throw new PageNotFoundException();
+		
 		// Get the TV show details so we can get the correct show title
 		$tvshow = VideoLibrary::getTVShowDetails($tvshowid, array('year'));
 		
@@ -109,6 +112,10 @@ class TvShowController extends MediaController
 		$this->layout = false;
 		
 		$season = VideoLibrary::getSeasonDetails($tvshowid, $season);
+		
+		if (!$season)
+			throw new PageNotFoundException();
+
 		$this->renderEpisodeList($season);
 	}
 	
