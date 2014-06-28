@@ -9,22 +9,10 @@
  */
 class TVShowFilterForm extends VideoFilterForm
 {
-
-	/**
-	 * Populates and returns the list of genres
-	 * @return array
-	 */
-	public function getGenres()
+	
+	public function getGenreType()
 	{
-		if (empty($this->_genres))
-		{
-			$genres = VideoLibrary::getGenres(VideoLibrary::GENRE_TYPE_TVSHOW);
-
-			foreach ($genres as $genre)
-				$this->_genres[$genre->label] = $genre->label;
-		}
-
-		return $this->_genres;
+		return VideoLibrary::GENRE_TYPE_TVSHOW;
 	}
 
 	/**

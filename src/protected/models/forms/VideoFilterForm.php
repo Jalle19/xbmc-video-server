@@ -56,6 +56,23 @@ abstract class VideoFilterForm extends CFormModel
 			array('watchedStatus', 'in', 'range'=>array_keys(self::getWatchedStatuses())),
 		);
 	}
+	
+	/**
+	 * Populates and returns the list of genres
+	 * @return array
+	 */
+	public function getGenres()
+	{
+		if (empty($this->_genres))
+		{
+			$genres = VideoLibrary::getGenres($this->getGenreType());
+
+			foreach ($genres as $genre)
+				$this->_genres[$genre->label] = $genre->label;
+		}
+
+		return $this->_genres;
+	}
 
 	/**
 	 * @return boolean whether the filter is empty or not
@@ -167,9 +184,9 @@ abstract class VideoFilterForm extends CFormModel
 	}
 
 	/**
-	 * Should populate and returns the list of genres
+	 * @return the type of genres to fetch (movies, TV shows, etc.)
 	 */
-	abstract public function getGenres();
+	abstract public function getGenreType();
 
 	/**
 	 * Should return an array containing the individual filter definitions

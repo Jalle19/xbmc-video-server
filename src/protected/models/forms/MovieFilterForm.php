@@ -33,21 +33,10 @@ class MovieFilterForm extends VideoFilterForm
 	 * @var float rating of the movie
 	 */
 	public $rating;
-
-	/**
-	 * Populates and returns the list of genres
-	 * @implements VideoFilterForm
-	 * @return array
-	 */
-	public function getGenres()
+	
+	public function getGenreType()
 	{
-		if (empty($this->_genres))
-		{
-			foreach (VideoLibrary::getGenres() as $genre)
-				$this->_genres[$genre->label] = $genre->label;
-		}
-
-		return $this->_genres;
+		return VideoLibrary::GENRE_TYPE_MOVIE;
 	}
 	
 	/**
