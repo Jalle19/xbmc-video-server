@@ -23,6 +23,7 @@ return array(
 		'application.exceptions.*',
 		'application.helpers.*',
 		'application.controllers.*',
+		'application.controllers.base.*',
 		'application.widgets.*',
 		'application.widgets.filter.*',
 		'application.widgets.results.*',
