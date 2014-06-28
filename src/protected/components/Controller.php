@@ -15,7 +15,7 @@ class Controller extends CController
 	 */
 	public function init()
 	{
-		Yii::app()->name = Setting::getValue('applicationName');
+		Yii::app()->name = Setting::getString('applicationName');
 		Yii::app()->language = Yii::app()->languageManager->getCurrent();
 
 		parent::init();

@@ -37,6 +37,36 @@ class Setting extends CActiveRecord
 	 * cache)
 	 */
 	private static $_settings;
+	
+	/**
+	 * Returns the specified setting's value as a boolean
+	 * @param string $setting the setting
+	 * @return boolean the value
+	 */
+	public static function getBoolean($setting)
+	{
+		return (boolean)self::getValue($setting);
+	}
+
+	/**
+	 * Returns the specified setting's value as an integer
+	 * @param string $setting the setting
+	 * @return int the value
+	 */
+	public static function getInteger($setting)
+	{
+		return (int)self::getValue($setting);
+	}
+
+	/**
+	 * Returns the specified setting's value as a string
+	 * @param string $setting the setting
+	 * @return string the value
+	 */
+	public static function getString($setting)
+	{
+		return (string)self::getValue($setting);
+	}
 
 	/**
 	 * Returns the value for the specified setting. All settings are cached for 
@@ -45,7 +75,7 @@ class Setting extends CActiveRecord
 	 * @return mixed the setting value
 	 * @throws InvalidRequestException if the specified setting doesn't exist
 	 */
-	public static function getValue($name)
+	private static function getValue($name)
 	{
 		if (self::$_settings === null)
 			self::$_settings = self::model()->findAll();

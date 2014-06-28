@@ -20,7 +20,7 @@ class LibraryDataProvider extends CArrayDataProvider
 	public function __construct($rawData, $keyField, $config = array())
 	{
 		// Optionally apply pagination, unless it has been explicitly disabled
-		$pagesize = Setting::getValue('pagesize');
+		$pagesize = Setting::getInteger('pagesize');
 		if (!isset($config['pagination']))
 			$config['pagination'] = $pagesize ? array('pageSize'=>$pagesize) : false;
 

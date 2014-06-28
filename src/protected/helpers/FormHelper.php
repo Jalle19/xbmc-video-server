@@ -33,7 +33,7 @@ class FormHelper
 	 */
 	public static function helpBlock($content)
 	{
-		if (!Setting::getValue('showHelpBlocks'))
+		if (!Setting::getBoolean('showHelpBlocks'))
 			return;
 		
 		$output  = CHtml::openTag('p', array('class'=>'form-help'));

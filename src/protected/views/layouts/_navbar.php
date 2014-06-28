@@ -86,7 +86,7 @@ $actions = array(
 );
 
 // Only show "Flush cache" if cacheApiCalls is enabled
-if (Setting::getValue('cacheApiCalls'))
+if (Setting::getBoolean('cacheApiCalls'))
 {
 	$actions[] = array(
 		'label'=>Yii::t('Menu', 'Flush cache'),

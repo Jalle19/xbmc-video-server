@@ -95,7 +95,7 @@ abstract class RetrieveMediaWidget extends CWidget
 	 */
 	protected function getStreamUrl()
 	{
-		if (count($this->links) === 1 && (Setting::getValue('singleFilePlaylist') 
+		if (count($this->links) === 1 && (Setting::getBoolean('singleFilePlaylist') 
 				|| (Browser::isMobile() || Browser::isTablet())))
 		{
 			return $this->links[0];

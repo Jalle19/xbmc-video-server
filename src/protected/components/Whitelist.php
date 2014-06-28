@@ -29,7 +29,7 @@ class Whitelist extends CApplicationComponent
 		$this->_checker = new Whitelist\Check();
 
 		// Load any stored definitions
-		$definitions = Setting::getValue('whitelist');
+		$definitions = Setting::getString('whitelist');
 
 		if (!empty($definitions))
 		{

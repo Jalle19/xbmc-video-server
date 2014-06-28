@@ -88,7 +88,7 @@ class BackendController extends AdminOnlyController
 		Yii::app()->user->setFlash('success', Yii::t('Misc', 'Library update has been initiated'));
 
 		// Remind users that they'll have to flush their cache
-		if (Setting::getValue('cacheApiCalls'))
+		if (Setting::getBoolean('cacheApiCalls'))
 			Yii::app()->user->setFlash('info', Yii::t('Misc', "You'll have to flush the API call cache to see any newly scanned content"));
 
 		$this->redirectToPrevious(Yii::app()->homeUrl);

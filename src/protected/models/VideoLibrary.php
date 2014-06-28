@@ -278,7 +278,7 @@ class VideoLibrary
 		{
 			$params['sort'] = array(
 				'order'=>self::SORT_ORDER_ASCENDING,
-				'ignorearticle'=>(boolean)Setting::getValue('ignoreArticle'),
+				'ignorearticle'=>(boolean)Setting::getBoolean('ignoreArticle'),
 				'method'=>$sortMethod);
 		}
 	}

@@ -13,7 +13,7 @@ class MovieFilter extends VideoFilter
 	protected function renderControls()
 	{
 		// Cache the encoded JavaScript if the "cache API calls" setting is enabled
-		if (Setting::getValue('cacheApiCalls'))
+		if (Setting::getBoolean('cacheApiCalls'))
 		{
 			$cacheId = 'MovieFilterTypeahead';
 			$typeaheadData = Yii::app()->apiCallCache->get($cacheId);

@@ -54,7 +54,7 @@ class XBMC extends CApplicationComponent
 	 */
 	public function performRequest($method, $params = null, $id = 0)
 	{
-		if (Setting::getValue('cacheApiCalls'))
+		if (Setting::getBoolean('cacheApiCalls'))
 		{
 			// Calculate a unique cache ID for this API call to this backend
 			$cacheId = md5(serialize($this->_backend->attributes).
@@ -151,7 +151,7 @@ class XBMC extends CApplicationComponent
 		{
 			// Only use HTTPS if user has explicitly enabled it
 			$scheme = 'http://';
-			if (Setting::getValue('useHttpsForVfsUrls') && Yii::app()->request->isSecureConnection)
+			if (Setting::getBoolean('useHttpsForVfsUrls') && Yii::app()->request->isSecureConnection)
 				$scheme = 'https://';
 			
 			// Remove the beginning "vfs/" from the path
