@@ -100,14 +100,4 @@ class SettingController extends AdminOnlyController
 		$setting->save(false);
 	}
 
-	/**
-	 * Loads the model for the specified setting
-	 * @param string $name the setting name
-	 * @return Setting the setting model
-	 */
-	private function loadModel($name)
-	{
-		return Setting::model()->findByPk($name);
-	}
-
 }

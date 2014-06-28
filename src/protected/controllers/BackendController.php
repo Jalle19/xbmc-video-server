@@ -248,20 +248,4 @@ class BackendController extends AdminOnlyController
 		return Yii::app()->backendManager->getCurrent();
 	}
 
-	/**
-	 * Finds and returns the backend with the specified ID
-	 * @param int $id the backend ID
-	 * @return Backend the backend model
-	 * @throws CHttpException if the model is not found
-	 */
-	private function loadModel($id)
-	{
-		$model = Backend::model()->findByPk($id);
-
-		if ($model === null)
-			throw new PageNotFoundException();
-
-		return $model;
-	}
-
 }

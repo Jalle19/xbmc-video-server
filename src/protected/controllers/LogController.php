@@ -103,20 +103,4 @@ class LogController extends AdminOnlyController
 		));
 	}
 
-	/**
-	 * Loads the specified model and returns it
-	 * @param int $id the primary key of the model
-	 * @return Log the model
-	 * @throws CHttpException if the model does not exist
-	 */
-	private function loadModel($id)
-	{
-		$model = Log::model()->findByPk($id);
-
-		if ($model === null)
-			throw new PageNotFoundException();
-
-		return $model;
-	}
-
 }

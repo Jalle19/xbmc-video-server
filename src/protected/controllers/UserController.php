@@ -146,19 +146,5 @@ class UserController extends AdminOnlyController
 			'model'=>$model,
 		));
 	}
-	
-	/**
-	 * Returns the user model based on the specified ID
-	 * @param int $id the user ID
-	 * @return User
-	 * @throws PageNotFoundException if the user was not found
-	 */
-	private function loadModel($id)
-	{
-		$model = User::model()->findByPk($id);
-		if ($model === null)
-			throw new PageNotFoundException();
-		return $model;
-	}
 
 }
