@@ -27,7 +27,7 @@ class MovieController extends MediaController
 		// Go directly to the details page if we have an exact match on the 
 		// movie name
 		if (count($movies) === 1 && $filterForm->name === $movies[0]->label)
-			$this->redirect(array('details', 'id'=>$movies[0]->movieid));
+			$this->redirect(array('details', 'id'=>$movies[0]->getId()));
 
 		$this->render('index', array(
 			'dataProvider'=>new LibraryDataProvider($movies, 'movieid'),
