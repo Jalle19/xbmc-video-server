@@ -103,8 +103,6 @@ class BackendController extends AdminOnlyController
 		$backend = $this->getCurrent();
 
 		// Determine the IP address of the backend
-		$ipAddress = null;
-
 		if (filter_var($backend->hostname, FILTER_VALIDATE_IP))
 			$ipAddress = $backend->hostname;
 		else
