@@ -17,8 +17,8 @@ $baseUrl = Yii::app()->baseUrl;
 		$cs->registerCoreScript('jquery');
 		
 		// Add a cache buster to the CSS and script URLs
-		$cssPath = $this->getCssBaseDir().DIRECTORY_SEPARATOR.'styles-min.css';
-		$scriptPath = $this->getScriptBaseDir().DIRECTORY_SEPARATOR.'xbmc-video-server.min.js';
+		$cssPath = $this->getWebrootDirectory('css').DIRECTORY_SEPARATOR.'styles-min.css';
+		$scriptPath = $this->getWebrootDirectory('js').DIRECTORY_SEPARATOR.'xbmc-video-server.min.js';
 		$cs->registerCssFile($baseUrl.'/css/styles-min.css?'.filemtime($cssPath));
 		$cs->registerScriptFile($baseUrl.'/js/xbmc-video-server.min.js?'.filemtime($scriptPath), $cs->coreScriptPosition);
 		

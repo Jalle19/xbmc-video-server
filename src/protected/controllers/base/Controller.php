@@ -90,7 +90,7 @@ class Controller extends CController
 	 */
 	public function registerCustomCss($styleheet)
 	{
-		$customCss = $this->getCssBaseDir().DIRECTORY_SEPARATOR.$styleheet;
+		$customCss = $this->getWebrootDirectory('css').DIRECTORY_SEPARATOR.$styleheet;
 
 		if (is_readable($customCss))
 		{
@@ -98,23 +98,15 @@ class Controller extends CController
 			$cs->registerCssFile(Yii::app()->baseUrl.'/css/'.$styleheet.'?'.filemtime($customCss));
 		}
 	}
-
-	/**
-	 * @return string the absolute path to the css/ directory
-	 */
-	public function getCssBaseDir()
-	{
-		return realpath(Yii::app()->basePath.DIRECTORY_SEPARATOR.'..'.
-				DIRECTORY_SEPARATOR.'css');
-	}
 	
 	/**
-	 * @return string the absolute path to the js/ directory
+	 * The absolute path to the specified directory (relative to webroot)
+	 * @param string $directory the sought directory
+	 * @return string the absolute path to it
 	 */
-	public function getScriptBaseDir()
+	public function getWebrootDirectory($directory)
 	{
-		return realpath(Yii::app()->basePath.DIRECTORY_SEPARATOR.'..'.
-				DIRECTORY_SEPARATOR.'js');
+		return realpath(Yii::getPathOfAlias('webroot').DIRECTORY_SEPARATOR.$directory);
 	}
 
 	/**
