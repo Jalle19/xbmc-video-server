@@ -77,7 +77,7 @@ class Controller extends CController
 	 * amount of parameters, e.g. $this->log('This is %s', 'magic');
 	 * @param string $message the message
 	 */
-	public function log($message)
+	public function log()
 	{
 		$message = call_user_func_array('sprintf', func_get_args());
 

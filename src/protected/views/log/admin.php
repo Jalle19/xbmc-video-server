@@ -33,7 +33,7 @@ $this->pageTitle = $title = Yii::t('Log', 'Application log');
 			'source_address',
 			array(
 				'name'=>'message',
-				'cssClassExpression'=>function($data) {
+				'cssClassExpression'=>function() {
 					return 'message-column';
 				}
 			),
