@@ -60,7 +60,7 @@ class VideoLibrary
 	
 	/**
 	 * Returns the recently added movies
-	 * @return stdClass[] the movies
+	 * @return Movie[] the movies
 	 */
 	public static function getRecentlyAddedMovies($params = array())
 	{

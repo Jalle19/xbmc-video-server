@@ -85,7 +85,7 @@ abstract class VideoFilter extends CWidget
 	
 	/**
 	 * Returns an array of names for a typeahead field
-	 * @param stdClass[] $mediaSource the source data
+	 * @param Media[] $mediaSource the source data
 	 */
 	protected function getTypeaheadNames($mediaSource)
 	{
