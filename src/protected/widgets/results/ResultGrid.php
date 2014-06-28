@@ -24,8 +24,12 @@ class ResultGrid extends CListView
 		$this->itemsTagName = 'ul';
 		$this->itemsCssClass = 'thumbnails item-grid';
 		
-		// trigger unveiling of images when the grid is updated through AJAX
-		$this->afterAjaxUpdate = new CJavaScriptExpression("function() { $('.lazy').unveil(); }");
+		// Scroll to the top of the list and trigger unveiling of images 
+		// whenever the page is changed
+		$this->afterAjaxUpdate = new CJavaScriptExpression("function() {
+			location.hash = '#result-list';
+			$('.lazy').unveil();
+		}");
 	}
 
 	/**

@@ -24,6 +24,8 @@ trait ResultTrait
 	 */
 	public function init()
 	{
+		$this->id = 'result-list';
+		
 		// Configure the pager and template
 		$this->template = '{summary} {items} {pager}';
 		$this->pager = ResultHelper::getDefaultPagerConfiguration();
