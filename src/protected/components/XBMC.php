@@ -91,7 +91,6 @@ class XBMC extends CApplicationComponent
 	 * @param mixed $params
 	 * @param mixed $id
 	 * @return \SimpleJsonRpcClient\Response
-	 * @throws CHttpException if the request fails completely
 	 */
 	private function performRequestInternal($method, $params = null, $id = 0)
 	{
@@ -103,10 +102,7 @@ class XBMC extends CApplicationComponent
 		}
 		catch (SimpleJsonRpcClient\Exception\BaseException $e)
 		{
-			// Rethrow as CHttpException so we get to the error page
-			$message = $e->getMessage().' ('.$e->getCode().')';
-			
-			throw new CHttpException(500, $message);
+			$this->handleRequestException($e);
 		}
 	}
 	
@@ -114,7 +110,6 @@ class XBMC extends CApplicationComponent
 	 * Sends a notification
 	 * @param string $method
 	 * @param mixed $params
-	 * @throws CHttpException if the request fails
 	 */
 	public function sendNotification($method, $params = null)
 	{
@@ -126,11 +121,22 @@ class XBMC extends CApplicationComponent
 		}
 		catch (SimpleJsonRpcClient\Exception\BaseException $e)
 		{
-			// Rethrow as CHttpException so we get to the error page
-			$message = $e->getMessage().' ('.$e->getCode().')';
-
-			throw new CHttpException(500, $message);
+			$this->handleRequestException($e);
 		}
+	}
+	
+	/**
+	 * Handles exceptions from the JSON-RPC client. The exceptions are re-
+	 * thrown as CHttpException so we can provide a less confusing error 
+	 * message.
+	 * @param SimpleJsonRpcClient\Exception\BaseException $exception
+	 * @throws CHttpException always
+	 */
+	private function handleRequestException($exception)
+	{
+		$message = 'Exception caught while calling XBMC API: '.$exception->getMessage().' ('.$exception->getCode().')';
+
+		throw new CHttpException(500, $message);
 	}
 
 	/**
