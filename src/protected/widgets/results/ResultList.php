@@ -11,60 +11,17 @@ Yii::import('bootstrap.widgets.TbGridView');
 
 abstract class ResultList extends TbGridView
 {
-	
-	/**
-	 * Initializes the component
-	 */
-	public function init()
-	{
-		// Configure the pager and override the default template
-		$this->template = '{summary} {items} {pager}';
-		$this->pager = $this->pager = ResultHelper::getDefaultPagerConfiguration();
-		$this->pagerCssClass = 'pager';
-		
-		// needed to update the URL when page is changed
-		$this->enableHistory = true;
-		
-		// Make the list sortable
-		$this->dataProvider->makeSortable();
-		
-		// Configure columns
-		$this->columns = $this->getColumnDefinitions();
-		
-		parent::init();
-	}
+	use ResultTrait;
 	
 	/**
 	 * Returns the column definitions
 	 */
 	abstract public function getColumnDefinitions();
 	
-	/**
-	 * @see ResultGrid::ResultGrid()
-	 */
-	public function renderItems()
+	public function beforeParentInit()
 	{
-		// Get rid of that pesky dot at the end
-		if ($this->emptyText === null)
-			$this->emptyText = substr(Yii::t('GenericList', 'No results found.'), 0, strlen(Yii::t('GenericList', 'No results found.')) - 1);
-
-		if ($this->dataProvider->totalItemCount > 0)
-			parent::renderItems();
-		else
-			echo CHtml::tag('div', array('class'=>'alert alert-block alert-error'), $this->emptyText);
-	}
-
-	/**
-	 * @see ResultGrid::renderSummary()
-	 */
-	public function renderSummary()
-	{
-		// Render the actual summary into a variable
-		ob_start();
-		parent::renderSummary();
-		$summaryContent = ob_get_clean();
-		
-		ResultHelper::renderDisplayModeToggle($summaryContent, DisplayMode::CONTEXT_RESULTS);
+		// Configure columns
+		$this->columns = $this->getColumnDefinitions();
 	}
 	
 	/**
