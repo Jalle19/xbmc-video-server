@@ -252,7 +252,7 @@ class Backend extends CActiveRecord
 	{
 		$this->macAddress = strtolower(str_replace('-', ':', $this->macAddress));
 		
-		if (empty($this->subnetMask))
+		if (!empty($this->macAddress) && empty($this->subnetMask))
 			$this->subnetMask = '255.255.255.0';
 
 		return parent::beforeSave();
