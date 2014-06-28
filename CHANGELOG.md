@@ -8,6 +8,12 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.5.4
+* use Grunt to concatenate and minify scripts
+* scroll to the top of the page when moving between result pages
+* don't save the subnet mask for a backend if no MAC address has been specified
+* a bunch of code improvements
+
 #### 1.5.3
 * fixed applying all migrations on a fresh database
 * use Grunt instead of yii-less to compile LESS files, with the added bonus that the minification can be done automatically too
