@@ -132,19 +132,4 @@ class UserController extends AdminOnlyController
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
-	/**
-	 * Manages all users
-	 */
-	public function actionAdmin()
-	{
-		$model = new User();
-		$model->unsetAttributes();
-		if (isset($_GET['User']))
-			$model->attributes = $_GET['User'];
-
-		$this->render('admin', array(
-			'model'=>$model,
-		));
-	}
-
 }

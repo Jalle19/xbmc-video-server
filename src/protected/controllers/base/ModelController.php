@@ -2,8 +2,8 @@
 
 /**
  * Base controller class for controllers that operate mainly on a specific type 
- * of model. It provides a loadModel() method which loads a model with a 
- * specified ID.
+ * of model. It provides some methods that are usually needed by derived 
+ * classes.
  *
  * @author Sam Stenvall <neggelandia@gmail.com>
  * @copyright Copyright &copy; Sam Stenvall 2013-
@@ -13,6 +13,28 @@ abstract class ModelController extends Controller
 {
 
 	/**
+	 * Generic "admin" action. It renders the "admin" view and handles 
+	 * attribute filtering.
+	 */
+	public function actionAdmin()
+	{
+		$modelClass = $this->getModelClass();
+
+		$model = $modelClass::model();
+		$model->scenario = 'search';
+
+		if (isset($_GET[$modelClass]))
+		{
+			$model->unsetAttributes();
+			$model->attributes = $_GET[$modelClass];
+		}
+
+		$this->render('admin', array(
+			'model'=>$model,
+		));
+	}
+
+	/**
 	 * Finds and returns a model with the specified ID
 	 * @param mixed $id a primary key
 	 * @return CActiveRecord the model
@@ -20,16 +42,22 @@ abstract class ModelController extends Controller
 	 */
 	protected function loadModel($id)
 	{
-		// Determine the model class name
-		$controllerClass = get_class($this);
-		$modelClass = substr($controllerClass, 0, -(strlen('Controller')));
-
+		$modelClass = $this->getModelClass();
 		$model = $modelClass::model()->findByPk($id);
 
 		if ($model === null)
 			throw new PageNotFoundException();
 
 		return $model;
+	}
+
+	/**
+	 * @return string the name of the model class this controller represents
+	 */
+	private function getModelClass()
+	{
+		$controllerClass = get_class($this);
+		return substr($controllerClass, 0, -(strlen('Controller')));
 	}
 
 }

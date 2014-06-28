@@ -46,25 +46,6 @@ class LogController extends AdminOnlyController
 	}
 
 	/**
-	 * Lists all items in the log
-	 */
-	public function actionAdmin()
-	{
-		$model = Log::model();
-		$model->scenario = 'search';
-
-		if (isset($_GET['Log']))
-		{
-			$model->unsetAttributes();
-			$model->attributes = $_GET['Log'];
-		}
-
-		$this->render('admin', array(
-			'model'=>$model,
-		));
-	}
-	
-	/**
 	 * Flushes the system log and redirects to the admin page
 	 */
 	public function actionFlush()

@@ -138,14 +138,6 @@ class BackendController extends AdminOnlyController
 	}
 
 	/**
-	 * Manages all backends
-	 */
-	public function actionAdmin()
-	{
-		$this->render('admin');
-	}
-
-	/**
 	 * Creates a new backend, then return to the admin action
 	 */
 	public function actionCreate()
