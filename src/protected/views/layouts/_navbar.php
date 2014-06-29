@@ -10,7 +10,7 @@ $leftItems = array(
 			array(
 				'label'=>Yii::t('Menu', 'Recently added'), 'url'=>array('movie/recentlyAdded'),
 			),
-		), 'linkOptions'=>array('class'=>'fontastic-icon-video'),
+		), 'linkOptions'=>array('class'=>'fa fa-video-camera'),
 	),
 	array('label'=>Yii::t('Menu', 'TV Shows'), 
 		'items'=>array(
@@ -21,7 +21,7 @@ $leftItems = array(
 			array(
 				'label'=>Yii::t('Menu', 'Recently added'), 'url'=>array('tvShow/recentlyAdded'),
 			),
-		), 'linkOptions'=>array('class'=>'fontastic-icon-tv'),
+		), 'linkOptions'=>array('class'=>'fa fa-desktop'),
 	),
 );
 
@@ -50,8 +50,8 @@ if (count($backends) > 1)
 
 	$rightItems[] = array(
 		'label'=>Yii::t('Menu', 'Change backend'),
-		'icon'=>'cloud',
 		'items'=>$backendItems,
+		'linkOptions'=>array('class'=>'fa fa-cloud')
 	);
 }
 
@@ -69,7 +69,7 @@ if (Yii::app()->user->role == User::ROLE_ADMIN)
 		array('label'=>Yii::t('Menu', 'Create new'), 'url'=>array('user/create')),
 		array('label'=>Yii::t('Menu', 'System log')),
 		array('label'=>Yii::t('Menu', 'Browse'), 'url'=>array('log/')),
-	), 'linkOptions'=>array('class'=>'fontastic-icon-settings'));
+	), 'linkOptions'=>array('class'=>'fa fa-cogs'));
 }
 
 // Add the "Actions" menu
@@ -124,7 +124,7 @@ if (Yii::app()->backendManager->getCurrent() === null)
 			array('label'=>Yii::t('Menu', 'Browse'), 'url'=>array('log/')),
 			array('label'=>Yii::t('Menu', 'User')),
 			array('label'=>Yii::t('Menu', 'Log out'), 'url'=>array('site/logout')),
-		), 'linkOptions'=>array('class'=>'fontastic-icon-settings')),
+		), 'linkOptions'=>array('class'=>'fa fa-cogs')),
 	);
 }
 

@@ -31,7 +31,7 @@ $dataProvider = $this->getEpisodeDataProvider($season->tvshowid, $season->season
 				'size'=>TbHtml::BUTTON_SIZE_LARGE,
 				'url'=>$this->createUrl('tvShow/getSeasonPlaylist', 
 						array('tvshowId'=>$season->tvshowid, 'season'=>$season->season)),
-				'class'=>'fontastic-icon-play',
+				'class'=>'fa fa-play',
 			)).' '.Yii::t('TVShows', 'or choose individual episodes from the list below'); ?>
 		</div>
 		<?php

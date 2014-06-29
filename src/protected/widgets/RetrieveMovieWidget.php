@@ -29,7 +29,7 @@ class RetrieveMovieWidget extends RetrieveMediaWidget
 	{
 		return array(
 			'url'=>$this->getStreamUrl(),
-			'class'=>'fontastic-icon-play',
+			'class'=>'fa fa-play',
 			'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
 			'size'=>TbHtml::BUTTON_SIZE_LARGE,
 		);

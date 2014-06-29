@@ -113,7 +113,7 @@ abstract class RetrieveMediaWidget extends CWidget
 
 		$numLinks = count($this->links);
 		$linkOptions = array(
-			'class'=>'fontastic-icon-disc loggable-link',
+			'class'=>'fa fa-floppy loggable-link',
 			'data-log-category'=>$this->getLogCategory(),
 			'data-log-message'=>htmlentities($this->getLogMessage()),
 			'data-log-url'=>Yii::app()->controller->createUrl('/log/logEvent'),
