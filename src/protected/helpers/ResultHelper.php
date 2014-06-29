@@ -46,7 +46,7 @@ class ResultHelper
 						'icon'=>$currentMode ===  DisplayMode::MODE_LIST? TbHtml::ICON_OK : ''),
 				), array(
 					'color'=>TbHtml::BUTTON_COLOR_INFO,
-					'icon'=>'reorder',
+					'class'=>'fa fa-bars'
 				));
 				
 				?>

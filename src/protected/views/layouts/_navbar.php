@@ -108,7 +108,8 @@ $actions = array_merge($actions, array(
 	array('label'=>Yii::t('Menu', 'Log out'), 'url'=>array('site/logout')),
 ));
 
-$rightItems[] = array('label'=>Yii::t('Menu', 'Actions'), 'items'=>$actions, 'icon'=>'tasks');
+$rightItems[] = array('label'=>Yii::t('Menu', 'Actions'), 'items'=>$actions, 
+	'linkOptions'=>array('class'=>'fa fa-tasks'));
 
 // Completely override the items when the application hasn't been configured yet
 if (Yii::app()->backendManager->getCurrent() === null)
