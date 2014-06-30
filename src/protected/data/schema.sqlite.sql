@@ -19,3 +19,11 @@ INSERT INTO "settings" ('name','value') VALUES ('useHttpsForVfsUrls','0');
 INSERT INTO "settings" ('name','value') VALUES ('whitelist','');
 INSERT INTO "settings" ('name','value') VALUES ('ignoreArticle','0');
 INSERT INTO "settings" ('name','value') VALUES ('language','en');
+
+DROP TABLE IF EXISTS "display_mode";
+CREATE TABLE "display_mode" (
+	"id" integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	"user_id" integer NOT NULL REFERENCES user(id) ON UPDATE CASCADE ON DELETE CASCADE,
+	"context" varchar(255) NOT NULL,
+	"mode" varchar(255) NOT NULL
+);

@@ -24,6 +24,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`role`,`username`,`password`,`language`) VALUES('admin','admin','admin',NULL);
 
+DROP TABLE IF EXISTS `settings`;
 CREATE TABLE `settings` (
 	`name` VARCHAR(255) PRIMARY KEY NOT NULL,
 	`value` VARCHAR(255) NULL DEFAULT NULL
@@ -39,3 +40,12 @@ INSERT INTO `settings` (`name`,`value`) VALUES ('useHttpsForVfsUrls','0');
 INSERT INTO `settings` (`name`,`value`) VALUES ('whitelist','');
 INSERT INTO `settings` (`name`,`value`) VALUES ('ignoreArticle','0');
 INSERT INTO `settings` (`name`,`value`) VALUES ('language','en');
+
+DROP TABLE IF EXISTS `display_mode`;
+CREATE TABLE `display_mode` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`user_id` INT NOT NULL REFERENCES user(id) ON UPDATE CASCADE ON DELETE CASCADE,
+	`context` VARCHAR(255) NOT NULL,
+	`mode` VARCHAR(255) NOT NULL,
+	PRIMARY KEY (`id`)
+);

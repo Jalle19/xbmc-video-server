@@ -15,6 +15,12 @@ trait ResultTrait
 {
 	
 	/**
+	 * @var string the display mode context to use in the toggle switch. 
+	 * Defaults to DisplayMode::CONTEXT_RESULTS 
+	 */
+	public $displayModeContext = DisplayMode::CONTEXT_RESULTS;
+	
+	/**
 	 * Called right before parent::init() is called in the trait
 	 */
 	abstract public function beforeParentInit();
@@ -65,7 +71,7 @@ trait ResultTrait
 		parent::renderSummary();
 		$summaryContent = ob_get_clean();
 		
-		ResultHelper::renderDisplayModeToggle($summaryContent, DisplayMode::CONTEXT_RESULTS);
+		ResultHelper::renderDisplayModeToggle($summaryContent, $this->displayModeContext);
 	}
 
 }

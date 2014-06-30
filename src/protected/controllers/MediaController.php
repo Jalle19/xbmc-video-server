@@ -97,31 +97,29 @@ abstract class MediaController extends Controller
 	 */
 	public function actionSetDisplayMode($mode, $context)
 	{
-		$this->setDisplayMode(new DisplayMode($mode, $context));
-		$this->redirectToPrevious(Yii::app()->homeUrl);
-	}
+		// See if the user has a stored display mode for this context
+		$displayMode = DisplayMode::model()->findByContext($context);
 
-	/**
-	 * Persists the specified display mode
-	 * @param DisplayMode $displayMode the display mode
-	 * @throws CHttpException if the specified mode is invalid
-	 */
-	public function setDisplayMode($displayMode)
-	{
-		if (!$displayMode->validate())
+		if ($displayMode === null)
+			$displayMode = new DisplayMode();
+
+		$displayMode->mode = $mode;
+		$displayMode->context = $context;
+
+		if (!$displayMode->save())
 			throw new InvalidRequestException();
 
-		Yii::app()->session->add($this->getSessionKey($displayMode->context), $displayMode);
+		$this->redirectToPrevious(Yii::app()->homeUrl);
 	}
 
 	/**
 	 * Returns the current display mode for the specified context
 	 * @param string $context the context
+	 * @return string the display mode
 	 */
 	public function getDisplayMode($context)
 	{
-		/* @var $model DisplayMode */
-		$model = Yii::app()->session->get($this->getSessionKey($context));
+		$model = DisplayMode::model()->findByContext($context);
 
 		// Use default display mode if no specific one is stored
 		if ($model === null)
@@ -144,17 +142,6 @@ abstract class MediaController extends Controller
 			return DisplayMode::MODE_LIST;
 
 		return DisplayMode::MODE_GRID;
-	}
-
-	/**
-	 * Returns the session key to use for storing a display mode with the 
-	 * specified context
-	 * @param string $context the display mode context
-	 * @return string the session key
-	 */
-	private function getSessionKey($context)
-	{
-		return 'mediaDisplayMode['.$context.']';
 	}
 
 	/**

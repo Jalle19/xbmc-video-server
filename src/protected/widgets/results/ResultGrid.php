@@ -13,12 +13,6 @@ class ResultGrid extends CListView
 {
 	use ResultTrait;
 	
-	/**
-	 * @var string the display mode context to use in the toggle switch. 
-	 * Defaults to DisplayMode::CONTEXT_RESULTS 
-	 */
-	public $displayModeContext = DisplayMode::CONTEXT_RESULTS;
-	
 	public function beforeParentInit()
 	{
 		$this->itemsTagName = 'ul';
