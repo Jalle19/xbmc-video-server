@@ -18,16 +18,24 @@ class VideoLibrary
 	 * @var string[] default properties for movies
 	 */
 	private static $_defaultMovieProperties = array(
-		'year', 'genre', 'thumbnail', 'rating', 'runtime'
+		'year', 'genre', 'thumbnail', 'rating', 'runtime', 'playcount'
 	);
 
 	/**
 	 * @var string[] default properties for TV shows
 	 */
 	private static $_defaultTVShowProperties = array(
-		'year', 'genre', 'thumbnail'
+		'year', 'genre', 'thumbnail', 'art', 'playcount',
 	);
 
+	/**
+	 * @var string[] default properties for episodes
+	 */
+	private static $_defaultEpisodeProperties = array(
+		'plot', 'runtime', 'season', 'episode', 'streamdetails', 'thumbnail',
+		'file', 'title', 'tvshowid', 'showtitle', 'playcount',
+	);
+	
 	/**
 	 * Returns all genres available for the specified media type (default to 
 	 * movie genres).
@@ -114,19 +122,8 @@ class VideoLibrary
 	 */
 	public static function getRecentlyAddedEpisodes($params = array())
 	{
-		$params['properties'] = array(
-			'plot',
-			'runtime',
-			'season',
-			'episode',
-			'streamdetails',
-			'thumbnail',
-			'file',
-			'tvshowid',
-			'showtitle',
-			'title',
-		);
-
+		self::ensureProperties($params, self::$_defaultEpisodeProperties);
+		
 		$response = Yii::app()->xbmc->performRequest(
 				'VideoLibrary.GetRecentlyAddedEpisodes', $params);
 
@@ -157,7 +154,7 @@ class VideoLibrary
 	public static function getSeasons($tvshowId)
 	{
 		$params = array('tvshowid'=>(int)$tvshowId, 
-			'properties'=>array('season', 'art', 'episode', 'showtitle', 'tvshowid'));
+			'properties'=>array('season', 'art', 'episode', 'showtitle', 'tvshowid', 'playcount'));
 		
 		self::addDefaultSort($params);
 		
@@ -188,9 +185,12 @@ class VideoLibrary
 	 * Returns the episodes for the specified show and season
 	 * @param int $tvshowId the TV show ID
 	 * @param int $season the season number
+	 * @param array $properties properties to include in the results. Defaults 
+	 * to an empty array, meaning the default properties for episodes will be 
+	 * included
 	 * @return Episode[] the episodes
 	 */
-	public static function getEpisodes($tvshowId, $season, $properties)
+	public static function getEpisodes($tvshowId, $season, $properties = array())
 	{
 		$params = array(
 			'tvshowid'=>(int)$tvshowId, 
@@ -198,6 +198,7 @@ class VideoLibrary
 			'properties'=>$properties);
 		
 		self::addDefaultSort($params);
+		self::ensureProperties($params, self::$_defaultEpisodeProperties);
 		
 		$response = Yii::app()->xbmc->performRequest(
 				'VideoLibrary.GetEpisodes', $params);

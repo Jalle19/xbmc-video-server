@@ -10,6 +10,7 @@
  */
 abstract class Media extends Base
 {
+	use WatchedIconTrait;
 
 	/**
 	 * @var float

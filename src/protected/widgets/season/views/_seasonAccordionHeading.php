@@ -13,7 +13,7 @@
 		<?php echo CHtml::link($season->getDisplayName(), $linkUrl, $linkOptions); ?>
 
 		<span class="season-info hide-when-toggled">
-			<?php echo $season->getEpisodesString(); ?>
+			<?php echo $season->getEpisodesString().$season->getWatchedIcon(); ?>
 		</span>
 	</div>
 	

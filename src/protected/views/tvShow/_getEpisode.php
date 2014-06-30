@@ -4,7 +4,7 @@
 
 ?>
 <p>
-	<?php echo $episode->getEpisodeString(); ?>
+	<?php echo $episode->getEpisodeString().$episode->getWatchedIcon(); ?>
 </p>
 
 <?php 

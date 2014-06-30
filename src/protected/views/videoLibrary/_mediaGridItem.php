@@ -10,4 +10,5 @@ $this->renderPartial('//videoLibrary/_gridItem', array(
 	'label'=>CHtml::link($data->label, $itemUrl),
 	'itemUrl'=>$itemUrl,
 	'thumbnail'=>$thumbnail,
+	'watchedIcon'=>$data->getWatchedIcon(),
 ));

@@ -36,7 +36,8 @@ abstract class ResultList extends TbGridView
 			'type'=>'html',
 			'value'=>function($data) {
 				/* @var $data Media */
-				return CHtml::link($data->label, Yii::app()->controller->createUrl('details', array('id'=>$data->getId())));
+				echo CHtml::link($data->label, Yii::app()->controller->createUrl('details', array('id'=>$data->getId())));
+				echo $data->getWatchedIcon();
 			},
 		);
 	}

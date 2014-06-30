@@ -15,7 +15,12 @@
 		</div>
 		
 		<div class="caption">
-			<?php echo $label; ?>
+			<?php echo $label;
+			
+			if (isset($watchedIcon))
+				echo $watchedIcon; 
+			
+			?>
 		</div>
 	
 	</div>

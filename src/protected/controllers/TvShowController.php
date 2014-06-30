@@ -35,9 +35,6 @@ class TvShowController extends MediaController
 		$filterForm = new TVShowFilterForm();
 		
 		$requestParameters = $filterForm->buildRequestParameters();
-		$requestParameters['properties'] = array('thumbnail', 'art', 
-			'genre', 'year');
-
 		$tvshows = VideoLibrary::getTVShows($requestParameters);
 		
 		// Go directly to the details page if we have an exact match on the 
@@ -127,11 +124,7 @@ class TvShowController extends MediaController
 	 */
 	public function actionGetSeasonPlaylist($tvshowId, $season)
 	{
-		$episodes = VideoLibrary::getEpisodes($tvshowId, $season, array(
-					'episode',
-					'showtitle',
-					'runtime',
-					'file'));
+		$episodes = VideoLibrary::getEpisodes($tvshowId, $season);
 
 		if (empty($episodes))
 			throw new PageNotFoundException();
@@ -206,17 +199,7 @@ class TvShowController extends MediaController
 	 */
 	public function getEpisodeDataProvider($tvshowId, $season)
 	{
-		$episodes = VideoLibrary::getEpisodes($tvshowId, $season, array(
-					'plot',
-					'runtime',
-					'season',
-					'episode',
-					'streamdetails',
-					'thumbnail',
-					'file',
-					'title',
-					'showtitle',
-		));
+		$episodes = VideoLibrary::getEpisodes($tvshowId, $season);
 
 		// We never want pagination here
 		return new LibraryDataProvider($episodes, 'label', array(

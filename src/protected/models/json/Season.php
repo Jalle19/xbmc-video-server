@@ -9,6 +9,7 @@
  */
 class Season extends Base
 {
+	use WatchedIconTrait;
 
 	/**
 	 * @var object the season art

@@ -31,6 +31,10 @@ span.required {
 	margin-left: @gridGutterWidth;
 }
 
+.watched-icon {
+	padding-left: 0.4em;
+}
+
 .form-help {
 	display: table;
 	color: @infoText;
@@ -111,6 +115,7 @@ select {
 
 .item-grid, .actor-grid {
 	.caption {
+		position: relative;
 		padding: 6px;
 		
 		// overflow after three lines of text
@@ -121,10 +126,17 @@ select {
 		// override color to make links look like normal text
 		a {
 			color: @gray !important;
+			padding-right: 24px; // make room for the watched icon
 		}
 		
 		p {
 			margin-bottom: 0;
+		}
+		
+		.watched-icon {
+			position: absolute;
+			top: 6px;
+			right: 0;
 		}
 	}
 }
