@@ -139,9 +139,8 @@ abstract class MediaController extends Controller
 	 */
 	private function getDefaultDisplayMode($context)
 	{
-		// Mobile browsers always get list mode regardless of context, and 
-		// the season context defaults to list mode too
-		if ($this->isMobile() || $context === DisplayMode::CONTEXT_SEASONS)
+		// Use list view for seasons
+		if ($context === DisplayMode::CONTEXT_SEASONS)
 			return DisplayMode::MODE_LIST;
 
 		return DisplayMode::MODE_GRID;
@@ -184,20 +183,6 @@ abstract class MediaController extends Controller
 		}
 
 		return $items;
-	}
-
-	/**
-	 * Checks whether the visitor is using a mobile device or not (tablets are 
-	 * not counted as mobile)
-	 * @return boolean
-	 */
-	private function isMobile()
-	{
-		// A device cannot suddenly become a mobile so we store the result
-		if (!isset($_SESSION['isMobile']))
-			$_SESSION['isMobile'] = Browser::isMobile();
-
-		return $_SESSION['isMobile'];
 	}
 
 }
