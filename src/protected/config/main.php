@@ -20,6 +20,7 @@ return array(
 		'application.models.forms.*',
 		'application.models.json.*',
 		'application.components.*',
+		'application.components.core.*',
 		'application.exceptions.*',
 		'application.helpers.*',
 		'application.controllers.*',
