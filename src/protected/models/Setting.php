@@ -31,6 +31,7 @@ class Setting extends CActiveRecord
 	public $useHttpsForVfsUrls;
 	public $whitelist;
 	public $ignoreArticle;
+	public $playlistFormat;
 
 	/**
 	 * @var Setting[] list of all settings and their current values (runtime 
@@ -135,7 +136,7 @@ class Setting extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('language, applicationName', 'required'),
+			array('language, applicationName, playlistFormat', 'required'),
 			array('pagesize', 'numerical', 'integerOnly'=>true, 'min'=>1),
 			array('whitelist', 'validateWhitelist'),
 		);
@@ -187,6 +188,13 @@ class Setting extends CActiveRecord
 				'type'=>self::TYPE_TEXT,
 				'default'=>'XBMC Video Server',
 				'order'=>100,
+			),
+			'playlistFormat'=>array(
+				'label'=>Yii::t('Settings', 'Playlist format'),
+				'type'=>self::TYPE_DROPDOWN,
+				'default'=>'m3u',
+				'listData'=>PlaylistFactory::getTypes(),
+				'order'=>150,
 			),
 			'singleFilePlaylist'=>array(
 				'label'=>Yii::t('Settings', "Don't use playlists when item consists of a single file"),

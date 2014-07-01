@@ -40,6 +40,7 @@ INSERT INTO `settings` (`name`,`value`) VALUES ('useHttpsForVfsUrls','0');
 INSERT INTO `settings` (`name`,`value`) VALUES ('whitelist','');
 INSERT INTO `settings` (`name`,`value`) VALUES ('ignoreArticle','0');
 INSERT INTO `settings` (`name`,`value`) VALUES ('language','en');
+INSERT INTO `settings` (`name`,`value`) VALUES ('playlistFormat','m3u');
 
 DROP TABLE IF EXISTS `display_mode`;
 CREATE TABLE `display_mode` (
