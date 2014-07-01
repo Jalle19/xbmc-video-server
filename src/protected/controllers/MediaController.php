@@ -149,7 +149,7 @@ abstract class MediaController extends Controller
 	 * Most items have just one file but some have more, hence it returns an 
 	 * array.
 	 * @param Media $media the media
-	 * @return array
+	 * @return PlaylistItem[] the playlist items
 	 */
 	protected function getPlaylistItems(Media $media)
 	{
@@ -163,10 +163,12 @@ abstract class MediaController extends Controller
 		{
 			$label = $linkCount > 1 ? $name.' (#'.++$k.')' : $name;
 
-			$items[] = array(
-				'runtime'=>(int)$media->runtime,
-				'label'=>$label,
-				'url'=>$link);
+			$item = new PlaylistItem();
+			$item->title = $label;
+			$item->location = $link;
+			$item->runtime = (int)$media->runtime;
+			
+			$items[] = $item;
 		}
 
 		return $items;

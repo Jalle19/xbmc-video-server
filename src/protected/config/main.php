@@ -19,6 +19,7 @@ return array(
 		'application.models.*',
 		'application.models.forms.*',
 		'application.models.json.*',
+		'application.models.playlist.*',
 		'application.components.*',
 		'application.components.core.*',
 		'application.exceptions.*',

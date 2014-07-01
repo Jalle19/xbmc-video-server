@@ -125,8 +125,8 @@ class TvShowController extends MediaController
 
 		// Construct the playlist
 		$showTitle = $episodes[0]->showtitle;
-		$playlist = new M3UPlaylist();
 		$playlistName = $seasonDetails->getDisplayName();
+		$playlist = PlaylistFactory::create($playlistName);
 
 		foreach ($episodes as $episode)
 			foreach($this->getPlaylistItems($episode) as $item)
@@ -134,8 +134,8 @@ class TvShowController extends MediaController
 		
 		$this->log('"%s" streamed season %d of "%s"', Yii::app()->user->name, $season, $showTitle);
 
-		header('Content-Type: audio/x-mpegurl');
-		header('Content-Disposition: attachment; filename="'.M3UPlaylist::sanitizeFilename($playlistName).'.m3u"');
+		header('Content-Type: '.$playlist->getMIMEType());
+		header('Content-Disposition: attachment; filename="'.$playlist->getSanitizedFileName().'.m3u"');
 
 		echo $playlist;
 	}
@@ -158,16 +158,16 @@ class TvShowController extends MediaController
 			throw new PageNotFoundException();
 		
 		// Construct the playlist
-		$playlist = new M3UPlaylist();
 		$name = $episode->getDisplayName();
+		$playlist = PlaylistFactory::create($name);
 		
 		foreach ($this->getPlaylistItems($episode) as $item)
 			$playlist->addItem($item);
 
 		$this->log('"%s" streamed %s of "%s"', Yii::app()->user->name, $episode->getEpisodeString(), $episode->showtitle);
 
-		header('Content-Type: audio/x-mpegurl');
-		header('Content-Disposition: attachment; filename="'.M3UPlaylist::sanitizeFilename($name).'.m3u"');
+		header('Content-Type: '.$playlist->getMIMEType());
+		header('Content-Disposition: attachment; filename="'.$playlist->getSanitizedFileName().'.m3u"');
 
 		echo $playlist;
 	}
