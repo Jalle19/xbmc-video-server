@@ -46,6 +46,11 @@ class Season extends Base
 	{
 		return $this->seasonid;
 	}
+	
+	public function getDisplayName()
+	{
+		return $this->showtitle.' - '.$this->label;
+	}
 
 	/**
 	 * @return mixed the season poster. If this is the first season of a show 

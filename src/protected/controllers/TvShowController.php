@@ -128,11 +128,14 @@ class TvShowController extends MediaController
 
 		if (empty($episodes))
 			throw new PageNotFoundException();
+		
+		// Get the season details so we can determine the playlist name
+		$seasonDetails = VideoLibrary::getSeasonDetails($tvshowId, $season);
 
 		// Construct the playlist
 		$showTitle = $episodes[0]->showtitle;
 		$playlist = new M3UPlaylist();
-		$playlistName = $showTitle.' - Season '.$season;
+		$playlistName = $seasonDetails->getDisplayName();
 
 		foreach ($episodes as $episode)
 			foreach($this->getPlaylistItems($episode) as $item)

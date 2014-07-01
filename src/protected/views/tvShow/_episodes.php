@@ -13,7 +13,7 @@ $dataProvider = $this->getEpisodeDataProvider($season->tvshowid, $season->season
 	</div>
 	
 	<h3>
-		<?php echo $season->showtitle; ?> - <?php echo $season->getDisplayName(); ?>
+		<?php echo $season->getDisplayName(); ?>
 	</h3>
 	
 	<p>

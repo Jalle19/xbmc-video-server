@@ -10,7 +10,7 @@
 	</div>
 
 	<div class="pull-left">
-		<?php echo CHtml::link($season->getDisplayName(), $linkUrl, $linkOptions); ?>
+		<?php echo CHtml::link($season->label, $linkUrl, $linkOptions); ?>
 
 		<span class="season-info hide-when-toggled">
 			<?php echo $season->getEpisodesString().$season->getWatchedIcon(); ?>
