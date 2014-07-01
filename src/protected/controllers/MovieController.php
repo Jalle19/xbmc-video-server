@@ -105,11 +105,7 @@ class MovieController extends MediaController
 			$playlist->addItem($item);
 		
 		$this->log('"%s" streamed "%s"', Yii::app()->user->name, $name);
-
-		header('Content-Type: '.$playlist->getMIMEType());
-		header('Content-Disposition: attachment; filename="'.$playlist->getSanitizedFileName().'.m3u"');
-
-		echo $playlist;
+		$this->servePlaylist($playlist);
 	}
 	
 }

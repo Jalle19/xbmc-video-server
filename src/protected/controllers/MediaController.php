@@ -143,6 +143,18 @@ abstract class MediaController extends Controller
 
 		return DisplayMode::MODE_GRID;
 	}
+	
+	/**
+	 * Serves the specified playlist as an attachment to the browser
+	 * @param Playlist $playlist the playlist
+	 */
+	protected function servePlaylist($playlist)
+	{
+		header('Content-Type: '.$playlist->getMIMEType());
+		header('Content-Disposition: attachment; filename="'.$playlist->getSanitizedFileName().'.m3u"');
+
+		echo $playlist;
+	}
 
 	/**
 	 * Returns an array of playlist items for the specified media item's files.
