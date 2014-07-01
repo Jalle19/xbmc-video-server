@@ -9,13 +9,13 @@ previous version from a newer one may break something since the project dependen
 change over time.
 
 #### 1.6.0
-- upgrade the icons to use Font Awesome 4.1, and drop Fontastic
-- fix the viewport scaling on mobile devices, now it should switch to showing 
+* upgrade the icons to use Font Awesome 4.1, and drop Fontastic
+* fix the viewport scaling on mobile devices, now it should switch to showing 
 thumbnails in grid view mode when the phone is tilted
-- use the same default display mode regardless of device now that grid view 
+* use the same default display mode regardless of device now that grid view 
 works better on phones
-- indicate watched status for movies, TV shows, seasons and episodes
-- persist the user's selected display mode so it doesn't change from session to 
+* indicate watched status for movies, TV shows, seasons and episodes
+* persist the user's selected display mode so it doesn't change from session to 
 session or browser to browser
 
 #### 1.5.4
