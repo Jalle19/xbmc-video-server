@@ -42,9 +42,9 @@ class Season extends Base
 	 */
 	public $tvshowid;
 
-	public function getId()
+	public function getIdField()
 	{
-		return $this->seasonid;
+		return 'seasonid';
 	}
 	
 	public function getDisplayName()

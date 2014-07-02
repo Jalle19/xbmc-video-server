@@ -20,11 +20,6 @@ class TVShow extends Media
 	 */
 	public $tvshowid;
 
-	public function getId()
-	{
-		return $this->tvshowid;
-	}
-
 	public function getDisplayName()
 	{
 		$name = $this->label;

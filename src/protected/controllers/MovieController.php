@@ -30,7 +30,7 @@ class MovieController extends MediaController
 			$this->redirect(array('details', 'id'=>$movies[0]->getId()));
 
 		$this->render('index', array(
-			'dataProvider'=>new LibraryDataProvider($movies, 'movieid'),
+			'dataProvider'=>new LibraryDataProvider($movies),
 			'filterForm'=>$filterForm));
 	}
 	
@@ -42,7 +42,7 @@ class MovieController extends MediaController
 		$movies = VideoLibrary::getRecentlyAddedMovies();
 		
 		$this->render('recentlyAdded', array(
-			'dataProvider'=>new LibraryDataProvider($movies, 'movieid')));
+			'dataProvider'=>new LibraryDataProvider($movies)));
 	}
 	
 	/**

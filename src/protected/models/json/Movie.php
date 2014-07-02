@@ -34,11 +34,6 @@ class Movie extends Media
 	 */
 	private $_votes;
 
-	public function getId()
-	{
-		return $this->movieid;
-	}
-
 	public function getDisplayName()
 	{
 		return $this->label.' ('.$this->year.')';

@@ -43,7 +43,7 @@ class TvShowController extends MediaController
 			$this->redirect(array('details', 'id'=>$tvshows[0]->getId()));
 
 		$this->render('index', array(
-			'dataProvider'=>new LibraryDataProvider($tvshows, 'tvshowid'),
+			'dataProvider'=>new LibraryDataProvider($tvshows),
 			'filterForm'=>$filterForm));
 	}
 	
@@ -189,7 +189,7 @@ class TvShowController extends MediaController
 		$episodes = VideoLibrary::getRecentlyAddedEpisodes();
 
 		$this->render('recentlyAdded', array(
-			'dataProvider'=>new LibraryDataProvider($episodes, 'episodeid'),
+			'dataProvider'=>new LibraryDataProvider($episodes),
 		));
 	}
 	
@@ -205,7 +205,7 @@ class TvShowController extends MediaController
 		$episodes = VideoLibrary::getEpisodes($tvshowId, $season);
 
 		// We never want pagination here
-		return new LibraryDataProvider($episodes, 'label', array(
+		return new LibraryDataProvider($episodes, array(
 			'pagination'=>false,
 		));
 	}

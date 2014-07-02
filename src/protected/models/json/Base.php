@@ -21,9 +21,24 @@ abstract class Base extends CComponent
 	public $thumbnail;
 
 	/**
+	 * Returns the name of the first field that ends with "id". This is needed 
+	 * because all items from the XBMC API use different identifiers.
+	 * @return string the name of the "id" field
+	 */
+	public function getIdField()
+	{
+		foreach (array_keys(get_object_vars($this)) as $property)
+			if (substr($property, -2) === 'id')
+				return $property;
+	}
+	
+	/**
 	 * @return the ID of this item
 	 */
-	abstract public function getId();
+	public function getId()
+	{
+		return $this->{$this->getIdField()};
+	}
 
 	/**
 	 * @return the display name of this item

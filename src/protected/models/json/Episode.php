@@ -40,9 +40,9 @@ class Episode extends Media
 	 */
 	public $title;
 	
-	public function getId()
+	public function getIdField()
 	{
-		return $this->episodeid;
+		return 'episodeid';
 	}
 	
 	/**
