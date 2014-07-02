@@ -11,7 +11,7 @@ $this->pageTitle = $details->getDisplayName().' - '.Yii::t('Movies', 'Movies');
 	<div class="span3">
 		<?php 
 
-		echo CHtml::image(new ThumbnailVideo($details->thumbnail, 
+		echo CHtml::image(new ThumbnailVideo($details->getArtwork(), 
 				Thumbnail::SIZE_LARGE), '', array(
 			'class'=>'item-thumbnail hidden-phone',
 		));
