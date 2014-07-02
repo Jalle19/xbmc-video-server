@@ -16,11 +16,15 @@ class XSPFPlaylist extends Playlist
 
 		foreach ($this->_items as $item)
 		{
-			$xspf->addTrack(array(
+			$trackData = array(
 				'title'=>$item->title,
 				'location'=>$item->location,
-				'duration'=>$item->runtime,
-			));
+				'duration'=>$item->runtime);
+
+			if ($item->image)
+				$trackData['image'] = $item->image;
+
+			$xspf->addTrack($trackData);
 		}
 
 		return $xspf->output(true);

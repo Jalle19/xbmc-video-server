@@ -91,7 +91,8 @@ class MovieController extends MediaController
 		$movieDetails = VideoLibrary::getMovieDetails($movieId, array(
 			'file',
 			'runtime',
-			'year'
+			'year',
+			'thumbnail',
 		));
 		
 		if ($movieDetails === null)

@@ -175,10 +175,9 @@ abstract class MediaController extends Controller
 		{
 			$label = $linkCount > 1 ? $name.' (#'.++$k.')' : $name;
 
-			$item = new PlaylistItem();
+			$item = new PlaylistItem($media);
 			$item->title = $label;
 			$item->location = $link;
-			$item->runtime = (int)$media->runtime;
 			
 			$items[] = $item;
 		}

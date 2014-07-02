@@ -148,6 +148,7 @@ class TvShowController extends MediaController
 					'season',
 					'showtitle',
 					'runtime',
+					'thumbnail',
 					'file'));
 
 		if ($episode === null)
