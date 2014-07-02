@@ -33,18 +33,9 @@ class TvShowController extends MediaController
 	{
 		// Get the appropriate request parameters from the filter
 		$filterForm = new TVShowFilterForm();
+		$tvshows = VideoLibrary::getTVShows($filterForm->buildRequestParameters());
 		
-		$requestParameters = $filterForm->buildRequestParameters();
-		$tvshows = VideoLibrary::getTVShows($requestParameters);
-		
-		// Go directly to the details page if we have an exact match on the 
-		// show name
-		if (count($tvshows) === 1 && $filterForm->name === $tvshows[0]->label)
-			$this->redirect(array('details', 'id'=>$tvshows[0]->getId()));
-
-		$this->render('index', array(
-			'dataProvider'=>new LibraryDataProvider($tvshows),
-			'filterForm'=>$filterForm));
+		$this->renderIndex($tvshows, $filterForm);
 	}
 	
 	/**
