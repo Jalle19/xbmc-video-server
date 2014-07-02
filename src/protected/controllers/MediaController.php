@@ -151,7 +151,7 @@ abstract class MediaController extends Controller
 	protected function servePlaylist($playlist)
 	{
 		header('Content-Type: '.$playlist->getMIMEType());
-		header('Content-Disposition: attachment; filename="'.$playlist->getSanitizedFileName().'.m3u"');
+		header('Content-Disposition: attachment; filename="'.$playlist->getSanitizedFileName().'"');
 
 		echo $playlist;
 	}

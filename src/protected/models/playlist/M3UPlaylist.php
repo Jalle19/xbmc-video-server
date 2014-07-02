@@ -11,6 +11,11 @@
 class M3UPlaylist extends Playlist
 {
 	
+	public function getExtension()
+	{
+		return 'm3u';
+	}
+	
 	public function getMIMEType()
 	{
 		return 'audio/x-mpegurl';

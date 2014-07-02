@@ -25,6 +25,11 @@ abstract class Playlist
 	private $_fileName;
 
 	/**
+	 * @return string the file extension of the playlist
+	 */
+	abstract public function getExtension();
+	
+	/**
 	 * @return string the MIME type of the playlist
 	 */
 	abstract public function getMIMEType();
@@ -58,7 +63,7 @@ abstract class Playlist
 	 */
 	public function getSanitizedFileName()
 	{
-		return Transliterator::transliterate($this->_fileName);
+		return Transliterator::transliterate($this->_fileName).'.'.$this->getExtension();
 	}
 
 }
