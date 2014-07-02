@@ -133,8 +133,8 @@ class WebServer
 	/**
 	 * Parses the actual realm from the value of the WWW-Authenticate header
 	 * @param \Zend\Http\Header\WWWAuthenticate $authenticateHeader the header
-	 * @return string|false the authentication realm, or false if it was 
-	 * malformed
+	 * @return string the authentication realm (an empty string if it was 
+	 * malformed)
 	 */
 	private function parseRealm($authenticateHeader)
 	{
@@ -142,7 +142,7 @@ class WebServer
 
 		// Sanity check, otherwise the rest of the method won't work
 		if (count($parts) !== 2)
-			return false;
+			return '';
 
 		$realm = $parts[1];
 
