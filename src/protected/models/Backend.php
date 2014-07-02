@@ -112,8 +112,7 @@ class Backend extends CActiveRecord
 	}
 
 	/**
-	 * Checks that the credentials entered are valid. We do this by requesting 
-	 * "/" on the server and checking the HTTP status code.
+	 * Checks that the credentials entered are valid
 	 * @param string $attribute the attribute being validated ("username" in 
 	 * this case)
 	 */
@@ -122,26 +121,10 @@ class Backend extends CActiveRecord
 		if (!$this->areAttributesValid(array('hostname', 'port', 'username', 'password')))
 			return;
 
-		// Create a HTTP client and a GET request
-		$httpClient = new Zend\Http\Client();
-		$httpClient->setAuth($this->username, $this->password);
-		$httpRequest = new \Zend\Http\Request();
-		$httpRequest->setUri('http://'.$this->hostname.':'.$this->port.'/');
+		$webserver = new WebServer($this->hostname, $this->port);
 
-		// Perform the request
-		try
-		{
-			$httpResponse = $httpClient->dispatch($httpRequest);
-
-			if ($httpResponse->getStatusCode() === 401)
-				throw new Exception();
-		}
-		catch (\Exception $e)
-		{
-			unset($e); // avoid IDE warnings
-
+		if (!$webserver->checkCredentials($this->username, $this->password))
 			$this->addError($attribute, Yii::t('Backend', 'Invalid credentials'));
-		}
 	}
 	
 	/**
@@ -156,44 +139,24 @@ class Backend extends CActiveRecord
 		if (!$this->areAttributesValid(array('hostname', 'port')))
 			return;
 
-		// Create a HTTP client and a GET request
-		$httpClient = new Zend\Http\Client();
-		$httpRequest = new \Zend\Http\Request();
-		$httpRequest->setUri('http://'.$this->hostname.':'.$this->port.'/');
+		$webserver = new WebServer($this->hostname, $this->port);
 
-		// Perform the request (we deliberately don't catch Zend exceptions 
-		// since we can't recover from them anyway)
-		try
-		{
-			$httpResponse = $httpClient->dispatch($httpRequest);
-
-			// We expect there to be WWW-Authenticate header with the realm "XBMC"
-			$requiresAuthentication = false;
-			
-			foreach ($httpResponse->getHeaders() as $header)
-			{
-				if ($header instanceof Zend\Http\Header\WWWAuthenticate)
-				{
-					$requiresAuthentication = true;
-
-					if (!preg_match('/xbmc/i', $header->value))
-						throw new InvalidRealmException($header->value);
-				}
-			}
-
-			if (!$requiresAuthentication)
-				throw new AuthenticationLessServerException();
-		}
-		catch (AuthenticationLessServerException $e)
-		{
+		// Check that the server requires authentication
+		if (!$webserver->requiresAuthentication())
 			$this->addError($attribute, Yii::t('Backend', 'The server does not ask for authentication'));
-		}
-		catch (InvalidRealmException $e)
+		else
 		{
-			$message = "The server at $this->hostname:$this->port doesn't seem to be an XBMC instance";
+			// Check the authentication realm
+			$realm = $webserver->getAuthenticationRealm();
 
-			Yii::log($message.' (the server identified as "'.$e->getMessage().'")', CLogger::LEVEL_ERROR, 'Backend');
-			$this->addError($attribute, $message);
+			if (strtolower($realm) !== 'xbmc')
+			{
+				$message = 'The server at '.$webserver->getHostInfo()." doesn't seem to be an XBMC instance";
+
+				// Log whatever string the server identified as for debugging purposes
+				Yii::log($message.' (the server identified as "'.$realm.'")', CLogger::LEVEL_ERROR, 'Backend');
+				$this->addError($attribute, $message);
+			}
 		}
 	}
 
