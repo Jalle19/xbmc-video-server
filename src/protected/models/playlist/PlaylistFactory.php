@@ -19,15 +19,22 @@ class PlaylistFactory
 	 * Factory method for creating playlist objects
 	 * @param string $fileName
 	 * @return Playlist the playlist object
+	 * @throws InvalidRequestException if the playlist format is not supported
 	 */
 	public static function create($fileName)
 	{
-		$format = Playlist::TYPE_M3U;
+		$format = Setting::getString('playlistFormat');
 
 		switch ($format)
 		{
 			case Playlist::TYPE_M3U:
 				return new M3UPlaylist($fileName);
+			case Playlist::TYPE_XSPF:
+				return new XSPFPlaylist($fileName);
+			case Playlist::TYPE_PLS:
+				return new PLSPlaylist($fileName);
+			default:
+				throw new InvalidRequestException();
 		}
 	}
 
@@ -38,6 +45,8 @@ class PlaylistFactory
 	{
 		return array(
 			Playlist::TYPE_M3U=>'M3U',
+			Playlist::TYPE_PLS=>'PLS',
+			Playlist::TYPE_XSPF=>'XSPF',
 		);
 	}
 

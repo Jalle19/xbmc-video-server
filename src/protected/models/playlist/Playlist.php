@@ -13,6 +13,8 @@ abstract class Playlist
 {
 
 	const TYPE_M3U = 'm3u';
+	const TYPE_XSPF = 'xspf';
+	const TYPE_PLS = 'pls';
 
 	/**
 	 * @var PlaylistItem[] the playlist items

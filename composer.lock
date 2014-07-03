@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "814acc3ae02996c993c21b45357b1034",
+    "hash": "20918328b949b2ff185343e6846948d3",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -441,6 +441,51 @@
                 "php mobile detect"
             ],
             "time": "2014-03-07 13:33:54"
+        },
+        {
+            "name": "mptre/php-xspf",
+            "version": "dev-ng",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Jalle19/php-xspf.git",
+                "reference": "07033cb8f3d8ccae64b9da1c99fb90eb6ac3858e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Jalle19/php-xspf/zipball/07033cb8f3d8ccae64b9da1c99fb90eb6ac3858e",
+                "reference": "07033cb8f3d8ccae64b9da1c99fb90eb6ac3858e",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "mptre": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Lindqvist",
+                    "email": "anton@qvister.se"
+                },
+                {
+                    "name": "Sam Stenvall",
+                    "email": "neggelandia@gmail.com"
+                }
+            ],
+            "description": "A package for genering XSPF playlists",
+            "keywords": [
+                "xspf"
+            ],
+            "support": {
+                "source": "https://github.com/Jalle19/php-xspf/tree/cdata-domtext"
+            },
+            "time": "2014-07-03 05:15:36"
         },
         {
             "name": "netresearch/jsonmapper",
@@ -922,7 +967,8 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "eventviva/php-image-resize": 20
+        "eventviva/php-image-resize": 20,
+        "mptre/php-xspf": 20
     },
     "platform": [
 
