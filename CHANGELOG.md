@@ -8,6 +8,10 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.7.0
+* add support for PLS and XSPF playlists. The playlist format can be changed from the settings. XSPF playlists support item images, so if you open a movie playlist in VLC you'll see the movie poster
+* lots of various code improvements
+
 #### 1.6.0
 * upgrade the icons to use Font Awesome 4.1, and drop Fontastic
 * fix the viewport scaling on mobile devices, now it should switch to showing 
