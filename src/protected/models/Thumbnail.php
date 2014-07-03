@@ -52,8 +52,23 @@ class Thumbnail
 	}
 	
 	/**
+	 * Returns the absolute path to a cached thumbnail or false if no cached 
+	 * copy exists
+	 * @return string|false
+	 */
+	public function getPath()
+	{
+		$filename = $this->getFilename();
+
+		if ($this->_cache->has($filename))
+			return $this->_cache->getCachePath().DIRECTORY_SEPARATOR.$filename;
+
+		return false;
+	}
+
+	/**
 	 * Returns the URL to a cached thumbnail or false if no cached copy exists
-	 * @return mixed
+	 * @return string|false
 	 */
 	public function getUrl()
 	{
