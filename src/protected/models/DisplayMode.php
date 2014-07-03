@@ -68,7 +68,7 @@ class DisplayMode extends CActiveRecord
 
 	/**
 	 * Sets the user_id to the current user before validating
-	 * @return whether validation should be executed
+	 * @return boolean validation should be executed
 	 */
 	protected function beforeValidate()
 	{

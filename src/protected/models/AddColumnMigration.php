@@ -10,10 +10,16 @@
 abstract class AddColumnMigration extends CDbMigration
 {
 
+	/**
+	 * @return string
+	 */
 	abstract protected function getTableName();
 
 	abstract protected function getColumnName();
 
+	/**
+	 * @return string
+	 */
 	abstract protected function getColumnType();
 
 	public function up()

@@ -184,7 +184,7 @@ abstract class VideoFilterForm extends CFormModel
 	}
 
 	/**
-	 * @return the type of genres to fetch (movies, TV shows, etc.)
+	 * @return string type of genres to fetch (movies, TV shows, etc.)
 	 */
 	abstract public function getGenreType();
 
