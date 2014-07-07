@@ -21,7 +21,7 @@ $this->pageTitle = $title = Yii::t('User', 'Manage users');
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
 	'type'=>TbHtml::GRID_TYPE_STRIPED,
-	'dataProvider'=>$model->dataProvider,
+	'dataProvider'=>$model->getDataProvider(),
 	'enableSorting'=>false,
 	'template'=>'{items}',
 	'columns'=>array(
