@@ -2,6 +2,7 @@
 
 /* @var $form TbActiveForm */
 /* @var $model LoginForm */
+$this->pageTitle = Yii::t('Login', 'Log in');
 
 $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	'layout'=>TbHtml::FORM_LAYOUT_HORIZONTAL));
