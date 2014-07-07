@@ -38,9 +38,14 @@ $baseUrl = Yii::app()->baseUrl;
 							<?php echo Yii::app()->name; ?>
 						</a>
 					</h1>
-					<p class="lead">
-						<?php echo Yii::t('Misc', 'Free your library'); ?>
-					</p>
+					<?php
+					
+					$subtitle = Setting::getString('applicationSubtitle');
+					
+					if ($subtitle)
+						echo CHtml::tag('p', array('class'=>'lead'), $subtitle);
+					
+					?>
 				</div>
 			</div>
 			

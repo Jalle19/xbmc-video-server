@@ -17,11 +17,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1#home-url {
-	margin-top: 20px;
+	margin: 20px 0;
 
 	a:hover {
 		text-decoration: none;
 	}
+}
+
+p.lead {
+	// h1#home-url has to compensate if this element is missing
+	margin-top: -10px;
 }
 
 span.required {

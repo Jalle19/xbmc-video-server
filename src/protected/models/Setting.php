@@ -23,6 +23,7 @@ class Setting extends CActiveRecord
 	// We need one attribute per setting
 	public $language;
 	public $applicationName;
+	public $applicationSubtitle;
 	public $singleFilePlaylist;
 	public $showHelpBlocks;
 	public $cacheApiCalls;
@@ -188,6 +189,12 @@ class Setting extends CActiveRecord
 				'type'=>self::TYPE_TEXT,
 				'default'=>'XBMC Video Server',
 				'order'=>100,
+			),
+			'applicationSubtitle'=>array(
+				'label'=>Yii::t('Settings', 'Application subtitle'),
+				'type'=>self::TYPE_TEXT,
+				'default'=>Yii::t('Misc', 'Free your library'),
+				'order'=>125,
 			),
 			'playlistFormat'=>array(
 				'label'=>Yii::t('Settings', 'Playlist format'),
