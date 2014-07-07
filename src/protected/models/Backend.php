@@ -271,7 +271,7 @@ class Backend extends CActiveRecord
 	/**
 	 * Checks whether any of the specified attributes have errors and returns 
 	 * true if they don't
-	 * @param array $attributes the attributes to check
+	 * @param string[] $attributes the attributes to check
 	 * @return boolean whether any of the attributes have errors
 	 */
 	private function areAttributesValid($attributes)

@@ -88,7 +88,7 @@ class VideoLibrary
 	 * Returns details about the specified movie. The properties array 
 	 * specifies which movie attributes to return.
 	 * @param int $movieId the movie ID
-	 * @param array $properties the properties to include in the result
+	 * @param string[] $properties the properties to include in the result
 	 * @return Movie the movie details or null if the movie was not found
 	 */
 	public static function getMovieDetails($movieId, $properties)
@@ -134,7 +134,7 @@ class VideoLibrary
 	 * Returns details about the specified TV show. The properties array 
 	 * specifies which attributes to return.
 	 * @param int $tvshowId the show ID
-	 * @param array $properties the properties to include in the result
+	 * @param string[] $properties the properties to include in the result
 	 * @return TVShow the show details or null if the show was not found
 	 */
 	public static function getTVShowDetails($tvshowId, $properties)
@@ -209,7 +209,7 @@ class VideoLibrary
 	/**
 	 * Returns details about the specified TV show episode
 	 * @param int $episodeId the episode ID
-	 * @param array $properties the properties to include in the result
+	 * @param string[] $properties the properties to include in the result
 	 * @return Episode the episode details or null if the episode was not found
 	 */
 	public static function getEpisodeDetails($episodeId, $properties)
@@ -288,7 +288,7 @@ class VideoLibrary
 	 * Ensures that the specified properties are specified in 
 	 * params['properties']
 	 * @param array $params the parameters
-	 * @param array $properties the properties
+	 * @param string[] $properties the properties
 	 */
 	private static function ensureProperties(&$params, $properties)
 	{

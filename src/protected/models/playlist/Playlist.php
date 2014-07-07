@@ -43,7 +43,7 @@ abstract class Playlist
 
 	/**
 	 * Class constructor
-	 * @param string the playlist filename
+	 * @param string $fileName the playlist filename
 	 */
 	public function __construct($fileName)
 	{

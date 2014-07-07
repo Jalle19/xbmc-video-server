@@ -13,7 +13,7 @@ class FormHelper
 	/**
 	 * Genereates a cancel button that links to the specified URL
 	 * @param mixed $url the button URL
-	 * @return the HTML for the button
+	 * @return string the HTML for the button
 	 */
 	public static function cancelButton($url)
 	{

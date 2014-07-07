@@ -75,7 +75,6 @@ class Controller extends CController
 	 * Logs the message using Yii:log(). Before the message is logged it is 
 	 * run through sprintf(), which means this method takes an unlimited 
 	 * amount of parameters, e.g. $this->log('This is %s', 'magic');
-	 * @param string $message the message
 	 */
 	public function log()
 	{
@@ -114,7 +113,7 @@ class Controller extends CController
 	 * if no referrer is available. $fallback can be anything that can be 
 	 * passed to CController::redirect().
 	 * @see CController::redirect()
-	 * @param mixed $fallback the fallback URL
+	 * @param string $fallback the fallback URL
 	 */
 	public function redirectToPrevious($fallback)
 	{

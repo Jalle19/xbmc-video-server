@@ -88,7 +88,7 @@ abstract class Media extends Base
 	}
 
 	/**
-	 * @return float the rating for the item (formatted)
+	 * @return string the rating for the item (formatted)
 	 */
 	public function getRating()
 	{

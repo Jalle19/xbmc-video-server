@@ -60,7 +60,7 @@ class LanguageManager extends CApplicationComponent
 	/**
 	 * Returns the language the current user has specifically chosen, or null 
 	 * if no choice has been made
-	 * @return mixed the language or null
+	 * @return string|null the language or null
 	 */
 	private function getUserLanguage()
 	{

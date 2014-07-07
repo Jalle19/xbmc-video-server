@@ -51,6 +51,9 @@ class XBMC extends CApplicationComponent
 	/**
 	 * Wrapper for performRequestInternal(). It caches the results indefinitely 
 	 * if the "cacheApiCalls" setting is enabled.
+	 * @param string $method
+	 * @param mixed $params
+	 * @param mixed $id
 	 */
 	public function performRequest($method, $params = null, $id = 0)
 	{
@@ -90,7 +93,7 @@ class XBMC extends CApplicationComponent
 	 * @param string $method
 	 * @param mixed $params
 	 * @param mixed $id
-	 * @return \SimpleJsonRpcClient\Response
+	 * @return SimpleJsonRpcClient\Response\Response
 	 */
 	private function performRequestInternal($method, $params = null, $id = 0)
 	{

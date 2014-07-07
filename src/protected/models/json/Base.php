@@ -41,7 +41,7 @@ abstract class Base extends CComponent
 	}
 
 	/**
-	 * @return the display name of this item
+	 * @return string the display name of this item
 	 */
 	public function getDisplayName()
 	{
