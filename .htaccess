@@ -1,5 +1,8 @@
 RewriteEngine On
 
+
 # Go to the src/ directory
 RewriteRule ^src - [L,NC]
 RewriteRule (.*) src/$1
+
+
