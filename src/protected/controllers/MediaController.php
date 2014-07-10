@@ -146,7 +146,7 @@ abstract class MediaController extends Controller
 	
 	/**
 	 * Generates a playlist from the specified media item
-	 * @param Media $media the media item
+	 * @param StreamableTrait $media the media item
 	 * @return Playlist the playlist
 	 */
 	private function createPlaylist($media)
@@ -169,7 +169,7 @@ abstract class MediaController extends Controller
 
 	/**
 	 * Creates and serves a playlist based on the specified media item
-	 * @param Media $media a media item
+	 * @param StreamableTrait $media a media item
 	 */
 	protected function servePlaylist($media)
 	{

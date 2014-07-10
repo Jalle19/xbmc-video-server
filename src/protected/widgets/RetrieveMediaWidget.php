@@ -17,7 +17,7 @@ abstract class RetrieveMediaWidget extends CWidget
 
 
 	/**
-	 * @var Media the media details
+	 * @var StreamableTrait the media details
 	 */
 	public $details;
 	
