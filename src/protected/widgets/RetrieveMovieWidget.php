@@ -23,8 +23,6 @@ class RetrieveMovieWidget extends RetrieveMediaWidget
 	protected function getWatchButtonOptions()
 	{
 		return array(
-			'url'=>$this->getStreamUrl(),
-			'class'=>'fa fa-play',
 			'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
 			'size'=>TbHtml::BUTTON_SIZE_LARGE,
 		);

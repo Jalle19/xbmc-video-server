@@ -56,8 +56,13 @@ abstract class RetrieveMediaWidget extends CWidget
 
 			return;
 		}
+		
+		// Construct the options for the watch button
+		$watchButtonsOptions = array_merge(array(
+			'url'=>$this->getStreamUrl(),
+			'class'=>'fa fa-play'), $this->getWatchButtonOptions());
 
-		echo TbHtml::linkButton(Yii::t('RetrieveMediaWidget', 'Watch'), $this->getWatchButtonOptions());
+		echo TbHtml::linkButton(Yii::t('RetrieveMediaWidget', 'Watch'), $watchButtonsOptions);
 		$this->renderLinks();
 	}
 
