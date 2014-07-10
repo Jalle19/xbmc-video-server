@@ -71,14 +71,9 @@ class MovieController extends MediaController
 			'pagination'=>array('pageSize'=>6)
 		));
 		
-		// Get the movie links. Omit credentials if the browser is determined 
-		// to be Internet Explorer since they don't support credentials in URLs
-		$movieLinks = VideoLibrary::getVideoLinks($movieDetails->file, Browser::isInternetExplorer());
-		
 		$this->render('details', array(
 			'details'=>$movieDetails,
 			'actorDataProvider'=>$actorDataProvider,
-			'movieLinks'=>$movieLinks,
 		));
 	}
 	
@@ -97,16 +92,9 @@ class MovieController extends MediaController
 		
 		if ($movieDetails === null)
 			throw new PageNotFoundException();
-
-		$name = $movieDetails->getDisplayName();
-		$playlist = PlaylistFactory::create($name);
 		
-		// Add the playlist items
-		foreach ($this->getPlaylistItems($movieDetails) as $item)
-			$playlist->addItem($item);
-		
-		$this->log('"%s" streamed "%s"', Yii::app()->user->name, $name);
-		$this->servePlaylist($playlist);
+		$this->log('"%s" streamed "%s"', Yii::app()->user->name, $movieDetails->getDisplayName());
+		$this->servePlaylist($movieDetails);
 	}
 	
 }

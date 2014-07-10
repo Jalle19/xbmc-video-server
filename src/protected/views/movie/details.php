@@ -33,7 +33,6 @@ $this->pageTitle = $details->getDisplayName().' - '.Yii::t('Movies', 'Movies');
 			</div>
 
 			<?php $this->widget('RetrieveMovieWidget', array(
-				'links'=>$movieLinks,
 				'details'=>$details,
 			)); ?>
 			<?php

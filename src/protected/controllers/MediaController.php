@@ -145,44 +145,40 @@ abstract class MediaController extends Controller
 	}
 	
 	/**
-	 * Serves the specified playlist as an attachment to the browser
-	 * @param Playlist $playlist the playlist
+	 * Generates a playlist from the specified media item
+	 * @param Media $media the media item
+	 * @return Playlist the playlist
 	 */
-	protected function servePlaylist($playlist)
+	private function createPlaylist($media)
 	{
+		// Create the playlist
+		$name = $media->getDisplayName();
+		$playlist = PlaylistFactory::create($name);
+
+		// Add the playlist items
+		foreach ($media->getItemLinks() as $itemLink)
+		{
+			// The item used in the playlist is not necessarily the same item 
+			// as $media
+			$item = new PlaylistItem($itemLink);
+			$playlist->addItem($item);
+		}
+
+		return $playlist;
+	}
+
+	/**
+	 * Creates and serves a playlist based on the specified media item
+	 * @param Media $media a media item
+	 */
+	protected function servePlaylist($media)
+	{
+		$playlist = $this->createPlaylist($media);
+		
 		header('Content-Type: '.$playlist->getMIMEType());
 		header('Content-Disposition: attachment; filename="'.$playlist->getSanitizedFileName().'"');
 
 		echo $playlist;
-	}
-
-	/**
-	 * Returns an array of playlist items for the specified media item's files.
-	 * Most items have just one file but some have more, hence it returns an 
-	 * array.
-	 * @param Media $media the media
-	 * @return PlaylistItem[] the playlist items
-	 */
-	protected function getPlaylistItems(Media $media)
-	{
-		$items = array();
-		$name = $media->getDisplayName();
-
-		$links = VideoLibrary::getVideoLinks($media->file);
-		$linkCount = count($links);
-
-		foreach ($links as $k => $link)
-		{
-			$label = $linkCount > 1 ? $name.' (#'.++$k.')' : $name;
-
-			$item = new PlaylistItem($media);
-			$item->title = $label;
-			$item->location = $link;
-			
-			$items[] = $item;
-		}
-
-		return $items;
 	}
 	
 	/**

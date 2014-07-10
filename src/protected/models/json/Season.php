@@ -10,6 +10,7 @@
 class Season extends Base
 {
 	use WatchedIconTrait;
+	use StreamableTrait;
 
 	/**
 	 * @var object the season art
@@ -67,6 +68,11 @@ class Season extends Base
 		}
 
 		return null;
+	}
+	
+	public function getStreamableItems()
+	{
+		return VideoLibrary::getEpisodes($this->tvshowid, $this->season);
 	}
 
 	/**

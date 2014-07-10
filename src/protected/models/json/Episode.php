@@ -9,6 +9,7 @@
  */
 class Episode extends Media
 {
+	use StreamableTrait;
 	
 	/**
 	 * @var int
@@ -43,6 +44,11 @@ class Episode extends Media
 	public function getIdField()
 	{
 		return 'episodeid';
+	}
+	
+	public function getStreamableItems()
+	{
+		return array($this);
 	}
 	
 	/**

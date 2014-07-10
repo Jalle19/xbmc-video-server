@@ -13,6 +13,7 @@
  */
 class Movie extends Media
 {
+	use StreamableTrait;
 
 	/**
 	 * @var int
@@ -39,6 +40,11 @@ class Movie extends Media
 		return $this->label.' ('.$this->year.')';
 	}
 
+	protected function getStreamableItems()
+	{
+		return array($this);
+	}
+	
 	/**
 	 * @return int the vote count
 	 */

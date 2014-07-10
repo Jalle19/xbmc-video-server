@@ -31,12 +31,16 @@ class PlaylistItem
 	public $image;
 	
 	/**
-	 * Class constructor. It takes the media item it represents as a parameter 
-	 * so it can eventually deduce extra information from it.
-	 * @param Media $media
+	 * Class constructor
+	 * @param ItemLink $itemLink
 	 */
-	public function __construct($media)
+	public function __construct($itemLink)
 	{
+		$this->title = $itemLink->name;
+		$this->location = $itemLink->url;
+		
+		$media = $itemLink->media;
+		
 		// Set runtime
 		$this->runtime = $media->runtime;
 		

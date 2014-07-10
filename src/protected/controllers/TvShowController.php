@@ -115,25 +115,14 @@ class TvShowController extends MediaController
 	 */
 	public function actionGetSeasonPlaylist($tvshowId, $season)
 	{
-		$episodes = VideoLibrary::getEpisodes($tvshowId, $season);
-
-		if (empty($episodes))
-			throw new PageNotFoundException();
-		
 		// Get the season details so we can determine the playlist name
 		$seasonDetails = VideoLibrary::getSeasonDetails($tvshowId, $season);
-
-		// Construct the playlist
-		$showTitle = $episodes[0]->showtitle;
-		$playlistName = $seasonDetails->getDisplayName();
-		$playlist = PlaylistFactory::create($playlistName);
-
-		foreach ($episodes as $episode)
-			foreach($this->getPlaylistItems($episode) as $item)
-				$playlist->addItem($item);
 		
-		$this->log('"%s" streamed season %d of "%s"', Yii::app()->user->name, $season, $showTitle);
-		$this->servePlaylist($playlist);
+		if (!$season)
+			throw new PageNotFoundException();
+		
+		$this->log('"%s" streamed season %d of "%s"', Yii::app()->user->name, $season, $seasonDetails->showtitle);
+		$this->servePlaylist($seasonDetails);
 	}
 	
 	/**
@@ -154,15 +143,8 @@ class TvShowController extends MediaController
 		if ($episode === null)
 			throw new PageNotFoundException();
 		
-		// Construct the playlist
-		$name = $episode->getDisplayName();
-		$playlist = PlaylistFactory::create($name);
-		
-		foreach ($this->getPlaylistItems($episode) as $item)
-			$playlist->addItem($item);
-
 		$this->log('"%s" streamed %s of "%s"', Yii::app()->user->name, $episode->getEpisodeString(), $episode->showtitle);
-		$this->servePlaylist($playlist);
+		$this->servePlaylist($episode);
 	}
 	
 	/**

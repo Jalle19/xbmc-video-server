@@ -15,15 +15,16 @@ abstract class RetrieveMediaWidget extends CWidget
 	 */
 	public $type;
 
-	/**
-	 * @var array the media links
-	 */
-	public $links;
 
 	/**
 	 * @var Media the media details
 	 */
 	public $details;
+	
+	/**
+	 * @var ItemLink[] the media links
+	 */
+	private $_links;
 	
 	/**
 	 * @return string the category to use when logging download link clicks
@@ -39,6 +40,14 @@ abstract class RetrieveMediaWidget extends CWidget
 	 * @return array the options for the Watch button
 	 */
 	abstract protected function getWatchButtonOptions();
+	
+	/**
+	 * Initializes the widget
+	 */
+	public function init()
+	{
+		$this->_links = $this->details->getItemLinks();
+	}
 
 	/**
 	 * Runs the widget
@@ -72,8 +81,8 @@ abstract class RetrieveMediaWidget extends CWidget
 	 */
 	private function checkLinks()
 	{
-		foreach ($this->links as $link)
-			if (!$link)
+		foreach ($this->_links as $link)
+			if (!$link->url)
 				return false;
 
 		return true;
@@ -95,10 +104,10 @@ abstract class RetrieveMediaWidget extends CWidget
 	 */
 	protected function getStreamUrl()
 	{
-		if (count($this->links) === 1 && (Setting::getBoolean('singleFilePlaylist') 
+		if (count($this->_links) === 1 && (Setting::getBoolean('singleFilePlaylist') 
 				|| (Browser::isMobile() || Browser::isTablet())))
 		{
-			return $this->links[0];
+			return $this->_links[0]->url;
 		}
 		else
 			return $this->getPlayListUrl();
@@ -111,7 +120,7 @@ abstract class RetrieveMediaWidget extends CWidget
 	{
 		echo CHtml::openTag('div', array('class'=>'item-links'));
 
-		$numLinks = count($this->links);
+		$numLinks = count($this->_links);
 		$linkOptions = array(
 			'class'=>'fa fa-floppy loggable-link',
 			'data-log-category'=>get_class($this->owner),
@@ -119,7 +128,7 @@ abstract class RetrieveMediaWidget extends CWidget
 			'data-log-url'=>Yii::app()->controller->createUrl('/log/logEvent'),
 		);
 
-		foreach ($this->links as $k=> $link)
+		foreach ($this->_links as $k=> $link)
 		{
 			if ($numLinks == 1)
 				$label = Yii::t('RetrieveMediaWidget', 'Download');
@@ -127,9 +136,9 @@ abstract class RetrieveMediaWidget extends CWidget
 				$label = Yii::t('RetrieveMediaWidget', 'Download (part #{partNumber})', array('{partNumber}'=>++$k));
 
 			// Add the "download" attribute
-			$linkOptions['download'] = $this->getDownloadName($link);
+			$linkOptions['download'] = $this->getDownloadName($link->url);
 			
-			echo CHtml::tag('p', array(), CHtml::link($label, $link, $linkOptions));
+			echo CHtml::tag('p', array(), CHtml::link($label, $link->url, $linkOptions));
 		}
 
 		echo CHtml::closeTag('div');
