@@ -65,19 +65,15 @@ class UserController extends AdminOnlyController
 	{
 		$model = new User();
 
-		if (isset($_POST['User']))
+		if ($this->saveFromPost($model))
 		{
-			$model->attributes = $_POST['User'];
+			$this->log('"%s" created user "%s"', Yii::app()->user->name, 
+					$model->username);
+			
+			Yii::app()->user->setFlash('success', Yii::t('User', 'Created user {username}', 
+					array('{username}'=>'<em>'.$model->username.'</em>')));
 
-			if ($model->save())
-			{
-				$this->log('"%s" created user "%s"', Yii::app()->user->name, 
-						$model->username);
-				Yii::app()->user->setFlash('success', Yii::t('User', 'Created user {username}', 
-						array('{username}'=>'<em>'.$model->username.'</em>')));
-
-				$this->redirect(array('admin'));
-			}
+			$this->redirect(array('admin'));
 		}
 
 		$this->render('create', array(
@@ -96,19 +92,15 @@ class UserController extends AdminOnlyController
 		// Clear the password
 		$model->password = '';
 
-		if (isset($_POST['User']))
+		if ($this->saveFromPost($model))
 		{
-			$model->attributes = $_POST['User'];
+			$this->log('"%s" updated user "%s"', Yii::app()->user->name, 
+					$model->username);
+			
+			Yii::app()->user->setFlash('success', Yii::t('User', 'Updated user {username}', 
+					array('{username}'=>'<em>'.$model->username.'</em>')));
 
-			if ($model->save())
-			{
-				$this->log('"%s" updated user "%s"', Yii::app()->user->name, 
-						$model->username);
-				Yii::app()->user->setFlash('success', Yii::t('User', 'Updated user {username}', 
-						array('{username}'=>'<em>'.$model->username.'</em>')));
-
-				$this->redirect(array('admin'));
-			}
+			$this->redirect(array('admin'));
 		}
 
 		$this->render('update', array(

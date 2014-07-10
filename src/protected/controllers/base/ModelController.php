@@ -33,6 +33,25 @@ abstract class ModelController extends Controller
 			'model'=>$model,
 		));
 	}
+	
+	/**
+	 * Attempts to save the specified model with attribute values from POST. If 
+	 * the saving fails or if no POST data is available it returns false.
+	 * @param CActiveRecord $model the model
+	 * @return boolean whether the model was saved
+	 */
+	protected function saveFromPost(&$model)
+	{
+		if (isset($_POST[$this->getModelClass()]))
+		{
+			$model->attributes = $_POST[$this->getModelClass()];
+
+			if ($model->save())
+				return true;
+		}
+
+		return false;
+	}
 
 	/**
 	 * Finds and returns a model with the specified ID

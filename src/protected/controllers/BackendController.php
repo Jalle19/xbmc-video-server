@@ -192,19 +192,14 @@ class BackendController extends AdminOnlyController
 	{
 		$model = $this->loadModel($id);
 
-		if (isset($_POST['Backend']))
+		if ($this->saveFromPost($model))
 		{
-			$model->attributes = $_POST['Backend'];
+			$this->log('"%s" updated backend "%s"', Yii::app()->user->name, 
+					$model->name);
 
-			if ($model->save())
-			{
-				$this->log('"%s" updated backend "%s"', Yii::app()->user->name, 
-						$model->name);
-				
-				Yii::app()->user->setFlash('success', Yii::t('Backend', 'Backend updated successfully'));
+			Yii::app()->user->setFlash('success', Yii::t('Backend', 'Backend updated successfully'));
 
-				$this->redirect(array('admin'));
-			}
+			$this->redirect(array('admin'));
 		}
 
 		$this->render('update', array(
