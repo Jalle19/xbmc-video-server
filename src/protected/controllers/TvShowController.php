@@ -118,7 +118,7 @@ class TvShowController extends MediaController
 		if (!$tvshow)
 			throw new PageNotFoundException();
 
-		$this->log('"%s" streamed season "%s"', Yii::app()->user->name, $tvshow->getDisplayName());
+		$this->log('"%s" streamed TV show "%s"', Yii::app()->user->name, $tvshow->getDisplayName());
 		$this->servePlaylist($tvshow);
 	}
 	
