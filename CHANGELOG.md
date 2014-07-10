@@ -8,6 +8,10 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.6.4
+* fixed a copy-paste error when logging streamed TV shows
+* under-the-hood improvements to the way "not found" pages are generated
+
 #### 1.6.3
 * added German translation (thanks to @Victor61)
 * added a missing French translation
