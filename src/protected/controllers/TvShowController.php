@@ -55,9 +55,6 @@ class TvShowController extends MediaController
 			'thumbnail',
 			'cast',
 		));
-
-		if ($showDetails === null)
-			throw new PageNotFoundException();
 		
 		$actorDataProvider = new CArrayDataProvider(
 				$showDetails->cast, array(
@@ -79,9 +76,6 @@ class TvShowController extends MediaController
 	{
 		$season = VideoLibrary::getSeasonDetails($tvshowid, $season);
 		
-		if (!$season)
-			throw new PageNotFoundException();
-		
 		// Get the TV show details so we can get the correct show title
 		$tvshow = VideoLibrary::getTVShowDetails($tvshowid, array('year'));
 		
@@ -100,9 +94,6 @@ class TvShowController extends MediaController
 		$this->layout = false;
 		
 		$season = VideoLibrary::getSeasonDetails($tvshowid, $season);
-		
-		if (!$season)
-			throw new PageNotFoundException();
 
 		$this->renderEpisodeList($season);
 	}
@@ -114,9 +105,6 @@ class TvShowController extends MediaController
 	public function actionGetTVShowPlaylist($tvshowId)
 	{
 		$tvshow = VideoLibrary::getTVShowDetails($tvshowId, array());
-
-		if (!$tvshow)
-			throw new PageNotFoundException();
 
 		$this->log('"%s" streamed TV show "%s"', Yii::app()->user->name, $tvshow->getDisplayName());
 		$this->servePlaylist($tvshow);
@@ -132,9 +120,6 @@ class TvShowController extends MediaController
 	{
 		// Get the season details so we can determine the playlist name
 		$seasonDetails = VideoLibrary::getSeasonDetails($tvshowId, $season);
-		
-		if (!$season)
-			throw new PageNotFoundException();
 		
 		$this->log('"%s" streamed season %d of "%s"', Yii::app()->user->name, $season, $seasonDetails->showtitle);
 		$this->servePlaylist($seasonDetails);
@@ -154,9 +139,6 @@ class TvShowController extends MediaController
 					'runtime',
 					'thumbnail',
 					'file'));
-
-		if ($episode === null)
-			throw new PageNotFoundException();
 		
 		$this->log('"%s" streamed %s of "%s"', Yii::app()->user->name, $episode->getEpisodeString(), $episode->showtitle);
 		$this->servePlaylist($episode);

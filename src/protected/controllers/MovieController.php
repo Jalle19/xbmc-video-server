@@ -59,9 +59,6 @@ class MovieController extends MediaController
 			'thumbnail',
 			'file'
 		));
-
-		if ($movieDetails === null)
-			throw new PageNotFoundException();
 		
 		// Create a data provider for the actors. We only show one row (first 
 		// credited only), hence the 6
@@ -89,9 +86,6 @@ class MovieController extends MediaController
 			'year',
 			'thumbnail',
 		));
-		
-		if ($movieDetails === null)
-			throw new PageNotFoundException();
 		
 		$this->log('"%s" streamed "%s"', Yii::app()->user->name, $movieDetails->getDisplayName());
 		$this->servePlaylist($movieDetails);

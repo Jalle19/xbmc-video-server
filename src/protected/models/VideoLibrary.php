@@ -89,7 +89,8 @@ class VideoLibrary
 	 * specifies which movie attributes to return.
 	 * @param int $movieId the movie ID
 	 * @param string[] $properties the properties to include in the result
-	 * @return Movie the movie details or null if the movie was not found
+	 * @return Movie the movie details
+	 * @throws MediaNotFoundException if the movie was not found
 	 */
 	public static function getMovieDetails($movieId, $properties)
 	{
@@ -135,7 +136,8 @@ class VideoLibrary
 	 * specifies which attributes to return.
 	 * @param int $tvshowId the show ID
 	 * @param string[] $properties the properties to include in the result
-	 * @return TVShow the show details or null if the show was not found
+	 * @return TVShow the show details
+	 * @throws CHttpException if the show was not found
 	 */
 	public static function getTVShowDetails($tvshowId, $properties)
 	{
@@ -169,6 +171,7 @@ class VideoLibrary
 	 * @param int $tvshowId the tv show ID
 	 * @param int $season the season number
 	 * @return Season the season details
+	 * @throws MediaNotFoundException if the season is not found
 	 */
 	public static function getSeasonDetails($tvshowId, $season)
 	{
@@ -178,7 +181,7 @@ class VideoLibrary
 			if ($seasonObj->season == $season)
 				return $seasonObj;
 
-		return null;
+		throw new MediaNotFoundException();
 	}
 
 	/**
@@ -210,7 +213,8 @@ class VideoLibrary
 	 * Returns details about the specified TV show episode
 	 * @param int $episodeId the episode ID
 	 * @param string[] $properties the properties to include in the result
-	 * @return Episode the episode details or null if the episode was not found
+	 * @return Episode the episode details
+	 * @throws MediaNotFoundException if the episode is not found
 	 */
 	public static function getEpisodeDetails($episodeId, $properties)
 	{
