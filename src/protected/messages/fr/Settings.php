@@ -17,7 +17,7 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Playlist format' => 'Format du fichier de la liste de lecture',
+  'Application subtitle' => 'Sous-titre de l\'application',
   'Access whitelist' => 'Accès par liste blanche',
   'Amount of results to show per page' => 'Nombre de résultats affichés par page',
   'Application language' => 'Langue de l\'application',
@@ -32,6 +32,7 @@ return array (
   'Ignore article ("the") in results' => 'Ignorer l\'article («le») dans les résultats',
   'Invalid whitelist definition' => 'Saisie de la liste blanche invalide',
   'Leave empty to disable pagination altogether' => 'Laissez vide pour désactiver complètement la pagination',
+  'Playlist format' => 'Format du fichier de la liste de lecture',
   'Settings' => 'Paramètres',
   'Settings have been reset to defaults' => 'Les paramètres par défaut ont été rétablis',
   'Settings updated successfully' => 'Les paramètres ont été mis à jour avec succès',
