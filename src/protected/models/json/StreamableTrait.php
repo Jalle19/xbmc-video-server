@@ -9,6 +9,11 @@
  */
 trait StreamableTrait
 {
+	
+	/**
+	 * @var string
+	 */
+	public $file;
 
 	/**
 	 * Returns the streamable media items that this item represents, e.g. a 

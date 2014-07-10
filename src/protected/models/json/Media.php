@@ -23,11 +23,6 @@ abstract class Media extends Base
 	public $runtime;
 
 	/**
-	 * @var string
-	 */
-	public $file;
-
-	/**
 	 * @var int
 	 */
 	public $year;

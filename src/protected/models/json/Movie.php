@@ -10,6 +10,7 @@
  * Virtual class properties:
  * 
  * @property int $votes
+ * @property string $file
  */
 class Movie extends Media
 {
@@ -19,11 +20,6 @@ class Movie extends Media
 	 * @var int
 	 */
 	public $movieid;
-
-	/**
-	 * @var string
-	 */
-	public $file;
 
 	/**
 	 * @var string
