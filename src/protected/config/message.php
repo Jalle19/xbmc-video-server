@@ -10,5 +10,5 @@ return array(
 	'fileTypes'=>array('php'),
 	
 	// Change this to generate files for new languages
-	'languages'=>array('fr'),
+	'languages'=>array('fr', 'de'),
 );
