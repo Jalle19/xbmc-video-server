@@ -9,6 +9,7 @@
  */
 class TVShow extends Media
 {
+	use StreamableTrait;
 
 	/**
 	 * @var object
@@ -39,6 +40,21 @@ class TVShow extends Media
 			return $this->art->poster;
 		else
 			return $this->thumbnail;
+	}
+	
+	public function getStreamableItems()
+	{
+		$items = array();
+		$seasons = VideoLibrary::getSeasons($this->tvshowid);
+		
+		// Get all episodes from all the seasons
+		foreach($seasons as $season)
+		{
+			$episodes = VideoLibrary::getEpisodes($this->tvshowid, $season->season);
+			$items = array_merge($items, $episodes);
+		}
+		
+		return $items;
 	}
 	
 	/**

@@ -12,6 +12,20 @@ $this->pageTitle = $details->getDisplayName();
 				Thumbnail::SIZE_LARGE), '', array(
 			'class'=>'item-thumbnail hidden-phone',
 		)); ?>
+		
+		<div class="item-links">
+			<?php echo TbHtml::linkButton(Yii::t('TVShows', 'Watch the whole show'), array(
+				'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
+				'size'=>TbHtml::BUTTON_SIZE_LARGE,
+				'url'=>$this->createUrl('tvShow/getTVShowPlaylist', 
+						array('tvshowId'=>$details->getId())),
+				'class'=>'fa fa-play',
+			)); ?>
+			
+			<p style="margin-top: 20px;">
+				<?php echo Yii::t('TVShows', 'or choose individual episodes from the list below'); ?>
+			</p>
+		</div>
 	</div>
 
 	<div class="span9 item-description">

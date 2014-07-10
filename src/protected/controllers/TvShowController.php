@@ -108,6 +108,21 @@ class TvShowController extends MediaController
 	}
 	
 	/**
+	 * Serves a playlist containing all episodes from the specified TV show
+	 * @param int $tvshowId the TV show ID
+	 */
+	public function actionGetTVShowPlaylist($tvshowId)
+	{
+		$tvshow = VideoLibrary::getTVShowDetails($tvshowId, array());
+
+		if (!$tvshow)
+			throw new PageNotFoundException();
+
+		$this->log('"%s" streamed season "%s"', Yii::app()->user->name, $tvshow->getDisplayName());
+		$this->servePlaylist($tvshow);
+	}
+	
+	/**
 	 * Serves a playlist containing all episodes from the specified TV show 
 	 * season.
 	 * @param int $tvshowId the TV show ID
