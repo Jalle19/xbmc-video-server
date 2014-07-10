@@ -25,7 +25,7 @@ class Backend extends CActiveRecord
 	/**
 	 * Timeout (in seconds) limit while checking if a backend is connectable
 	 */
-	const SOCKET_TIMEOUT = 1.5;
+	const SOCKET_TIMEOUT = 5;
 
 	/**
 	 * Returns the static model of the specified AR class.
