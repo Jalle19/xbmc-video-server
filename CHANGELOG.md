@@ -8,6 +8,12 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.6.3
+* added German translation (thanks to @Victor61)
+* added a missing French translation
+* increased the backend socket timeout to 5 seconds, this should hopefully fix some "The backend is not connectable" error messages
+* added ability to retrieve a playlist for a complete season
+
 #### 1.6.2
 * fixed the page title on the Login page
 * added missing French translation on the Settings page
