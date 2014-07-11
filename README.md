@@ -35,11 +35,6 @@ Requirements
 * Apache with .htaccess support enabled
 * XBMC 12 "Frodo" (seeking works reliably on v13 "Gotham" only)
 
-Installation
-------------
-
-Instructions for Linux, Windows and Mac OS X are available on the [wiki](https://github.com/Jalle19/xbmc-video-server/wiki/Installation-instructions).
-
 Installation and usage
 ----------------------
 
