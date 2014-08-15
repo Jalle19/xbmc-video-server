@@ -8,24 +8,31 @@ $this->pageTitle = $details->getDisplayName();
 ?>
 <div class="row">
 	<div class="span3">
-		<?php echo CHtml::image(new ThumbnailVideo($details->getArtwork(),
-				Thumbnail::SIZE_LARGE), '', array(
-			'class'=>'item-thumbnail hidden-phone',
-		)); ?>
+		<?php 
 		
-		<div class="item-links">
-			<?php echo TbHtml::linkButton(Yii::t('TVShows', 'Watch the whole show'), array(
-				'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
-				'size'=>TbHtml::BUTTON_SIZE_LARGE,
-				'url'=>$this->createUrl('tvShow/getTVShowPlaylist', 
-						array('tvshowId'=>$details->getId())),
-				'class'=>'fa fa-play',
-			)); ?>
-			
-			<p style="margin-top: 20px;">
-				<?php echo Yii::t('TVShows', 'or choose individual episodes from the list below'); ?>
-			</p>
-		</div>
+		echo CHtml::image(new ThumbnailVideo($details->getArtwork(),
+				Thumbnail::SIZE_LARGE), '', array('class'=>'item-thumbnail hidden-phone'));
+		
+		if (Yii::app()->user->role !== User::ROLE_SPECTATOR)
+		{
+			?>
+			<div class="item-links">
+				<?php echo TbHtml::linkButton(Yii::t('TVShows', 'Watch the whole show'), array(
+					'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
+					'size'=>TbHtml::BUTTON_SIZE_LARGE,
+					'url'=>$this->createUrl('tvShow/getTVShowPlaylist', 
+							array('tvshowId'=>$details->getId())),
+					'class'=>'fa fa-play',
+				)); ?>
+
+				<p style="margin-top: 20px;">
+					<?php echo Yii::t('TVShows', 'or choose individual episodes from the list below'); ?>
+				</p>
+			</div>
+			<?php
+		}
+		
+		?>
 	</div>
 
 	<div class="span9 item-description">
