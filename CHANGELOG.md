@@ -8,6 +8,12 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.6.5
+* added a missing translation
+* moved installation instructions from the README to the wiki on Github
+* fix a regression that made lists unsortable
+* fix a bug where spectators could see and use the "Watch the whole show" button
+
 #### 1.6.4
 * fixed a copy-paste error when logging streamed TV shows
 * under-the-hood improvements to the way "not found" pages are generated
