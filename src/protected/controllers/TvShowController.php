@@ -23,7 +23,7 @@ class TvShowController extends MediaController
 	
 	protected function getSpectatorProhibitedActions()
 	{
-		return array('getEpisodePlaylist', 'getSeasonPlaylist');
+		return array('getEpisodePlaylist', 'getSeasonPlaylist', 'getTVShowPlaylist');
 	}
 
 	/**
