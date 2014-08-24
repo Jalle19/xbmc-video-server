@@ -28,4 +28,14 @@ class Actor
 	 */
 	public $thumbnail;
 
+	/**
+	 * Converts the object to a string. This is necessary in order to filter 
+	 * duplicate actors with functions such as array_unique()
+	 * @return string the string representation of the actor
+	 */
+	public function __toString()
+	{
+		return $this->name;
+	}
+
 }

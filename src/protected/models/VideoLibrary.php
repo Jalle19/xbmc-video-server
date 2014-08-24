@@ -52,6 +52,32 @@ class VideoLibrary
 	}
 	
 	/**
+	 * Returns a list of all actors. 
+	 * @param string $mediaType the media type to fetch actors for (movies or 
+	 * TV shows)
+	 * @return Actor[] the actors
+	 */
+	public static function getActors($mediaType)
+	{
+		// Fetch the list of all works
+		$works = array();
+		
+		if ($mediaType === Actor::MEDIA_TYPE_MOVIE)
+			$works = VideoLibrary::getMovies(array('properties'=>array('cast')));
+		elseif ($mediaType === Actor::MEDIA_TYPE_TVSHOW)
+			$works = VideoLibrary::getTVShows(array('properties'=>array('cast')));
+
+		// Build a list of all unique actors
+		$actors = array();
+
+		foreach ($works as $work)
+			$actors = array_merge($actors, $work->cast);
+
+		// array_unique compares by string
+		return array_unique($actors);
+	}
+
+	/**
 	 * Returns a list of movies
 	 * @param array $params request parameters
 	 * @return Movie[] the movies
