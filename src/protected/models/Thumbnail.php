@@ -39,9 +39,10 @@ class Thumbnail
 	 * Class constructor
 	 * @param string $thumbnailPath the thumbnail path. If empty the placeholder 
 	 * image will be used instead.
-	 * @param int $size the size constant
+	 * @param int $size the thumbnail size. Defaults to SIZE_SMALL and can be 
+	 * changed afterwards
 	 */
-	public function __construct($thumbnailPath, $size)
+	public function __construct($thumbnailPath, $size = self::SIZE_SMALL)
 	{
 		if (empty($thumbnailPath))
 			$thumbnailPath = $this->getPlaceholder();
@@ -121,6 +122,15 @@ class Thumbnail
 	private function getFilename()
 	{
 		return md5($this->_path).'_'.$this->_size.'.jpg';
+	}
+	
+	/**
+	 * Sets the thumbnail size
+	 * @param int $size a size constant
+	 */
+	public function setSize($size)
+	{
+		$this->_size = $size;
 	}
 
 	/**
