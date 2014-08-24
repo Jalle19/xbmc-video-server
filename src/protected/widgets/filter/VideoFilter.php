@@ -84,17 +84,19 @@ abstract class VideoFilter extends CWidget
 	}
 	
 	/**
-	 * Returns an array of names for a typeahead field
-	 * @param Media[] $mediaSource the source data
+	 * Converts the specified array of objects to an array of data that can 
+	 * be serialized to JSON
+	 * @param ITypeaheadData[] $sourceData the source data
+	 * @return array the typeahead data
 	 */
-	protected function getTypeaheadNames($mediaSource)
+	protected function getTypeaheadData($sourceData)
 	{
-		$names = array();
+		$typeaheadData = array();
 
-		foreach ($mediaSource as $media)
-			$names[] = $media->label;
+		foreach ($sourceData as $media)
+			$typeaheadData[] = $media->getName();
 
-		return $names;
+		return $typeaheadData;
 	}
 
 }

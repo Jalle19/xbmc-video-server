@@ -51,12 +51,12 @@ class MovieFilter extends VideoFilter
 
 			if ($typeaheadData === false)
 			{
-				$typeaheadData = CJavaScript::encode($this->getTypeaheadNames(VideoLibrary::getMovies()));
+				$typeaheadData = CJavaScript::encode($this->getTypeaheadData(VideoLibrary::getMovies()));
 				Yii::app()->apiCallCache->set($cacheId, $typeaheadData);
 			}
 		}
 		else
-			$typeaheadData = CJavaScript::encode($this->getTypeaheadNames(VideoLibrary::getMovies()));
+			$typeaheadData = CJavaScript::encode($this->getTypeaheadData(VideoLibrary::getMovies()));
 
 		return $typeaheadData;
 	}
@@ -76,27 +76,19 @@ class MovieFilter extends VideoFilter
 
 			if ($typeaheadData === false)
 			{
-				$typeaheadData = CJavaScript::encode($this->getActorNames());
+				$typeaheadData = CJavaScript::encode($this->getTypeaheadData(
+						VideoLibrary::getActors(Actor::MEDIA_TYPE_MOVIE)));
+				
 				Yii::app()->apiCallCache->set($cacheId, $typeaheadData);
 			}
 		}
 		else
-			$typeaheadData = CJavaScript::encode($this->getActorNames());
+		{
+			$typeaheadData = CJavaScript::encode($this->getTypeaheadData(
+					VideoLibrary::getActors(Actor::MEDIA_TYPE_MOVIE)));
+		}
 
 		return $typeaheadData;
-	}
-
-	/**
-	 * @return array a list of all actor names
-	 */
-	private function getActorNames()
-	{
-		$names = array();
-
-		foreach (VideoLibrary::getActors(Actor::MEDIA_TYPE_MOVIE) as $actor)
-			$names[] = $actor->name;
-
-		return $names;
 	}
 
 }

@@ -7,7 +7,7 @@
  * @copyright Copyright &copy; Sam Stenvall 2013-
  * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
  */
-abstract class Base extends CComponent
+abstract class Base extends CComponent implements ITypeaheadData
 {
 
 	/**
@@ -20,6 +20,11 @@ abstract class Base extends CComponent
 	 */
 	public $thumbnail;
 
+	public function getName()
+	{
+		return $this->label;
+	}
+	
 	/**
 	 * Returns the name of the first field that ends with "id". This is needed 
 	 * because all items from the XBMC API use different identifiers.

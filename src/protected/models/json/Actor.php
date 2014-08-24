@@ -7,7 +7,7 @@
  * @copyright Copyright &copy; Sam Stenvall 2013-
  * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
  */
-class Actor
+class Actor implements ITypeaheadData
 {
 
 	const MEDIA_TYPE_MOVIE = 'movie';
@@ -27,6 +27,11 @@ class Actor
 	 * @var string
 	 */
 	public $thumbnail;
+	
+	public function getName()
+	{
+		return $this->name;
+	}
 
 	/**
 	 * Converts the object to a string. This is necessary in order to filter 

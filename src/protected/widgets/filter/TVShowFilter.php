@@ -13,7 +13,7 @@ class TVShowFilter extends VideoFilter
 	protected function renderControls()
 	{
 		echo $this->form->typeaheadFieldControlGroup($this->model, 'name', 
-			CJavaScript::encode($this->getTypeaheadNames(VideoLibrary::getTVShows())));
+			CJavaScript::encode($this->getTypeaheadData(VideoLibrary::getTVShows())));
 
 		echo $this->form->dropDownListControlGroup($this->model, 'genre', 
 				$this->model->getGenres(), array('empty'=>' '));
