@@ -25,11 +25,6 @@ class MovieFilterForm extends VideoFilterForm
 	public $quality;
 	
 	/**
-	 * @var string name of actor that is in the movie
-	 */
-	public $actor;
-
-	/**
 	 * @var float rating of the movie
 	 */
 	public $rating;
@@ -47,7 +42,6 @@ class MovieFilterForm extends VideoFilterForm
 		return array_merge(parent::attributeLabels(), array(
 			'year'=>Yii::t('FilterForm', 'Year'),
 			'quality'=>Yii::t('FilterForm', 'Quality'),
-			'actor'=>Yii::t('FilterForm', 'Actor'),
 			'rating'=>Yii::t('FilterForm', 'Minimum rating'),
 		));
 	}
@@ -60,7 +54,6 @@ class MovieFilterForm extends VideoFilterForm
 		return array_merge(parent::rules(), array(
 			array('year', 'numerical', 'integerOnly'=>true),
 			array('quality', 'in', 'range'=>array_keys($this->getQualities())),
-			array('actor', 'safe'),
 			array('rating', 'numerical', 'max'=>'10'),
 		));
 	}
@@ -102,11 +95,6 @@ class MovieFilterForm extends VideoFilterForm
 			'operator'=>'is',
 			'value'=>$this->year);
 		
-		$filter['actor'] = array(
-			'operator'=>'contains',
-			'value'=>$this->actor,
-		);
-
 		$filter['rating'] = array(
 			'operator'=>'greaterthan',
 			'value'=>$this->rating);

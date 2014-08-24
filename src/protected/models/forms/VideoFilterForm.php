@@ -24,6 +24,11 @@ abstract class VideoFilterForm extends CFormModel
 	public $genre;
 	
 	/**
+	 * @var string name of actor
+	 */
+	public $actor;
+	
+	/**
 	 * @var string watched status
 	 */
 	public $watchedStatus;
@@ -41,6 +46,7 @@ abstract class VideoFilterForm extends CFormModel
 		return array(
 			'name'=>Yii::t('FilterForm', 'Name'),
 			'genre'=>Yii::t('FilterForm', 'Genre'),
+			'actor'=>Yii::t('FilterForm', 'Actor'),
 			'watchedStatus'=>Yii::t('FilterForm', 'Watched status'),
 		);
 	}
@@ -53,6 +59,7 @@ abstract class VideoFilterForm extends CFormModel
 		return array(
 			array('name', 'safe'),
 			array('genre', 'in', 'range'=>$this->getGenres()),
+			array('actor', 'safe'),
 			array('watchedStatus', 'in', 'range'=>array_keys(self::getWatchedStatuses())),
 		);
 	}

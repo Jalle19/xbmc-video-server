@@ -33,7 +33,7 @@ class MovieFilter extends VideoFilter
 				array('empty'=>' ', 'style'=>'width: 120px;'));
 
 		echo $this->form->typeaheadFieldControlGroup($this->model, 'actor', 
-				$this->getActorNameTypeaheadData());
+				$this->getActorNameTypeaheadData(Actor::MEDIA_TYPE_MOVIE));
 	}
 	
 	/**
@@ -61,34 +61,4 @@ class MovieFilter extends VideoFilter
 		return $typeaheadData;
 	}
 	
-	/**
-	 * Returns the typeahead data for the movie name field. The API call cache 
-	 * is used when it is enabled to speed up the retrieval.
-	 * @return string the list of movies encoded as JavaScript
-	 */
-	private function getActorNameTypeaheadData()
-	{
-		// Cache the encoded JavaScript if the "cache API calls" setting is enabled
-		if (Setting::getBoolean('cacheApiCalls'))
-		{
-			$cacheId = 'MovieFilterActorNameTypeahead';
-			$typeaheadData = Yii::app()->apiCallCache->get($cacheId);
-
-			if ($typeaheadData === false)
-			{
-				$typeaheadData = CJavaScript::encode($this->getTypeaheadData(
-						VideoLibrary::getActors(Actor::MEDIA_TYPE_MOVIE)));
-				
-				Yii::app()->apiCallCache->set($cacheId, $typeaheadData);
-			}
-		}
-		else
-		{
-			$typeaheadData = CJavaScript::encode($this->getTypeaheadData(
-					VideoLibrary::getActors(Actor::MEDIA_TYPE_MOVIE)));
-		}
-
-		return $typeaheadData;
-	}
-
 }

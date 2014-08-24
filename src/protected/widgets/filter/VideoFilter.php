@@ -98,5 +98,36 @@ abstract class VideoFilter extends CWidget
 
 		return $typeaheadData;
 	}
+	
+	/**
+	 * Returns the typeahead data for the actor fields. The API call cache 
+	 * is used when it is enabled to speed up the retrieval.
+	 * @param string $mediaType filter by movies or TV shows
+	 * @return string the list of movies encoded as JavaScript
+	 */
+	protected function getActorNameTypeaheadData($mediaType)
+	{
+		// Cache the encoded JavaScript if the "cache API calls" setting is enabled
+		if (Setting::getBoolean('cacheApiCalls'))
+		{
+			$cacheId = 'MovieFilterActorNameTypeahead_'.$mediaType;
+			$typeaheadData = Yii::app()->apiCallCache->get($cacheId);
+
+			if ($typeaheadData === false)
+			{
+				$typeaheadData = CJavaScript::encode($this->getTypeaheadData(
+						VideoLibrary::getActors($mediaType)));
+				
+				Yii::app()->apiCallCache->set($cacheId, $typeaheadData);
+			}
+		}
+		else
+		{
+			$typeaheadData = CJavaScript::encode($this->getTypeaheadData(
+					VideoLibrary::getActors($mediaType)));
+		}
+
+		return $typeaheadData;
+	}
 
 }
