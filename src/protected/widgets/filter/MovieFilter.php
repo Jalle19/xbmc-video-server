@@ -12,7 +12,8 @@ class MovieFilter extends VideoFilter
 
 	protected function renderControls()
 	{
-		echo $this->form->typeaheadFieldControlGroup($this->model, 'name', $this->getMovieNameTypeaheadData());
+		echo $this->form->typeaheadFieldControlGroup($this->model, 'name', 
+				$this->getMovieNameTypeaheadData());
 		
 		echo $this->form->dropDownListControlGroup($this->model, 'genre', 
 				$this->model->getGenres(), array('empty'=>' '));
@@ -31,7 +32,8 @@ class MovieFilter extends VideoFilter
 				VideoFilterForm::getWatchedStatuses(), 
 				array('empty'=>' ', 'style'=>'width: 120px;'));
 
-		echo $this->form->textFieldControlGroup($this->model, 'actor');
+		echo $this->form->typeaheadFieldControlGroup($this->model, 'actor', 
+				$this->getActorNameTypeaheadData());
 	}
 	
 	/**
@@ -44,7 +46,7 @@ class MovieFilter extends VideoFilter
 		// Cache the encoded JavaScript if the "cache API calls" setting is enabled
 		if (Setting::getBoolean('cacheApiCalls'))
 		{
-			$cacheId = 'MovieFilterTypeahead';
+			$cacheId = 'MovieFilterMovieNameTypeahead';
 			$typeaheadData = Yii::app()->apiCallCache->get($cacheId);
 
 			if ($typeaheadData === false)
@@ -57,6 +59,44 @@ class MovieFilter extends VideoFilter
 			$typeaheadData = CJavaScript::encode($this->getTypeaheadNames(VideoLibrary::getMovies()));
 
 		return $typeaheadData;
+	}
+	
+	/**
+	 * Returns the typeahead data for the movie name field. The API call cache 
+	 * is used when it is enabled to speed up the retrieval.
+	 * @return string the list of movies encoded as JavaScript
+	 */
+	private function getActorNameTypeaheadData()
+	{
+		// Cache the encoded JavaScript if the "cache API calls" setting is enabled
+		if (Setting::getBoolean('cacheApiCalls'))
+		{
+			$cacheId = 'MovieFilterActorNameTypeahead';
+			$typeaheadData = Yii::app()->apiCallCache->get($cacheId);
+
+			if ($typeaheadData === false)
+			{
+				$typeaheadData = CJavaScript::encode($this->getActorNames());
+				Yii::app()->apiCallCache->set($cacheId, $typeaheadData);
+			}
+		}
+		else
+			$typeaheadData = CJavaScript::encode($this->getActorNames());
+
+		return $typeaheadData;
+	}
+
+	/**
+	 * @return array a list of all actor names
+	 */
+	private function getActorNames()
+	{
+		$names = array();
+
+		foreach (VideoLibrary::getActors(Actor::MEDIA_TYPE_MOVIE) as $actor)
+			$names[] = $actor->name;
+
+		return $names;
 	}
 
 }

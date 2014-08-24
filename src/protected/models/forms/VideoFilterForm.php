@@ -162,6 +162,11 @@ abstract class VideoFilterForm extends CFormModel
 			'operator'=>'is',
 			'value'=>$this->genre);
 		
+		$filter['actor'] = array(
+			'operator'=>'is',
+			'value'=>$this->actor,
+		);
+		
 		if ($this->watchedStatus)
 		{
 			switch ($this->watchedStatus)
