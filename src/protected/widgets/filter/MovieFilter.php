@@ -12,22 +12,8 @@ class MovieFilter extends VideoFilter
 
 	protected function renderControls()
 	{
-		// Cache the encoded JavaScript if the "cache API calls" setting is enabled
-		if (Setting::getBoolean('cacheApiCalls'))
-		{
-			$cacheId = 'MovieFilterTypeahead';
-			$typeaheadData = Yii::app()->apiCallCache->get($cacheId);
-
-			if ($typeaheadData === false)
-			{
-				$typeaheadData = CJavaScript::encode($this->getTypeaheadNames(VideoLibrary::getMovies()));
-				Yii::app()->apiCallCache->set($cacheId, $typeaheadData);
-			}
-		}
-		else
-			$typeaheadData = CJavaScript::encode($this->getTypeaheadNames(VideoLibrary::getMovies()));
-
-		echo $this->form->typeaheadFieldControlGroup($this->model, 'name', $typeaheadData);
+		echo $this->form->typeaheadFieldControlGroup($this->model, 'name', $this->getMovieNameTypeaheadData());
+		
 		echo $this->form->dropDownListControlGroup($this->model, 'genre', 
 				$this->model->getGenres(), array('empty'=>' '));
 		
@@ -46,6 +32,31 @@ class MovieFilter extends VideoFilter
 				array('empty'=>' ', 'style'=>'width: 120px;'));
 
 		echo $this->form->textFieldControlGroup($this->model, 'actor');
+	}
+	
+	/**
+	 * Returns the typeahead data for the movie name field. The API call cache 
+	 * is used when it is enabled to speed up the retrieval.
+	 * @return string the list of movies encoded as JavaScript
+	 */
+	private function getMovieNameTypeaheadData()
+	{
+		// Cache the encoded JavaScript if the "cache API calls" setting is enabled
+		if (Setting::getBoolean('cacheApiCalls'))
+		{
+			$cacheId = 'MovieFilterTypeahead';
+			$typeaheadData = Yii::app()->apiCallCache->get($cacheId);
+
+			if ($typeaheadData === false)
+			{
+				$typeaheadData = CJavaScript::encode($this->getTypeaheadNames(VideoLibrary::getMovies()));
+				Yii::app()->apiCallCache->set($cacheId, $typeaheadData);
+			}
+		}
+		else
+			$typeaheadData = CJavaScript::encode($this->getTypeaheadNames(VideoLibrary::getMovies()));
+
+		return $typeaheadData;
 	}
 
 }
