@@ -33,7 +33,7 @@ abstract class Media extends Base
 	public $genre = array();
 
 	/**
-	 * @var array
+	 * @var Actor[]
 	 */
 	public $cast;
 
