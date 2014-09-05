@@ -28,7 +28,11 @@ class BackendController extends AdminOnlyController
 	public function accessRules()
 	{
 		return array_merge(array(
-			array('allow', 'actions'=>array('change', 'updateLibrary'))
+			array('allow', 'actions'=>array(
+				'change', 
+				'updateLibrary', 
+				'waitForConnectivity', 
+				'ajaxCheckConnectivity'))
 		), parent::accessRules());
 	}
 
