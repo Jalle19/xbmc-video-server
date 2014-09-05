@@ -67,7 +67,7 @@ $this->pageTitle = $details->getDisplayName().' - '.Yii::t('Movies', 'Movies');
 			</div>
 		</div>
 
-		<div class="item-info clearfix">
+		<div class="row-fluid item-info">
 
 			<?php
 
@@ -76,35 +76,32 @@ $this->pageTitle = $details->getDisplayName().' - '.Yii::t('Movies', 'Movies');
 					'item'=>$details));
 
 			?>
+			
+			<div class="span8 item-metadata">
 
-			<div class="pull-left">
+				<p><?php echo $details->getGenreString(); ?></p>
+				<?php
 
-				<div class="item-metadata clearfix">
+				// Runtime and MPAA rating are not always available
+				$runtime = $details->getRuntimeString();
 
-					<p><?php echo $details->getGenreString(); ?></p>
-					<?php
+				if ($runtime)
+					echo CHtml::tag('p', array(), $runtime);
 
-					// Runtime and MPAA rating are not always available
-					$runtime = $details->getRuntimeString();
+				$this->widget('MPAARating', array(
+					'rating'=>$details->mpaa));
 
-					if ($runtime)
-						echo CHtml::tag('p', array(), $runtime);
+				$director = $details->getDirector();
 
-					$this->widget('MPAARating', array(
-						'rating'=>$details->mpaa));
-					
-					$director = $details->getDirector();
-					
-					if ($director)
-					{
-						echo CHtml::tag('p', array(), Yii::t('Movie', 'Director: {director}', array(
-							'{director}'=>$director)));
-					}
+				if ($director)
+				{
+					echo CHtml::tag('p', array(), Yii::t('Movie', 'Director: {director}', array(
+						'{director}'=>$director)));
+				}
 
-					?>
-				</div>
-
+				?>
 			</div>
+
 		</div>
 
 		<h3><?php echo Yii::t('Media', 'Plot'); ?></h3>

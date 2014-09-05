@@ -49,7 +49,7 @@ $this->pageTitle = $details->getDisplayName();
 			</div>
 		</div>
 
-		<div class="item-info clearfix">
+		<div class="row-fluid item-info">
 
 			<?php
 
@@ -58,17 +58,14 @@ $this->pageTitle = $details->getDisplayName();
 
 			?>
 
-			<div class="pull-left">
+			<div class="span8 item-metadata">
 
-				<div class="item-metadata clearfix">
+				<p><?php echo $details->getGenreString(); ?></p>
 
-					<p><?php echo $details->getGenreString(); ?></p>
-
-					<?php $this->widget('MPAARating', array(
-						'rating'=>$details->mpaa)); ?>
-				</div>
-
+				<?php $this->widget('MPAARating', array(
+					'rating'=>$details->mpaa)); ?>
 			</div>
+
 		</div>
 
 		<h3><?php echo Yii::t('Media', 'Plot'); ?></h3>

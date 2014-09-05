@@ -3,7 +3,7 @@
 /* @var $item Media */
 
 ?>
-<div class="pull-left item-rating">
+<div class="span4 item-rating">
 
 	<p>
 		<?php echo Yii::t('Media', 'Rating'); ?>: 
