@@ -17,11 +17,12 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Application subtitle' => 'Sous-titre de l\'application',
+  'Before you get started, please have a look at the application settings' => '',
   'Access whitelist' => 'Accès par liste blanche',
   'Amount of results to show per page' => 'Nombre de résultats affichés par page',
   'Application language' => 'Langue de l\'application',
   'Application name' => 'Nom de l\'application',
+  'Application subtitle' => 'Sous-titre de l\'application',
   'Cache all API results' => 'Mettre en cache tous les résultats de l\'API',
   'Changing this will reset the default language for all users' => 'Ce changement aura pour effet d\'assigner la langue par défaut à tous les utilisateurs. Chaque utilisateur pourra à son tour modifier la langue.',
   'Don\'t use playlists when item consists of a single file' => 'Ne pas utiliser de liste de lecture lorsque l\'élément est constitué d\'un seul fichier',

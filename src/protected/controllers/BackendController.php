@@ -160,7 +160,10 @@ class BackendController extends AdminOnlyController
 				Yii::app()->user->setFlash('success', Yii::t('Backend', 'Backend created successfully'));
 				
 				if ($firstRun)
+				{
+					Yii::app()->user->setFlash('info', Yii::t('Settings', 'Before you get started, please have a look at the application settings'));
 					$this->redirect(array('setting/admin'));
+				}
 				else
 					$this->redirect(array('admin'));
 			}

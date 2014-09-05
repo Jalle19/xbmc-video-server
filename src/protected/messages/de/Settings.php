@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Message translations.
  *
@@ -17,12 +17,12 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
+  'Before you get started, please have a look at the application settings' => '',
   'Access whitelist' => 'Zugang - Positivliste',
   'Amount of results to show per page' => 'Anzahl der Ergebnisse pro Seite',
   'Application language' => 'Systemsprache',
-  'Application subtitle' => 'Seitenuntertitel',
-  'Playlist format' => 'Format der Wiedergabeliste',
   'Application name' => 'Systemname',
+  'Application subtitle' => 'Seitenuntertitel',
   'Cache all API results' => 'Cache alle API Ergebnisse',
   'Changing this will reset the default language for all users' => 'Änderungen setzen die Standardsprache für alle Benutzer zurück',
   'Don\'t use playlists when item consists of a single file' => 'Für einzelne Dateien keine Wiedergabeliste benutzen',
@@ -33,6 +33,7 @@ return array (
   'Ignore article ("the") in results' => 'Ignoriere Artikel ("The, der, die, das") in den Ergebnissen',
   'Invalid whitelist definition' => 'Ungültige Einträge der Positivliste',
   'Leave empty to disable pagination altogether' => 'Leer lassen um Seitennummerierung zu deaktivieren',
+  'Playlist format' => 'Format der Wiedergabeliste',
   'Settings' => 'Einstellungen',
   'Settings have been reset to defaults' => 'Standardeinstellungen wurden wiederhergestellt ',
   'Settings updated successfully' => 'Einstellungen erfolgreich gespeichert',
