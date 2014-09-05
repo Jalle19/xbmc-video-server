@@ -8,6 +8,14 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.6.6
+* fix adding and using backends using an IPv6 address
+* fixed a bug where normal users couldn't wake a sleeping backend using WOL
+* add typeahead functionality for the actor filter field
+* add ability to filter TV shows by actor too
+* display movie director on the details page
+* add ability to filter movies by director
+
 #### 1.6.5
 * added a missing translation
 * moved installation instructions from the README to the wiki on Github
