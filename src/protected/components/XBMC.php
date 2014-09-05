@@ -30,7 +30,8 @@ class XBMC extends CApplicationComponent
 		// Connect to the current backend
 		$this->_backend = Yii::app()->backendManager->getCurrent();
 		
-		$endpoint = 'http://'.$this->_backend->hostname.':'.$this->_backend->port.'/jsonrpc';
+		$hostname = Backend::normalizeAddress($this->_backend->hostname);
+		$endpoint = 'http://'.$hostname.':'.$this->_backend->port.'/jsonrpc';
 
 		$flags = JsonRPCClient::FLAG_ATTEMPT_UTF8_RECOVERY;
 		$this->_client = new JsonRPCClient($endpoint, 
@@ -174,7 +175,7 @@ class XBMC extends CApplicationComponent
 		}
 		else
 		{
-			$url = 'http://{credentials}'.$backend->hostname.':'.$backend->port.'/'.$path;
+			$url = 'http://{credentials}'.Backend::normalizeAddress($backend->hostname).':'.$backend->port.'/'.$path;
 			
 			if ($omitCredentials)
 				$url = str_replace('{credentials}', '', $url);

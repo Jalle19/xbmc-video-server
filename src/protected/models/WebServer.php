@@ -84,9 +84,9 @@ class WebServer
 	 */
 	public function getHostInfo()
 	{
-		return $this->_hostname.':'.$this->_port;
+		return Backend::normalizeAddress($this->_hostname).':'.$this->_port;
 	}
-	
+
 	/**
 	 * @return \Zend\Http\Request a base request object
 	 */

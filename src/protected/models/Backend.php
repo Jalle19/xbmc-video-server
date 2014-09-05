@@ -245,7 +245,7 @@ class Backend extends CActiveRecord
 		$errno = 0;
 		$errStr = '';
 
-		if (@fsockopen($this->hostname, $this->port, $errno, $errStr, 
+		if (@fsockopen(Backend::normalizeAddress($this->hostname), $this->port, $errno, $errStr, 
 				self::SOCKET_TIMEOUT) === false || $errno !== 0)
 		{
 			if ($logFailure)
@@ -266,6 +266,21 @@ class Backend extends CActiveRecord
 		return new CActiveDataProvider(__CLASS__, array(
 			'pagination'=>false
 		));
+	}
+	
+	/**
+	 * Optionally mangles the specified address so it can be used properly, e.g. 
+	 * by adding braces around IPv6 addresses.
+	 * @param string $address a hostname or IP address
+	 * @return string the normalized address
+	 */
+	public static function normalizeAddress($address)
+	{
+		// If the address is an IPv6 address we need to wrap it in square brackets
+		if (strpos($address, ':') !== false)
+			return '[' . $address . ']';
+		else
+			return $address;
 	}
 	
 	/**
