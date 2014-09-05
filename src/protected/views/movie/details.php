@@ -92,6 +92,14 @@ $this->pageTitle = $details->getDisplayName().' - '.Yii::t('Movies', 'Movies');
 
 					$this->widget('MPAARating', array(
 						'rating'=>$details->mpaa));
+					
+					$director = $details->getDirector();
+					
+					if ($director)
+					{
+						echo CHtml::tag('p', array(), Yii::t('Movie', 'Director: {director}', array(
+							'{director}'=>$director)));
+					}
 
 					?>
 				</div>

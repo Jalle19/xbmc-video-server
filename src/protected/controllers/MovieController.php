@@ -52,6 +52,7 @@ class MovieController extends MediaController
 			'plot',
 			'mpaa',
 			'cast',
+			'director',
 			'imdbnumber',
 			'runtime',
 			'streamdetails',

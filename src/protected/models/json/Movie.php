@@ -25,6 +25,11 @@ class Movie extends Media
 	 * @var string
 	 */
 	public $tagline;
+	
+	/**
+	 * @var array the directors for this movie
+	 */
+	public $director;
 
 	/**
 	 * @var int
@@ -57,6 +62,17 @@ class Movie extends Media
 	public function setVotes($votes)
 	{
 		$this->_votes = (int)str_replace(',', '', $votes);
+	}
+	
+	/**
+	 * @return string the first credited director, or an empty string
+	 */
+	public function getDirector()
+	{
+		if ($this->director === null || count($this->director) === 0)
+			return '';
+		else
+			return $this->director[0];
 	}
 
 	/**
