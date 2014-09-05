@@ -76,6 +76,22 @@ class VideoLibrary
 		// array_unique compares by string
 		return array_unique($actors);
 	}
+	
+	/**
+	 * @return array list of all movie directors
+	 */
+	public static function getDirectors()
+	{
+		// Fetch the list of all movies
+		$movies = VideoLibrary::getMovies(array('properties'=>array('director')));
+		$directors = array();
+
+		foreach ($movies as $movie)
+			$directors = array_merge($directors, $movie->director);
+
+		// We want this to be an array with just values, the keys don't matter
+		return array_values(array_unique($directors));
+	}
 
 	/**
 	 * Returns a list of movies

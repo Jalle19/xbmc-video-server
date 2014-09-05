@@ -34,6 +34,9 @@ class MovieFilter extends VideoFilter
 
 		echo $this->form->typeaheadFieldControlGroup($this->model, 'actor', 
 				$this->getActorNameTypeaheadData(Actor::MEDIA_TYPE_MOVIE));
+		
+		echo $this->form->typeaheadFieldControlGroup($this->model, 'director', 
+				CJavaScript::encode(VideoLibrary::getDirectors()));
 	}
 	
 	/**

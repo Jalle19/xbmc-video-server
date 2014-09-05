@@ -29,6 +29,11 @@ class MovieFilterForm extends VideoFilterForm
 	 */
 	public $rating;
 	
+	/**
+	 * @var string the director of the movie
+	 */
+	public $director;
+	
 	public function getGenreType()
 	{
 		return VideoLibrary::GENRE_TYPE_MOVIE;
@@ -43,6 +48,7 @@ class MovieFilterForm extends VideoFilterForm
 			'year'=>Yii::t('FilterForm', 'Year'),
 			'quality'=>Yii::t('FilterForm', 'Quality'),
 			'rating'=>Yii::t('FilterForm', 'Minimum rating'),
+			'director'=>Yii::t('FilterForm', 'Director'),
 		));
 	}
 
@@ -55,6 +61,7 @@ class MovieFilterForm extends VideoFilterForm
 			array('year', 'numerical', 'integerOnly'=>true),
 			array('quality', 'in', 'range'=>array_keys($this->getQualities())),
 			array('rating', 'numerical', 'max'=>'10'),
+			array('director', 'safe'),
 		));
 	}
 	
@@ -99,6 +106,11 @@ class MovieFilterForm extends VideoFilterForm
 			'operator'=>'greaterthan',
 			'value'=>$this->rating);
 
+		$filter['director'] = array(
+			'operator'=>'is',
+			'value'=>$this->director,
+		);
+		
 		$quality = $this->quality;
 
 		// SD means anything less than 720p
