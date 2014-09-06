@@ -127,12 +127,12 @@ class TvShowController extends MediaController
 	
 	/**
 	 * Serves a playlist containing the specified episode
-	 * @param int $episodeId the episode ID
+	 * @param int $id the episode ID
 	 * @throws CHttpException if the episode's file(s) don't exist
 	 */
-	public function actionGetEpisodePlaylist($episodeId)
+	public function actionGetEpisodePlaylist($id, $playlistFormat)
 	{
-		$episode = VideoLibrary::getEpisodeDetails($episodeId, array(
+		$episode = VideoLibrary::getEpisodeDetails($id, array(
 					'episode',
 					'season',
 					'showtitle',
@@ -141,7 +141,7 @@ class TvShowController extends MediaController
 					'file'));
 		
 		$this->log('"%s" streamed %s of "%s"', Yii::app()->user->name, $episode->getEpisodeString(), $episode->showtitle);
-		$this->servePlaylist($episode);
+		$this->servePlaylist($episode, $playlistFormat);
 	}
 	
 	/**

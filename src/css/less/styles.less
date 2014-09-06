@@ -418,8 +418,22 @@ select {
 	.modal-body {
 		padding-bottom: 0; // item-links provide margin
 		
-		button, .btn {
-			width: 198px; // 270 - 72
+		form {
+			section {
+				margin-bottom: 20px;
+				padding-bottom: 20px;
+				border-bottom: 1px solid @grayLighter;
+			}
+			
+			// for some dump reason, depending on what type of buttons are used 
+			// we need to use different widths
+			.btn {
+				width: 198px; // 270 - 72
+			}
+			
+			button, select {
+				width: 100% !important;
+			}
 		}
 	}
 }

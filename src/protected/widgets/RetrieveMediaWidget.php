@@ -32,9 +32,9 @@ abstract class RetrieveMediaWidget extends CWidget
 	abstract protected function getLogMessage();
 	
 	/**
-	 * @return string the URL for the Watch button
+	 * @return string the action for retrieving an item's playlist
 	 */
-	abstract protected function getPlayListUrl();
+	abstract protected function getPlayListAction();
 	
 	/**
 	 * Initializes the widget
@@ -61,15 +61,7 @@ abstract class RetrieveMediaWidget extends CWidget
 			return;
 		}
 		
-		// Construct the options for the watch button
-		$watchButtonsOptions = array(
-			'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
-			'size'=>TbHtml::BUTTON_SIZE_LARGE,
-			'url'=>$this->getStreamUrl(),
-			'class'=>'fa fa-play');
-
-		echo TbHtml::linkButton(Yii::t('RetrieveMediaWidget', 'Watch as playlist'), $watchButtonsOptions);
-		$this->renderLinks();
+		$this->renderForm();
 	}
 
 	/**
@@ -107,7 +99,52 @@ abstract class RetrieveMediaWidget extends CWidget
 			return $this->_links[0]->url;
 		}
 		else
-			return $this->getPlayListUrl();
+			return $this->getPlayListAction();
+	}
+	
+	/**
+	 * @return array options for the watch buttons displayed
+	 */
+	private function getWatchButtonsOptions()
+	{
+		return array(
+			'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
+			'size'=>TbHtml::BUTTON_SIZE_LARGE,
+			'url'=>$this->getStreamUrl(),
+			'class'=>'fa fa-play');
+	}
+	
+	/**
+	 * Renders the form that contains the buttons and links to watch/download 
+	 * and item
+	 */
+	private function renderForm()
+	{
+		// Render the form with all the retrieval options
+		echo CHtml::beginForm($this->getPlayListAction(), 'get');
+		echo CHtml::hiddenField('id', $this->details->getId());
+		
+		?>
+		<section>
+			<?php
+
+			// Select the default playlist format by default
+			$dropdownOptions = array(
+				Setting::getString('playlistFormat')=>array('selected'=>'selected'));
+			
+			echo TbHtml::dropDownListControlGroup('playlistFormat', 'playlistFormat', PlaylistFactory::getTypes(), array(
+				'label'=>Yii::t('Settings', 'Playlist format'),
+				'options'=>$dropdownOptions)); 
+
+			echo TbHtml::submitButton(Yii::t('RetrieveMediaWidget', 'Watch as playlist'), $this->getWatchButtonsOptions());
+
+			?>
+		</section>
+		<?php
+		
+		// Render the download links and close the form
+		$this->renderLinks();
+		echo CHtml::endForm();
 	}
 
 	/**

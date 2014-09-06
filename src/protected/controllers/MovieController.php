@@ -77,11 +77,11 @@ class MovieController extends MediaController
 	
 	/**
 	 * Serves a playlist containing the specified movie's files to the browser
-	 * @param int $movieId the movie ID
+	 * @param int $id the movie ID
 	 */
-	public function actionGetMoviePlaylist($movieId)
+	public function actionGetMoviePlaylist($id, $playlistFormat)
 	{
-		$movieDetails = VideoLibrary::getMovieDetails($movieId, array(
+		$movieDetails = VideoLibrary::getMovieDetails($id, array(
 			'file',
 			'runtime',
 			'year',
@@ -89,7 +89,7 @@ class MovieController extends MediaController
 		));
 		
 		$this->log('"%s" streamed "%s"', Yii::app()->user->name, $movieDetails->getDisplayName());
-		$this->servePlaylist($movieDetails);
+		$this->servePlaylist($movieDetails, $playlistFormat);
 	}
 	
 }
