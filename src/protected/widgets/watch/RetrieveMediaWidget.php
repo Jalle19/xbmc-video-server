@@ -77,6 +77,7 @@ abstract class RetrieveMediaWidget extends CWidget
 	}
 	
 	/**
+	 * @param string $link
 	 * @return string the filename part of the full link to a file
 	 */
 	private function getDownloadName($link)

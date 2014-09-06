@@ -54,7 +54,7 @@ class XBMC extends CApplicationComponent
 	 * if the "cacheApiCalls" setting is enabled.
 	 * @param string $method
 	 * @param mixed $params
-	 * @param mixed $id
+	 * @param integer $id
 	 */
 	public function performRequest($method, $params = null, $id = 0)
 	{
@@ -93,7 +93,7 @@ class XBMC extends CApplicationComponent
 	 * Wrapper for \SimpleJsonRpcClient\Request
 	 * @param string $method
 	 * @param mixed $params
-	 * @param mixed $id
+	 * @param integer $id
 	 * @return SimpleJsonRpcClient\Response\Response
 	 */
 	public function performRequestUncached($method, $params = null, $id = 0)

@@ -38,7 +38,7 @@ abstract class Base extends CComponent implements ITypeaheadData
 	}
 	
 	/**
-	 * @return the ID of this item
+	 * @return string ID of this item
 	 */
 	public function getId()
 	{
