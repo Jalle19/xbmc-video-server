@@ -12,7 +12,10 @@ class RetrieveTVShowWidget extends RetrieveMediaWidget
 
 	protected function getLogMessage()
 	{
-		return '"'.Yii::app()->user->name.'" downloaded "'.$this->details->showtitle.' - '.$this->details->getDisplayName().'"';
+		/* @var $episode Episode */
+		$episode = $this->details;
+		
+		return '"'.Yii::app()->user->name.'" downloaded "'.$episode->showtitle.' - '.$episode->getDisplayName().'"';
 	}
 
 	protected function getPlayListAction()

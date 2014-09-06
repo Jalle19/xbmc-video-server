@@ -7,6 +7,11 @@
  * @author Sam Stenvall <neggelandia@gmail.com>
  * @copyright Copyright &copy; Sam Stenvall 2013-
  * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
+ * 
+ * Properties and methods from traits
+ * @property string $file the item file
+ * @method ItemLink[] getItemLinks() the item links
+ * @method string getWatchedIcon() the HTML for a watched icon
  */
 abstract class Media extends Base
 {
