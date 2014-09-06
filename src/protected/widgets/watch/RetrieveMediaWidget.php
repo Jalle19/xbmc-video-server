@@ -123,10 +123,17 @@ abstract class RetrieveMediaWidget extends CWidget
 		echo CHtml::beginForm($this->getPlayListAction(), 'get');
 		echo CHtml::hiddenField('id', $this->details->getId());
 		
+		// Show the "Play in XBMC" button to administrators
+		if (Yii::app()->user->role === User::ROLE_ADMIN)
+		{
+			?>
+			<section>
+				<?php $this->renderPlayOnBackendButton(); ?>
+			</section>
+			<?php
+		}
+		
 		?>
-		<section>
-			<?php $this->renderPlayOnBackendButton(); ?>
-		</section>
 		<section>
 			<?php $this->renderWatchButton(); ?>
 		</section>

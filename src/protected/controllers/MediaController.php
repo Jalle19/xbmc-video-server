@@ -48,9 +48,15 @@ abstract class MediaController extends Controller
 			array('deny',
 				'actions'=>$this->getSpectatorProhibitedActions(),
 				'expression'=>function() {
-			return Yii::app()->user->role === User::ROLE_SPECTATOR;
-		}
-			)
+					return Yii::app()->user->role === User::ROLE_SPECTATOR;
+				}
+			),
+			array('deny',
+				'actions'=>array('playOnBackend'),
+				'expression'=>function() {
+					return Yii::app()->user->role !== User::ROLE_ADMIN;
+				}
+			),
 		);
 	}
 	

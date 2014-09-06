@@ -8,6 +8,9 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.6.7.1
+* only allow administrators to play media on the backend
+
 #### 1.6.7
 * show watch/download options in a modal dialog instead
 * added ability to select the playlist format used for playlists (the application default is selected by default)
