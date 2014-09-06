@@ -8,6 +8,11 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.6.7
+* show watch/download options in a modal dialog instead
+* added ability to select the playlist format used for playlists (the application default is selected by default)
+* added ability to start playing an item in XBMC instead of streaming/downloading it
+
 #### 1.6.6
 * fix adding and using backends using an IPv6 address
 * fixed a bug where normal users couldn't wake a sleeping backend using WOL
