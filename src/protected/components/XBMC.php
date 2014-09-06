@@ -72,7 +72,7 @@ class XBMC extends CApplicationComponent
 			// Not found in cache
 			if ($result === false)
 			{
-				$result = $this->performRequestInternal($method, $params, $id);
+				$result = $this->performRequestUncached($method, $params, $id);
 				
 				// Store the raw response instead of the object
 				Yii::app()->apiCallCache->set($cacheId, $result->getRawResponse());
@@ -86,7 +86,7 @@ class XBMC extends CApplicationComponent
 			return $result;
 		}
 		else
-			return $this->performRequestInternal($method, $params, $id);
+			return $this->performRequestUncached($method, $params, $id);
 	}
 	
 	/**
@@ -96,7 +96,7 @@ class XBMC extends CApplicationComponent
 	 * @param mixed $id
 	 * @return SimpleJsonRpcClient\Response\Response
 	 */
-	private function performRequestInternal($method, $params = null, $id = 0)
+	public function performRequestUncached($method, $params = null, $id = 0)
 	{
 		try
 		{
