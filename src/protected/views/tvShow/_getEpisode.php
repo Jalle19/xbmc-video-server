@@ -9,7 +9,5 @@
 
 <?php 
 
-// Omit URL credentials if browser is Internet Explorer
-$this->widget('RetrieveTVShowWidget', array(
-	'details'=>$episode,
-));
+$this->widget('WatchTVShowModal', array(
+	'media'=>$episode))->renderTriggerButton();

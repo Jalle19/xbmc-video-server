@@ -30,6 +30,7 @@ return array(
 		'application.widgets.filter.*',
 		'application.widgets.results.*',
 		'application.widgets.season.*',
+		'application.widgets.watch.*',
 		'bootstrap.helpers.*',
 	),
 

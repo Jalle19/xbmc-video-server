@@ -37,11 +37,6 @@ abstract class RetrieveMediaWidget extends CWidget
 	abstract protected function getPlayListUrl();
 	
 	/**
-	 * @return array the options for the Watch button
-	 */
-	abstract protected function getWatchButtonOptions();
-	
-	/**
 	 * Initializes the widget
 	 */
 	public function init()
@@ -67,11 +62,13 @@ abstract class RetrieveMediaWidget extends CWidget
 		}
 		
 		// Construct the options for the watch button
-		$watchButtonsOptions = array_merge(array(
+		$watchButtonsOptions = array(
+			'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
+			'size'=>TbHtml::BUTTON_SIZE_LARGE,
 			'url'=>$this->getStreamUrl(),
-			'class'=>'fa fa-play'), $this->getWatchButtonOptions());
+			'class'=>'fa fa-play');
 
-		echo TbHtml::linkButton(Yii::t('RetrieveMediaWidget', 'Watch'), $watchButtonsOptions);
+		echo TbHtml::linkButton(Yii::t('RetrieveMediaWidget', 'Watch as playlist'), $watchButtonsOptions);
 		$this->renderLinks();
 	}
 

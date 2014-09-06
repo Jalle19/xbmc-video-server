@@ -20,12 +20,4 @@ class RetrieveTVShowWidget extends RetrieveMediaWidget
 		return array('getEpisodePlaylist', 'episodeId'=>$this->details->getId());
 	}
 
-	protected function getWatchButtonOptions()
-	{
-		return array(
-			'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
-			'size'=>TbHtml::BUTTON_SIZE_SMALL,
-		);
-	}
-
 }

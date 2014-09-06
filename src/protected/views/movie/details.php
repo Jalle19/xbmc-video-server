@@ -16,26 +16,13 @@ $this->pageTitle = $details->getDisplayName().' - '.Yii::t('Movies', 'Movies');
 			'class'=>'item-thumbnail hidden-phone',
 		));
 
-		// The check is also done in RetrieveMediaWidget but we don't want 
-		// to show this piece of text at all if the user can't do what it 
-		// says
+		// Don't show the modal trigger to spectators
 		if (Yii::app()->user->role !== User::ROLE_SPECTATOR)
 		{
-			?>
-			<div class="hidden-phone">
-				<h3><?php echo Yii::t('Movies', 'Watch / Download'); ?></h3>
-
-				<p>
-					<?php echo Yii::t('Movies', 'Click the Watch button to start streaming the video (open 
-					the file in your favorite media player), or download the 
-					individual files for later viewing using the links below it.'); ?>
-				</p>
-			</div>
-
-			<?php $this->widget('RetrieveMovieWidget', array(
-				'details'=>$details,
-			)); ?>
-			<?php
+			$buttonOptions = array('style'=>'margin-top: 20px;');
+			
+			$this->widget('WatchMovieModal', array(
+				'media'=>$details))->renderTriggerButton($buttonOptions);
 		}
 
 		?>

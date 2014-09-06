@@ -20,12 +20,4 @@ class RetrieveMovieWidget extends RetrieveMediaWidget
 		return array('getMoviePlaylist', 'movieId'=>$this->details->getId());
 	}
 
-	protected function getWatchButtonOptions()
-	{
-		return array(
-			'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
-			'size'=>TbHtml::BUTTON_SIZE_LARGE,
-		);
-	}
-
 }
