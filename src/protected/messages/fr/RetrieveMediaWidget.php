@@ -17,6 +17,9 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
+  'Play in XBMC' => '',
+  'The item should now be playing on {backend}' => '',
+  'Watch as playlist' => '',
   'Download' => 'Télécharger',
   'Download (part #{partNumber})' => 'Télécharger (partie #{partNumber})',
   'The file(s) for this item is not available' => 'Le fichier n\'est pas disponible',

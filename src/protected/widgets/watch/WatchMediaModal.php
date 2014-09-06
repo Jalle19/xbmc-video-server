@@ -41,7 +41,7 @@ abstract class WatchMediaModal extends TbModal
 		parent::init();
 
 		TbHtml::addCssClass('watch-modal', $this->htmlOptions);
-		$this->header = Yii::t('Watch', 'Watch / Download');
+		$this->header = Yii::t('Movies', 'Watch / Download');
 	}
 
 	/**

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Message translations.
  *
@@ -17,6 +17,9 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
+  'Play in XBMC' => '',
+  'The item should now be playing on {backend}' => '',
+  'Watch as playlist' => '',
   'Download' => 'Download',
   'Download (part #{partNumber})' => 'Download (partie #{partNumber})',
   'The file(s) for this item is not available' => 'Die Datei ist momentan nicht verfügbar',
