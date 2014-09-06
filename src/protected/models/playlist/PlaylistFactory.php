@@ -18,12 +18,15 @@ class PlaylistFactory
 	/**
 	 * Factory method for creating playlist objects
 	 * @param string $fileName
+	 * @param string $format the desired playlist format. Defaults to null, 
+	 * meaning the configured default format will be used
 	 * @return Playlist the playlist object
 	 * @throws InvalidRequestException if the playlist format is not supported
 	 */
-	public static function create($fileName)
+	public static function create($fileName, $format = null)
 	{
-		$format = Setting::getString('playlistFormat');
+		if ($format === null)
+			$format = Setting::getString('playlistFormat');
 
 		switch ($format)
 		{

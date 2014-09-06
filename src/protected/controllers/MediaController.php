@@ -147,13 +147,15 @@ abstract class MediaController extends Controller
 	/**
 	 * Generates a playlist from the specified media item
 	 * @param StreamableTrait $media the media item
+	 * @param string $format the desired playlist format. Defaults to null, 
+	 * meaning the configured default format will be used
 	 * @return Playlist the playlist
 	 */
-	private function createPlaylist($media)
+	private function createPlaylist($media, $format = null)
 	{
 		// Create the playlist
 		$name = $media->getDisplayName();
-		$playlist = PlaylistFactory::create($name);
+		$playlist = PlaylistFactory::create($name, $format);
 
 		// Add the playlist items
 		foreach ($media->getItemLinks() as $itemLink)
@@ -170,10 +172,12 @@ abstract class MediaController extends Controller
 	/**
 	 * Creates and serves a playlist based on the specified media item
 	 * @param StreamableTrait $media a media item
+	 * @param string $format the desired playlist format. Defaults to null, 
+	 * meaning the configured default format will be used
 	 */
-	protected function servePlaylist($media)
+	protected function servePlaylist($media, $format = null)
 	{
-		$playlist = $this->createPlaylist($media);
+		$playlist = $this->createPlaylist($media, $format);
 		
 		header('Content-Type: '.$playlist->getMIMEType());
 		header('Content-Disposition: attachment; filename="'.$playlist->getSanitizedFileName().'"');
