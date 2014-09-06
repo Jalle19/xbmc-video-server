@@ -126,33 +126,10 @@ abstract class RetrieveMediaWidget extends CWidget
 		
 		?>
 		<section>
-			<?php 
-			
-			$playOnBackendButtonOptions = array(
-				'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
-				'size'=>TbHtml::BUTTON_SIZE_LARGE,
-				'url'=>array('playOnBackend', 'file'=>$this->details->file),
-				'class'=>'fa fa-desktop');
-			
-			echo TbHtml::linkButton(Yii::t('RetrieveMediaWidget', 'Play in XBMC'), 
-					$playOnBackendButtonOptions); 
-			
-			?>
+			<?php $this->renderPlayOnBackendButton(); ?>
 		</section>
 		<section>
-			<?php
-
-			// Select the default playlist format by default
-			$dropdownOptions = array(
-				Setting::getString('playlistFormat')=>array('selected'=>'selected'));
-			
-			echo TbHtml::dropDownListControlGroup('playlistFormat', 'playlistFormat', PlaylistFactory::getTypes(), array(
-				'label'=>Yii::t('Settings', 'Playlist format'),
-				'options'=>$dropdownOptions)); 
-
-			echo TbHtml::submitButton(Yii::t('RetrieveMediaWidget', 'Watch as playlist'), $this->getWatchButtonsOptions());
-
-			?>
+			<?php $this->renderWatchButton(); ?>
 		</section>
 		<?php
 		
@@ -190,6 +167,36 @@ abstract class RetrieveMediaWidget extends CWidget
 		}
 
 		echo CHtml::closeTag('div');
+	}
+	
+	/**
+	 * Renders the "Play in XBMC" button
+	 */
+	private function renderPlayOnBackendButton()
+	{
+		$playOnBackendButtonOptions = array(
+			'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
+			'size'=>TbHtml::BUTTON_SIZE_LARGE,
+			'url'=>array('playOnBackend', 'file'=>$this->details->file),
+			'class'=>'fa fa-desktop');
+
+		echo TbHtml::linkButton(Yii::t('RetrieveMediaWidget', 'Play in XBMC'), $playOnBackendButtonOptions);
+	}
+
+	/**
+	 * Renders the "Watch as playlist" button
+	 */
+	private function renderWatchButton()
+	{
+		// Select the default playlist format by default
+		$dropdownOptions = array(
+			Setting::getString('playlistFormat')=>array('selected'=>'selected'));
+
+		echo TbHtml::dropDownListControlGroup('playlistFormat', 'playlistFormat', PlaylistFactory::getTypes(), array(
+			'label'=>Yii::t('Settings', 'Playlist format'),
+			'options'=>$dropdownOptions));
+
+		echo TbHtml::submitButton(Yii::t('RetrieveMediaWidget', 'Watch as playlist'), $this->getWatchButtonsOptions());
 	}
 
 }
