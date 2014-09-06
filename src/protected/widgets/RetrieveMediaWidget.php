@@ -126,6 +126,20 @@ abstract class RetrieveMediaWidget extends CWidget
 		
 		?>
 		<section>
+			<?php 
+			
+			$playOnBackendButtonOptions = array(
+				'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
+				'size'=>TbHtml::BUTTON_SIZE_LARGE,
+				'url'=>array('playOnBackend', 'file'=>$this->details->file),
+				'class'=>'fa fa-desktop');
+			
+			echo TbHtml::linkButton(Yii::t('RetrieveMediaWidget', 'Play in XBMC'), 
+					$playOnBackendButtonOptions); 
+			
+			?>
+		</section>
+		<section>
 			<?php
 
 			// Select the default playlist format by default

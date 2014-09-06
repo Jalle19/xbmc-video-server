@@ -186,6 +186,23 @@ abstract class MediaController extends Controller
 	}
 	
 	/**
+	 * Tells the current backend to play the specified file, then redirects 
+	 * to the previous page
+	 * @param string $file the file path
+	 */
+	public function actionPlayOnBackend($file)
+	{
+		Yii::app()->xbmc->performRequestUncached('Player.Open', array(
+			'item'=>array('file'=>$file)));
+
+		// Go back to the previous page and inform the user
+		Yii::app()->user->setFlash('info', Yii::t('RetrieveMediaWidget', 'The item should now be playing on {backend}', array(
+			'{backend}'=>Yii::app()->backendManager->getCurrent()->name)));
+
+		$this->redirectToPrevious('index');
+	}
+
+	/**
 	 * Renders an index page based on the specified list of media items and 
 	 * the filter form. If the results contain a single item the user is 
 	 * redirected to that item's details page instead.
