@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c5b330a919bfe1230d3d51e55e0e6ae8",
+    "hash": "75b7aad853d2e0bb743b5354904c2fc4",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -444,16 +444,16 @@
         },
         {
             "name": "mptre/php-xspf",
-            "version": "dev-ng",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Jalle19/php-xspf.git",
-                "reference": "07033cb8f3d8ccae64b9da1c99fb90eb6ac3858e"
+                "url": "https://github.com/mptre/php-xspf.git",
+                "reference": "29a61b26e5e2d52502a39d32a063b831612b44de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Jalle19/php-xspf/zipball/07033cb8f3d8ccae64b9da1c99fb90eb6ac3858e",
-                "reference": "07033cb8f3d8ccae64b9da1c99fb90eb6ac3858e",
+                "url": "https://api.github.com/repos/mptre/php-xspf/zipball/29a61b26e5e2d52502a39d32a063b831612b44de",
+                "reference": "29a61b26e5e2d52502a39d32a063b831612b44de",
                 "shasum": ""
             },
             "require-dev": {
@@ -465,6 +465,7 @@
                     "mptre": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -482,10 +483,7 @@
             "keywords": [
                 "xspf"
             ],
-            "support": {
-                "source": "https://github.com/Jalle19/php-xspf/tree/cdata-domtext"
-            },
-            "time": "2014-07-03 05:15:36"
+            "time": "2014-08-06 09:56:00"
         },
         {
             "name": "netresearch/jsonmapper",
@@ -967,9 +965,9 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "eventviva/php-image-resize": 20,
-        "mptre/php-xspf": 20
+        "eventviva/php-image-resize": 20
     },
+    "prefer-stable": false,
     "platform": [
 
     ],
