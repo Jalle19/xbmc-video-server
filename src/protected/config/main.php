@@ -83,10 +83,7 @@ return array(
 		),
 		'db'=>array(
 			'connectionString' => 'sqlite:'.__DIR__.'/../data/xbmc-video-server.db',
-			// uncomment the following line to save some queries per page load. 
-			// You will most likely have to comment it out again after updating 
-			// the software to avoid random database errors.
-			//'schemaCachingDuration'=>86400, 
+			'schemaCachingDuration'=>2592000, // 30 days
 		),
 		// To use MySQL instead of SQLite, uncomment the 'db' section below and 
 		// comment out the 'db' section above. You will then have to configure 
