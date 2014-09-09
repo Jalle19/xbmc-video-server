@@ -17,7 +17,7 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Director' => '',
+  'Director' => 'Réalisateur/trice',
   'Actor' => 'Acteur/trice',
   'Apply filter' => 'Rechercher',
   'Clear filter' => 'Annuler',
