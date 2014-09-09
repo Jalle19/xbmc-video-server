@@ -17,7 +17,7 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Before you get started, please have a look at the application settings' => '',
+  'Before you get started, please have a look at the application settings' => 'Avant de commencer, veuillez vous intéresser aux paramètres de l\'application',
   'Access whitelist' => 'Accès par liste blanche',
   'Amount of results to show per page' => 'Nombre de résultats affichés par page',
   'Application language' => 'Langue de l\'application',
