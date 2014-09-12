@@ -8,6 +8,9 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.6.7.2
+* added missing French translations
+
 #### 1.6.7.1
 * only allow administrators to play media on the backend
 
