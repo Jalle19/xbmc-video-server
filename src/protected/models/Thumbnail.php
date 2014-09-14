@@ -82,10 +82,12 @@ class Thumbnail
 	}
 	
 	/**
-	 * Generates and stores a cached copy of this thumbnail
+	 * @return string the URL to the original version of the image
 	 */
-	public function generate()
+	private function getOriginalUrl()
 	{
+		$imageUrl = null;
+		
 		// The path to the image can be either the placeholder image, in which 
 		// case we just prepend the host info, or it can be a VFS url in which 
 		// case we need to resolve it
@@ -98,9 +100,16 @@ class Thumbnail
 		}
 		else
 			$imageUrl = Yii::app()->request->getHostInfo().$this->_path;
-
-		// Resize the image and save it in the cache
-		$image = new Eventviva\ImageResize($imageUrl);
+		
+		return $imageUrl;
+	}
+	
+	/**
+	 * Generates and stores a cached copy of this thumbnail
+	 */
+	public function generate()
+	{
+		$image = new Eventviva\ImageResize($this->getOriginalUrl());
 		$image->resizeToWidth($this->_size);
 		$image->save($this->_cache->getCachePath().DIRECTORY_SEPARATOR.
 				$this->getFilename(), IMAGETYPE_JPEG);
