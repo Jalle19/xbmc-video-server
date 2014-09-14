@@ -27,7 +27,7 @@ $this->pageTitle = $title = Yii::t('Log', 'Details for log item #{id}',
 						strpos($data->category, 'php') === 0)
 					{
 						$output = CHtml::openTag('div', array('class'=>'exception-message'));
-						$output .= $message;
+						$output .= nl2br($message);
 						$output .= CHtml::closeTag('div');
 
 						return $output;
