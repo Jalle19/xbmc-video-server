@@ -14,7 +14,9 @@ if (count(Backend::model()->findAll()) === 1)
 			return implode('_', array(
 				Yii::app()->user->role,
 				intval(Setting::getBoolean('cacheApiCalls')),
-				intval(Yii::app()->backendManager->getCurrent() === null),
+				// dummy values to distinguish between backend states
+				Yii::app()->backendManager->getCurrent() === null ? 0 :
+					Yii::app()->backendManager->getCurrent()->isConnectable() ? 1 : 2,
 				Yii::app()->language,
 				Yii::app()->baseUrl,
 			));
