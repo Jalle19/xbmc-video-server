@@ -358,11 +358,12 @@ class VideoLibrary
 	{
 		if (isset($response->result->{$resultSet}))
 		{
-			$mapper = new JsonMapper();
 			$result = $response->result->{$resultSet};
 
 			if ($targetObject !== null)
 			{
+				$mapper = new JsonMapper();
+				
 				if (is_array($result))
 					return $mapper->mapArray($result, new ArrayObject(), $targetObject)->getArrayCopy();
 				elseif (is_object($result))
