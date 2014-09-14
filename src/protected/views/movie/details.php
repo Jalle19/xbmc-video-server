@@ -104,26 +104,8 @@ $this->pageTitle = $details->getDisplayName().' - '.Yii::t('Movies', 'Movies');
 		// Don't render unless there's a cast to display
 		if ($actorDataProvider->itemCount > 0)
 		{
-			?>
-			<div class="cast">
-
-				<h3><?php echo Yii::t('Media', 'Cast'); ?></h3>
-
-				<?php echo FormHelper::helpBlock(Yii::t('Movies', "Click an image to see other movies with that person, or click the name to go to the person's IMDb page")); ?>
-
-				<div class="row-fluid">
-					<?php $this->widget('zii.widgets.CListView', array(
-						'dataProvider'=>$actorDataProvider,
-						'itemView'=>'_actorGridItem',
-						'itemsTagName'=>'ul',
-						'itemsCssClass'=>'thumbnails actor-grid',
-						'enablePagination'=>false,
-						'template'=>'{items}'
-					)); ?>
-				</div>
-
-			</div>
-			<?php
+			$this->renderPartial('//videoLibrary/_cast', array(
+				'actorDataProvider'=>$actorDataProvider));
 		}
 		
 		?>

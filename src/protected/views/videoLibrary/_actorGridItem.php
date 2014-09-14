@@ -10,8 +10,8 @@ $thumbnail = new ThumbnailActor($thumbnailPath, Thumbnail::SIZE_MEDIUM);
 $label = Yii::t('Media', '{actorName} as {role}', array('{actorName}'=>$data->name, '{role}'=>'<em>'.$data->role.'</em>'));
 $labelUrl = 'http://www.imdb.com/find?q='.urlencode($data->name).'&s=nm';
 
-if(!isset($itemUrl))
-	$itemUrl = false;
+$itemUrl = $this->createUrl('movie/index', array(
+	'MovieFilterForm[actor]'=>$data->name));
 
 $this->renderPartial('//videoLibrary/_gridItem', array(
 	// the label is used for IMDb links so we make it open in a new tab
