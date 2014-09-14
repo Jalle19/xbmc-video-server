@@ -74,25 +74,34 @@ $this->pageTitle = $details->getDisplayName();
 			<p><?php echo $details->getPlot(); ?></p>
 		</div>
 
-		<div class="cast">
-			
-			<h3><?php echo Yii::t('Media', 'Cast'); ?></h3>
+		<?php
+		
+		// Don't render unless there's a cast to display
+		if ($actorDataProvider->itemCount > 0)
+		{
+			?>
+			<div class="cast">
 
-			<?php echo FormHelper::helpBlock(Yii::t('TVShows', "Click the name to go to the person's IMDb page")); ?>
+				<h3><?php echo Yii::t('Media', 'Cast'); ?></h3>
 
-			<div class="row-fluid">
-				<?php $this->widget('zii.widgets.CListView', array(
-					'dataProvider'=>$actorDataProvider,
-					'itemView'=>'/videoLibrary/_actorGridItem',
-					'itemsTagName'=>'ul',
-					'itemsCssClass'=>'thumbnails actor-grid',
-					'enablePagination'=>false,
-					'template'=>'{items}'
-				)); ?>
+				<?php echo FormHelper::helpBlock(Yii::t('TVShows', "Click the name to go to the person's IMDb page")); ?>
+
+				<div class="row-fluid">
+					<?php $this->widget('zii.widgets.CListView', array(
+						'dataProvider'=>$actorDataProvider,
+						'itemView'=>'/videoLibrary/_actorGridItem',
+						'itemsTagName'=>'ul',
+						'itemsCssClass'=>'thumbnails actor-grid',
+						'enablePagination'=>false,
+						'template'=>'{items}'
+					)); ?>
+				</div>
+
 			</div>
-			
-		</div>
-
+			<?php
+		}
+		
+		?>
 	</div>
 </div>
 
