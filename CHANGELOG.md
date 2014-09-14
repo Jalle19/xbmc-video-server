@@ -8,6 +8,17 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.6.8
+* added missing French translations by @Galixte
+* enable database schema caching by default. It is cleared automatically when applying migrations that change it.
+* load Google Fonts over HTTPS if the site itself is accessed over HTTPS (fixes mixed content warnings in the browser)
+* added missing line breaks when formatting logged exceptions
+* log error data when a JSON-RPC error occurs
+* made the "application name" setting optional. This means nothing is rendered above the main menu if both application name and subtitle are left empty.
+* the "Cast" section is no longer rendered if there is no cast information available (happens on foreign TV shows and obscure movies)
+* the actor grid is now rendered the same for both movies and TV shows, i.e. clicking an actor thumbnail on a TV show page will show what movies said actor is in.
+* make the layout adapt better to larger screens. Now the page gets wider and wider (up to 1920x1080) instead of staying fixed at 1170 pixels maximum.
+
 #### 1.6.7.1
 * only allow administrators to play media on the backend
 
