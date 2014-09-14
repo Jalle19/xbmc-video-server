@@ -132,12 +132,22 @@ class XBMC extends CApplicationComponent
 	/**
 	 * Handles exceptions from the JSON-RPC client. The exceptions are re-
 	 * thrown as CHttpException so we can provide a less confusing error 
-	 * message.
+	 * message. The exact error will be logged separately in the system log 
+	 * when available.
 	 * @param SimpleJsonRpcClient\Exception\BaseException $exception
 	 * @throws CHttpException always
 	 */
 	private function handleRequestException($exception)
 	{
+		// Log the detailed error data for easier debugging
+		if ($exception instanceof SimpleJsonRpcClient\Exception\ResponseErrorException)
+		{
+			$data = CHtml::tag('pre', array(), json_encode($exception->getData(), JSON_PRETTY_PRINT));
+			$message = 'Response error data from the upcoming exception: '.$data;
+
+			Yii::log($message, CLogger::LEVEL_ERROR, 'jsonrpc');
+		}
+
 		$message = 'Exception caught while calling XBMC API: '.$exception->getMessage().' ('.$exception->getCode().')';
 
 		throw new CHttpException(500, $message);
