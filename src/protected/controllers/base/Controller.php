@@ -15,7 +15,14 @@ class Controller extends CController
 	 */
 	public function init()
 	{
-		Yii::app()->name = Setting::getString('applicationName');
+		// Fallback to XBMC Video Server if the user has removed the 
+		// application name
+		$name = Setting::getString('applicationName');
+
+		if (!$name)
+			$name = 'XBMC Video Server';
+
+		Yii::app()->name = $name;
 		Yii::app()->language = Yii::app()->languageManager->getCurrent();
 
 		parent::init();

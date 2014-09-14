@@ -137,7 +137,7 @@ class Setting extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('language, applicationName, playlistFormat', 'required'),
+			array('language, playlistFormat', 'required'),
 			array('pagesize', 'numerical', 'integerOnly'=>true, 'min'=>1),
 			array('whitelist', 'validateWhitelist'),
 		);
