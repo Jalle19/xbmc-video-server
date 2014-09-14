@@ -132,7 +132,6 @@ class VideoLibrary
 	 * @param int $movieId the movie ID
 	 * @param string[] $properties the properties to include in the result
 	 * @return Movie the movie details
-	 * @throws MediaNotFoundException if the movie was not found
 	 */
 	public static function getMovieDetails($movieId, $properties)
 	{
@@ -213,7 +212,7 @@ class VideoLibrary
 	 * @param int $tvshowId the tv show ID
 	 * @param int $season the season number
 	 * @return Season the season details
-	 * @throws MediaNotFoundException if the season is not found
+	 * @throws PageNotFoundException if the season is not found
 	 */
 	public static function getSeasonDetails($tvshowId, $season)
 	{
@@ -223,7 +222,7 @@ class VideoLibrary
 			if ($seasonObj->season == $season)
 				return $seasonObj;
 
-		throw new MediaNotFoundException();
+		throw new PageNotFoundException();
 	}
 
 	/**
@@ -256,7 +255,6 @@ class VideoLibrary
 	 * @param int $episodeId the episode ID
 	 * @param string[] $properties the properties to include in the result
 	 * @return Episode the episode details
-	 * @throws MediaNotFoundException if the episode is not found
 	 */
 	public static function getEpisodeDetails($episodeId, $properties)
 	{

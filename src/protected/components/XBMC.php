@@ -138,10 +138,6 @@ class XBMC extends CApplicationComponent
 	 */
 	private function handleRequestException($exception)
 	{
-		// InvalidParamsException tends to mean "not found"
-		if ($exception instanceof SimpleJsonRpcClient\Exception\InvalidParamsException)
-			throw new MediaNotFoundException();
-		
 		$message = 'Exception caught while calling XBMC API: '.$exception->getMessage().' ('.$exception->getCode().')';
 
 		throw new CHttpException(500, $message);
