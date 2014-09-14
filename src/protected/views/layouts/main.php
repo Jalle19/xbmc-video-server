@@ -31,23 +31,7 @@ $baseUrl = Yii::app()->baseUrl;
 	<body>
 		<div class="container">
 			
-			<div class="row">
-				<div class="span12">
-					<h1 id="home-url">
-						<a href="<?php echo Yii::app()->homeUrl; ?>">
-							<?php echo Yii::app()->name; ?>
-						</a>
-					</h1>
-					<?php
-					
-					$subtitle = Setting::getString('applicationSubtitle');
-					
-					if ($subtitle)
-						echo CHtml::tag('p', array('class'=>'lead'), $subtitle);
-					
-					?>
-				</div>
-			</div>
+			<?php $this->renderPartial('//layouts/_header'); ?>
 			
 			<?php $this->renderPartial('//layouts/_cachedNavbar'); ?>
 			
