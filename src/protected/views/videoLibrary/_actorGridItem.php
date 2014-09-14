@@ -4,7 +4,7 @@
 
 // Unlike movies and TV shows, actors don't always have the thumbnail property
 $thumbnailPath = isset($data->thumbnail) ? $data->thumbnail : '';
-$thumbnail = new ThumbnailActor($thumbnailPath, Thumbnail::SIZE_SMALL);
+$thumbnail = new ThumbnailActor($thumbnailPath, Thumbnail::SIZE_MEDIUM);
 
 // Make the label a link to the IMDB search page for the actor
 $label = Yii::t('Media', '{actorName} as {role}', array('{actorName}'=>$data->name, '{role}'=>'<em>'.$data->role.'</em>'));
