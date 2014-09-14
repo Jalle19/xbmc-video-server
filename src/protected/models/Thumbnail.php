@@ -86,8 +86,6 @@ class Thumbnail
 	 */
 	private function getOriginalUrl()
 	{
-		$imageUrl = null;
-		
 		// The path to the image can be either the placeholder image, in which 
 		// case we just prepend the host info, or it can be a VFS url in which 
 		// case we need to resolve it
