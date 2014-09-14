@@ -46,7 +46,7 @@ abstract class VideoFilter extends CWidget
 		?>
 		<div class="movie-filter-form well">
 			<div class="row-fluid">
-				<div class="span9">
+				<div class="span10">
 					<div class="row-fluid">
 						<div class="span12">
 							<?php $this->renderControls(); ?>
@@ -54,7 +54,7 @@ abstract class VideoFilter extends CWidget
 					</div>
 				</div>
 
-				<div class="span3">
+				<div class="span2">
 					<div class="buttons">
 						<?php $this->renderButtons(); ?>
 					</div>

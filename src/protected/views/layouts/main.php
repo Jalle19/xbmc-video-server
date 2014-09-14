@@ -29,7 +29,7 @@ $baseUrl = Yii::app()->baseUrl;
 	</head>
 	
 	<body>
-		<div class="container">
+		<div class="container-fluid">
 			
 			<?php $this->renderPartial('//layouts/_header'); ?>
 			

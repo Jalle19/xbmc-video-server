@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row-fluid">
 	
 	<div class="span6">
 		<h3><?php echo Yii::t('TVShows', 'Seasons'); ?></h3>
@@ -10,7 +10,7 @@
 	
 </div>
 
-<div class="row">
+<div class="row-fluid">
 	
 	<div class="span12">
 		<?php

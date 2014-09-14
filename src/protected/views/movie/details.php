@@ -7,7 +7,7 @@
 $this->pageTitle = $details->getDisplayName().' - '.Yii::t('Movies', 'Movies');
 
 ?>
-<div class="row">
+<div class="row-fluid">
 	<div class="span3">
 		<?php 
 

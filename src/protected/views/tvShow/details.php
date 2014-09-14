@@ -6,7 +6,7 @@
 $this->pageTitle = $details->getDisplayName();
 
 ?>
-<div class="row">
+<div class="row-fluid">
 	<div class="span3">
 		<?php 
 		

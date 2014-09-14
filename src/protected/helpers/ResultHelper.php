@@ -28,7 +28,7 @@ class ResultHelper
 	public static function renderDisplayModeToggle($summary, $context)
 	{
 		?>
-		<div class="row">
+		<div class="row-fluid">
 			<div class="span12 pull-right display-mode-toggle">
 				<?php 
 				

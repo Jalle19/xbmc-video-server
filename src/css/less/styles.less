@@ -97,13 +97,12 @@ select {
 
 	// ironically the inputs in this container are <button> or <a>
 	.buttons {
+		margin-left: -20px; // compensate for the buttons' left margins
+		text-align: right;
+		
 		button, a {
-			margin: 10px 0 20px 0;
-		}
-
-		// add a left margin only on the "Clear filter" button
-		button {
-			margin-right: 20px;
+			display: inline-block;
+			margin: 10px 0 10px 20px;
 		}
 	}
 }
@@ -439,3 +438,7 @@ select {
 // Import overrides for small screens
 @import "styles-max-767.less";
 @import "styles-max-979.less";
+
+// Import overrides for large screens (desktops)
+@import "styles-min-1610.less";
+@import "styles-min-1810.less";
