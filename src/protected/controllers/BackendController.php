@@ -17,7 +17,8 @@ class BackendController extends AdminOnlyController
 	{
 		return array_merge(parent::filters(), array(
 			'ajaxOnly + delete, ajaxCheckConnectivity',
-			array('application.filters.CheckBackendConnectivityFilter + updateLibrary'),
+			array('application.filters.CheckBackendConnectivityFilter + '.
+				'updateLibrary, shutdown, suspend, hibernate, reboot'),
 		));
 	}
 
@@ -28,12 +29,24 @@ class BackendController extends AdminOnlyController
 	 */
 	public function accessRules()
 	{
+		$allowedActions = array(
+			'change', 'updateLibrary', 'waitForConnectivity', 'ajaxCheckConnectivity'
+		);
+
+		if (Yii::app()->powerOffManager->shutdownAllowed())
+			$allowedActions[] = 'shutdown';
+
+		if (Yii::app()->powerOffManager->suspendAllowed())
+			$allowedActions[] = 'suspend';
+
+		if (Yii::app()->powerOffManager->hibernateAllowed())
+			$allowedActions[] = 'hibernate';
+
+		if (Yii::app()->powerOffManager->rebootAllowed())
+			$allowedActions[] = 'reboot';
+
 		return array_merge(array(
-			array('allow', 'actions'=>array(
-				'change', 
-				'updateLibrary', 
-				'waitForConnectivity', 
-				'ajaxCheckConnectivity'))
+			array('allow', 'actions'=>$allowedActions)
 		), parent::accessRules());
 	}
 
@@ -97,6 +110,99 @@ class BackendController extends AdminOnlyController
 			Yii::app()->user->setFlash('info', Yii::t('Misc', "You'll have to flush the API call cache to see any newly scanned content"));
 
 		$this->redirectToPrevious(Yii::app()->homeUrl);
+	}
+
+	/**
+	 * Shuts down the backend
+	 */
+	public function actionShutdown()
+	{
+		$this->powerOff('shutdown');
+	}
+
+	/**
+	 * Suspends the backend
+	 */
+	public function actionSuspend()
+	{
+		$this->powerOff('suspend');
+	}
+
+	/**
+	 * Hibernates the backend
+	 */
+	public function actionHibernate()
+	{
+		$this->powerOff('hibernate');
+	}
+
+	/**
+	 * Reboots the backend
+	 */
+	public function actionReboot()
+	{
+		$this->powerOff('reboot');
+	}
+
+	/**
+	 * Powers off the backend by shutting down, suspending, hibernating or
+	 * rebooting the backend
+	 * @param string $method the method used to power off the backend,
+	 * could be either of the strings 'shutdown', 'suspend', 'hibernate' or 'reboot'
+	 */
+	private function powerOff($method)
+	{
+		$response = Yii::app()->xbmc->performRequest('System.GetProperties', array(
+				'properties'=>array('canshutdown', 'cansuspend', 'canhibernate', 'canreboot')));
+
+		$successInfo = false;
+		$failureInfo = false;
+
+		switch ($method)
+		{
+			case 'shutdown':
+				$method = 'System.Shutdown';
+				if ($response->result->canshutdown)
+					$successInfo = Yii::t('Backend', 'The current backend is shutting down');
+				else
+					$failureInfo = Yii::t('Backend', 'The current backend cannot be shut down');
+			break;
+
+			case 'suspend':
+				$method = 'System.Suspend';
+				if ($response->result->cansuspend)
+					$successInfo = Yii::t('Backend', 'The current backend is suspending');
+				else
+					$failureInfo = Yii::t('Backend', 'The current backend cannot be suspended');
+			break;
+
+			case 'hibernate':
+				$method = 'System.Hibernate';
+				if ($response->result->canhibernate)
+					$successInfo = Yii::t('Backend', 'The current backend is hibernating');
+				else
+					$failureInfo = Yii::t('Backend', 'The current backend cannot be hibernated');
+			break;
+
+			case 'reboot':
+				$method = 'System.Reboot';
+				if ($response->result->canreboot)
+					$successInfo = Yii::t('Backend', 'The current backend is rebooting');
+				else
+					$failureInfo = Yii::t('Backend', 'The current backend cannot be rebooted');
+			break;
+		}
+
+		if ($successInfo !== false)
+		{
+			Yii::app()->xbmc->sendNotification($method);
+			Yii::app()->user->setFlash('success', $successInfo);
+		}
+
+		if ($failureInfo !== false)
+			Yii::app()->user->setFlash('error', $failureInfo);
+
+		$this->renderText('');
 	}
 
 	/**
