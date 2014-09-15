@@ -17,6 +17,7 @@ class BackendController extends AdminOnlyController
 	{
 		return array_merge(parent::filters(), array(
 			'ajaxOnly + delete, ajaxCheckConnectivity',
+			array('application.filters.CheckBackendConnectivityFilter + updateLibrary'),
 		));
 	}
 
