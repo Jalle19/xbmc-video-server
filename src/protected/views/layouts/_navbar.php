@@ -73,6 +73,11 @@ if (Yii::app()->user->role == User::ROLE_ADMIN)
 }
 
 // Add the "Actions" menu
+$isConnectable =
+	Yii::app()->backendManager->getCurrent() !== null &&
+	Yii::app()->backendManager->getCurrent()->isConnectable();
+$cacheApiCalls = Setting::getBoolean('cacheApiCalls');
+
 $changeLanguageItem = array('label'=>Yii::t('Menu', 'Change language'), 'url'=>'#',
 	'linkOptions'=>array(
 		'data-toggle'=>'modal', 'data-target'=>'#change-language-modal'));
@@ -81,25 +86,34 @@ $actions = array(
 	// interface-related actions
 	array('label'=>Yii::t('Menu', 'Interface')),
 	$changeLanguageItem,
-	// system-related
-	array('label'=>Yii::t('Menu', 'System')),
 );
 
-// Only show "Flush cache" if cacheApiCalls is enabled
-if (Setting::getBoolean('cacheApiCalls'))
+// Only show "System" sub-menu if it is not empty
+if ($isConnectable || $cacheApiCalls)
 {
-	$actions[] = array(
-		'label'=>Yii::t('Menu', 'Flush cache'),
-		'url'=>array('site/flushCache'),
-		'linkOptions'=>array('confirm'=>Yii::t('Misc', 'Are you sure you want to flush the cache?')),
-	);
-}
+	// system-related
+	$actions[] = array('label'=>Yii::t('Menu', 'System'));
 
-$actions[] = array(
-	'label'=>Yii::t('Menu', 'Update library'), 
-	'url'=>array('backend/updateLibrary'), 
-	'linkOptions'=>array('confirm'=>Yii::t('Misc', "Are you sure you want to update the backend's library?"))
-);
+	// Only show "Flush cache" if cacheApiCalls is enabled
+	if ($cacheApiCalls)
+	{
+		$actions[] = array(
+			'label'=>Yii::t('Menu', 'Flush cache'),
+			'url'=>array('site/flushCache'),
+			'linkOptions'=>array('confirm'=>Yii::t('Misc', 'Are you sure you want to flush the cache?')),
+		);
+	}
+
+	// Only show "Update Library" if backend is connectable
+	if ($isConnectable)
+	{
+		$actions[] = array(
+			'label'=>Yii::t('Menu', 'Update library'), 
+			'url'=>array('backend/updateLibrary'), 
+			'linkOptions'=>array('confirm'=>Yii::t('Misc', "Are you sure you want to update the backend's library?"))
+		);
+	}
+}
 
 // user-related actions
 $actions = array_merge($actions, array(
