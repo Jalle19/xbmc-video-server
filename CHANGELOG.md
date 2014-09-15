@@ -9,7 +9,6 @@ previous version from a newer one may break something since the project dependen
 change over time.
 
 #### 1.6.8
-* added missing French translations by @Galixte
 * enable database schema caching by default. It is cleared automatically when applying migrations that change it.
 * load Google Fonts over HTTPS if the site itself is accessed over HTTPS (fixes mixed content warnings in the browser)
 * added missing line breaks when formatting logged exceptions
