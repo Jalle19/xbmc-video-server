@@ -12,6 +12,12 @@
 class CheckBackendConnectivityFilter extends CFilter
 {
 
+	/**
+	 * @param CFilterChain $filterChain
+	 * @return boolean whether to continue the filtering
+	 * @throws CHttpException if the current backend is not connectable and 
+	 * cannot be awakened
+	 */
 	protected function preFilter($filterChain)
 	{
 		/* @var $backend Backend */
@@ -20,13 +26,12 @@ class CheckBackendConnectivityFilter extends CFilter
 		if (!$backend->isConnectable())
 		{
 			if ($backend->macAddress)
-				$this->redirect(array('backend/waitForConnectivity'));
+				$filterChain->controller->redirect(array('backend/waitForConnectivity'));
 			else
 				throw new CHttpException(500, Yii::t('Backend', 'The current backend is not connectable at the moment'));
 		}
 
-		// Always returns true, we just use it to avoid unused variable warnings
-		return parent::preFilter($filterChain);
+		return true;
 	}
 
 }
