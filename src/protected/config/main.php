@@ -103,6 +103,9 @@ return array(
 		'languageManager'=>array(
 			'class'=>'LanguageManager',
 		),
+		'powerOffManager'=>array(
+			'class'=>'PowerOffManager',
+		),
 		'user'=>array(
 			'class'=>'WebUser',
 			'allowAutoLogin'=>true,

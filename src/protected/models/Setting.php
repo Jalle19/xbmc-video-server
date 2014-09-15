@@ -18,8 +18,14 @@ class Setting extends CActiveRecord
 	const TYPE_TEXT = 'text';
 	const TYPE_TEXT_WIDE = 'text-wide';
 	const TYPE_CHECKBOX = 'checkbox';
-	const TYPE_CHECKLIST = 'checklist';
+	const TYPE_CHECKBOX_LIST = 'checkbox-list';
 	const TYPE_DROPDOWN = 'dropdown';
+
+	// Option type for checklists
+	const POWER_OPTION_SHUTDOWN = 'shutdown';
+	const POWER_OPTION_SUSPEND = 'suspend';
+	const POWER_OPTION_HIBERNATE = 'hibernate';
+	const POWER_OPTION_REBOOT = 'reboot';
 
 	// We need one attribute per setting
 	public $language;
@@ -28,6 +34,7 @@ class Setting extends CActiveRecord
 	public $singleFilePlaylist;
 	public $showHelpBlocks;
 	public $cacheApiCalls;
+	public $allowUserPowerOff;
 	public $pagesize;
 	public $disableFrodoWarning;
 	public $useHttpsForVfsUrls;
@@ -109,7 +116,7 @@ class Setting extends CActiveRecord
 	protected function afterFind()
 	{
 		$definitions = $this->getDefinitions();
-		if ($definitions[$this->name]['type'] === Setting::TYPE_CHECKLIST)
+		if ($definitions[$this->name]['type'] === Setting::TYPE_CHECKBOX_LIST)
 			$this->value = explode(',', $this->value);
 
 		$this->{$this->name} = $this->value;
@@ -302,6 +309,17 @@ class Setting extends CActiveRecord
 					not enabled by default.'),
 				'order'=>700,
 			),
+			'allowUserPowerOff'=>array(
+                                'label'=>Yii::t('Settings', 'Allow users to power off backends'),
+                                'type'=>self::TYPE_CHECKBOX_LIST,
+                                'default'=>'',
+                                'listData'=>array(
+                                        Setting::POWER_OPTION_SHUTDOWN=>Yii::t('Settings', 'Shutdown'),
+                                        Setting::POWER_OPTION_SUSPEND=>Yii::t('Settings', 'Suspend'),
+                                        Setting::POWER_OPTION_HIBERNATE=>Yii::t('Settings', 'Hibernate'),
+                                        Setting::POWER_OPTION_REBOOT=>Yii::t('Settings', 'Reboot')),
+                                'order'=>750,
+                        ),
 			'whitelist'=>array(
 				'label'=>Yii::t('Settings', 'Access whitelist'),
 				'type'=>self::TYPE_TEXT_WIDE,
