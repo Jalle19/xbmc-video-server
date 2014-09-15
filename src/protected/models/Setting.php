@@ -18,14 +18,14 @@ class Setting extends CActiveRecord
 	const TYPE_TEXT = 'text';
 	const TYPE_TEXT_WIDE = 'text-wide';
 	const TYPE_CHECKBOX = 'checkbox';
-	const TYPE_CHECKLIST = 'checklist';
+	const TYPE_CHECKBOX_LIST = 'checkbox-list';
 	const TYPE_DROPDOWN = 'dropdown';
 
 	// Option type for checklists
-	const OPTION_SHUTDOWN = 'shudown';
-	const OPTION_SUSPEND = 'suspend';
-	const OPTION_HIBERNATE = 'hibernate';
-	const OPTION_REBOOT = 'reboot';
+	const POWER_OPTION_SHUTDOWN = 'shutdown';
+	const POWER_OPTION_SUSPEND = 'suspend';
+	const POWER_OPTION_HIBERNATE = 'hibernate';
+	const POWER_OPTION_REBOOT = 'reboot';
 
 	// We need one attribute per setting
 	public $language;
@@ -115,7 +115,7 @@ class Setting extends CActiveRecord
 	protected function afterFind()
 	{
 		$definitions = $this->getDefinitions();
-		if ($definitions[$this->name]['type'] === Setting::TYPE_CHECKLIST)
+		if ($definitions[$this->name]['type'] === Setting::TYPE_CHECKBOX_LIST)
 			$this->value = explode(',', $this->value);
 
 		$this->{$this->name} = $this->value;
@@ -260,13 +260,13 @@ class Setting extends CActiveRecord
 			),
 			'allowUserPowerOff'=>array(
 				'label'=>Yii::t('Settings', 'Allow users to power off the backend'),
-				'type'=>self::TYPE_CHECKLIST,
+				'type'=>self::TYPE_CHECKBOX_LIST,
 				'default'=>'',
 				'listData'=>array(
-					Setting::OPTION_SHUTDOWN=>Yii::t('Settings', 'Shutdown'),
-					Setting::OPTION_SUSPEND=>Yii::t('Settings', 'Suspend'),
-					Setting::OPTION_HIBERNATE=>Yii::t('Settings', 'Hibernate'),
-					Setting::OPTION_REBOOT=>Yii::t('Settings', 'Reboot')),
+					Setting::POWER_OPTION_SHUTDOWN=>Yii::t('Settings', 'Shutdown'),
+					Setting::POWER_OPTION_SUSPEND=>Yii::t('Settings', 'Suspend'),
+					Setting::POWER_OPTION_HIBERNATE=>Yii::t('Settings', 'Hibernate'),
+					Setting::POWER_OPTION_REBOOT=>Yii::t('Settings', 'Reboot')),
 				'order'=>450,
 			),
 			'pagesize'=>array(
