@@ -21,6 +21,12 @@ class Setting extends CActiveRecord
 	const TYPE_CHECKLIST = 'checklist';
 	const TYPE_DROPDOWN = 'dropdown';
 
+	// Option type for checklists
+	const OPTION_SHUTDOWN = 'shudown';
+	const OPTION_SUSPEND = 'suspend';
+	const OPTION_HIBERNATE = 'hibernate';
+	const OPTION_REBOOT = 'reboot';
+
 	// We need one attribute per setting
 	public $language;
 	public $applicationName;
@@ -28,6 +34,7 @@ class Setting extends CActiveRecord
 	public $singleFilePlaylist;
 	public $showHelpBlocks;
 	public $cacheApiCalls;
+	public $allowUserPowerOff;
 	public $pagesize;
 	public $disableFrodoWarning;
 	public $useHttpsForVfsUrls;
@@ -250,6 +257,17 @@ class Setting extends CActiveRecord
 				'default'=>'0',
 				'description'=>Yii::t('Settings', 'Useful on slow hardware. A refresh button will appear in the menu which flushes the cache'),
 				'order'=>400,
+			),
+			'allowUserPowerOff'=>array(
+				'label'=>Yii::t('Settings', 'Allow users to power off the backend'),
+				'type'=>self::TYPE_CHECKLIST,
+				'default'=>'',
+				'listData'=>array(
+					Setting::OPTION_SHUTDOWN=>Yii::t('Settings', 'Shutdown'),
+					Setting::OPTION_SUSPEND=>Yii::t('Settings', 'Suspend'),
+					Setting::OPTION_HIBERNATE=>Yii::t('Settings', 'Hibernate'),
+					Setting::OPTION_REBOOT=>Yii::t('Settings', 'Reboot')),
+				'order'=>450,
 			),
 			'pagesize'=>array(
 				'label'=>Yii::t('Settings', 'Amount of results to show per page'),

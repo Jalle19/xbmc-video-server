@@ -34,6 +34,7 @@ INSERT INTO `settings` (`name`,`value`) VALUES ('applicationName','XBMC Video Se
 INSERT INTO `settings` (`name`,`value`) VALUES ('singleFilePlaylist','0');
 INSERT INTO `settings` (`name`,`value`) VALUES ('showHelpBlocks','1');
 INSERT INTO `settings` (`name`,`value`) VALUES ('cacheApiCalls','0');
+INSERT INTO `settings` (`name`,`value`) VALUES ('allowUserPowerOff','');
 INSERT INTO `settings` (`name`,`value`) VALUES ('pagesize','60');
 INSERT INTO `settings` (`name`,`value`) VALUES ('disableFrodoWarning','0');
 INSERT INTO `settings` (`name`,`value`) VALUES ('useHttpsForVfsUrls','0');
