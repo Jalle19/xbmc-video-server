@@ -19,6 +19,9 @@ change over time.
 * the actor grid is now rendered the same for both movies and TV shows, i.e. clicking an actor thumbnail on a TV show page will show what movies said actor is in.
 * make the layout adapt better to larger screens. Now the page gets wider and wider (up to 1920x1080) instead of staying fixed at 1170 pixels maximum.
 
+#### 1.6.7.2
+* added missing French translations
+
 #### 1.6.7.1
 * only allow administrators to play media on the backend
 
