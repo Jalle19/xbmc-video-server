@@ -18,6 +18,7 @@ class Setting extends CActiveRecord
 	const TYPE_TEXT = 'text';
 	const TYPE_TEXT_WIDE = 'text-wide';
 	const TYPE_CHECKBOX = 'checkbox';
+	const TYPE_CHECKLIST = 'checklist';
 	const TYPE_DROPDOWN = 'dropdown';
 
 	// We need one attribute per setting
@@ -49,6 +50,18 @@ class Setting extends CActiveRecord
 	public static function getBoolean($setting)
 	{
 		return (boolean)self::getValue($setting);
+	}
+
+	/**
+	 * Returns whether the given option is set for the specified setting
+	 * @param string $setting the setting
+	 * @param string $option the option
+	 * @return whether the option is set or not
+	 */
+	public static function getBooleanOption($setting, $option)
+	{
+		$value = self::getValue($setting);
+		return is_array($value) && in_array($option, $value);
 	}
 
 	/**
@@ -95,9 +108,24 @@ class Setting extends CActiveRecord
 	 */
 	protected function afterFind()
 	{
+		$definitions = $this->getDefinitions();
+		if ($definitions[$this->name]['type'] === Setting::TYPE_CHECKLIST)
+			$this->value = explode(',', $this->value);
+
 		$this->{$this->name} = $this->value;
 
 		parent::afterFind();
+	}
+
+	/**
+	 * Prepares the values to be saved
+	 */
+	protected function beforeSave()
+	{
+		if (is_array($this->value))
+			$this->value = implode(',', $this->value);
+
+		return parent::beforeSave();
 	}
 
 	/**
