@@ -230,19 +230,21 @@ class VideoLibrary
 	 * @param int $tvshowId the TV show ID
 	 * @param int $season the season number
 	 * @param array $properties properties to include in the results. Defaults 
-	 * to an empty array, meaning the default properties for episodes will be 
-	 * included
+	 * to null, meaning the default properties for episodes will be included
 	 * @return Episode[] the episodes
 	 */
-	public static function getEpisodes($tvshowId, $season, $properties = array())
+	public static function getEpisodes($tvshowId, $season, $properties = null)
 	{
 		$params = array(
 			'tvshowid'=>(int)$tvshowId, 
-			'season'=>(int)$season,
-			'properties'=>$properties);
+			'season'=>(int)$season);
 		
 		self::addDefaultSort($params);
-		self::ensureProperties($params, self::$_defaultEpisodeProperties);
+		
+		if ($properties === null)
+			self::ensureProperties($params, self::$_defaultEpisodeProperties);
+		else
+			$params['properties'] = $properties;
 		
 		$response = Yii::app()->xbmc->performRequest(
 				'VideoLibrary.GetEpisodes', $params);
@@ -330,17 +332,15 @@ class VideoLibrary
 	
 	/**
 	 * Ensures that the specified properties are specified in 
-	 * params['properties']
+	 * params['properties']. If properties have already been defined they 
+	 * remain untouched
 	 * @param array $params the parameters
 	 * @param string[] $properties the properties
 	 */
 	private static function ensureProperties(&$params, $properties)
 	{
 		if (!isset($params['properties']))
-			$params['properties'] = array();
-
-		$params['properties'] = array_values(array_unique(
-				array_merge($params['properties'], $properties)));
+			$params['properties'] = $properties;
 	}
 
 	/**

@@ -51,7 +51,8 @@ class MovieFilter extends VideoFilter
 
 		return $this->getTypeaheadSource($cacheId, function()
 		{
-			return $this->getTypeaheadData(VideoLibrary::getMovies());
+			// We only need the "label" property which is always available
+			return $this->getTypeaheadData(VideoLibrary::getMovies(array('properties'=>array())));
 		});
 	}
 	
