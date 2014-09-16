@@ -42,28 +42,17 @@ class MovieFilter extends VideoFilter
 	}
 	
 	/**
-	 * Returns the typeahead data for the movie name field. The API call cache 
-	 * is used when it is enabled to speed up the retrieval.
+	 * Returns the typeahead data for the movie name field
 	 * @return string the list of movies encoded as JavaScript
 	 */
 	private function getMovieNameTypeaheadData()
 	{
-		// Cache the encoded JavaScript if the "cache API calls" setting is enabled
-		if (Setting::getBoolean('cacheApiCalls'))
+		$cacheId = 'MovieFilterMovieNameTypeahead';
+
+		return $this->getTypeaheadSource($cacheId, function()
 		{
-			$cacheId = 'MovieFilterMovieNameTypeahead';
-			$typeaheadData = Yii::app()->apiCallCache->get($cacheId);
-
-			if ($typeaheadData === false)
-			{
-				$typeaheadData = CJavaScript::encode($this->getTypeaheadData(VideoLibrary::getMovies()));
-				Yii::app()->apiCallCache->set($cacheId, $typeaheadData);
-			}
-		}
-		else
-			$typeaheadData = CJavaScript::encode($this->getTypeaheadData(VideoLibrary::getMovies()));
-
-		return $typeaheadData;
+			return $this->getTypeaheadData(VideoLibrary::getMovies());
+		});
 	}
 	
 }
