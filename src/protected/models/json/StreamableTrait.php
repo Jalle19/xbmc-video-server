@@ -16,20 +16,6 @@ trait StreamableTrait
 	public $file;
 
 	/**
-	 * Returns the streamable media items that this item represents, e.g. a 
-	 * season would return its episodes, a TV show would return all the 
-	 * episodes of that season
-	 * @return StreamableTrait[] the media items
-	 */
-	abstract public function getStreamableItems();
-	
-	/**
-	 * @return string the display name for the item. This is here only to help 
-	 * with auto-completion.
-	 */
-	abstract public function getDisplayName();
-
-	/**
 	 * Returns a set of links to the media items
 	 * @return ItemLink[] the item links
 	 */

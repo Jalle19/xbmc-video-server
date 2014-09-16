@@ -10,7 +10,7 @@
  * Virtual class properties
  * @property string $file
  */
-class Episode extends Media
+class Episode extends Media implements IStreamable
 {
 	use StreamableTrait;
 	

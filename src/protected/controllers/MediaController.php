@@ -130,7 +130,7 @@ abstract class MediaController extends Controller
 	
 	/**
 	 * Generates a playlist from the specified media item
-	 * @param StreamableTrait $media the media item
+	 * @param IStreamable $media the media item
 	 * @param string $format the desired playlist format. Defaults to null, 
 	 * meaning the configured default format will be used
 	 * @return Playlist the playlist
@@ -155,7 +155,7 @@ abstract class MediaController extends Controller
 
 	/**
 	 * Creates and serves a playlist based on the specified media item
-	 * @param StreamableTrait $media a media item
+	 * @param IStreamable $media a media item
 	 * @param string $format the desired playlist format. Defaults to null, 
 	 * meaning the configured default format will be used
 	 */

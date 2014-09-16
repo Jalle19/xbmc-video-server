@@ -12,7 +12,7 @@
  * @property int $votes
  * @property string $file
  */
-class Movie extends Media
+class Movie extends Media implements IStreamable
 {
 	use StreamableTrait;
 
@@ -41,7 +41,7 @@ class Movie extends Media
 		return $this->label.' ('.$this->year.')';
 	}
 
-	protected function getStreamableItems()
+	public function getStreamableItems()
 	{
 		return array($this);
 	}
