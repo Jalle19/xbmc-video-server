@@ -101,6 +101,15 @@ $actions[] = array(
 	'linkOptions'=>array('confirm'=>Yii::t('Misc', "Are you sure you want to update the backend's library?"))
 );
 
+if (Yii::app()->powerOffManager->powerOffAllowed())
+{
+	$actions[] = array(
+		'label'=>Yii::t('Menu', 'Power off'), 'url'=>'#', 
+		'linkOptions'=>array(
+			'data-toggle'=>'modal', 'data-target'=>'#power-off-modal')
+	);
+}
+
 // user-related actions
 $actions = array_merge($actions, array(
 	array('label'=>Yii::t('Menu', 'User')),
