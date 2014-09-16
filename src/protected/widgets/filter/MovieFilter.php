@@ -38,7 +38,7 @@ class MovieFilter extends VideoFilter
 				$this->getActorNameTypeaheadData(Actor::MEDIA_TYPE_MOVIE));
 		
 		echo $this->form->typeaheadFieldControlGroup($this->model, 'director', 
-				CJavaScript::encode(VideoLibrary::getDirectors()));
+				$this->getDirectorTypeaheadData());
 	}
 	
 	/**
@@ -53,6 +53,20 @@ class MovieFilter extends VideoFilter
 		{
 			// We only need the "label" property which is always available
 			return $this->getTypeaheadData(VideoLibrary::getMovies(array('properties'=>array())));
+		});
+	}
+	
+	/**
+	 * Returns the typeahead data for the director name field
+	 * @return string the list of movies encoded as JavaScript
+	 */
+	private function getDirectorTypeaheadData()
+	{
+		$cacheId = 'MovieFilterDirectorTypeahead';
+
+		return $this->getTypeaheadSource($cacheId, function()
+		{
+			return VideoLibrary::getDirectors();
 		});
 	}
 	
