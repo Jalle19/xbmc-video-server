@@ -14,7 +14,7 @@ if (count(Backend::model()->findAll()) === 1)
 			return implode('_', array(
 				Yii::app()->user->role,
 				intval(Setting::getBoolean('cacheApiCalls')),
-				intval(Yii::app()->powerOffManager->powerOffAllowed()),
+				intval(Yii::app()->powerOffManager->getAllowedActions()),
 				intval(Yii::app()->backendManager->getCurrent() === null),
 				Yii::app()->language,
 				Yii::app()->baseUrl,

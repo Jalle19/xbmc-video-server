@@ -10,46 +10,29 @@ if ($this->beginCache('ChangeLanguageModal', array(
 	'varyByExpression'=>function() { 
 		return implode('_', array(
 			Yii::app()->user->role,
-			intval(Yii::app()->powerOffManager->shutdownAllowed()),
-			intval(Yii::app()->powerOffManager->suspendAllowed()),
-			intval(Yii::app()->powerOffManager->hibernateAllowed()),
-			intval(Yii::app()->powerOffManager->rebootAllowed()),
+			implode('_', Yii::app()->powerOffManager->getAllowedActions()),
 		));
 	}
 )))
 {
-	$actions = array();
+	$items = array();
+	$actions = array(
+		array(PowerOffManager::SHUTDOWN, 'backend/shutdown', Yii::t('PowerOff', 'Shutdown')),
+		array(PowerOffManager::SUSPEND, 'backend/suspend', Yii::t('PowerOff', 'Suspend')),
+		array(PowerOffManager::HIBERNATE, 'backend/hibernate', Yii::t('PowerOff', 'Hibernate')),
+		array(PowerOffManager::REBOOT, 'backend/reboot', Yii::t('PowerOff', 'Reboot')),
+	);
 
-	if (Yii::app()->powerOffManager->shutdownAllowed())
+	foreach ($actions as $action)
 	{
-		$actions[] = array(
-			'label'=>Yii::t('PowerOff', 'Shutdown'), 
-			'url'=>array('backend/shutdown')
-		);
-	}
-
-	if (Yii::app()->powerOffManager->suspendAllowed())
-	{
-		$actions[] = array(
-			'label'=>Yii::t('PowerOff', 'Suspend'), 
-			'url'=>array('backend/suspend')
-		);
-	}
-
-	if (Yii::app()->powerOffManager->hibernateAllowed())
-	{
-		$actions[] = array(
-			'label'=>Yii::t('PowerOff', 'Hibernate'), 
-			'url'=>array('backend/hibernate')
-		);
-	}
-
-	if (Yii::app()->powerOffManager->rebootAllowed())
-	{
-		$actions[] = array(
-			'label'=>Yii::t('PowerOff', 'Reboot'), 
-			'url'=>array('backend/reboot')
-		);
+		list($action, $url, $label) = $action;
+		if (Yii::app()->powerOffManager->isActionAllowed($action))
+		{
+			$items[] = array(
+				'label'=>$label,
+				'url'=>array($url)
+			);
+		}
 	}
 
 	echo TbHtml::alert(
@@ -57,7 +40,7 @@ if ($this->beginCache('ChangeLanguageModal', array(
 		Yii::t('PowerOff', 'Turning off the backend will break the connection for all users currently using the backend'),
 		array('closeText'=>false));
 
-	echo TbHtml::stackedTabs($actions);
+	echo TbHtml::stackedTabs($items);
 
 	$this->endCache();
 }

@@ -101,7 +101,7 @@ $actions[] = array(
 	'linkOptions'=>array('confirm'=>Yii::t('Misc', "Are you sure you want to update the backend's library?"))
 );
 
-if (Yii::app()->powerOffManager->powerOffAllowed())
+if (Yii::app()->powerOffManager->getAllowedActions())
 {
 	$actions[] = array(
 		'label'=>Yii::t('Menu', 'Power off'), 'url'=>'#', 

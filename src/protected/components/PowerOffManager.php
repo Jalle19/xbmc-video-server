@@ -1,8 +1,9 @@
 <?php
 
 /**
- * Determines which actions the user is allowed to perform to power off the
- * backend depending on the user's role and the current settings.
+ * Determines the power off capabilities of the backend and which actions the
+ * user is allowed to perform to power off the backend depending on the user's
+ * role and the current settings.
  *
  * @author Pascal Weisenburger <pascal.weisenburger@web.de>
  * @copyright Copyright &copy; Pascal Weisenburger 2014-
@@ -10,56 +11,109 @@
  */
 class PowerOffManager extends CApplicationComponent
 {
+	const SHUTDOWN = 'shutdown';
+	const SUSPEND = 'suspend';
+	const HIBERNATE = 'hibernate';
+	const REBOOT = 'reboot';
 
 	/**
-	 * @return boolean whether the user is allowed to shut down the backend
+	 * @var array currently allowed actions
 	 */
-	public function shutdownAllowed()
+	private $_allowedActions;
+
+	/**
+	 * Initializes the component. The allowed actions are set here.
+	 */
+	public function init()
 	{
-		return
-			Yii::app()->user->role == User::ROLE_ADMIN ||
-			Setting::getBooleanOption('allowUserPowerOff', Setting::POWER_OPTION_SHUTDOWN);
+		$this->_allowedActions = array();
+
+		$options = array(
+			Setting::POWER_OPTION_SHUTDOWN => self::SHUTDOWN,
+			Setting::POWER_OPTION_SUSPEND => self::SUSPEND,
+			Setting::POWER_OPTION_HIBERNATE => self::HIBERNATE,
+			Setting::POWER_OPTION_REBOOT => self::REBOOT,
+		);
+
+		foreach ($options as $option => $action)
+		{
+			if (Yii::app()->user->role == User::ROLE_ADMIN ||
+					Setting::getBooleanOption('allowUserPowerOff', $option))
+				$this->_allowedActions[] = $action;
+		}
+
+		parent::init();
 	}
 
 	/**
-	 * @return boolean whether the user is allowed to suspend the backend
+	 * Returns the power off capabilities of the currently used backend.
+	 * @return array the power off capabilities
 	 */
-	public function suspendAllowed()
+	public function getBackendCapabilities()
 	{
-		return
-			Yii::app()->user->role == User::ROLE_ADMIN ||
-			Setting::getBooleanOption('allowUserPowerOff', Setting::POWER_OPTION_SUSPEND);
+		$response = Yii::app()->xbmc->performRequest('System.GetProperties',
+			array('properties'=>array(
+				'canshutdown', 'cansuspend', 'canhibernate', 'canreboot')));
+
+		$capabilities = array();
+		if ($response->result->canshutdown)
+			$capabilities[] = self::SHUTDOWN;
+		if ($response->result->cansuspend)
+			$capabilities[] = self::SUSPEND;
+		if ($response->result->canhibernate)
+			$capabilities[] = self::HIBERNATE;
+		if ($response->result->canreboot)
+			$capabilities[] = self::REBOOT;
+
+		return $capabilities;
 	}
 
 	/**
-	 * @return boolean whether the user is allowed to hibernate the backend
+	 * Returns whether the current backend is capable of performing the given 
+	 * power off action.
+	 * @param string $action the power off action to be checked
+	 * @return boolean whether the power off action is supported
 	 */
-	public function hibernateAllowed()
+	public function hasBackendCapability($action)
 	{
-		return
-			Yii::app()->user->role == User::ROLE_ADMIN ||
-			Setting::getBooleanOption('allowUserPowerOff', Setting::POWER_OPTION_HIBERNATE);
+		return in_array($action, $this->getBackendCapabilities());
 	}
 
 	/**
-	 * @return boolean whether the user is allowed to reboot the backend
+	 * Returns the power off actions allowed for the current user.
+	 * @return array the power off actions
 	 */
-	public function rebootAllowed()
+	public function getAllowedActions()
 	{
-		return
-			Yii::app()->user->role == User::ROLE_ADMIN ||
-			Setting::getBooleanOption('allowUserPowerOff', Setting::POWER_OPTION_REBOOT);
+		return $this->_allowedActions;
 	}
 
 	/**
-	 * @return boolean whether the user is allowed to performs any actions that
-	 * powers off the backend, like shutting down, suspending, hibernating or
-	 * rebooting
+	 * Returns whether the current user is allowed to perform the given power
+	 * off action.
+	 * @param string $action the power off action to be checked
+	 * @return boolean whether the power off action is allowed
 	 */
-	public function powerOffAllowed()
+	public function isActionAllowed($action)
 	{
-		return
-			$this->shutdownAllowed() || $this->suspendAllowed() ||
-			$this->hibernateAllowed() || $this->rebootAllowed();
+		return in_array($action, $this->getAllowedActions());
+	}
+
+	/**
+	 * Powers off the backend by shutting it down, suspending it, hibernating it
+	 * or rebooting it.
+	 * @param string $action the power off action to be performed
+	 */
+	public function powerOff($action)
+	{
+		$method = array(
+			self::SHUTDOWN => 'System.Shutdown',
+			self::SUSPEND => 'System.Suspend',
+			self::HIBERNATE => 'System.Hibernate',
+			self::REBOOT => 'System.Reboot',
+		)[$action];
+
+		if ($method)
+			Yii::app()->xbmc->sendNotification($method);
 	}
 }

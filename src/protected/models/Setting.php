@@ -259,7 +259,7 @@ class Setting extends CActiveRecord
 				'order'=>400,
 			),
 			'allowUserPowerOff'=>array(
-				'label'=>Yii::t('Settings', 'Allow users to power off the backend'),
+				'label'=>Yii::t('Settings', 'Allow users to power off backends'),
 				'type'=>self::TYPE_CHECKBOX_LIST,
 				'default'=>'',
 				'listData'=>array(

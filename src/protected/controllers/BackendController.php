@@ -29,24 +29,13 @@ class BackendController extends AdminOnlyController
 	 */
 	public function accessRules()
 	{
-		$allowedActions = array(
-			'change', 'updateLibrary', 'waitForConnectivity', 'ajaxCheckConnectivity'
+		$actions = array_merge(
+			array('change', 'updateLibrary', 'waitForConnectivity', 'ajaxCheckConnectivity'),
+			Yii::app()->powerOffManager->getAllowedActions()
 		);
 
-		if (Yii::app()->powerOffManager->shutdownAllowed())
-			$allowedActions[] = 'shutdown';
-
-		if (Yii::app()->powerOffManager->suspendAllowed())
-			$allowedActions[] = 'suspend';
-
-		if (Yii::app()->powerOffManager->hibernateAllowed())
-			$allowedActions[] = 'hibernate';
-
-		if (Yii::app()->powerOffManager->rebootAllowed())
-			$allowedActions[] = 'reboot';
-
 		return array_merge(array(
-			array('allow', 'actions'=>$allowedActions)
+			array('allow', 'actions'=>$actions)
 		), parent::accessRules());
 	}
 
@@ -117,7 +106,7 @@ class BackendController extends AdminOnlyController
 	 */
 	public function actionShutdown()
 	{
-		$this->powerOff('shutdown');
+		$this->powerOff(PowerOffManager::SHUTDOWN);
 	}
 
 	/**
@@ -125,7 +114,7 @@ class BackendController extends AdminOnlyController
 	 */
 	public function actionSuspend()
 	{
-		$this->powerOff('suspend');
+		$this->powerOff(PowerOffManager::SUSPEND);
 	}
 
 	/**
@@ -133,7 +122,7 @@ class BackendController extends AdminOnlyController
 	 */
 	public function actionHibernate()
 	{
-		$this->powerOff('hibernate');
+		$this->powerOff(PowerOffManager::HIBERNATE);
 	}
 
 	/**
@@ -141,7 +130,7 @@ class BackendController extends AdminOnlyController
 	 */
 	public function actionReboot()
 	{
-		$this->powerOff('reboot');
+		$this->powerOff(PowerOffManager::REBOOT);
 	}
 
 	/**
@@ -150,57 +139,30 @@ class BackendController extends AdminOnlyController
 	 * @param string $method the method used to power off the backend,
 	 * could be either of the strings 'shutdown', 'suspend', 'hibernate' or 'reboot'
 	 */
-	private function powerOff($method)
+	private function powerOff($action)
 	{
-		$response = Yii::app()->xbmc->performRequest('System.GetProperties', array(
-				'properties'=>array('canshutdown', 'cansuspend', 'canhibernate', 'canreboot')));
-
-		$successInfo = false;
-		$failureInfo = false;
-
-		switch ($method)
+		if (Yii::app()->powerOffManager->hasBackendCapability($action))
 		{
-			case 'shutdown':
-				$method = 'System.Shutdown';
-				if ($response->result->canshutdown)
-					$successInfo = Yii::t('Backend', 'The current backend is shutting down');
-				else
-					$failureInfo = Yii::t('Backend', 'The current backend cannot be shut down');
-			break;
+			Yii::app()->powerOffManager->powerOff($action);
 
-			case 'suspend':
-				$method = 'System.Suspend';
-				if ($response->result->cansuspend)
-					$successInfo = Yii::t('Backend', 'The current backend is suspending');
-				else
-					$failureInfo = Yii::t('Backend', 'The current backend cannot be suspended');
-			break;
-
-			case 'hibernate':
-				$method = 'System.Hibernate';
-				if ($response->result->canhibernate)
-					$successInfo = Yii::t('Backend', 'The current backend is hibernating');
-				else
-					$failureInfo = Yii::t('Backend', 'The current backend cannot be hibernated');
-			break;
-
-			case 'reboot':
-				$method = 'System.Reboot';
-				if ($response->result->canreboot)
-					$successInfo = Yii::t('Backend', 'The current backend is rebooting');
-				else
-					$failureInfo = Yii::t('Backend', 'The current backend cannot be rebooted');
-			break;
+			$message = array(
+				PowerOffManager::SHUTDOWN => Yii::t('Backend', 'The current backend is shutting down'),
+				PowerOffManager::SUSPEND => Yii::t('Backend', 'The current backend is suspending'),
+				PowerOffManager::HIBERNATE => Yii::t('Backend', 'The current backend is hibernating'),
+				PowerOffManager::REBOOT => Yii::t('Backend', 'The current backend is rebooting'),
+			)[$action];
+			Yii::app()->user->setFlash('success', $message);
 		}
-
-		if ($successInfo !== false)
+		else
 		{
-			Yii::app()->xbmc->sendNotification($method);
-			Yii::app()->user->setFlash('success', $successInfo);
+			$message = array(
+				PowerOffManager::SHUTDOWN => Yii::t('Backend', 'The current backend cannot be shut down'),
+				PowerOffManager::SUSPEND => Yii::t('Backend', 'The current backend cannot be suspended'),
+				PowerOffManager::HIBERNATE => Yii::t('Backend', 'The current backend cannot be hibernated'),
+				PowerOffManager::REBOOT => Yii::t('Backend', 'The current backend cannot be rebooted'),
+			)[$action];
+			Yii::app()->user->setFlash('error', $message);
 		}
-
-		if ($failureInfo !== false)
-			Yii::app()->user->setFlash('error', $failureInfo);
 
 		$this->renderText('');
 	}
