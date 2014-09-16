@@ -101,7 +101,7 @@ class VideoLibrary
 	public static function getMovies($params = array())
 	{
 		self::addDefaultSort($params, 'sorttitle');
-		self::ensureProperties($params, self::$_defaultMovieProperties);
+		self::defaultProperties($params, self::$_defaultMovieProperties);
 		
 		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetMovies', $params);
 
@@ -114,7 +114,7 @@ class VideoLibrary
 	 */
 	public static function getRecentlyAddedMovies($params = array())
 	{
-		self::ensureProperties($params, self::$_defaultMovieProperties);
+		self::defaultProperties($params, self::$_defaultMovieProperties);
 
 		// The grid shows six items per row, we don't want the 25th item to be 
 		// lonely
@@ -151,7 +151,7 @@ class VideoLibrary
 	public static function getTVShows($params = array())
 	{
 		self::addDefaultSort($params);
-		self::ensureProperties($params, self::$_defaultTVShowProperties);
+		self::defaultProperties($params, self::$_defaultTVShowProperties);
 		$response = Yii::app()->xbmc->performRequest('VideoLibrary.GetTVShows', $params);
 
 		return self::normalizeResponse($response, 'tvshows', array(), new TVShow());
@@ -164,7 +164,7 @@ class VideoLibrary
 	 */
 	public static function getRecentlyAddedEpisodes($params = array())
 	{
-		self::ensureProperties($params, self::$_defaultEpisodeProperties);
+		self::defaultProperties($params, self::$_defaultEpisodeProperties);
 		
 		$response = Yii::app()->xbmc->performRequest(
 				'VideoLibrary.GetRecentlyAddedEpisodes', $params);
@@ -242,7 +242,7 @@ class VideoLibrary
 		self::addDefaultSort($params);
 		
 		if ($properties === null)
-			self::ensureProperties($params, self::$_defaultEpisodeProperties);
+			self::defaultProperties($params, self::$_defaultEpisodeProperties);
 		else
 			$params['properties'] = $properties;
 		
@@ -337,7 +337,7 @@ class VideoLibrary
 	 * @param array $params the parameters
 	 * @param string[] $properties the properties
 	 */
-	private static function ensureProperties(&$params, $properties)
+	private static function defaultProperties(&$params, $properties)
 	{
 		if (!isset($params['properties']))
 			$params['properties'] = $properties;
