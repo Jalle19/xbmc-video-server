@@ -10,6 +10,14 @@
  * @author Sam Stenvall <neggelandia@gmail.com>
  * @copyright Copyright &copy; Sam Stenvall 2014-
  * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
+ * 
+ * Properties from attached classes (makes the IDE happy)
+ * @property string $id
+ * @property string $template
+ * @property array|string $pager
+ * @property boolean $enableHistory
+ * @property string $emptyText
+ * @property IDataProvider $dataProvider
  */
 trait ResultTrait
 {

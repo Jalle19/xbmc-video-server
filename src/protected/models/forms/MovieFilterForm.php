@@ -71,8 +71,8 @@ class MovieFilterForm extends VideoFilterForm
 	 */
 	protected function beforeValidate()
 	{
-		// Convert commas to dots
-		$this->rating = str_replace(',', '.', $this->rating);
+		// Convert rating to an actual double
+		$this->rating = (double)str_replace(',', '.', $this->rating);
 
 		return parent::beforeValidate();
 	}

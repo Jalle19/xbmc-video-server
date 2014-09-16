@@ -34,8 +34,11 @@ class ResultHelper
 				
 				echo $summary;
 	
+				/* @var $ctrl MediaController */
+				$ctrl = Yii::app()->controller;
+				
 				// Get the current display mode so we can show an icon next to it
-				$currentMode = Yii::app()->controller->getDisplayMode($context);
+				$currentMode = $ctrl->getDisplayMode($context);
 				
 				echo TbHtml::buttonDropdown(Yii::t('DisplayMode', 'Display mode'), array(
 					array('label'=>Yii::t('DisplayMode', 'Grid view'), 'url'=>array(
