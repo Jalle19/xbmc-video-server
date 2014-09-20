@@ -20,6 +20,7 @@ return array (
   'Play in XBMC' => '',
   'The item should now be playing on {backend}' => '',
   'Watch as playlist' => '',
+  'Watch in browser' => '',
   'Download' => 'Download',
   'Download (part #{partNumber})' => 'Download (partie #{partNumber})',
   'The file(s) for this item is not available' => 'Die Datei ist momentan nicht verfügbar',

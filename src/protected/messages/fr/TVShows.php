@@ -17,14 +17,13 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Watch the whole show' => 'Voir la série entière',
-  'Click the name to go to the person\'s IMDb page' => 'Cliquez sur le nom d\'un(e) acteur/trice pour voir la page de sa filmographie sur le site IMDb.',
   'Recently added episodes' => 'Derniers épisodes ajoutés',
   'Season {season} - {showTitle}' => 'Saison {season} - {showTitle}',
   'Seasons' => 'Saison(s)',
   'TV Shows' => 'Séries TV',
   'There are no episodes for this show' => 'Il n\'y a pas d\'épisode pour cette série',
   'Watch the whole season' => 'Voir la saison entière',
+  'Watch the whole show' => 'Voir la série entière',
   'You can click the show name to jump directly to the show details page' => 'En cliquant sur le nom de la série TV vous accédez à sa page de présentation.',
   'or choose individual episodes from the list below' => 'ou choisissez des épisodes individuellement depuis la liste ci-dessous',
   '{num} episodes' => '{num} épisodes',

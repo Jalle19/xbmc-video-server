@@ -18,9 +18,8 @@
  */
 return array (
   'Director: {director}' => '',
-  'Watch' => '',
-  'Watch / Download' => 'Stream / Download',
   'Click an image to see other movies with that person, or click the name to go to the person\'s IMDb page' => 'Klicke auf das Foto der/des Schauspielerin/Schauspielers um weitere Filme mit dieser zu finden oder klicke auf den Namen um zur jeweiligen IMDb Seite zu gelangen.',
   'Movies' => 'Filme',
   'Recently added movies' => 'Kürzlich hinzugefügte Filme',
+  'Watch / Download' => 'Stream / Download',
 );
