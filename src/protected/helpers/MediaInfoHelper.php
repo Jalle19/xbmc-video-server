@@ -14,22 +14,35 @@ class MediaInfoHelper
 	const VIDEO_CODEC_H264 = 'avc1';
 	const AUDIO_CODEC_AAC = 'aac';
 	const CONTAINER_MP4 = 'mp4';
+	
+	/**
+	 * @var File the media file
+	 */
+	private $_file;
+	
+	/**
+	 * Class constructor
+	 * @param File $file the media file
+	 */
+	public function __construct($file)
+	{
+		$this->_file = $file;
+	}
 
 	/**
 	 * Checks whether the specified will need transcoding in order to be 
 	 * playable in browsers. For now it assumes that all H.264/AAC/MP4 files 
 	 * are playable directly, which is not strictly true.
-	 * @param File $file
 	 * @return boolean whether the file needs transcoding
 	 */
-	public static function needsTranscoding($file)
+	public function needsTranscoding()
 	{
-		if (!self::hasMediaInfo($file->streamdetails))
+		if (!$this->hasMediaInfo())
 			return true;
 
-		$videoCodec = $file->streamdetails->video[0]->codec;
-		$audioCodec = $file->streamdetails->audio[0]->codec;
-		$fileInfo = new SplFileInfo($file->file);
+		$videoCodec = $this->_file->streamdetails->video[0]->codec;
+		$audioCodec = $this->_file->streamdetails->audio[0]->codec;
+		$fileInfo = new SplFileInfo($this->_file->file);
 
 		return !($fileInfo->getExtension() === self::CONTAINER_MP4 &&
 				$videoCodec === self::VIDEO_CODEC_H264 &&
@@ -40,10 +53,10 @@ class MediaInfoHelper
 	 * Checks whether the stream details contain the necessary media info
 	 * @return boolean
 	 */
-	public static function hasMediaInfo($streamDetails)
+	public function hasMediaInfo()
 	{
-		return count($streamDetails->audio) !== 0 &&
-			   count($streamDetails->video) !== 0;
+		return count($this->_file->streamdetails->audio) !== 0 &&
+			   count($this->_file->streamdetails->video) !== 0;
 	}
 
 }

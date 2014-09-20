@@ -13,12 +13,7 @@ class MediaFlags extends CWidget
 {
 	
 	/**
-	 * @var stdClass stream details for a media file
-	 */
-	public $streamDetails;
-
-	/**
-	 * @var string the media file name
+	 * @var File the media file
 	 */
 	public $file;
 	
@@ -31,26 +26,30 @@ class MediaFlags extends CWidget
 		
 		// Some media don't have any stream details, we have to skip the flags
 		// that depend on them.
-		if (MediaInfoHelper::hasMediaInfo($this->streamDetails))
+		$helper = new MediaInfoHelper($this->file);
+		
+		if ($helper->hasMediaInfo())
 		{
+			$streamDetails = $this->file->streamdetails;
+			
 			?>
 			<div class="flag-section">
 				<?php $this->widget('MediaFlagResolution', array(
-				'streamDetails'=>$this->streamDetails));
+				'streamDetails'=>$streamDetails));
 					$this->widget('MediaFlagVideoCodec', array(
-				'streamDetails'=>$this->streamDetails)); ?>
+				'streamDetails'=>$streamDetails)); ?>
 			</div>
 			
 			<div class="flag-section">
 				<?php $this->widget('MediaFlagAudioCodec', array(
-						'streamDetails'=>$this->streamDetails));
+						'streamDetails'=>$streamDetails));
 					$this->widget('MediaFlagAudioChannels', array(
-						'streamDetails'=>$this->streamDetails)); ?>
+						'streamDetails'=>$streamDetails)); ?>
 			</div>
 			
 			<div class="flag-section">
 				<?php $this->widget('MediaFlagAspect', array(
-						'streamDetails'=>$this->streamDetails)); ?>
+						'streamDetails'=>$streamDetails)); ?>
 			</div>
 			<?php
 		}
@@ -58,9 +57,9 @@ class MediaFlags extends CWidget
 		?>
 		<div class="flag-section">
 			<?php $this->widget('MediaFlagVideoSource', array(
-				'file'=>$this->file));
+				'file'=>$this->file->file));
 			$this->widget('MediaFlagAudioSource', array(
-				'file'=>$this->file)); ?>
+				'file'=>$this->file->file)); ?>
 		</div>
 		<?php
 		
