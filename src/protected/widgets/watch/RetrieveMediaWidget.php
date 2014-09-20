@@ -134,6 +134,18 @@ abstract class RetrieveMediaWidget extends CWidget
 			<?php
 		}
 		
+		// Show the "Play in browser" button when applicable
+		$helper = new MediaInfoHelper($this->details);
+		
+		if (!$helper->needsTranscoding() && count($this->_links) === 1)
+		{
+			?>
+			<section>
+				<?php $this->renderWatchInBrowserButton(); ?>
+			</section>
+			<?php
+		}
+		
 		?>
 		<section>
 			<?php $this->renderWatchButton(); ?>
@@ -204,6 +216,18 @@ abstract class RetrieveMediaWidget extends CWidget
 			'options'=>$dropdownOptions));
 
 		echo TbHtml::submitButton(Yii::t('RetrieveMediaWidget', 'Watch as playlist'), $this->getWatchButtonsOptions());
+	}
+	
+	/**
+	 * Renders the "Watch as in browser" button
+	 */
+	private function renderWatchInBrowserButton()
+	{
+		// Swap the button URL for the first item link
+		$buttonOptions = $this->getWatchButtonsOptions();
+		$buttonOptions['url'] = array('watchInBrowser', 'url'=>$this->_links[0]->url);
+		
+		echo TbHtml::linkButton(Yii::t('RetrieveMediaWidget', 'Watch in browser'), $buttonOptions);
 	}
 
 }

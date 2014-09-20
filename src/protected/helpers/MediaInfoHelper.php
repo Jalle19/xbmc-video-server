@@ -58,5 +58,23 @@ class MediaInfoHelper
 		return count($this->_file->streamdetails->audio) !== 0 &&
 			   count($this->_file->streamdetails->video) !== 0;
 	}
+	
+	/**
+	 * Returns the MIME type of the specified file
+	 * @param string $file filename or URL
+	 * @return string the MIME type, or null if it could not be determined
+	 */
+	public static function getMIMEType($file)
+	{
+		$fileInfo = new SplFileInfo($file);
+		
+		switch($fileInfo->getExtension())
+		{
+			case 'mp4':
+				return 'video/mp4';
+		}
+		
+		return null;
+	}
 
 }
