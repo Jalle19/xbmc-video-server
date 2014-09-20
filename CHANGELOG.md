@@ -8,6 +8,13 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.6.9
+* show a friendlier error message when "Update library" is clicked and the backend is unconnectable
+* log the full request body when an API call produces an error. This makes debugging easier.
+* add ability to play compatible files directly in the browser
+* performance improvements, especially on the movie browse page
+* fixed incorrect URL in the backend form
+
 #### 1.6.8
 * enable database schema caching by default. It is cleared automatically when applying migrations that change it.
 * load Google Fonts over HTTPS if the site itself is accessed over HTTPS (fixes mixed content warnings in the browser)
