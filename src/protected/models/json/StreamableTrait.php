@@ -11,11 +11,6 @@ trait StreamableTrait
 {
 	
 	/**
-	 * @var string
-	 */
-	public $file;
-
-	/**
 	 * Returns a set of links to the media items
 	 * @return ItemLink[] the item links
 	 */

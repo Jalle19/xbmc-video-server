@@ -16,7 +16,7 @@ abstract class RetrieveMediaWidget extends CWidget
 	public $type;
 
 	/**
-	 * @var Media the media details
+	 * @var File the media file
 	 */
 	public $details;
 	

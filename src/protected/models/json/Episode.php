@@ -6,13 +6,9 @@
  * @author Sam Stenvall <neggelandia@gmail.com>
  * @copyright Copyright &copy; Sam Stenvall 2013-
  * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
- * 
- * Virtual class properties
- * @property string $file
  */
-class Episode extends Media implements IStreamable
+class Episode extends File implements IStreamable
 {
-	use StreamableTrait;
 	
 	/**
 	 * @var int
@@ -47,11 +43,6 @@ class Episode extends Media implements IStreamable
 	public function getIdField()
 	{
 		return 'episodeid';
-	}
-	
-	public function getStreamableItems()
-	{
-		return array($this);
 	}
 	
 	/**

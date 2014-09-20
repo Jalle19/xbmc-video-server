@@ -17,7 +17,7 @@ interface IStreamable
 	 * Returns the streamable media items that this item represents, e.g. a 
 	 * season would return its episodes, a TV show would return all the 
 	 * episodes of that season
-	 * @return IStreamable[] the media items
+	 * @return File[] the media items
 	 */
 	public function getStreamableItems();
 
