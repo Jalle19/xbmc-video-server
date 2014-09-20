@@ -31,7 +31,7 @@ class MediaFlags extends CWidget
 		
 		// Some media don't have any stream details, we have to skip the flags
 		// that depend on them.
-		if ($this->hasStreamDetails())
+		if (MediaInfoHelper::hasMediaInfo($this->streamDetails))
 		{
 			?>
 			<div class="flag-section">
@@ -65,16 +65,6 @@ class MediaFlags extends CWidget
 		<?php
 		
 		echo CHtml::closeTag('div');
-	}
-	
-	/**
-	 * Checks whether the stream details are available.
-	 * @return boolean
-	 */
-	private function hasStreamDetails()
-	{
-		return count($this->streamDetails->audio) !== 0 
-		       && count($this->streamDetails->video) !== 0;
 	}
 
 }
