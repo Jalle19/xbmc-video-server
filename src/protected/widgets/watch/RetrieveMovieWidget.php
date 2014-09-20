@@ -12,7 +12,7 @@ class RetrieveMovieWidget extends RetrieveMediaWidget
 	
 	protected function getLogMessage()
 	{
-		return '"'.Yii::app()->user->name.'" downloaded "'.$this->details->getDisplayName().'"';
+		return '"'.Yii::app()->user->name.'" streamed/downloaded "'.$this->details->getDisplayName().'"';
 	}
 
 	protected function getPlayListAction()
