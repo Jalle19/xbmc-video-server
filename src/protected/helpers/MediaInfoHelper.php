@@ -11,9 +11,27 @@
 class MediaInfoHelper
 {
 
-	const VIDEO_CODEC_H264 = 'avc1';
+	const VIDEO_CODEC_AVC1 = 'avc1';
+	const VIDEO_CODEC_H264 = 'h264';
 	const AUDIO_CODEC_AAC = 'aac';
+	const CONTAINER_MKV = 'mkv';
 	const CONTAINER_MP4 = 'mp4';
+	
+	/**
+	 * @var array list of codecs that are supported by major browsers
+	 */
+	private static $nativeVideoCodecs = array(
+		self::VIDEO_CODEC_AVC1,
+		self::VIDEO_CODEC_H264
+	);
+	
+	/**
+	 * @var array list of container types that are supported by major browsers
+	 */
+	private static $nativeContainers = array(
+		self::CONTAINER_MKV, // Chrome only
+		self::CONTAINER_MP4,
+	);
 	
 	/**
 	 * @var File the media file
@@ -44,8 +62,8 @@ class MediaInfoHelper
 		$audioCodec = $this->_file->streamdetails->audio[0]->codec;
 		$fileInfo = new SplFileInfo($this->_file->file);
 
-		return !($fileInfo->getExtension() === self::CONTAINER_MP4 &&
-				$videoCodec === self::VIDEO_CODEC_H264 &&
+		return !(in_array($fileInfo->getExtension(), self::$nativeContainers) &&
+				in_array($videoCodec, self::$nativeVideoCodecs) &&
 				$audioCodec === self::AUDIO_CODEC_AAC);
 	}
 
