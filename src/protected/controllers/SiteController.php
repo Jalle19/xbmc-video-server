@@ -54,17 +54,21 @@ class SiteController extends Controller
 		if (isset($_POST['LoginForm']))
 		{
 			$model->attributes = $_POST['LoginForm'];
+			$address = $_SERVER['REMOTE_ADDR'];
 
 			if ($model->validate() && $model->login())
 			{
-				$this->log('"%s" logged in', $model->username);
+				$this->log('"%s" logged in from %s', $model->username, $address);
 				$this->redirect(Yii::app()->user->returnUrl);
 			}
 			else
 			{
 				// Log invalid login attempts
 				if (!empty($model->username) && !empty($model->password))
-					$this->log('Invalid login attempt for user "%s"', $model->username);
+				{
+					$this->log('Invalid login attempt for user "%s" from %s', 
+							$model->username, $address);
+				}
 			}
 		}
 
