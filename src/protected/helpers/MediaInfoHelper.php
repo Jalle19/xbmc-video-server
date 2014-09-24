@@ -86,10 +86,12 @@ class MediaInfoHelper
 	{
 		$fileInfo = new SplFileInfo($file);
 		
-		switch($fileInfo->getExtension())
+		switch ($fileInfo->getExtension())
 		{
-			case 'mp4':
+			case self::CONTAINER_MP4:
 				return 'video/mp4';
+			// Ignore MKV on purpose, Chrome refuses to play MKV files when 
+			// MIME type is set
 		}
 		
 		return null;

@@ -11,10 +11,13 @@ $this->layout = 'browserPlayer';
 	
 	foreach ($items as $item)
 	{
-		?>
-		<source src="<?php echo $item->url; ?>" type="<?php echo $item->mimeType; ?>" />
-		Your browser does not support the <code>video</code> element.
-		<?php
+		$attributes = array('src'=>$item->url);
+		
+		// Only include MIME type if it is set
+		if ($item->mimeType)
+			$attributes['type'] = $item->mimeType;
+		
+		echo CHtml::tag('source', $attributes, false, false);
 	}
 	
 	?>
