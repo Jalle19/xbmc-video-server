@@ -111,7 +111,7 @@ abstract class RetrieveMediaWidget extends CWidget
 			'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
 			'size'=>TbHtml::BUTTON_SIZE_LARGE,
 			'url'=>$this->getStreamUrl(),
-			'class'=>'fa fa-play');
+			'class'=>'fa fa-file-movie-o');
 	}
 	
 	/**
@@ -221,6 +221,7 @@ abstract class RetrieveMediaWidget extends CWidget
 	{
 		// Swap the button URL for the first item link
 		$buttonOptions = $this->getWatchButtonsOptions();
+		$buttonOptions['class'] = 'fa fa-play';
 		$buttonOptions['url'] = array('watchInBrowser', 'url'=>$this->_links[0]->url);
 		
 		// Add logging
