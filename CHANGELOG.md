@@ -8,6 +8,12 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.6.10
+* include the address when logging login attempts
+* update icons in the watch modal dialog
+* enable the "Watch in browser" button for H.264/AAC/MKV files too since they work in Chrome
+* added missing logging when the "Watch in browser" button is clicked
+
 #### 1.6.9
 * show a friendlier error message when "Update library" is clicked and the backend is unconnectable
 * log the full request body when an API call produces an error. This makes debugging easier.
