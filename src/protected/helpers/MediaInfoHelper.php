@@ -60,9 +60,8 @@ class MediaInfoHelper
 
 		$videoCodec = $this->_file->streamdetails->video[0]->codec;
 		$audioCodec = $this->_file->streamdetails->audio[0]->codec;
-		$fileInfo = new SplFileInfo($this->_file->file);
 
-		return !(in_array($fileInfo->getExtension(), self::$nativeContainers) &&
+		return !($this->hasNativeContainer() &&
 				in_array($videoCodec, self::$nativeVideoCodecs) &&
 				$audioCodec === self::AUDIO_CODEC_AAC);
 	}
@@ -77,6 +76,16 @@ class MediaInfoHelper
 			   count($this->_file->streamdetails->video) !== 0;
 	}
 	
+	/**
+	 * @return boolean whether the file uses a container that browsers can 
+	 * generally play natively
+	 */
+	private function hasNativeContainer()
+	{
+		$fileInfo = new SplFileInfo($this->_file->file);
+		return in_array($fileInfo->getExtension(), self::$nativeContainers);
+	}
+
 	/**
 	 * Returns the MIME type of the specified file
 	 * @param string $file filename or URL
