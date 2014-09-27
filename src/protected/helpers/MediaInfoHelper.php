@@ -55,8 +55,10 @@ class MediaInfoHelper
 	 */
 	public function needsTranscoding()
 	{
+		// If stream details aren't available we'll just have to go on the 
+		// file extension
 		if (!$this->hasMediaInfo())
-			return true;
+			return !$this->hasNativeContainer();
 
 		$videoCodec = $this->_file->streamdetails->video[0]->codec;
 		$audioCodec = $this->_file->streamdetails->audio[0]->codec;
