@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Message translations.
  *
@@ -17,14 +17,14 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Before you get started, please have a look at the application settings' => '',
+  'Before you get started, please have a look at the application settings' => 'Bevor du beginnst, schau dir bitte die Einstellungen an und passe sie ggf. an',
   'Access whitelist' => 'Zugang - Positivliste',
   'Amount of results to show per page' => 'Anzahl der Ergebnisse pro Seite',
   'Application language' => 'Systemsprache',
   'Application name' => 'Systemname',
   'Application subtitle' => 'Seitenuntertitel',
   'Cache all API results' => 'Cache alle API Ergebnisse',
-  'Changing this will reset the default language for all users' => 'Änderungen setzen die Standardsprache für alle Benutzer zurück',
+  'Changing this will reset the default language for all users' => 'Eine Änderungen setzt die Standardsprache für alle Benutzer zurück',
   'Don\'t use playlists when item consists of a single file' => 'Für einzelne Dateien keine Wiedergabeliste benutzen',
   'Don\'t warn about XBMC version incompatibility' => 'Keine Warnung bei inkompatibler XBMC Version ',
   'If specified, access is restricted to the defined 
@@ -47,6 +47,6 @@ return array (
   'When checked, streaming will be done over HTTPS if 
 					the application is accessed over HTTPS. This will usually only 
 					work if the server uses a real signed certificate, thus it is 
-					not enabled by default.' => 'Nach Aktivierung erfolgt das Streaming per HTTPS, wenn die Seite per HTTPS aufgerufen wird. Funktioniert im Allgemeinen nur mit einem Zertifikat einer Certification Authority (CA). Standardmäßig geaktiviert',
+					not enabled by default.' => 'Nach Aktivierung erfolgt das Streaming per HTTPS, wenn die Seite per HTTPS aufgerufen wird. Funktioniert im Allgemeinen nur mit einem Zertifikat einer Certification Authority (CA). Standardmäßig deaktiviert',
   'You may have to right-click and copy the address in order to stream (not download) the file' => 'Eventuell ist es erforderlich die Adresse zu kopieren und im Player (VLC o.ä.) einzufügen, um die Datei zu streamen und nicht herunterzuladen.',
 );
