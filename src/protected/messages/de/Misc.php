@@ -19,7 +19,7 @@
 return array (
   'Free your library' => 'Free your library',
   'Are you sure you want to flush the cache?' => 'Cache wirklich leeren?',
-  'Are you sure you want to update the backend\'s library?' => 'Backend wirklich updaten?',
+  'Are you sure you want to update the backend\'s library?' => 'Bibliothek wirklich aktualisieren?',
   'Are you sure?' => 'Bist du sicher?',
   'Error' => 'Fehler',
   'Error {code}' => 'Fehler {code}',

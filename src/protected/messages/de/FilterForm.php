@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Message translations.
  *
@@ -17,7 +17,7 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Director' => '',
+  'Director' => 'Regisseur',
   'Actor' => 'Schauspieler',
   'Apply filter' => 'Filter anwenden',
   'Clear filter' => 'Zurücksetzen',

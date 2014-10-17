@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Message translations.
  *
@@ -17,7 +17,7 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'If the backend has been powered off completely you\'ll have to turn it on manually.' => '',
+  'If the backend has been powered off completely you\'ll have to turn it on manually.' => 'Ist das Backend komplett ausgeschaltet, musst du es manuell starten.',
   'Backend created successfully' => 'Backend erfolgreich erstellt',
   'Backend name' => 'Backend Name',
   'Backend updated successfully' => 'Backend-Update erfolgreich',
@@ -45,13 +45,13 @@ return array (
   'This is where you configure your backends. A 
 	backend is an instance of XBMC that the application connects to and serves 
 	library contents from. If you specify more than one backend, a new item 
-	will appear in the main menu, allowing you to easily switch backends.' => 'Hier werden die Backends konfiguriert. Ein Backend ist eine XBMC Instanz die die Medien-Bibliothek zur Verfügung stellt. Bei mehr als einem Backend erscheint ein Hinweis zum Wechseln im Hauptmenü',
+	will appear in the main menu, allowing you to easily switch backends.' => 'Hier werden die Backends konfiguriert. Ein Backend ist eine XBMC Instanz die die Medien-Bibliothek zur Verfügung stellt. Bei mehr als einem Backend erscheint ein Hinweis zum Wechseln im Hauptmenü.',
   'Unable to connect to {hostname}:{port}, make sure XBMC is running and has its web server enabled' => 'Verbindung zu : {hostname}:{port} fehlgeschlagen, stelle bitte sicher, dass XBMC läuft und der Webserver eingeschaltet ist',
   'Unable to send WOL packet' => ' Wake on LAN fehlgeschlagen',
   'Update {backendName}' => 'Aktualisiere : {backendName}',
   'Username' => 'Benutzername',
   'Waiting for connection' => 'Warte auf Verbindung...',
   'Wake on LAN packet sent, this page will be automatically refreshed once the backend is reachable' => 'MagicPacket (WOL) gesendet, die Seite wird automatisch neugeladen, wenn das Backend erreichbar ist ',
-  'You can\'t delete the current backend. Please switch to another one if you want to delete this.' => 'Das aktuelle Backend kann nicht gelöscht werden. Wechsle bitte zu einem anderen, wenn dieses gelöscht werden soll',
+  'You can\'t delete the current backend. Please switch to another one if you want to delete this.' => 'Das aktuelle Backend kann nicht gelöscht werden. Wechsle bitte zu einem anderen, wenn dieses gelöscht werden soll.',
   'You must configure a backend before you can use the application' => 'Du musst zuerst ein Backend einrichten, bevor du diese Seite vollständig nutzen kannst',
 );

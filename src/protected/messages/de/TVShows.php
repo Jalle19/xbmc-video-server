@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Message translations.
  *
@@ -22,8 +22,8 @@ return array (
   'Seasons' => 'Staffeln',
   'TV Shows' => 'TV-Serien',
   'There are no episodes for this show' => 'Diese Serie beinhaltet keine Episoden',
-  'Watch the whole season' => 'Ganze Staffel anschauen',
-  'Watch the whole show' => 'Ganze Show anschauen',
+  'Watch the whole season' => 'Gesamte Staffel anschauen',
+  'Watch the whole show' => 'Gesamte Serie anschauen',
   'You can click the show name to jump directly to the show details page' => 'Um Details zur Serie zu erhalten, einfach auf den Namen klicken',
   'or choose individual episodes from the list below' => 'oder einzelne Episoden aus der unten stehenden Liste auswählen',
   '{num} episodes' => '{num} Episoden',
