@@ -18,10 +18,10 @@ echo $form->passwordFieldControlGroup($model, 'password');
 
 echo '<hr />';
 
-$readmeUrl = 'https://github.com/Jalle19/xbmc-video-server#proxy-location';
+$readmeUrl = 'https://github.com/Jalle19/xbmc-video-server/wiki/Configuring-a-reverse-proxy';
 echo $form->textFieldControlGroup($model, 'proxyLocation', array(
 	'help'=>Yii::t('Backend', 'See {readmeUrl} for how to configure this', 
-			array('{readmeUrl}'=>CHtml::link($readmeUrl, $readmeUrl)))));
+			array('{readmeUrl}'=>CHtml::link($readmeUrl, $readmeUrl, array('target'=>'_blank'))))));
 
 echo '<hr />';
 

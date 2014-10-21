@@ -3,6 +3,7 @@
 /* @var $this SettingsController */
 /* @var $form TbActiveForm */
 /* @var $settings Setting[] */
+/* @var $definitions array */
 $this->pageTitle = $title = Yii::t('Settings', 'Settings');
 
 ?>

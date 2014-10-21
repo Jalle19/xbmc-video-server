@@ -106,7 +106,7 @@ class XBMC extends CApplicationComponent
 		}
 		catch (SimpleJsonRpcClient\Exception\BaseException $e)
 		{
-			$this->handleRequestException($e);
+			$this->handleRequestException($e, $request);
 		}
 	}
 	
@@ -125,25 +125,41 @@ class XBMC extends CApplicationComponent
 		}
 		catch (SimpleJsonRpcClient\Exception\BaseException $e)
 		{
-			$this->handleRequestException($e);
+			$this->handleRequestException($e, $notification);
 		}
 	}
 	
 	/**
 	 * Handles exceptions from the JSON-RPC client. The exceptions are re-
 	 * thrown as CHttpException so we can provide a less confusing error 
-	 * message. The exact error will be logged separately in the system log 
-	 * when available.
+	 * message. The exact error and the request that caused it will be logged 
+	 * separately in the system log when available.
 	 * @param SimpleJsonRpcClient\Exception\BaseException $exception
+	 * @param SimpleJsonRpcClient\Request\BaseRequest $request the request that 
+	 * triggered the exception
 	 * @throws CHttpException always
 	 */
-	private function handleRequestException($exception)
+	private function handleRequestException($exception, $request)
 	{
+		/**
+		 * Formats the object into pretty-printed JSON
+		 * @param $object the data object
+		 */
+		$formatData = function($object)
+		{
+			return CHtml::tag('pre', array(), json_encode($object, JSON_PRETTY_PRINT));
+		};
+		
 		// Log the detailed error data for easier debugging
 		if ($exception instanceof SimpleJsonRpcClient\Exception\ResponseErrorException)
 		{
-			$data = CHtml::tag('pre', array(), json_encode($exception->getData(), JSON_PRETTY_PRINT));
+			$data = $formatData($exception->getData());
 			$message = 'Response error data from the upcoming exception: '.$data;
+			
+			// Include the original request body in the message. We'll need 
+			// to reincode it in order to get it prettyprinted
+			$requestBody = $formatData(json_decode($request->__toString()));
+			$message .= PHP_EOL.'The request that triggered the exception was:'.PHP_EOL.$requestBody;
 
 			Yii::log($message, CLogger::LEVEL_ERROR, 'jsonrpc');
 		}

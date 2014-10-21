@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "75b7aad853d2e0bb743b5354904c2fc4",
+    "hash": "2849fce1328c725e7ac32bb34e65c762",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -487,17 +487,20 @@
         },
         {
             "name": "netresearch/jsonmapper",
-            "version": "v0.1.3",
+            "version": "dev-xbmc-video-server",
             "source": {
                 "type": "git",
-                "url": "https://github.com/netresearch/jsonmapper.git",
-                "reference": "71afb62164ecc514a00690d75711393551969be1"
+                "url": "https://github.com/Jalle19/jsonmapper.git",
+                "reference": "67c7ee03c7654241155088fba3a299d260ad14cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/netresearch/jsonmapper/zipball/71afb62164ecc514a00690d75711393551969be1",
-                "reference": "71afb62164ecc514a00690d75711393551969be1",
+                "url": "https://api.github.com/repos/Jalle19/jsonmapper/zipball/67c7ee03c7654241155088fba3a299d260ad14cc",
+                "reference": "67c7ee03c7654241155088fba3a299d260ad14cc",
                 "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.2.*"
             },
             "type": "library",
             "autoload": {
@@ -505,7 +508,6 @@
                     "": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "AGPL-3.0"
             ],
@@ -518,7 +520,12 @@
                 }
             ],
             "description": "Map nested JSON structures onto PHP classes",
-            "time": "2014-03-17 12:49:41"
+            "support": {
+                "email": "christian.weiske@netresearch.de",
+                "issues": "https://github.com/netresearch/jsonmapper/issues",
+                "source": "https://github.com/Jalle19/jsonmapper/tree/xbmc-video-server"
+            },
+            "time": "2014-09-16 09:30:49"
         },
         {
             "name": "tomnomnom/phpwol",
@@ -965,7 +972,8 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "eventviva/php-image-resize": 20
+        "eventviva/php-image-resize": 20,
+        "netresearch/jsonmapper": 20
     },
     "prefer-stable": false,
     "platform": [

@@ -48,8 +48,7 @@ $this->pageTitle = $details->getDisplayName().' - '.Yii::t('Movies', 'Movies');
 
 			<div class="span6">
 				<?php $this->widget('MediaFlags', array(
-					'streamDetails'=>$details->streamdetails,
-					'file'=>$details->file
+					'file'=>$details
 				)); ?>
 			</div>
 		</div>

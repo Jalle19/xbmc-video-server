@@ -47,7 +47,7 @@ class WebServer
 	}
 	
 	/**
-	 * @return string|false the authentication realm of the server, or false 
+	 * @return string the authentication realm of the server, or an empty string 
 	 * if no authentication is requested
 	 */
 	public function getAuthenticationRealm()
@@ -59,7 +59,7 @@ class WebServer
 				if ($header instanceof Zend\Http\Header\WWWAuthenticate)
 					return $this->parseRealm($header);
 
-		return false;
+		return '';
 	}
 	
 	/**

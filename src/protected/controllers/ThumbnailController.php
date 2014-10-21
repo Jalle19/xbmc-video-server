@@ -28,6 +28,7 @@ class ThumbnailController extends Controller
 	 * @see Thumbnail
 	 * @param string $path the thumbnail path
 	 * @param int $size the thumbnail size
+	 * @throws PageNotFoundException if the image could not be generated
 	 */
 	public function actionGenerate($path, $size)
 	{
@@ -35,6 +36,10 @@ class ThumbnailController extends Controller
 		$thumbnail->generate();
 		
 		$path = $thumbnail->getPath();
+		
+		if ($path === false)
+			throw new PageNotFoundException();
+		
 		header('Content-Type: '.CFileHelper::getMimeType($path));
 		readfile($path);
 		exit;

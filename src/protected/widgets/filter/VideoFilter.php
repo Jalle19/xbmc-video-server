@@ -100,34 +100,46 @@ abstract class VideoFilter extends CWidget
 	}
 	
 	/**
-	 * Returns the typeahead data for the actor fields. The API call cache 
-	 * is used when it is enabled to speed up the retrieval.
-	 * @param string $mediaType filter by movies or TV shows
-	 * @return string the list of movies encoded as JavaScript
+	 * Encodes the return value of the callable as JavaScript and returns that. 
+	 * If cacheApiCalls is enabled, the result will be fetched from cache 
+	 * whenever possible.
+	 * @param string $cacheId the cache ID
+	 * @param callable $callable a closure that returns the typeahead source
+	 * @return string JavaScript encoded string representing the data
 	 */
-	protected function getActorNameTypeaheadData($mediaType)
+	protected function getTypeaheadSource($cacheId, callable $callable)
 	{
 		// Cache the encoded JavaScript if the "cache API calls" setting is enabled
 		if (Setting::getBoolean('cacheApiCalls'))
 		{
-			$cacheId = 'MovieFilterActorNameTypeahead_'.$mediaType;
 			$typeaheadData = Yii::app()->apiCallCache->get($cacheId);
 
 			if ($typeaheadData === false)
 			{
-				$typeaheadData = CJavaScript::encode($this->getTypeaheadData(
-						VideoLibrary::getActors($mediaType)));
+				$typeaheadData = CJavaScript::encode($callable());
 				
 				Yii::app()->apiCallCache->set($cacheId, $typeaheadData);
 			}
 		}
 		else
-		{
-			$typeaheadData = CJavaScript::encode($this->getTypeaheadData(
-					VideoLibrary::getActors($mediaType)));
-		}
+			$typeaheadData = CJavaScript::encode($callable());
 
 		return $typeaheadData;
+	}
+	
+	/**
+	 * Returns the typeahead data for the actor fields.
+	 * @param string $mediaType filter by movies or TV shows
+	 * @return string the list of movies encoded as JavaScript
+	 */
+	protected function getActorNameTypeaheadData($mediaType)
+	{
+		$cacheId = 'MovieFilterActorNameTypeahead_'.$mediaType;
+		
+		return $this->getTypeaheadSource($cacheId, function() use($mediaType)
+		{
+			return $this->getTypeaheadData(VideoLibrary::getActors($mediaType));
+		});
 	}
 
 }

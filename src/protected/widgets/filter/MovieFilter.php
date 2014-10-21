@@ -6,6 +6,8 @@
  * @author Sam Stenvall <neggelandia@gmail.com>
  * @copyright Copyright &copy; Sam Stenvall 2013-
  * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
+ * 
+ * @property MovieFilterForm $model
  */
 class MovieFilter extends VideoFilter
 {
@@ -36,32 +38,36 @@ class MovieFilter extends VideoFilter
 				$this->getActorNameTypeaheadData(Actor::MEDIA_TYPE_MOVIE));
 		
 		echo $this->form->typeaheadFieldControlGroup($this->model, 'director', 
-				CJavaScript::encode(VideoLibrary::getDirectors()));
+				$this->getDirectorTypeaheadData());
 	}
 	
 	/**
-	 * Returns the typeahead data for the movie name field. The API call cache 
-	 * is used when it is enabled to speed up the retrieval.
+	 * Returns the typeahead data for the movie name field
 	 * @return string the list of movies encoded as JavaScript
 	 */
 	private function getMovieNameTypeaheadData()
 	{
-		// Cache the encoded JavaScript if the "cache API calls" setting is enabled
-		if (Setting::getBoolean('cacheApiCalls'))
+		$cacheId = 'MovieFilterMovieNameTypeahead';
+
+		return $this->getTypeaheadSource($cacheId, function()
 		{
-			$cacheId = 'MovieFilterMovieNameTypeahead';
-			$typeaheadData = Yii::app()->apiCallCache->get($cacheId);
+			// We only need the "label" property which is always available
+			return $this->getTypeaheadData(VideoLibrary::getMovies(array('properties'=>array())));
+		});
+	}
+	
+	/**
+	 * Returns the typeahead data for the director name field
+	 * @return string the list of movies encoded as JavaScript
+	 */
+	private function getDirectorTypeaheadData()
+	{
+		$cacheId = 'MovieFilterDirectorTypeahead';
 
-			if ($typeaheadData === false)
-			{
-				$typeaheadData = CJavaScript::encode($this->getTypeaheadData(VideoLibrary::getMovies()));
-				Yii::app()->apiCallCache->set($cacheId, $typeaheadData);
-			}
-		}
-		else
-			$typeaheadData = CJavaScript::encode($this->getTypeaheadData(VideoLibrary::getMovies()));
-
-		return $typeaheadData;
+		return $this->getTypeaheadSource($cacheId, function()
+		{
+			return VideoLibrary::getDirectors();
+		});
 	}
 	
 }

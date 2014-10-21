@@ -130,7 +130,7 @@ abstract class MediaController extends Controller
 	
 	/**
 	 * Generates a playlist from the specified media item
-	 * @param StreamableTrait $media the media item
+	 * @param IStreamable $media the media item
 	 * @param string $format the desired playlist format. Defaults to null, 
 	 * meaning the configured default format will be used
 	 * @return Playlist the playlist
@@ -155,7 +155,7 @@ abstract class MediaController extends Controller
 
 	/**
 	 * Creates and serves a playlist based on the specified media item
-	 * @param StreamableTrait $media a media item
+	 * @param IStreamable $media a media item
 	 * @param string $format the desired playlist format. Defaults to null, 
 	 * meaning the configured default format will be used
 	 */
@@ -184,6 +184,21 @@ abstract class MediaController extends Controller
 			'{backend}'=>Yii::app()->backendManager->getCurrent()->name)));
 
 		$this->redirectToPrevious('index');
+	}
+	
+	/**
+	 * Plays the specified URL in the in-browser player
+	 * @param string $url the URL to the media
+	 */
+	public function actionWatchInBrowser($url)
+	{
+		// Create a tuple containing the URL and the MIME type of the file
+		$item = new stdClass();
+		$item->url = $url;
+		$item->mimeType = MediaInfoHelper::getMIMEType($url);
+
+		$this->render('//videoLibrary/browserPlayer', array(
+			'items'=>array($item)));
 	}
 
 	/**

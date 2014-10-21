@@ -1,4 +1,10 @@
 {
+	"repositories": [
+		{
+            "type": "vcs",
+            "url": "https://github.com/Jalle19/jsonmapper.git"
+        }
+	],
 	"require": {
         "yiisoft/yii": "1.1.14",
 		"jalle19/simple-json-rpc-client": ">=1.0.7",
@@ -12,7 +18,7 @@
 		"hautelook/phpass": "0.3.*",
 		"mobiledetect/mobiledetectlib": "2.7.*",
 		"mptre/php-xspf": "2.0.*",
-		"netresearch/jsonmapper": "0.1.*",
+		"netresearch/jsonmapper": "dev-xbmc-video-server",
 		"tomnomnom/phpwol": "0.0.1",
 		"zendframework/zend-http": "2.2.*"
     }

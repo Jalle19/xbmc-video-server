@@ -10,11 +10,9 @@
  * Virtual class properties:
  * 
  * @property int $votes
- * @property string $file
  */
-class Movie extends Media
+class Movie extends File implements IStreamable
 {
-	use StreamableTrait;
 
 	/**
 	 * @var int
@@ -39,11 +37,6 @@ class Movie extends Media
 	public function getDisplayName()
 	{
 		return $this->label.' ('.$this->year.')';
-	}
-
-	protected function getStreamableItems()
-	{
-		return array($this);
 	}
 	
 	/**

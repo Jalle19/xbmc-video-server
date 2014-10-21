@@ -15,7 +15,7 @@ class RetrieveTVShowWidget extends RetrieveMediaWidget
 		/* @var $episode Episode */
 		$episode = $this->details;
 		
-		return '"'.Yii::app()->user->name.'" downloaded "'.$episode->showtitle.' - '.$episode->getDisplayName().'"';
+		return '"'.Yii::app()->user->name.'" streamed/downloaded "'.$episode->showtitle.' - '.$episode->getDisplayName().'"';
 	}
 
 	protected function getPlayListAction()

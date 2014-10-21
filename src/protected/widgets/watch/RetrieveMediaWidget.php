@@ -16,7 +16,7 @@ abstract class RetrieveMediaWidget extends CWidget
 	public $type;
 
 	/**
-	 * @var Media the media details
+	 * @var File the media file
 	 */
 	public $details;
 	
@@ -111,7 +111,7 @@ abstract class RetrieveMediaWidget extends CWidget
 			'color'=>TbHtml::BUTTON_COLOR_SUCCESS,
 			'size'=>TbHtml::BUTTON_SIZE_LARGE,
 			'url'=>$this->getStreamUrl(),
-			'class'=>'fa fa-play');
+			'class'=>'fa fa-file-movie-o');
 	}
 	
 	/**
@@ -130,6 +130,18 @@ abstract class RetrieveMediaWidget extends CWidget
 			?>
 			<section>
 				<?php $this->renderPlayOnBackendButton(); ?>
+			</section>
+			<?php
+		}
+		
+		// Show the "Play in browser" button when applicable
+		$helper = new MediaInfoHelper($this->details);
+		
+		if (!$helper->needsTranscoding() && count($this->_links) === 1)
+		{
+			?>
+			<section>
+				<?php $this->renderWatchInBrowserButton(); ?>
 			</section>
 			<?php
 		}
@@ -153,12 +165,8 @@ abstract class RetrieveMediaWidget extends CWidget
 		echo CHtml::openTag('div', array('class'=>'item-links'));
 
 		$numLinks = count($this->_links);
-		$linkOptions = array(
-			'class'=>'fa fa-floppy-o loggable-link',
-			'data-log-category'=>get_class($this->owner),
-			'data-log-message'=>htmlentities($this->getLogMessage()),
-			'data-log-url'=>Yii::app()->controller->createUrl('/log/logEvent'),
-		);
+		$linkOptions = array_merge(array(
+			'class'=>'fa fa-floppy-o loggable-link'), $this->getLoggableLinkOptions());
 
 		foreach ($this->_links as $k=> $link)
 		{
@@ -204,6 +212,34 @@ abstract class RetrieveMediaWidget extends CWidget
 			'options'=>$dropdownOptions));
 
 		echo TbHtml::submitButton(Yii::t('RetrieveMediaWidget', 'Watch as playlist'), $this->getWatchButtonsOptions());
+	}
+	
+	/**
+	 * Renders the "Watch as in browser" button
+	 */
+	private function renderWatchInBrowserButton()
+	{
+		// Swap the button URL for the first item link
+		$buttonOptions = $this->getWatchButtonsOptions();
+		$buttonOptions['class'] = 'fa fa-play';
+		$buttonOptions['url'] = array('watchInBrowser', 'url'=>$this->_links[0]->url);
+		
+		// Add logging
+		TbHtml::addCssClass('loggable-link', $buttonOptions);
+		$buttonOptions = array_merge($buttonOptions, $this->getLoggableLinkOptions());
+		
+		echo TbHtml::linkButton(Yii::t('RetrieveMediaWidget', 'Watch in browser'), $buttonOptions);
+	}
+	
+	/**
+	 * @return array HTML options for loggable links
+	 */
+	private function getLoggableLinkOptions()
+	{
+		return array(
+			'data-log-category'=>get_class(Yii::app()->controller),
+			'data-log-message'=>htmlentities($this->getLogMessage()),
+			'data-log-url'=>Yii::app()->controller->createUrl('/log/logEvent'));
 	}
 
 }
