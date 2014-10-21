@@ -18,7 +18,14 @@ class Setting extends CActiveRecord
 	const TYPE_TEXT = 'text';
 	const TYPE_TEXT_WIDE = 'text-wide';
 	const TYPE_CHECKBOX = 'checkbox';
+	const TYPE_CHECKBOX_LIST = 'checkbox-list';
 	const TYPE_DROPDOWN = 'dropdown';
+
+	// Option type for checklists
+	const POWER_OPTION_SHUTDOWN = 'shutdown';
+	const POWER_OPTION_SUSPEND = 'suspend';
+	const POWER_OPTION_HIBERNATE = 'hibernate';
+	const POWER_OPTION_REBOOT = 'reboot';
 
 	// We need one attribute per setting
 	public $language;
@@ -27,6 +34,7 @@ class Setting extends CActiveRecord
 	public $singleFilePlaylist;
 	public $showHelpBlocks;
 	public $cacheApiCalls;
+	public $allowUserPowerOff;
 	public $pagesize;
 	public $disableFrodoWarning;
 	public $useHttpsForVfsUrls;
@@ -48,6 +56,18 @@ class Setting extends CActiveRecord
 	public static function getBoolean($setting)
 	{
 		return (boolean)self::getValue($setting);
+	}
+
+	/**
+	 * Returns whether the given option is set for the specified setting
+	 * @param string $setting the setting
+	 * @param string $option the option
+	 * @return whether the option is set or not
+	 */
+	public static function getBooleanOption($setting, $option)
+	{
+		$value = self::getValue($setting);
+		return is_array($value) && in_array($option, $value);
 	}
 
 	/**
@@ -94,9 +114,24 @@ class Setting extends CActiveRecord
 	 */
 	protected function afterFind()
 	{
+		$definitions = $this->getDefinitions();
+		if ($definitions[$this->name]['type'] === Setting::TYPE_CHECKBOX_LIST)
+			$this->value = explode(',', $this->value);
+
 		$this->{$this->name} = $this->value;
 
 		parent::afterFind();
+	}
+
+	/**
+	 * Prepares the values to be saved
+	 */
+	protected function beforeSave()
+	{
+		if (is_array($this->value))
+			$this->value = implode(',', $this->value);
+
+		return parent::beforeSave();
 	}
 
 	/**
@@ -222,6 +257,17 @@ class Setting extends CActiveRecord
 				'default'=>'0',
 				'description'=>Yii::t('Settings', 'Useful on slow hardware. A refresh button will appear in the menu which flushes the cache'),
 				'order'=>400,
+			),
+			'allowUserPowerOff'=>array(
+				'label'=>Yii::t('Settings', 'Allow users to power off backends'),
+				'type'=>self::TYPE_CHECKBOX_LIST,
+				'default'=>'',
+				'listData'=>array(
+					Setting::POWER_OPTION_SHUTDOWN=>Yii::t('Settings', 'Shutdown'),
+					Setting::POWER_OPTION_SUSPEND=>Yii::t('Settings', 'Suspend'),
+					Setting::POWER_OPTION_HIBERNATE=>Yii::t('Settings', 'Hibernate'),
+					Setting::POWER_OPTION_REBOOT=>Yii::t('Settings', 'Reboot')),
+				'order'=>450,
 			),
 			'pagesize'=>array(
 				'label'=>Yii::t('Settings', 'Amount of results to show per page'),

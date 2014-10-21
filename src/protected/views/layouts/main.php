@@ -43,13 +43,22 @@ $baseUrl = Yii::app()->baseUrl;
 			
 		</div>
 		
-		<?php $this->widget('bootstrap.widgets.TbModal', array(
+		<?php
+		$this->widget('bootstrap.widgets.TbModal', array(
 			'id'=>'change-language-modal',
 			'header'=>Yii::t('Language', 'Change language'),
 			'closeText'=>false,
 			'content'=>$this->renderPartial('//layouts/_cachedChangeLanguageModalContent', array(
 				'model'=>new ChangeLanguageForm()), true),
-		)); ?>
+		));
+
+		$this->widget('bootstrap.widgets.TbModal', array(
+			'id'=>'power-off-modal',
+			'header'=>Yii::t('PowerOff', 'Power off'),
+			'closeText'=>false,
+			'content'=>$this->renderPartial('//layouts/_cachedPowerOffModalContent', array(), true),
+		));
+		?>
 	</body>
 	
 </html>
