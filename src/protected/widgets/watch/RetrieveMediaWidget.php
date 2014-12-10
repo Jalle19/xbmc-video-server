@@ -124,16 +124,6 @@ abstract class RetrieveMediaWidget extends CWidget
 		echo CHtml::beginForm($this->getPlayListAction(), 'get');
 		echo CHtml::hiddenField('id', $this->details->getId());
 		
-		// Show the "Play in XBMC" button to administrators
-		if (Yii::app()->user->role === User::ROLE_ADMIN)
-		{
-			?>
-			<section>
-				<?php $this->renderPlayOnBackendButton(); ?>
-			</section>
-			<?php
-		}
-		
 		// Show the "Play in browser" button when applicable
 		$helper = new MediaInfoHelper($this->details);
 		
@@ -180,22 +170,23 @@ abstract class RetrieveMediaWidget extends CWidget
 			
 			echo CHtml::tag('p', array(), CHtml::link($label, $link->url, $linkOptions));
 		}
+		
+		// Show a "Play in XBMC" link to administrators
+		if (Yii::app()->user->role === User::ROLE_ADMIN)
+			$this->renderPlayOnBackendLink();
 
 		echo CHtml::closeTag('div');
 	}
 	
 	/**
-	 * Renders the "Play in XBMC" button
+	 * Renders the "Play in XBMC" link
 	 */
-	private function renderPlayOnBackendButton()
+	private function renderPlayOnBackendLink()
 	{
-		$playOnBackendButtonOptions = array(
-			'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
-			'size'=>TbHtml::BUTTON_SIZE_LARGE,
-			'url'=>array('playOnBackend', 'file'=>$this->details->file),
-			'class'=>'fa fa-desktop');
-
-		echo TbHtml::linkButton(Yii::t('RetrieveMediaWidget', 'Play in XBMC'), $playOnBackendButtonOptions);
+		echo CHtml::tag('p', array(), CHtml::link(
+				Yii::t('RetrieveMediaWidget', 'Play in XBMC'), 
+				array('playOnBackend', 'file'=>$this->details->file), 
+				array('class'=>'fa fa-desktop'))); 
 	}
 
 	/**
