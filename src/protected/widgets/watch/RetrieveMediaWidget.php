@@ -213,6 +213,7 @@ abstract class RetrieveMediaWidget extends CWidget
 		// Swap the button URL for the first item link
 		$buttonOptions = $this->getWatchButtonsOptions();
 		$buttonOptions['class'] = 'fa fa-play';
+		$buttonOptions['color'] = TbHtml::BUTTON_COLOR_PRIMARY;
 		$buttonOptions['url'] = array('watchInBrowser', 'url'=>$this->_links[0]->url);
 		
 		// Add logging
