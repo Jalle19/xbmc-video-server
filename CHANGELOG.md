@@ -8,6 +8,13 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.6.11
+* updated German translation (thanks to @Victor61)
+* added screen width override for 1366px wide screens
+* made the "Play in XBMC" button a link below the "Download" links instead
+* made the "Watch in browser" button the same color as the old "Play in XBMC" button
+* don't show the "Watch as playlist" button for files that cannot be streamed (raw DVDs and Blurays)
+
 #### 1.6.10
 * include the address when logging login attempts
 * update icons in the watch modal dialog
