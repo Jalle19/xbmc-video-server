@@ -136,11 +136,21 @@ abstract class RetrieveMediaWidget extends CWidget
 			<?php
 		}
 		
-		?>
-		<section>
-			<?php $this->renderWatchButton(); ?>
-		</section>
-		<?php
+		// Show the "Watch as playlist" button if the file is streamable, 
+		// otherwise show an alert
+		if ($helper->isStreamable())
+		{
+			?>
+			<section>
+				<?php $this->renderWatchButton(); ?>
+			</section>
+			<?php
+		}
+		else
+		{
+			echo CHtml::tag('p', array('class'=>'missing-video-file'), TbHtml::icon(TBHtml::ICON_WARNING_SIGN).
+					Yii::t('RetrieveMediaWidget', 'This file(s) for this item cannot be streamed'));
+		}
 		
 		// Render the download links and close the form
 		$this->renderLinks();

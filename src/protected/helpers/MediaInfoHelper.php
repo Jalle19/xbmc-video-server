@@ -34,6 +34,13 @@ class MediaInfoHelper
 	);
 	
 	/**
+	 * @var array list of file extension that cannot be streamed
+	 */
+	private static $nonStreamableExtension = array(
+		'iso', 'img', 'bdmv', 'ifo',
+	);
+	
+	/**
 	 * @var File the media file
 	 */
 	private $_file;
@@ -78,6 +85,26 @@ class MediaInfoHelper
 			   count($this->_file->streamdetails->video) !== 0;
 	}
 	
+	/**
+	 * Checks whether the current file is streamable. All files are streamable 
+	 * except DVD and BluRay images (or folder structures)
+	 * @return boolean whether the file is streamable
+	 */
+	public function isStreamable()
+	{
+		foreach ($this->_file->getItemLinks() as $link)
+		{
+			// Compare the extension against the blacklist
+			$fileInfo = new SplFileInfo($link->url);
+			$extension = strtolower($fileInfo->getExtension());
+
+			if (in_array($extension, self::$nonStreamableExtension))
+				return false;
+		}
+
+		return true;
+	}
+
 	/**
 	 * @return boolean whether the file uses a container that browsers can 
 	 * generally play natively
