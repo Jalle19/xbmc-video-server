@@ -1,6 +1,42 @@
-@media (min-width: 1366px) {
+/**
+ * We need to override the width of the main container for each multiple of 
+ * the grid item width so that the items always fill the full width of the 
+ * container. This is not pretty but it's not that bad either.
+ */
+
+@media (min-width: 768px) {
+	.container-fluid {
+		width: 728px;
+	}
+}
+
+@media (min-width: 888px) {
+	.container-fluid {
+		width: 848px;
+	}
+}
+
+@media (min-width: 980px) {
+	.container-fluid {
+		width: 940px;
+	}
+}
+
+@media (min-width: 1140px) {
+	.container-fluid {
+		width: 1100px;
+	}
+}
+
+@media (min-width: 1210px) {
 	.container-fluid {
 		width: 1170px;
+	}
+}
+
+@media (min-width: 1410px) {
+	.container-fluid {
+		width: 1370px;
 	}
 }
 
