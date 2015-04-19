@@ -18,5 +18,5 @@
  */
 return array (
   'Invalid request' => 'Requête invalide',
-  'The requested page does not exist' => 'La page demandée n\'existe pas',
+  'The requested page does not exist' => 'La page demandée n’existe pas',
 );

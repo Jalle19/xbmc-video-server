@@ -17,7 +17,7 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Display mode' => 'Mode d\'affichage',
+  'Display mode' => 'Mode d’affichage',
   'Grid view' => 'Grille',
   'List view' => 'Liste',
 );

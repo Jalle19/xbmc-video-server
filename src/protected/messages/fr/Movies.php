@@ -17,9 +17,9 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Click an image to see other movies with that person, or click the name to go to the person\'s IMDb page' => 'Cliquez sur l\'image d\'un(e) acteur/trice pour voir tous les films disponibles dans lesquels il/elle joue. En cliquant sur son nom vous accéderez à la page de sa filmographie sur le site IMDb.',
-  'Director: {director}' => 'Réalisateur/trice : {director}',
+  'Click an image to see other movies with that person, or click the name to go to the person\'s IMDb page' => 'Cliquez sur l’image d’un(e) acteur(trice) pour voir tous ses films disponibles. En cliquant sur son nom vous accéderez à la page de sa filmographie sur le site Web IMDb.com.',
+  'Director: {director}' => 'Réalisateur(trice) : {director}',
   'Movies' => 'Films',
   'Recently added movies' => 'Derniers films ajoutés',
-  'Watch / Download' => 'Voir / Télécharger',
+  'Watch / Download' => 'Visionner / Télécharger',
 );

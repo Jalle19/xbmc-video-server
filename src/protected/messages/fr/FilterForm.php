@@ -17,14 +17,14 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Director' => 'Réalisateur/trice',
-  'Actor' => 'Acteur/trice',
+  'Director' => 'Réalisateur(trice)',
+  'Actor' => 'Acteur(trice)',
   'Apply filter' => 'Rechercher',
   'Clear filter' => 'Annuler',
   'Genre' => 'Genre',
   'Minimum rating' => 'Note minimale',
   'Name' => 'Nom',
   'Quality' => 'Qualité',
-  'Watched status' => 'Déjà vu ou pas',
+  'Watched status' => 'Déjà vu ou non',
   'Year' => 'Année',
 );
