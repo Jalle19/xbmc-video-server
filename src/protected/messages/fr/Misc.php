@@ -18,14 +18,14 @@
  */
 return array (
   'Free your library' => 'Votre vidéothèque partagée',
-  'Are you sure you want to flush the cache?' => 'Êtes-vous sûr de vouloir supprimer le cache ?',
-  'Are you sure you want to update the backend\'s library?' => 'Êtes-vous sûr de vouloir mettre à jour la vidéothèque ?',
-  'Are you sure?' => 'Êtes-vous sûr ?',
+  'Are you sure you want to flush the cache?' => 'Êtes-vous sûr(e) de vouloir supprimer le cache ?',
+  'Are you sure you want to update the backend\'s library?' => 'Êtes-vous sûr(e) de vouloir mettre à jour la vidéothèque ?',
+  'Are you sure?' => 'Êtes-vous sûr(e) ?',
   'Error' => 'Erreur',
   'Error {code}' => 'Erreur {code}',
   'Library update has been initiated' => 'La mise à jour de la vidéothèque à été initialisée',
   'Not available' => 'Non disponible',
-  'Streaming of video files is not possible from XBMC 12 "Frodo" backends' => 'Le streaming vidéo n\'est pas disponible pour des sources fonctionnant sous XBMC v12 "Frodo"',
+  'Streaming of video files is not possible from XBMC 12 "Frodo" backends' => 'Le streaming vidéo n’est pas disponible pour les sources fonctionnant sous XBMC v12 « Frodo »',
   'The cache has been flushed successfully' => 'Le cache a été supprimé avec succès',
-  'You\'ll have to flush the API call cache to see any newly scanned content' => 'Afin de voir les derniers éléments scannés vous devez supprimer le cache des résultats de l\'API',
+  'You\'ll have to flush the API call cache to see any newly scanned content' => 'Afin de voir les derniers éléments scannés vous devez supprimer le cache des résultats de l’API',
 );

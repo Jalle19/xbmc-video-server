@@ -17,11 +17,11 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Incorrect username or password' => 'Nom d\'utilisateur ou mot de passe incorrect',
+  'Incorrect username or password' => 'Nom d’utilisateur ou mot de passe incorrect',
   'Log in' => 'Se connecter',
   'Password' => 'Mot de passe',
   'Please log in' => 'Merci de vous identifier',
   'Remember me' => 'Se souvenir de moi',
-  'Username' => 'Nom d\'utilisateur',
-  'Your location is not whitelisted' => 'Votre lieu géographique n\'est pas autorisé',
+  'Username' => 'Nom d’utilisateur',
+  'Your location is not whitelisted' => 'Votre lieu géographique n’est pas autorisé',
 );
