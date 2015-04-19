@@ -17,12 +17,12 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Watch in browser' => '',
+  'Watch in browser' => 'Visionner dans le navigateur',
   'Download' => 'Télécharger',
-  'Download (part #{partNumber})' => 'Télécharger (partie #{partNumber})',
-  'Play in XBMC' => 'Lecture dans XBMC',
-  'The file(s) for this item is not available' => 'Le fichier n\'est pas disponible',
-  'The item should now be playing on {backend}' => 'Le fichier vidéo a commencé sa lecture sur la source XBMC suivante : {backend}',
-  'Watch' => 'Voir',
-  'Watch as playlist' => 'Voir comme liste de lecture',
+  'Download (part #{partNumber})' => 'Télécharger (la partie #{partNumber})',
+  'Play in XBMC' => 'Lecture dans Kodi',
+  'The file(s) for this item is not available' => 'Le fichier n’est pas disponible',
+  'The item should now be playing on {backend}' => 'La lecture du fichier vidéo a débuté sur la source Kodi suivante : {backend}',
+  'Watch' => 'Visionner',
+  'Watch as playlist' => 'Visionner comme liste de lecture',
 );

@@ -21,5 +21,5 @@ return array (
   'Incorrect password' => 'Mot de passe incorrect',
   'New password' => 'Nouveau mot de passe',
   'New password (repeat)' => 'Ressaisir le nouveau mot de passe',
-  'New password cannot be the same as the old one' => 'Le nouveau mot de passe ne peut pas être le même que l\'ancien',
+  'New password cannot be the same as the old one' => 'Le nouveau mot de passe ne peut pas être le même que l’ancien',
 );
