@@ -178,6 +178,10 @@ class Setting extends CActiveRecord
 		return array(
 			'language'=>array(
 				'label'=>Yii::t('Settings', 'Application language'),
+				'separator'=>array(
+					'icon'=>'fa fa-pencil-square-o',
+					'label'=>Yii::t('Settings', 'Look and feel'),
+				),
 				'type'=>self::TYPE_DROPDOWN,
 				'default'=>'en',
 				'description'=>Yii::t('Settings', 'Changing this will reset the default language for all users'),
@@ -247,6 +251,10 @@ class Setting extends CActiveRecord
 			),
 			'useHttpsForVfsUrls'=>array(
 				'label'=>Yii::t('Settings', 'Use HTTPS when streaming'),
+				'separator'=>array(
+					'icon'=>'fa fa-lock',
+					'label'=>Yii::t('Settings', 'Security and performance')
+				),
 				'type'=>self::TYPE_CHECKBOX,
 				'default'=>'0',
 				'description'=>Yii::t('Settings', 'When checked, streaming will be done over HTTPS if 

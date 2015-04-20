@@ -18,7 +18,8 @@ $this->pageTitle = $title = Yii::t('Settings', 'Settings');
 <?php
 
 $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
-	'layout'=>TbHtml::FORM_LAYOUT_HORIZONTAL));
+	'layout'=>TbHtml::FORM_LAYOUT_HORIZONTAL,
+	'htmlOptions'=>array('class'=>'setting-form')));
 
 foreach ($settings as $setting)
 {
@@ -32,6 +33,14 @@ foreach ($settings as $setting)
 
 	if (isset($definition['description']))
 		$htmlOptions['help'] = $definition['description'];
+	
+	if (isset($definition['separator']))
+	{
+		$icon = $definition['separator']['icon'];
+		$label = $definition['separator']['label'];
+		
+		echo CHtml::tag('h4', array('class'=>$icon), $label);
+	}
 	
 	switch ($definition['type'])
 	{
