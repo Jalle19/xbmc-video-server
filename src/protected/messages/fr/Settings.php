@@ -17,10 +17,10 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Determines how long the application should wait for a response from XBMC. Increase this if you get timeout errors.' => '',
-  'Look and feel' => '',
-  'Request timeout' => '',
-  'Security and performance' => '',
+  'Determines how long the application should wait for a response from XBMC. Increase this if you get timeout errors.' => 'Détermine le temps d’attente de l’application pour obtenir une réponse de Kodi. Augmentez cette valeur si vous obtenez le message suivant : « Le temps d’attente de la page a expiré ».',
+  'Look and feel' => 'Interface graphique',
+  'Request timeout' => 'Le temps d’attente de la page a expiré',
+  'Security and performance' => 'Sécurité et performance',
   'Access whitelist' => 'Accès par liste blanche',
   'Amount of results to show per page' => 'Nombre de résultats affichés par page',
   'Application language' => 'Langue de l’application',
