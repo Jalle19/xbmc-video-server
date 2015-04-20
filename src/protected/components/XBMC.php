@@ -33,9 +33,12 @@ class XBMC extends CApplicationComponent
 		$hostname = Backend::normalizeAddress($this->_backend->hostname);
 		$endpoint = 'http://'.$hostname.':'.$this->_backend->port.'/jsonrpc';
 
-		$flags = JsonRPCClient::FLAG_ATTEMPT_UTF8_RECOVERY;
+		$clientFlags = JsonRPCClient::FLAG_ATTEMPT_UTF8_RECOVERY;
+		$clientOptions = array('timeout'=>Setting::getInteger('requestTimeout'));
+		
 		$this->_client = new JsonRPCClient($endpoint, 
-				$this->_backend->username, $this->_backend->password, $flags);
+				$this->_backend->username, $this->_backend->password, 
+				$clientFlags, $clientOptions);
 
 		parent::init();
 	}

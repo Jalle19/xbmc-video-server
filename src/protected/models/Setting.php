@@ -33,6 +33,7 @@ class Setting extends CActiveRecord
 	public $whitelist;
 	public $ignoreArticle;
 	public $playlistFormat;
+	public $requestTimeout;
 
 	/**
 	 * @var Setting[] list of all settings and their current values (runtime 
@@ -242,12 +243,22 @@ class Setting extends CActiveRecord
 				'default'=>'0',
 				'order'=>600,
 			),
-			'cacheApiCalls'=>array(
-				'label'=>Yii::t('Settings', 'Cache all API results'),
+			'requestTimeout'=>array(
+				'label'=>Yii::t('Settings', 'Request timeout'),
 				'separator'=>array(
 					'icon'=>'fa fa-lock',
 					'label'=>Yii::t('Settings', 'Security and performance')
 				),
+				'type'=>self::TYPE_TEXT,
+				'default'=>'30',
+				'description'=>Yii::t('Settings', 'Determines how long the application should wait for a response from XBMC. Increase this if you get timeout errors.'),
+				'htmlOptions'=>array(
+					'span'=>1,
+				),
+				'order'=>625,
+			),
+			'cacheApiCalls'=>array(
+				'label'=>Yii::t('Settings', 'Cache all API results'),
 				'type'=>self::TYPE_CHECKBOX,
 				'default'=>'0',
 				'description'=>Yii::t('Settings', 'Useful on slow hardware. A refresh button will appear in the menu which flushes the cache'),
