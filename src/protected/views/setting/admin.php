@@ -23,16 +23,17 @@ $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 foreach ($settings as $setting)
 {
 	$name = $setting->name;
+	$definition = $definitions[$name];
 	
-	if (isset($definitions[$name]['htmlOptions']))
-		$htmlOptions = $definitions[$name]['htmlOptions'];
+	if (isset($definition['htmlOptions']))
+		$htmlOptions = $definition['htmlOptions'];
 	else
 		$htmlOptions = array();
 
-	if (isset($definitions[$name]['description']))
-		$htmlOptions['help'] = $definitions[$name]['description'];
+	if (isset($definition['description']))
+		$htmlOptions['help'] = $definition['description'];
 	
-	switch ($definitions[$name]['type'])
+	switch ($definition['type'])
 	{
 		case Setting::TYPE_TEXT_WIDE:
 			$htmlOptions['class'] = 'span5';
@@ -44,7 +45,7 @@ foreach ($settings as $setting)
 			echo $form->checkBoxControlGroup($setting, $name, $htmlOptions);
 			break;
 		case Setting::TYPE_DROPDOWN:
-			echo $form->dropDownListControlGroup($setting, $name, $definitions[$name]['listData'], $htmlOptions);
+			echo $form->dropDownListControlGroup($setting, $name, $definition['listData'], $htmlOptions);
 			break;
 		default:
 			break;
