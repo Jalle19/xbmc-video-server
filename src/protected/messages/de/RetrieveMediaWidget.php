@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Message translations.
  *
@@ -17,12 +17,13 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Play in XBMC' => 'Im XBMC abspielen',
-  'The item should now be playing on {backend}' => 'Diese Datei sollte nun im XBMC {backend} abgespielt werden',
-  'Watch as playlist' => 'Wiedergabeliste öffnen',
-  'Watch in browser' => 'Im Browser abspielen',
+  'This file(s) for this item cannot be streamed' => '',
   'Download' => 'Download',
   'Download (part #{partNumber})' => 'Download (partie #{partNumber})',
+  'Play in XBMC' => 'Im XBMC abspielen',
   'The file(s) for this item is not available' => 'Die Datei ist momentan nicht verfügbar',
+  'The item should now be playing on {backend}' => 'Diese Datei sollte nun im XBMC {backend} abgespielt werden',
   'Watch' => 'Watch',
+  'Watch as playlist' => 'Wiedergabeliste öffnen',
+  'Watch in browser' => 'Im Browser abspielen',
 );

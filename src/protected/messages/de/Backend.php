@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Message translations.
  *
@@ -17,7 +17,10 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'If the backend has been powered off completely you\'ll have to turn it on manually.' => 'Ist das Backend komplett ausgeschaltet, musst du es manuell starten.',
+  'This is where you configure your backends. A 
+	backend is an instance of XBMC that the application connects to and serves 
+	library contents from. If you specify more than one backend, a new item 
+	will appear in the main menu, allowing you to easily switch backends.' => 'Hier werden die Backends konfiguriert. Ein Backend ist eine XBMC Instanz die die Medien-Bibliothek zur Verfügung stellt. Bei mehr als einem Backend erscheint ein Hinweis zum Wechseln im Hauptmenü.',
   'Backend created successfully' => 'Backend erfolgreich erstellt',
   'Backend name' => 'Backend Name',
   'Backend updated successfully' => 'Backend-Update erfolgreich',
@@ -26,6 +29,7 @@ return array (
   'Default' => 'Standard',
   'Hostname' => 'Hostname',
   'If a MAC address is entered a Wake-on-LAN packet will be sent to it whenever someone logs in' => 'Nach Eingabe einer MAC-Adresse wird bei jedem Einloggen ein MagigPacket (Wake on LAN) versendet',
+  'If the backend has been powered off completely you\'ll have to turn it on manually.' => 'Ist das Backend komplett ausgeschaltet, musst du es manuell starten.',
   'If you don\'t know what this, leave it empty. Otherwise enter the subnet mask, e.g. 255.255.0.0' => 'Wenn du nicht weißt, was das ist, lass es einfach frei. Andernfalls Subnetzmaske eingeben - beispielsweise: 255.255.0.0.',
   'Invalid MAC address' => 'Ungültige MAC-Adresse',
   'Invalid credentials' => 'Anmeldung fehlgeschlagen',
@@ -42,10 +46,6 @@ return array (
   'The following items are only required if you want the backend to me woken using Wake on LAN' => 'Die folgenden Angaben werden nur für die Wake on LAN Funktion gebraucht.',
   'The server does not ask for authentication' => 'Der Server verlangt keine Authentifizierung',
   'There must be a default backend' => 'Ein Standard Backend muss angegeben werden',
-  'This is where you configure your backends. A 
-	backend is an instance of XBMC that the application connects to and serves 
-	library contents from. If you specify more than one backend, a new item 
-	will appear in the main menu, allowing you to easily switch backends.' => 'Hier werden die Backends konfiguriert. Ein Backend ist eine XBMC Instanz die die Medien-Bibliothek zur Verfügung stellt. Bei mehr als einem Backend erscheint ein Hinweis zum Wechseln im Hauptmenü.',
   'Unable to connect to {hostname}:{port}, make sure XBMC is running and has its web server enabled' => 'Verbindung zu : {hostname}:{port} fehlgeschlagen, stelle bitte sicher, dass XBMC läuft und der Webserver eingeschaltet ist',
   'Unable to send WOL packet' => ' Wake on LAN fehlgeschlagen',
   'Update {backendName}' => 'Aktualisiere : {backendName}',

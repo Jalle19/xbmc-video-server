@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Message translations.
  *
@@ -17,12 +17,16 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Before you get started, please have a look at the application settings' => 'Bevor du beginnst, schau dir bitte die Einstellungen an und passe sie ggf. an',
+  'Determines how long the application should wait for a response from XBMC. Increase this if you get timeout errors.' => '',
+  'Look and feel' => '',
+  'Request timeout' => '',
+  'Security and performance' => '',
   'Access whitelist' => 'Zugang - Positivliste',
   'Amount of results to show per page' => 'Anzahl der Ergebnisse pro Seite',
   'Application language' => 'Systemsprache',
   'Application name' => 'Systemname',
   'Application subtitle' => 'Seitenuntertitel',
+  'Before you get started, please have a look at the application settings' => 'Bevor du beginnst, schau dir bitte die Einstellungen an und passe sie ggf. an',
   'Cache all API results' => 'Cache alle API Ergebnisse',
   'Changing this will reset the default language for all users' => 'Eine Änderungen setzt die Standardsprache für alle Benutzer zurück',
   'Don\'t use playlists when item consists of a single file' => 'Für einzelne Dateien keine Wiedergabeliste benutzen',

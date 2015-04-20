@@ -17,7 +17,7 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Watch in browser' => 'Visionner dans le navigateur',
+  'This file(s) for this item cannot be streamed' => '',
   'Download' => 'Télécharger',
   'Download (part #{partNumber})' => 'Télécharger (la partie #{partNumber})',
   'Play in XBMC' => 'Lecture dans Kodi',
@@ -25,4 +25,5 @@ return array (
   'The item should now be playing on {backend}' => 'La lecture du fichier vidéo a débuté sur la source Kodi suivante : {backend}',
   'Watch' => 'Visionner',
   'Watch as playlist' => 'Visionner comme liste de lecture',
+  'Watch in browser' => 'Visionner dans le navigateur',
 );
