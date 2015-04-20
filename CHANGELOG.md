@@ -8,6 +8,15 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.6.12
+* some minor changes to the style sheet to improve the grid layout on all resolutions
+* minor updates to the French translation (thanks to @Galixte)
+* changed to use case-insensitive matching for usernames during login
+* divided the settings area into two sections for improved readability
+* fixed library update functionality on certain Isengard alpha backends
+* added a new setting to control the request timeout. The default has also been increased from 10 to 30 seconds.
+* minor change to the installation instructions (on the wiki) to workaround an issue where yiic may be unexecutable out of the box
+
 #### 1.6.11
 * updated German translation (thanks to @Victor61)
 * added screen width override for 1366px wide screens
