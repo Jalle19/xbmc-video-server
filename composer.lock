@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2849fce1328c725e7ac32bb34e65c762",
+    "hash": "663169a8447c88b4356bc6d04cf7e8b3",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -313,16 +313,16 @@
         },
         {
             "name": "jalle19/simple-json-rpc-client",
-            "version": "1.0.7",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Jalle19/simple-json-rpc-client.git",
-                "reference": "7d0cfc0cf9421cfb9db0b243e18973801ffad353"
+                "reference": "eecfbfd02168c761d1221d9857f8dcc09db345b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Jalle19/simple-json-rpc-client/zipball/7d0cfc0cf9421cfb9db0b243e18973801ffad353",
-                "reference": "7d0cfc0cf9421cfb9db0b243e18973801ffad353",
+                "url": "https://api.github.com/repos/Jalle19/simple-json-rpc-client/zipball/eecfbfd02168c761d1221d9857f8dcc09db345b1",
+                "reference": "eecfbfd02168c761d1221d9857f8dcc09db345b1",
                 "shasum": ""
             },
             "require": {
@@ -350,7 +350,7 @@
             "keywords": [
                 "jsonrpc"
             ],
-            "time": "2014-07-10 11:06:25"
+            "time": "2015-04-20 11:09:16"
         },
         {
             "name": "jalle19/yii-lazy-image",
@@ -964,22 +964,15 @@
             "time": "2014-03-03 23:00:13"
         }
     ],
-    "packages-dev": [
-
-    ],
-    "aliases": [
-
-    ],
+    "packages-dev": [],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "eventviva/php-image-resize": 20,
         "netresearch/jsonmapper": 20
     },
     "prefer-stable": false,
-    "platform": [
-
-    ],
-    "platform-dev": [
-
-    ]
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
 }
