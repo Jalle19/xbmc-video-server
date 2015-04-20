@@ -26,8 +26,10 @@ class UserIdentity extends CUserIdentity
 		// Try to match the user based on both the plain-text password and a 
 		// hashed varient. The default "admin" user has its password stored in 
 		// plaintext so we need to hash it on first login.
-		$user = User::model()->findByAttributes(array(
-			'username'=>$this->username));
+		
+		// Match usernames case-insensitively
+		$user = User::model()->find('LOWER(username) = :username', array(
+			':username'=>strtolower($this->username)));
 
 		$this->errorCode = self::ERROR_UNKNOWN_IDENTITY;
 
