@@ -220,13 +220,6 @@ class Setting extends CActiveRecord
 				'default'=>'1',
 				'order'=>300,
 			),
-			'cacheApiCalls'=>array(
-				'label'=>Yii::t('Settings', 'Cache all API results'),
-				'type'=>self::TYPE_CHECKBOX,
-				'default'=>'0',
-				'description'=>Yii::t('Settings', 'Useful on slow hardware. A refresh button will appear in the menu which flushes the cache'),
-				'order'=>400,
-			),
 			'pagesize'=>array(
 				'label'=>Yii::t('Settings', 'Amount of results to show per page'),
 				'type'=>self::TYPE_TEXT,
@@ -249,12 +242,19 @@ class Setting extends CActiveRecord
 				'default'=>'0',
 				'order'=>600,
 			),
-			'useHttpsForVfsUrls'=>array(
-				'label'=>Yii::t('Settings', 'Use HTTPS when streaming'),
+			'cacheApiCalls'=>array(
+				'label'=>Yii::t('Settings', 'Cache all API results'),
 				'separator'=>array(
 					'icon'=>'fa fa-lock',
 					'label'=>Yii::t('Settings', 'Security and performance')
 				),
+				'type'=>self::TYPE_CHECKBOX,
+				'default'=>'0',
+				'description'=>Yii::t('Settings', 'Useful on slow hardware. A refresh button will appear in the menu which flushes the cache'),
+				'order'=>650,
+			),
+			'useHttpsForVfsUrls'=>array(
+				'label'=>Yii::t('Settings', 'Use HTTPS when streaming'),
 				'type'=>self::TYPE_CHECKBOX,
 				'default'=>'0',
 				'description'=>Yii::t('Settings', 'When checked, streaming will be done over HTTPS if 
