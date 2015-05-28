@@ -42,6 +42,7 @@ INSERT INTO `settings` (`name`,`value`) VALUES ('ignoreArticle','0');
 INSERT INTO `settings` (`name`,`value`) VALUES ('language','en');
 INSERT INTO `settings` (`name`,`value`) VALUES ('playlistFormat','m3u');
 INSERT INTO `settings` (`name`,`value`) VALUES ('applicationSubtitle','Free your library');
+INSERT INTO `settings` (`name`,`value`) VALUES ('requestTimeout','30');
 
 DROP TABLE IF EXISTS `display_mode`;
 CREATE TABLE `display_mode` (
