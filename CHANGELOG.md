@@ -8,6 +8,9 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.6.14
+* updated dependencies
+
 #### 1.6.13
 * fixed broken database schema files which lead to HTTP 400 errors on new installations
 
