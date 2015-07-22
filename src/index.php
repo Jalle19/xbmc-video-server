@@ -12,6 +12,10 @@ $config=dirname(__FILE__).'/protected/config/main.php';
 // include Composer's autoloader
 require_once(__DIR__.'/../vendor/autoload.php');
 
+// increase memory limit and execution time
+ini_set('memory_limit', '1024M');
+ini_set('max_execution_time', 120);
+
 require_once($yii);
 
 Yii::createWebApplication($config)->run();
