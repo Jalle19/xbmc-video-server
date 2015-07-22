@@ -20,12 +20,14 @@ Features
 Screenshots
 -----------
 
-[![screenshot1](http://t.imgbox.com/E9TRJ1gS.jpg)](http://i.imgbox.com/E9TRJ1gS.jpg) [![screenshot2](http://t.imgbox.com/d8VVi46K.jpg)](http://i.imgbox.com/d8VVi46K.jpg) 
-[![screenshot3](http://t.imgbox.com/actvy5rQ.jpg)](http://i.imgbox.com/actvy5rQ.jpg) 
-[![screenshot4](http://t.imgbox.com/acwlf35k.jpg)](http://i.imgbox.com/acwlf35k.jpg)  [![screenshot5](http://t.imgbox.com/PDzqmqG4.jpg)](http://i.imgbox.com/PDzqmqG4.jpg) 
-[![screenshot6](http://t.imgbox.com/UxvIw9vB.jpg)](http://i.imgbox.com/UxvIw9vB.jpg) 
-[![screenshot7](http://t.imgbox.com/acumBdVg.jpg)](http://i.imgbox.com/acumBdVg.jpg) 
-[![screenshot8](http://t.imgbox.com/acoIuF8V.jpg)](http://i.imgbox.com/acoIuF8V.jpg)
+[![screenshot1](http://8.t.imgbox.com/nBiLdhfD.jpg)](http://i.imgbox.com/nBiLdhfD.png) 
+[![screenshot2](http://9.t.imgbox.com/5mvkZ94f.jpg)](http://i.imgbox.com/5mvkZ94f.png) 
+[![screenshot3](http://1.t.imgbox.com/0WsVzmzT.jpg)](http://i.imgbox.com/0WsVzmzT.png) 
+[![screenshot4](http://6.t.imgbox.com/XaIUObRu.jpg)](http://i.imgbox.com/XaIUObRu.png) 
+[![screenshot5](http://4.t.imgbox.com/9dI7zzJk.jpg)](http://i.imgbox.com/9dI7zzJk.png) 
+[![screenshot6](http://5.t.imgbox.com/H97dUCsL.jpg)](http://i.imgbox.com/H97dUCsL.png) 
+[![screenshot7](http://8.t.imgbox.com/NyEP3MDa.jpg)](http://i.imgbox.com/NyEP3MDa.png) 
+[![screenshot8](http://8.t.imgbox.com/yRTNvPbS.jpg)](http://i.imgbox.com/yRTNvPbS.png)
 
 Requirements
 ------------
