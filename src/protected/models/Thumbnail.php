@@ -21,6 +21,11 @@ class Thumbnail
 	const SIZE_LARGE = 434;
 	
 	/**
+	 * Prefix used for storing temporary files
+	 */
+	const TEMP_FILE_PREFIX = 'xbmc-video-server-thumbnail';
+	
+	/**
 	 * @var string the path to the thumbnail
 	 */
 	private $_path;
@@ -103,16 +108,37 @@ class Thumbnail
 	}
 	
 	/**
-	 * Generates and stores a cached copy of this thumbnail
+	 * Generates and stores a cached copy of this thumbnail. It first retrieves 
+	 * the original image to a temporary location for processing. This is done 
+	 * because Kodi doesn't like the HTTP/1.0 requests that the built-in PHP 
+	 * image manipulation functions (as well as file_get_contents()) use.
 	 */
 	public function generate()
 	{
-		$image = new Eventviva\ImageResize($this->getOriginalUrl());
+		// Create a HTTP/1.1 stream context
+		$context = stream_context_create(array(
+			'http'=>array(
+				'timeout'=>Setting::getInteger('requestTimeout'),
+				'protocol_version'=>1.1,
+				'header'=>'Connection: close')));
+
+		// Retrieve the image data and store it in a temporary file
+		$imageData = file_get_contents($this->getOriginalUrl(), false, $context);
+		$imageFile = tempnam(sys_get_temp_dir(), self::TEMP_FILE_PREFIX);
+		
+		if ($imageData === false || file_put_contents($imageFile, $imageData) === false)
+			return;
+		
+		// Resize and cache the thumbnail
+		$image = new Eventviva\ImageResize($imageFile);
 		$image->resizeToWidth($this->_size);
 		$image->save($this->_cache->getCachePath().DIRECTORY_SEPARATOR.
 				$this->getFilename(), IMAGETYPE_JPEG);
+
+		// Delete the temporary file
+		unlink($imageFile);
 	}
-	
+
 	/**
 	 * Returns the place holder image (used when no thumbnail exists)
 	 * @return string
