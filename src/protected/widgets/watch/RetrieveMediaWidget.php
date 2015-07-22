@@ -55,8 +55,7 @@ abstract class RetrieveMediaWidget extends CWidget
 		
 		if (!$this->checkLinks())
 		{
-			echo CHtml::tag('p', array('class'=>'missing-video-file'), TbHtml::icon(TBHtml::ICON_WARNING_SIGN).
-					Yii::t('RetrieveMediaWidget', 'The file(s) for this item is not available'));
+			$this->renderMissingFile();
 
 			return;
 		}
@@ -148,10 +147,7 @@ abstract class RetrieveMediaWidget extends CWidget
 			<?php
 		}
 		else
-		{
-			echo CHtml::tag('p', array('class'=>'missing-video-file'), TbHtml::icon(TBHtml::ICON_WARNING_SIGN).
-					Yii::t('RetrieveMediaWidget', 'This file(s) for this item cannot be streamed'));
-		}
+			$this->renderMissingFile();
 		
 		// Render the download links and close the form
 		$this->renderLinks();
@@ -187,6 +183,15 @@ abstract class RetrieveMediaWidget extends CWidget
 			$this->renderPlayOnBackendLink();
 
 		echo CHtml::closeTag('div');
+	}
+	
+	/**
+	 * Renders a warning about a missing file
+	 */
+	private function renderMissingFile()
+	{
+		echo CHtml::tag('p', array('class'=>'missing-video-file'), TbHtml::icon(TBHtml::ICON_WARNING_SIGN).
+					Yii::t('RetrieveMediaWidget', 'The file(s) for this item is not available'));
 	}
 	
 	/**
