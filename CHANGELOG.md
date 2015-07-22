@@ -8,6 +8,12 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.6.15
+* increased memory limit and execution time to avoid timeouts on large libraries combined with slow devices
+* updated README screenshots
+* hopefully fixed incompatibility with Kodi Isengard backends running on Windows
+* honor the request timeout for image retrievals as well
+
 #### 1.6.14
 * updated dependencies
 
