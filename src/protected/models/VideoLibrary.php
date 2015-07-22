@@ -279,21 +279,10 @@ class VideoLibrary
 	 */
 	public static function getVideoLinks($file, $omitCredentials = false)
 	{
-		$rawFiles = array();
 		$files = array();
 
-		// Check for stack files
-		if (strpos($file, 'stack://') !== false)
-			$rawFiles = preg_split('/ , /i', $file);
-		else
-			$rawFiles[] = $file;
-
-		foreach ($rawFiles as $rawFile)
+		foreach (self::parseStackedFile($file) as $rawFile)
 		{
-			// Remove stack://
-			if (substr($rawFile, 0, 8) === 'stack://')
-				$rawFile = substr($rawFile, 8);
-
 			// Create the URL to the file. If the file has been deleted from
 			// disc but the movie still exists in the library the API call 
 			// throws an exception. We just skip this file if that's the case.
@@ -310,6 +299,26 @@ class VideoLibrary
 			}
 		}
 
+		return $files;
+	}
+	
+	/**
+	 * Parses potential stack:// files into an array of "normal" VFS URLs
+	 * @param string $file a VFS URL (potentially stack://)
+	 * @return array list of files
+	 */
+	private static function parseStackedFile($file)
+	{
+		$files = array($file);
+
+		if (strpos($file, 'stack://') !== false)
+		{
+			$actualFiles = preg_split('/ , /i', $file);
+			
+			// Remove stack:// from the first item
+			$actualFiles[0] = substr($actualFiles[0], 8);
+		}
+		
 		return $files;
 	}
 	
