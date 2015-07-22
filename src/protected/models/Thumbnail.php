@@ -99,7 +99,7 @@ class Thumbnail
 			$response = Yii::app()->xbmc->performRequest('Files.PrepareDownload', 
 					array('path'=>$this->_path));
 
-			$imageUrl = Yii::app()->xbmc->getAbsoluteVfsUrl($response->result->details->path);
+			$imageUrl = Yii::app()->xbmc->getVFSHelper()->getUrl($response->result->details->path);
 		}
 		else
 			$imageUrl = Yii::app()->request->getHostInfo().$this->_path;

@@ -23,6 +23,11 @@ class XBMC extends CApplicationComponent
 	private $_client;
 	
 	/**
+	 * @var VFSHelper the VFS helper
+	 */
+	private $_vfsHelper;
+	
+	/**
 	 * Initializes the component
 	 */
 	public function init()
@@ -39,6 +44,9 @@ class XBMC extends CApplicationComponent
 		$this->_client = new JsonRPCClient($endpoint, 
 				$this->_backend->username, $this->_backend->password, 
 				$clientFlags, $clientOptions);
+		
+		// Initialize the VFS helper
+		$this->_vfsHelper = new VFSHelper();
 
 		parent::init();
 	}
@@ -171,44 +179,13 @@ class XBMC extends CApplicationComponent
 
 		throw new CHttpException(500, $message);
 	}
-
+	
 	/**
-	 * Returns the absolute URL to the specified API path
-	 * @param string $path a path returned from an API call
-	 * @param boolean $omitCredentials whether to omit the XBMC credentials in 
-	 * the generated URLs
-	 * @return string
+	 * @return VFSHelper the VFS helper
 	 */
-	public function getAbsoluteVfsUrl($path, $omitCredentials = false)
+	public function getVFSHelper()
 	{
-		$backend = Yii::app()->backendManager->getCurrent();
-		
-		// Use reverse proxy for vfs:// paths (if specified)
-		$proxyLocation = $backend->proxyLocation;
-
-		if (!empty($proxyLocation) && substr($path, 0, 3) === 'vfs')
-		{
-			// Only use HTTPS if user has explicitly enabled it
-			$scheme = 'http://';
-			if (Setting::getBoolean('useHttpsForVfsUrls') && Yii::app()->request->isSecureConnection)
-				$scheme = 'https://';
-			
-			// Remove the beginning "vfs/" from the path
-			$path = substr($path, 4);
-			
-			return $scheme.$_SERVER['HTTP_HOST'].$proxyLocation.'/'.$path;
-		}
-		else
-		{
-			$url = 'http://{credentials}'.Backend::normalizeAddress($backend->hostname).':'.$backend->port.'/'.$path;
-			
-			if ($omitCredentials)
-				$url = str_replace('{credentials}', '', $url);
-			else
-				$url = str_replace('{credentials}', $backend->username.':'.$backend->password.'@', $url);
-
-			return $url;
-		}
+		return $this->_vfsHelper;
 	}
 
 	/**
