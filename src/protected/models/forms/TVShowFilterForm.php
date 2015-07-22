@@ -20,7 +20,7 @@ class TVShowFilterForm extends VideoFilterForm
 	 */
 	public function getFilterDefinitions()
 	{
-		return parent::getCommonFilterDefinitions();
+		return $this->getCommonFilterDefinitions();
 	}
 
 }

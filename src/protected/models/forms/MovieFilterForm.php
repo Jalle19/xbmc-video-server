@@ -96,7 +96,7 @@ class MovieFilterForm extends VideoFilterForm
 	 */
 	public function getFilterDefinitions()
 	{
-		$filter = parent::getCommonFilterDefinitions();
+		$filter = $this->getCommonFilterDefinitions();
 
 		$filter['year'] = array(
 			'operator'=>'is',

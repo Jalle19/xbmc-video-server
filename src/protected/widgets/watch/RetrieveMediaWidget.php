@@ -31,7 +31,8 @@ abstract class RetrieveMediaWidget extends CWidget
 	abstract protected function getLogMessage();
 	
 	/**
-	 * @return string the action for retrieving an item's playlist
+	 * @return array the action for retrieving an item's playlist (as a single 
+	 * item array)
 	 */
 	abstract protected function getPlayListAction();
 	

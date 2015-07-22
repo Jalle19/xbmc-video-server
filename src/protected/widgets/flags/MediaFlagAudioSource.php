@@ -18,7 +18,7 @@ class MediaFlagAudioSource extends MediaFlag
 		else if (preg_match('/\.LD\.|\.line\.dubbed\./i', $this->file))
 			return 'LD';
 		else
-			return false;
+			return '';
 	}
 
 }

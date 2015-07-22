@@ -16,16 +16,16 @@ class MediaFlagAudioChannels extends MediaFlagStreamDetails
 
 		if ($channels == 10)
 			return '50px-10';
-		elseif ($channels == 8)
+		else if ($channels == 8)
 			return '50px-8';
-		if ($channels == 6)
+		else if ($channels == 6)
 			return '50px-6';
-		if ($channels == 2)
+		else if ($channels == 2)
 			return '50px-2';
-		if ($channels == 1)
+		else if ($channels == 1)
 			return '50px-1';
 		else
-			return false;
+			return '';
 	}
 
 }

@@ -16,7 +16,7 @@ class MediaFlagVideoSource extends MediaFlag
 		if (preg_match('/\.TS\.|\.TELESYNC\./i', $this->file))
 			return 'TS';
 		else
-			return false;
+			return '';
 	}
 
 }
