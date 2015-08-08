@@ -8,3 +8,4 @@
 composer.phar
 whitelist.override
 /node_modules
+/.vagrant
