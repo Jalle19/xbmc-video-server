@@ -11,14 +11,14 @@ class ThumbnailController extends Controller
 {
 	
 	/**
-	 * Disable all filters (including authentication) since the generate action 
+	 * Disable all default filters (including authentication) since the generate action
 	 * may be called from e.g. a media player which naturally isn't 
 	 * authenticated
 	 * @return array the filters for this controller
 	 */
 	public function filters()
 	{
-		return array();
+		return array('releaseSessionLock');
 	}
 
 	/**

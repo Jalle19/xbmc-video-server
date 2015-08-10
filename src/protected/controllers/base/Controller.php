@@ -49,6 +49,18 @@ class Controller extends CController
 		);
 	}
 
+
+	/**
+	 * Releases the current session locks to allow for new requests from the same client
+	 * @param CFilterChain $filterChain
+	 */
+	public function filterReleaseSessionLock($filterChain)
+	{
+		session_write_close();
+
+		$filterChain->run();
+	}
+
 	/**
 	 * Checks that someone is logged in and if not redirects to the login page
 	 * @param CFilterChain $filterChain
