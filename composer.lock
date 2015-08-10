@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "663169a8447c88b4356bc6d04cf7e8b3",
+    "hash": "a7fd089894853b514a7b405fddf5c321",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -139,7 +139,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eventviva/php-image-resize/zipball/c75bc2cadf29f6c2f97bd0a9329280e9f9361db8",
+                "url": "https://api.github.com/repos/eventviva/php-image-resize/zipball/cd5ba51c2bdd924d7c99aff6f7f1bdd7a79eb959",
                 "reference": "c75bc2cadf29f6c2f97bd0a9329280e9f9361db8",
                 "shasum": ""
             },
@@ -487,20 +487,21 @@
         },
         {
             "name": "netresearch/jsonmapper",
-            "version": "dev-xbmc-video-server",
+            "version": "v0.8.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Jalle19/jsonmapper.git",
-                "reference": "67c7ee03c7654241155088fba3a299d260ad14cc"
+                "url": "https://github.com/netresearch/jsonmapper.git",
+                "reference": "8888278ddbf013a81e4b83670cdf7b900d121751"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Jalle19/jsonmapper/zipball/67c7ee03c7654241155088fba3a299d260ad14cc",
-                "reference": "67c7ee03c7654241155088fba3a299d260ad14cc",
+                "url": "https://api.github.com/repos/netresearch/jsonmapper/zipball/8888278ddbf013a81e4b83670cdf7b900d121751",
+                "reference": "8888278ddbf013a81e4b83670cdf7b900d121751",
                 "shasum": ""
             },
             "require-dev": {
-                "phpunit/phpunit": "4.2.*"
+                "phpunit/phpunit": "4.2.*",
+                "squizlabs/php_codesniffer": "~1.5"
             },
             "type": "library",
             "autoload": {
@@ -508,8 +509,9 @@
                     "": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "AGPL-3.0"
+                "OSL-3.0"
             ],
             "authors": [
                 {
@@ -520,12 +522,7 @@
                 }
             ],
             "description": "Map nested JSON structures onto PHP classes",
-            "support": {
-                "email": "christian.weiske@netresearch.de",
-                "issues": "https://github.com/netresearch/jsonmapper/issues",
-                "source": "https://github.com/Jalle19/jsonmapper/tree/xbmc-video-server"
-            },
-            "time": "2014-09-16 09:30:49"
+            "time": "2015-07-06 07:43:26"
         },
         {
             "name": "tomnomnom/phpwol",
@@ -1006,8 +1003,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "eventviva/php-image-resize": 20,
-        "netresearch/jsonmapper": 20
+        "eventviva/php-image-resize": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
