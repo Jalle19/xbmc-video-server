@@ -1,5 +1,7 @@
 <?php
 
+use Imagine\Exception\RuntimeExcpetion;
+
 /**
  * Represents a thumbnail. When used as a string the object will return the URL 
  * to a cached copy of the thumbnail if one exists, otherwise it will return 
@@ -130,10 +132,12 @@ class Thumbnail
 			return;
 		
 		// Resize and cache the thumbnail
-		$image = new Eventviva\ImageResize($imageFile);
-		$image->resizeToWidth($this->_size);
-		$image->save($this->_cache->getCachePath().DIRECTORY_SEPARATOR.
-				$this->getFilename(), IMAGETYPE_JPEG);
+		$imagine = $this->imagineFactory();
+
+		$imagine->open($imageFile)
+			->thumbnail(new \Imagine\Image\Box($this->_size, PHP_INT_MAX))
+			->save($this->_cache->getCachePath().DIRECTORY_SEPARATOR.
+				$this->getFilename(), array('jpeg_quality'=>70));
 
 		// Delete the temporary file
 		unlink($imageFile);
@@ -185,6 +189,21 @@ class Thumbnail
 		}
 
 		return $url;
+	}
+
+
+	/**
+	 * Factory method for creating an Imagine instance
+	 * @return \Imagine\Gd\Imagine|\Imagine\Imagick\Imagine
+	 */
+	private function imagineFactory()
+	{
+		// Try Imagick first, then fall back to GD. We have to check for
+		// Imagick ourselves because Imagine is too stupid to do it correctly
+		if (class_exists('Imagick', false))
+			return new Imagine\Imagick\Imagine();
+		else
+			return new \Imagine\Gd\Imagine();
 	}
 
 }
