@@ -164,7 +164,7 @@ class BackendController extends AdminOnlyController
 			Yii::app()->user->setFlash('error', $message);
 		}
 
-		$this->renderText('');
+		$this->redirectToPrevious(Yii::app()->homeUrl);
 	}
 
 	/**
