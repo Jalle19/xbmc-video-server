@@ -9,3 +9,5 @@ composer.phar
 whitelist.override
 /node_modules
 /.vagrant
+**/.idea/workspace.xml
+**/.idea/tasks.xml
