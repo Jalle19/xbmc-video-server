@@ -12,7 +12,7 @@ Features
 * Browse seasons and episodes for a TV show
 * Stream media using an M3U playlist with one click
 * User management (application requires login), including logging to see who's doing what and restricting access based on a whitelist
-* Supports multiple XBMC instances and allows easy switching between them, including the ability to wake them using WOL if it's not available
+* Supports multiple XBMC instances and allows easy switching between them, including the ability to suspend instances and wake them using WOL
 * No configuration files
 * Multiple languages
 * Customizable interface
