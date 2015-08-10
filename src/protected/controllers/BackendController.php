@@ -136,7 +136,7 @@ class BackendController extends AdminOnlyController
 	/**
 	 * Powers off the backend by shutting down, suspending, hibernating or
 	 * rebooting the backend
-	 * @param string $method the method used to power off the backend,
+	 * @param string $action the power off action to use, 
 	 * could be either of the strings 'shutdown', 'suspend', 'hibernate' or 'reboot'
 	 */
 	private function powerOff($action)
