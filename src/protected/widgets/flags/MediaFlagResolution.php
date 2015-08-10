@@ -20,8 +20,10 @@ class MediaFlagResolution extends MediaFlagStreamDetails
 			return '50px-480';
 		elseif ($width < 1281)
 			return '50px-720';
-		else
+		else if ($width < 3500) // highly unscientific
 			return '50px-1080_n';
+		else
+			return '4K';
 	}
 
 }
