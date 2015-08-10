@@ -20,14 +20,16 @@ Vagrant.configure(2) do |config|
     mount_options: ["dmode=775,fmode=664"]
 
   # provisioning
-  config.vm.provision "shell", path: "provisioning/01-install-system-packages.sh",
-    name: "01 - Install and update system packages"
-  config.vm.provision "shell", path: "provisioning/02-install-npm-dependencies.sh",
-    name: "02 - Install npm dependencies"
-  config.vm.provision "shell", path: "provisioning/03-configure-apache.sh",
-    name: "03 - Configure Apache"
-  config.vm.provision "shell", path: "provisioning/04-configure-xbmc-video-server.sh",
-    name: "04 - Configure XBMC Video Server"
+  config.vm.provision "shell", path: "provisioning/01-configure-system.sh",
+    name: "01 - Configure system"
+  config.vm.provision "shell", path: "provisioning/02-install-system-packages.sh",
+    name: "02 - Install and update system packages"
+  config.vm.provision "shell", path: "provisioning/03-install-npm-dependencies.sh",
+    name: "03 - Install npm dependencies"
+  config.vm.provision "shell", path: "provisioning/04-configure-apache.sh",
+    name: "04 - Configure Apache"
+  config.vm.provision "shell", path: "provisioning/05-configure-xbmc-video-server.sh",
+    name: "05 - Configure XBMC Video Server"
 
   # recurring provisioning
   config.vm.provision "shell", path: "provisioning/98-perform-post-update-tasks.sh", 
