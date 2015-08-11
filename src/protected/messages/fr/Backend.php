@@ -17,10 +17,14 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'This is where you configure your backends. A 
-	backend is an instance of XBMC that the application connects to and serves 
-	library contents from. If you specify more than one backend, a new item 
-	will appear in the main menu, allowing you to easily switch backends.' => 'Ici vous configurez vos sources. Une source est une instance du logiciel Kodi qui gère le contenu de la librairie. Si vous configurez plusieurs sources, un nouvel objet apparaitra dans le menu, vous permettant de passer d’une source à l’autre.',
+    'The current backend cannot be hibernated' => 'Cette source ne peut être mise en veille prolongée',
+    'The current backend cannot be rebooted' => 'Cette source ne peut être redémarrée',
+    'The current backend cannot be shut down' => 'Cette source ne peut être éteinte',
+    'The current backend cannot be suspended' => 'Cette source ne peut être mise en veille',
+    'The current backend is hibernating' => 'Cette source est mise en veille prolongée',
+    'The current backend is rebooting' => 'Cette source est en cours de redémarrage',
+    'The current backend is shutting down' => 'Cette source est éteinte',
+    'The current backend is suspending' => 'Cette source est mise en veille',
   'Backend created successfully' => 'Source créée avec succès',
   'Backend name' => 'Nom de la source',
   'Backend updated successfully' => 'Source mise à jour avec succès',
@@ -46,6 +50,10 @@ return array (
   'The following items are only required if you want the backend to me woken using Wake on LAN' => 'Les options suivantes sont utiles uniquement si vous souhaitez que la source soit réveillée par la fonction de réveil à distance (Wake-On-Lan).',
   'The server does not ask for authentication' => 'Le serveur ne demande pas d’authentification',
   'There must be a default backend' => 'Il doit y avoir une source par défaut',
+  'This is where you configure your backends. A 
+	backend is an instance of XBMC that the application connects to and serves 
+	library contents from. If you specify more than one backend, a new item 
+	will appear in the main menu, allowing you to easily switch backends.' => 'Ici vous configurez vos sources. Une source est une instance du logiciel Kodi qui gère le contenu de la librairie. Si vous configurez plusieurs sources, un nouvel objet apparaitra dans le menu, vous permettant de passer d’une source à l’autre.',
   'Unable to connect to {hostname}:{port}, make sure XBMC is running and has its web server enabled' => 'Impossible de se connecter à : {hostname}:{port}, assurez-vous que le logiciel Kodi est lancé avec son option « Serveur Web activé »',
   'Unable to send WOL packet' => 'Impossibilité d’envoyer un paquet magique (WOL)',
   'Update {backendName}' => 'Mise à jour de : {backendName}',
