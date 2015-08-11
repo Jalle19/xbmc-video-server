@@ -29,6 +29,7 @@ return array (
   'Log out' => 'Se déconnecter',
   'Manage' => 'Gérer',
   'Movies' => 'Films',
+  'Power off' => 'Éteindre',
   'Recently added' => 'Derniers ajouts',
   'Settings' => 'Paramètres',
   'System' => 'Application',
