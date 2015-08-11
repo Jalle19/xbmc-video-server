@@ -249,6 +249,7 @@ class BackendController extends AdminOnlyController
 		{
 			$model->hostname = 'localhost';
 			$model->port = 8080;
+			$model->tcp_port = 9090;
 			$model->username = 'xbmc';
 			$model->password = 'xbmc';
 

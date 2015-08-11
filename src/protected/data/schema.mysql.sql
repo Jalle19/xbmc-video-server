@@ -4,6 +4,7 @@ CREATE TABLE `backend` (
 	`name` VARCHAR(255) NOT NULL, 
 	`hostname` VARCHAR(255) NOT NULL, 
 	`port` INT NOT NULL, 
+	`tcp_port` INT NOT NULL, 
 	`username` VARCHAR(255) NOT NULL, 
 	`password` VARCHAR(255) NOT NULL, 
 	`proxyLocation` VARCHAR(255), 

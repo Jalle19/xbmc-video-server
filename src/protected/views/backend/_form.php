@@ -33,6 +33,14 @@ echo $form->textFieldControlGroup($model, 'macAddress', array(
 echo $form->textFieldControlGroup($model, 'subnetMask', array(
 	'help'=>Yii::t('Backend', "If you don't know what this, leave it empty. Otherwise enter the subnet mask, e.g. 255.255.0.0")));
 
+echo '<hr />';
+
+echo FormHelper::helpBlock(Yii::t('Backend', "The following item must only be changed if you've changed the port through advancedsettings.xml"));
+
+echo $form->textFieldControlGroup($model, 'tcp_port', array(
+	'span'=>1,
+	'help'=>Yii::t('Backend', 'If the backend allows TCP connections from other machines, XBMC Video Server will use it to determine when triggered library updates are finished')));
+
 ?>
 <div class="form-actions">
 	<?php echo TbHtml::submitButton($model->isNewRecord ? Yii::t('Forms', 'Create') : Yii::t('Forms', 'Save changes'), array(

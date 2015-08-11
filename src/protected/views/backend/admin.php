@@ -29,6 +29,7 @@ $this->pageTitle = $title = Yii::t('Backend', 'Manage backends');
 		'name',
 		'hostname',
 		'port',
+		'tcp_port',
 		array(
 			'name'=>'default',
 			'header'=>Yii::t('Backend', 'Default'),

@@ -8,6 +8,7 @@
  * @property string $name
  * @property string $hostname
  * @property int $port
+ * @property int $tcp_port
  * @property string $username
  * @property string $password
  * @property string $proxyLocation
@@ -53,10 +54,10 @@ class Backend extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('name, hostname, port, username, password', 'required'),
+			array('name, hostname, port, tcp_port, username, password', 'required'),
 			array('default', 'requireDefaultBackend'),
 			array('default', 'numerical', 'integerOnly'=>true),
-			array('port', 'numerical', 'integerOnly'=>true, 'max'=>65535),
+			array('port, tcp_port', 'numerical', 'integerOnly'=>true, 'max'=>65535),
 			array('proxyLocation', 'safe'),
 			// the following rules depend on each other so they must come in this order
 			array('hostname', 'checkConnectivity'),
@@ -88,6 +89,7 @@ class Backend extends CActiveRecord
 			'name'=>Yii::t('Backend', 'Backend name'),
 			'hostname'=>Yii::t('Backend', 'Hostname'),
 			'port'=>Yii::t('Backend', 'Port'),
+			'tcp_port'=>Yii::t('Backend', 'TCP port'),
 			'username'=>Yii::t('Backend', 'Username'),
 			'password'=>Yii::t('Backend', 'Password'),
 			'proxyLocation'=>Yii::t('Backend', 'Proxy location'),
