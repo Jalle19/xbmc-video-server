@@ -1,13 +1,32 @@
 DROP TABLE IF EXISTS "backend";
-CREATE TABLE "backend" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL, "name" VARCHAR NOT NULL, "hostname" VARCHAR NOT NULL, "port" INTEGER NOT NULL , "username" VARCHAR NOT NULL, "password" VARCHAR NOT NULL, "proxyLocation" VARCHAR, "default" INTEGER NOT NULL, "macAddress" VARCHAR, "subnetMask" VARCHAR);
+CREATE TABLE "backend" (
+	"id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL, 
+	"name" VARCHAR NOT NULL, 
+	"hostname" VARCHAR NOT NULL, 
+	"port" INTEGER NOT NULL , 
+	"username" VARCHAR NOT NULL, 
+	"password" VARCHAR NOT NULL, 
+	"proxyLocation" VARCHAR, 
+	"default" INTEGER NOT NULL, 
+	"macAddress" VARCHAR, 
+	"subnetMask" VARCHAR);
 
 DROP TABLE IF EXISTS "user";
-CREATE TABLE "user" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , "role" VARCHAR NOT NULL  DEFAULT user, "username" VARCHAR NOT NULL  UNIQUE , "password" VARCHAR NOT NULL, "language" VARCHAR );
+CREATE TABLE "user" (
+	"id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , 
+	"role" VARCHAR NOT NULL  DEFAULT user, 
+	"username" VARCHAR NOT NULL  UNIQUE , 
+	"password" VARCHAR NOT NULL, 
+	"language" VARCHAR
+);
 
 INSERT INTO "user" ('role','username','password','language') VALUES('admin','admin','admin',NULL);
 
 DROP TABLE IF EXISTS "settings";
-CREATE TABLE "settings" ("name" VARCHAR PRIMARY KEY NOT NULL , "value" VARCHAR);
+CREATE TABLE "settings" (
+	"name" VARCHAR PRIMARY KEY NOT NULL , 
+	"value" VARCHAR
+);
 
 INSERT INTO "settings" ('name','value') VALUES ('applicationName','XBMC Video Server');
 INSERT INTO "settings" ('name','value') VALUES ('singleFilePlaylist','0');
