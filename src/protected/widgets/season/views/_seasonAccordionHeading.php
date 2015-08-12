@@ -6,7 +6,8 @@
 <div class="season row-fluid">
 	
 	<div class="pull-left season-artwork hide-when-toggled">
-	<?php echo \yiilazyimage\components\LazyImage::image(new ThumbnailSeason($season->getArtwork(), Thumbnail::SIZE_VERY_SMALL)); ?>
+	<?php echo \yiilazyimage\components\LazyImage::image(ThumbnailFactory::create($season->getArtwork(),
+		Thumbnail::SIZE_VERY_SMALL, ThumbnailFactory::THUMBNAIL_TYPE_SEASON)); ?>
 	</div>
 
 	<div class="pull-left">

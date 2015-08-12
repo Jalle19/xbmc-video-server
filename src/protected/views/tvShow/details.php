@@ -10,7 +10,7 @@ $this->pageTitle = $details->getDisplayName();
 	<div class="span3">
 		<?php 
 		
-		echo CHtml::image(new ThumbnailVideo($details->getArtwork(),
+		echo CHtml::image(ThumbnailFactory::create($details->getArtwork(),
 				Thumbnail::SIZE_LARGE), '', array('class'=>'item-thumbnail hidden-phone'));
 		
 		if (Yii::app()->user->role !== User::ROLE_SPECTATOR)

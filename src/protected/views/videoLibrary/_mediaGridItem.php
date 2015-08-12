@@ -4,7 +4,7 @@
 /* @var $data Media */
 
 $itemUrl = $this->createUrl('details', array('id'=>$data->getId()));
-$thumbnail = new ThumbnailVideo($data->getArtwork(), Thumbnail::SIZE_MEDIUM);
+$thumbnail = ThumbnailFactory::create($data->getArtwork(), Thumbnail::SIZE_MEDIUM);
 
 $this->renderPartial('//videoLibrary/_gridItem', array(
 	'label'=>CHtml::link($data->label, $itemUrl),

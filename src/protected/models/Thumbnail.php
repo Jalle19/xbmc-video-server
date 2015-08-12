@@ -14,7 +14,7 @@ use Imagine\Exception\RuntimeExcpetion;
  * @copyright Copyright &copy; Sam Stenvall 2013-
  * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
  */
-class Thumbnail
+class Thumbnail extends AbstractThumbnail
 {
 
 	const SIZE_VERY_SMALL = 70;
@@ -28,11 +28,6 @@ class Thumbnail
 	const TEMP_FILE_PREFIX = 'xbmc-video-server-thumbnail';
 	
 	/**
-	 * @var string the path to the thumbnail
-	 */
-	private $_path;
-	
-	/**
 	 * @var int the thumbnail size
 	 */
 	private $_size;
@@ -44,17 +39,14 @@ class Thumbnail
 
 	/**
 	 * Class constructor
-	 * @param string $thumbnailPath the thumbnail path. If empty the placeholder 
-	 * image will be used instead.
+	 * @param string $thumbnailPath the thumbnail path.
 	 * @param int $size the thumbnail size. Defaults to SIZE_SMALL and can be 
 	 * changed afterwards
 	 */
 	public function __construct($thumbnailPath, $size = self::SIZE_SMALL)
 	{
-		if (empty($thumbnailPath))
-			$thumbnailPath = $this->getPlaceholder();
+		parent::__construct($thumbnailPath);
 
-		$this->_path = $thumbnailPath;
 		$this->_size = $size;
 		$this->_cache = new ImageCache();
 	}
@@ -75,8 +67,8 @@ class Thumbnail
 	}
 
 	/**
-	 * Returns the URL to a cached thumbnail or false if no cached copy exists
-	 * @return string|false
+	 * Returns the URL to the thumbnail
+	 * @return string
 	 */
 	public function getUrl()
 	{
@@ -85,7 +77,10 @@ class Thumbnail
 		if ($this->_cache->has($filename))
 			return $this->_cache->getCacheUrl().'/'.$filename;
 
-		return false;
+		// The image didn't exist in the cache
+		return Yii::app()->controller->createUrl('thumbnail/generate', array(
+					'path' => $this->_path,
+					'size' => $this->_size));
 	}
 	
 	/**
@@ -93,20 +88,9 @@ class Thumbnail
 	 */
 	private function getOriginalUrl()
 	{
-		// The path to the image can be either the placeholder image, in which 
-		// case we just prepend the host info, or it can be a VFS url in which 
-		// case we need to resolve it
-		if (substr($this->_path, 0, 5) === 'image')
-		{
-			$response = Yii::app()->xbmc->performRequest('Files.PrepareDownload', 
-					array('path'=>$this->_path));
+		$response = Yii::app()->xbmc->performRequest('Files.PrepareDownload', array('path' => $this->_path));
 
-			$imageUrl = Yii::app()->xbmc->getVFSHelper()->getUrl($response->result->details->path);
-		}
-		else
-			$imageUrl = Yii::app()->request->getHostInfo().$this->_path;
-		
-		return $imageUrl;
+		return Yii::app()->xbmc->getVFSHelper()->getUrl($response->result->details->path);
 	}
 	
 	/**
@@ -119,10 +103,10 @@ class Thumbnail
 	{
 		// Create a HTTP/1.1 stream context
 		$context = stream_context_create(array(
-			'http'=>array(
-				'timeout'=>Setting::getInteger('requestTimeout'),
-				'protocol_version'=>1.1,
-				'header'=>'Connection: close')));
+			'http' => array(
+				'timeout' => Setting::getInteger('requestTimeout'),
+				'protocol_version' => 1.1,
+				'header' => 'Connection: close')));
 
 		// Retrieve the image data and store it in a temporary file
 		$imageData = file_get_contents($this->getOriginalUrl(), false, $context);
@@ -135,21 +119,12 @@ class Thumbnail
 		$imagine = $this->imagineFactory();
 
 		$imagine->open($imageFile)
-			->thumbnail(new \Imagine\Image\Box($this->_size, PHP_INT_MAX))
-			->save($this->_cache->getCachePath().DIRECTORY_SEPARATOR.
-				$this->getFilename(), array('jpeg_quality'=>70));
+				->thumbnail(new \Imagine\Image\Box($this->_size, PHP_INT_MAX))
+				->save($this->_cache->getCachePath().DIRECTORY_SEPARATOR.
+						$this->getFilename(), array('jpeg_quality' => 70));
 
 		// Delete the temporary file
 		unlink($imageFile);
-	}
-
-	/**
-	 * Returns the place holder image (used when no thumbnail exists)
-	 * @return string
-	 */
-	protected function getPlaceholder()
-	{
-		return Yii::app()->baseUrl.'/images/blank.png';
 	}
 
 	/**
@@ -160,28 +135,6 @@ class Thumbnail
 	{
 		return md5($this->_path).'_'.$this->_size.'.jpg';
 	}
-
-	/**
-	 * Converts this object to the URL to the thumbnail it represents. If a 
-	 * cached copy exists, that URL will be returned, otherwise a URL which 
-	 * generates the image is returned. This way the image will only be 
-	 * generated once it is displayed.
-	 * @return string the URL to the thumbnail
-	 */
-	public function __toString()
-	{
-		$url = $this->getUrl();
-
-		if ($url === false)
-		{
-			$url = Yii::app()->controller->createUrl('thumbnail/generate', array(
-				'path'=>$this->_path,
-				'size'=>$this->_size));
-		}
-
-		return $url;
-	}
-
 
 	/**
 	 * Factory method for creating an Imagine instance

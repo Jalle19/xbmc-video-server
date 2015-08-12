@@ -9,7 +9,8 @@ $dataProvider = $this->getEpisodeDataProvider($season->tvshowid, $season->season
 ?>
 <div class="season-episode-list-info row-fluid">
 	<div class="season-artwork pull-left">
-		<?php echo LazyImage::image(new ThumbnailSeason($season->getArtwork(), Thumbnail::SIZE_MEDIUM)); ?>
+		<?php echo LazyImage::image(ThumbnailFactory::create($season->getArtwork(),
+			Thumbnail::SIZE_MEDIUM, ThumbnailFactory::THUMBNAIL_TYPE_SEASON)); ?>
 	</div>
 	
 	<h3>
