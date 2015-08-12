@@ -1,7 +1,5 @@
 <?php
 
-use Imagine\Exception\RuntimeExcpetion;
-
 /**
  * Represents a thumbnail. When used as a string the object will return the URL 
  * to a cached copy of the thumbnail if one exists, otherwise it will return 
