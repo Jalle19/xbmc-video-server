@@ -160,15 +160,6 @@ class Thumbnail
 	{
 		return md5($this->_path).'_'.$this->_size.'.jpg';
 	}
-	
-	/**
-	 * Sets the thumbnail size
-	 * @param int $size a size constant
-	 */
-	public function setSize($size)
-	{
-		$this->_size = $size;
-	}
 
 	/**
 	 * Converts this object to the URL to the thumbnail it represents. If a 
