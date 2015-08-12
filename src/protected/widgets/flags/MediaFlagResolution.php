@@ -15,7 +15,7 @@ class MediaFlagResolution extends MediaFlagStreamDetails
 		$width = $this->video->width;
 
 		if ($width == 0)
-			return '';
+			return false;
 		elseif ($width < 961)
 			return '50px-480';
 		elseif ($width < 1281)

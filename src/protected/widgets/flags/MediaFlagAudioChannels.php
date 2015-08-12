@@ -25,7 +25,7 @@ class MediaFlagAudioChannels extends MediaFlagStreamDetails
 		else if ($channels == 1)
 			return '50px-1';
 		else
-			return '';
+			return false;
 	}
 
 }

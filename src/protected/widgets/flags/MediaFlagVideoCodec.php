@@ -20,7 +20,7 @@ class MediaFlagVideoCodec extends MediaFlagStreamDetails
 			'dx50'=>'80px-Divx',
 			'avc1'=>'80px-Avc1');
 
-		return array_key_exists($codec, $icons) ? $icons[$codec] : '';
+		return array_key_exists($codec, $icons) ? $icons[$codec] : false;
 	}
 
 }

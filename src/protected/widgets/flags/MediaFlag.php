@@ -41,8 +41,8 @@ abstract class MediaFlag extends CWidget
 
 	/**
 	 * Returns the name of the icon file that should be displayed, without the 
-	 * file extension, e.g. "50px-720"
-	 * @return string the icon name
+	 * file extension, e.g. "50px-720". If no icon can be determined, false is returned
+	 * @return string|false the icon name
 	 */
 	abstract protected function getIcon();
 }
