@@ -20,6 +20,7 @@ return array(
 		'application.models.forms.*',
 		'application.models.json.*',
 		'application.models.playlist.*',
+		'application.models.thumbnail.*',
 		'application.components.*',
 		'application.components.core.*',
 		'application.exceptions.*',
