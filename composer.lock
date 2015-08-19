@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d3e87256e8bd3f5445c38d391341d209",
+    "hash": "ff29e7f27160dff69978880ff705c674",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -128,50 +128,6 @@
                 "yii"
             ],
             "time": "2014-01-30 00:40:56"
-        },
-        {
-            "name": "eventviva/php-image-resize",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/eventviva/php-image-resize.git",
-                "reference": "c75bc2cadf29f6c2f97bd0a9329280e9f9361db8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/eventviva/php-image-resize/zipball/cd5ba51c2bdd924d7c99aff6f7f1bdd7a79eb959",
-                "reference": "c75bc2cadf29f6c2f97bd0a9329280e9f9361db8",
-                "shasum": ""
-            },
-            "require": {
-                "ext-gd": "*",
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Aditya Patadia",
-                    "homepage": "http://aditya.patadia.org/"
-                }
-            ],
-            "description": "PHP class to re-size and scale images",
-            "homepage": "https://github.com/eventviva/php-image-resize",
-            "keywords": [
-                "image",
-                "php",
-                "resize",
-                "scale"
-            ],
-            "time": "2015-03-27 23:22:35"
         },
         {
             "name": "gavroche/browser",
@@ -1059,9 +1015,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "eventviva/php-image-resize": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
