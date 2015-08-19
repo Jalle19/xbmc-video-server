@@ -45,34 +45,22 @@ The project's [wiki pages](https://github.com/Jalle19/xbmc-video-server/wiki) co
 Credits
 -------
 
-XBMC (http://xbmc.org/)
-
-Yii framework (http://www.yiiframework.com/)
-
-Yiistrap (http://www.getyiistrap.com/)
-
-Yii-less (https://github.com/Crisu83/yii-less)
-
-yii-consoletools (https://github.com/Crisu83/yii-consoletools)
-
-eventviva/php-image-resize (https://github.com/eventviva/php-image-resize)
-
-phpass (http://www.openwall.com/phpass/) (https://github.com/hautelook/phpass)
-
-Zend framework (http://framework.zend.com/)
-
-mobiledetectlib (https://github.com/serbanghita/Mobile-Detect) and gavroche/browser (https://github.com/gabrielbull/php-browser)
-
-jsonmapper (https://github.com/netresearch/jsonmapper)
-
-Bootswatch (http://bootswatch.com/)
-
-Font Awesome (http://fortawesome.github.io/Font-Awesome/)
-
-jQuery Unveil (http://luis-almeida.github.io/unveil/)
-
-typeahead.js (http://twitter.github.io/typeahead.js/)
-
+* XBMC (http://xbmc.org/)
+* Yii framework (http://www.yiiframework.com/)
+* Yiistrap (http://www.getyiistrap.com/)
+* Yii-less (https://github.com/Crisu83/yii-less)
+* yii-consoletools (https://github.com/Crisu83/yii-consoletools)
+* Imagine (https://github.com/avalanche123/Imagine)
+* phpass (http://www.openwall.com/phpass/) (https://github.com/hautelook/phpass)
+* Zend framework (http://framework.zend.com/)
+* mobiledetectlib (https://github.com/serbanghita/Mobile-Detect) and gavroche/browser (https://github.com/gabrielbull/php-browser)
+* jsonmapper (https://github.com/netresearch/jsonmapper)
+* Bootswatch (http://bootswatch.com/)
+* Font Awesome (http://fortawesome.github.io/Font-Awesome/)
+* jQuery Unveil (http://luis-almeida.github.io/unveil/)
+* typeahead.js (http://twitter.github.io/typeahead.js/)
+* phpwol (https://github.com/TomNomNom/phpwol)
+* php-xspf (https://github.com/mptre/php-xspf)
 
 License
 -------
