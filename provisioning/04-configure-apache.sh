@@ -4,7 +4,7 @@
 a2dissite 000-default > /dev/null 2>&1
 
 # install site
-cp /vagrant/provisioning/etc/apache/sites-available/xbmc-video-server.conf /etc/apache2/sites-available
+cp /vagrant/provisioning/etc/apache2/sites-available/xbmc-video-server.conf /etc/apache2/sites-available
 a2ensite xbmc-video-server > /dev/null 2>&1
 
 # enable modules and restart
