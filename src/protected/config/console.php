@@ -1,16 +1,12 @@
 <?php
 
-// define aliases
-Yii::setPathOfAlias('composer', realpath(__DIR__.'/../../../vendor'));
 
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	
 	'preload'=>array('log'),
 	
-	'import'=>array(
-		'application.models.*',
-	),
+	'import'=>require_once('_import.php'),
 	
 	'components'=>array(
 		'db'=>array(

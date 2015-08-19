@@ -1,9 +1,5 @@
 <?php
 
-// define aliases
-Yii::setPathOfAlias('bootstrap', realpath(__DIR__.'/../../../vendor/crisu83/yiistrap'));
-Yii::setPathOfAlias('composer', realpath(__DIR__.'/../../../vendor'));
-
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'XBMC Video Server',
@@ -15,25 +11,7 @@ return array(
 	),
 	
 	// autoloading model and component classes
-	'import'=>array(
-		'application.models.*',
-		'application.models.forms.*',
-		'application.models.json.*',
-		'application.models.playlist.*',
-		'application.models.thumbnail.*',
-		'application.components.*',
-		'application.components.core.*',
-		'application.exceptions.*',
-		'application.helpers.*',
-		'application.controllers.*',
-		'application.controllers.base.*',
-		'application.widgets.*',
-		'application.widgets.filter.*',
-		'application.widgets.results.*',
-		'application.widgets.season.*',
-		'application.widgets.watch.*',
-		'bootstrap.helpers.*',
-	),
+	'import'=>require_once('_import.php'),
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
