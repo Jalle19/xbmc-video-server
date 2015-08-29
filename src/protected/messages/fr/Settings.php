@@ -36,7 +36,6 @@ return array (
   'Cache all API results' => 'Mettre en cache tous les résultats de l’API',
   'Changing this will reset the default language for all users' => 'Ce changement aura pour effet d’assigner la langue par défaut à tous les utilisateurs. Chaque utilisateur pourra à son tour modifier la langue.',
   'Don\'t use playlists when item consists of a single file' => 'Ne pas utiliser de liste de lecture lorsque l’élément est constitué d’un seul fichier',
-  'Don\'t warn about XBMC version incompatibility' => 'Ne pas avertir à propos des versions de Kodi qui sont incompatibles',
   'If specified, access is restricted to the defined 
 					whitelist. Valid values are IP addresses, IP subnets and 
 					domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com' => 'L’accès est restreint par liste blanche. Sont valides, les adresses IP, les IP des sous-réseaux et les noms de domaines incluant les jokers. Exemple: 192.168.1.0/24,1.2.3.4,exemple.fr,*.utilisateur.fr.',

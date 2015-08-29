@@ -36,7 +36,6 @@ return array (
     'Cache all API results' => 'Cache alle API Ergebnisse',
     'Changing this will reset the default language for all users' => 'Eine Änderungen setzt die Standardsprache für alle Benutzer zurück',
     'Don\'t use playlists when item consists of a single file' => 'Für einzelne Dateien keine Wiedergabeliste benutzen',
-    'Don\'t warn about XBMC version incompatibility' => 'Keine Warnung bei inkompatibler XBMC Version ',
     'If specified, access is restricted to the defined
 					whitelist. Valid values are IP addresses, IP subnets and 
 					domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com' => 'Wenn ausgefüllt, ist der Zugang auf diese Werte beschränkt. Mögliche Eingaben: IP Adressen, IP Subnetze, Domainnamen (auch mit Wildcard). Beispielsweise: 192.168.1.0/24, 1.2.3.4, contoso.com, *.contoso.net',

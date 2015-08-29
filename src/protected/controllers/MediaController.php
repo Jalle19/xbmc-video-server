@@ -34,7 +34,6 @@ abstract class MediaController extends Controller
 		return array_merge(parent::filters(), array(
 			'accessControl',
 			array('application.filters.CheckBackendConnectivityFilter'),
-			'checkBackendCanStream + details',
 		));
 	}
 
@@ -58,19 +57,6 @@ abstract class MediaController extends Controller
 				}
 			),
 		);
-	}
-	
-	/**
-	 * Displays a flash if the backend doesn't support streaming
-	 * @param CFilterChain $filterChain the filter chain
-	 */
-	public function filterCheckBackendCanStream($filterChain)
-	{
-		// Check backend version and warn about incompatibilities
-		if (!Yii::app()->xbmc->meetsMinimumRequirements() && !Setting::getBoolean('disableFrodoWarning'))
-			Yii::app()->user->setFlash('info', Yii::t('Misc', 'Streaming of video files is not possible from XBMC 12 "Frodo" backends'));
-
-		$filterChain->run();
 	}
 
 	/**

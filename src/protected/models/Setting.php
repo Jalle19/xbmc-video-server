@@ -36,7 +36,6 @@ class Setting extends CActiveRecord
 	public $cacheApiCalls;
 	public $allowUserPowerOff;
 	public $pagesize;
-	public $disableFrodoWarning;
 	public $useHttpsForVfsUrls;
 	public $whitelist;
 	public $ignoreArticle;
@@ -271,12 +270,6 @@ class Setting extends CActiveRecord
 				'type'=>self::TYPE_CHECKBOX,
 				'default'=>'',
 				'order'=>550,
-			),
-			'disableFrodoWarning'=>array(
-				'label'=>Yii::t('Settings', "Don't warn about XBMC version incompatibility"),
-				'type'=>self::TYPE_CHECKBOX,
-				'default'=>'0',
-				'order'=>600,
 			),
 			'requestTimeout'=>array(
 				'label'=>Yii::t('Settings', 'Request timeout'),

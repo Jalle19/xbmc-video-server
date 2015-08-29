@@ -52,15 +52,6 @@ class XBMC extends CApplicationComponent
 	}
 	
 	/**
-	 * Checks whether the current backend meets the minimum version requirements
-	 * @return boolean
-	 */
-	public function meetsMinimumRequirements()
-	{
-		return $this->getVersion() >= Yii::app()->params['minimumBackendVersion'];
-	}
-	
-	/**
 	 * Wrapper for performRequestInternal(). It caches the results indefinitely 
 	 * if the "cacheApiCalls" setting is enabled.
 	 * @param string $method
@@ -186,18 +177,6 @@ class XBMC extends CApplicationComponent
 	public function getVFSHelper()
 	{
 		return $this->_vfsHelper;
-	}
-
-	/**
-	 * Returns the major version number of the currently used backend.
-	 * @return int the version number
-	 */
-	private function getVersion()
-	{
-		$version = $this->performRequest('Application.GetProperties', array(
-			'properties'=>array('version')));
-
-		return $version->result->version->major;
 	}
 	
 }
