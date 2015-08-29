@@ -8,6 +8,15 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.7.0
+* removed the "don't warn about XBMC incompatibility" setting since there aren't that many Frodo users left
+* fixed ability to load images in parallel. Previously all image requests were handled sequentially.
+* changed the image resizing to use the Imagine library. The application now prefers to use Imagick to resize images, but GD is still supported for users who haven't installed php5-imagick.
+* added 4K video resolution flag
+* added power management functionality for backends. Backends can now be powered off, hibernated, suspended and restarted.
+* added Vagrant environment for developers. See CONTRIBUTING.md for more details.
+* minor refactoring, including some minor fixes to potential migration errors
+
 #### 1.6.15
 * increased memory limit and execution time to avoid timeouts on large libraries combined with slow devices
 * updated README screenshots
