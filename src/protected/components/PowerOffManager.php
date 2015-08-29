@@ -106,14 +106,15 @@ class PowerOffManager extends CApplicationComponent
 	 */
 	public function powerOff($action)
 	{
-		$method = array(
+		$methods = array(
 			self::SHUTDOWN => 'System.Shutdown',
 			self::SUSPEND => 'System.Suspend',
 			self::HIBERNATE => 'System.Hibernate',
 			self::REBOOT => 'System.Reboot',
-		)[$action];
+		);
 
-		if ($method)
-			Yii::app()->xbmc->sendNotification($method);
+		$method = $methods[$action];
+
+		Yii::app()->xbmc->sendNotification($method);
 	}
 }

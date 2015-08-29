@@ -145,22 +145,26 @@ class BackendController extends AdminOnlyController
 		{
 			Yii::app()->powerOffManager->powerOff($action);
 
-			$message = array(
+			$messages = array(
 				PowerOffManager::SHUTDOWN => Yii::t('Backend', 'The current backend is shutting down'),
 				PowerOffManager::SUSPEND => Yii::t('Backend', 'The current backend is suspending'),
 				PowerOffManager::HIBERNATE => Yii::t('Backend', 'The current backend is hibernating'),
-				PowerOffManager::REBOOT => Yii::t('Backend', 'The current backend is rebooting'),
-			)[$action];
+				PowerOffManager::REBOOT => Yii::t('Backend', 'The current backend is rebooting'));
+			
+			$message = $messages[$action];
+			
 			Yii::app()->user->setFlash('success', $message);
 		}
 		else
 		{
-			$message = array(
+			$messages = array(
 				PowerOffManager::SHUTDOWN => Yii::t('Backend', 'The current backend cannot be shut down'),
 				PowerOffManager::SUSPEND => Yii::t('Backend', 'The current backend cannot be suspended'),
 				PowerOffManager::HIBERNATE => Yii::t('Backend', 'The current backend cannot be hibernated'),
-				PowerOffManager::REBOOT => Yii::t('Backend', 'The current backend cannot be rebooted'),
-			)[$action];
+				PowerOffManager::REBOOT => Yii::t('Backend', 'The current backend cannot be rebooted'));
+			
+			$message = $messages[$action];
+			
 			Yii::app()->user->setFlash('error', $message);
 		}
 
