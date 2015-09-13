@@ -12,7 +12,7 @@ class PlaceholderThumbnail extends AbstractThumbnail
 
 	public function getUrl()
 	{
-		return Yii::app()->request->getHostInfo().'/'.$this->_path;
+		return Yii::app()->baseUrl.'/'.$this->_path;
 	}
 
 }
