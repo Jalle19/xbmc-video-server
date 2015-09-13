@@ -8,6 +8,10 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.7.1
+* fixed invalid URLs for placeholder images under certain scenarios
+* fixed thumbnail URLs when proxy location is used
+
 #### 1.7.0
 * removed the "don't warn about XBMC incompatibility" setting since there aren't that many Frodo users left
 * fixed ability to load images in parallel. Previously all image requests were handled sequentially.
