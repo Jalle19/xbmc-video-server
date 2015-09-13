@@ -31,7 +31,7 @@ class VFSHelper
 	 */
 	public function getUrl($path, $omitCredentials = false)
 	{
-		if (!empty($this->_backend->proxyLocation))
+		if (!empty($this->_backend->proxyLocation) && substr($path, 0, 3) === 'vfs')
 			return $this->getProxiedUrl($path);
 		else
 			return $this->getNonProxiedUrl($path, $omitCredentials);
