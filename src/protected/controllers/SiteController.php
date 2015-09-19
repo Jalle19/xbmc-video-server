@@ -81,8 +81,13 @@ class SiteController extends Controller
 	 */
 	public function actionLogout()
 	{
-		$this->log('"%s" logged out', Yii::app()->user->name);
-		Yii::app()->user->logout();
+		// Don't attempt to log out guests, it confuses the logs
+		if (!Yii::app()->user->isGuest)
+		{
+			$this->log('"%s" logged out', Yii::app()->user->name);
+			Yii::app()->user->logout();
+		}
+
 		$this->redirect(array('site/login'));
 	}
 	
