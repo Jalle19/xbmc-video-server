@@ -173,7 +173,7 @@ class Setting extends CActiveRecord
 	{
 		return array(
 			array('language, playlistFormat', 'required'),
-			array('pagesize', 'numerical', 'integerOnly'=>true, 'min'=>1),
+			array('pagesize, requestTimeout', 'numerical', 'integerOnly'=>true, 'min'=>1),
 			array('whitelist', 'validateWhitelist'),
 		);
 	}
