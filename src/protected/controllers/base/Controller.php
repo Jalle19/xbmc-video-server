@@ -15,6 +15,10 @@ class Controller extends CController
 	 */
 	public function init()
 	{
+		// Use the defined request timeout as execution time limit
+		$requestTimeout = Setting::getInteger('requestTimeout');
+		set_time_limit($requestTimeout);
+		
 		// Fallback to XBMC Video Server if the user has removed the 
 		// application name
 		$name = Setting::getString('applicationName');
