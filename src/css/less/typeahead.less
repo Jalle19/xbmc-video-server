@@ -1,7 +1,7 @@
 /**
  * Based on https://raw.github.com/jharding/typeahead.js-bootstrap.css/master/typeahead.js-bootstrap.less
  */
-.tt-dropdown-menu {
+.tt-menu {
 	width: 100%;
 	margin-top: 20px;
 	background: #FFF;
@@ -15,15 +15,12 @@
 	margin: 10px;
 }
 
-.tt-suggestion.tt-is-under-cursor {
+.tt-suggestion.tt-cursor, .tt-suggestion:hover {
+        cursor: pointer;
 	color: @dropdownLinkColorHover;
 	#gradient > .vertical(@dropdownLinkBackgroundHover, darken(@dropdownLinkBackgroundHover, 5%));
 }
 
-.tt-suggestion.tt-is-under-cursor a {
+.tt-suggestion.tt-cursor a {
 	color: @dropdownBackground;
-}
-
-.tt-suggestion p {
-	margin: 0;
 }

@@ -30,8 +30,27 @@ class FilterActiveForm extends TbActiveForm
 		TbHtml::addCssClass('twitter-typeahead-input', $htmlOptions);
 		$id = $htmlOptions['id'];
 		
+		$sourceName = $id.'_source';
+		
 		Yii::app()->clientScript->registerScript($id, "
-			$('#{$id}').typeahead({name: '{$id}',local: {$data},limit: 10});
+			
+			var {$sourceName} = new Bloodhound({
+				datumTokenizer: Bloodhound.tokenizers.whitespace,
+				queryTokenizer: Bloodhound.tokenizers.whitespace,
+				local: {$data}
+			});
+			
+			$('#{$id}').typeahead({
+				hint: true,
+				highlight: true,
+				minLength: 1
+			},
+			{
+				name: '{$id}',
+				source: {$sourceName}
+			});
+				
+
 		", CClientScript::POS_READY);
 
 		return $this->textFieldControlGroup($model, $attribute, $htmlOptions);
