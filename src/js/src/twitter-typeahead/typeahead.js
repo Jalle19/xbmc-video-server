@@ -1113,6 +1113,7 @@
             return selectors;
         }
         function buildCss() {
+            // HACK: twitter-typeahead developers absolutely suck at CSS
             var css = {
                 wrapper: {
                     position: "relative",
@@ -1128,12 +1129,12 @@
                 },
                 input: {
                     position: "relative",
-                    verticalAlign: "top",
+                    //verticalAlign: "top",
                     backgroundColor: "transparent"
                 },
                 inputWithNoHint: {
                     position: "relative",
-                    verticalAlign: "top"
+                    //verticalAlign: "top"
                 },
                 menu: {
                     position: "absolute",
