@@ -23,13 +23,13 @@ class FilterActiveForm extends TbActiveForm
 	 * @param array $htmlOptions options to pass to the control group
 	 * @return string the HTML for the input
 	 */
-	public function typeaheadFieldControlGroup($model, $attribute, $data, $htmlOptions = array())
+	public function typeaheadFieldControlGroup($model, $attribute, $htmlOptions = array())
 	{
 		// Generate a unique ID for this element
 		CHtml::resolveNameID($model, $attribute, $htmlOptions);
-		TbHtml::addCssClass('twitter-typeahead-input', $htmlOptions);
-		$id = $htmlOptions['id'];
 		
+		$id = $htmlOptions['id'];
+		$prefetch = $htmlOptions['prefetch'];
 		$sourceName = $id.'_source';
 		
 		Yii::app()->clientScript->registerScript($id, "
@@ -37,7 +37,9 @@ class FilterActiveForm extends TbActiveForm
 			var {$sourceName} = new Bloodhound({
 				datumTokenizer: Bloodhound.tokenizers.whitespace,
 				queryTokenizer: Bloodhound.tokenizers.whitespace,
-				local: {$data}
+				prefetch: {
+					url: '{$prefetch}'
+				}
 			});
 			
 			$('#{$id}').typeahead({
