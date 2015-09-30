@@ -1,5 +1,7 @@
 <?php
 
+use \yiilazyimage\components\LazyImage as LazyImage;
+
 /**
  * Handles AJAX requests for typeahead related data
  *
@@ -33,7 +35,20 @@ class TypeaheadController extends Controller
 
 		$this->renderJson($this->getTypeaheadSource($cacheId, function()
 		{
-			return $this->getTypeaheadData(VideoLibrary::getMovies(array('properties'=>array())));
+			$movies = VideoLibrary::getMovies(array('properties'=>array(
+				'year', 'genre', 'thumbnail'
+			)));
+			
+			// Modify some of the raw data so it's ready for rendering
+			foreach ($movies as $movie)
+			{
+				$thumbnail = ThumbnailFactory::create($movie->thumbnail, Thumbnail::SIZE_VERY_SMALL);
+				
+				$movie->thumbnail = LazyImage::image($thumbnail->__toString());
+				$movie->genre = $movie->getGenreString();
+			}
+			
+			return $movies;
 		}));
 	}
 	

@@ -33,7 +33,7 @@ abstract class VideoFilter extends CWidget
 	 */
 	public function init()
 	{
-		$this->form = $this->beginWidget('FilterActiveForm', array(
+		$this->form = $this->beginWidget($this->getFormClassName(), array(
 			'layout'=>TbHtml::FORM_LAYOUT_INLINE,
 			'method'=>'get'));
 	}
@@ -81,6 +81,14 @@ abstract class VideoFilter extends CWidget
 			'color'=>TbHtml::BUTTON_COLOR_INFO,
 			'disabled'=>$this->model->isEmpty(),
 			'url'=>$controller->createUrl($controller->route)));
+	}
+	
+	/**
+	 * @return string the name of the active form class to use
+	 */
+	protected function getFormClassName()
+	{
+		return 'FilterActiveForm';
 	}
 
 }

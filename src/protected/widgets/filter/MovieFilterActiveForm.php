@@ -1,16 +1,14 @@
 <?php
 
-Yii::import('bootstrap.widgets.TbActiveForm');
-
 /**
- * Sub-class of TbActiveForm which provides a method for generating input text 
- * fields with typeahead functionality
+ * Customization of FilterActiveForm which provides functionality to generate 
+ * the movie name typeahead field
  *
  * @author Sam Stenvall <neggelandia@gmail.com>
- * @copyright Copyright &copy; Sam Stenvall 2013-
+ * @copyright Copyright &copy; Sam Stenvall 2015-
  * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
  */
-class FilterActiveForm extends TbActiveForm
+class MovieFilterActiveForm extends FilterActiveForm
 {
 
 	/**
@@ -23,33 +21,33 @@ class FilterActiveForm extends TbActiveForm
 	 * @param array $htmlOptions options to pass to the control group
 	 * @return string the HTML for the input
 	 */
-	public function typeaheadFieldControlGroup($model, $attribute, $htmlOptions = array())
+	public function movieNameFieldControlGroup($model, $attribute, $htmlOptions = array())
 	{
 		// Generate a unique ID for this element
 		CHtml::resolveNameID($model, $attribute, $htmlOptions);
 		$id = $htmlOptions['id'];
-		
+
 		Yii::app()->clientScript->registerScript($id, 
-				$this->getTypeaheadScript($id, $htmlOptions), 
+				$this->getMovieNameTypeaheadScript($id, $htmlOptions), 
 				CClientScript::POS_READY);
 
 		return $this->textFieldControlGroup($model, $attribute, $htmlOptions);
 	}
-	
+
 	/**
-	 * Generates and returns the actual JavaScript for the typeahead field
+	 * Generates and returns the actual JavaScript for the movie name field
 	 * @param string $id
 	 * @param array $htmlOptions
 	 * @return string the script code
 	 */
-	protected function getTypeaheadScript($id, $htmlOptions)
+	protected function getMovieNameTypeaheadScript($id, $htmlOptions)
 	{
 		$prefetch = $htmlOptions['prefetch'];
 		$sourceName = $id.'_source';
-		
+
 		return "
 			var {$sourceName} = new Bloodhound({
-				datumTokenizer: Bloodhound.tokenizers.whitespace,
+				datumTokenizer: Bloodhound.tokenizers.obj.whitespace('label'),
 				queryTokenizer: Bloodhound.tokenizers.whitespace,
 				prefetch: {
 					url: '{$prefetch}'
@@ -63,7 +61,25 @@ class FilterActiveForm extends TbActiveForm
 			},
 			{
 				name: '{$id}',
-				source: {$sourceName}
+				source: {$sourceName},
+				display: 'label',
+				templates: {
+					suggestion: function(data) {
+						var suggestion = [
+							'<div class=\"movie-name-typeahead-suggestion clearfix\">',
+							data.thumbnail,
+							'<p>' + data.label + ' (' + data.year + ')<br />',
+							'<span class=\"genre\">' + data.genre + '</span></p>',
+							'</div>',
+						].join('\\n');
+						
+						return suggestion;
+					}
+				}
+			});
+			
+			$('#{$id}').bind('typeahead:render', function(ev, suggestion) {
+				$('.lazy').unveil();
 			});
 		";
 	}

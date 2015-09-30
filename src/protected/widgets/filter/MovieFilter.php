@@ -16,8 +16,13 @@ class MovieFilter extends VideoFilter
 	{
 		$ctrl = Yii::app()->controller;
 		
-		echo $this->form->typeaheadFieldControlGroup($this->model, 'name', array(
+		// Wrap the movie name typeahead field in a container so we can style it 
+		echo CHtml::openTag('div', array('class'=>'movie-name-typeahead'));
+		
+		echo $this->form->movieNameFieldControlGroup($this->model, 'name', array(
 			'prefetch'=>$ctrl->createUrl('typeahead/getMovieNames')));
+		
+		echo CHtml::closeTag('div');
 		
 		echo $this->form->dropDownListControlGroup($this->model, 'genre', 
 				$this->model->getGenres(), array('empty'=>' '));
@@ -41,6 +46,14 @@ class MovieFilter extends VideoFilter
 		
 		echo $this->form->typeaheadFieldControlGroup($this->model, 'director', array(
 			'prefetch'=>$ctrl->createUrl('typeahead/getDirectorNames')));
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getFormClassName()
+	{
+		return 'MovieFilterActiveForm';
 	}
 	
 }
