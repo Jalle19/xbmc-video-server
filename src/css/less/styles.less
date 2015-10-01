@@ -3,7 +3,6 @@
 @import "bootstrap/yiistrap.less";
 @import "bootswatch/variables.less";
 @import "bootswatch/bootswatch.less";
-@import "typeahead.less";
 @import "fontawesome/less/font-awesome.less";
 @import "yii/yiilistview-styles.less";
 @import "yiistrap/pager.less";
@@ -449,6 +448,65 @@ select {
 
 .watch-modal-button {
 	width: 100%;
+}
+
+/**
+ * Styles for the typeahead fields
+ */
+.tt-menu {
+	width: 100%;
+	margin-top: 20px;
+	background: #FFF;
+	border: 2px solid @blueDark;
+	.border-radius(@baseBorderRadius);
+}
+
+.tt-suggestion {
+	display: block;
+	padding: 6px;
+	margin: 10px;
+}
+
+.tt-suggestion.tt-cursor, .tt-suggestion:hover {
+        cursor: pointer;
+	color: @dropdownLinkColorHover;
+	#gradient > .vertical(@dropdownLinkBackgroundHover, darken(@dropdownLinkBackgroundHover, 5%));
+}
+
+.tt-suggestion.tt-cursor a {
+	color: @dropdownBackground;
+}
+
+// Custom styles for the movie name typeahead field
+.movie-name-typeahead {
+    display: inline-block;
+    
+    .tt-menu {
+        width: 300px;
+        padding: 4px;
+    }
+    
+    .movie-name-typeahead-suggestion {
+        
+        
+        img, p {
+            float: left;
+        }
+
+        img {
+            width: 70px;
+        }
+        
+        p {
+            margin-left: 16px;
+            width: 182px;
+            
+            .genre {
+                font-size: small;
+                font-style: italic;
+            }
+        }
+    }
 }
 
 // Import overrides various screen sizes
