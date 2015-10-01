@@ -83,6 +83,10 @@ class TypeaheadController extends Controller
 	 */
 	private function getTypeaheadSource($cacheId, callable $callable)
 	{
+		// Bust caches that were made when the data stored was still encoded 
+		// with CJavaScript::encode()
+		$cacheId .= '_v2';
+		
 		// Cache the encoded JavaScript if the "cache API calls" setting is enabled
 		if (Setting::getBoolean('cacheApiCalls'))
 		{
@@ -90,7 +94,7 @@ class TypeaheadController extends Controller
 
 			if ($typeaheadData === false)
 			{
-				$typeaheadData = CJavaScript::encode($callable());
+				$typeaheadData = json_encode($callable());
 
 				Yii::app()->apiCallCache->set($cacheId, $typeaheadData);
 			}
