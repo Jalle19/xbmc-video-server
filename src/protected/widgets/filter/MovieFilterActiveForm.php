@@ -16,8 +16,6 @@ class MovieFilterActiveForm extends FilterActiveForm
 	 * data.
 	 * @param CModel $model the model
 	 * @param string $attribute the attribute name
-	 * @param string $data JavaScript-encoded array containing the data for the 
-	 * typeahead
 	 * @param array $htmlOptions options to pass to the control group
 	 * @return string the HTML for the input
 	 */
