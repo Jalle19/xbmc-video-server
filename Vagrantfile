@@ -5,7 +5,7 @@ Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
 
   # networking
-  config.vm.network "public_network"
+  config.vm.network "private_network", ip: "192.168.25.25"
   config.vm.hostname = "xbmc-video-server"
 
   # memory usage
