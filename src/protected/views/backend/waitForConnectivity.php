@@ -3,8 +3,8 @@
 $this->pageTitle = $title = Yii::t('Backend', 'Waiting for connection');
 
 // Start the poller which redirects once the backend is reachable
-Yii::app()->clientScript->registerScript(__CLASS__.'_startPolling', '
-	startPolling();
+Yii::app()->clientScript->registerScript(__CLASS__.'_pollForConnectivity', '
+	pollForConnectivity();
 ', CClientScript::POS_END);
 
 ?>

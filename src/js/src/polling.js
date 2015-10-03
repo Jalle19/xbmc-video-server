@@ -26,7 +26,11 @@ function waitForLibraryUpdate() {
 	});
 }
 
-function startPolling() {
+/**
+ * Polls for a response and redirects to "homeUrl" once a response is receieved, 
+ * meaning the backend has woken up. It gives up after 30 seconds.
+ */
+function pollForConnectivity() {
 	var pollUrl = createUrl('backend/ajaxCheckConnectivity');
 
 	// Start polling the server for updates
@@ -35,7 +39,6 @@ function startPolling() {
 			url: pollUrl,
 			dataType: "json",
 			success: function(data) {
-				// Redirect to "homeUrl" if the response is good
 				if (data.status)
 					window.location.href = createUrl('');
 			},
