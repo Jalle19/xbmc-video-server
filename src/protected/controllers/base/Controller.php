@@ -73,6 +73,15 @@ class Controller extends CController
 	{
 		if (Yii::app()->user->isGuest)
 			$this->redirect(array('site/login'));
+		else
+		{
+			// Check that the logged in user account still exists, if not log 
+			// out the user immediately
+			$user = User::model()->findByPk(Yii::app()->user->id);
+
+			if ($user === null)
+				$this->redirect(array('site/logout'));
+		}
 
 		$filterChain->run();
 	}

@@ -65,7 +65,12 @@ class LanguageManager extends CApplicationComponent
 	private function getUserLanguage()
 	{
 		if (!Yii::app()->user->isGuest)
-			return User::model()->findByPk(Yii::app()->user->id)->language;
+		{
+			$user = User::model()->findByPk(Yii::app()->user->id);
+
+			if ($user)
+				return $user->language;
+		}
 		
 		return null;
 	}
