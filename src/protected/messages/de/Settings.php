@@ -17,45 +17,55 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-    'Administrators are not affected by this setting and can always power off backends.' => '',
-    'Allow users to power off backends' => '',
-    'Determines how long the application should wait for a response from XBMC. Increase this if you get timeout errors.' => '',
-    'Hibernate' => '',
-    'Look and feel' => '',
-    'Reboot' => '',
-    'Request timeout' => '',
-    'Security and performance' => '',
-    'Shutdown' => '',
-    'Suspend' => '',
-    'Access whitelist' => 'Zugang - Positivliste',
-    'Amount of results to show per page' => 'Anzahl der Ergebnisse pro Seite',
-    'Application language' => 'Systemsprache',
-    'Application name' => 'Systemname',
-    'Application subtitle' => 'Seitenuntertitel',
-    'Before you get started, please have a look at the application settings' => 'Bevor du beginnst, schau dir bitte die Einstellungen an und passe sie ggf. an',
-    'Cache all API results' => 'Cache alle API Ergebnisse',
-    'Changing this will reset the default language for all users' => 'Eine Änderungen setzt die Standardsprache für alle Benutzer zurück',
-    'Don\'t use playlists when item consists of a single file' => 'Für einzelne Dateien keine Wiedergabeliste benutzen',
-    'If specified, access is restricted to the defined
+  'Administrators are not affected by this setting and can always power off backends.' => '',
+  'Allow users to power off backends' => '',
+  'Determines how long the application should wait for a response from XBMC. Increase this if you get timeout errors.' => '',
+  'Hibernate' => '',
+  'If specified, access is restricted to the defined 
 					whitelist. Valid values are IP addresses, IP subnets and 
-					domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com' => 'Wenn ausgefüllt, ist der Zugang auf diese Werte beschränkt. Mögliche Eingaben: IP Adressen, IP Subnetze, Domainnamen (auch mit Wildcard). Beispielsweise: 192.168.1.0/24, 1.2.3.4, contoso.com, *.contoso.net',
-    'Ignore article ("the") in results' => 'Ignoriere Artikel ("The, der, die, das") in den Ergebnissen',
-    'Invalid whitelist definition' => 'Ungültige Einträge der Positivliste',
-    'Leave empty to disable pagination altogether' => 'Leer lassen um Seitennummerierung zu deaktivieren',
-    'Playlist format' => 'Format der Wiedergabeliste',
-    'Settings' => 'Einstellungen',
-    'Settings have been reset to defaults' => 'Standardeinstellungen wurden wiederhergestellt ',
-    'Settings updated successfully' => 'Einstellungen erfolgreich gespeichert',
-    'Show help blocks throughout the site' => 'Hilfe/Tipps innerhalb der Seite anzeigen',
-    'The specified whitelist restrictions will lock you out from this location' => 'Die Einschränkungen der Positivliste verhindern jeglichen Zugriff',
-    'This is where you configure global
+					domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com' => '',
+  'Look and feel' => '',
+  'Reboot' => '',
+  'Request timeout' => '',
+  'Security and performance' => '',
+  'Shutdown' => '',
+  'Suspend' => '',
+  'This is where you configure global 
 	application settings. These settings apply regardless of which backend is 
-	currently in use.' => 'Allgemeine Systemeinstellungen - Diese gelten unabhängig vom genutzten Backend',
-    'Use HTTPS when streaming' => 'Nutze HTTPS zum Streaming',
-    'Useful on slow hardware. A refresh button will appear in the menu which flushes the cache' => 'Nützlich bei langsamer Hardware. Eine "Neu laden" Schaltfläche wird erscheinen, welche den Cache leert.',
-    'When checked, streaming will be done over HTTPS if
+	currently in use.' => '',
+  'When checked, streaming will be done over HTTPS if 
 					the application is accessed over HTTPS. This will usually only 
 					work if the server uses a real signed certificate, thus it is 
-					not enabled by default.' => 'Nach Aktivierung erfolgt das Streaming per HTTPS, wenn die Seite per HTTPS aufgerufen wird. Funktioniert im Allgemeinen nur mit einem Zertifikat einer Certification Authority (CA). Standardmäßig deaktiviert',
-    'You may have to right-click and copy the address in order to stream (not download) the file' => 'Eventuell ist es erforderlich die Adresse zu kopieren und im Player (VLC o.ä.) einzufügen, um die Datei zu streamen und nicht herunterzuladen.',
+					not enabled by default.' => '',
+  'If specified, access is restricted to the defined
+					whitelist. Valid values are IP addresses, IP subnets and 
+					domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com' => '@@Wenn ausgefüllt, ist der Zugang auf diese Werte beschränkt. Mögliche Eingaben: IP Adressen, IP Subnetze, Domainnamen (auch mit Wildcard). Beispielsweise: 192.168.1.0/24, 1.2.3.4, contoso.com, *.contoso.net@@',
+  'This is where you configure global
+	application settings. These settings apply regardless of which backend is 
+	currently in use.' => '@@Allgemeine Systemeinstellungen - Diese gelten unabhängig vom genutzten Backend@@',
+  'When checked, streaming will be done over HTTPS if
+					the application is accessed over HTTPS. This will usually only 
+					work if the server uses a real signed certificate, thus it is 
+					not enabled by default.' => '@@Nach Aktivierung erfolgt das Streaming per HTTPS, wenn die Seite per HTTPS aufgerufen wird. Funktioniert im Allgemeinen nur mit einem Zertifikat einer Certification Authority (CA). Standardmäßig deaktiviert@@',
+  'Access whitelist' => 'Zugang - Positivliste',
+  'Amount of results to show per page' => 'Anzahl der Ergebnisse pro Seite',
+  'Application language' => 'Systemsprache',
+  'Application name' => 'Systemname',
+  'Application subtitle' => 'Seitenuntertitel',
+  'Before you get started, please have a look at the application settings' => 'Bevor du beginnst, schau dir bitte die Einstellungen an und passe sie ggf. an',
+  'Cache all API results' => 'Cache alle API Ergebnisse',
+  'Changing this will reset the default language for all users' => 'Eine Änderungen setzt die Standardsprache für alle Benutzer zurück',
+  'Don\'t use playlists when item consists of a single file' => 'Für einzelne Dateien keine Wiedergabeliste benutzen',
+  'Ignore article ("the") in results' => 'Ignoriere Artikel ("The, der, die, das") in den Ergebnissen',
+  'Invalid whitelist definition' => 'Ungültige Einträge der Positivliste',
+  'Leave empty to disable pagination altogether' => 'Leer lassen um Seitennummerierung zu deaktivieren',
+  'Playlist format' => 'Format der Wiedergabeliste',
+  'Settings' => 'Einstellungen',
+  'Settings have been reset to defaults' => 'Standardeinstellungen wurden wiederhergestellt ',
+  'Settings updated successfully' => 'Einstellungen erfolgreich gespeichert',
+  'Show help blocks throughout the site' => 'Hilfe/Tipps innerhalb der Seite anzeigen',
+  'The specified whitelist restrictions will lock you out from this location' => 'Die Einschränkungen der Positivliste verhindern jeglichen Zugriff',
+  'Use HTTPS when streaming' => 'Nutze HTTPS zum Streaming',
+  'Useful on slow hardware. A refresh button will appear in the menu which flushes the cache' => 'Nützlich bei langsamer Hardware. Eine "Neu laden" Schaltfläche wird erscheinen, welche den Cache leert.',
+  'You may have to right-click and copy the address in order to stream (not download) the file' => 'Eventuell ist es erforderlich die Adresse zu kopieren und im Player (VLC o.ä.) einzufügen, um die Datei zu streamen und nicht herunterzuladen.',
 );

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Message translations.
  *
@@ -17,15 +17,16 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Free your library' => 'Free your library',
+  'Library update completed' => '',
+  'Streaming of video files is not possible from XBMC 12 "Frodo" backends' => '@@Streaming funktioniert nicht mit XBMX Version 12 "Frodo"@@',
   'Are you sure you want to flush the cache?' => 'Cache wirklich leeren?',
   'Are you sure you want to update the backend\'s library?' => 'Bibliothek wirklich aktualisieren?',
   'Are you sure?' => 'Bist du sicher?',
   'Error' => 'Fehler',
   'Error {code}' => 'Fehler {code}',
+  'Free your library' => 'Free your library',
   'Library update has been initiated' => 'Bibliothek wird aktualisiert',
   'Not available' => 'Nicht verfügbar',
-  'Streaming of video files is not possible from XBMC 12 "Frodo" backends' => 'Streaming funktioniert nicht mit XBMX Version 12 "Frodo"',
   'The cache has been flushed successfully' => 'Der Cache wurde erfolgreich geleert',
   'You\'ll have to flush the API call cache to see any newly scanned content' => 'Um neue Inhalte zu finden, muss der API Cache geleert werden',
 );
