@@ -30,7 +30,8 @@ class BackendController extends AdminOnlyController
 	public function accessRules()
 	{
 		$actions = array_merge(
-			array('change', 'updateLibrary', 'waitForConnectivity', 'ajaxCheckConnectivity'),
+			array('change', 'updateLibrary', 'waitForConnectivity', 
+				'ajaxCheckConnectivity', 'waitForLibraryUpdate'),
 			Yii::app()->powerOffManager->getAllowedActions()
 		);
 
@@ -84,21 +85,74 @@ class BackendController extends AdminOnlyController
 	}
 	
 	/**
-	 * Initiates a library update and redirects the user to his previous 
-	 * location
+	 * Initiates a library update. The update is performed differently 
+	 * depending on whether WebSocket connectivity to the backend is available
 	 */
 	public function actionUpdateLibrary()
 	{
-		// Update the library. There will be no indication if success/failure 
-		// so we have to assume it worked
-		Yii::app()->xbmc->sendNotification('VideoLibrary.Scan');
+		$backend = $this->getCurrent();
+		
 		Yii::app()->user->setFlash('success', Yii::t('Misc', 'Library update has been initiated'));
+
+		if (!$backend->hasWebSocketConnectivity())
+			$this->asynchronousLibraryUpdate();
+		else
+			$this->synchronousLibraryUpdate();
+	}
+
+	/**
+	 * Triggers an asynchronous library update, meaning there will be no way to 
+	 * determine whether the update finished.
+	 */
+	private function asynchronousLibraryUpdate()
+	{
+		// Update the library
+		Yii::app()->xbmc->sendNotification('VideoLibrary.Scan');
 
 		// Remind users that they'll have to flush their cache
 		if (Setting::getBoolean('cacheApiCalls'))
 			Yii::app()->user->setFlash('info', Yii::t('Misc', "You'll have to flush the API call cache to see any newly scanned content"));
 
 		$this->redirectToPrevious(Yii::app()->homeUrl);
+	}
+
+	/**
+	 * Renders a waiting page which triggers actionWaitForLibraryUpdate()
+	 */
+	private function synchronousLibraryUpdate()
+	{
+		$this->render('waitForLibraryUpdate');
+	}
+	
+	/**
+	 * Triggers a library update over a WebSocket connection and blocks the 
+	 * request until the update has finished
+	 */
+	public function actionWaitForLibraryUpdate()
+	{
+		$backend = $this->getCurrent();
+
+		// Create a library update listener
+		$listener = new LibraryUpdateListener($backend);
+
+		// Log when the scan was started and finished
+		$listener->onScanStarted = function() use($backend)
+		{
+			$this->log('Library update started on %s', $backend->name);
+		};
+
+		$listener->onScanFinished = function() use($backend)
+		{
+			$this->log('Library update finished on %s', $backend->name);
+		};
+
+		// Wait for the library update to finish
+		$listener->blockUntil(LibraryUpdateListener::METHOD_ON_SCAN_FINISHED);
+		Yii::app()->user->setFlash('success', Yii::t('Misc', 'Library update completed'));
+		
+		// Flush the cache so potential new content will be available
+		if (Setting::getBoolean('cacheApiCalls'))
+			Yii::app()->apiCallCache->flush();
 	}
 
 	/**
@@ -230,6 +284,7 @@ class BackendController extends AdminOnlyController
 						$model->name);
 				
 				Yii::app()->user->setFlash('success', Yii::t('Backend', 'Backend created successfully'));
+				$this->checkWebSocketConnectivity($model);
 				
 				if ($firstRun)
 				{
@@ -274,7 +329,8 @@ class BackendController extends AdminOnlyController
 					$model->name);
 
 			Yii::app()->user->setFlash('success', Yii::t('Backend', 'Backend updated successfully'));
-
+			$this->checkWebSocketConnectivity($model);
+			
 			$this->redirect(array('admin'));
 		}
 
@@ -308,6 +364,20 @@ class BackendController extends AdminOnlyController
 	private function getCurrent()
 	{
 		return Yii::app()->backendManager->getCurrent();
+	}
+	
+	/**
+	 * Checks whether the specified backend can be contacted on the 
+	 * configured TCP port and raises a warning if it can't.
+	 * @param Backend $backend
+	 */
+	private function checkWebSocketConnectivity($backend)
+	{
+		if (!$backend->hasWebSocketConnectivity())
+		{
+			Yii::app()->user->setFlash('info', 
+					Yii::t('Backend', 'WebSocket connection not available, library updates will be performed synchronously'));
+		}
 	}
 
 }
