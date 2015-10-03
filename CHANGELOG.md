@@ -8,6 +8,15 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.8.0
+* don't log logout attempts by guest users
+* fixed another two migration issue
+* use the value of the "request timeout" setting as the maximum execution time too
+* add fancier movie suggestions in the auto-complete dropdown
+* major performance fixes, especially on the movie browse page
+* moved database connection configuration to a separate file, should be helpful for MySQL users who previously had to configure their credentials in two places
+* improve the library update user experience when the backend is connectable using WebSocket
+
 #### 1.7.1
 * fixed invalid URLs for placeholder images under certain scenarios
 * fixed thumbnail URLs when proxy location is used
