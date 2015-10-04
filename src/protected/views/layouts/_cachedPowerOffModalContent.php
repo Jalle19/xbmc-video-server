@@ -10,6 +10,7 @@ if ($this->beginCache('PowerOffModal', array(
 	'varyByExpression'=>function() { 
 		return implode('_', array(
 			Yii::app()->user->role,
+			Yii::app()->language,
 			implode('_', Yii::app()->powerOffManager->getAllowedActions()),
 		));
 	}
