@@ -15,6 +15,6 @@
 		"tomnomnom/phpwol": "0.0.1",
 		"zendframework/zend-http": "2.2.*",
 		"imagine/imagine": "0.6.*",
-		"hoa/websocket": "^2.15"
+		"hoa/websocket": "2.15.08.05"
     }
 }
