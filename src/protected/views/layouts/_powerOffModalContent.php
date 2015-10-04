@@ -2,10 +2,10 @@
 
 $items = array();
 $actions = array(
-	array(PowerOffManager::SHUTDOWN, 'backend/shutdown', Yii::t('PowerOff', 'Shutdown')),
-	array(PowerOffManager::SUSPEND, 'backend/suspend', Yii::t('PowerOff', 'Suspend')),
-	array(PowerOffManager::HIBERNATE, 'backend/hibernate', Yii::t('PowerOff', 'Hibernate')),
-	array(PowerOffManager::REBOOT, 'backend/reboot', Yii::t('PowerOff', 'Reboot')),
+	array(PowerOffManager::SHUTDOWN, 'powerOff/shutdown', Yii::t('PowerOff', 'Shutdown')),
+	array(PowerOffManager::SUSPEND, 'powerOff/suspend', Yii::t('PowerOff', 'Suspend')),
+	array(PowerOffManager::HIBERNATE, 'powerOff/hibernate', Yii::t('PowerOff', 'Hibernate')),
+	array(PowerOffManager::REBOOT, 'powerOff/reboot', Yii::t('PowerOff', 'Reboot')),
 );
 
 foreach ($actions as $action)

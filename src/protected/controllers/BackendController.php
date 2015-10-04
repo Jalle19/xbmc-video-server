@@ -18,7 +18,7 @@ class BackendController extends AdminOnlyController
 		return array_merge(parent::filters(), array(
 			'ajaxOnly + delete, ajaxCheckConnectivity',
 			array('application.filters.CheckBackendConnectivityFilter + '.
-				'updateLibrary, shutdown, suspend, hibernate, reboot'),
+				'updateLibrary'),
 		));
 	}
 
@@ -29,11 +29,8 @@ class BackendController extends AdminOnlyController
 	 */
 	public function accessRules()
 	{
-		$actions = array_merge(
-			array('change', 'updateLibrary', 'waitForConnectivity', 
-				'ajaxCheckConnectivity', 'waitForLibraryUpdate'),
-			Yii::app()->powerOffManager->getAllowedActions()
-		);
+		$actions = array('change', 'updateLibrary', 'waitForConnectivity', 
+				'ajaxCheckConnectivity', 'waitForLibraryUpdate');
 
 		return array_merge(array(
 			array('allow', 'actions'=>$actions)
@@ -153,76 +150,6 @@ class BackendController extends AdminOnlyController
 		// Flush the cache so potential new content will be available
 		if (Setting::getBoolean('cacheApiCalls'))
 			Yii::app()->apiCallCache->flush();
-	}
-
-	/**
-	 * Shuts down the backend
-	 */
-	public function actionShutdown()
-	{
-		$this->powerOff(PowerOffManager::SHUTDOWN);
-	}
-
-	/**
-	 * Suspends the backend
-	 */
-	public function actionSuspend()
-	{
-		$this->powerOff(PowerOffManager::SUSPEND);
-	}
-
-	/**
-	 * Hibernates the backend
-	 */
-	public function actionHibernate()
-	{
-		$this->powerOff(PowerOffManager::HIBERNATE);
-	}
-
-	/**
-	 * Reboots the backend
-	 */
-	public function actionReboot()
-	{
-		$this->powerOff(PowerOffManager::REBOOT);
-	}
-
-	/**
-	 * Powers off the backend by shutting down, suspending, hibernating or
-	 * rebooting the backend
-	 * @param string $action the power off action to use, 
-	 * could be either of the strings 'shutdown', 'suspend', 'hibernate' or 'reboot'
-	 */
-	private function powerOff($action)
-	{
-		if (Yii::app()->powerOffManager->hasBackendCapability($action))
-		{
-			Yii::app()->powerOffManager->powerOff($action);
-
-			$messages = array(
-				PowerOffManager::SHUTDOWN => Yii::t('Backend', 'The current backend is shutting down'),
-				PowerOffManager::SUSPEND => Yii::t('Backend', 'The current backend is suspending'),
-				PowerOffManager::HIBERNATE => Yii::t('Backend', 'The current backend is hibernating'),
-				PowerOffManager::REBOOT => Yii::t('Backend', 'The current backend is rebooting'));
-			
-			$message = $messages[$action];
-			
-			Yii::app()->user->setFlash('success', $message);
-		}
-		else
-		{
-			$messages = array(
-				PowerOffManager::SHUTDOWN => Yii::t('Backend', 'The current backend cannot be shut down'),
-				PowerOffManager::SUSPEND => Yii::t('Backend', 'The current backend cannot be suspended'),
-				PowerOffManager::HIBERNATE => Yii::t('Backend', 'The current backend cannot be hibernated'),
-				PowerOffManager::REBOOT => Yii::t('Backend', 'The current backend cannot be rebooted'));
-			
-			$message = $messages[$action];
-			
-			Yii::app()->user->setFlash('error', $message);
-		}
-
-		$this->redirectToPrevious(Yii::app()->homeUrl);
 	}
 
 	/**
