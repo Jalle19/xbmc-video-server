@@ -5,14 +5,14 @@
 /* @var $details Movie */
 
 $this->pageTitle = $details->getDisplayName().' - '.Yii::t('Movies', 'Movies');
+$artwork = ThumbnailFactory::create($details->getArtwork(), Thumbnail::SIZE_LARGE);
 
 ?>
 <div class="row-fluid">
 	<div class="span3">
 		<?php 
 
-		echo CHtml::image(ThumbnailFactory::create($details->getArtwork(),
-				Thumbnail::SIZE_LARGE), '', array(
+		echo CHtml::image($artwork->getUrl(), '', array(
 			'class'=>'item-thumbnail hidden-phone',
 		));
 

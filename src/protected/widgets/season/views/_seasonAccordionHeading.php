@@ -1,13 +1,14 @@
 <?php
 
 /* @var $season Season */
+$artwork = ThumbnailFactory::create($season->getArtwork(),
+		Thumbnail::SIZE_VERY_SMALL, ThumbnailFactory::THUMBNAIL_TYPE_SEASON);
 
 ?>
 <div class="season row-fluid">
 	
 	<div class="pull-left season-artwork hide-when-toggled">
-	<?php echo \yiilazyimage\components\LazyImage::image(ThumbnailFactory::create($season->getArtwork(),
-		Thumbnail::SIZE_VERY_SMALL, ThumbnailFactory::THUMBNAIL_TYPE_SEASON)); ?>
+	<?php echo \yiilazyimage\components\LazyImage::image($artwork->getUrl()); ?>
 	</div>
 
 	<div class="pull-left">
