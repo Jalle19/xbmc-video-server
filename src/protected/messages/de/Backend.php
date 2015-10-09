@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Message translations.
  *
@@ -20,22 +20,22 @@ return array (
   'If the backend allows TCP connections from other machines, XBMC Video Server will use it to determine when triggered library updates are finished' => '',
   'Library update triggered, this page will be automatically refreshed once the update has completed' => '',
   'TCP port' => '',
-  'The current backend cannot be hibernated' => '',
-  'The current backend cannot be rebooted' => '',
-  'The current backend cannot be shut down' => '',
-  'The current backend cannot be suspended' => '',
-  'The current backend is hibernating' => '',
-  'The current backend is rebooting' => '',
-  'The current backend is shutting down' => '',
-  'The current backend is suspending' => '',
-  'The following item must only be changed if you\'ve changed the port through advancedsettings.xml' => '',
+  'The current backend cannot be hibernated' => 'Das aktuelle Backend kann nicht in den Ruhezustand wechseln.',
+  'The current backend cannot be rebooted' => 'Das aktuelle Backend kann nicht neugestartet werden.',
+  'The current backend cannot be shut down' => 'Das aktuelle Backend kann nicht heruntergefahren werden.',
+  'The current backend cannot be suspended' => 'Das aktuelle Backend kann nicht in den Energiesparmodus wechseln.',
+  'The current backend is hibernating' => 'Das aktuelle Backend wechselt in den Ruhezustand.',
+  'The current backend is rebooting' => 'Das aktuelle Backend startet neu.',
+  'The current backend is shutting down' => 'Das aktuelle Backend fährt herunter.',
+  'The current backend is suspending' => 'Das aktuelle Backend wechselt in den Energiesparmodus.',
+  'The following item must only be changed if you\'ve changed the port through advancedsettings.xml' => 'Der folgende Eintrag muss nur angepasst werden, wenn der Port in der advancedsettings.xml verändert wurde.',
   'This is where you configure your backends. A 
 	backend is an instance of XBMC that the application connects to and serves 
 	library contents from. If you specify more than one backend, a new item 
-	will appear in the main menu, allowing you to easily switch backends.' => '',
-  'Waiting for library update' => '',
-  'WebSocket connection not available, library updates will be performed synchronously' => '',
-  'You can leave this page at any time, the library update will finish in the background' => '',
+	will appear in the main menu, allowing you to easily switch backends.' => 'Hier werden die Backends konfiguriert. Ein Backend ist eine XBMC Instanz die die Medien-Bibliothek zur Verfügung stellt. Bei mehr als einem Backend erscheint ein Hinweis zum Wechseln im Hauptmenü.',
+  'Waiting for library update' => 'Bibliothek wird aktualisiert',
+  'WebSocket connection not available, library updates will be performed synchronously' => 'WebSocket Verbindung ist nicht verfügbar, Bibliothek Updates werden synchron ausgeführt.',
+  'You can leave this page at any time, the library update will finish in the background' => 'Du kannst die Seite jederzeit verlassen, Bibliothek wird im Hintergrund aktualisiert.',
   'This is where you configure your backends. A
 	backend is an instance of XBMC that the application connects to and serves 
 	library contents from. If you specify more than one backend, a new item 
