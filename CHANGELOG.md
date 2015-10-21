@@ -8,6 +8,13 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.8.1
+* updated French and German translations
+* added some additional video source flags
+* users are now redirected to their previous location after triggering a synchronous library update
+* fixed a regression in the WOL functionality where the user would not be redirected once the wake was completed
+* fixed stale caching for the power management dialog which could cause it to be in a different language after the language was changed
+
 #### 1.8.0
 * don't log logout attempts by guest users
 * fixed another two migration issue
