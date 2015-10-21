@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Message translations.
  *
@@ -17,7 +17,7 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Library update completed' => '',
+  'Library update completed' => 'Bibliothek wurde aktualisiert.',
   'Streaming of video files is not possible from XBMC 12 "Frodo" backends' => '@@Streaming funktioniert nicht mit XBMX Version 12 "Frodo"@@',
   'Are you sure you want to flush the cache?' => 'Cache wirklich leeren?',
   'Are you sure you want to update the backend\'s library?' => 'Bibliothek wirklich aktualisieren?',

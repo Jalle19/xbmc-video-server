@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Message translations.
  *
@@ -17,26 +17,26 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Administrators are not affected by this setting and can always power off backends.' => '',
-  'Allow users to power off backends' => '',
-  'Determines how long the application should wait for a response from XBMC. Increase this if you get timeout errors.' => '',
-  'Hibernate' => '',
+  'Administrators are not affected by this setting and can always power off backends.' => 'Administratoren sind hiervon unberührt und können das Backend jederzeit ausschalten.',
+  'Allow users to power off backends' => 'Den Benutzern das Abschalten der Backends erlauben',
+  'Determines how long the application should wait for a response from XBMC. Increase this if you get timeout errors.' => 'Legt fest, wie lange Anfragen an XBMC dauern dürfen, bevor ein Timeout eintritt. Bei Timeout Fehlern entsprechend erhören.',
+  'Hibernate' => 'Ruhezustand',
   'If specified, access is restricted to the defined 
 					whitelist. Valid values are IP addresses, IP subnets and 
-					domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com' => '',
-  'Look and feel' => '',
-  'Reboot' => '',
-  'Request timeout' => '',
-  'Security and performance' => '',
-  'Shutdown' => '',
-  'Suspend' => '',
+					domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com' => 'Wenn ausgefüllt, ist der Zugang auf diese Werte beschränkt. Mögliche Eingaben: IP Adressen, IP Subnetze, Domainnamen (auch mit Wildcard). Beispielsweise: 192.168.1.0/24, 1.2.3.4, contoso.com, *.contoso.net',
+  'Look and feel' => 'Personalisierung',
+  'Reboot' => 'Neustarten',
+  'Request timeout' => 'Zeitüberschreitung der Anfrage',
+  'Security and performance' => 'Sicherheit und Perfomance',
+  'Shutdown' => 'Herunterfahren',
+  'Suspend' => 'Energiesparmodus',
   'This is where you configure global 
 	application settings. These settings apply regardless of which backend is 
-	currently in use.' => '',
+	currently in use.' => 'Allgemeine Systemeinstellungen - diese gelten unabhängig vom genutzten Backend',
   'When checked, streaming will be done over HTTPS if 
 					the application is accessed over HTTPS. This will usually only 
 					work if the server uses a real signed certificate, thus it is 
-					not enabled by default.' => '',
+					not enabled by default.' => 'Nach der Aktivierung erfolgt das Streaming per HTTPS, wenn die Seite per HTTPS aufgerufen wird. Funktioniert im Allgemeinen nur mit einem Zertifikat einer Certification Authority (CA). Standardmäßig deaktiviert',
   'If specified, access is restricted to the defined
 					whitelist. Valid values are IP addresses, IP subnets and 
 					domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com' => '@@Wenn ausgefüllt, ist der Zugang auf diese Werte beschränkt. Mögliche Eingaben: IP Adressen, IP Subnetze, Domainnamen (auch mit Wildcard). Beispielsweise: 192.168.1.0/24, 1.2.3.4, contoso.com, *.contoso.net@@',
