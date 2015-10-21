@@ -139,6 +139,19 @@ class Controller extends CController
 	{
 		return realpath(Yii::getPathOfAlias('webroot').DIRECTORY_SEPARATOR.$directory);
 	}
+	
+	/**
+	 * @param string $fallback the fallback location, can be anything that can 
+	 * be passed to CController::redirect()
+	 * @return string the previous location, or the specified fallback if no 
+	 * previous location can be determined
+	 */
+	public function getPreviousLocation($fallback)
+	{
+		$referrer = Yii::app()->request->urlReferrer;
+
+		return !empty($referrer) ? $referrer : $fallback;
+	}
 
 	/**
 	 * Redirects to the user's URL referrer, or to the specified fallback URL 
@@ -149,12 +162,7 @@ class Controller extends CController
 	 */
 	public function redirectToPrevious($fallback)
 	{
-		$returnTo = Yii::app()->request->urlReferrer;
-
-		if ($returnTo)
-			$this->redirect($returnTo);
-		else
-			$this->redirect($fallback);
+		$this->redirect($this->getPreviousLocation($fallback));
 	}
 
 }
