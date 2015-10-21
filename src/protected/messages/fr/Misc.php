@@ -17,16 +17,16 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Library update completed' => '',
+  'Library update completed' => 'La mise à jour de la vidéothèque est terminée.',
   'Streaming of video files is not possible from XBMC 12 "Frodo" backends' => '@@Le streaming vidéo n’est pas disponible pour les sources fonctionnant sous XBMC v12 « Frodo »@@',
-  'Are you sure you want to flush the cache?' => 'Êtes-vous sûr(e) de vouloir supprimer le cache ?',
-  'Are you sure you want to update the backend\'s library?' => 'Êtes-vous sûr(e) de vouloir mettre à jour la vidéothèque ?',
-  'Are you sure?' => 'Êtes-vous sûr(e) ?',
+  'Are you sure you want to flush the cache?' => 'Confirmer la suppression du cache ?',
+  'Are you sure you want to update the backend\'s library?' => 'Confirmer la mise à jour de la vidéothèque ?',
+  'Are you sure?' => 'Confirmer cette action ?',
   'Error' => 'Erreur',
   'Error {code}' => 'Erreur {code}',
   'Free your library' => 'Votre vidéothèque partagée',
-  'Library update has been initiated' => 'La mise à jour de la vidéothèque à été initialisée',
+  'Library update has been initiated' => 'La mise à jour de la vidéothèque à été initialisée.',
   'Not available' => 'Non disponible',
-  'The cache has been flushed successfully' => 'Le cache a été supprimé avec succès',
-  'You\'ll have to flush the API call cache to see any newly scanned content' => 'Afin de voir les derniers éléments scannés vous devez supprimer le cache des résultats de l’API',
+  'The cache has been flushed successfully' => 'Le cache a été supprimé avec succès.',
+  'You\'ll have to flush the API call cache to see any newly scanned content' => 'Afin de voir les derniers éléments ajoutés à la vidéothèque le cache des résultats de l’API doit être supprimé.',
 );

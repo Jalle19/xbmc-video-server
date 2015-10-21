@@ -17,10 +17,10 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Hibernate' => '',
-  'Power off' => '',
-  'Reboot' => '',
-  'Shutdown' => '',
-  'Suspend' => '',
-  'Turning off the backend will break the connection for all users currently using the backend' => '',
+  'Hibernate' => 'Mettre en veille prolongée'
+  'Power off' => 'Éteindre',
+  'Reboot' => 'Redémarrer',
+  'Shutdown' => 'Éteindre',
+  'Suspend' => 'Mettre en veille',
+  'Turning off the backend will break the connection for all users currently using the backend' => 'L’extinction de la source va interrompre la connexion pour tous les utilisateurs actuellement connectés à la source.',
 );
