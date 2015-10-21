@@ -118,7 +118,13 @@ class BackendController extends AdminOnlyController
 	 */
 	private function synchronousLibraryUpdate()
 	{
-		$this->render('waitForLibraryUpdate');
+		// Pass the previous location to the view so we can tell the JavaScript 
+		// to redirect us back where we came from
+		$previousLocation = $this->getPreviousLocation(Yii::app()->homeUrl);
+		
+		$this->render('waitForLibraryUpdate', array(
+			'previousLocation'=>$previousLocation,
+		));
 	}
 	
 	/**
