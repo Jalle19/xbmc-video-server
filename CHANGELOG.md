@@ -8,6 +8,9 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.8.2
+* fixed playing media that contains multiple files
+
 #### 1.8.1
 * updated French and German translations
 * added some additional video source flags
