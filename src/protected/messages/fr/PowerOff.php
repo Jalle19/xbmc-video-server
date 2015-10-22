@@ -17,7 +17,7 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Hibernate' => 'Mettre en veille prolongée'
+  'Hibernate' => 'Mettre en veille prolongée',
   'Power off' => 'Éteindre',
   'Reboot' => 'Redémarrer',
   'Shutdown' => 'Éteindre',
