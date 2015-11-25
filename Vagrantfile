@@ -26,8 +26,8 @@ Vagrant.configure(2) do |config|
     name: "02 - Install and update system packages"
   config.vm.provision "shell", path: "provisioning/03-install-npm-dependencies.sh",
     name: "03 - Install npm dependencies"
-  config.vm.provision "shell", path: "provisioning/04-configure-apache.sh",
-    name: "04 - Configure Apache"
+  config.vm.provision "shell", path: "provisioning/04-configure-web-servers.sh",
+    name: "04 - Configure web servers"
   config.vm.provision "shell", path: "provisioning/05-configure-xbmc-video-server.sh",
     name: "05 - Configure XBMC Video Server"
 
