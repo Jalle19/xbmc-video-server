@@ -230,11 +230,7 @@ class BackendController extends AdminOnlyController
 		}
 		else
 		{
-			$model->hostname = 'localhost';
-			$model->port = 8080;
-			$model->tcp_port = 9090;
-			$model->username = 'xbmc';
-			$model->password = 'xbmc';
+			$model->setDefaultValues();
 
 			// Check "default" if there are no other backends
 			$backends = Backend::model()->findAll();

@@ -25,6 +25,12 @@
 class Backend extends CActiveRecord
 {
 	
+	const DEFAULT_HOSTNAME = 'localhost';
+	const DEFAULT_PORT = 8080;
+	const DEFAULT_TCP_PORT = 9090;
+	const DEFAULT_USERNAME = 'kodi';
+	const DEFAULT_PASSWORD = 'kodi';
+
 	/**
 	 * Timeout (in seconds) limit while checking if a backend is connectable
 	 */
@@ -239,6 +245,18 @@ class Backend extends CActiveRecord
 		parent::afterSave();
 	}
 	
+	/**
+	 * Resets some attributes to their default values
+	 */
+	public function setDefaultValues()
+	{
+		$this->hostname = self::DEFAULT_HOSTNAME;
+		$this->port = self::DEFAULT_PORT;
+		$this->tcp_port = self::DEFAULT_TCP_PORT;
+		$this->username = self::DEFAULT_USERNAME;
+		$this->password = self::DEFAULT_PASSWORD;
+	}
+
 	/**
 	 * @return boolean whether this backend is connectable
 	 * @param int $port the port to try to connect to. Defaults to null, meaning 
