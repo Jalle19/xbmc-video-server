@@ -12,7 +12,7 @@
         "mobiledetect/mobiledetectlib": "2.7.*",
         "mptre/php-xspf": "2.0.*",
         "netresearch/jsonmapper": "0.8.*",
-        "tomnomnom/phpwol": "0.0.1",
+        "tomnomnom/phpwol": "0.1.*",
         "zendframework/zend-http": "2.2.*",
         "imagine/imagine": "0.6.*",
         "hoa/websocket": "2.15.08.05"

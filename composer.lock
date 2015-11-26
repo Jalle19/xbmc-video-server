@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2057906f18d52c91727ce41da27e24ca",
-    "content-hash": "071ca75852dcbaffaa7be35ba703de26",
+    "hash": "e91a8d3019f6f169896d09aee9b01ccd",
+    "content-hash": "8f6f0d8c54cb71bff37ff1b58ede94df",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -851,17 +851,20 @@
         },
         {
             "name": "tomnomnom/phpwol",
-            "version": "0.0.1",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TomNomNom/phpwol.git",
-                "reference": "1c31562040a14d0512669dd38e4421b2c600370f"
+                "reference": "9126f22d57e4403e0569b1b5e9c91c697a394260"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TomNomNom/phpwol/zipball/1c31562040a14d0512669dd38e4421b2c600370f",
-                "reference": "1c31562040a14d0512669dd38e4421b2c600370f",
+                "url": "https://api.github.com/repos/TomNomNom/phpwol/zipball/9126f22d57e4403e0569b1b5e9c91c697a394260",
+                "reference": "9126f22d57e4403e0569b1b5e9c91c697a394260",
                 "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
             },
             "type": "library",
             "autoload": {
@@ -882,7 +885,7 @@
             ],
             "description": "Wake On LAN for PHP",
             "homepage": "https://github.com/TomNomNom/phpwol/",
-            "time": "2013-02-18 00:19:45"
+            "time": "2015-11-24 12:57:42"
         },
         {
             "name": "xrstf/ip-utils",
