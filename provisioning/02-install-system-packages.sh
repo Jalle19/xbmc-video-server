@@ -8,4 +8,7 @@
                        php5-json php5-xdebug curl nodejs nodejs-legacy npm \
                        nginx php5-fpm
 
+    # disable xdebug for php5-cli, Composer doesn't like it and we don't really 
+    # need it anyway
+    rm /etc/php5/cli/conf.d/20-xdebug.ini
 } > /dev/null 2>&1
