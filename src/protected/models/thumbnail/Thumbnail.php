@@ -108,7 +108,7 @@ class Thumbnail extends AbstractThumbnail
 
 		// Retrieve the image data and store it in a temporary file
 		$imageData = file_get_contents($this->getOriginalUrl(), false, $context);
-		$imageFile = tempnam(sys_get_temp_dir(), self::TEMP_FILE_PREFIX);
+		$imageFile = tempnam(self::getTemporaryDirectory(), self::TEMP_FILE_PREFIX);
 		
 		if ($imageData === false || file_put_contents($imageFile, $imageData) === false)
 			return;
@@ -132,6 +132,22 @@ class Thumbnail extends AbstractThumbnail
 	private function getFilename()
 	{
 		return md5($this->_path).'_'.$this->_size.'.jpg';
+	}
+	
+	/**
+	 * Returns the temporary directory where images should be stored for 
+	 * processing. It will first try upload_tmp_dir and fall back to the 
+	 * system default if that directive has not been set.
+	 * @return string
+	 */
+	private static function getTemporaryDirectory()
+	{
+		$tempDir = ini_get('upload_tmp_dir');
+
+		if ($tempDir === null)
+			$tempDir = sys_get_temp_dir();
+
+		return $tempDir;
 	}
 
 	/**
