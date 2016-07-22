@@ -34,6 +34,7 @@ class Setting extends CActiveRecord
 	public $singleFilePlaylist;
 	public $showHelpBlocks;
 	public $cacheApiCalls;
+	public $enableActorTypeahead;
 	public $allowUserPowerOff;
 	public $pagesize;
 	public $useHttpsForVfsUrls;
@@ -291,6 +292,13 @@ class Setting extends CActiveRecord
 				'default'=>'0',
 				'description'=>Yii::t('Settings', 'Useful on slow hardware. A refresh button will appear in the menu which flushes the cache'),
 				'order'=>650,
+			),
+			'enableActorTypeahead'=>array(
+				'label'=>Yii::t('Settings', 'Enable auto-complete for actor names'),
+				'type'=>self::TYPE_CHECKBOX,
+				'default'=>'0',
+				'description'=>Yii::t('Settings', 'Decreases performance, especially on large libraries and/or slow hardware'),
+				'order'=>675,
 			),
 			'useHttpsForVfsUrls'=>array(
 				'label'=>Yii::t('Settings', 'Use HTTPS when streaming'),

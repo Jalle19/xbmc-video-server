@@ -23,9 +23,17 @@ class TVShowFilter extends VideoFilter
 		echo $this->form->dropDownListControlGroup($this->model, 'watchedStatus', 
 				VideoFilterForm::getWatchedStatuses(), 
 				array('empty'=>' ', 'style'=>'width: 120px;'));
-		
-		echo $this->form->typeaheadFieldControlGroup($this->model, 'actor', array(
-			'prefetch'=>$ctrl->createUrl('typeahead/getActorNames', array('mediaType'=>Actor::MEDIA_TYPE_TVSHOW))));
+
+		if ($this->enableActorTypeahead())
+		{
+			echo $this->form->typeaheadFieldControlGroup($this->model, 'actor', [
+				'prefetch' => $ctrl->createUrl('typeahead/getActorNames', ['mediaType' => Actor::MEDIA_TYPE_TVSHOW]),
+			]);
+		}
+		else
+		{
+			echo $this->form->textFieldControlGroup($this->model, 'actor');
+		}
 	}
 
 }
