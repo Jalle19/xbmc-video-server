@@ -31,6 +31,17 @@ $this->pageTitle = $title = Yii::t('User', 'Manage users');
 			'value'=>'$data->getRoleName()',
 		),
 		array(
+			'name'=>'language',
+			'value'=>function($data) {
+				$languages = LanguageManager::getAvailableLanguages();
+				
+				if (!empty($data->language))
+					return $languages[$data->language];
+				else
+					return $languages[Setting::getString('language')];
+			},
+		),
+		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 			'template'=>'{update} {delete}',
 		),
