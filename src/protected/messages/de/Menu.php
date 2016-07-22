@@ -34,7 +34,7 @@ return array (
     'Settings' => 'Einstellungen',
     'System' => 'System',
     'System log' => 'System Log',
-    'TV Shows' => 'TV-Serien',
+    'TV shows' => 'TV-Serien',
     'Update library' => 'Bibliothek aktualisieren',
     'User' => 'Benutzer',
     'Users' => 'Benutzer',

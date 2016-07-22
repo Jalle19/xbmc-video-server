@@ -34,7 +34,7 @@ return array (
   'Settings' => 'Paramètres',
   'System' => 'Application',
   'System log' => 'Historique de l’application',
-  'TV Shows' => 'Séries TV',
+  'TV shows' => 'Séries TV',
   'Update library' => 'Mettre à jour la vidéothèque',
   'User' => 'Utilisateur',
   'Users' => 'Utilisateurs',

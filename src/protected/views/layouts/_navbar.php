@@ -12,7 +12,7 @@ $leftItems = array(
 			),
 		), 'linkOptions'=>array('class'=>'fa fa-video-camera'),
 	),
-	array('label'=>Yii::t('Menu', 'TV Shows'), 
+	array('label'=>Yii::t('Menu', 'TV shows'), 
 		'items'=>array(
 			array(
 				'label'=>Yii::t('Menu', 'Browse'), 'url'=>array('tvShow/index'),

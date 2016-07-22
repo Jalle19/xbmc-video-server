@@ -20,7 +20,7 @@ return array (
   'Recently added episodes' => 'Derniers épisodes ajoutés',
   'Season {season} - {showTitle}' => 'Saison {season} - {showTitle}',
   'Seasons' => 'Saison(s)',
-  'TV Shows' => 'Séries TV',
+  'TV shows' => 'Séries TV',
   'There are no episodes for this show' => 'Il n’y a pas d’épisode pour cette série',
   'Watch the whole season' => 'Visionner la saison entière',
   'Watch the whole show' => 'Visionner la série entière',
