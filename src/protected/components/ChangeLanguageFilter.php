@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Pre-filter which checks if the change language modal form has been submitted 
+ * Pre-filter which checks if the user form has been submitted 
  * and changes the application language accordingly
  *
  * @author Sam Stenvall <neggelandia@gmail.com>
@@ -12,41 +12,39 @@ class ChangeLanguageFilter extends CFilter
 {
 
 	/**
-	 * Renders the change language form and handles its submission
-	 * @param CFilterChain $filterChain
-	 * @return boolean whether to continue execution
+	 * @inheritdoc
 	 */
 	protected function preFilter($filterChain)
 	{
-		if (isset($_POST['ChangeLanguageForm']))
+		if (isset($_POST['User']))
 		{
-			$model = new ChangeLanguageForm();
-			$model->attributes = $_POST['ChangeLanguageForm'];
-
-			if ($model->validate())
+			$previousLanguage = $this->getCurrentUserLanguage();
+			$userId = $_POST['User']['id'];
+			$newLanguage = $_POST['User']['language'];
+			
+			if ($previousLanguage !== $newLanguage && Yii::app()->user->id === $userId)
 			{
 				// Get the display name of the new language
 				$languages = LanguageManager::getAvailableLanguages();
-				$newLanguage = $languages[$model->language];
-				
-				// Update user's default language
-				if ($model->setDefault)
-				{
-					$user = User::model()->findByPk(Yii::app()->user->id);
-					$user->language = $model->language;
 
-					// Don't rehash the password, it hasn't been changed
-					$user->inhibitPasswordHash();
-					$user->save();
-				}
-
-				// Update and inform
-				Yii::app()->languageManager->setCurrent($model->language);
-				Yii::app()->user->setFlash('success', Yii::t('Language', 'Language changed to {newLanguage}', array('{newLanguage}'=>$newLanguage)));
+				Yii::app()->languageManager->setCurrent($newLanguage);
+				Yii::app()->user->setFlash('info', Yii::t('Language', 'Language changed to {newLanguage}', array('{newLanguage}'=>$languages[$newLanguage])));
 			}
 		}
 
 		return true;
+	}
+
+
+	/**
+	 * @return string the user's current language
+	 */
+	private function getCurrentUserLanguage()
+	{
+		/* @var User $user */
+		$user = User::model()->findByPk(Yii::app()->user->id);
+		
+		return $user->language;
 	}
 
 }

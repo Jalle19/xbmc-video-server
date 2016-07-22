@@ -42,6 +42,10 @@ $this->pageTitle = $title = Yii::t('User', 'Manage users');
 			},
 		),
 		array(
+			'name'=>'start_page',
+			'value'=>'$data->getStartPage()',
+		),
+		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',
 			'template'=>'{update} {delete}',
 		),

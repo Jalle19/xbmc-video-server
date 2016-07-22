@@ -18,6 +18,7 @@ if (count(Backend::model()->findAll()) === 1)
 				intval(Yii::app()->backendManager->getCurrent() === null),
 				Yii::app()->language,
 				Yii::app()->baseUrl,
+				Yii::app()->user->id,
 			));
 		}
 	)))

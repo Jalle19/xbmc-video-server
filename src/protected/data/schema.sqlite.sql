@@ -18,7 +18,8 @@ CREATE TABLE "user" (
 	"role" VARCHAR NOT NULL  DEFAULT user, 
 	"username" VARCHAR NOT NULL  UNIQUE , 
 	"password" VARCHAR NOT NULL, 
-	"language" VARCHAR
+	"language" VARCHAR,
+	"start_page" VARCHAR
 );
 
 INSERT INTO "user" ('role','username','password','language') VALUES('admin','admin','admin',NULL);
