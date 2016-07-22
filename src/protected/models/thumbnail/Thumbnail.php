@@ -114,7 +114,7 @@ class Thumbnail extends AbstractThumbnail
 			return;
 		
 		// Resize and cache the thumbnail
-		$imagine = $this->imagineFactory();
+		$imagine = self::imagineFactory();
 
 		$imagine->open($imageFile)
 				->thumbnail(new \Imagine\Image\Box($this->_size, PHP_INT_MAX))
@@ -154,7 +154,7 @@ class Thumbnail extends AbstractThumbnail
 	 * Factory method for creating an Imagine instance
 	 * @return \Imagine\Gd\Imagine|\Imagine\Imagick\Imagine
 	 */
-	private function imagineFactory()
+	private static function imagineFactory()
 	{
 		// Try Imagick first, then fall back to GD. We have to check for
 		// Imagick ourselves because Imagine is too stupid to do it correctly
