@@ -1,7 +1,7 @@
 <?php
 
 /* @var $this UserController */
-/* @var $model User */
+/* @var $model ChangePasswordForm */
 
 $this->pageTitle = $title = Yii::t('User', 'Change password');
 
