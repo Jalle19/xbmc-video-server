@@ -81,8 +81,10 @@ $artwork = ThumbnailFactory::create($details->getArtwork(), Thumbnail::SIZE_LARG
 
 				if ($director)
 				{
+					$directorLink = CHtml::link($director, array('movie/index', 'MovieFilterForm[director]'=>$director));
+					
 					echo CHtml::tag('p', array(), Yii::t('Movies', 'Director: {director}', array(
-						'{director}'=>$director)));
+						'{director}'=>$directorLink)));
 				}
 
 				?>
