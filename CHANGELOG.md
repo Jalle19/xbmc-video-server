@@ -8,6 +8,18 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.8.3
+* add a settings page for users where they can change the language and the landing page
+* clicking the director name on a movie now links to all movies with that director
+* disable actor typeahead by default (should bring major performance improvements), it's now a setting
+* fix season artwork placeholder width
+* update the wiki with installation instructions for Ubuntu 16.04
+* add a Dockerfile, project is now published on dockerhub.com (https://hub.docker.com/r/jalle19/xbmc-video-server/)
+* the Vagrant environment now contains a sample configuration file for nginx
+* changed the default credentials to "kodi" and "kodi"
+* fix an unfriendly error message if WOL fails
+* fix error when using PHP with open_basedir restrictions
+
 #### 1.8.2
 * fixed playing media that contains multiple files
 
