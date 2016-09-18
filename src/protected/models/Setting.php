@@ -319,7 +319,7 @@ class Setting extends CActiveRecord
                                         Setting::POWER_OPTION_SUSPEND=>Yii::t('Settings', 'Suspend'),
                                         Setting::POWER_OPTION_HIBERNATE=>Yii::t('Settings', 'Hibernate'),
                                         Setting::POWER_OPTION_REBOOT=>Yii::t('Settings', 'Reboot')),
-				'description'=>Yii::t('Settings', 'Administrators are not affected by this setting and can always power off backends.'),
+				'description'=>Yii::t('Settings', 'Administrators are not affected by this setting and can always power off backends'),
                                 'order'=>750,
                         ),
 			'whitelist'=>array(

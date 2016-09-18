@@ -17,7 +17,7 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Administrators are not affected by this setting and can always power off backends.' => 'Les administrateurs ne sont pas concernés par ce paramètre et peuvent toujours éteindre les sources.',
+  'Administrators are not affected by this setting and can always power off backends' => 'Les administrateurs ne sont pas concernés par ce paramètre et peuvent toujours éteindre les sources.',
   'Allow users to power off backends' => 'Autoriser les utilisateurs à éteindre les sources',
   'Determines how long the application should wait for a response from XBMC. Increase this if you get timeout errors.' => 'Détermine le temps d’attente de l’application pour obtenir une réponse de Kodi. Augmenter cette valeur si le message suivant apparait : « Le temps d’attente de la page a expiré. ».',
   'Hibernate' => 'Mettre en veille prolongée',

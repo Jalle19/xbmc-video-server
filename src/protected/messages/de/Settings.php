@@ -17,7 +17,7 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Administrators are not affected by this setting and can always power off backends.' => 'Administratoren sind hiervon unberührt und können das Backend jederzeit ausschalten.',
+  'Administrators are not affected by this setting and can always power off backends' => 'Administratoren sind hiervon unberührt und können das Backend jederzeit ausschalten.',
   'Allow users to power off backends' => 'Den Benutzern das Abschalten der Backends erlauben',
   'Determines how long the application should wait for a response from XBMC. Increase this if you get timeout errors.' => 'Legt fest, wie lange Anfragen an XBMC dauern dürfen, bevor ein Timeout eintritt. Bei Timeout Fehlern entsprechend erhören.',
   'Hibernate' => 'Ruhezustand',
