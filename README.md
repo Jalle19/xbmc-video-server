@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Jalle19/xbmc-video-server.svg?branch=master)](https://travis-ci.org/Jalle19/xbmc-video-server)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Jalle19/xbmc-video-server/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Jalle19/xbmc-video-server/?branch=master)
 
 XBMC Video Server
