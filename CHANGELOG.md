@@ -8,6 +8,11 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.8.4
+
+* add a Travis CI configuration that checks that dependencies are installable on all supported PHP versions
+* replace the removed mptre/xspf library with jalle19/xsphpf
+
 #### 1.8.3
 * add a settings page for users where they can change the language and the landing page
 * clicking the director name on a movie now links to all movies with that director
