@@ -16,7 +16,8 @@ class XSPFPlaylist extends Playlist
 
 		foreach ($this->_items as $item)
 		{
-			$track = new \Jalle19\xsphpf\Track($item->location, $item->title, $item->runtime);
+			// Runtime should be in milliseconds
+			$track = new \Jalle19\xsphpf\Track($item->location, $item->title, $item->runtime * 1000);
 			
 			if ($item->image)
 				$track->setImage($item->image);
