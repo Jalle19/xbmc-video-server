@@ -61,7 +61,6 @@ Credits
 * jQuery Unveil (http://luis-almeida.github.io/unveil/)
 * typeahead.js (http://twitter.github.io/typeahead.js/)
 * phpwol (https://github.com/TomNomNom/phpwol)
-* php-xspf (https://github.com/mptre/php-xspf)
 
 License
 -------
