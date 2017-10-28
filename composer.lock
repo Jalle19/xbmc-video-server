@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e91a8d3019f6f169896d09aee9b01ccd",
-    "content-hash": "8f6f0d8c54cb71bff37ff1b58ede94df",
+    "hash": "a0156a8c0f736af2b3871d79feec7430",
+    "content-hash": "954e0d27c897cc49460d2c02452a85f5",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -291,6 +291,7 @@
                 "parameter",
                 "protocol"
             ],
+            "abandoned": "hoa/consistency",
             "time": "2015-09-03 08:28:53"
         },
         {
@@ -678,6 +679,45 @@
             "time": "2015-04-20 11:09:16"
         },
         {
+            "name": "jalle19/xsphpf",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Jalle19/xsphpf.git",
+                "reference": "7db64f367db627bfb7ee701c55e72bf1f6299fea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Jalle19/xsphpf/zipball/7db64f367db627bfb7ee701c55e72bf1f6299fea",
+                "reference": "7db64f367db627bfb7ee701c55e72bf1f6299fea",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jalle19\\xsphpf\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3"
+            ],
+            "authors": [
+                {
+                    "name": "Sam Stenvall",
+                    "email": "neggelandia@gmail.com"
+                }
+            ],
+            "description": "A library for creating XSPF playlists",
+            "time": "2017-10-28 12:19:24"
+        },
+        {
             "name": "jalle19/yii-lazy-image",
             "version": "1.0.2",
             "source": {
@@ -768,59 +808,16 @@
             "time": "2014-03-07 13:33:54"
         },
         {
-            "name": "mptre/php-xspf",
-            "version": "v2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mptre/php-xspf.git",
-                "reference": "29a61b26e5e2d52502a39d32a063b831612b44de"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mptre/php-xspf/zipball/29a61b26e5e2d52502a39d32a063b831612b44de",
-                "reference": "29a61b26e5e2d52502a39d32a063b831612b44de",
-                "shasum": ""
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.1.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "mptre": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Anton Lindqvist",
-                    "email": "anton@qvister.se"
-                },
-                {
-                    "name": "Sam Stenvall",
-                    "email": "neggelandia@gmail.com"
-                }
-            ],
-            "description": "A package for genering XSPF playlists",
-            "keywords": [
-                "xspf"
-            ],
-            "time": "2014-08-06 09:56:00"
-        },
-        {
             "name": "netresearch/jsonmapper",
             "version": "v0.8.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/netresearch/jsonmapper.git",
+                "url": "https://github.com/cweiske/jsonmapper.git",
                 "reference": "8888278ddbf013a81e4b83670cdf7b900d121751"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/netresearch/jsonmapper/zipball/8888278ddbf013a81e4b83670cdf7b900d121751",
+                "url": "https://api.github.com/repos/cweiske/jsonmapper/zipball/8888278ddbf013a81e4b83670cdf7b900d121751",
                 "reference": "8888278ddbf013a81e4b83670cdf7b900d121751",
                 "shasum": ""
             },

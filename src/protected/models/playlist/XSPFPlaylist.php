@@ -12,22 +12,20 @@ class XSPFPlaylist extends Playlist
 
 	public function __toString()
 	{
-		$xspf = new mptre\Xspf();
+		$playlist = new \Jalle19\xsphpf\Playlist();
 
 		foreach ($this->_items as $item)
 		{
-			$trackData = array(
-				'title'=>$item->title,
-				'location'=>$item->location,
-				'duration'=>$item->runtime);
-
+			// Runtime should be in milliseconds
+			$track = new \Jalle19\xsphpf\Track($item->location, $item->title, $item->runtime * 1000);
+			
 			if ($item->image)
-				$trackData['image'] = $item->image;
+				$track->setImage($item->image);
 
-			$xspf->addTrack($trackData);
+			$playlist->addTrack($track);
 		}
 
-		return $xspf->output(true);
+		return $playlist->__toString();
 	}
 
 	public function getExtension()
