@@ -9,6 +9,10 @@ RewriteRule . index.php
 
 # cache images, styles, scripts and fonts
 <IfModule mod_expires.c>
+		# Add modern MIME types for WOFF/WOFF2 fonts
+		AddType font/woff .woff
+		AddType font/woff2 .woff2
+		
 		ExpiresActive On
 		ExpiresByType image/gif "access plus 360 days"
 		ExpiresByType image/jpeg "access plus 360 days"
@@ -16,5 +20,6 @@ RewriteRule . index.php
 		ExpiresByType text/css "access plus 360 days"
 		ExpiresByType text/javascript "access plus 360 days"
 		ExpiresByType application/javascript "access plus 360 days"
-		ExpiresByType application/x-font-woff "access plus 360 days"
+		ExpiresByType font/woff "access plus 360 days"
+		ExpiresByType font/woff2 "access plus 360 days"
 </IfModule>
