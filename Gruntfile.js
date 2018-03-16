@@ -7,6 +7,7 @@ module.exports = function(grunt) {
 			dist: {
 				src: [
 					// preserve the correct order
+					'src/js/src/jquery/*.js',
 					'src/js/src/yii/*.js',
 					'src/js/src/bootstrap/*.js',
 					'src/js/src/twitter-typeahead/*.js',
