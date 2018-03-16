@@ -66,3 +66,6 @@ License
 -------
 
 This software is licensed under the GNU GENERAL PUBLIC LICENSE Version 3.
+
+The bundled font is Copyright (c) 2010-2014 by tyPoland Lukasz Dziedzic (team@latofonts.com) with Reserved Font Name 
+"Lato"
