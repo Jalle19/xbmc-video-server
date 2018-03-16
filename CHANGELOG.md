@@ -8,6 +8,11 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.8.5
+
+* fix cache busting of styles on the login page
+* bundle the Lato font and jQuery so the application can work without client Internet access
+
 #### 1.8.4
 
 * add a Travis CI configuration that checks that dependencies are installable on all supported PHP versions
