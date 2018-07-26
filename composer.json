@@ -1,6 +1,6 @@
 {
     "require": {
-        "yiisoft/yii": "1.1.14",
+        "yiisoft/yii": "1.1.20",
         "jalle19/simple-json-rpc-client": ">=1.0.9",
         "jalle19/php-whitelist-check": "1.0.*",
         "jalle19/yii-lazy-image": "1.0.*",
