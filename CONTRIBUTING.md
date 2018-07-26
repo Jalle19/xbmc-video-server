@@ -11,7 +11,7 @@ If you're adding new .php files to the project please remember to add the copyri
 ### Development environment
 
 You can use Vagrant to install, provision and configure a development environment. Just run `vagrant up` from the project 
-root directory. The application is served both using Apache on port 80 and nginx on port 8080.
+root directory.
 
 ### Project setup
 
