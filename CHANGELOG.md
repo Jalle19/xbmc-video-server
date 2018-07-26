@@ -8,13 +8,16 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
-#### 1.8.5
+#### 1.8.6
+* added installation instructions for Ubuntu 18.04 to the wiki
+* upgraded the Yii framework to the latest version, this fixes the application on Ubuntu 18.04 (PHP 7.1+)
+* change the Vagrant box to use Ubuntu 18.04 as base
 
+#### 1.8.5
 * fix cache busting of styles on the login page
 * bundle the Lato font and jQuery so the application can work without client Internet access
 
 #### 1.8.4
-
 * add a Travis CI configuration that checks that dependencies are installable on all supported PHP versions
 * replace the removed mptre/xspf library with jalle19/xsphpf
 
