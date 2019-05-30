@@ -18,6 +18,7 @@ class ResultListMovies extends ResultList
 			$this->getGenreColumn(),
 			$this->getRatingColumn(),
 			$this->getRuntimeColumn(),
+			$this->getDateAddedColumn(),
 		);
 	}
 
@@ -53,4 +54,20 @@ class ResultListMovies extends ResultList
 		);
 	}
 
+
+	/**
+	 * Returns the column definition for the dateadded column
+	 * @return array
+	 */
+	private function getDateAddedColumn()
+	{
+		return [
+			'name'   => 'dateadded',
+			'header' => Yii::t('MovieList', 'Date added'),
+			'value'  => function ($data) {
+				/** @var Movie $data */
+				echo $data->getDateAdded();
+			},
+		];
+	}
 }

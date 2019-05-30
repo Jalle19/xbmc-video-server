@@ -18,7 +18,7 @@ class VideoLibrary
 	 * @var string[] default properties for movies
 	 */
 	private static $_defaultMovieProperties = array(
-		'year', 'genre', 'thumbnail', 'rating', 'runtime', 'playcount'
+		'year', 'genre', 'thumbnail', 'rating', 'runtime', 'playcount', 'dateadded'
 	);
 
 	/**
