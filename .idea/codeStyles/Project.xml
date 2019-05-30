@@ -6,7 +6,7 @@
       </value>
     </option>
     <option name="LINE_SEPARATOR" value="&#10;" />
-    <JSCodeStyleSettings>
+    <JSCodeStyleSettings version="0">
       <option name="SPACE_BEFORE_FUNCTION_LEFT_PARENTH" value="false" />
     </JSCodeStyleSettings>
     <PHPCodeStyleSettings>
