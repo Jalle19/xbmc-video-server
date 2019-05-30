@@ -50,6 +50,7 @@ return array(
 			// list of scripts and styles that we include in our compiled files
 			'bundledFiles'=>array(
 				'jquery.yiilistview.js',
+				'jquery.yiigridview.js',
 				'jquery-unveil.min.js',
 				'listview/styles.css',
 			)
