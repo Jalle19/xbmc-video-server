@@ -24,6 +24,10 @@ class ResultGrid extends CListView
 			location.hash = '#result-list';
 			$('.lazy').unveil();
 		}");
+		
+		if ($this->dataProvider instanceof LibraryDataProvider) {
+			$this->dataProvider->makeSortable();	
+		}
 	}
 
 	/**
