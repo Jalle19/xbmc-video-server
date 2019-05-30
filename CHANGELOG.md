@@ -8,6 +8,11 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.9.0
+* added a "date added" column to the movie list
+* fixed filtering the system logs
+* grid view now respects the sort order specified in the URL (can be changed when in list view)
+
 #### 1.8.6
 * added installation instructions for Ubuntu 18.04 to the wiki
 * upgraded the Yii framework to the latest version, this fixes the application on Ubuntu 18.04 (PHP 7.1+)
