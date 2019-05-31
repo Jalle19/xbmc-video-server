@@ -8,6 +8,9 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.9.1
+* fix wrong sort order on the recently added movies page
+
 #### 1.9.0
 * added a "date added" column to the movie list
 * fixed filtering the system logs
