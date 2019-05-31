@@ -22,10 +22,6 @@ abstract class ResultList extends TbGridView
 	{
 		// Configure columns
 		$this->columns = $this->getColumnDefinitions();
-
-		if ($this->dataProvider instanceof LibraryDataProvider) {
-			$this->dataProvider->makeSortable();
-		}
 	}
 	
 	/**
