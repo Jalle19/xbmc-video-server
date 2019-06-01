@@ -17,7 +17,5 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Change language' => '@@Sprache ändern@@',
-  'To change the application language for all users go to {settingsUrl} instead' => '@@Um die Spracheinstellung für alle Nutzer zu ändern, gehe zu {settingsUrl}@@',
   'Language changed to {newLanguage}' => 'Sprache geändert: {newLanguage}',
 );

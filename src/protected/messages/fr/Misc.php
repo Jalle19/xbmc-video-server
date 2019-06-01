@@ -17,7 +17,6 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Streaming of video files is not possible from XBMC 12 "Frodo" backends' => '@@Le streaming vidéo n’est pas disponible pour les sources fonctionnant sous XBMC v12 « Frodo »@@',
   'Are you sure you want to flush the cache?' => 'Confirmer la suppression du cache ?',
   'Are you sure you want to update the backend\'s library?' => 'Confirmer la mise à jour de la vidéothèque ?',
   'Are you sure?' => 'Confirmer cette action ?',

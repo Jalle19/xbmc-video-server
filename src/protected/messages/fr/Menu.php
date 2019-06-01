@@ -17,8 +17,6 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Change language' => '@@Modifier la langue@@',
-  'Interface' => '@@Interface@@',
   'Actions' => 'Actions',
   'Backends' => 'Sources',
   'Browse' => 'Parcourir',
