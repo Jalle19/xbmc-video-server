@@ -19,26 +19,9 @@
 return array (
   'Decreases performance, especially on large libraries and/or slow hardware' => '',
   'Enable auto-complete for actor names' => '',
-  'If specified, access is restricted to the defined 
-					whitelist. Valid values are IP addresses, IP subnets and 
-					domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com' => '',
-  'This is where you configure global 
-	application settings. These settings apply regardless of which backend is 
-	currently in use.' => '',
-  'When checked, streaming will be done over HTTPS if 
-					the application is accessed over HTTPS. This will usually only 
-					work if the server uses a real signed certificate, thus it is 
-					not enabled by default.' => '',
-  'If specified, access is restricted to the defined 
-					whitelist. Valid values are IP addresses, IP subnets and 
-					domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com' => '@@L’accès est restreint par liste blanche. Sont valides, les adresses IP, les IP des sous-réseaux et les noms de domaines incluant les jokers. Exemple: 192.168.1.0/24,1.2.3.4,exemple.fr,*.utilisateur.fr.@@',
-  'This is where you configure global 
-	application settings. These settings apply regardless of which backend is 
-	currently in use.' => '@@Voici la configuration générale. Ces paramètres s’appliquent quelque soit la source utilisée.@@',
-  'When checked, streaming will be done over HTTPS if 
-					the application is accessed over HTTPS. This will usually only 
-					work if the server uses a real signed certificate, thus it is 
-					not enabled by default.' => '@@Le streaming se fera via HTTPS si l’application est accessible via HTTPS. Cette option est uniquement fonctionnelle si le serveur utilise un certificat signé, ceci n’est donc pas activé par défaut.@@',
+  'If specified, access is restricted to the defined whitelist. Valid values are IP addresses, IP subnets and domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com' => 'L’accès est restreint par liste blanche. Sont valides, les adresses IP, les IP des sous-réseaux et les noms de domaines incluant les jokers. Exemple: 192.168.1.0/24,1.2.3.4,exemple.fr,*.utilisateur.fr.',
+  'This is where you configure global application settings. These settings apply regardless of which backend is currently in use.' => 'Voici la configuration générale. Ces paramètres s’appliquent quelque soit la source utilisée.',
+  'When checked, streaming will be done over HTTPS if the application is accessed over HTTPS. This will usually only work if the server uses a real signed certificate, thus it is not enabled by default.' => 'Le streaming se fera via HTTPS si l’application est accessible via HTTPS. Cette option est uniquement fonctionnelle si le serveur utilise un certificat signé, ceci n’est donc pas activé par défaut.',
   'Access whitelist' => 'Accès par liste blanche',
   'Administrators are not affected by this setting and can always power off backends' => 'Les administrateurs ne sont pas concernés par ce paramètre et peuvent toujours éteindre les sources.',
   'Allow users to power off backends' => 'Autoriser les utilisateurs à éteindre les sources',

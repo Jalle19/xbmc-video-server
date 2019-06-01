@@ -19,36 +19,9 @@
 return array (
   'Decreases performance, especially on large libraries and/or slow hardware' => '',
   'Enable auto-complete for actor names' => '',
-  'If specified, access is restricted to the defined 
-					whitelist. Valid values are IP addresses, IP subnets and 
-					domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com' => '',
-  'This is where you configure global 
-	application settings. These settings apply regardless of which backend is 
-	currently in use.' => '',
-  'When checked, streaming will be done over HTTPS if 
-					the application is accessed over HTTPS. This will usually only 
-					work if the server uses a real signed certificate, thus it is 
-					not enabled by default.' => '',
-  'If specified, access is restricted to the defined
-					whitelist. Valid values are IP addresses, IP subnets and 
-					domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com' => '@@Wenn ausgefüllt, ist der Zugang auf diese Werte beschränkt. Mögliche Eingaben: IP Adressen, IP Subnetze, Domainnamen (auch mit Wildcard). Beispielsweise: 192.168.1.0/24, 1.2.3.4, contoso.com, *.contoso.net@@',
-  'If specified, access is restricted to the defined 
-					whitelist. Valid values are IP addresses, IP subnets and 
-					domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com' => '@@Wenn ausgefüllt, ist der Zugang auf diese Werte beschränkt. Mögliche Eingaben: IP Adressen, IP Subnetze, Domainnamen (auch mit Wildcard). Beispielsweise: 192.168.1.0/24, 1.2.3.4, contoso.com, *.contoso.net@@',
-  'This is where you configure global
-	application settings. These settings apply regardless of which backend is 
-	currently in use.' => '@@Allgemeine Systemeinstellungen - Diese gelten unabhängig vom genutzten Backend@@',
-  'This is where you configure global 
-	application settings. These settings apply regardless of which backend is 
-	currently in use.' => '@@Allgemeine Systemeinstellungen - diese gelten unabhängig vom genutzten Backend@@',
-  'When checked, streaming will be done over HTTPS if
-					the application is accessed over HTTPS. This will usually only 
-					work if the server uses a real signed certificate, thus it is 
-					not enabled by default.' => '@@Nach Aktivierung erfolgt das Streaming per HTTPS, wenn die Seite per HTTPS aufgerufen wird. Funktioniert im Allgemeinen nur mit einem Zertifikat einer Certification Authority (CA). Standardmäßig deaktiviert@@',
-  'When checked, streaming will be done over HTTPS if 
-					the application is accessed over HTTPS. This will usually only 
-					work if the server uses a real signed certificate, thus it is 
-					not enabled by default.' => '@@Nach der Aktivierung erfolgt das Streaming per HTTPS, wenn die Seite per HTTPS aufgerufen wird. Funktioniert im Allgemeinen nur mit einem Zertifikat einer Certification Authority (CA). Standardmäßig deaktiviert@@',
+  'If specified, access is restricted to the defined whitelist. Valid values are IP addresses, IP subnets and domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com' => 'Wenn ausgefüllt, ist der Zugang auf diese Werte beschränkt. Mögliche Eingaben: IP Adressen, IP Subnetze, Domainnamen (auch mit Wildcard). Beispielsweise: 192.168.1.0/24, 1.2.3.4, contoso.com, *.contoso.net',
+  'This is where you configure global application settings. These settings apply regardless of which backend is currently in use.' => 'Allgemeine Systemeinstellungen - Diese gelten unabhängig vom genutzten Backend',
+  'When checked, streaming will be done over HTTPS if the application is accessed over HTTPS. This will usually only work if the server uses a real signed certificate, thus it is not enabled by default.' => 'Nach Aktivierung erfolgt das Streaming per HTTPS, wenn die Seite per HTTPS aufgerufen wird. Funktioniert im Allgemeinen nur mit einem Zertifikat einer Certification Authority (CA). Standardmäßig deaktiviert',
   'Access whitelist' => 'Zugang - Positivliste',
   'Administrators are not affected by this setting and can always power off backends' => 'Administratoren sind hiervon unberührt und können das Backend jederzeit ausschalten.',
   'Allow users to power off backends' => 'Den Benutzern das Abschalten der Backends erlauben',

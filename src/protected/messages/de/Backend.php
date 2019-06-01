@@ -20,10 +20,7 @@ return array (
   'If the backend allows TCP connections from other machines, XBMC Video Server will use it to determine when triggered library updates are finished' => '',
   'Library update triggered, this page will be automatically refreshed once the update has completed' => '',
   'TCP port' => '',
-  'This is where you configure your backends. A
-	backend is an instance of XBMC that the application connects to and serves 
-	library contents from. If you specify more than one backend, a new item 
-	will appear in the main menu, allowing you to easily switch backends.' => '@@Hier werden die Backends konfiguriert. Ein Backend ist eine XBMC Instanz die die Medien-Bibliothek zur Verfügung stellt. Bei mehr als einem Backend erscheint ein Hinweis zum Wechseln im Hauptmenü.@@',
+  'This is where you configure your backends. A backend is an instance of XBMC that the application connects to and serves library contents from. If you specify more than one backend, a new item will appear in the main menu, allowing you to easily switch backends.' => 'Hier werden die Backends konfiguriert. Ein Backend ist eine XBMC Instanz die die Medien-Bibliothek zur Verfügung stellt. Bei mehr als einem Backend erscheint ein Hinweis zum Wechseln im Hauptmenü.',
   'Backend created successfully' => 'Backend erfolgreich erstellt',
   'Backend name' => 'Backend Name',
   'Backend updated successfully' => 'Backend-Update erfolgreich',
@@ -58,10 +55,6 @@ return array (
   'The following items are only required if you want the backend to me woken using Wake on LAN' => 'Die folgenden Angaben werden nur für die Wake on LAN Funktion gebraucht.',
   'The server does not ask for authentication' => 'Der Server verlangt keine Authentifizierung',
   'There must be a default backend' => 'Ein Standard Backend muss angegeben werden',
-  'This is where you configure your backends. A 
-	backend is an instance of XBMC that the application connects to and serves 
-	library contents from. If you specify more than one backend, a new item 
-	will appear in the main menu, allowing you to easily switch backends.' => 'Hier werden die Backends konfiguriert. Ein Backend ist eine XBMC Instanz die die Medien-Bibliothek zur Verfügung stellt. Bei mehr als einem Backend erscheint ein Hinweis zum Wechseln im Hauptmenü.',
   'Unable to connect to {hostname}:{port}, make sure XBMC is running and has its web server enabled' => 'Verbindung zu : {hostname}:{port} fehlgeschlagen, stelle bitte sicher, dass XBMC läuft und der Webserver eingeschaltet ist',
   'Unable to send WOL packet' => ' Wake on LAN fehlgeschlagen',
   'Update {backendName}' => 'Aktualisiere : {backendName}',

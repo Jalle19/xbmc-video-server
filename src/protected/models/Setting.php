@@ -304,10 +304,7 @@ class Setting extends CActiveRecord
 				'label'=>Yii::t('Settings', 'Use HTTPS when streaming'),
 				'type'=>self::TYPE_CHECKBOX,
 				'default'=>'0',
-				'description'=>Yii::t('Settings', 'When checked, streaming will be done over HTTPS if 
-					the application is accessed over HTTPS. This will usually only 
-					work if the server uses a real signed certificate, thus it is 
-					not enabled by default.'),
+				'description'=>Yii::t('Settings', 'When checked, streaming will be done over HTTPS if the application is accessed over HTTPS. This will usually only work if the server uses a real signed certificate, thus it is not enabled by default.'),
 				'order'=>700,
 			),
 			'allowUserPowerOff'=>array(
@@ -326,9 +323,7 @@ class Setting extends CActiveRecord
 				'label'=>Yii::t('Settings', 'Access whitelist'),
 				'type'=>self::TYPE_TEXT_WIDE,
 				'default'=>'',
-				'description'=>Yii::t('Settings', "If specified, access is restricted to the defined 
-					whitelist. Valid values are IP addresses, IP subnets and 
-					domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com"),
+				'description'=>Yii::t('Settings', 'If specified, access is restricted to the defined whitelist. Valid values are IP addresses, IP subnets and domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com'),
 				'order'=>800,
 			),
 		);
