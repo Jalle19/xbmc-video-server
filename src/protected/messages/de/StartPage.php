@@ -17,5 +17,8 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Language changed to {newLanguage}' => 'Langue modifiée en {newLanguage}',
+  'Movies - Browse' => '',
+  'Movies - Recently added' => '',
+  'TV shows - Browse' => '',
+  'TV shows - Recently added' => '',
 );

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Message translations.
  *
@@ -17,25 +17,23 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-    'Power off' => 'Ausschalten',
-    'Actions' => 'Actions',
-    'Backends' => 'Backends',
-    'Browse' => 'Durchsuchen',
-    'Change backend' => 'Backend wechseln',
-    'Change language' => 'Sprache ändern',
-    'Change password' => 'Passwort ändern',
-    'Create new' => 'Neu erstellen',
-    'Flush cache' => 'Cache leeren',
-    'Interface' => 'Interface',
-    'Log out' => 'Abmelden',
-    'Manage' => 'Verwalten',
-    'Movies' => 'Filme',
-    'Recently added' => 'Kürzlich hinzugefügt',
-    'Settings' => 'Einstellungen',
-    'System' => 'System',
-    'System log' => 'System Log',
-    'TV shows' => 'TV-Serien',
-    'Update library' => 'Bibliothek aktualisieren',
-    'User' => 'Benutzer',
-    'Users' => 'Benutzer',
+  'Actions' => 'Actions',
+  'Backends' => 'Backends',
+  'Browse' => 'Durchsuchen',
+  'Change backend' => 'Backend wechseln',
+  'Change password' => 'Passwort ändern',
+  'Create new' => 'Neu erstellen',
+  'Flush cache' => 'Cache leeren',
+  'Log out' => 'Abmelden',
+  'Manage' => 'Verwalten',
+  'Movies' => 'Filme',
+  'Power off' => 'Ausschalten',
+  'Recently added' => 'Kürzlich hinzugefügt',
+  'Settings' => 'Einstellungen',
+  'System' => 'System',
+  'System log' => 'System Log',
+  'TV shows' => 'TV-Serien',
+  'Update library' => 'Bibliothek aktualisieren',
+  'User' => 'Benutzer',
+  'Users' => 'Benutzer',
 );

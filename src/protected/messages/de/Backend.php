@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Message translations.
  *
@@ -20,26 +20,7 @@ return array (
   'If the backend allows TCP connections from other machines, XBMC Video Server will use it to determine when triggered library updates are finished' => '',
   'Library update triggered, this page will be automatically refreshed once the update has completed' => '',
   'TCP port' => '',
-  'The current backend cannot be hibernated' => 'Das aktuelle Backend kann nicht in den Ruhezustand wechseln.',
-  'The current backend cannot be rebooted' => 'Das aktuelle Backend kann nicht neugestartet werden.',
-  'The current backend cannot be shut down' => 'Das aktuelle Backend kann nicht heruntergefahren werden.',
-  'The current backend cannot be suspended' => 'Das aktuelle Backend kann nicht in den Energiesparmodus wechseln.',
-  'The current backend is hibernating' => 'Das aktuelle Backend wechselt in den Ruhezustand.',
-  'The current backend is rebooting' => 'Das aktuelle Backend startet neu.',
-  'The current backend is shutting down' => 'Das aktuelle Backend fährt herunter.',
-  'The current backend is suspending' => 'Das aktuelle Backend wechselt in den Energiesparmodus.',
-  'The following item must only be changed if you\'ve changed the port through advancedsettings.xml' => 'Der folgende Eintrag muss nur angepasst werden, wenn der Port in der advancedsettings.xml verändert wurde.',
-  'This is where you configure your backends. A 
-	backend is an instance of XBMC that the application connects to and serves 
-	library contents from. If you specify more than one backend, a new item 
-	will appear in the main menu, allowing you to easily switch backends.' => 'Hier werden die Backends konfiguriert. Ein Backend ist eine XBMC Instanz die die Medien-Bibliothek zur Verfügung stellt. Bei mehr als einem Backend erscheint ein Hinweis zum Wechseln im Hauptmenü.',
-  'Waiting for library update' => 'Bibliothek wird aktualisiert',
-  'WebSocket connection not available, library updates will be performed synchronously' => 'WebSocket Verbindung ist nicht verfügbar, Bibliothek Updates werden synchron ausgeführt.',
-  'You can leave this page at any time, the library update will finish in the background' => 'Du kannst die Seite jederzeit verlassen, Bibliothek wird im Hintergrund aktualisiert.',
-  'This is where you configure your backends. A
-	backend is an instance of XBMC that the application connects to and serves 
-	library contents from. If you specify more than one backend, a new item 
-	will appear in the main menu, allowing you to easily switch backends.' => '@@Hier werden die Backends konfiguriert. Ein Backend ist eine XBMC Instanz die die Medien-Bibliothek zur Verfügung stellt. Bei mehr als einem Backend erscheint ein Hinweis zum Wechseln im Hauptmenü.@@',
+  'This is where you configure your backends. A backend is an instance of XBMC that the application connects to and serves library contents from. If you specify more than one backend, a new item will appear in the main menu, allowing you to easily switch backends.' => 'Hier werden die Backends konfiguriert. Ein Backend ist eine XBMC Instanz die die Medien-Bibliothek zur Verfügung stellt. Bei mehr als einem Backend erscheint ein Hinweis zum Wechseln im Hauptmenü.',
   'Backend created successfully' => 'Backend erfolgreich erstellt',
   'Backend name' => 'Backend Name',
   'Backend updated successfully' => 'Backend-Update erfolgreich',
@@ -61,7 +42,16 @@ return array (
   'See {readmeUrl} for how to configure this' => 'Hilfe zur Konfiguration unter : {readmeUrl}',
   'Set as default' => 'Standard setzen',
   'Subnet mask' => 'Subnetzmaske',
+  'The current backend cannot be hibernated' => 'Das aktuelle Backend kann nicht in den Ruhezustand wechseln.',
+  'The current backend cannot be rebooted' => 'Das aktuelle Backend kann nicht neugestartet werden.',
+  'The current backend cannot be shut down' => 'Das aktuelle Backend kann nicht heruntergefahren werden.',
+  'The current backend cannot be suspended' => 'Das aktuelle Backend kann nicht in den Energiesparmodus wechseln.',
+  'The current backend is hibernating' => 'Das aktuelle Backend wechselt in den Ruhezustand.',
   'The current backend is not connectable at the moment' => 'Verbindung zum aktuellen Backend momentan nicht möglich ',
+  'The current backend is rebooting' => 'Das aktuelle Backend startet neu.',
+  'The current backend is shutting down' => 'Das aktuelle Backend fährt herunter.',
+  'The current backend is suspending' => 'Das aktuelle Backend wechselt in den Energiesparmodus.',
+  'The following item must only be changed if you\'ve changed the port through advancedsettings.xml' => 'Der folgende Eintrag muss nur angepasst werden, wenn der Port in der advancedsettings.xml verändert wurde.',
   'The following items are only required if you want the backend to me woken using Wake on LAN' => 'Die folgenden Angaben werden nur für die Wake on LAN Funktion gebraucht.',
   'The server does not ask for authentication' => 'Der Server verlangt keine Authentifizierung',
   'There must be a default backend' => 'Ein Standard Backend muss angegeben werden',
@@ -70,7 +60,10 @@ return array (
   'Update {backendName}' => 'Aktualisiere : {backendName}',
   'Username' => 'Benutzername',
   'Waiting for connection' => 'Warte auf Verbindung...',
+  'Waiting for library update' => 'Bibliothek wird aktualisiert',
   'Wake on LAN packet sent, this page will be automatically refreshed once the backend is reachable' => 'MagicPacket (WOL) gesendet, die Seite wird automatisch neugeladen, wenn das Backend erreichbar ist ',
+  'WebSocket connection not available, library updates will be performed synchronously' => 'WebSocket Verbindung ist nicht verfügbar, Bibliothek Updates werden synchron ausgeführt.',
+  'You can leave this page at any time, the library update will finish in the background' => 'Du kannst die Seite jederzeit verlassen, Bibliothek wird im Hintergrund aktualisiert.',
   'You can\'t delete the current backend. Please switch to another one if you want to delete this.' => 'Das aktuelle Backend kann nicht gelöscht werden. Wechsle bitte zu einem anderen, wenn dieses gelöscht werden soll.',
   'You must configure a backend before you can use the application' => 'Du musst zuerst ein Backend einrichten, bevor du diese Seite vollständig nutzen kannst',
 );
