@@ -17,6 +17,8 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Date added' => '',
-  'Rating' => 'Note',
+  'Movies - Browse' => '',
+  'Movies - Recently added' => '',
+  'TV shows - Browse' => '',
+  'TV shows - Recently added' => '',
 );

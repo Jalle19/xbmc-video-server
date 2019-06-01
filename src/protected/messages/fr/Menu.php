@@ -17,15 +17,15 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
+  'Change language' => '@@Modifier la langue@@',
+  'Interface' => '@@Interface@@',
   'Actions' => 'Actions',
   'Backends' => 'Sources',
   'Browse' => 'Parcourir',
   'Change backend' => 'Modifier la source',
-  'Change language' => 'Modifier la langue',
   'Change password' => 'Modifier le mot de passe',
   'Create new' => 'Créer',
   'Flush cache' => 'Supprimer le cache',
-  'Interface' => 'Interface',
   'Log out' => 'Se déconnecter',
   'Manage' => 'Gérer',
   'Movies' => 'Films',

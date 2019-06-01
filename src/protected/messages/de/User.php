@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Message translations.
  *
@@ -17,9 +17,13 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
+  'Start page' => '',
   'This is where you configure users. Every user 
 	has a role. Administrators can do anything while a normal user can only 
-	switch backends (if more than one has been configured).' => 'Hier werden die Benutzer verwaltet. Jeder Nutzer hat eine Nutzerrolle. Administratoren haben keine Einschränkung, während Benutzer nur die Backends wechseln können (sofern es mehrere gibt).',
+	switch backends (if more than one has been configured).' => '',
+  'This is where you configure users. Every user 
+	has a role. Administrators can do anything while a normal user can only 
+	switch backends (if more than one has been configured).' => '@@Hier werden die Benutzer verwaltet. Jeder Nutzer hat eine Nutzerrolle. Administratoren haben keine Einschränkung, während Benutzer nur die Backends wechseln können (sofern es mehrere gibt).@@',
   'Change password' => 'Passwort ändern',
   'Create new user' => 'Neuen Benutzer erstellen',
   'Created user {username}' => 'Benutzer erstellt: {username}',

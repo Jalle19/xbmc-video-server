@@ -17,9 +17,13 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
+  'Start page' => '',
   'This is where you configure users. Every user 
 	has a role. Administrators can do anything while a normal user can only 
-	switch backends (if more than one has been configured).' => 'Voici la gestion des utilisateurs. Chaque utilisateur a un rôle. Les administrateurs ont tous les pouvoirs alors que l’utilisateur peut uniquement passer d’une source à l’autre (si plus d’une source a été configuré).',
+	switch backends (if more than one has been configured).' => '',
+  'This is where you configure users. Every user 
+	has a role. Administrators can do anything while a normal user can only 
+	switch backends (if more than one has been configured).' => '@@Voici la gestion des utilisateurs. Chaque utilisateur a un rôle. Les administrateurs ont tous les pouvoirs alors que l’utilisateur peut uniquement passer d’une source à l’autre (si plus d’une source a été configuré).@@',
   'Change password' => 'Modifier le mot de passe',
   'Create new user' => 'Créer un nouvel utilisateur',
   'Created user {username}' => 'Utilisateur crée : {username}',
