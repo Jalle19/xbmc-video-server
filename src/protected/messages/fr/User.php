@@ -26,7 +26,7 @@ return array (
   'Role' => 'Statut',
   'Start page' => 'Page de démarrage',
   'There must be at least one administrator' => 'Il doit y avoir au moins un administrateur',
-  'This is where you configure users. Every user has a role. Administrators can do anything while a normal user can only switch backends (if more than one has been configured).' => 'Voici la gestion des utilisateurs. Chaque utilisateur a un rôle. Les administrateurs ont tous les pouvoirs alors que l’utilisateur peut uniquement passer d’une source à l’autre (si plus d’une source a été configuré).',
+  'This is where you configure users. Every user has a role. Administrators can do anything while a normal user can only switch backends (if more than one has been configured).' => 'Voici la gestion des utilisateurs. Chaque utilisateur a un rôle. Les administrateurs ont tous les pouvoirs alors que l’utilisateur peut uniquement passer d’une source à l’autre (si plus d’une source a été configurée).',
   'Update {username}' => 'Mise à jour de l’utilisateur : {username}',
   'Updated user {username}' => 'Utilisateur mis à jour : {username}',
   'Username' => 'Nom d’utilisateur',
