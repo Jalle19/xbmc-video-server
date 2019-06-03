@@ -17,8 +17,8 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Movies - Browse' => 'Filme - Stöbern Sie durch',
-  'Movies - Recently added' => 'Filme - Zuletzt hinzugefügt',
-  'TV shows - Browse' => 'TV-Shows - Stöbern Sie durch',
-  'TV shows - Recently added' => 'TV-Sendungen - Zuletzt hinzugefügt',
+  'Movies - Browse' => 'Filme - StÃ¶bern Sie durch',
+  'Movies - Recently added' => 'Filme - Zuletzt hinzugefÃ¼gt',
+  'TV shows - Browse' => 'TV-Shows - StÃ¶bern Sie durch',
+  'TV shows - Recently added' => 'TV-Sendungen - Zuletzt hinzugefÃ¼gt',
 );

@@ -17,6 +17,6 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Date added' => 'Datum hinzugefügt',
+  'Date added' => 'Datum hinzugefÃ¼gt',
   'Rating' => 'Bewertung',
 );
