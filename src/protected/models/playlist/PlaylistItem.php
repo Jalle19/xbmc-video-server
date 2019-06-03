@@ -45,8 +45,8 @@ class PlaylistItem
 		$this->runtime = $media->runtime;
 		
 		// Generate a link to the artwork
-		$thumbnail = new Thumbnail($media->getArtwork(), Thumbnail::SIZE_LARGE);
-		$this->image = Yii::app()->request->hostInfo.$thumbnail;
+		$thumbnail = ThumbnailFactory::create($media->getArtwork(), Thumbnail::SIZE_LARGE);
+		$this->image = Yii::app()->request->hostInfo.$thumbnail->getUrl();
 	}
 
 }

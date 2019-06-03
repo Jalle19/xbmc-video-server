@@ -14,8 +14,15 @@ class MovieFilter extends VideoFilter
 
 	protected function renderControls()
 	{
-		echo $this->form->typeaheadFieldControlGroup($this->model, 'name', 
-				$this->getMovieNameTypeaheadData());
+		$ctrl = Yii::app()->controller;
+		
+		// Wrap the movie name typeahead field in a container so we can style it 
+		echo CHtml::openTag('div', array('class'=>'movie-name-typeahead'));
+		
+		echo $this->form->movieNameFieldControlGroup($this->model, 'name', array(
+			'prefetch'=>$ctrl->createUrl('typeahead/getMovieNames')));
+		
+		echo CHtml::closeTag('div');
 		
 		echo $this->form->dropDownListControlGroup($this->model, 'genre', 
 				$this->model->getGenres(), array('empty'=>' '));
@@ -34,40 +41,27 @@ class MovieFilter extends VideoFilter
 				VideoFilterForm::getWatchedStatuses(), 
 				array('empty'=>' ', 'style'=>'width: 120px;'));
 
-		echo $this->form->typeaheadFieldControlGroup($this->model, 'actor', 
-				$this->getActorNameTypeaheadData(Actor::MEDIA_TYPE_MOVIE));
-		
-		echo $this->form->typeaheadFieldControlGroup($this->model, 'director', 
-				$this->getDirectorTypeaheadData());
-	}
-	
-	/**
-	 * Returns the typeahead data for the movie name field
-	 * @return string the list of movies encoded as JavaScript
-	 */
-	private function getMovieNameTypeaheadData()
-	{
-		$cacheId = 'MovieFilterMovieNameTypeahead';
-
-		return $this->getTypeaheadSource($cacheId, function()
+		if ($this->enableActorTypeahead())
 		{
-			// We only need the "label" property which is always available
-			return $this->getTypeaheadData(VideoLibrary::getMovies(array('properties'=>array())));
-		});
-	}
-	
-	/**
-	 * Returns the typeahead data for the director name field
-	 * @return string the list of movies encoded as JavaScript
-	 */
-	private function getDirectorTypeaheadData()
-	{
-		$cacheId = 'MovieFilterDirectorTypeahead';
-
-		return $this->getTypeaheadSource($cacheId, function()
+			echo $this->form->typeaheadFieldControlGroup($this->model, 'actor', [
+				'prefetch' => $ctrl->createUrl('typeahead/getActorNames', ['mediaType' => Actor::MEDIA_TYPE_MOVIE]),
+			]);
+		}
+		else
 		{
-			return VideoLibrary::getDirectors();
-		});
+			echo $this->form->textFieldControlGroup($this->model, 'actor');
+		}
+
+		echo $this->form->typeaheadFieldControlGroup($this->model, 'director', array(
+			'prefetch'=>$ctrl->createUrl('typeahead/getDirectorNames')));
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getFormClassName()
+	{
+		return 'MovieFilterActiveForm';
 	}
 	
 }

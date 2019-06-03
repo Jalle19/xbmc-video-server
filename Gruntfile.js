@@ -7,6 +7,7 @@ module.exports = function(grunt) {
 			dist: {
 				src: [
 					// preserve the correct order
+					'src/js/src/jquery/*.js',
 					'src/js/src/yii/*.js',
 					'src/js/src/bootstrap/*.js',
 					'src/js/src/twitter-typeahead/*.js',
@@ -59,4 +60,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 
 	grunt.registerTask('default', ['watch']);
+	grunt.registerTask('dist', ['less', 'concat', 'uglify'])
 };

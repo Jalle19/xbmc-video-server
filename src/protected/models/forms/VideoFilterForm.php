@@ -156,7 +156,7 @@ abstract class VideoFilterForm extends CFormModel
 	 * Returns the definitions for the common filters
 	 * @return array the filter definitions
 	 */
-	public function getCommonFilterDefinitions()
+	protected function getCommonFilterDefinitions()
 	{
 		$filter = array();
 

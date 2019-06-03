@@ -17,7 +17,6 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'This file(s) for this item cannot be streamed' => 'Ce fichier ne peut être visionné',
   'Download' => 'Télécharger',
   'Download (part #{partNumber})' => 'Télécharger (la partie #{partNumber})',
   'Play in XBMC' => 'Lecture dans Kodi',

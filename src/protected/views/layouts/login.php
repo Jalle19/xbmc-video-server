@@ -11,8 +11,13 @@ $baseUrl = Yii::app()->baseUrl;
 		<title><?php echo $this->pageTitle; ?></title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<?php $cs->registerCssFile($baseUrl.'/css/login-min.css'); ?>
-		<?php $this->registerCustomCss('custom-login.css'); ?>
+		<?php
+
+		// Add a cache buster to the CSS and script URLs
+		$cssPath = $this->getWebrootDirectory('css').DIRECTORY_SEPARATOR.'login-min.css';
+		$cs->registerCssFile($baseUrl.'/css/login-min.css?'.filemtime($cssPath));
+	
+		?>
 	</head>
 	
 	<body>

@@ -9,10 +9,7 @@ $this->pageTitle = $title = Yii::t('Backend', 'Manage backends');
 
 <h2><?php echo $title; ?></h2>
 
-<?php echo FormHelper::helpBlock(Yii::t('Backend', 'This is where you configure your backends. A 
-	backend is an instance of XBMC that the application connects to and serves 
-	library contents from. If you specify more than one backend, a new item 
-	will appear in the main menu, allowing you to easily switch backends.')); ?>
+<?php echo FormHelper::helpBlock(Yii::t('Backend', 'This is where you configure your backends. A backend is an instance of XBMC that the application connects to and serves library contents from. If you specify more than one backend, a new item will appear in the main menu, allowing you to easily switch backends.')); ?>
 
 <?php echo TbHtml::linkButton(Yii::t('Backend', 'Create new backend'), array(
 	'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
@@ -29,6 +26,7 @@ $this->pageTitle = $title = Yii::t('Backend', 'Manage backends');
 		'name',
 		'hostname',
 		'port',
+		'tcp_port',
 		array(
 			'name'=>'default',
 			'header'=>Yii::t('Backend', 'Default'),

@@ -8,6 +8,7 @@
  * @property string $name
  * @property string $hostname
  * @property int $port
+ * @property int $tcp_port
  * @property string $username
  * @property string $password
  * @property string $proxyLocation
@@ -24,6 +25,12 @@
 class Backend extends CActiveRecord
 {
 	
+	const DEFAULT_HOSTNAME = 'localhost';
+	const DEFAULT_PORT = 8080;
+	const DEFAULT_TCP_PORT = 9090;
+	const DEFAULT_USERNAME = 'kodi';
+	const DEFAULT_PASSWORD = 'kodi';
+
 	/**
 	 * Timeout (in seconds) limit while checking if a backend is connectable
 	 */
@@ -53,10 +60,10 @@ class Backend extends CActiveRecord
 	public function rules()
 	{
 		return array(
-			array('name, hostname, port, username, password', 'required'),
+			array('name, hostname, port, tcp_port, username, password', 'required'),
 			array('default', 'requireDefaultBackend'),
 			array('default', 'numerical', 'integerOnly'=>true),
-			array('port', 'numerical', 'integerOnly'=>true, 'max'=>65535),
+			array('port, tcp_port', 'numerical', 'integerOnly'=>true, 'max'=>65535),
 			array('proxyLocation', 'safe'),
 			// the following rules depend on each other so they must come in this order
 			array('hostname', 'checkConnectivity'),
@@ -88,6 +95,7 @@ class Backend extends CActiveRecord
 			'name'=>Yii::t('Backend', 'Backend name'),
 			'hostname'=>Yii::t('Backend', 'Hostname'),
 			'port'=>Yii::t('Backend', 'Port'),
+			'tcp_port'=>Yii::t('Backend', 'TCP port'),
 			'username'=>Yii::t('Backend', 'Username'),
 			'password'=>Yii::t('Backend', 'Password'),
 			'proxyLocation'=>Yii::t('Backend', 'Proxy location'),
@@ -238,16 +246,33 @@ class Backend extends CActiveRecord
 	}
 	
 	/**
+	 * Resets some attributes to their default values
+	 */
+	public function setDefaultValues()
+	{
+		$this->hostname = self::DEFAULT_HOSTNAME;
+		$this->port = self::DEFAULT_PORT;
+		$this->tcp_port = self::DEFAULT_TCP_PORT;
+		$this->username = self::DEFAULT_USERNAME;
+		$this->password = self::DEFAULT_PASSWORD;
+	}
+
+	/**
 	 * @return boolean whether this backend is connectable
-	 * @param boolean whether unsuccessful attempts should be logged. Defaults 
+	 * @param int $port the port to try to connect to. Defaults to null, meaning 
+	 * the HTTP port configured for this backend
+	 * @param boolean $logFailure whether unsuccessful attempts should be logged. Defaults 
 	 * to true.
 	 */
-	public function isConnectable($logFailure = true)
+	public function isConnectable($port = null, $logFailure = true)
 	{
 		$errno = 0;
 		$errStr = '';
-
-		if (@fsockopen(Backend::normalizeAddress($this->hostname), $this->port, $errno, $errStr, 
+		
+		if ($port === null)
+			$port = $this->port;
+		
+		if (@fsockopen(Backend::normalizeAddress($this->hostname), $port, $errno, $errStr, 
 				self::SOCKET_TIMEOUT) === false || $errno !== 0)
 		{
 			if ($logFailure)
@@ -257,6 +282,14 @@ class Backend extends CActiveRecord
 		}
 
 		return true;
+	}
+	
+	/**
+	 * @return boolean whether the backend can be contacted over a WebSocket
+	 */
+	public function hasWebSocketConnectivity()
+	{
+		return $this->isConnectable($this->tcp_port, false);
 	}
 
 	/**

@@ -18,7 +18,14 @@ class Setting extends CActiveRecord
 	const TYPE_TEXT = 'text';
 	const TYPE_TEXT_WIDE = 'text-wide';
 	const TYPE_CHECKBOX = 'checkbox';
+	const TYPE_CHECKBOX_LIST = 'checkbox-list';
 	const TYPE_DROPDOWN = 'dropdown';
+
+	// Option type for checklists
+	const POWER_OPTION_SHUTDOWN = 'shutdown';
+	const POWER_OPTION_SUSPEND = 'suspend';
+	const POWER_OPTION_HIBERNATE = 'hibernate';
+	const POWER_OPTION_REBOOT = 'reboot';
 
 	// We need one attribute per setting
 	public $language;
@@ -27,8 +34,9 @@ class Setting extends CActiveRecord
 	public $singleFilePlaylist;
 	public $showHelpBlocks;
 	public $cacheApiCalls;
+	public $enableActorTypeahead;
+	public $allowUserPowerOff;
 	public $pagesize;
-	public $disableFrodoWarning;
 	public $useHttpsForVfsUrls;
 	public $whitelist;
 	public $ignoreArticle;
@@ -49,6 +57,18 @@ class Setting extends CActiveRecord
 	public static function getBoolean($setting)
 	{
 		return (boolean)self::getValue($setting);
+	}
+
+	/**
+	 * Returns whether the given option is set for the specified setting
+	 * @param string $setting the setting
+	 * @param string $option the option
+	 * @return whether the option is set or not
+	 */
+	public static function getBooleanOption($setting, $option)
+	{
+		$value = self::getValue($setting);
+		return is_array($value) && in_array($option, $value);
 	}
 
 	/**
@@ -95,9 +115,24 @@ class Setting extends CActiveRecord
 	 */
 	protected function afterFind()
 	{
+		$definitions = $this->getDefinitions();
+		if ($definitions[$this->name]['type'] === Setting::TYPE_CHECKBOX_LIST)
+			$this->value = explode(',', $this->value);
+
 		$this->{$this->name} = $this->value;
 
 		parent::afterFind();
+	}
+
+	/**
+	 * Prepares the values to be saved
+	 */
+	protected function beforeSave()
+	{
+		if (is_array($this->value))
+			$this->value = implode(',', $this->value);
+
+		return parent::beforeSave();
 	}
 
 	/**
@@ -139,7 +174,7 @@ class Setting extends CActiveRecord
 	{
 		return array(
 			array('language, playlistFormat', 'required'),
-			array('pagesize', 'numerical', 'integerOnly'=>true, 'min'=>1),
+			array('pagesize, requestTimeout', 'numerical', 'integerOnly'=>true, 'min'=>1),
 			array('whitelist', 'validateWhitelist'),
 		);
 	}
@@ -237,12 +272,6 @@ class Setting extends CActiveRecord
 				'default'=>'',
 				'order'=>550,
 			),
-			'disableFrodoWarning'=>array(
-				'label'=>Yii::t('Settings', "Don't warn about XBMC version incompatibility"),
-				'type'=>self::TYPE_CHECKBOX,
-				'default'=>'0',
-				'order'=>600,
-			),
 			'requestTimeout'=>array(
 				'label'=>Yii::t('Settings', 'Request timeout'),
 				'separator'=>array(
@@ -264,23 +293,37 @@ class Setting extends CActiveRecord
 				'description'=>Yii::t('Settings', 'Useful on slow hardware. A refresh button will appear in the menu which flushes the cache'),
 				'order'=>650,
 			),
+			'enableActorTypeahead'=>array(
+				'label'=>Yii::t('Settings', 'Enable auto-complete for actor names'),
+				'type'=>self::TYPE_CHECKBOX,
+				'default'=>'0',
+				'description'=>Yii::t('Settings', 'Decreases performance, especially on large libraries and/or slow hardware'),
+				'order'=>675,
+			),
 			'useHttpsForVfsUrls'=>array(
 				'label'=>Yii::t('Settings', 'Use HTTPS when streaming'),
 				'type'=>self::TYPE_CHECKBOX,
 				'default'=>'0',
-				'description'=>Yii::t('Settings', 'When checked, streaming will be done over HTTPS if 
-					the application is accessed over HTTPS. This will usually only 
-					work if the server uses a real signed certificate, thus it is 
-					not enabled by default.'),
+				'description'=>Yii::t('Settings', 'When checked, streaming will be done over HTTPS if the application is accessed over HTTPS. This will usually only work if the server uses a real signed certificate, thus it is not enabled by default.'),
 				'order'=>700,
 			),
+			'allowUserPowerOff'=>array(
+                                'label'=>Yii::t('Settings', 'Allow users to power off backends'),
+                                'type'=>self::TYPE_CHECKBOX_LIST,
+                                'default'=>'',
+                                'listData'=>array(
+                                        Setting::POWER_OPTION_SHUTDOWN=>Yii::t('Settings', 'Shutdown'),
+                                        Setting::POWER_OPTION_SUSPEND=>Yii::t('Settings', 'Suspend'),
+                                        Setting::POWER_OPTION_HIBERNATE=>Yii::t('Settings', 'Hibernate'),
+                                        Setting::POWER_OPTION_REBOOT=>Yii::t('Settings', 'Reboot')),
+				'description'=>Yii::t('Settings', 'Administrators are not affected by this setting and can always power off backends'),
+                                'order'=>750,
+                        ),
 			'whitelist'=>array(
 				'label'=>Yii::t('Settings', 'Access whitelist'),
 				'type'=>self::TYPE_TEXT_WIDE,
 				'default'=>'',
-				'description'=>Yii::t('Settings', "If specified, access is restricted to the defined 
-					whitelist. Valid values are IP addresses, IP subnets and 
-					domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com"),
+				'description'=>Yii::t('Settings', 'If specified, access is restricted to the defined whitelist. Valid values are IP addresses, IP subnets and domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com'),
 				'order'=>800,
 			),
 		);

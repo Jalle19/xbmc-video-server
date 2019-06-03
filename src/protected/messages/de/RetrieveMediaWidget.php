@@ -17,7 +17,6 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'This file(s) for this item cannot be streamed' => '',
   'Download' => 'Download',
   'Download (part #{partNumber})' => 'Download (partie #{partNumber})',
   'Play in XBMC' => 'Im XBMC abspielen',

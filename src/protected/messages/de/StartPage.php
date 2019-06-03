@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Message translations.
  *
@@ -17,8 +17,8 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Change language' => 'Sprache ändern',
-  'Close' => 'Schließen',
-  'Language' => 'Sprache',
-  'Set as default for the current user' => 'Für den aktuellen Nutzer als Standard setzen',
+  'Movies - Browse' => '',
+  'Movies - Recently added' => '',
+  'TV shows - Browse' => '',
+  'TV shows - Recently added' => '',
 );

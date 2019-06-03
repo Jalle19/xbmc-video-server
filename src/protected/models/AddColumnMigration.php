@@ -37,9 +37,6 @@ abstract class AddColumnMigration extends CDbMigration
 
 		if (!in_array($this->getColumnName(), $columns))
 			$this->addColumn($this->getTableName(), $this->getColumnName(), $this->getColumnType());
-		
-		// Clear the schema cache for this table
-		$this->refreshTableSchema($this->getTableName());
 	}
 
 	public function down()

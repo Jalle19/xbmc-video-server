@@ -17,11 +17,14 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Determines how long the application should wait for a response from XBMC. Increase this if you get timeout errors.' => 'Détermine le temps d’attente de l’application pour obtenir une réponse de Kodi. Augmentez cette valeur si vous obtenez le message suivant : « Le temps d’attente de la page a expiré ».',
-  'Look and feel' => 'Interface graphique',
-  'Request timeout' => 'Le temps d’attente de la page a expiré',
-  'Security and performance' => 'Sécurité et performance',
+  'Decreases performance, especially on large libraries and/or slow hardware' => '',
+  'Enable auto-complete for actor names' => '',
+  'If specified, access is restricted to the defined whitelist. Valid values are IP addresses, IP subnets and domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com' => 'L’accès est restreint par liste blanche. Sont valides, les adresses IP, les IP des sous-réseaux et les noms de domaines incluant les jokers. Exemple: 192.168.1.0/24,1.2.3.4,exemple.fr,*.utilisateur.fr.',
+  'This is where you configure global application settings. These settings apply regardless of which backend is currently in use.' => 'Voici la configuration générale. Ces paramètres s’appliquent quelque soit la source utilisée.',
+  'When checked, streaming will be done over HTTPS if the application is accessed over HTTPS. This will usually only work if the server uses a real signed certificate, thus it is not enabled by default.' => 'Le streaming se fera via HTTPS si l’application est accessible via HTTPS. Cette option est uniquement fonctionnelle si le serveur utilise un certificat signé, ceci n’est donc pas activé par défaut.',
   'Access whitelist' => 'Accès par liste blanche',
+  'Administrators are not affected by this setting and can always power off backends' => 'Les administrateurs ne sont pas concernés par ce paramètre et peuvent toujours éteindre les sources.',
+  'Allow users to power off backends' => 'Autoriser les utilisateurs à éteindre les sources',
   'Amount of results to show per page' => 'Nombre de résultats affichés par page',
   'Application language' => 'Langue de l’application',
   'Application name' => 'Nom de l’application',
@@ -29,28 +32,25 @@ return array (
   'Before you get started, please have a look at the application settings' => 'Avant toute utilisation de cette application, il est important de s’intéresser à ses paramètres.',
   'Cache all API results' => 'Mettre en cache tous les résultats de l’API',
   'Changing this will reset the default language for all users' => 'Ce changement aura pour effet d’assigner la langue par défaut à tous les utilisateurs. Chaque utilisateur pourra à son tour modifier la langue.',
+  'Determines how long the application should wait for a response from XBMC. Increase this if you get timeout errors.' => 'Détermine le temps d’attente de l’application pour obtenir une réponse de Kodi. Augmenter cette valeur si le message suivant apparait : « Le temps d’attente de la page a expiré. ».',
   'Don\'t use playlists when item consists of a single file' => 'Ne pas utiliser de liste de lecture lorsque l’élément est constitué d’un seul fichier',
-  'Don\'t warn about XBMC version incompatibility' => 'Ne pas avertir à propos des versions de Kodi qui sont incompatibles',
-  'If specified, access is restricted to the defined 
-					whitelist. Valid values are IP addresses, IP subnets and 
-					domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com' => 'L’accès est restreint par liste blanche. Sont valides, les adresses IP, les IP des sous-réseaux et les noms de domaines incluant les jokers. Exemple: 192.168.1.0/24,1.2.3.4,exemple.fr,*.utilisateur.fr.',
+  'Hibernate' => 'Mettre en veille prolongée',
   'Ignore article ("the") in results' => 'Ignorer l’article « le » dans les résultats',
   'Invalid whitelist definition' => 'Saisie de la liste blanche invalide',
-  'Leave empty to disable pagination altogether' => 'Laissez vide pour désactiver entièrement la pagination',
+  'Leave empty to disable pagination altogether' => 'Laisser vide pour désactiver entièrement la pagination.',
+  'Look and feel' => 'Interface graphique',
   'Playlist format' => 'Format du fichier de la liste de lecture',
+  'Reboot' => 'Redémarrer',
+  'Request timeout' => 'Le temps d’attente de la page a expiré.',
+  'Security and performance' => 'Sécurité et performance',
   'Settings' => 'Paramètres',
   'Settings have been reset to defaults' => 'Les paramètres par défaut ont été rétablis',
   'Settings updated successfully' => 'Les paramètres ont été mis à jour avec succès',
   'Show help blocks throughout the site' => 'Afficher les messages d’aide sur tout le site',
+  'Shutdown' => 'Éteindre',
+  'Suspend' => 'Mettre en veille',
   'The specified whitelist restrictions will lock you out from this location' => 'Les restrictions spécifiées de la liste blanche vont verrouiller votre accès à l’application',
-  'This is where you configure global 
-	application settings. These settings apply regardless of which backend is 
-	currently in use.' => 'Voici la configuration générale. Ces paramètres s’appliquent quelque soit la source utilisée.',
   'Use HTTPS when streaming' => 'Utiliser HTTPS pour le streaming',
-  'Useful on slow hardware. A refresh button will appear in the menu which flushes the cache' => 'Utile pour du matériel peut puissant. Un bouton de rafraîchissement apparaît dans le menu permettant de supprimer le cache.',
-  'When checked, streaming will be done over HTTPS if 
-					the application is accessed over HTTPS. This will usually only 
-					work if the server uses a real signed certificate, thus it is 
-					not enabled by default.' => 'Le streaming se fera via HTTPS si l’application est accessible via HTTPS. Cette option est uniquement fonctionnelle si le serveur utilise un certificat signé, ceci n’est donc pas activé par défaut.',
-  'You may have to right-click and copy the address in order to stream (not download) the file' => 'Le streaming sera fonctionnel uniquement si vous faites un clic droit sur le bouton « Visionner » afin de copier l’adresse du lien puis l’ouvrir avec le logiciel VLC.',
+  'Useful on slow hardware. A refresh button will appear in the menu which flushes the cache' => 'Utile pour du matériel peut puissant. Un bouton « Supprimer le cache » sera disponible dans le menu.',
+  'You may have to right-click and copy the address in order to stream (not download) the file' => 'Le streaming est fonctionnel uniquement lorsqu’un clic droit est réalisé sur le bouton « Visionner » afin de copier l’adresse du lien puis de l’ouvrir avec le logiciel VLC.',
 );

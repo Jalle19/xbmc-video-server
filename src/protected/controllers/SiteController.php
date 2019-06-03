@@ -59,7 +59,10 @@ class SiteController extends Controller
 			if ($model->validate() && $model->login())
 			{
 				$this->log('"%s" logged in from %s', $model->username, $address);
-				$this->redirect(Yii::app()->user->returnUrl);
+
+				/* @var User $user */
+				$user = User::model()->findByPk(Yii::app()->user->id);
+				$this->redirect($user->getStartPageRoute());
 			}
 			else
 			{
@@ -81,8 +84,13 @@ class SiteController extends Controller
 	 */
 	public function actionLogout()
 	{
-		$this->log('"%s" logged out', Yii::app()->user->name);
-		Yii::app()->user->logout();
+		// Don't attempt to log out guests, it confuses the logs
+		if (!Yii::app()->user->isGuest)
+		{
+			$this->log('"%s" logged out', Yii::app()->user->name);
+			Yii::app()->user->logout();
+		}
+
 		$this->redirect(array('site/login'));
 	}
 	

@@ -5,14 +5,14 @@
 /* @var $details Movie */
 
 $this->pageTitle = $details->getDisplayName().' - '.Yii::t('Movies', 'Movies');
+$artwork = ThumbnailFactory::create($details->getArtwork(), Thumbnail::SIZE_LARGE);
 
 ?>
 <div class="row-fluid">
 	<div class="span3">
 		<?php 
 
-		echo CHtml::image(new ThumbnailVideo($details->getArtwork(), 
-				Thumbnail::SIZE_LARGE), '', array(
+		echo CHtml::image($artwork->getUrl(), '', array(
 			'class'=>'item-thumbnail hidden-phone',
 		));
 
@@ -81,8 +81,10 @@ $this->pageTitle = $details->getDisplayName().' - '.Yii::t('Movies', 'Movies');
 
 				if ($director)
 				{
+					$directorLink = CHtml::link($director, array('movie/index', 'MovieFilterForm[director]'=>$director));
+					
 					echo CHtml::tag('p', array(), Yii::t('Movies', 'Director: {director}', array(
-						'{director}'=>$director)));
+						'{director}'=>$directorLink)));
 				}
 
 				?>

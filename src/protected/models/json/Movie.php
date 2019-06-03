@@ -30,6 +30,11 @@ class Movie extends File implements IStreamable
 	public $director;
 
 	/**
+	 * @var string the date the movie was added to the library 
+	 */
+	public $dateadded;
+
+	/**
 	 * @var int
 	 */
 	private $_votes;
@@ -76,4 +81,11 @@ class Movie extends File implements IStreamable
 		return 'http://www.imdb.com/title/'.$this->imdbnumber.'/';
 	}
 
+	/**
+	 * @return string
+	 */
+	public function getDateAdded()
+	{
+		return $this->dateadded;
+	}
 }

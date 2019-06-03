@@ -18,7 +18,7 @@ class VideoLibrary
 	 * @var string[] default properties for movies
 	 */
 	private static $_defaultMovieProperties = array(
-		'year', 'genre', 'thumbnail', 'rating', 'runtime', 'playcount'
+		'year', 'genre', 'thumbnail', 'rating', 'runtime', 'playcount', 'dateadded'
 	);
 
 	/**
@@ -279,21 +279,10 @@ class VideoLibrary
 	 */
 	public static function getVideoLinks($file, $omitCredentials = false)
 	{
-		$rawFiles = array();
 		$files = array();
 
-		// Check for stack files
-		if (strpos($file, 'stack://') !== false)
-			$rawFiles = preg_split('/ , /i', $file);
-		else
-			$rawFiles[] = $file;
-
-		foreach ($rawFiles as $rawFile)
+		foreach (self::parseStackedFile($file) as $rawFile)
 		{
-			// Remove stack://
-			if (substr($rawFile, 0, 8) === 'stack://')
-				$rawFile = substr($rawFile, 8);
-
 			// Create the URL to the file. If the file has been deleted from
 			// disc but the movie still exists in the library the API call 
 			// throws an exception. We just skip this file if that's the case.
@@ -302,7 +291,8 @@ class VideoLibrary
 				$response = Yii::app()->xbmc->performRequest(
 						'Files.PrepareDownload', array('path'=>$rawFile));
 				
-				$files[] = Yii::app()->xbmc->getAbsoluteVfsUrl($response->result->details->path, $omitCredentials);
+				$files[] = Yii::app()->xbmc->getVFSHelper()->getUrl(
+						$response->result->details->path, $omitCredentials);
 			}
 			catch(CHttpException $e)
 			{
@@ -310,6 +300,24 @@ class VideoLibrary
 			}
 		}
 
+		return $files;
+	}
+	
+	/**
+	 * Parses potential stack:// files into an array of "normal" VFS URLs
+	 * @param string $file a VFS URL (potentially stack://)
+	 * @return array list of files
+	 */
+	private static function parseStackedFile($file)
+	{
+		if (strpos($file, 'stack://') === false)
+			return array($file);
+		
+		$files = preg_split('/ , /i', $file);
+
+		// Remove stack:// from the first item
+		$files[0] = substr($files[0], 8);
+		
 		return $files;
 	}
 	

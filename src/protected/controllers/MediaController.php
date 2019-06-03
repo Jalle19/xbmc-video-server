@@ -34,7 +34,6 @@ abstract class MediaController extends Controller
 		return array_merge(parent::filters(), array(
 			'accessControl',
 			array('application.filters.CheckBackendConnectivityFilter'),
-			'checkBackendCanStream + details',
 		));
 	}
 
@@ -58,19 +57,6 @@ abstract class MediaController extends Controller
 				}
 			),
 		);
-	}
-	
-	/**
-	 * Displays a flash if the backend doesn't support streaming
-	 * @param CFilterChain $filterChain the filter chain
-	 */
-	public function filterCheckBackendCanStream($filterChain)
-	{
-		// Check backend version and warn about incompatibilities
-		if (!Yii::app()->xbmc->meetsMinimumRequirements() && !Setting::getBoolean('disableFrodoWarning'))
-			Yii::app()->user->setFlash('info', Yii::t('Misc', 'Streaming of video files is not possible from XBMC 12 "Frodo" backends'));
-
-		$filterChain->run();
 	}
 
 	/**
@@ -200,22 +186,4 @@ abstract class MediaController extends Controller
 		$this->render('//videoLibrary/browserPlayer', array(
 			'items'=>array($item)));
 	}
-
-	/**
-	 * Renders an index page based on the specified list of media items and 
-	 * the filter form. If the results contain a single item the user is 
-	 * redirected to that item's details page instead.
-	 * @param Media[] $items the media items
-	 * @param VideoFilterForm $filterForm the filter form
-	 */
-	protected function renderIndex($items, $filterForm)
-	{
-		if (count($items) === 1 && $filterForm->name === $items[0]->label)
-			$this->redirect(array('details', 'id'=>$items[0]->getId()));
-
-		$this->render('index', array(
-			'dataProvider'=>new LibraryDataProvider($items),
-			'filterForm'=>$filterForm));
-	}
-
 }

@@ -4,14 +4,14 @@
 /* @var $details TVShow */
 
 $this->pageTitle = $details->getDisplayName();
+$artwork = ThumbnailFactory::create($details->getArtwork(), Thumbnail::SIZE_LARGE);
 
 ?>
 <div class="row-fluid">
 	<div class="span3">
 		<?php 
 		
-		echo CHtml::image(new ThumbnailVideo($details->getArtwork(),
-				Thumbnail::SIZE_LARGE), '', array('class'=>'item-thumbnail hidden-phone'));
+		echo CHtml::image($artwork->getUrl(), '', array('class'=>'item-thumbnail hidden-phone'));
 		
 		if (Yii::app()->user->role !== User::ROLE_SPECTATOR)
 		{

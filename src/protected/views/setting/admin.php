@@ -9,9 +9,7 @@ $this->pageTitle = $title = Yii::t('Settings', 'Settings');
 ?>
 <h2><?php echo $title; ?></h2>
 
-<?php echo FormHelper::helpBlock(Yii::t('Settings', 'This is where you configure global 
-	application settings. These settings apply regardless of which backend is 
-	currently in use.')); ?>
+<?php echo FormHelper::helpBlock(Yii::t('Settings', 'This is where you configure global application settings. These settings apply regardless of which backend is currently in use.')); ?>
 
 <hr />
 
@@ -55,6 +53,9 @@ foreach ($settings as $setting)
 			break;
 		case Setting::TYPE_DROPDOWN:
 			echo $form->dropDownListControlGroup($setting, $name, $definition['listData'], $htmlOptions);
+			break;
+		case Setting::TYPE_CHECKBOX_LIST:
+			echo $form->checkBoxListControlGroup($setting, $name, $definitions[$name]['listData'], $htmlOptions);
 			break;
 		default:
 			break;

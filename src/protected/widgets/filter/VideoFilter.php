@@ -33,7 +33,7 @@ abstract class VideoFilter extends CWidget
 	 */
 	public function init()
 	{
-		$this->form = $this->beginWidget('FilterActiveForm', array(
+		$this->form = $this->beginWidget($this->getFormClassName(), array(
 			'layout'=>TbHtml::FORM_LAYOUT_INLINE,
 			'method'=>'get'));
 	}
@@ -84,62 +84,20 @@ abstract class VideoFilter extends CWidget
 	}
 	
 	/**
-	 * Converts the specified array of objects to an array of data that can 
-	 * be serialized to JSON
-	 * @param ITypeaheadData[] $sourceData the source data
-	 * @return array the typeahead data
+	 * @return string the name of the active form class to use
 	 */
-	protected function getTypeaheadData($sourceData)
+	protected function getFormClassName()
 	{
-		$typeaheadData = array();
-
-		foreach ($sourceData as $media)
-			$typeaheadData[] = $media->getName();
-
-		return $typeaheadData;
+		return 'FilterActiveForm';
 	}
-	
-	/**
-	 * Encodes the return value of the callable as JavaScript and returns that. 
-	 * If cacheApiCalls is enabled, the result will be fetched from cache 
-	 * whenever possible.
-	 * @param string $cacheId the cache ID
-	 * @param callable $callable a closure that returns the typeahead source
-	 * @return string JavaScript encoded string representing the data
-	 */
-	protected function getTypeaheadSource($cacheId, callable $callable)
-	{
-		// Cache the encoded JavaScript if the "cache API calls" setting is enabled
-		if (Setting::getBoolean('cacheApiCalls'))
-		{
-			$typeaheadData = Yii::app()->apiCallCache->get($cacheId);
 
-			if ($typeaheadData === false)
-			{
-				$typeaheadData = CJavaScript::encode($callable());
-				
-				Yii::app()->apiCallCache->set($cacheId, $typeaheadData);
-			}
-		}
-		else
-			$typeaheadData = CJavaScript::encode($callable());
 
-		return $typeaheadData;
-	}
-	
 	/**
-	 * Returns the typeahead data for the actor fields.
-	 * @param string $mediaType filter by movies or TV shows
-	 * @return string the list of movies encoded as JavaScript
+	 * @return bool whether auto-complete functionality should be enabled on actor fields
 	 */
-	protected function getActorNameTypeaheadData($mediaType)
+	protected function enableActorTypeahead()
 	{
-		$cacheId = 'MovieFilterActorNameTypeahead_'.$mediaType;
-		
-		return $this->getTypeaheadSource($cacheId, function() use($mediaType)
-		{
-			return $this->getTypeaheadData(VideoLibrary::getActors($mediaType));
-		});
+		return Setting::getBoolean('enableActorTypeahead');
 	}
 
 }

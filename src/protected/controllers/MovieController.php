@@ -24,18 +24,34 @@ class MovieController extends MediaController
 		$filterForm = new MovieFilterForm();
 		$movies = VideoLibrary::getMovies($filterForm->buildRequestParameters());
 
-		$this->renderIndex($movies, $filterForm);
+		// Redirect to the details page if there's only one result
+		if (count($movies) === 1 && $filterForm->name === $movies[0]->label)
+			$this->redirect(['details', 'id' => $movies[0]->getId()]);
+
+		$dataProvider = new LibraryDataProvider($movies);
+		$dataProvider->makeSortable();
+
+		$this->render('index', [
+			'dataProvider' => $dataProvider,
+			'filterForm'   => $filterForm,
+		]);
 	}
-	
+
+
 	/**
 	 * Renders a list of recently added movies
 	 */
 	public function actionRecentlyAdded()
 	{
 		$movies = VideoLibrary::getRecentlyAddedMovies();
+
+		$dataProvider = new LibraryDataProvider($movies);
+		$dataProvider->makeSortable();
+		$dataProvider->sort->defaultOrder = 'dateadded DESC';
 		
 		$this->render('recentlyAdded', array(
-			'dataProvider'=>new LibraryDataProvider($movies)));
+			'dataProvider'=> $dataProvider
+		));
 	}
 	
 	/**

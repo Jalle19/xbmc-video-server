@@ -49,8 +49,8 @@ class EpisodeList extends CWidget
 				'type'=>'raw',
 				'header'=>'',
 				'value'=>function($data) {
-					$thumbnail = new ThumbnailVideo($data->thumbnail, Thumbnail::SIZE_SMALL);
-					return LazyImage::image($thumbnail, '', array('class'=>'item-thumbnail episode-thumbnail'));
+					$thumbnail = ThumbnailFactory::create($data->thumbnail, Thumbnail::SIZE_SMALL);
+					return LazyImage::image($thumbnail->getUrl(), '', array('class'=>'item-thumbnail episode-thumbnail'));
 				}
 			),
 			array(

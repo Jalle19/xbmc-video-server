@@ -30,10 +30,13 @@ abstract class AddSettingMigration extends CDbMigration
 	public function up()
 	{
 		$name = $this->getName();
+		
+		// Check if the setting exists
+		$command = $this->dbConnection->createCommand('SELECT * FROM settings WHERE name = :name');
+		$settingExists = $command->queryRow(true, array(':name' => $name)) !== false;
 
-		$setting = Setting::model()->findByPk($name);
-		if ($setting !== null)
-			return;
+		if ($settingExists)
+			return true;
 
 		$this->insert('settings', array(
 			'name'=>$name,

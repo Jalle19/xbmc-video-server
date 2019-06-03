@@ -15,6 +15,10 @@ class Controller extends CController
 	 */
 	public function init()
 	{
+		// Use the defined request timeout as execution time limit
+		$requestTimeout = Setting::getInteger('requestTimeout');
+		set_time_limit($requestTimeout);
+		
 		// Fallback to XBMC Video Server if the user has removed the 
 		// application name
 		$name = Setting::getString('applicationName');
@@ -49,6 +53,18 @@ class Controller extends CController
 		);
 	}
 
+
+	/**
+	 * Releases the current session locks to allow for new requests from the same client
+	 * @param CFilterChain $filterChain
+	 */
+	public function filterReleaseSessionLock($filterChain)
+	{
+		session_write_close();
+
+		$filterChain->run();
+	}
+
 	/**
 	 * Checks that someone is logged in and if not redirects to the login page
 	 * @param CFilterChain $filterChain
@@ -57,6 +73,15 @@ class Controller extends CController
 	{
 		if (Yii::app()->user->isGuest)
 			$this->redirect(array('site/login'));
+		else
+		{
+			// Check that the logged in user account still exists, if not log 
+			// out the user immediately
+			$user = User::model()->findByPk(Yii::app()->user->id);
+
+			if ($user === null)
+				$this->redirect(array('site/logout'));
+		}
 
 		$filterChain->run();
 	}
@@ -114,6 +139,19 @@ class Controller extends CController
 	{
 		return realpath(Yii::getPathOfAlias('webroot').DIRECTORY_SEPARATOR.$directory);
 	}
+	
+	/**
+	 * @param string $fallback the fallback location, can be anything that can 
+	 * be passed to CController::redirect()
+	 * @return string the previous location, or the specified fallback if no 
+	 * previous location can be determined
+	 */
+	public function getPreviousLocation($fallback)
+	{
+		$referrer = Yii::app()->request->urlReferrer;
+
+		return !empty($referrer) ? $referrer : $fallback;
+	}
 
 	/**
 	 * Redirects to the user's URL referrer, or to the specified fallback URL 
@@ -124,12 +162,7 @@ class Controller extends CController
 	 */
 	public function redirectToPrevious($fallback)
 	{
-		$returnTo = Yii::app()->request->urlReferrer;
-
-		if ($returnTo)
-			$this->redirect($returnTo);
-		else
-			$this->redirect($fallback);
+		$this->redirect($this->getPreviousLocation($fallback));
 	}
 
 }

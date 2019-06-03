@@ -1,7 +1,7 @@
 {
 	"name": "xbmc-video-server",
-	"version": "1.5.3",
-	"description": "Web interface for streaming or download media from an XBMC library",
+	"version": "1.9.1",
+	"description": "Web interface for streaming or downloading media from an XBMC library",
 	"main": "Gruntfile.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Message translations.
  *
@@ -21,19 +21,18 @@ return array (
   'Backends' => 'Backends',
   'Browse' => 'Durchsuchen',
   'Change backend' => 'Backend wechseln',
-  'Change language' => 'Sprache ändern',
   'Change password' => 'Passwort ändern',
   'Create new' => 'Neu erstellen',
   'Flush cache' => 'Cache leeren',
-  'Interface' => 'Interface',
   'Log out' => 'Abmelden',
   'Manage' => 'Verwalten',
   'Movies' => 'Filme',
+  'Power off' => 'Ausschalten',
   'Recently added' => 'Kürzlich hinzugefügt',
   'Settings' => 'Einstellungen',
   'System' => 'System',
   'System log' => 'System Log',
-  'TV Shows' => 'TV-Serien',
+  'TV shows' => 'TV-Serien',
   'Update library' => 'Bibliothek aktualisieren',
   'User' => 'Benutzer',
   'Users' => 'Benutzer',

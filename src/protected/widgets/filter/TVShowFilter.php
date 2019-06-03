@@ -12,8 +12,10 @@ class TVShowFilter extends VideoFilter
 	
 	protected function renderControls()
 	{
-		echo $this->form->typeaheadFieldControlGroup($this->model, 'name', 
-			CJavaScript::encode($this->getTypeaheadData(VideoLibrary::getTVShows(array('properties'=>array())))));
+		$ctrl = Yii::app()->controller;
+		
+		echo $this->form->typeaheadFieldControlGroup($this->model, 'name', array(
+			'prefetch'=>$ctrl->createUrl('typeahead/getTVShowNames')));
 
 		echo $this->form->dropDownListControlGroup($this->model, 'genre', 
 				$this->model->getGenres(), array('empty'=>' '));
@@ -21,9 +23,17 @@ class TVShowFilter extends VideoFilter
 		echo $this->form->dropDownListControlGroup($this->model, 'watchedStatus', 
 				VideoFilterForm::getWatchedStatuses(), 
 				array('empty'=>' ', 'style'=>'width: 120px;'));
-		
-		echo $this->form->typeaheadFieldControlGroup($this->model, 'actor', 
-				$this->getActorNameTypeaheadData(Actor::MEDIA_TYPE_TVSHOW));
+
+		if ($this->enableActorTypeahead())
+		{
+			echo $this->form->typeaheadFieldControlGroup($this->model, 'actor', [
+				'prefetch' => $ctrl->createUrl('typeahead/getActorNames', ['mediaType' => Actor::MEDIA_TYPE_TVSHOW]),
+			]);
+		}
+		else
+		{
+			echo $this->form->textFieldControlGroup($this->model, 'actor');
+		}
 	}
 
 }

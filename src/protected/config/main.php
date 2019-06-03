@@ -1,9 +1,5 @@
 <?php
 
-// define aliases
-Yii::setPathOfAlias('bootstrap', realpath(__DIR__.'/../../../vendor/crisu83/yiistrap'));
-Yii::setPathOfAlias('composer', realpath(__DIR__.'/../../../vendor'));
-
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'XBMC Video Server',
@@ -15,24 +11,7 @@ return array(
 	),
 	
 	// autoloading model and component classes
-	'import'=>array(
-		'application.models.*',
-		'application.models.forms.*',
-		'application.models.json.*',
-		'application.models.playlist.*',
-		'application.components.*',
-		'application.components.core.*',
-		'application.exceptions.*',
-		'application.helpers.*',
-		'application.controllers.*',
-		'application.controllers.base.*',
-		'application.widgets.*',
-		'application.widgets.filter.*',
-		'application.widgets.results.*',
-		'application.widgets.season.*',
-		'application.widgets.watch.*',
-		'bootstrap.helpers.*',
-	),
+	'import'=>require_once('_import.php'),
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
@@ -63,17 +42,15 @@ return array(
 			'class'=>'GruntClientScript',
 			'coreScriptPosition'=>CClientScript::POS_END,
 			'packages'=>array(
-				'jquery'=>array(
-						'baseUrl'=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/',
-						'js'=>array(YII_DEBUG ? 'jquery.js' : 'jquery.min.js'),
-				),
 				// we ship these in the compiled script
+				'jquery'=>array('js'=>false),
 				'bbq'=>array('js'=>false),
 				'history'=>array('js'=>false),
 			),
 			// list of scripts and styles that we include in our compiled files
 			'bundledFiles'=>array(
 				'jquery.yiilistview.js',
+				'jquery.yiigridview.js',
 				'jquery-unveil.min.js',
 				'listview/styles.css',
 			)
@@ -81,27 +58,15 @@ return array(
 		'backendManager'=>array(
 			'class'=>'BackendManager',
 		),
-		'db'=>array(
-			'connectionString' => 'sqlite:'.__DIR__.'/../data/xbmc-video-server.db',
-			'schemaCachingDuration'=>2592000, // 30 days
-		),
-		// To use MySQL instead of SQLite, uncomment the 'db' section below and 
-		// comment out the 'db' section above. You will then have to configure 
-		// the settings below to match your setup and run the file 
-		// schema.mysql.sql to setup the initial database.
-		/*'db'=>array(
-			'connectionString'=>'mysql:host=localhost;dbname=xbmc_video_server',
-			'emulatePrepare'=>true,
-			'username'=>'root',
-			'password'=>'',
-			'charset'=>'utf8',
-			'schemaCachingDuration'=>3600,
-		),*/
+		'db'=>require_once('_db.php'),
 		'xbmc'=>array(
 			'class'=>'XBMC',
 		),
 		'languageManager'=>array(
 			'class'=>'LanguageManager',
+		),
+		'powerOffManager'=>array(
+			'class'=>'PowerOffManager',
 		),
 		'user'=>array(
 			'class'=>'WebUser',

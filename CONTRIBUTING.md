@@ -8,9 +8,14 @@ Code is always welcome. To contribute a patch or a feature, fork the project and
 
 If you're adding new .php files to the project please remember to add the copyright header (see other files for example) and adjust the `@author` comment if necessary. If you're adding modifying an existing .php file and feel like it's an important change then add another `@author` line in the class documentation.
 
+### Development environment
+
+You can use Vagrant to install, provision and configure a development environment. Just run `vagrant up` from the project 
+root directory.
+
 ### Project setup
 
-The repository contains a NetBeans project that you can use. Just open the project in NetBeans to get started.
+The repository contains NetBeans and PhpStorm projects that you can use.
 
 ### Styles and scripts handling
 
@@ -18,15 +23,10 @@ The styles for the application are coded in LESS. The LESS files are then combin
 
 Something similar happens for script files. Grunt is used to concatenate and minify all scripts used by the application. Similar to the LESS files this process is automatic and is triggered every time a script file is changed.
 
-To install and run Grunt, run the following commands in the project root directory:
+To start the Grunt task runner, run `grunt` in a terminal.
 
-```
-sudo apt-get install nodejs npm
-npm install
-grunt
-```
-
-If you're using Debian you'll need to install nodejs from the `wheezy-backports` repository. NPM is not packaged so it has to be installed manually by running `curl https://www.npmjs.org/install.sh | sudo sh`. See https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager for more information. 
+Before you commit any changes, make sure to stop the task runner and run `grunt dist`once. This ensures all the 
+JavaScript has been compiled and so on.
 
 ## Translations
 
