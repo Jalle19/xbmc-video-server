@@ -59,7 +59,10 @@ class SiteController extends Controller
 			if ($model->validate() && $model->login())
 			{
 				$this->log('"%s" logged in from %s', $model->username, $address);
-				$this->redirect(Yii::app()->user->returnUrl);
+
+				/* @var User $user */
+				$user = User::model()->findByPk(Yii::app()->user->id);
+				$this->redirect($user->getStartPageRoute());
 			}
 			else
 			{

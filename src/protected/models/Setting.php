@@ -34,6 +34,7 @@ class Setting extends CActiveRecord
 	public $singleFilePlaylist;
 	public $showHelpBlocks;
 	public $cacheApiCalls;
+	public $enableActorTypeahead;
 	public $allowUserPowerOff;
 	public $pagesize;
 	public $useHttpsForVfsUrls;
@@ -292,14 +293,18 @@ class Setting extends CActiveRecord
 				'description'=>Yii::t('Settings', 'Useful on slow hardware. A refresh button will appear in the menu which flushes the cache'),
 				'order'=>650,
 			),
+			'enableActorTypeahead'=>array(
+				'label'=>Yii::t('Settings', 'Enable auto-complete for actor names'),
+				'type'=>self::TYPE_CHECKBOX,
+				'default'=>'0',
+				'description'=>Yii::t('Settings', 'Decreases performance, especially on large libraries and/or slow hardware'),
+				'order'=>675,
+			),
 			'useHttpsForVfsUrls'=>array(
 				'label'=>Yii::t('Settings', 'Use HTTPS when streaming'),
 				'type'=>self::TYPE_CHECKBOX,
 				'default'=>'0',
-				'description'=>Yii::t('Settings', 'When checked, streaming will be done over HTTPS if 
-					the application is accessed over HTTPS. This will usually only 
-					work if the server uses a real signed certificate, thus it is 
-					not enabled by default.'),
+				'description'=>Yii::t('Settings', 'When checked, streaming will be done over HTTPS if the application is accessed over HTTPS. This will usually only work if the server uses a real signed certificate, thus it is not enabled by default.'),
 				'order'=>700,
 			),
 			'allowUserPowerOff'=>array(
@@ -311,16 +316,14 @@ class Setting extends CActiveRecord
                                         Setting::POWER_OPTION_SUSPEND=>Yii::t('Settings', 'Suspend'),
                                         Setting::POWER_OPTION_HIBERNATE=>Yii::t('Settings', 'Hibernate'),
                                         Setting::POWER_OPTION_REBOOT=>Yii::t('Settings', 'Reboot')),
-				'description'=>Yii::t('Settings', 'Administrators are not affected by this setting and can always power off backends.'),
+				'description'=>Yii::t('Settings', 'Administrators are not affected by this setting and can always power off backends'),
                                 'order'=>750,
                         ),
 			'whitelist'=>array(
 				'label'=>Yii::t('Settings', 'Access whitelist'),
 				'type'=>self::TYPE_TEXT_WIDE,
 				'default'=>'',
-				'description'=>Yii::t('Settings', "If specified, access is restricted to the defined 
-					whitelist. Valid values are IP addresses, IP subnets and 
-					domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com"),
+				'description'=>Yii::t('Settings', 'If specified, access is restricted to the defined whitelist. Valid values are IP addresses, IP subnets and domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com'),
 				'order'=>800,
 			),
 		);

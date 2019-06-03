@@ -15,6 +15,12 @@ class MediaFlagVideoSource extends MediaFlag
 	{
 		if (preg_match('/\.TS\.|\.TELESYNC\./i', $this->file))
 			return 'TS';
+		else if (preg_match('/\.CAM\./i', $this->file))
+			return 'CAM';
+		else if (preg_match('/\.DVDSCR\.|\.SCREENER\./i', $this->file))
+			return 'TS';
+		else if (preg_match('/\.WEBRip\./i', $this->file))
+			return 'WEBRIP';
 
 		return false;
 	}

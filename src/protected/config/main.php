@@ -42,17 +42,15 @@ return array(
 			'class'=>'GruntClientScript',
 			'coreScriptPosition'=>CClientScript::POS_END,
 			'packages'=>array(
-				'jquery'=>array(
-						'baseUrl'=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/',
-						'js'=>array(YII_DEBUG ? 'jquery.js' : 'jquery.min.js'),
-				),
 				// we ship these in the compiled script
+				'jquery'=>array('js'=>false),
 				'bbq'=>array('js'=>false),
 				'history'=>array('js'=>false),
 			),
 			// list of scripts and styles that we include in our compiled files
 			'bundledFiles'=>array(
 				'jquery.yiilistview.js',
+				'jquery.yiigridview.js',
 				'jquery-unveil.min.js',
 				'listview/styles.css',
 			)

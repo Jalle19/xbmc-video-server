@@ -46,7 +46,7 @@ class PlaylistItem
 		
 		// Generate a link to the artwork
 		$thumbnail = ThumbnailFactory::create($media->getArtwork(), Thumbnail::SIZE_LARGE);
-		$this->image = Yii::app()->request->hostInfo.$thumbnail;
+		$this->image = Yii::app()->request->hostInfo.$thumbnail->getUrl();
 	}
 
 }

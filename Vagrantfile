@@ -2,15 +2,15 @@
 # vi: set ft=ruby :
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "ubuntu/bionic64"
 
   # networking
-  config.vm.network "private_network", ip: "192.168.25.25"
+  config.vm.network "public_network"
   config.vm.hostname = "xbmc-video-server"
 
   # memory usage
   config.vm.provider "virtualbox" do |vb|
-    vb.memory = "512"
+    vb.memory = "1024"
   end
 
   # synced folder
@@ -26,8 +26,8 @@ Vagrant.configure(2) do |config|
     name: "02 - Install and update system packages"
   config.vm.provision "shell", path: "provisioning/03-install-npm-dependencies.sh",
     name: "03 - Install npm dependencies"
-  config.vm.provision "shell", path: "provisioning/04-configure-apache.sh",
-    name: "04 - Configure Apache"
+  config.vm.provision "shell", path: "provisioning/04-configure-web-servers.sh",
+    name: "04 - Configure web servers"
   config.vm.provision "shell", path: "provisioning/05-configure-xbmc-video-server.sh",
     name: "05 - Configure XBMC Video Server"
 

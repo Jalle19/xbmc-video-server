@@ -16,12 +16,12 @@ class LibraryUpdateListener
 	const METHOD_ON_SCAN_FINISHED = 'VideoLibrary.OnScanFinished';
 
 	/**
-	 * @var function event handler for METHOD_ON_SCAN_STARTED
+	 * @var Closure event handler for METHOD_ON_SCAN_STARTED
 	 */
 	public $onScanStarted;
 
 	/**
-	 * @var function event handler for METHOD_ON_SCAN_FINISHED
+	 * @var Closure event handler for METHOD_ON_SCAN_FINISHED
 	 */
 	public $onScanFinished;
 

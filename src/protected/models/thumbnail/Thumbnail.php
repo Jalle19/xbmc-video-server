@@ -108,13 +108,13 @@ class Thumbnail extends AbstractThumbnail
 
 		// Retrieve the image data and store it in a temporary file
 		$imageData = file_get_contents($this->getOriginalUrl(), false, $context);
-		$imageFile = tempnam(sys_get_temp_dir(), self::TEMP_FILE_PREFIX);
+		$imageFile = tempnam(self::getTemporaryDirectory(), self::TEMP_FILE_PREFIX);
 		
 		if ($imageData === false || file_put_contents($imageFile, $imageData) === false)
 			return;
 		
 		// Resize and cache the thumbnail
-		$imagine = $this->imagineFactory();
+		$imagine = self::imagineFactory();
 
 		$imagine->open($imageFile)
 				->thumbnail(new \Imagine\Image\Box($this->_size, PHP_INT_MAX))
@@ -133,12 +133,28 @@ class Thumbnail extends AbstractThumbnail
 	{
 		return md5($this->_path).'_'.$this->_size.'.jpg';
 	}
+	
+	/**
+	 * Returns the temporary directory where images should be stored for 
+	 * processing. It will first try upload_tmp_dir and fall back to the 
+	 * system default if that directive has not been set.
+	 * @return string
+	 */
+	private static function getTemporaryDirectory()
+	{
+		$tempDir = ini_get('upload_tmp_dir');
+
+		if ($tempDir === null)
+			$tempDir = sys_get_temp_dir();
+
+		return $tempDir;
+	}
 
 	/**
 	 * Factory method for creating an Imagine instance
 	 * @return \Imagine\Gd\Imagine|\Imagine\Imagick\Imagine
 	 */
-	private function imagineFactory()
+	private static function imagineFactory()
 	{
 		// Try Imagick first, then fall back to GD. We have to check for
 		// Imagick ourselves because Imagine is too stupid to do it correctly

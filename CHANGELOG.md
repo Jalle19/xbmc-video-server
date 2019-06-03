@@ -8,6 +8,49 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.9.1
+* fix wrong sort order on the recently added movies page
+
+#### 1.9.0
+* added a "date added" column to the movie list
+* fixed filtering the system logs
+* grid view now respects the sort order specified in the URL (can be changed when in list view)
+
+#### 1.8.6
+* added installation instructions for Ubuntu 18.04 to the wiki
+* upgraded the Yii framework to the latest version, this fixes the application on Ubuntu 18.04 (PHP 7.1+)
+* change the Vagrant box to use Ubuntu 18.04 as base
+
+#### 1.8.5
+* fix cache busting of styles on the login page
+* bundle the Lato font and jQuery so the application can work without client Internet access
+
+#### 1.8.4
+* add a Travis CI configuration that checks that dependencies are installable on all supported PHP versions
+* replace the removed mptre/xspf library with jalle19/xsphpf
+
+#### 1.8.3
+* add a settings page for users where they can change the language and the landing page
+* clicking the director name on a movie now links to all movies with that director
+* disable actor typeahead by default (should bring major performance improvements), it's now a setting
+* fix season artwork placeholder width
+* update the wiki with installation instructions for Ubuntu 16.04
+* add a Dockerfile, project is now published on dockerhub.com (https://hub.docker.com/r/jalle19/xbmc-video-server/)
+* the Vagrant environment now contains a sample configuration file for nginx
+* changed the default credentials to "kodi" and "kodi"
+* fix an unfriendly error message if WOL fails
+* fix error when using PHP with open_basedir restrictions
+
+#### 1.8.2
+* fixed playing media that contains multiple files
+
+#### 1.8.1
+* updated French and German translations
+* added some additional video source flags
+* users are now redirected to their previous location after triggering a synchronous library update
+* fixed a regression in the WOL functionality where the user would not be redirected once the wake was completed
+* fixed stale caching for the power management dialog which could cause it to be in a different language after the language was changed
+
 #### 1.8.0
 * don't log logout attempts by guest users
 * fixed another two migration issue

@@ -20,7 +20,7 @@ return array (
   'Recently added episodes' => 'Kürzlich hinzugefügte Episoden',
   'Season {season} - {showTitle}' => 'Staffel {season} - {showTitle}',
   'Seasons' => 'Staffeln',
-  'TV Shows' => 'TV-Serien',
+  'TV shows' => 'TV-Serien',
   'There are no episodes for this show' => 'Diese Serie beinhaltet keine Episoden',
   'Watch the whole season' => 'Gesamte Staffel anschauen',
   'Watch the whole show' => 'Gesamte Serie anschauen',

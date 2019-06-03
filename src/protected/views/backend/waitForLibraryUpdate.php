@@ -2,9 +2,10 @@
 
 $this->pageTitle = $title = Yii::t('Backend', 'Waiting for library update');
 
-// Wait for the library update to complete before redirecting the user
+// Wait for the library update to complete before redirecting the user to the 
+// previous location
 Yii::app()->clientScript->registerScript(__CLASS__.'_waitForLibraryUpdate', '
-	waitForLibraryUpdate();
+	waitForLibraryUpdate("'.$previousLocation.'");
 ', CClientScript::POS_END);
 
 ?>

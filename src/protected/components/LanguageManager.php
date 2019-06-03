@@ -11,8 +11,6 @@
 class LanguageManager extends CApplicationComponent
 {
 
-	const SESSION_KEY = 'currentLanguage';
-
 	/**
 	 * @var string the current language
 	 */
@@ -25,13 +23,10 @@ class LanguageManager extends CApplicationComponent
 	 */
 	public function init()
 	{
-		$applicationLanguage = Setting::getString('language');
-		$sessionLanguage = Yii::app()->session->get(self::SESSION_KEY);
 		$userLanguage = $this->getUserLanguage();
+		$applicationLanguage = Setting::getString('language');
 
-		if ($sessionLanguage)
-			$this->_currentLanguage = $sessionLanguage;
-		elseif ($userLanguage)
+		if ($userLanguage)
 			$this->_currentLanguage = $userLanguage;
 		else
 			$this->_currentLanguage = $applicationLanguage;
@@ -48,13 +43,12 @@ class LanguageManager extends CApplicationComponent
 	}
 
 	/**
-	 * Sets and changes the current language
+	 * Changes the current language
 	 * @param string $language the new language
 	 */
 	public function setCurrent($language)
 	{
 		$this->_currentLanguage = Yii::app()->language = $language;
-		Yii::app()->session->add(self::SESSION_KEY, $language);
 	}
 	
 	/**

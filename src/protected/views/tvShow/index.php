@@ -2,7 +2,7 @@
 
 /* @var $filterForm MovieFilterForm */
 /* @var $dataProvider LibraryDataProvider */
-$this->pageTitle = $title = Yii::t('TVShows', 'TV Shows');
+$this->pageTitle = $title = Yii::t('TVShows', 'TV shows');
 
 ?>
 <h2><?php echo $title; ?></h2>

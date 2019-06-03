@@ -44,7 +44,7 @@ class TypeaheadController extends Controller
 			{
 				$thumbnail = ThumbnailFactory::create($movie->thumbnail, Thumbnail::SIZE_VERY_SMALL);
 				
-				$movie->thumbnail = LazyImage::image($thumbnail->__toString());
+				$movie->thumbnail = LazyImage::image($thumbnail->getUrl());
 				$movie->genre = $movie->getGenreString();
 			}
 			

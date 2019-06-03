@@ -8,13 +8,21 @@
  * @copyright Copyright &copy; Sam Stenvall 2013-
  * @license https://www.gnu.org/licenses/gpl.html The GNU General Public License v3.0
  */
-class UserController extends AdminOnlyController
+class UserController extends ModelController
 {
+
+	/**
+	 * @inheritdoc
+	 */
+	public function filters()
+	{
+		return array_merge(parent::filters(), array(
+			'accessControl',
+		));
+	}
 	
 	/**
-	 * Override the admin only access rules to allow ordinary users to change 
-	 * their passwords
-	 * @return the access rules for this controller
+	 * @inheritdoc
 	 */
 	public function accessRules()
 	{
@@ -23,6 +31,20 @@ class UserController extends AdminOnlyController
 				array('allow',
 					'actions'=>array('changePassword'),
 				),
+				array('allow',
+					// Allow logged in users to update their own information
+					'actions'=>array('update'),
+					'expression'=>function($webUser) {
+						return isset($_GET['id']) && $_GET['id'] == $webUser->id;
+					}
+				),
+				array('allow',
+					// Administrators can do anything
+					'expression'=>function() {
+						return Yii::app()->user->role == User::ROLE_ADMIN;
+					},
+				),
+				array('deny'),
 			), parent::accessRules()
 		);
 	}
@@ -49,7 +71,7 @@ class UserController extends AdminOnlyController
 				$this->log('"%s" updated his/her password', Yii::app()->user->name);
 				Yii::app()->user->setFlash('success', Yii::t('User', 'Password successfully changed'));
 
-				$this->redirect(array('movie/index'));
+				$this->redirect(array('user/update', 'id'=>$user->id));
 			}
 		}
 
@@ -87,20 +109,34 @@ class UserController extends AdminOnlyController
 	 */
 	public function actionUpdate($id)
 	{
+		/* @var User $model */
 		$model = $this->loadModel($id);
 		
 		// Clear the password
+		$password = $model->password;
 		$model->password = '';
-
-		if ($this->saveFromPost($model))
+		
+		if (isset($_POST['User']))
 		{
-			$this->log('"%s" updated user "%s"', Yii::app()->user->name, 
-					$model->username);
-			
-			Yii::app()->user->setFlash('success', Yii::t('User', 'Updated user {username}', 
-					array('{username}'=>'<em>'.$model->username.'</em>')));
+			$model->attributes = $_POST['User'];
 
-			$this->redirect(array('admin'));
+			// Don't touch the password, it should only be changed through the change password action
+			if (empty($model->password))
+			{
+				$model->inhibitPasswordHash();
+				$model->password   = $password;	
+			}
+			
+			if ($model->save())
+			{
+				$this->log('"%s" updated user "%s"', Yii::app()->user->name,
+					$model->username);
+
+				Yii::app()->user->setFlash('success', Yii::t('User', 'Updated user {username}',
+					['{username}' => '<em>' . $model->username . '</em>']));
+				
+				$this->refresh();
+			}
 		}
 
 		$this->render('update', array(

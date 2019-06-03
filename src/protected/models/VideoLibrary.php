@@ -18,7 +18,7 @@ class VideoLibrary
 	 * @var string[] default properties for movies
 	 */
 	private static $_defaultMovieProperties = array(
-		'year', 'genre', 'thumbnail', 'rating', 'runtime', 'playcount'
+		'year', 'genre', 'thumbnail', 'rating', 'runtime', 'playcount', 'dateadded'
 	);
 
 	/**
@@ -310,15 +310,13 @@ class VideoLibrary
 	 */
 	private static function parseStackedFile($file)
 	{
-		$files = array($file);
+		if (strpos($file, 'stack://') === false)
+			return array($file);
+		
+		$files = preg_split('/ , /i', $file);
 
-		if (strpos($file, 'stack://') !== false)
-		{
-			$actualFiles = preg_split('/ , /i', $file);
-			
-			// Remove stack:// from the first item
-			$actualFiles[0] = substr($actualFiles[0], 8);
-		}
+		// Remove stack:// from the first item
+		$files[0] = substr($files[0], 8);
 		
 		return $files;
 	}

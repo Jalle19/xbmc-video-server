@@ -4,7 +4,7 @@
 		<div class="image-container">
 			<?php 
 			
-			$image = \yiilazyimage\components\LazyImage::image($thumbnail);
+			$image = \yiilazyimage\components\LazyImage::image($thumbnail->getUrl());
 			
 			if ($itemUrl)
 				echo CHtml::link($image, $itemUrl);

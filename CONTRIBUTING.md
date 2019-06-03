@@ -25,6 +25,9 @@ Something similar happens for script files. Grunt is used to concatenate and min
 
 To start the Grunt task runner, run `grunt` in a terminal.
 
+Before you commit any changes, make sure to stop the task runner and run `grunt dist`once. This ensures all the 
+JavaScript has been compiled and so on.
+
 ## Translations
 
 Translations are always welcome, and even though it involves a little bit of work (apart from the actual translating) it's not that complicated. Here's what you need to do:

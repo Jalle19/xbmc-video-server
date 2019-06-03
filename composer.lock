@@ -1,11 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "1a0c9b5653cfc2b61d6969a1e8722306",
-    "content-hash": "eef06c570dd147d1d9e0be07a0f8a02e",
+    "content-hash": "7f3548d216afd0bed30a026cd0a59081",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -45,7 +44,7 @@
                 "slug",
                 "transliterator"
             ],
-            "time": "2014-05-15 22:08:22"
+            "time": "2014-05-15T22:08:22+00:00"
         },
         {
             "name": "crisu83/yii-consoletools",
@@ -79,7 +78,7 @@
                 "tools",
                 "yii"
             ],
-            "time": "2014-02-12 09:45:17"
+            "time": "2014-02-12T09:45:17+00:00"
         },
         {
             "name": "crisu83/yiistrap",
@@ -128,7 +127,7 @@
                 "bootstrap",
                 "yii"
             ],
-            "time": "2014-01-30 00:40:56"
+            "time": "2014-01-30T00:40:56+00:00"
         },
         {
             "name": "gavroche/browser",
@@ -180,7 +179,7 @@
                 "operating system",
                 "os"
             ],
-            "time": "2014-03-09 12:54:13"
+            "time": "2014-03-09T12:54:13+00:00"
         },
         {
             "name": "hautelook/phpass",
@@ -224,7 +223,7 @@
                 "password",
                 "security"
             ],
-            "time": "2012-08-31 00:00:00"
+            "time": "2012-08-31T00:00:00+00:00"
         },
         {
             "name": "hoa/core",
@@ -291,7 +290,8 @@
                 "parameter",
                 "protocol"
             ],
-            "time": "2015-09-03 08:28:53"
+            "abandoned": "hoa/consistency",
+            "time": "2015-09-03T08:28:53+00:00"
         },
         {
             "name": "hoa/http",
@@ -358,7 +358,7 @@
                 "rfc7237",
                 "runtime"
             ],
-            "time": "2015-09-08 13:33:12"
+            "time": "2015-09-08T13:33:12+00:00"
         },
         {
             "name": "hoa/socket",
@@ -414,7 +414,7 @@
                 "tcp",
                 "udp"
             ],
-            "time": "2015-09-08 11:21:04"
+            "time": "2015-09-08T11:21:04+00:00"
         },
         {
             "name": "hoa/stream",
@@ -472,7 +472,7 @@
                 "stream",
                 "wrapper"
             ],
-            "time": "2015-08-28 07:31:43"
+            "time": "2015-08-28T07:31:43+00:00"
         },
         {
             "name": "hoa/websocket",
@@ -535,7 +535,7 @@
                 "server",
                 "websocket"
             ],
-            "time": "2015-08-05 08:08:21"
+            "time": "2015-08-05T08:08:21+00:00"
         },
         {
             "name": "imagine/imagine",
@@ -592,7 +592,7 @@
                 "image manipulation",
                 "image processing"
             ],
-            "time": "2014-11-11 11:36:02"
+            "time": "2014-11-11T11:36:02+00:00"
         },
         {
             "name": "jalle19/php-whitelist-check",
@@ -634,7 +634,7 @@
                 "ipv6",
                 "whitelist"
             ],
-            "time": "2014-05-11 16:35:28"
+            "time": "2014-05-11T16:35:28+00:00"
         },
         {
             "name": "jalle19/simple-json-rpc-client",
@@ -675,7 +675,46 @@
             "keywords": [
                 "jsonrpc"
             ],
-            "time": "2015-04-20 11:09:16"
+            "time": "2015-04-20T11:09:16+00:00"
+        },
+        {
+            "name": "jalle19/xsphpf",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Jalle19/xsphpf.git",
+                "reference": "7db64f367db627bfb7ee701c55e72bf1f6299fea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Jalle19/xsphpf/zipball/7db64f367db627bfb7ee701c55e72bf1f6299fea",
+                "reference": "7db64f367db627bfb7ee701c55e72bf1f6299fea",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jalle19\\xsphpf\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3"
+            ],
+            "authors": [
+                {
+                    "name": "Sam Stenvall",
+                    "email": "neggelandia@gmail.com"
+                }
+            ],
+            "description": "A library for creating XSPF playlists",
+            "time": "2017-10-28T12:19:24+00:00"
         },
         {
             "name": "jalle19/yii-lazy-image",
@@ -713,7 +752,7 @@
                 "loader",
                 "yii"
             ],
-            "time": "2014-06-28 08:52:20"
+            "time": "2014-06-28T08:52:20+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -765,62 +804,19 @@
                 "mobile detector",
                 "php mobile detect"
             ],
-            "time": "2014-03-07 13:33:54"
-        },
-        {
-            "name": "mptre/php-xspf",
-            "version": "v2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mptre/php-xspf.git",
-                "reference": "29a61b26e5e2d52502a39d32a063b831612b44de"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mptre/php-xspf/zipball/29a61b26e5e2d52502a39d32a063b831612b44de",
-                "reference": "29a61b26e5e2d52502a39d32a063b831612b44de",
-                "shasum": ""
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.1.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "mptre": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Anton Lindqvist",
-                    "email": "anton@qvister.se"
-                },
-                {
-                    "name": "Sam Stenvall",
-                    "email": "neggelandia@gmail.com"
-                }
-            ],
-            "description": "A package for genering XSPF playlists",
-            "keywords": [
-                "xspf"
-            ],
-            "time": "2014-08-06 09:56:00"
+            "time": "2014-03-07T13:33:54+00:00"
         },
         {
             "name": "netresearch/jsonmapper",
             "version": "v0.8.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/netresearch/jsonmapper.git",
+                "url": "https://github.com/cweiske/jsonmapper.git",
                 "reference": "8888278ddbf013a81e4b83670cdf7b900d121751"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/netresearch/jsonmapper/zipball/8888278ddbf013a81e4b83670cdf7b900d121751",
+                "url": "https://api.github.com/repos/cweiske/jsonmapper/zipball/8888278ddbf013a81e4b83670cdf7b900d121751",
                 "reference": "8888278ddbf013a81e4b83670cdf7b900d121751",
                 "shasum": ""
             },
@@ -847,21 +843,24 @@
                 }
             ],
             "description": "Map nested JSON structures onto PHP classes",
-            "time": "2015-07-06 07:43:26"
+            "time": "2015-07-06T07:43:26+00:00"
         },
         {
             "name": "tomnomnom/phpwol",
-            "version": "0.0.1",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TomNomNom/phpwol.git",
-                "reference": "1c31562040a14d0512669dd38e4421b2c600370f"
+                "reference": "9126f22d57e4403e0569b1b5e9c91c697a394260"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TomNomNom/phpwol/zipball/1c31562040a14d0512669dd38e4421b2c600370f",
-                "reference": "1c31562040a14d0512669dd38e4421b2c600370f",
+                "url": "https://api.github.com/repos/TomNomNom/phpwol/zipball/9126f22d57e4403e0569b1b5e9c91c697a394260",
+                "reference": "9126f22d57e4403e0569b1b5e9c91c697a394260",
                 "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
             },
             "type": "library",
             "autoload": {
@@ -882,7 +881,7 @@
             ],
             "description": "Wake On LAN for PHP",
             "homepage": "https://github.com/TomNomNom/phpwol/",
-            "time": "2013-02-18 00:19:45"
+            "time": "2015-11-24T12:57:42+00:00"
         },
         {
             "name": "xrstf/ip-utils",
@@ -930,29 +929,43 @@
                 "matching",
                 "subnet"
             ],
-            "time": "2013-12-04 01:57:13"
+            "time": "2013-12-04T01:57:13+00:00"
         },
         {
             "name": "yiisoft/yii",
-            "version": "1.1.14",
+            "version": "1.1.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii.git",
-                "reference": "f0fee98ee84f70f1f3652f65562c9670e919cb4e"
+                "reference": "6ed38411e7568f7a13c4aab8bcd38bff2a6f2390"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii/zipball/f0fee98ee84f70f1f3652f65562c9670e919cb4e",
-                "reference": "f0fee98ee84f70f1f3652f65562c9670e919cb4e",
+                "url": "https://api.github.com/repos/yiisoft/yii/zipball/6ed38411e7568f7a13c4aab8bcd38bff2a6f2390",
+                "reference": "6ed38411e7568f7a13c4aab8bcd38bff2a6f2390",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.1.0"
             },
+            "require-dev": {
+                "phing/phing": "2.*",
+                "phpunit/phpunit": "~4.8.34",
+                "phpunit/phpunit-selenium": "~1.4.0"
+            },
+            "suggest": {
+                "ext-mcrypt": "Required by encrypt and decrypt methods of CSecurityManager"
+            },
             "bin": [
                 "framework/yiic"
             ],
             "type": "library",
+            "autoload": {
+                "classmap": [
+                    "framework/YiiBase.php",
+                    "framework/yii.php"
+                ]
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
@@ -1014,7 +1027,7 @@
                 "framework",
                 "yii"
             ],
-            "time": "2013-08-12 00:12:08"
+            "time": "2018-07-06T17:18:25+00:00"
         },
         {
             "name": "zendframework/zend-escaper",
@@ -1059,7 +1072,7 @@
                 "escaper",
                 "zf2"
             ],
-            "time": "2014-03-05 17:29:35"
+            "time": "2014-03-05T17:29:35+00:00"
         },
         {
             "name": "zendframework/zend-http",
@@ -1109,7 +1122,7 @@
                 "http",
                 "zf2"
             ],
-            "time": "2014-03-05 18:47:14"
+            "time": "2014-03-05T18:47:14+00:00"
         },
         {
             "name": "zendframework/zend-loader",
@@ -1154,7 +1167,7 @@
                 "loader",
                 "zf2"
             ],
-            "time": "2014-03-06 17:27:03"
+            "time": "2014-03-06T17:27:03+00:00"
         },
         {
             "name": "zendframework/zend-stdlib",
@@ -1209,7 +1222,7 @@
                 "stdlib",
                 "zf2"
             ],
-            "time": "2014-03-05 17:29:35"
+            "time": "2014-03-05T17:29:35+00:00"
         },
         {
             "name": "zendframework/zend-uri",
@@ -1257,7 +1270,7 @@
                 "uri",
                 "zf2"
             ],
-            "time": "2014-03-05 17:29:35"
+            "time": "2014-03-05T17:29:35+00:00"
         },
         {
             "name": "zendframework/zend-validator",
@@ -1321,7 +1334,7 @@
                 "validator",
                 "zf2"
             ],
-            "time": "2014-03-05 17:29:35"
+            "time": "2014-03-05T17:29:35+00:00"
         }
     ],
     "packages-dev": [],
@@ -1330,6 +1343,8 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=5.4"
+    },
     "platform-dev": []
 }

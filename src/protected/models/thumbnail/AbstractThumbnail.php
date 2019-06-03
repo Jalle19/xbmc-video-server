@@ -29,12 +29,4 @@ abstract class AbstractThumbnail
 		$this->_path = $path;
 	}
 
-	/**
-	 * @return string the thumbnail URL
-	 */
-	public function __toString()
-	{
-		return $this->getUrl();
-	}
-
 }

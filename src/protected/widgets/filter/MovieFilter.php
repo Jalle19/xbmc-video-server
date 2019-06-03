@@ -41,9 +41,17 @@ class MovieFilter extends VideoFilter
 				VideoFilterForm::getWatchedStatuses(), 
 				array('empty'=>' ', 'style'=>'width: 120px;'));
 
-		echo $this->form->typeaheadFieldControlGroup($this->model, 'actor', array(
-			'prefetch'=>$ctrl->createUrl('typeahead/getActorNames', array('mediaType'=>Actor::MEDIA_TYPE_MOVIE))));
-		
+		if ($this->enableActorTypeahead())
+		{
+			echo $this->form->typeaheadFieldControlGroup($this->model, 'actor', [
+				'prefetch' => $ctrl->createUrl('typeahead/getActorNames', ['mediaType' => Actor::MEDIA_TYPE_MOVIE]),
+			]);
+		}
+		else
+		{
+			echo $this->form->textFieldControlGroup($this->model, 'actor');
+		}
+
 		echo $this->form->typeaheadFieldControlGroup($this->model, 'director', array(
 			'prefetch'=>$ctrl->createUrl('typeahead/getDirectorNames')));
 	}

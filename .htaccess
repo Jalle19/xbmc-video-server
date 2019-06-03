@@ -3,3 +3,6 @@ RewriteEngine On
 # Go to the src/ directory
 RewriteRule ^src - [L,NC]
 RewriteRule (.*) src/$1
+
+# Deny access to .git
+RedirectMatch 404 /\.git

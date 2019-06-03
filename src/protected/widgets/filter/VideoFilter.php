@@ -91,4 +91,13 @@ abstract class VideoFilter extends CWidget
 		return 'FilterActiveForm';
 	}
 
+
+	/**
+	 * @return bool whether auto-complete functionality should be enabled on actor fields
+	 */
+	protected function enableActorTypeahead()
+	{
+		return Setting::getBoolean('enableActorTypeahead');
+	}
+
 }

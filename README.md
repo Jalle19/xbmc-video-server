@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Jalle19/xbmc-video-server.svg?branch=master)](https://travis-ci.org/Jalle19/xbmc-video-server)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Jalle19/xbmc-video-server/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Jalle19/xbmc-video-server/?branch=master)
 
 XBMC Video Server
@@ -60,9 +61,11 @@ Credits
 * jQuery Unveil (http://luis-almeida.github.io/unveil/)
 * typeahead.js (http://twitter.github.io/typeahead.js/)
 * phpwol (https://github.com/TomNomNom/phpwol)
-* php-xspf (https://github.com/mptre/php-xspf)
 
 License
 -------
 
 This software is licensed under the GNU GENERAL PUBLIC LICENSE Version 3.
+
+The bundled font is Copyright (c) 2010-2014 by tyPoland Lukasz Dziedzic (team@latofonts.com) with Reserved Font Name 
+"Lato"

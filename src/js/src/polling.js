@@ -14,14 +14,16 @@ function createUrl(route) {
 /**
  * Requests a library update and redirects to "homeUrl" when the request 
  * finishes
+ * @param {string} previousLocation the location to redirect to once the 
+ * request finishes
  */
-function waitForLibraryUpdate() {
+function waitForLibraryUpdate(previousLocation) {
 	var url = createUrl('backend/waitForLibraryUpdate');
 
 	$.ajax({
 		url: url,
 		success: function () {
-			window.location.href = createUrl('');
+			window.location.href = previousLocation;
 		}
 	});
 }

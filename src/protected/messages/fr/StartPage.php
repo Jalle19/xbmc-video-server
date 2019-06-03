@@ -17,8 +17,8 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Change language' => 'Modifier la langue',
-  'Close' => 'Fermer',
-  'Language' => 'Langue',
-  'Set as default for the current user' => 'Assigner cette langue par défaut',
+  'Movies - Browse' => '',
+  'Movies - Recently added' => '',
+  'TV shows - Browse' => '',
+  'TV shows - Recently added' => '',
 );

@@ -17,37 +17,14 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Administrators are not affected by this setting and can always power off backends.' => '',
-  'Allow users to power off backends' => '',
-  'Determines how long the application should wait for a response from XBMC. Increase this if you get timeout errors.' => '',
-  'Hibernate' => '',
-  'If specified, access is restricted to the defined 
-					whitelist. Valid values are IP addresses, IP subnets and 
-					domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com' => '',
-  'Look and feel' => '',
-  'Reboot' => '',
-  'Request timeout' => '',
-  'Security and performance' => '',
-  'Shutdown' => '',
-  'Suspend' => '',
-  'This is where you configure global 
-	application settings. These settings apply regardless of which backend is 
-	currently in use.' => '',
-  'When checked, streaming will be done over HTTPS if 
-					the application is accessed over HTTPS. This will usually only 
-					work if the server uses a real signed certificate, thus it is 
-					not enabled by default.' => '',
-  'If specified, access is restricted to the defined
-					whitelist. Valid values are IP addresses, IP subnets and 
-					domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com' => '@@Wenn ausgefüllt, ist der Zugang auf diese Werte beschränkt. Mögliche Eingaben: IP Adressen, IP Subnetze, Domainnamen (auch mit Wildcard). Beispielsweise: 192.168.1.0/24, 1.2.3.4, contoso.com, *.contoso.net@@',
-  'This is where you configure global
-	application settings. These settings apply regardless of which backend is 
-	currently in use.' => '@@Allgemeine Systemeinstellungen - Diese gelten unabhängig vom genutzten Backend@@',
-  'When checked, streaming will be done over HTTPS if
-					the application is accessed over HTTPS. This will usually only 
-					work if the server uses a real signed certificate, thus it is 
-					not enabled by default.' => '@@Nach Aktivierung erfolgt das Streaming per HTTPS, wenn die Seite per HTTPS aufgerufen wird. Funktioniert im Allgemeinen nur mit einem Zertifikat einer Certification Authority (CA). Standardmäßig deaktiviert@@',
+  'Decreases performance, especially on large libraries and/or slow hardware' => '',
+  'Enable auto-complete for actor names' => '',
+  'If specified, access is restricted to the defined whitelist. Valid values are IP addresses, IP subnets and domain names (including wildcards). Example: 192.168.1.0/24,1.2.3.4,example.com,*.user.com' => 'Wenn ausgefüllt, ist der Zugang auf diese Werte beschränkt. Mögliche Eingaben: IP Adressen, IP Subnetze, Domainnamen (auch mit Wildcard). Beispielsweise: 192.168.1.0/24, 1.2.3.4, contoso.com, *.contoso.net',
+  'This is where you configure global application settings. These settings apply regardless of which backend is currently in use.' => 'Allgemeine Systemeinstellungen - Diese gelten unabhängig vom genutzten Backend',
+  'When checked, streaming will be done over HTTPS if the application is accessed over HTTPS. This will usually only work if the server uses a real signed certificate, thus it is not enabled by default.' => 'Nach Aktivierung erfolgt das Streaming per HTTPS, wenn die Seite per HTTPS aufgerufen wird. Funktioniert im Allgemeinen nur mit einem Zertifikat einer Certification Authority (CA). Standardmäßig deaktiviert',
   'Access whitelist' => 'Zugang - Positivliste',
+  'Administrators are not affected by this setting and can always power off backends' => 'Administratoren sind hiervon unberührt und können das Backend jederzeit ausschalten.',
+  'Allow users to power off backends' => 'Den Benutzern das Abschalten der Backends erlauben',
   'Amount of results to show per page' => 'Anzahl der Ergebnisse pro Seite',
   'Application language' => 'Systemsprache',
   'Application name' => 'Systemname',
@@ -55,15 +32,23 @@ return array (
   'Before you get started, please have a look at the application settings' => 'Bevor du beginnst, schau dir bitte die Einstellungen an und passe sie ggf. an',
   'Cache all API results' => 'Cache alle API Ergebnisse',
   'Changing this will reset the default language for all users' => 'Eine Änderungen setzt die Standardsprache für alle Benutzer zurück',
+  'Determines how long the application should wait for a response from XBMC. Increase this if you get timeout errors.' => 'Legt fest, wie lange Anfragen an XBMC dauern dürfen, bevor ein Timeout eintritt. Bei Timeout Fehlern entsprechend erhören.',
   'Don\'t use playlists when item consists of a single file' => 'Für einzelne Dateien keine Wiedergabeliste benutzen',
+  'Hibernate' => 'Ruhezustand',
   'Ignore article ("the") in results' => 'Ignoriere Artikel ("The, der, die, das") in den Ergebnissen',
   'Invalid whitelist definition' => 'Ungültige Einträge der Positivliste',
   'Leave empty to disable pagination altogether' => 'Leer lassen um Seitennummerierung zu deaktivieren',
+  'Look and feel' => 'Personalisierung',
   'Playlist format' => 'Format der Wiedergabeliste',
+  'Reboot' => 'Neustarten',
+  'Request timeout' => 'Zeitüberschreitung der Anfrage',
+  'Security and performance' => 'Sicherheit und Perfomance',
   'Settings' => 'Einstellungen',
   'Settings have been reset to defaults' => 'Standardeinstellungen wurden wiederhergestellt ',
   'Settings updated successfully' => 'Einstellungen erfolgreich gespeichert',
   'Show help blocks throughout the site' => 'Hilfe/Tipps innerhalb der Seite anzeigen',
+  'Shutdown' => 'Herunterfahren',
+  'Suspend' => 'Energiesparmodus',
   'The specified whitelist restrictions will lock you out from this location' => 'Die Einschränkungen der Positivliste verhindern jeglichen Zugriff',
   'Use HTTPS when streaming' => 'Nutze HTTPS zum Streaming',
   'Useful on slow hardware. A refresh button will appear in the menu which flushes the cache' => 'Nützlich bei langsamer Hardware. Eine "Neu laden" Schaltfläche wird erscheinen, welche den Cache leert.',
