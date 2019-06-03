@@ -17,8 +17,8 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Director: {director}' => 'Regisseur',
   'Click an image to see other movies with that person, or click the name to go to the person\'s IMDb page' => 'Klicke auf das Foto der/des Schauspielerin/Schauspielers um weitere Filme dieser Person zu finden oder klicke auf den Namen um zur jeweiligen IMDb Seite zu gelangen.',
+  'Director: {director}' => 'Regisseur',
   'Movies' => 'Filme',
   'Recently added movies' => 'Kürzlich hinzugefügte Filme',
   'Watch / Download' => 'Stream / Download',

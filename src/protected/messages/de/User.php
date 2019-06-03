@@ -17,8 +17,6 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Start page' => '',
-  'This is where you configure users. Every user has a role. Administrators can do anything while a normal user can only switch backends (if more than one has been configured).' => 'Hier werden die Benutzer verwaltet. Jeder Nutzer hat eine Nutzerrolle. Administratoren haben keine Einschränkung, während Benutzer nur die Backends wechseln können (sofern es mehrere gibt).',
   'Change password' => 'Passwort ändern',
   'Create new user' => 'Neuen Benutzer erstellen',
   'Created user {username}' => 'Benutzer erstellt: {username}',
@@ -26,7 +24,9 @@ return array (
   'Password' => 'Passwort',
   'Password successfully changed' => 'Passwort erfolgreich geändert',
   'Role' => 'Nutzerrolle',
+  'Start page' => 'Startseite',
   'There must be at least one administrator' => 'Es muss mindestens einen Administrator geben',
+  'This is where you configure users. Every user has a role. Administrators can do anything while a normal user can only switch backends (if more than one has been configured).' => 'Hier werden die Benutzer verwaltet. Jeder Nutzer hat eine Nutzerrolle. Administratoren haben keine Einschränkung, während Benutzer nur die Backends wechseln können (sofern es mehrere gibt).',
   'Update {username}' => 'Update: {username}',
   'Updated user {username}' => 'Benutzer aktualisiert: {username}',
   'Username' => 'Benutzername',
