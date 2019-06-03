@@ -18,7 +18,7 @@
  */
 return array (
   'Click an image to see other movies with that person, or click the name to go to the person\'s IMDb page' => 'Cliquer sur l’image d’un(e) acteur(trice) pour voir tous ses films disponibles. Cliquer sur son nom pour accéder à la page de sa filmographie sur le site Web IMDb.com.',
-  'Director: {director}' => 'Réalisateur(trice) : {director}',
+  'Director: {director}' => 'Réalisateur(trice) : {director}',
   'Movies' => 'Films',
   'Recently added movies' => 'Derniers films ajoutés',
   'Watch / Download' => 'Visionner / Télécharger',
