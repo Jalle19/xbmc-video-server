@@ -21,7 +21,7 @@ return array (
   'Download (part #{partNumber})' => 'Télécharger (la partie #{partNumber})',
   'Play in XBMC' => 'Lecture dans Kodi',
   'The file(s) for this item is not available' => 'Le fichier n’est pas disponible',
-  'The item should now be playing on {backend}' => 'La lecture du fichier vidéo a débuté sur la source Kodi suivante : {backend}',
+  'The item should now be playing on {backend}' => 'La lecture du fichier vidéo a débuté sur la source Kodi suivante : {backend}',
   'Watch' => 'Visionner',
   'Watch as playlist' => 'Visionner comme liste de lecture',
   'Watch in browser' => 'Visionner dans le navigateur',
