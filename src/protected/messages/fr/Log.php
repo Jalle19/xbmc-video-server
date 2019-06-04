@@ -24,7 +24,7 @@ return array (
 	button.' => 'Voici l’historique de l’application. Pour y trouver l’information recherchée il est possible de trier et filtrer l’affichage du tableau situé ci-dessous. Pour lire le message d’erreur complet, cliquer sur l’icône associée et située à droite. Aussi, il est possible d’effacer entièrement l’historique en cliquant sur le bouton <i>Effacer l’historique</i>.',
   'Application log' => 'Historique de l’application',
   'Category' => 'Catégorie',
-  'Details for log item #{id}' => 'Détails pour l’historique : #{id}',
+  'Details for log item #{id}' => 'Détails pour l’historique : #{id}',
   'Flush logs' => 'Effacer l’historique',
   'ID' => 'ID',
   'Level' => 'Type',
