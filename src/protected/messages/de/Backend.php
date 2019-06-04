@@ -17,9 +17,6 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'If the backend allows TCP connections from other machines, XBMC Video Server will use it to determine when triggered library updates are finished' => '',
-  'Library update triggered, this page will be automatically refreshed once the update has completed' => '',
-  'TCP port' => '',
   'This is where you configure your backends. A backend is an instance of XBMC that the application connects to and serves library contents from. If you specify more than one backend, a new item will appear in the main menu, allowing you to easily switch backends.' => 'Hier werden die Backends konfiguriert. Ein Backend ist eine XBMC Instanz die die Medien-Bibliothek zur Verfügung stellt. Bei mehr als einem Backend erscheint ein Hinweis zum Wechseln im Hauptmenü.',
   'Backend created successfully' => 'Backend erfolgreich erstellt',
   'Backend name' => 'Backend Name',
@@ -29,11 +26,13 @@ return array (
   'Default' => 'Standard',
   'Hostname' => 'Hostname',
   'If a MAC address is entered a Wake-on-LAN packet will be sent to it whenever someone logs in' => 'Nach Eingabe einer MAC-Adresse wird bei jedem Einloggen ein MagigPacket (Wake on LAN) versendet',
+  'If the backend allows TCP connections from other machines, XBMC Video Server will use it to determine when triggered library updates are finished' => 'Wenn das Backend TCP-Verbindungen von anderen Rechnern zulässt, verwendet der XBMC Video Server es, um festzustellen, wann getriggerte Bibliotheksaktualisierungen abgeschlossen sind.',
   'If the backend has been powered off completely you\'ll have to turn it on manually.' => 'Ist das Backend komplett ausgeschaltet, musst du es manuell starten.',
   'If you don\'t know what this, leave it empty. Otherwise enter the subnet mask, e.g. 255.255.0.0' => 'Wenn du nicht weißt, was das ist, lass es einfach frei. Andernfalls Subnetzmaske eingeben - beispielsweise: 255.255.0.0.',
   'Invalid MAC address' => 'Ungültige MAC-Adresse',
   'Invalid credentials' => 'Anmeldung fehlgeschlagen',
   'Invalid subnet mask' => 'Ungültige Subnetzmaske',
+  'Library update triggered, this page will be automatically refreshed once the update has completed' => 'Bibliotheksaktualisierung ausgelöst, diese Seite wird automatisch aktualisiert, sobald das Update abgeschlossen ist.',
   'MAC address' => 'MAC Adresse',
   'Manage backends' => 'Backends verwalten',
   'Password' => 'Passwort',
@@ -42,6 +41,7 @@ return array (
   'See {readmeUrl} for how to configure this' => 'Hilfe zur Konfiguration unter : {readmeUrl}',
   'Set as default' => 'Standard setzen',
   'Subnet mask' => 'Subnetzmaske',
+  'TCP port' => 'TCP Port',
   'The current backend cannot be hibernated' => 'Das aktuelle Backend kann nicht in den Ruhezustand wechseln.',
   'The current backend cannot be rebooted' => 'Das aktuelle Backend kann nicht neugestartet werden.',
   'The current backend cannot be shut down' => 'Das aktuelle Backend kann nicht heruntergefahren werden.',
