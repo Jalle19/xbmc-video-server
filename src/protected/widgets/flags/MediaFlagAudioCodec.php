@@ -17,13 +17,11 @@ class MediaFlagAudioCodec extends MediaFlagStreamDetails
 		$icons = array(
 			'aac'=>'80px-Aac',
 			'ac3'=>'80px-Ac3',
-			'aac'=>'80px-Aac',
 			'dca'=>'80px-Dts',
 			'dts'=>'80px-Dts',
 			'dtshd_ma'=>'80px-Dtshd_ma',
 			'flac'=>'80px-Flac',
 			'mp3'=>'80px-Mp3',
-			'aac'=>'80px-Aac',
 			'pcm'=>'80px-Pcm_bluray',
 			'truehd'=>'80px-Truehd',
 		);
