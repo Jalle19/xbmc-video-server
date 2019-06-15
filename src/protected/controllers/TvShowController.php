@@ -39,8 +39,11 @@ class TvShowController extends MediaController
 		if (count($tvshows) === 1 && $filterForm->name === $tvshows[0]->label)
 			$this->redirect(['details', 'id' => $tvshows[0]->getId()]);
 
+		$dataProvider = new LibraryDataProvider($tvshows);
+		$dataProvider->makeSortable();
+		
 		$this->render('index', [
-			'dataProvider' => new LibraryDataProvider($tvshows),
+			'dataProvider' => $dataProvider,
 			'filterForm'   => $filterForm,
 		]);
 	}
@@ -158,12 +161,15 @@ class TvShowController extends MediaController
 	public function actionRecentlyAdded()
 	{
 		$episodes = VideoLibrary::getRecentlyAddedEpisodes();
+		
+		$dataProvider = new LibraryDataProvider($episodes);
+		$dataProvider->makeSortable('dateadded DESC');
 
-		$this->render('recentlyAdded', array(
-			'dataProvider'=>new LibraryDataProvider($episodes),
-		));
+		$this->render('recentlyAdded', [
+			'dataProvider' => $dataProvider,
+		]);
 	}
-	
+
 	/**
 	 * Returns a data provider containing the episodes for the specified show 
 	 * and season
