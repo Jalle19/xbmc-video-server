@@ -30,10 +30,13 @@ class LibraryDataProvider extends CArrayDataProvider
 		parent::__construct($rawData, $config);
 	}
 
+
 	/**
 	 * Makes the data in this provider sortable
+	 *
+	 * @param string|null $defaultOrder
 	 */
-	public function makeSortable()
+	public function makeSortable($defaultOrder = null)
 	{
 		// Nothing to do unless we have more than one data item
 		if (count($this->rawData) <= 1)
@@ -51,9 +54,9 @@ class LibraryDataProvider extends CArrayDataProvider
 			);
 		}
 
-		// "label" is included in practically all API results
-		$sort->defaultOrder = 'label ASC';
+		// "label" is included in practically all API results, use that if no default order is specified
+		$sort->defaultOrder = $defaultOrder === null ? 'label ASC' : $defaultOrder;
+		
 		$this->sort = $sort;
 	}
-
 }

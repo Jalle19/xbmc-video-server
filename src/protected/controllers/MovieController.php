@@ -46,8 +46,7 @@ class MovieController extends MediaController
 		$movies = VideoLibrary::getRecentlyAddedMovies();
 
 		$dataProvider = new LibraryDataProvider($movies);
-		$dataProvider->makeSortable();
-		$dataProvider->sort->defaultOrder = 'dateadded DESC';
+		$dataProvider->makeSortable('dateadded DESC');
 		
 		$this->render('recentlyAdded', array(
 			'dataProvider'=> $dataProvider
