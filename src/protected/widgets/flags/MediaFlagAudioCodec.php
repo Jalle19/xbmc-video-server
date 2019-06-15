@@ -24,6 +24,7 @@ class MediaFlagAudioCodec extends MediaFlagStreamDetails
 			'mp3'=>'80px-Mp3',
 			'pcm'=>'80px-Pcm_bluray',
 			'truehd'=>'80px-Truehd',
+			'eac3'=>'80px-eac3',
 		);
 
 		if (array_key_exists($codec, $icons))
