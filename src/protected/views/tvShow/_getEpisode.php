@@ -3,7 +3,7 @@
 /* @var $episode Episode */
 
 ?>
-<p>
+<p class="episode-list-string">
 	<?php echo $episode->getEpisodeString().$episode->getWatchedIcon(); ?>
 </p>
 
