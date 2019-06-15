@@ -59,6 +59,7 @@ class EpisodeList extends CWidget
 			),
 			array(
 				'type'=>'raw',
+				'name'=>'plot',
 				'header'=>Yii::t('EpisodeList', 'Plot'),
 				'cssClassExpression'=>function() {
 					return 'episode-list-plot';
@@ -68,6 +69,7 @@ class EpisodeList extends CWidget
 				}
 			),
 			array(
+				'name'=>'runtime',
 				'header'=>Yii::t('GenericList', 'Runtime'),
 				'type'=>'html',
 				'value'=>function($data) {

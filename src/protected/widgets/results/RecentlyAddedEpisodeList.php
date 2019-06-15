@@ -16,6 +16,7 @@ class RecentlyAddedEpisodeList extends EpisodeList
 		$showColumn = array(
 			array(
 				'type'=>'raw',
+				'name'=>'showtitle',
 				'header'=>Yii::t('RecentlyAddedEpisodes', 'TV Show'),
 				'value'=>function($data) {
 					return CHtml::link($data->showtitle, Yii::app()->createUrl('tvShow/details', array('id'=>$data->tvshowid)));
