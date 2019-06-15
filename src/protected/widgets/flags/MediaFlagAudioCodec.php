@@ -30,6 +30,8 @@ class MediaFlagAudioCodec extends MediaFlagStreamDetails
 			return $icons[$codec];
 		elseif (stripos($codec, 'pcm'))
 			return $icons['pcm'];
+		
+		return false;
 	}
 
 }
