@@ -18,14 +18,14 @@ class VideoLibrary
 	 * @var string[] default properties for movies
 	 */
 	private static $_defaultMovieProperties = array(
-		'year', 'genre', 'thumbnail', 'rating', 'runtime', 'playcount', 'dateadded'
+		'year', 'genre', 'thumbnail', 'rating', 'runtime', 'playcount', 'dateadded', 'premiered'
 	);
 
 	/**
 	 * @var string[] default properties for TV shows
 	 */
 	private static $_defaultTVShowProperties = array(
-		'year', 'genre', 'thumbnail', 'art', 'playcount',
+		'year', 'genre', 'thumbnail', 'art', 'playcount', 'premiered',
 	);
 
 	/**

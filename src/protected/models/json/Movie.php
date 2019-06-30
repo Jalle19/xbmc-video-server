@@ -13,6 +13,7 @@
  */
 class Movie extends File implements IStreamable
 {
+	use HasPremieredTrait;
 
 	/**
 	 * @var int

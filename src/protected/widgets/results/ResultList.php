@@ -49,13 +49,12 @@ abstract class ResultList extends TbGridView
 	protected function getYearColumn()
 	{
 		return array(
-			'name'=>'year',
+			'name'=>'premiered',
 			'header'=>Yii::t('GenericList', 'Year'),
 			'value'=>function($data) {
-				// Year is zero when it's not available
-				if ($data->year !== 0)
-					echo $data->year;
-			}
+				/** @var Movie|TVShow $data */
+				echo $data->getRenderedYear();
+			},
 		);
 	}
 
