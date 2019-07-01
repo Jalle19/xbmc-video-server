@@ -10,6 +10,7 @@
 class TVShow extends Media implements IStreamable
 {
 	use StreamableTrait;
+	use HasPremieredTrait;
 
 	/**
 	 * @var object
