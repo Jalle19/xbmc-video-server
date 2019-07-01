@@ -8,6 +8,10 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.10.1
+
+* change "sort by year" so it sorts by the premiere date instead of year + title alphabetically
+
 #### 1.10.0
 
 * add support for sorting in TV show views
