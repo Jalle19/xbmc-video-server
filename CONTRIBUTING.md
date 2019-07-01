@@ -28,6 +28,11 @@ To start the Grunt task runner, run `grunt` in a terminal.
 Before you commit any changes, make sure to stop the task runner and run `grunt dist`once. This ensures all the 
 JavaScript has been compiled and so on.
 
+### Debugging
+
+If you use PhpStorm, the debugger should be configured properly out of the box. You may need to change the server 
+address if your Vagrant box does not have the address `10.0.2.15` for some reason.
+
 ## Translations
 
 Translations are always welcome, and even though it involves a little bit of work (apart from the actual translating) it's not that complicated. Here's what you need to do:

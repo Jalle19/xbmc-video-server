@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="xbmc-video-server" type="PhpRemoteDebugRunConfigurationType" factoryName="PHP Remote Debug" filter_connections="FILTER" server_name="xbmc-video-server-vagrant" session_id="xbmc-video-server">
+    <method v="2" />
+  </configuration>
+</component>

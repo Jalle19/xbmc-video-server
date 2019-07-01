@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpProjectServersManager">
+    <servers>
+      <server host="10.0.2.15" id="96d373fa-500a-4dbe-b96b-e9d5bb0d2dfe" name="xbmc-video-server-vagrant" use_path_mappings="true">
+        <path_mappings>
+          <mapping local-root="$PROJECT_DIR$" remote-root="/vagrant" />
+        </path_mappings>
+      </server>
+    </servers>
+  </component>
+</project>
