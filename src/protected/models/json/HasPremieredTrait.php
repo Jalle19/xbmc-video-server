@@ -27,7 +27,7 @@ trait HasPremieredTrait
 
 		// Year is usually zero or 1601 when it's not available
 		if ($this->year !== 0 && $this->year !== 1601)
-			echo $this->year;
+			return $this->year;
 
 		// If nothing is available
 		return Yii::t('Misc', 'Not available');
