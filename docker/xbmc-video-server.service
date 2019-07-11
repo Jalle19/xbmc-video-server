@@ -1,0 +1,20 @@
+[Unit]
+Description=XBMC Video Server
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+RestartSec=5s
+TimeoutStartSec=0
+ExecStartPre=/bin/sh -c "mkdir -p /usr/local/share/xbmc-video-server"
+ExecStart=/usr/bin/docker run \
+          --rm \
+          --name=xbmc-video-server \
+          --volume=/usr/local/share/xbmc-video-server:/shared \
+          --publish=53122:80 \
+          jalle19/xbmc-video-server:latest
+ExecStop=/usr/bin/docker stop %p
+
+[Install]
+WantedBy=multi-user.target
