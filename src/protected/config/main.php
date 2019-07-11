@@ -58,7 +58,7 @@ return array(
 		'backendManager'=>array(
 			'class'=>'BackendManager',
 		),
-		'db'=>require_once('_db.php'),
+		'db'=>require '_db.php',
 		'xbmc'=>array(
 			'class'=>'XBMC',
 		),
