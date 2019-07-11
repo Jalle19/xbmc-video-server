@@ -13,4 +13,9 @@ php /app/src/protected/yiic.php setpermissions
 chmod ugo+w /shared/*
 php /app/src/protected/yiic.php migrate --interactive=0
 
+# Indicate whether a reverse-proxy.conf was found or not to help debugging
+if [[ -f "/shared/config/apache2/reverse-proxy.conf" ]]; then
+  echo "Using reverse proxy configuration from /shared/config/apache2/reverse-proxy.conf"
+fi
+
 apache2ctl -D FOREGROUND
