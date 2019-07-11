@@ -3,6 +3,11 @@
 // include Composer's autoloader
 require_once __DIR__ . '/../vendor/autoload.php';
 
+if (file_exists(__DIR__.'/../.env')) {
+	$dotenv = \Dotenv\Dotenv::create(__DIR__ . '/..');
+	$dotenv->load();
+}
+
 // change the following path if necessary
 $yii    = __DIR__ . '/../vendor/yiisoft/yii/framework/yii.php';
 $config = __DIR__ . '/protected/config/main.php';
