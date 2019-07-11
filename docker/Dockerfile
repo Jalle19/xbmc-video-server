@@ -3,7 +3,7 @@ MAINTAINER Sam Stenvall <neggelandia@gmail.com>
 
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -yq \
-    apache2 libapache2-mod-php php-imagick php-cli php-sqlite3 php-json php-mbstring git curl unzip composer && \
+    apache2 libapache2-mod-php php-imagick php-cli php-sqlite3 php-json php-mysql php-mbstring git curl unzip composer && \
     rm -rf /var/lib/apt/lists/*
 
 RUN a2enmod rewrite expires headers proxy_http
