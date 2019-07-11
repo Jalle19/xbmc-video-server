@@ -10,5 +10,6 @@ whitelist.override
 /node_modules
 /.vagrant
 /ubuntu-bionic-18.04-cloudimg-console.log
+.env
 **/.idea/workspace.xml
 **/.idea/tasks.xml

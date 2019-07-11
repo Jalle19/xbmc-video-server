@@ -16,14 +16,20 @@ class CreateInitialDatabaseCommand extends CConsoleCommand
 	 */
 	public function actionIndex()
 	{
-		$schema = file_get_contents(realpath(__DIR__
-						.'/../data/schema.sqlite.sql'));
+		// Determine which schema to use
+		$schemaFile = getenv('USE_MYSQL') === 'true' ? 'schema.mysql.sql' : 'schema.sqlite.sql';
+		$schema = file_get_contents(realpath(__DIR__ .'/../data/'.$schemaFile));
 
 		// Execute each command in the schema one by one
 		$commands = explode(';', $schema);
 
-		foreach (array_filter($commands) as $command)
-			Yii::app()->db->createCommand(trim($command))->execute();
+		foreach (array_filter($commands) as $command) {
+			// MySQL doesn't like empty queries
+			$command = trim($command);
+			
+			if ($command !== '') {
+				Yii::app()->db->createCommand(trim($command))->execute();
+			}
+		}
 	}
-
 }

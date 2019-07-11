@@ -1,19 +1,26 @@
 <?php
 
-// return the configuration for the 'db' application component
-return array(
-	'connectionString' => 'sqlite:'.__DIR__.'/../data/xbmc-video-server.db',
-	'schemaCachingDuration'=>0, // 30 days
-);
+// Return SQLite configuration unless the USE_MYSQL environment variable is set to true (mostly for advanced Docker 
+// usage)
+if (getenv('USE_MYSQL') !== 'true')
+{
+	return [
+		'connectionString'      => 'sqlite:' . __DIR__ . '/../data/xbmc-video-server.db',
+		'schemaCachingDuration' => 0, // 30 days
+	];
+}
 
-// To use MySQL instead of SQLite, use something like this instead. You will 
-// then have to configure the settings below to match your setup and run the 
-// file schema.mysql.sql to setup the initial database.
-//return array(
-//	'connectionString' => 'mysql:host=localhost;dbname=xbmc_video_server',
-//	'emulatePrepare' => true,
-//	'username' => 'root',
-//	'password' => '',
-//	'charset' => 'utf8',
-//	'schemaCachingDuration' => 3600,
-//);
+// MySQL configuration. Use schema.mysql.sql to setup the initial database
+$hostname = getenv('MYSQL_HOSTNAME');
+$database = getenv('MYSQL_DATABASE');
+$user     = getenv('MYSQL_USERNAME');
+$password = getenv('MYSQL_PASSWORD');
+
+return [
+	'connectionString'      => "mysql:host=$hostname;dbname=$database",
+	'emulatePrepare'        => true,
+	'username'              => $user,
+	'password'              => $password,
+	'charset'               => 'utf8',
+	'schemaCachingDuration' => 3600,
+];
