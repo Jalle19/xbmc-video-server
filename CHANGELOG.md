@@ -8,6 +8,11 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.10.2
+
+* add a more out-of-the-box Docker-based solution
+* much improved MySQL support, MySQL can now be used without file modifications
+
 #### 1.10.1
 
 * change "sort by year" so it sorts by the premiere date instead of year + title alphabetically
