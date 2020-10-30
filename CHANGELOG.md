@@ -11,7 +11,7 @@ change over time.
 #### unreleased
 
 * upgrade jalle19/php-whitelist-check to 1.1.0, fixes installation of dependencies
-* fix Travis CI tests on older PHP versions
+* fix Travis CI tests on older PHP versions, start testing on newer PHP versions too
 
 #### 1.10.2
 

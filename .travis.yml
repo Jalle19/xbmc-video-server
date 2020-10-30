@@ -15,6 +15,10 @@ matrix:
       dist: xenial
     - php: 7.2
       dist: xenial
+    - php: 7.3
+      dist: bionic
+    - php: 7.4
+      dist: bionic
 
 script:
  - composer self-update
