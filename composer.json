@@ -8,7 +8,7 @@
         "hautelook/phpass": "0.3.*",
         "hoa/websocket": "2.15.08.05",
         "imagine/imagine": "0.6.*",
-        "jalle19/php-whitelist-check": "1.0.*",
+        "jalle19/php-whitelist-check": "1.1.*",
         "jalle19/simple-json-rpc-client": ">=1.0.9",
         "jalle19/xsphpf": "^1.0",
         "jalle19/yii-lazy-image": "1.0.*",
@@ -20,6 +20,9 @@
         "zendframework/zend-http": "2.2.*"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "5.4"
+        }
     }
 }
