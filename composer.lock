@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1aacc15923f59634b58f33c5ba7288ad",
+    "content-hash": "efd5a8aa14fdbf41f1a9fe7b1e912fa0",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -596,25 +596,24 @@
         },
         {
             "name": "jalle19/php-whitelist-check",
-            "version": "1.0.4",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Jalle19/php-whitelist-check.git",
-                "reference": "23723dc413fc36a7912323d3c1855bb1f5baef3a"
+                "reference": "17be2c12c3b308b28f5d5b2b76d82a6b0eacfef1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Jalle19/php-whitelist-check/zipball/23723dc413fc36a7912323d3c1855bb1f5baef3a",
-                "reference": "23723dc413fc36a7912323d3c1855bb1f5baef3a",
+                "url": "https://api.github.com/repos/Jalle19/php-whitelist-check/zipball/17be2c12c3b308b28f5d5b2b76d82a6b0eacfef1",
+                "reference": "17be2c12c3b308b28f5d5b2b76d82a6b0eacfef1",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0",
-                "xrstf/ip-utils": "1.*@dev"
+                "jycr753/ip-utils": "~2.0.0",
+                "php": ">=5.3.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "3.7.*",
-                "satooshi/php-coveralls": "dev-master"
+                "phpunit/phpunit": "^4.8"
             },
             "type": "library",
             "autoload": {
@@ -634,7 +633,7 @@
                 "ipv6",
                 "whitelist"
             ],
-            "time": "2014-05-11T16:35:28+00:00"
+            "time": "2020-08-24T15:52:46+00:00"
         },
         {
             "name": "jalle19/simple-json-rpc-client",
@@ -755,6 +754,52 @@
             "time": "2014-06-28T08:52:20+00:00"
         },
         {
+            "name": "jycr753/ip-utils",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jycr753/ip-utils.git",
+                "reference": "6e8ab3e3bc3c2b816bfc682197edc8239ca08857"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jycr753/ip-utils/zipball/6e8ab3e3bc3c2b816bfc682197edc8239ca08857",
+                "reference": "6e8ab3e3bc3c2b816bfc682197edc8239ca08857",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7.26"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "IpUtils\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christoph Mewes",
+                    "homepage": "http://www.xrstf.de/"
+                }
+            ],
+            "description": "small library to deal with IPv4 & IPv6 addresses and subnets",
+            "keywords": [
+                "IP",
+                "ipv4",
+                "ipv6",
+                "matching",
+                "subnet"
+            ],
+            "time": "2020-10-06T21:55:44+00:00"
+        },
+        {
             "name": "mobiledetect/mobiledetectlib",
             "version": "2.7.9",
             "source": {
@@ -791,7 +836,7 @@
                 {
                     "name": "Serban Ghita",
                     "email": "serbanghita@gmail.com",
-                    "homepage": "http://mobiledetect.net",
+                    "homepage": "http://ghita.org",
                     "role": "Developer"
                 }
             ],
@@ -1047,14 +1092,14 @@
             "name": "xrstf/ip-utils",
             "version": "v1.1.0",
             "source": {
-                "type": "hg",
-                "url": "https://bitbucket.org/xrstf/ip-utils",
-                "reference": "77208641fa9e6063ccb00c8899d157818ad2474f"
+                "type": "git",
+                "url": "https://github.com/xrstf/ip-utils.git",
+                "reference": "5cf2b9322fb3302c48f1684d3f0d8c0346028f38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/xrstf/ip-utils/get/77208641fa9e6063ccb00c8899d157818ad2474f.zip",
-                "reference": "77208641fa9e6063ccb00c8899d157818ad2474f",
+                "url": "https://api.github.com/repos/xrstf/ip-utils/zipball/5cf2b9322fb3302c48f1684d3f0d8c0346028f38",
+                "reference": "5cf2b9322fb3302c48f1684d3f0d8c0346028f38",
                 "shasum": ""
             },
             "require": {
@@ -1089,7 +1134,7 @@
                 "matching",
                 "subnet"
             ],
-            "time": "2013-12-04T01:57:13+00:00"
+            "time": "2013-12-04T00:57:13+00:00"
         },
         {
             "name": "yiisoft/yii",
@@ -1232,6 +1277,7 @@
                 "escaper",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-escaper",
             "time": "2014-03-05T17:29:35+00:00"
         },
         {
@@ -1282,6 +1328,7 @@
                 "http",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-http",
             "time": "2014-03-05T18:47:14+00:00"
         },
         {
@@ -1327,6 +1374,7 @@
                 "loader",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-loader",
             "time": "2014-03-06T17:27:03+00:00"
         },
         {
@@ -1382,6 +1430,7 @@
                 "stdlib",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-stdlib",
             "time": "2014-03-05T17:29:35+00:00"
         },
         {
@@ -1430,6 +1479,7 @@
                 "uri",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-uri",
             "time": "2014-03-05T17:29:35+00:00"
         },
         {
@@ -1494,6 +1544,7 @@
                 "validator",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-validator",
             "time": "2014-03-05T17:29:35+00:00"
         }
     ],
