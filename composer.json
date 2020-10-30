@@ -20,6 +20,9 @@
         "zendframework/zend-http": "2.2.*"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "5.4"
+        }
     }
 }
