@@ -8,7 +8,7 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
-#### unreleased
+#### 1.10.3
 
 * upgrade jalle19/php-whitelist-check to 1.1.0, fixes installation of dependencies
 * fix Travis CI tests on older PHP versions, start testing on newer PHP versions too
