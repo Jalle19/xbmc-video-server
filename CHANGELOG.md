@@ -8,6 +8,12 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.10.4
+
+* change hautelook/phpass to bordoin/phpass
+* fix movie and TV show artwork rendering on Kodi 19.x backends
+* fix adding new Kodi 19.x backends
+
 #### 1.10.3
 
 * upgrade jalle19/php-whitelist-check to 1.1.0, fixes installation of dependencies
