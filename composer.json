@@ -5,7 +5,7 @@
         "crisu83/yii-consoletools": "1.0.*",
         "crisu83/yiistrap": "1.2.*",
         "gavroche/browser": "2.2.*",
-        "hautelook/phpass": "0.3.*",
+        "bordoni/phpass": "0.3.*",
         "hoa/websocket": "2.15.08.05",
         "imagine/imagine": "0.6.*",
         "jalle19/php-whitelist-check": "1.1.*",

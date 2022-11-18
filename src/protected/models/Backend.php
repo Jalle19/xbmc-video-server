@@ -159,7 +159,7 @@ class Backend extends CActiveRecord
 			// Check the authentication realm
 			$realm = $webserver->getAuthenticationRealm();
 
-			if (strtolower($realm) !== 'xbmc')
+			if (strtolower($realm) !== 'xbmc' && strtolower($realm) !== 'kodi')
 			{
 				$message = 'The server at '.$webserver->getHostInfo()." doesn't seem to be an XBMC instance";
 
