@@ -72,6 +72,7 @@ class MovieController extends MediaController
 			'runtime',
 			'streamdetails',
 			'votes',
+			'art',
 			'thumbnail',
 			'file'
 		));

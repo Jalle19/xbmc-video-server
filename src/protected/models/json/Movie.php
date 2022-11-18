@@ -36,6 +36,11 @@ class Movie extends File implements IStreamable
 	public $dateadded;
 
 	/**
+	 * @var object the movie art
+	 */
+	public $art;
+
+	/**
 	 * @var int
 	 */
 	private $_votes;
@@ -88,5 +93,14 @@ class Movie extends File implements IStreamable
 	public function getDateAdded()
 	{
 		return $this->dateadded;
+	}
+
+	public function getArtwork()
+	{
+		if (isset($this->art->poster)) {
+			return $this->art->poster;
+		}
+
+		return parent::getArtwork();
 	}
 }

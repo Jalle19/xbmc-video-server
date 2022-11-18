@@ -63,6 +63,7 @@ class TvShowController extends MediaController
 			'plot',
 			'mpaa',
 			'imdbnumber',
+			'art',
 			'thumbnail',
 			'cast',
 		));
