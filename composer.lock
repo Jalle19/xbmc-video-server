@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "16872f6344fade9a939ad18d98f46e5b",
+    "content-hash": "c61b1abf5902e28130cb12f6815f50f2",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1103,82 +1103,57 @@
             "time": "2019-06-15T22:40:20+00:00"
         },
         {
-            "name": "xrstf/ip-utils",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/xrstf/ip-utils.git",
-                "reference": "5cf2b9322fb3302c48f1684d3f0d8c0346028f38"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/xrstf/ip-utils/zipball/5cf2b9322fb3302c48f1684d3f0d8c0346028f38",
-                "reference": "5cf2b9322fb3302c48f1684d3f0d8c0346028f38",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-default": "1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "IpUtils\\": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Christoph Mewes",
-                    "homepage": "http://www.xrstf.de/"
-                }
-            ],
-            "description": "small library to deal with IPv4 & IPv6 addresses and subnets",
-            "keywords": [
-                "IP",
-                "ipv4",
-                "ipv6",
-                "matching",
-                "subnet"
-            ],
-            "time": "2013-12-04T00:57:13+00:00"
-        },
-        {
             "name": "yiisoft/yii",
-            "version": "1.1.20",
+            "version": "1.1.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii.git",
-                "reference": "6ed38411e7568f7a13c4aab8bcd38bff2a6f2390"
+                "reference": "8f9404aee8ffe8c869caad733a1ce1170cdc6ad4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii/zipball/6ed38411e7568f7a13c4aab8bcd38bff2a6f2390",
-                "reference": "6ed38411e7568f7a13c4aab8bcd38bff2a6f2390",
+                "url": "https://api.github.com/repos/yiisoft/yii/zipball/8f9404aee8ffe8c869caad733a1ce1170cdc6ad4",
+                "reference": "8f9404aee8ffe8c869caad733a1ce1170cdc6ad4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.1.0"
             },
             "require-dev": {
+                "cweagans/composer-patches": "^1.7",
+                "pear/archive_tar": "~1.4.6",
                 "phing/phing": "2.*",
-                "phpunit/phpunit": "~4.8.34",
+                "phpseclib/mcrypt_compat": "^1.0",
+                "phpunit/phpunit": "4.8.34",
                 "phpunit/phpunit-selenium": "~1.4.0"
             },
             "suggest": {
-                "ext-mcrypt": "Required by encrypt and decrypt methods of CSecurityManager"
+                "ext-mcrypt": "Required by encrypt and decrypt methods of CSecurityManager",
+                "phpseclib/mcrypt_compat": "To provide mcrypt polyfill when extension is unavailable"
             },
             "bin": [
                 "framework/yiic"
             ],
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                },
+                "composer-exit-on-patch-failure": true,
+                "patches": {
+                    "phpunit/phpunit-mock-objects": {
+                        "Fix PHP 7 and 8 compatibility": "https://yiisoft.github.io/phpunit-patches/phpunit_mock_objects.patch"
+                    },
+                    "phpunit/php-file-iterator": {
+                        "Fix PHP 8.1 compatibility": "https://yiisoft.github.io/phpunit-patches/phpunit_path_file_iterator.patch"
+                    },
+                    "phpunit/phpunit": {
+                        "Fix PHP 7 compatibility": "https://yiisoft.github.io/phpunit-patches/phpunit_php7.patch",
+                        "Fix PHP 8 compatibility": "https://yiisoft.github.io/phpunit-patches/phpunit_php8.patch",
+                        "Fix PHP 8.1 compatibility": "https://yiisoft.github.io/phpunit-patches/phpunit_php81.patch"
+                    }
+                }
+            },
             "autoload": {
                 "classmap": [
                     "framework/YiiBase.php",
@@ -1193,13 +1168,13 @@
                 {
                     "name": "Qiang Xue",
                     "email": "qiang.xue@gmail.com",
-                    "homepage": "http://www.yiiframework.com/",
+                    "homepage": "https://www.yiiframework.com/",
                     "role": "Founder and project lead"
                 },
                 {
                     "name": "Alexander Makarov",
                     "email": "sam@rmcreative.ru",
-                    "homepage": "http://rmcreative.ru/",
+                    "homepage": "https://rmcreative.ru/",
                     "role": "Core framework development"
                 },
                 {
@@ -1210,7 +1185,18 @@
                 {
                     "name": "Carsten Brandt",
                     "email": "mail@cebe.cc",
-                    "homepage": "http://cebe.cc/",
+                    "homepage": "https://cebe.cc/",
+                    "role": "Core framework development"
+                },
+                {
+                    "name": "Timur Ruziev",
+                    "email": "resurtm@gmail.com",
+                    "homepage": "http://resurtm.com/",
+                    "role": "Core framework development"
+                },
+                {
+                    "name": "Paul Klimov",
+                    "email": "klimov.paul@gmail.com",
                     "role": "Core framework development"
                 },
                 {
@@ -1227,26 +1213,36 @@
                     "name": "Jeffrey Winesett",
                     "email": "jefftulsa@gmail.com",
                     "role": "Documentation and marketing"
-                },
-                {
-                    "name": "Timur Ruziev",
-                    "email": "resurtm@gmail.com",
-                    "homepage": "http://resurtm.com/",
-                    "role": "Core framework development"
-                },
-                {
-                    "name": "Paul Klimov",
-                    "email": "klimov.paul@gmail.com",
-                    "role": "Core framework development"
                 }
             ],
             "description": "Yii Web Programming Framework",
-            "homepage": "http://www.yiiframework.com/",
+            "homepage": "https://www.yiiframework.com/",
             "keywords": [
                 "framework",
                 "yii"
             ],
-            "time": "2018-07-06T17:18:25+00:00"
+            "support": {
+                "forum": "https://www.yiiframework.com/forum/",
+                "irc": "irc://irc.freenode.net/yii",
+                "issues": "https://github.com/yiisoft/yii/issues?state=open",
+                "source": "https://github.com/yiisoft/yii",
+                "wiki": "https://www.yiiframework.com/wiki/"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/yiisoft",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/yiisoft",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/yiisoft/yii",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-11-21T13:50:13+00:00"
         },
         {
             "name": "zendframework/zend-escaper",
@@ -1574,5 +1570,6 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "5.4"
-    }
+    },
+    "plugin-api-version": "2.3.0"
 }
