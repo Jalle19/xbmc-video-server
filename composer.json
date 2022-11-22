@@ -16,7 +16,7 @@
         "netresearch/jsonmapper": "0.8.*",
         "tomnomnom/phpwol": "0.1.*",
         "vlucas/phpdotenv": "^3.4",
-        "yiisoft/yii": "1.1.20",
+        "yiisoft/yii": "1.1.27",
         "zendframework/zend-http": "2.2.*"
     },
     "config": {
