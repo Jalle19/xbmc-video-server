@@ -12,7 +12,7 @@
         "jalle19/simple-json-rpc-client": ">=1.0.9",
         "jalle19/xsphpf": "^1.0",
         "jalle19/yii-lazy-image": "1.0.*",
-        "mobiledetect/mobiledetectlib": "2.7.*",
+        "mobiledetect/mobiledetectlib": "2.8.*",
         "netresearch/jsonmapper": "0.8.*",
         "tomnomnom/phpwol": "0.1.*",
         "vlucas/phpdotenv": "^3.4",
