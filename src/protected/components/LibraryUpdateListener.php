@@ -57,7 +57,7 @@ class LibraryUpdateListener
 			Yii::app()->xbmc->sendNotification('VideoLibrary.Scan');
 		});
 
-		$this->_client->on('message', function(Hoa\Core\Event\Bucket $bucket) use ($event)
+		$this->_client->on('message', function(Hoa\Event\Bucket $bucket) use ($event)
 		{
 			$response = $this->parseResponse($bucket);
 
@@ -85,10 +85,10 @@ class LibraryUpdateListener
 	}
 
 	/**
-	 * @param Hoa\Core\Event\Bucket $bucket
+	 * @param Hoa\Event\Bucket $bucket
 	 * @return stdClass the response object, or null if the response is invalid
 	 */
-	private function parseResponse(Hoa\Core\Event\Bucket $bucket)
+	private function parseResponse(Hoa\Event\Bucket $bucket)
 	{
 		$data = $bucket->getData();
 		$response = json_decode($data['message']);

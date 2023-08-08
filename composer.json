@@ -1,12 +1,12 @@
 {
     "require": {
-        "php": ">=5.4",
+        "php": ">=5.5",
         "behat/transliterator": "1.0.*",
         "crisu83/yii-consoletools": "1.0.*",
         "crisu83/yiistrap": "1.2.*",
         "gavroche/browser": "2.2.*",
         "bordoni/phpass": "0.3.*",
-        "hoa/websocket": "2.15.08.05",
+        "hoa/websocket": "3.17.01.09",
         "imagine/imagine": "0.6.*",
         "jalle19/php-whitelist-check": "1.1.*",
         "jalle19/simple-json-rpc-client": ">=1.0.9",
@@ -22,7 +22,7 @@
     "config": {
         "sort-packages": true,
         "platform": {
-            "php": "5.4"
+            "php": "5.5"
         }
     }
 }
