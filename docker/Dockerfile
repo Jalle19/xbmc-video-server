@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:jammy
 MAINTAINER Sam Stenvall <neggelandia@gmail.com>
 
 RUN apt-get update && \
