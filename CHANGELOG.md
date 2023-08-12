@@ -8,6 +8,11 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.11.0
+
+* make code compatible with PHP 8.x
+* rebase the Docker image on Ubuntu 22.04
+
 #### 1.10.4
 
 * change hautelook/phpass to bordoin/phpass
