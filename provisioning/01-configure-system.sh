@@ -10,7 +10,8 @@ set -e
 
     # enable swap (disable first to prevent errors during re-provisioning)
     swapoff /tmp/swap || true
-    dd if=/dev/zero of=/tmp/swap bs=1M count=512
+    dd if=/dev/zero of=/tmp/swap bs=1M count=1024
     mkswap /tmp/swap
+    chmod 600 /tmp/swap
     swapon /tmp/swap
 } > /dev/null 2>&1
