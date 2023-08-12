@@ -11,5 +11,5 @@ set -e
     apt-get update
     DEBIAN_FRONTEND=noninteractive apt-get -y upgrade
     DEBIAN_FRONTEND=noninteractive apt-get -y install libapache2-mod-php php-imagick php-cli php-sqlite3 \
-                       php-json php-xdebug curl nodejs npm unzip mysql-server php-mysql
+                       php-json php-mbstring php-xdebug curl nodejs npm unzip mysql-server php-mysql
 } > /dev/null 2>&1

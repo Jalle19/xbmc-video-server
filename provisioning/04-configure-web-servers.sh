@@ -13,7 +13,7 @@ set -e
     a2ensite xbmc-video-server-ssl
     
     # configure xdebug
-    cp /vagrant/provisioning/etc/php/7.2/mods-available/xdebug.ini /etc/php/7.2/mods-available/xdebug.ini
+    cp /vagrant/provisioning/etc/php/8.1/mods-available/xdebug.ini /etc/php/8.1/mods-available/xdebug.ini
 
     # enable modules and restart
     a2enmod rewrite expires rewrite ssl
