@@ -373,7 +373,7 @@ class VideoLibrary
 				$mapper = new JsonMapper();
 				
 				if (is_array($result))
-					return $mapper->mapArray($result, new ArrayObject(), $targetObject)->getArrayCopy();
+					return $mapper->mapArray($result, new ArrayObject(), $targetObject::class)->getArrayCopy();
 				elseif (is_object($result))
 					return $mapper->map($result, $targetObject);
 			}

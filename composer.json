@@ -1,6 +1,6 @@
 {
     "require": {
-        "php": ">=5.5",
+        "php": ">=5.6",
         "behat/transliterator": "1.0.*",
         "crisu83/yii-consoletools": "1.0.*",
         "crisu83/yiistrap": "1.2.*",
@@ -13,7 +13,7 @@
         "jalle19/xsphpf": "^1.0",
         "jalle19/yii-lazy-image": "1.0.*",
         "mobiledetect/mobiledetectlib": "2.8.*",
-        "netresearch/jsonmapper": "0.8.*",
+        "netresearch/jsonmapper": "3.1.*",
         "tomnomnom/phpwol": "0.1.*",
         "vlucas/phpdotenv": "^3.4",
         "yiisoft/yii": "1.1.27",
@@ -22,7 +22,7 @@
     "config": {
         "sort-packages": true,
         "platform": {
-            "php": "5.5"
+            "php": "5.6"
         }
     }
 }
