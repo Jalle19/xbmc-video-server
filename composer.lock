@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0a3e0f968c3ebe14ef7169d906ffad15",
+    "content-hash": "8d83b3d51270210b3ccc1d1f190435b2",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -435,17 +435,11 @@
         },
         {
             "name": "hoa/http",
-            "version": "1.17.01.13",
+            "version": "dev-fix-issue-32",
             "source": {
                 "type": "git",
-                "url": "https://github.com/hoaproject/Http.git",
-                "reference": "6d3e114b48a63cf6b9532f9e9607cebade6314ef"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/hoaproject/Http/zipball/6d3e114b48a63cf6b9532f9e9607cebade6314ef",
-                "reference": "6d3e114b48a63cf6b9532f9e9607cebade6314ef",
-                "shasum": ""
+                "url": "https://github.com/syl20b/Http.git",
+                "reference": "0ea7f56d67e79904937d154f5feb50c4c6f591be"
             },
             "require": {
                 "hoa/consistency": "~1.0",
@@ -463,7 +457,6 @@
                     "Hoa\\Http\\": "."
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -500,15 +493,13 @@
                 "runtime"
             ],
             "support": {
-                "docs": "https://central.hoa-project.net/Documentation/Library/Http",
                 "email": "support@hoa-project.net",
-                "forum": "https://users.hoa-project.net/",
                 "irc": "irc://chat.freenode.net/hoaproject",
-                "issues": "https://github.com/hoaproject/Http/issues",
+                "forum": "https://users.hoa-project.net/",
+                "docs": "https://central.hoa-project.net/Documentation/Library/Http",
                 "source": "https://central.hoa-project.net/Resource/Library/Http"
             },
-            "abandoned": true,
-            "time": "2017-01-13T15:28:17+00:00"
+            "time": "2021-04-06T07:23:58+00:00"
         },
         {
             "name": "hoa/protocol",
@@ -1828,9 +1819,18 @@
         }
     ],
     "packages-dev": [],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "hoa/http",
+            "version": "dev-fix-issue-32",
+            "alias": "1.17.01.13",
+            "alias_normalized": "1.17.01.13"
+        }
+    ],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "hoa/http": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

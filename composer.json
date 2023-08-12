@@ -1,4 +1,10 @@
 {
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/syl20b/Http.git"
+        }
+    ],
     "require": {
         "php": ">=5.6",
         "behat/transliterator": "1.0.*",
@@ -6,6 +12,7 @@
         "crisu83/yiistrap": "1.2.*",
         "gavroche/browser": "2.2.*",
         "bordoni/phpass": "0.3.*",
+        "hoa/http": "dev-fix-issue-32 as 1.17.01.13",
         "hoa/websocket": "3.17.01.09",
         "imagine/imagine": "0.6.*",
         "jalle19/php-whitelist-check": "1.1.*",
