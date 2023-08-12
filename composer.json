@@ -7,7 +7,7 @@
     ],
     "require": {
         "php": ">=5.6",
-        "behat/transliterator": "1.0.*",
+        "behat/transliterator": "1.4.*",
         "crisu83/yii-consoletools": "1.0.*",
         "crisu83/yiistrap": "1.2.*",
         "gavroche/browser": "2.2.*",
