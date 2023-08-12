@@ -12,8 +12,7 @@ RUN mkdir -p /app /shared
 ADD . /app
 WORKDIR /app
 
-RUN rm -rf vendor/ && \
-	composer install --optimize-autoloader --classmap-authoritative
+RUN composer install --optimize-autoloader --classmap-authoritative
 	
 RUN rm -rf /app/src/images/image-cache && \
 	ln -sf /shared/image-cache /app/src/images/image-cache && \
