@@ -33,7 +33,7 @@ Screenshots
 Requirements
 ------------
 
-* PHP 5.4
+* PHP >= 5.5
 * allow_url_fopen = On in php.ini
 * Apache with .htaccess support enabled
 * XBMC 12 "Frodo" or newer

@@ -1,19 +1,26 @@
 {
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/syl20b/Http.git"
+        }
+    ],
     "require": {
-        "php": ">=5.4",
-        "behat/transliterator": "1.0.*",
+        "php": ">=5.6",
+        "behat/transliterator": "1.4.*",
         "crisu83/yii-consoletools": "1.0.*",
         "crisu83/yiistrap": "1.2.*",
         "gavroche/browser": "2.2.*",
         "bordoni/phpass": "0.3.*",
-        "hoa/websocket": "2.15.08.05",
+        "hoa/http": "dev-fix-issue-32 as 1.17.01.13",
+        "hoa/websocket": "3.17.01.09",
         "imagine/imagine": "0.6.*",
         "jalle19/php-whitelist-check": "1.1.*",
         "jalle19/simple-json-rpc-client": ">=1.0.9",
         "jalle19/xsphpf": "^1.0",
         "jalle19/yii-lazy-image": "1.0.*",
         "mobiledetect/mobiledetectlib": "2.8.*",
-        "netresearch/jsonmapper": "0.8.*",
+        "netresearch/jsonmapper": "3.1.*",
         "tomnomnom/phpwol": "0.1.*",
         "vlucas/phpdotenv": "^3.4",
         "yiisoft/yii": "1.1.27",
@@ -22,7 +29,7 @@
     "config": {
         "sort-packages": true,
         "platform": {
-            "php": "5.4"
+            "php": "5.6"
         }
     }
 }
