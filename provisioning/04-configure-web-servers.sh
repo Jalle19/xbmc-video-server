@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 {
     # disable default site
     a2dissite 000-default

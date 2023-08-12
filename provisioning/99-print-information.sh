@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Workaround for https://bugs.launchpad.net/ubuntu/+source/procps/+bug/50093
 sudo sysctl --system > /dev/null 2>&1
 

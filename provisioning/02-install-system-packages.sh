@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 {
     # configure debconf for mysql-server
     echo "mysql-server mysql-server/root_password password root" | debconf-set-selections

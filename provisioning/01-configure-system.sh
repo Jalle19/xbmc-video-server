@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 {
     # disable IPv6 (doesn't work if the host is on wireless)
     echo "net.ipv6.conf.all.disable_ipv6 = 1" > /etc/sysctl.d/60-disable-ipv6.conf
@@ -7,7 +9,7 @@
     sudo sysctl --system
 
     # enable swap (disable first to prevent errors during re-provisioning)
-    swapoff /tmp/swap
+    swapoff /tmp/swap || true
     dd if=/dev/zero of=/tmp/swap bs=1M count=512
     mkswap /tmp/swap
     swapon /tmp/swap
