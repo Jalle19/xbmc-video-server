@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Jalle19/xbmc-video-server.svg?branch=master)](https://travis-ci.org/Jalle19/xbmc-video-server)
+[![Installation test](https://github.com/Jalle19/xbmc-video-server/actions/workflows/installation-test.yml/badge.svg?branch=master)](https://github.com/Jalle19/xbmc-video-server/actions/workflows/installation-test.yml)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Jalle19/xbmc-video-server/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Jalle19/xbmc-video-server/?branch=master)
 
 XBMC Video Server
