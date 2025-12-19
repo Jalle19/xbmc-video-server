@@ -1,5 +1,6 @@
 FROM ubuntu:jammy
-MAINTAINER Sam Stenvall <neggelandia@gmail.com>
+
+LABEL org.opencontainers.image.authors="Sam Stenvall <neggelandia@gmail.com>"
 
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -yq \
