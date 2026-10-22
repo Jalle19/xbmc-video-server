@@ -2,8 +2,6 @@ FROM ubuntu:jammy
 
 LABEL org.opencontainers.image.authors="Sam Stenvall <neggelandia@gmail.com>"
 
-LABEL dummy=foo
-
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -yq \
     apache2 libapache2-mod-php php-imagick php-cli php-sqlite3 php-json php-mysql php-mbstring git curl unzip composer && \
