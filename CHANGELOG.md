@@ -8,6 +8,10 @@ version, run `git checkout master && git pull`. Beware that switching to a
 previous version from a newer one may break something since the project dependencies 
 change over time.
 
+#### 1.11.2
+
+* rebuilt Docker images to include PHP2Shell fix
+
 #### 1.11.1
 
 * start publishing Docker image to `ghcr.io/jalle19/xbmc-video-server`. The `latest` tag will always track the master
